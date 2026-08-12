@@ -16,8 +16,8 @@ export default function RewardsAdminPage() {
 
   const loadData = async () => {
     const [tRes, cRes] = await Promise.all([getAdminRewardTargets(), getAdminRewardClaims()]);
-    if (tRes.success) setTargets(tRes.data);
-    if (cRes.success) setClaims(cRes.data);
+    if (tRes.success) setTargets(tRes.data || []);
+    if (cRes.success) setClaims(cRes.data || []);
   };
 
   useEffect(() => {

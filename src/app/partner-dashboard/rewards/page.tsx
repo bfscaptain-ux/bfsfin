@@ -22,8 +22,8 @@ export default function RewardsPage() {
         ]);
         
         if (rewardsRes.success && targetsRes.success) {
-          setRewardData(rewardsRes.data);
-          setTargets(targetsRes.data);
+          setRewardData(rewardsRes.data || null);
+          setTargets(targetsRes.data || []);
         } else {
           setHasError(true);
         }
@@ -133,7 +133,7 @@ export default function RewardsPage() {
                       
                       {claimedMessage?.id === target.id ? (
                         <div className="bg-white/20 px-4 py-3 rounded-xl border border-white/30 text-white font-bold text-sm">
-                          {claimedMessage.text}
+                          {claimedMessage?.text}
                         </div>
                       ) : (
                         <button 

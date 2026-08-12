@@ -133,7 +133,7 @@ export default function ReviewsPage() {
                   <div>
                     <p className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
                       {review.name}
-                      <ShieldCheck className="w-3.5 h-3.5 text-blue-500" title="Verified Customer" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-blue-500" />
                     </p>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                       {new Date(review.createdAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
