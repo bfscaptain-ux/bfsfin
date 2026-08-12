@@ -1,0 +1,197 @@
+{
+  "rbiRepoRate": "6.50%",
+  "banks": {
+    "pnb": {
+      "name": "Punjab National Bank (PNB)",
+      "salariedRate": "8.40% - 9.10%",
+      "selfEmployedRate": "8.50% - 9.25%",
+      "processingFee": "Zero / Waived",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "hdfc": {
+      "name": "HDFC Bank",
+      "salariedRate": "8.50% - 9.05%",
+      "selfEmployedRate": "8.65% - 9.35%",
+      "processingFee": "₹3,000 + GST",
+      "baseRateType": "EBLR",
+      "baseRateValue": "6.50%"
+    },
+    "icici": {
+      "name": "ICICI Bank",
+      "salariedRate": "8.50% - 9.15%",
+      "selfEmployedRate": "8.65% - 9.40%",
+      "processingFee": "₹2,500 - ₹5,000",
+      "baseRateType": "EBLR",
+      "baseRateValue": "6.50%"
+    },
+    "central-bank": {
+      "name": "Central Bank of India",
+      "salariedRate": "8.35% - 9.10%",
+      "selfEmployedRate": "8.45% - 9.25%",
+      "processingFee": "Nil",
+      "baseRateType": "RBLR",
+      "baseRateValue": "6.50%"
+    },
+    "sbi": {
+      "name": "State Bank of India (SBI)",
+      "salariedRate": "8.40% - 9.05%",
+      "selfEmployedRate": "8.55% - 9.20%",
+      "processingFee": "₹2,000 - ₹10,000",
+      "baseRateType": "EBR",
+      "baseRateValue": "6.50%"
+    },
+    "axis": {
+      "name": "Axis Bank",
+      "salariedRate": "8.55% - 9.10%",
+      "selfEmployedRate": "8.75% - 9.40%",
+      "processingFee": "Up to 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "idbi": {
+      "name": "IDBI Bank",
+      "salariedRate": "8.45% - 9.15%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50%",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "bob": {
+      "name": "Bank of Baroda",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "boi": {
+      "name": "Bank of India",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "union-bank": {
+      "name": "Union Bank of India",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "canara-bank": {
+      "name": "Canara Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "indian-bank": {
+      "name": "Indian Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%"
+    },
+    "kotak": {
+      "name": "Kotak Mahindra Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "indusind": {
+      "name": "IndusInd Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "yes-bank": {
+      "name": "Yes Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "federal-bank": {
+      "name": "Federal Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "idfc": {
+      "name": "IDFC First Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "bandhan": {
+      "name": "Bandhan Bank",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "Repo Rate",
+      "baseRateValue": "6.50%"
+    },
+    "bajaj": {
+      "name": "Bajaj Housing Finance",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "PLR",
+      "baseRateValue": "6.50%"
+    },
+    "lic": {
+      "name": "LIC Housing Finance",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "PLR",
+      "baseRateValue": "6.50%"
+    },
+    "tata-capital": {
+      "name": "Tata Capital",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "PLR",
+      "baseRateValue": "6.50%"
+    },
+    "pnb-housing": {
+      "name": "PNB Housing Finance",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "PLR",
+      "baseRateValue": "6.50%"
+    },
+    "lnt-finance": {
+      "name": "L&T Finance",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "PLR",
+      "baseRateValue": "6.50%"
+    },
+    "chola": {
+      "name": "Cholamandalam",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "processingFee": "0.50% - 1%",
+      "baseRateType": "PLR",
+      "baseRateValue": "6.50%"
+    }
+  }
+}

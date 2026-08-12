@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "title": "5 Tips for Fast Home Loan Approval",
+    "excerpt": "Discover the top secrets to getting your home loan approved in just 5 days.",
+    "content": "Getting a home loan approved quickly requires preparation. Here are 5 tips:\n1. Maintain a CIBIL score above 750.\n2. Keep your KYC and Income documents ready (last 3 months salary slips, 2 years ITR).\n3. Ensure your property documents are legally clear.\n4. Avoid taking new credit cards or personal loans right before applying.\n5. Apply through an authorized DSA like Bhardwaj Financial Services for priority processing.",
+    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "date": "2026-08-01",
+    "author": "Admin"
+  },
+  {
+    "id": "2",
+    "title": "Understanding Repo Linked Lending Rate (RLLR)",
+    "excerpt": "How RBI repo rate changes affect your home loan EMIs.",
+    "content": "Since 2019, the RBI mandated that all floating rate home loans must be linked to an external benchmark, usually the Repo Rate (RLLR or EBLR). \n\nWhen the RBI cuts the repo rate, your bank must pass on the benefit to you by reducing your interest rate, which in turn lowers your EMI or loan tenure. Conversely, if the RBI increases the rate to fight inflation, your EMI will go up. Always check your bank's 'spread' or 'markup' over the repo rate before signing the loan agreement.",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "date": "2026-07-28",
+    "author": "Financial Expert"
+  }
+]

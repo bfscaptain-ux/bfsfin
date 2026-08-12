@@ -1,0 +1,481 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  phone        String        @unique
+  password     String?       // Stores hashed password
+  role         String        @default("CUSTOMER") // CUSTOMER, PARTNER, EMPLOYEE, ADMIN
+  city         String        @default("Agra")
+  referralCode String?       @unique
+  
+  // Network (MLM Structure)
+  referredById String?
+  referredBy   User?         @relation("Network", fields: [referredById], references: [id])
+  subPartners  User[]        @relation("Network")
+
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  leads        Lead[]        @relation("UserLeads")
+  applications Application[] @relation("CustomerApplications")
+  assignedApps Application[] @relation("OfficerApplications")
+  payouts      Payout[]
+
+  // Partner 360 Relations
+  partnerProfile  PartnerProfile?
+  documents       PartnerDocument[]
+  tickets         PartnerTicket[]
+  rewardProfile   RewardProfile?
+  trainings       PartnerTraining[]
+  activityLogs    ActivityLog[]
+  marketingAssets MarketingAsset[]
+  rewardClaims    RewardClaim[]
+}
+
+model BankRate {
+  id            String   @id @default(uuid())
+  bankName      String
+  logo          String?
+  category      String   // Salaried, Self-Employed, Balance Transfer, Top-Up
+  interestRate  Float
+  minRate       Float
+  maxRate       Float
+  processingFee String
+  speedDays     Int
+  badge         String?
+  updatedAt     DateTime @updatedAt
+}
+
+model Lead {
+  id              String   @id @default(uuid())
+  name            String
+  phone           String
+  email           String
+  loanType        String
+  loanSubcategory String?
+  loanPurpose     String?
+  loanAmount      Float
+  tenure          Int?
+  
+  income          Float?
+  city            String   @default("Agra")
+  address         String?
+  pincode         String?
+  dob             String?
+  gender          String?
+  
+  employmentType  String?
+  employerName    String?
+  workExperience  String?
+  
+  bureauConsent   Boolean  @default(false)
+  bankName        String?
+  accountNumber   String?
+  ifscCode        String?
+
+  source          String   @default("Direct Search")
+  referralCode    String?
+  status          String   @default("NEW") // NEW, CONTACTED, INTERESTED, APPLICATION_FILED, APPROVED, REJECTED, DISBURSED
+  userId          String?
+  user            User?    @relation("UserLeads", fields: [userId], references: [id])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Application {
+  id                String         @id @default(uuid())
+  appNo             String         @unique
+  customerId        String
+  customer          User           @relation("CustomerApplications", fields: [customerId], references: [id])
+  assignedOfficerId String?
+  assignedOfficer   User?          @relation("OfficerApplications", fields: [assignedOfficerId], references: [id])
+  
+  loanType          String         @default("Home Loan")
+  loanAmount        Float
+  tenureYears       Int
+  purpose           String
+  propertyLocation  String
+  monthlyEmi        Float
+  processingFee     Float
+  estimatedRate     Float
+  assignedBank      String         @default("PNB")
+  secondaryBank     String?        @default("Central Bank of India")
+  
+  employmentType    String
+  companyName       String?
+  designation       String?
+  annualIncome      Float
+  
+  status            String         @default("RECEIVED") // RECEIVED, DOCUMENTS_VERIFYING, BANK_SUBMITTED, APPROVED, DISBURSED, REJECTED
+  progress          Int            @default(20)
+  expectedApproval  DateTime?
+  rejectionReason   String?
+  
+  documents         Document[]
+  timeline          TimelineStep[]
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model Document {
+  id            String      @id @default(uuid())
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  category      String      // Salary Slip, Bank Statement, PAN, Aadhaar, Property
+  title         String
+  fileUrl       String?
+  status        String      @default("PENDING") // PENDING, VERIFIED, REJECTED
+  rejectReason  String?
+  verifiedBy    String?
+  verifiedAt    DateTime?
+  createdAt     DateTime    @default(now())
+}
+
+model TimelineStep {
+  id            String      @id @default(uuid())
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  title         String
+  description   String
+  status        String      // COMPLETED, IN_PROGRESS, PENDING
+  timestamp     DateTime    @default(now())
+}
+
+model Payout {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  amount     Float
+  status     String   @default("PAID") // PAID, PENDING
+  leadName   String?
+  loanAmount Float?
+  date       DateTime @default(now())
+}
+
+model Testimonial {
+  id         String   @id @default(uuid())
+  slug       String?  @unique @default(cuid())
+  name       String
+  role       String
+  location   String
+  stars      Int      @default(5)
+  quote      String
+  detail     String
+  challenge   String?
+  solution    String?
+  result      String?
+  loanAmount String
+  daysTaken  String
+  bankName   String
+  rate       String
+  verified   Boolean  @default(true)
+  photoUrl   String?
+  videoUrl   String?
+  createdAt  DateTime @default(now())
+}
+
+model BlogArticle {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  content     String
+  category    String
+  readTime    String
+  publishedAt DateTime @default(now())
+  author      String   @default("Adv. Praveen Bhardwaj")
+}
+
+model SupportTicket {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String
+  email     String
+  message   String
+  status    String   @default("OPEN")
+  createdAt DateTime @default(now())
+}
+
+model Blog {
+  id              String    @id @default(uuid())
+  title           String
+  slug            String    @unique
+  excerpt         String?
+  content         String
+  coverImage      String?
+  author          String    @default("Admin")
+  tags            String?
+  metaTitle       String?
+  metaDescription String?
+  isPublished     Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+
+model Faq {
+  id          String   @id @default(uuid())
+  question    String
+  answer      String
+  category    String
+  slug        String   @unique
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CareerJob {
+  id           String   @id @default(uuid())
+  title        String
+  slug         String   @unique
+  department   String
+  location     String   @default("Agra, UP")
+  type         String   @default("Full-Time")
+  description  String
+  requirements String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  applications JobApplication[]
+}
+
+model JobApplication {
+  id              String   @id @default(uuid())
+  applicationNo   String   @unique
+  jobId           String
+  job             CareerJob @relation(fields: [jobId], references: [id])
+  
+  // 1. Basic Info
+  fullName        String
+  email           String
+  phone           String
+  hasWhatsapp     Boolean  @default(false)
+  address         String
+  gender          String
+  dob             DateTime?
+  
+  // 2. Job Selection
+  preferredLocation String?
+  jobType         String?
+  noticePeriod    String?
+  
+  // 3. Education
+  qualification   String?
+  specialization  String?
+  passingYear     String?
+  university      String?
+  
+  // 4. Experience & Skills
+  experienceYears String
+  currentCompany  String?
+  currentCtc      String?
+  expectedSalary  String?
+  keySkills       String   // Stored as JSON string array or comma separated
+  
+  // 5. Document Uploads
+  resumeUrl       String?
+  photoUrl        String?
+  hasVehicle      Boolean  @default(false)
+  
+  // 6. Additional
+  whyJoin         String?
+  fieldComfortable Boolean @default(false)
+  
+  status          String   @default("NEW")
+  appliedAt       DateTime @default(now())
+}
+
+model ContactRequest {
+  id         String   @id @default(uuid())
+  name       String
+  phone      String
+  email      String
+  state      String
+  city       String
+  loanType   String
+  loanAmount String?
+  message    String?
+  status     String   @default("NEW") // NEW, CONTACTED, RESOLVED
+  createdAt  DateTime @default(now())
+}
+
+model Review {
+  id            String       @id @default(uuid())
+  applicationId String?      @unique
+  name          String
+  phone         String?      
+  rating        Int          @default(5)
+  title         String
+  content       String
+  status        String       @default("APPROVED") // APPROVED, HIDDEN
+  createdAt     DateTime     @default(now())
+}
+
+// ----------------------------------------------------------------------
+// PARTNER 360 ECOSYSTEM MODELS
+// ----------------------------------------------------------------------
+
+model PartnerProfile {
+  id             String   @id @default(uuid())
+  partnerCode    String?  @unique // e.g. BFS-PT-001
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName    String?
+  tier           String   @default("Silver") // Silver, Gold, Platinum
+  commissionRate String   @default("1.0%")
+  status         String   @default("Pending Approval") // Active, Suspended, Pending Approval
+  
+  // New Detailed Fields
+  panNumber      String?
+  profession     String?
+  experienceYears String?
+  state          String?
+  pincode        String?
+
+  bankName       String?
+  accountName    String?
+  accountNumber  String?
+  ifscCode       String?
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model PartnerDocument {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  documentType String    // Aadhaar, PAN, GST, Cancelled Cheque
+  fileName     String
+  fileUrl      String
+  status       String    @default("Pending Review") // Pending Review, Verified, Rejected
+  rejectReason String?
+  verifiedBy   String?   // Admin User ID
+  verifiedAt   DateTime?
+  
+  uploadedAt   DateTime  @default(now())
+}
+
+model PartnerTicket {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  subject      String
+  message      String?
+  priority     String    @default("Medium") // Low, Medium, High
+  isVideoCall  Boolean   @default(false)
+  status       String    @default("Open") // Open, Scheduled, Resolved
+  scheduledFor DateTime?
+  
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model RewardProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  rank        Int      @default(0)
+  totalPoints Int      @default(0)
+  badges      String   @default("[]") // JSON string array of unlocked badges
+  
+  updatedAt   DateTime @updatedAt
+}
+
+model TrainingModule {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  videoUrl    String?
+  duration    Int?     // Duration in minutes
+  createdAt   DateTime @default(now())
+  
+  partnerTrainings PartnerTraining[]
+}
+
+model PartnerTraining {
+  id          String         @id @default(uuid())
+  userId      String
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moduleId    String
+  module      TrainingModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  
+  status      String         @default("Pending") // Pending, In Progress, Completed
+  completedAt DateTime?
+  
+  @@unique([userId, moduleId])
+}
+
+model ActivityLog {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  action      String
+  type        String   // login, lead, document, support, marketing
+  ipAddress   String?
+  timestamp   DateTime @default(now())
+}
+
+model MarketingAsset {
+  id          String   @id @default(uuid())
+  userId      String?  // If null, it's a global asset for all partners. If set, specific to one partner.
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  title       String
+  assetUrl    String
+  fileType    String   // JPG, PNG, PDF
+  
+  createdAt   DateTime @default(now())
+}
+
+model RewardTarget {
+  id          String   @id @default(uuid())
+  title       String   // e.g. "4N/5D Trip to Thailand"
+  description String
+  targetValue Float    // numeric target (e.g. 20 for 20 Cr)
+  imageUrl    String?  // beautiful background image URL
+  deadline    DateTime?
+  isActive    Boolean  @default(true)
+  
+  claims      RewardClaim[]
+  createdAt   DateTime @default(now())
+}
+
+model RewardClaim {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  rewardId  String
+  reward    RewardTarget @relation(fields: [rewardId], references: [id])
+  status    String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  claimedAt DateTime @default(now())
+}
+  
+model SiteSetting {  
+  key       String   @id  
+  value     String  
+  updatedAt DateTime @updatedAt  
+} 
+
+model OtpCode {
+  id        String   @id @default(uuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
