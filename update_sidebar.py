@@ -1,0 +1,15 @@
+import re
+
+with open("src/components/admin/AdminSidebar.tsx", "r", encoding="utf-8") as f:
+    content = f.read()
+
+if '{ label: "Callback Requests",' not in content:
+    # Add PhoneCall icon
+    content = content.replace('FileText,', 'FileText,\n  PhoneCall,')
+    
+    # Add nav item
+    nav_item = '    { label: "Website Leads", href: "/admin/leads", icon: Users, badge: "NEW" },\n    { label: "Callback Requests", href: "/admin/callbacks", icon: PhoneCall, badge: "URGENT" },'
+    content = content.replace('    { label: "Website Leads", href: "/admin/leads", icon: Users, badge: "NEW" },', nav_item)
+
+with open("src/components/admin/AdminSidebar.tsx", "w", encoding="utf-8") as f:
+    f.write(content)

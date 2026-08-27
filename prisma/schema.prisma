@@ -1,0 +1,219 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  phone        String        @unique
+  role         String        @default("CUSTOMER") // CUSTOMER, PARTNER, EMPLOYEE, ADMIN
+  city         String        @default("Agra")
+  referralCode String?       @unique
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  leads        Lead[]        @relation("UserLeads")
+  applications Application[] @relation("CustomerApplications")
+  assignedApps Application[] @relation("OfficerApplications")
+  payouts      Payout[]
+}
+
+model BankRate {
+  id            String   @id @default(uuid())
+  bankName      String
+  logo          String?
+  category      String   // Salaried, Self-Employed, Balance Transfer, Top-Up
+  interestRate  Float
+  minRate       Float
+  maxRate       Float
+  processingFee String
+  speedDays     Int
+  badge         String?
+  updatedAt     DateTime @updatedAt
+}
+
+model Lead {
+  id             String   @id @default(uuid())
+  name           String
+  phone          String
+  email          String
+  loanType       String
+  loanAmount     Float
+  income         Float?
+  city           String   @default("Agra")
+  employmentType String?
+  source         String   @default("Direct Search")
+  referralCode   String?
+  status         String   @default("NEW") // NEW, CONTACTED, INTERESTED, APPLICATION_FILED, APPROVED, REJECTED, DISBURSED
+  userId         String?
+  user           User?    @relation("UserLeads", fields: [userId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Application {
+  id                String         @id @default(uuid())
+  appNo             String         @unique
+  customerId        String
+  customer          User           @relation("CustomerApplications", fields: [customerId], references: [id])
+  assignedOfficerId String?
+  assignedOfficer   User?          @relation("OfficerApplications", fields: [assignedOfficerId], references: [id])
+  
+  loanType          String         @default("Home Loan")
+  loanAmount        Float
+  tenureYears       Int
+  purpose           String
+  propertyLocation  String
+  monthlyEmi        Float
+  processingFee     Float
+  estimatedRate     Float
+  assignedBank      String         @default("PNB")
+  secondaryBank     String?        @default("Central Bank of India")
+  
+  employmentType    String
+  companyName       String?
+  designation       String?
+  annualIncome      Float
+  
+  status            String         @default("RECEIVED") // RECEIVED, DOCUMENTS_VERIFYING, BANK_SUBMITTED, APPROVED, DISBURSED, REJECTED
+  progress          Int            @default(20)
+  expectedApproval  DateTime?
+  rejectionReason   String?
+  
+  documents         Document[]
+  timeline          TimelineStep[]
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model Document {
+  id            String      @id @default(uuid())
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  category      String      // Salary Slip, Bank Statement, PAN, Aadhaar, Property
+  title         String
+  fileUrl       String?
+  status        String      @default("PENDING") // PENDING, VERIFIED, REJECTED
+  rejectReason  String?
+  verifiedBy    String?
+  verifiedAt    DateTime?
+  createdAt     DateTime    @default(now())
+}
+
+model TimelineStep {
+  id            String      @id @default(uuid())
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  title         String
+  description   String
+  status        String      // COMPLETED, IN_PROGRESS, PENDING
+  timestamp     DateTime    @default(now())
+}
+
+model Payout {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  amount     Float
+  status     String   @default("PAID") // PAID, PENDING
+  leadName   String?
+  loanAmount Float?
+  date       DateTime @default(now())
+}
+
+model Testimonial {
+  id         String   @id @default(uuid())
+  name       String
+  role       String
+  location   String
+  stars      Int      @default(5)
+  quote      String
+  detail     String
+  loanAmount String
+  daysTaken  String
+  bankName   String
+  rate       String
+  verified   Boolean  @default(true)
+  photoUrl   String?
+  createdAt  DateTime @default(now())
+}
+
+model BlogArticle {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  content     String
+  category    String
+  readTime    String
+  publishedAt DateTime @default(now())
+  author      String   @default("Adv. Praveen Bhardwaj")
+}
+
+model SupportTicket {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String
+  email     String
+  message   String
+  status    String   @default("OPEN")
+  createdAt DateTime @default(now())
+}
+
+model HeroImage {
+  id        String   @id @default(uuid())
+  pageId    String   @unique // e.g. "home", "home-loan", "lap", "business-loan"
+  imageUrl  String
+  updatedAt DateTime @updatedAt
+}
+
+model AdminUser {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+  
+model SystemSetting {  
+  key       String   @id  
+  value     String  
+  updatedAt DateTime @updatedAt  
+}
+
+model BankLogo {
+  id        String   @id @default(uuid())
+  bankName  String
+  logoUrl   String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  name      String
+  role      String
+  initials  String
+  color     String   @default("emerald")
+  desc      String
+  imageUrl  String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  name      String
+  location  String?  @default("India")
+  rating    Int      @default(5)
+  text      String
+  status    String   @default("APPROVED") // PENDING, APPROVED
+  createdAt DateTime @default(now())
+}

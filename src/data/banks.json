@@ -1,0 +1,468 @@
+{
+  "banksData": {
+    "pnb": {
+      "id": "pnb",
+      "slug": "pnb",
+      "name": "Punjab National Bank (PNB)",
+      "logo": "/uploads/bank-logos/pnb-1787660211623.jpeg",
+      "seoTitle": "PNB Home Loan Interest Rates 2026 | Zero Processing Fee",
+      "seoDescription": "Get the lowest PNB Home Loan interest rates starting at 8.40% p.a. Check your eligibility, processing fees, and apply online through Bhardwaj Financial Services.",
+      "salariedRate": "8.40% - 9.10%",
+      "selfEmployedRate": "8.50% - 9.25%",
+      "maxLTV": "90%",
+      "processingFee": "Zero / Waived (Special Offer)",
+      "processingFeeValue": 0,
+      "baseRateType": "RLLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "Punjab National Bank (PNB) is one of India's oldest and most trusted public sector banks. Known for its highly competitive interest rates and customer-friendly policies, PNB Home Loans are an excellent choice for both salaried and self-employed individuals looking to purchase, construct, or renovate a home.",
+        "At Bhardwaj Financial Services, we hold a special partnership with PNB that allows us to secure preferential terms for our clients. One of the biggest advantages of choosing PNB through us is the complete waiver of processing fees and documentation charges during special festive periods, saving you thousands of rupees upfront.",
+        "PNB home loans are linked to the Repo Linked Lending Rate (RLLR), ensuring absolute transparency. When the RBI reduces repo rates, the benefit is automatically and immediately passed on to you, lowering your monthly EMI."
+      ],
+      "benefits": [
+        "Extremely low interest rates starting from 8.40% p.a. for high CIBIL scores.",
+        "Complete waiver of processing fees and upfront charges for eligible profiles.",
+        "No pre-payment or foreclosure penalties on floating rate loans.",
+        "Long repayment tenure up to 30 years to minimize your EMI burden.",
+        "Doorstep service and dedicated relationship managers via Bhardwaj Financial Services."
+      ],
+      "features": [
+        {
+          "icon": "Percent",
+          "title": "Lowest Rates",
+          "description": "PNB consistently offers some of the lowest interest rates in the public sector banking space."
+        },
+        {
+          "icon": "Shield",
+          "title": "Transparent RLLR",
+          "description": "Your interest rate is directly linked to the RBI Repo Rate, ensuring 100% transparency."
+        },
+        {
+          "icon": "CheckCircle",
+          "title": "Zero Processing Fee",
+          "description": "Enjoy absolutely zero processing fees when you apply through our authorized channels."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC Documents",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card",
+            "Passport size photographs"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Last 3 months salary slips",
+            "Last 6 months bank statement",
+            "Form 16 / Last 2 years ITR"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Agreement to Sell",
+            "Allotment Letter",
+            "Approved Building Plan (for construction)"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the PNB Home Loan interest rate for salaried employees?",
+          "answer": "Currently, PNB home loan interest rates for salaried employees start at 8.40% p.a., subject to a CIBIL score of 750 and above."
+        },
+        {
+          "question": "Does PNB charge a processing fee?",
+          "answer": "Normally, PNB charges a nominal fee of 0.35%, but currently, they have a 100% processing fee waiver under their festive bonanza scheme."
+        },
+        {
+          "question": "What is RLLR in PNB?",
+          "answer": "RLLR stands for Repo Linked Lending Rate. It means your home loan interest rate is directly tied to the RBI's repo rate. PNB's current base RLLR is linked to the 6.50% repo rate."
+        }
+      ]
+    },
+    "hdfc": {
+      "id": "hdfc",
+      "slug": "hdfc",
+      "name": "HDFC Bank",
+      "logo": "Building",
+      "seoTitle": "HDFC Home Loan Interest Rates 2026 | Fast Processing",
+      "seoDescription": "Apply for HDFC Home Loans with interest rates starting at 8.50% p.a. Experience lightning-fast approvals, flexible tenures, and minimal documentation.",
+      "salariedRate": "8.50% - 9.05%",
+      "selfEmployedRate": "8.65% - 9.35%",
+      "maxLTV": "90%",
+      "processingFee": "₹3,000 + GST (Flat)",
+      "processingFeeValue": 3000,
+      "baseRateType": "EBLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "HDFC Bank is India's premier private sector bank and a market leader in home financing. If speed, convenience, and premium customer service are your top priorities, an HDFC Home Loan is the ultimate choice. They offer a completely digitized loan sanction process that can approve your loan in record time.",
+        "Through Bhardwaj Financial Services, applying for an HDFC home loan becomes even smoother. HDFC is renowned for its highly flexible credit policies. Whether you are a salaried employee in an MNC, a self-employed professional, or a business owner, HDFC customizes the loan structure to suit your specific cash flows.",
+        "HDFC home loans are linked to their External Benchmark Lending Rate (EBLR). They offer specialized products like HDFC Home Loan Plus (which includes a top-up for renovation) and rural housing loans, ensuring there is a perfect product for every type of property buyer."
+      ],
+      "benefits": [
+        "Lightning-fast approvals with a fully digital, paperless onboarding process.",
+        "Highly competitive interest rates starting at 8.50% p.a. for prime profiles.",
+        "Customized repayment options including step-up and step-down EMIs.",
+        "Integrated Top-Up loan facility available at the time of balance transfer.",
+        "Vast network of pre-approved builder projects requiring zero legal checks."
+      ],
+      "features": [
+        {
+          "icon": "Zap",
+          "title": "Instant Approvals",
+          "description": "HDFC is known for its incredible turnaround time (TAT), ensuring you never lose out on a property deal."
+        },
+        {
+          "icon": "Map",
+          "title": "Pre-Approved Projects",
+          "description": "Thousands of builder projects across India are already pre-approved by HDFC for instant funding."
+        },
+        {
+          "icon": "Users",
+          "title": "Flexible Policies",
+          "description": "HDFC is highly accommodating of complex income profiles and co-applicant structures."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC Documents",
+          "items": [
+            "PAN, Aadhaar",
+            "Voter ID / Passport"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Latest 3 months salary slips",
+            "Last 6 months salary account statement",
+            "Form 16"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Receipt of payment made to developer",
+            "Allotment Letter / Buyer Agreement"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How fast can HDFC approve a home loan?",
+          "answer": "With a strong CIBIL score and proper digital income proofs, HDFC can generate an in-principle sanction within 24 to 48 hours."
+        },
+        {
+          "question": "Are there any prepayment charges in HDFC?",
+          "answer": "No, as per RBI mandates, HDFC does not charge any foreclosure or part-payment penalties on floating rate home loans for individuals."
+        },
+        {
+          "question": "What is the processing fee for HDFC Home Loans?",
+          "answer": "HDFC typically charges a flat login/processing fee of ₹3,000 + GST for standard salaried profiles, making it highly cost-effective."
+        }
+      ]
+    },
+    "icici": {
+      "id": "icici",
+      "slug": "icici",
+      "name": "ICICI Bank",
+      "logo": "Building",
+      "seoTitle": "ICICI Home Loan Interest Rates 2026 | Instant Sanction",
+      "seoDescription": "Get ICICI Bank Home Loans starting at 8.50% p.a. Enjoy instant digital sanctions, long tenures up to 30 years, and overdraft facilities.",
+      "salariedRate": "8.50% - 9.15%",
+      "selfEmployedRate": "8.65% - 9.40%",
+      "maxLTV": "90%",
+      "processingFee": "0.50% (Max ₹10,000)",
+      "processingFeeValue": 10000,
+      "baseRateType": "EBLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "ICICI Bank stands at the forefront of digital banking innovation in India. Their Home Loan products reflect this technological edge, offering customers the ability to get instant, AI-driven 'Express Home Loan' sanctions entirely online. If you are an existing ICICI bank customer, the process is practically frictionless.",
+        "Bhardwaj Financial Services highly recommends ICICI Bank for customers looking for advanced loan products like the 'ICICI Home Overdraft'. This unique facility allows you to park your surplus savings in your home loan account to reduce your interest burden, and withdraw those funds whenever a need arises—giving you the ultimate liquidity.",
+        "ICICI Bank offers extremely competitive interest rates starting at 8.50% p.a., with tenures extending up to 30 years. Their aggressive stance on balance transfers makes them a prime choice if you are looking to switch your existing expensive home loan to a cheaper rate."
+      ],
+      "benefits": [
+        "Express Home Loan facility for instant, digital in-principle sanctions.",
+        "Home Overdraft (OD) facility to save interest while maintaining liquidity.",
+        "Special, discounted interest rates for women borrowers.",
+        "Aggressive balance transfer offers with instant Top-Up loan approvals.",
+        "Seamless digital tracking and account management via the iMobile app."
+      ],
+      "features": [
+        {
+          "icon": "RefreshCw",
+          "title": "Home Overdraft Facility",
+          "description": "Park your surplus cash to reduce interest, and withdraw it anytime you need it."
+        },
+        {
+          "icon": "Zap",
+          "title": "Express Sanctions",
+          "description": "Existing customers and strong profiles can get digital sanctions in a matter of minutes."
+        },
+        {
+          "icon": "Box",
+          "title": "Easy Balance Transfers",
+          "description": "Switch your loan to ICICI with minimal paperwork and instant Top-Up limits."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC Documents",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Last 3 months salary slips",
+            "Last 6 months bank statement",
+            "Form 16"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Agreement to Sell",
+            "Chain deeds (for resale properties)"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the interest rate for women in ICICI?",
+          "answer": "ICICI Bank generally offers a concession of 0.05% (5 basis points) on the standard home loan interest rate if a woman is the primary applicant or co-applicant."
+        },
+        {
+          "question": "How does the ICICI Home Overdraft work?",
+          "answer": "It works like a current account linked to your home loan. Any surplus money you deposit reduces your outstanding principal for interest calculation, but you can withdraw that surplus anytime."
+        },
+        {
+          "question": "What is the maximum loan tenure in ICICI?",
+          "answer": "ICICI offers home loans with repayment tenures stretching up to 30 years, subject to the applicant's retirement age."
+        }
+      ]
+    },
+    "central-bank": {
+      "id": "central-bank",
+      "slug": "central-bank",
+      "name": "Central Bank of India",
+      "logo": "Building",
+      "seoTitle": "Central Bank of India Home Loan Rates 2026 | Cent Home Loan",
+      "seoDescription": "Apply for the Cent Home Loan at Central Bank of India. Enjoy lowest public sector rates starting at 8.35% p.a. and no hidden charges.",
+      "salariedRate": "8.35% - 9.10%",
+      "selfEmployedRate": "8.45% - 9.25%",
+      "maxLTV": "90%",
+      "processingFee": "Waived / Zero",
+      "processingFeeValue": 0,
+      "baseRateType": "RBLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "The Central Bank of India is a stalwart of the Indian public banking sector, known for offering some of the most aggressive and consumer-friendly loan schemes in the market. Their flagship 'Cent Home Loan' scheme is immensely popular for its rock-bottom interest rates and zero hidden charges.",
+        "For cost-conscious borrowers, Central Bank of India is often the best choice. Starting at incredibly low rates of 8.35% p.a. (subject to CIBIL score), it significantly undercuts many private sector competitors. Furthermore, through Bhardwaj Financial Services, clients frequently benefit from 100% waivers on processing fees and documentation charges.",
+        "The bank offers excellent terms for the purchase of new flats, construction on existing plots, and even for the purchase of older resale properties. Their rates are directly linked to the Repo Based Lending Rate (RBLR), ensuring complete transparency and immediate transmission of RBI rate cuts."
+      ],
+      "benefits": [
+        "Among the lowest interest rates in the market, starting at just 8.35% p.a.",
+        "100% processing fee waivers available during campaign periods.",
+        "No foreclosure or pre-payment penalties for floating rate loans.",
+        "Flexible margin money (down payment) requirements depending on the loan quantum.",
+        "Transparent RBLR pricing structure with zero hidden administrative costs."
+      ],
+      "features": [
+        {
+          "icon": "Percent",
+          "title": "Rock-Bottom Rates",
+          "description": "Enjoy one of the lowest starting interest rates in the entire banking industry."
+        },
+        {
+          "icon": "ShieldCheck",
+          "title": "No Hidden Costs",
+          "description": "Public sector transparency ensures you won't be hit with unexpected administrative or legal fees."
+        },
+        {
+          "icon": "Building",
+          "title": "Wide Acceptance",
+          "description": "Funds available for new builds, resale purchases, and even long-term leasehold properties."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC Documents",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card",
+            "2 Passport size photographs"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Last 3 months salary slips",
+            "Last 6 months salary account statement",
+            "Last 2 years ITR"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Allotment Letter",
+            "Agreement to Sell",
+            "Approved layout plan"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the Cent Home Loan interest rate?",
+          "answer": "The Cent Home Loan interest rate starts at 8.35% p.a. for applicants with an excellent CIBIL score."
+        },
+        {
+          "question": "Is there a processing fee for Central Bank home loans?",
+          "answer": "Currently, Central Bank of India offers a complete waiver on processing fees for home loans under their retail loan campaigns."
+        },
+        {
+          "question": "Can NRIs apply for a Central Bank home loan?",
+          "answer": "Yes, the bank offers specialized 'Cent NRI Home Loan' schemes specifically designed for Non-Resident Indians."
+        }
+      ]
+    },
+    "sbi-bank-logo-bhardwaj-financial-services": {
+      "id": "sbi-bank-logo-bhardwaj-financial-services",
+      "slug": "sbi-bank-logo-bhardwaj-financial-services",
+      "name": "SBI BANK LOGO BHARDWAJ FINANCIAL SERVICES",
+      "logo": "/uploads/bank-logos/sbi-bank-logo-bhardwaj-financial-services-1787660135223.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "dcb-bank": {
+      "id": "dcb-bank",
+      "slug": "dcb-bank",
+      "name": "DCB BANK",
+      "logo": "/uploads/bank-logos/dcb-bank-1787660159419.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "bank-of-baroda": {
+      "id": "bank-of-baroda",
+      "slug": "bank-of-baroda",
+      "name": "BANK OF BARODA",
+      "logo": "/uploads/bank-logos/bank-of-baroda-1787660172929.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "canara-bank": {
+      "id": "canara-bank",
+      "slug": "canara-bank",
+      "name": "CANARA BANK",
+      "logo": "/uploads/bank-logos/canara-bank-1787660198636.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "union-bank": {
+      "id": "union-bank",
+      "slug": "union-bank",
+      "name": "UNION BANK",
+      "logo": "/uploads/bank-logos/union-bank-1787660221511.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "bank-of-india": {
+      "id": "bank-of-india",
+      "slug": "bank-of-india",
+      "name": "BANK OF INDIA",
+      "logo": "/uploads/bank-logos/bank-of-india-1787660231070.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "indian-bank": {
+      "id": "indian-bank",
+      "slug": "indian-bank",
+      "name": "INDIAN BANK",
+      "logo": "/uploads/bank-logos/indian-bank-1787660245392.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "cent-bank": {
+      "id": "cent-bank",
+      "slug": "cent-bank",
+      "name": "CENT BANK",
+      "logo": "/uploads/bank-logos/cent-bank-1787660258409.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "indian-oversease": {
+      "id": "indian-oversease",
+      "slug": "indian-oversease",
+      "name": "INDIAN OVERSEASE",
+      "logo": "/uploads/bank-logos/indian-oversease-1787660281856.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "uco-bank": {
+      "id": "uco-bank",
+      "slug": "uco-bank",
+      "name": "UCO BANK",
+      "logo": "/uploads/bank-logos/uco-bank-1787660292496.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "bank-of-maharastra": {
+      "id": "bank-of-maharastra",
+      "slug": "bank-of-maharastra",
+      "name": "BANK OF MAHARASTRA",
+      "logo": "/uploads/bank-logos/bank-of-maharastra-1787660305265.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "panjab-sindh-bank": {
+      "id": "panjab-sindh-bank",
+      "slug": "panjab-sindh-bank",
+      "name": "PANJAB SINDH BANK",
+      "logo": "/uploads/bank-logos/panjab-sindh-bank-1787660320460.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    },
+    "axis-bank": {
+      "id": "axis-bank",
+      "slug": "axis-bank",
+      "name": "AXIS BANK",
+      "logo": "/uploads/bank-logos/axis-bank-1787660334117.jpeg",
+      "salariedRate": "8.50%",
+      "selfEmployedRate": "8.60%",
+      "processingFee": "Standard",
+      "baseRateValue": "6.50%"
+    }
+  },
+  "rbiRepoRate": "6.50%",
+  "lastUpdated": "Today"
+}
