@@ -5,8 +5,8 @@ import { banksData } from "@/data/banksData";
 const prisma = new PrismaClient();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Use environment variable for base URL, default to https://bfsagra.com
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bfsagra.com";
+  // Use environment variable for base URL, default to https://bfsfin.com
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bfsfin.com";
 
   // 1. All static public routes
   const staticRoutes = [
