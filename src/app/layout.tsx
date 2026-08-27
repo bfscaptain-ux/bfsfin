@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "BFS AGRA — Enterprise Home Loan Portal | Vineeta Sharma",
   description: "Agra's #1 Home Loan Portal. Approved in 5 Days! ₹20L to ₹1Cr+ starting @ 6.50% p.a. Direct priority partner for PNB, Central Bank of India, IDBI & HDFC.",

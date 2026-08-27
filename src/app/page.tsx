@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Bhardwaj Financial Services | India's #1 Loan Consultant",
   description: "Get your Home Loan approved in 5 days! Bhardwaj Financial Services offers the lowest interest rates starting at 6.50% across India. Zero physical branch visits required.",
