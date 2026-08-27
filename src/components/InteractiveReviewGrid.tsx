@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Star, MapPin, Search, Filter, MessageSquarePlus, X, Loader2, CheckCircle2 } from 'lucide-react';
 
-export default function InteractiveReviewGrid({ initialReviews, totalPages, currentPage }) {
+export default function InteractiveReviewGrid({ initialReviews, totalPages, currentPage }: { initialReviews: any[], totalPages: number, currentPage: number }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [ratingFilter, setRatingFilter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function InteractiveReviewGrid({ initialReviews, totalPages, curr
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmitReview = async (e) => {
+  const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
@@ -35,14 +35,15 @@ export default function InteractiveReviewGrid({ initialReviews, totalPages, curr
       setIsSubmitting(false);
     }
   };
-  const gridRef = useRef(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Spotlight effect logic
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!gridRef.current) return;
-      const cards = gridRef.current.getElementsByClassName('review-card');
-      for (const card of cards) {
+      const cards = gridRef.current.getElementsByClassName('review-card') as HTMLCollectionOf<HTMLElement>;
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -54,7 +55,7 @@ export default function InteractiveReviewGrid({ initialReviews, totalPages, curr
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const filteredReviews = initialReviews.filter(review => {
+  const filteredReviews = initialReviews.filter((review: any) => {
     const matchesSearch = review.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          (review.location && review.location.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          review.text.toLowerCase().includes(searchTerm.toLowerCase());
@@ -281,7 +282,7 @@ export default function InteractiveReviewGrid({ initialReviews, totalPages, curr
                   <label className="text-sm font-bold text-slate-700 dark:text-emerald-100">Your Review *</label>
                   <textarea 
                     required
-                    rows="4"
+                    rows={4}
                     placeholder="Tell us about your experience getting a loan with Bhardwaj Financial Services..."
                     value={formData.text}
                     onChange={(e) => setFormData({...formData, text: e.target.value})}

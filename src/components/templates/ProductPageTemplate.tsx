@@ -267,7 +267,7 @@ export default function ProductPageTemplate({ data, calculator }: { data: Produc
             <h2 className="text-3xl font-black text-slate-900 dark:text-white">Frequently Asked Questions</h2>
           </div>
           <div className="space-y-4">
-            <DynamicFaq category={data.title} />
+            <DynamicFaq category={data.name} />
           </div>
         </motion.section>
 
