@@ -91,7 +91,7 @@ export default function CertificationsClient() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-slate-500 leading-relaxed font-light mb-12 max-w-3xl mx-auto"
             >
-              Bhardwaj Financial Services operates as a fully authorized Direct Selling Agent (DSA) compliant with Reserve Bank of India (RBI) guidelines. Your financial data and dreams are in the safest hands.
+              Bhardwaj Financial Services operates as an authorized financial distribution institution compliant with Reserve Bank of India (RBI) lending guidelines, IRDAI insurance norms, and authorized credit card sourcing protocols. Your loans, insurance, and cards are in trusted hands.
             </motion.p>
             
             <motion.div 
@@ -101,7 +101,7 @@ export default function CertificationsClient() {
               className="mx-auto flex flex-col sm:flex-row items-center justify-center gap-6 bg-white p-4 pr-6 rounded-full border border-slate-200 shadow-xl shadow-slate-200/40 max-w-2xl"
             >
               <div className="text-sm font-semibold text-slate-500 leading-tight shrink-0 pl-4">
-                Authorized Partner of <br/><span className="text-slate-900 font-black text-lg">50+ Top Banks</span>
+                Institutional Partner of <br/><span className="text-slate-900 font-black text-lg">50+ Lending & Insurance Desks</span>
               </div>
 
               <div className="w-[1px] h-10 bg-slate-200 hidden sm:block mx-2" />
@@ -113,9 +113,9 @@ export default function CertificationsClient() {
                 
                 {bankLogos.length > 0 ? (
                   <motion.div 
-                    className="flex items-center gap-6 pr-6"
                     animate={{ x: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+                    transition={{ ease: "linear", duration: 15, repeat: Infinity }}
+                    className="flex items-center gap-4 w-max"
                   >
                     {[...bankLogos, ...bankLogos, ...bankLogos, ...bankLogos].map((logo, idx) => (
                       <div key={idx} className="w-10 h-10 shrink-0 rounded-full border border-slate-100 bg-white flex items-center justify-center p-1.5 shadow-sm">
@@ -124,16 +124,10 @@ export default function CertificationsClient() {
                     ))}
                   </motion.div>
                 ) : (
-                  <div className="flex items-center gap-4">
-                    {/* Fallback Static Logos if DB is empty */}
-                    <div className="w-10 h-10 rounded-full border border-slate-100 bg-white flex items-center justify-center p-1.5 shadow-sm">
-                      <img src="/banks/sbi.png" alt="SBI" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-slate-100 bg-white flex items-center justify-center p-1.5 shadow-sm">
-                      <img src="/banks/hdfc.png" alt="HDFC" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-slate-100 bg-white flex items-center justify-center p-1.5 shadow-sm">
-                      <img src="/banks/icici.png" alt="ICICI" className="w-full h-full object-contain" />
+                  <div className="flex items-center gap-2">
+                    <div className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 shadow-sm flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      <span>50+ Institutional Lending Pools</span>
                     </div>
                   </div>
                 )}

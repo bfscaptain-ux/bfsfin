@@ -1,0 +1,545 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - haan
+    - ha
+    - theek hai
+    - thik hai
+    - accha
+    - acha
+    - achha
+    - ok
+    - okay
+    - got it
+    - samjh gaya
+    - samajh gaya
+    - badhiya
+    - sahi hai
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+- intent: ask_documents
+  examples: |
+    - documents required
+    - document list
+    - kya kagaz lagenge
+    - loan ke liye kya paper chahiye
+    - kaun se documents chahiye
+    - documents batao
+    - I need to know required documents
+    - document verification
+    - main [salaried](employment_type:salaried) hoon mujhe [home loan](loan_type:home_loan) ke documents batao
+    - [salaried](employment_type:salaried) person ke liye [home loan](loan_type:home_loan) me kya kagaz lagenge
+    - [naukri](employment_type:salaried) karta hu [home loan](loan_type:home_loan) ke liye kya paper chahiye
+    - meri [dukaan](employment_type:self-employed) hai [business loan](loan_type:business_loan) ke documents chahiye
+    - [business](employment_type:self-employed) loan ke liye kya paper lagenge
+    - mera apna [vyapar](employment_type:self-employed) hai [business loan](loan_type:business_loan) me kya documents lagenge
+    - [kirana store](employment_type:self-employed) ke liye loan document batao
+    - [cash salary](employment_type:salaried) par [personal loan](loan_type:personal_loan) documents
+    - [salaried](employment_type:salaried) [personal loan](loan_type:personal_loan) documents list
+    - [job](employment_type:salaried) karta hu [personal loan](loan_type:personal_loan) lene ke liye kya kagaz chahiye
+    - [lap](loan_type:lap) property loan ke kya documents hote hain
+    - property mortgage loan ke documents batao
+    - [balance transfer](loan_type:balance_transfer) ke liye kaun se documents chahiye
+    - purana loan transfer karwane ke liye kya paper lagenge
+    - [health insurance](insurance_type:health) lene ke liye kya documents lagenge
+    - mediclaim policy ke liye kya paper chahiye
+    - [term insurance](insurance_type:term) lene ke liye kya document chahiye
+    - [credit card](card_type:general) banwane ke liye kya paper dene hote hain
+    - main [job](employment_type:salaried) karta hu mujhe loan lena hai kya kagaz lagenge
+    - mera apna [kaam](employment_type:self-employed) hai mujhe kya documents jama karne honge
+    - [plot](property_type:plot) [construction](property_type:construction) loan ke documents batao
+    - [flat](property_type:flat) purchase home loan documents
+    - [doctor](employment_type:professional) loan documents
+    - [gst](employment_type:self-employed) firm ke liye loan documents list
+
+- intent: inform_employment
+  examples: |
+    - [job](employment_type:salaried)
+    - [salaried](employment_type:salaried)
+    - [naukri](employment_type:salaried)
+    - I work in a [company](employment_type:salaried)
+    - [business](employment_type:self-employed)
+    - [self employed](employment_type:self-employed)
+    - mera apna [kaam](employment_type:self-employed) hai
+    - [dukaan](employment_type:self-employed) hai
+    - [vyapar](employment_type:self-employed)
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+
+- intent: ask_about_bfs
+  examples: |
+    - aap kaun ho
+    - tum kaun ho
+    - who are you
+    - BFS kya hai
+    - bfs full form
+    - bfs ka full form kya hai
+    - what is bfs
+    - company ke baare me batao
+    - aapke baare me batao
+    - bhardwaj financial services kya hai
+    - aapka kaam kya hai
+    - aap kya karte ho
+    - company profile kya hai
+    - tell me about bfs
+    - who is bhardwaj financial services
+    - why choose bfs
+    - aapki company kya karti hai
+    - bfs humari kese madat kr skte ah e
+    - bfs humari kaise madad kar sakta hai
+    - aap humari kya madad kar sakte ho
+    - how can bfs help us
+    - how can you help me
+    - aap mere liye kya kar sakte ho
+    - bfs meri kaise help karega
+    - bfs se mujhe kya fayda hoga
+    - aap kya kya suvidha dete ho
+    - kuch khas bat bataiye iske bare main
+    - kuch khas baat batao
+    - isme kya khas hai
+    - bfs ki kya khasiyat hai
+    - aapki khas baat kya hai
+    - tell me something special about this
+    - what is special about bfs
+    - bfs ke fayde kya hain
+    - aur bataiye iske baare mein
+    - aur detail batao iske baare me
+
+- intent: smalltalk_how_are_you
+  examples: |
+    - aap kaise ho?
+    - kya haal hai
+    - how are you
+    - sab theek?
+    - kaisa chal raha hai
+    - tum kaise ho
+
+- intent: thank_you
+  examples: |
+    - thank you
+    - thanks
+    - dhanyawad
+    - shukriya
+    - bahut bahut shukriya
+    - thanks a lot
+    - aapka bahut dhanyawad
+
+- intent: express_worry_cibil
+  examples: |
+    - mera cibil bahut kharab hai
+    - mujhe loan nahi mil raha
+    - main bahut pareshan hu loan ke liye
+    - cibil score low hai kya karu
+    - bank ne reject kar diya
+    - reject ho gaya loan
+    - koi loan nahi de raha
+    - cibil 600 hai loan milega kya
+    - low cibil loan
+
+- intent: ask_finance_general
+  examples: |
+    - finance service kya hai
+    - aap kaun kaun se loan dete ho
+    - tum konse konse loan krate ho
+    - tum konse loan krate ho
+    - tum kaun kaun se loan karte ho
+    - tumhare paas kaun se loan hain
+    - kaun se loan milte hain
+    - konse loan uplabdh hain
+    - loan list batao
+    - loan ki jankari chahiye
+    - mujhe loan lena hai
+    - loan options batao
+    - loan details
+    - types of loan available
+    - types of loans
+    - finance product details
+    - loan portfolio
+    - kya kya loan dete ho
+    - loan konsa konsa hai
+
+- intent: ask_home_loan
+  examples: |
+    - mujhe home loan chahiye
+    - ghar khareedne ke liye loan
+    - makan banane ke liye loan chahiye
+    - plot construction loan
+    - home loan interest rate kitna hai
+    - home loan ke rules aur documents
+    - sabse sasta home loan kahan milega
+    - flat purchase loan
+
+- intent: ask_business_loan
+  examples: |
+    - business loan chahiye
+    - apni dukaan ke liye loan lena hai
+    - vyapar badhane ke liye paise chahiye
+    - msme loan bina guarantee
+    - unsecured business loan
+    - gst return par loan milega kya
+    - working capital ya cc limit chahiye
+
+- intent: ask_personal_loan
+  examples: |
+    - personal loan chahiye
+    - urgent paise ki zaroorat hai
+    - salary basis par personal loan
+    - instant personal loan
+    - bina property ke loan
+    - emergency loan chahiye
+
+- intent: ask_lap
+  examples: |
+    - loan against property kya hai
+    - property par loan chahiye
+    - makan girvi rakh kar loan
+    - mortgage loan details
+    - residential commercial property loan
+    - lap loan interest rate
+
+- intent: ask_balance_transfer
+  examples: |
+    - loan transfer karwana hai
+    - dusre bank me loan shift karna hai
+    - balance transfer kaise kare
+    - interest rate kam karwana hai loan ka
+    - home loan balance transfer plus top up
+    - emi kam karni hai
+
+- intent: ask_insurance_general
+  examples: |
+    - insurance kya hota hai
+    - bima karwana hai
+    - aap kaun sa insurance dete ho
+    - tum konse insurance krate ho
+    - tum kaun se bima karte ho
+    - tum kaun kaun se bima karte ho
+    - kaun kaun se insurance dete ho
+    - types of insurance
+    - insurance options
+    - bima list batao
+    - insurance plans bataiye
+    - best insurance policy kaun si hai
+    - insurance details
+    - konse bima uplabdh hain
+    - kya kya insurance milte hain
+
+- intent: ask_health_insurance
+  examples: |
+    - health insurance chahiye
+    - mediclaim policy details
+    - bimari ke kharche ka bima
+    - family health insurance plan
+    - cashless hospital treatment bima
+    - 5 lakh ya 10 lakh ka health insurance
+    - health bima me tax benefit milta hai kya
+
+- intent: ask_life_insurance
+  examples: |
+    - life insurance karwana hai
+    - term insurance plan batao
+    - jeevan bima policy
+    - 1 crore term insurance kitne me aayega
+    - family security life cover
+    - death benefit insurance
+
+- intent: ask_motor_insurance
+  examples: |
+    - car insurance renew karwana hai
+    - bike ka bima khatam ho gaya
+    - motor insurance chahiye
+    - zero dep car insurance
+    - third party vs comprehensive insurance
+    - gadi ka bima rate
+
+- intent: ask_insurance_claim
+  examples: |
+    - insurance claim kaise pass hota hai
+    - hospital me cashless claim kaise milega
+    - agar claim reject ho jaye toh kya kare
+    - claim settlement ratio kaisa hai
+    - insurance claim me BFS kaise help karega
+
+- intent: ask_credit_card_general
+  examples: |
+    - credit card chahiye
+    - best credit card kaun sa hai
+    - credit card ke fayde kya hain
+    - mujhe naya credit card apply karna hai
+    - credit card options batao
+    - card kaise banwaye
+    - tum konse credit card krate ho
+    - tumhare paas kaun se card hain
+    - tumhare paas kaun kaun se credit card hain
+    - kaun se credit card milte hain
+    - types of credit card
+    - card list batao
+    - credit card options
+    - konse card uplabdh hain
+
+- intent: ask_credit_card_free
+  examples: |
+    - lifetime free credit card chahiye
+    - zero annual charge wala card
+    - bina annual fee wala credit card kaun sa hai
+    - free credit card offer
+    - no hidden charges credit card
+
+- intent: ask_credit_card_lounge
+  examples: |
+    - airport lounge access credit card
+    - lounge free entry credit card
+    - travel credit card kaun sa best hai
+    - flight airport lounge benefits
+
+- intent: ask_credit_card_cashback
+  examples: |
+    - cashback credit card chahiye
+    - shopping par discount wala card
+    - petrol fuel surcharge waiver card
+    - amazon flipkart cashback credit card
+
+- intent: ask_credit_card_eligibility
+  examples: |
+    - credit card ke liye kitni salary chahiye
+    - bina cibil credit card milega kya
+    - credit card eligibility criteria
+    - student ya housewife ko card milega kya
+    - low income credit card
+
+- intent: ask_apply_product
+  examples: |
+    - apply kaise kare
+    - form kahan bharna hai
+    - online form link do
+    - application process kya hai
+    - main apply karna chahta hu
+
+- intent: ask_contact_support
+  examples: |
+    - contact number do
+    - customer care phone number
+    - whatsapp number kya hai
+    - praveen bhardwaj ji se baat karni hai
+    - agra office ka address kahan hai
+    - branch kahan par hai
+
+# === DETERMINISTIC REGEX PATTERNS ===
+- regex: cibil_score
+  examples: |
+    - \b[3-8][0-9]{2}\b
+    - \b900\b
+
+# === ENTITY SYNONYMS ===
+- synonym: salaried
+  examples: |
+    - naukri
+    - job
+    - private job
+    - govt job
+    - monthly salary
+    - service
+    - employee
+
+- synonym: self_employed
+  examples: |
+    - dukan
+    - business
+    - vyapar
+    - firm
+    - khud ka kaam
+    - shopkeeper
+    - trader
+    - proprietor
+
+# === ELIGIBILITY INTENTS & EXAMPLES ===
+- intent: check_home_loan_eligibility
+  examples: |
+    - kya main home loan ke liye eligible hu
+    - home loan eligibility criteria kya hai
+    - meri salary 25000 hai kitna home loan milega
+    - 30 hazar salary par kitna ghar ka loan mil sakta hai
+    - 40000 salary me home loan kitna milega
+    - mera cibil 750 hai home loan mil jayega kya
+    - 650 cibil score par home loan mil sakta hai kya
+    - home loan ke liye minimum salary kitni honi chahiye
+    - plot khareedne aur makan banane ke liye loan eligibility
+    - flat purchase ke liye kitna percent loan hota hai
+    - can I get a home loan with 30k salary
+    - check home loan eligibility
+    - how much home loan can I get on 50000 salary
+    - what is maximum tenure for home loan eligibility
+
+- intent: check_personal_loan_eligibility
+  examples: |
+    - personal loan eligibility check karni hai
+    - meri salary 18000 hai personal loan milega kya
+    - 20 hazar salary me kitna personal loan mil sakta hai
+    - 50000 ki salary par kitna personal loan sanction hoga
+    - personal loan ke liye minimum salary kitni chahiye
+    - instant personal loan kaun se bank se milega
+    - 680 cibil par personal loan mil sakta hai
+    - without security personal loan eligibility
+    - emergency cash loan ke liye kya shartein hain
+    - can I get personal loan with 15k salary
+    - how much personal loan on 25k salary
+    - personal loan eligibility for private company employee
+
+- intent: check_business_loan_eligibility
+  examples: |
+    - business loan eligibility kya hai
+    - meri dukaan ke liye loan mil sakta hai kya
+    - vyapar loan ke liye kya eligibility chahiye
+    - 2 saal purani firm hai business loan milega
+    - GST return par kitna business loan mil sakta hai
+    - bina kisi girvi ke business loan kaise milega
+    - MSME Udyam loan eligibility criteria
+    - 20 lakh ka business loan chahiye kya document aur eligibility hai
+    - current account banking par loan mil jayega kya
+    - can I get unsecured business loan for my shop
+    - business loan eligibility on 15 lakh turnover
+
+- intent: check_lap_eligibility
+  examples: |
+    - property girvi rakhkar loan kitna mil sakta hai
+    - loan against property LAP eligibility criteria
+    - makan par kitna loan mil sakta hai
+    - property market value ka kitna percent loan milta hai
+    - commercial shop par mortgage loan eligibility
+    - loan against property interest rate aur criteria
+    - LAP loan eligibility for self employed
+
+- intent: check_gold_loan_eligibility
+  examples: |
+    - gold loan eligibility kya hai
+    - sone par kitna loan milta hai per gram
+    - gold loan ke liye cibil check hota hai kya
+    - instant gold loan process aur eligibility
+    - bina income proof sone par loan milega kya
+
+- intent: check_general_loan_eligibility
+  examples: |
+    - kya mujhe loan mil sakta hai
+    - meri eligibility check karo loan ke liye
+    - loan eligibility calculator
+    - mujhe loan chahiye meri profile par kya milega
+    - how to check my loan eligibility
+    - check my loan capacity
+
+- intent: check_credit_card_eligibility_advanced
+  examples: |
+    - kaun sa credit card meri profile par best rahega
+    - 25 hazar salary par credit card mil jayega kya
+    - low cibil score par kaun sa credit card apply karein
+    - bina income proof credit card kaise banwayein
+    - first time credit card eligibility
+    - FD par credit card kaise banta hai
+    - lounge access wala card lene ke liye kya eligibility hai
+    - CIBIL score 700 se kam hai credit card milega kya
+    - best lifetime free credit card eligibility
+    - credit card eligibility check for salaried
+
+- intent: check_health_insurance_eligibility
+  examples: |
+    - health insurance eligibility criteria kya hai
+    - kya 60 saal ke senior citizen ka health insurance ho sakta hai
+    - diabetes aur BP walo ko mediclaim milta hai kya
+    - pre existing disease me health insurance eligibility
+    - family floater health insurance ke liye koi age limit hai kya
+    - bina medical test ke kitne tak ka health bima ho sakta hai
+    - health insurance lene ke liye kya documents aur shartein hain
+    - mediclaim policy eligibility in hindi
+
+- intent: check_term_life_eligibility
+  examples: |
+    - term life insurance ke liye minimum income kitni honi chahiye
+    - 1 crore term plan ke liye eligibility kya hai
+    - kya smoker ko term life insurance mil sakta hai
+    - term plan lene ke liye maximum age limit kya hai
+    - self employed ke liye term insurance eligibility
+    - term insurance medical test eligibility
+    - family protection insurance eligibility
+
+- intent: check_motor_insurance_eligibility
+  examples: |
+    - car insurance zero dep eligibility kya hoti hai
+    - 7 saal purani car ka 0 dep bima ho sakta hai kya
+    - expired policy par vehicle insurance kaise renew hoga
+    - bike aur commercial vehicle insurance eligibility
+    - NCB transfer kaise hota hai car insurance me
+
+

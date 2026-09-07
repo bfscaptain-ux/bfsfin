@@ -1,0 +1,170 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Respond to how are you
+  steps:
+  - intent: smalltalk_how_are_you
+  - action: utter_how_are_you
+
+- rule: Respond to thank you
+  steps:
+  - intent: thank_you
+  - action: utter_welcome
+
+- rule: Comfort user about CIBIL
+  steps:
+  - intent: express_worry_cibil
+  - action: utter_comfort_cibil
+
+- rule: Respond to Finance General
+  steps:
+  - intent: ask_finance_general
+  - action: utter_finance_general
+
+- rule: Respond to Home Loan
+  steps:
+  - intent: ask_home_loan
+  - action: utter_home_loan
+
+- rule: Respond to Business Loan
+  steps:
+  - intent: ask_business_loan
+  - action: utter_business_loan
+
+- rule: Respond to Personal Loan
+  steps:
+  - intent: ask_personal_loan
+  - action: utter_personal_loan
+
+- rule: Respond to LAP
+  steps:
+  - intent: ask_lap
+  - action: utter_lap
+
+- rule: Respond to Balance Transfer
+  steps:
+  - intent: ask_balance_transfer
+  - action: utter_balance_transfer
+
+- rule: Respond to Insurance General
+  steps:
+  - intent: ask_insurance_general
+  - action: utter_insurance_general
+
+- rule: Respond to Health Insurance
+  steps:
+  - intent: ask_health_insurance
+  - action: utter_health_insurance
+
+- rule: Respond to Life Insurance
+  steps:
+  - intent: ask_life_insurance
+  - action: utter_life_insurance
+
+- rule: Respond to Motor Insurance
+  steps:
+  - intent: ask_motor_insurance
+  - action: utter_motor_insurance
+
+- rule: Respond to Insurance Claim
+  steps:
+  - intent: ask_insurance_claim
+  - action: utter_insurance_claim
+
+- rule: Respond to Credit Card General
+  steps:
+  - intent: ask_credit_card_general
+  - action: utter_credit_card_general
+
+- rule: Respond to Free Credit Card
+  steps:
+  - intent: ask_credit_card_free
+  - action: utter_credit_card_free
+
+- rule: Respond to Lounge Credit Card
+  steps:
+  - intent: ask_credit_card_lounge
+  - action: utter_credit_card_lounge
+
+- rule: Respond to Cashback Credit Card
+  steps:
+  - intent: ask_credit_card_cashback
+  - action: utter_credit_card_cashback
+
+- rule: Respond to Credit Card Eligibility
+  steps:
+  - intent: ask_credit_card_eligibility
+  - action: utter_credit_card_eligibility
+
+- rule: Respond to Apply Product
+  steps:
+  - intent: ask_apply_product
+  - action: utter_apply_product
+
+- rule: Respond to Contact Support
+  steps:
+  - intent: ask_contact_support
+  - action: utter_contact_support
+
+- rule: Respond to Home Loan Eligibility
+  steps:
+  - intent: check_home_loan_eligibility
+  - action: utter_home_loan_eligibility
+
+- rule: Respond to Personal Loan Eligibility
+  steps:
+  - intent: check_personal_loan_eligibility
+  - action: utter_personal_loan_eligibility
+
+- rule: Respond to Business Loan Eligibility
+  steps:
+  - intent: check_business_loan_eligibility
+  - action: utter_business_loan_eligibility
+
+- rule: Respond to LAP Eligibility
+  steps:
+  - intent: check_lap_eligibility
+  - action: utter_lap_eligibility
+
+- rule: Respond to Gold Loan Eligibility
+  steps:
+  - intent: check_gold_loan_eligibility
+  - action: utter_gold_loan_eligibility
+
+- rule: Respond to General Loan Eligibility
+  steps:
+  - intent: check_general_loan_eligibility
+  - action: utter_general_loan_eligibility
+
+- rule: Respond to Credit Card Eligibility Advanced
+  steps:
+  - intent: check_credit_card_eligibility_advanced
+  - action: utter_credit_card_eligibility_advanced
+
+- rule: Respond to Health Insurance Eligibility
+  steps:
+  - intent: check_health_insurance_eligibility
+  - action: utter_health_insurance_eligibility
+
+- rule: Respond to Term Life Insurance Eligibility
+  steps:
+  - intent: check_term_life_eligibility
+  - action: utter_term_life_eligibility
+
+- rule: Respond to Motor Insurance Eligibility
+  steps:
+  - intent: check_motor_insurance_eligibility
+  - action: utter_motor_insurance_eligibility
+
+

@@ -2,11 +2,12 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { MessageSquare, PhoneCall, MessageCircle, X, Send, Bot, CheckCircle2, Calculator, GripVertical, ChevronLeft, Rocket, MapPin, FileSearch, ChevronUp, ChevronDown, Mail } from "lucide-react";
+import { MessageSquare, PhoneCall, MessageCircle, X, Send, Bot, CheckCircle2, Calculator, GripVertical, ChevronLeft, Rocket, MapPin, FileSearch, ChevronUp, ChevronDown, Mail, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
+import SmartBot from "./SmartBot";
 
 
-export default function FloatingSupport({ contactPhone, whatsappPhone }: { contactPhone?: string, whatsappPhone?: string }) {
+export default function FloatingSupport({ contactPhone, whatsappPhone, hideWheel = false }: { contactPhone?: string, whatsappPhone?: string, hideWheel?: boolean }) {
   const router = useRouter();
   const ICONS = [
     { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle, color: 'text-white', bg: 'bg-gradient-to-br from-green-500 to-emerald-600 border border-green-400/30 shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)]', action: 'href', href: `https://wa.me/${whatsappPhone?.replace(/[^0-9]/g, "") || "917900979001"}` },
@@ -30,12 +31,6 @@ export default function FloatingSupport({ contactPhone, whatsappPhone }: { conta
   const speedRef = useRef(0.04);
   const targetSpeedRef = useRef(0.04);
   const dragRef = useRef({ isDragging: false, startY: 0, startRot: 0, moved: false });
-  
-  const [messages, setMessages] = useState([
-    { sender: "bot", text: "Namaste! Welcome to BFS Agra. Looking for a Home Loan in Agra?" },
-    { sender: "bot", text: "Our rates start at 6.50% p.a. with 5-day approval guarantee. How can I help you today?" }
-  ]);
-  const [inputMsg, setInputMsg] = useState("");
 
   // Scroll listener to hide wheel at Header and Footer
   useEffect(() => {
@@ -44,9 +39,9 @@ export default function FloatingSupport({ contactPhone, whatsappPhone }: { conta
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       
-      // Hide if at the very top (nav area) or very bottom (footer area)
+      // Hide if at the very top (nav area) or near footer
       const isAtTop = scrollY < 150;
-      const isAtBottom = scrollY + windowHeight > documentHeight - 150;
+      const isAtBottom = scrollY + windowHeight > documentHeight - 750;
       
       setIsVisible(!isAtTop && !isAtBottom);
     };
@@ -147,83 +142,75 @@ export default function FloatingSupport({ contactPhone, whatsappPhone }: { conta
     }
   };
 
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputMsg.trim()) return;
-    const userText = inputMsg;
-    setMessages(prev => [...prev, { sender: "user", text: userText }]);
-    setInputMsg("");
-    setTimeout(() => {
-      setMessages(prev => [
-        ...prev,
-        { sender: "bot", text: `Thank you! Vineeta Sharma's team will contact you shortly regarding "${userText}". You can also call us directly at 7900-979-001.` }
-      ]);
-    }, 800);
-  };
-
   return (
     <>
 
       {/* Bottom Right Direct Buttons */}
-      <div className="fixed bottom-24 md:bottom-6 right-4 md:right-8 z-[100] flex flex-col gap-4">
+      <div className="fixed bottom-20 md:bottom-6 right-3 md:right-8 z-[100] flex flex-col gap-3 md:gap-4">
         <a 
           href={`https://wa.me/${whatsappPhone?.replace(/[^0-9]/g, "") || "917900979001"}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center hover:scale-110 hover:shadow-[0_0_30px_rgba(34,197,94,0.8)] transition-all group border border-green-400/30"
+          className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.4)] md:shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center hover:scale-110 hover:shadow-[0_0_30px_rgba(34,197,94,0.8)] transition-all group border border-green-400/30"
           title="Chat on WhatsApp"
         >
-          <MessageCircle className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
+          <MessageCircle className="w-5 h-5 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
         </a>
 
         <a 
           href={`tel:${contactPhone?.replace(/[^0-9+]/g, "") || "+917900979001"}`}
-          className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center hover:scale-110 hover:shadow-[0_0_30px_rgba(16,185,129,0.8)] transition-all group border border-emerald-400/30 animate-[bounce_3s_infinite]"
+          className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.4)] md:shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center hover:scale-110 hover:shadow-[0_0_30px_rgba(16,185,129,0.8)] transition-all group border border-emerald-400/30"
           title="Call Us Directly"
         >
-          <PhoneCall className="w-6 h-6 text-white" />
+          <PhoneCall className="w-4 h-4 md:w-6 md:h-6 text-white" />
         </a>
-      </div>
-      {/* Expanded Chat Box (Floats Bottom Right) */}
-      {chatOpen && (
-        <div className="fixed bottom-24 md:bottom-6 right-4 md:right-8 z-[60] w-[90%] sm:w-96 bg-emerald-900 border border-emerald-500/40 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[420px] transition-all duration-300 animate-in slide-in-from-bottom-10 fade-in-0">
-          <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 p-3 text-slate-950 flex items-center justify-between font-bold">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-emerald-950 p-1 flex items-center justify-center">
-                <Bot className="w-5 h-5 text-emerald-400" />
-              </div>
-              <div>
-                <div className="text-sm font-extrabold text-white">BFS Agra Loan Assistant</div>
-                <div className="text-[10px] text-emerald-200 flex items-center gap-1 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Online (Wait time &lt; 1 min)
-                </div>
-              </div>
-            </div>
-            <button onClick={() => setChatOpen(false)} className="text-white hover:text-slate-200">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-          <div className="flex-1 p-3 overflow-y-auto space-y-3 bg-emerald-950/80 text-xs">
-            {messages.map((m, i) => (
-              <div key={i} className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[80%] rounded-xl p-2.5 leading-relaxed ${m.sender === "user" ? "bg-emerald-500 text-slate-950 font-medium rounded-br-none" : "bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-none"}`}>
-                  {m.text}
-                </div>
-              </div>
-            ))}
-          </div>
-          <form onSubmit={handleSend} className="p-2.5 bg-emerald-900 border-t border-emerald-800 flex items-center gap-2">
-            <input type="text" value={inputMsg} onChange={(e) => setInputMsg(e.target.value)} placeholder="Ask about rate, eligibility or status..." className="flex-1 bg-emerald-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500" />
-            <button type="submit" className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 p-2 rounded-xl font-bold transition"><Send className="w-4 h-4" /></button>
-          </form>
-        </div>
-      )}
 
-      {/* DRAGGABLE DIAL MENU (Right Edge) */}
-      <div 
-        className={`fixed right-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-700 ease-in-out ${isVisible ? 'translate-x-0 opacity-100 visible' : 'translate-x-[150px] opacity-0 invisible'}`} 
-        style={{ width: '0px' }}
-      >
+        {!chatOpen && (
+          <button 
+            onClick={() => setChatOpen(true)}
+            className="group relative w-11 h-11 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-slate-900 via-emerald-950 to-emerald-900 border-2 border-emerald-400/50 shadow-[0_4px_20px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_30px_rgba(16,185,129,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-emerald-300 active:scale-95"
+            title="Chat with BFS AI Assistant"
+            aria-label="Open BFS AI Assistant"
+          >
+            {/* Holographic glowing ring */}
+            <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 blur-sm group-hover:opacity-100 opacity-60 transition-opacity" />
+
+            {/* Smart AI Bot Icon with Sparkles */}
+            <div className="relative z-10 flex items-center justify-center">
+              <Bot className="w-5 h-5 md:w-7 md:h-7 text-emerald-300 group-hover:text-white transition-colors" />
+              <Sparkles className="w-2.5 h-2.5 md:w-3 md:h-3 text-amber-300 absolute -top-1 -right-1 animate-pulse" />
+            </div>
+
+            {/* Micro AI Badge */}
+            <span className="absolute -top-1 -right-1 z-20 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-[7.5px] md:text-[8px] px-1.5 py-0.5 rounded-full shadow-md border border-white/50 tracking-wider">
+              SOON
+            </span>
+
+            {/* Online Pulse Dot */}
+            <span className="absolute bottom-0 right-0 z-20 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500 border-2 border-slate-900"></span>
+            </span>
+
+            {/* Interactive Tooltip Callout (Desktop) */}
+            <div className="hidden sm:flex items-center gap-2 absolute right-full mr-3.5 bg-slate-900/95 text-white border border-amber-500/40 px-3 py-1.5 rounded-xl shadow-xl backdrop-blur-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-x-2 group-hover:translate-x-0">
+              <span className="text-xs font-black text-amber-400">BFS AI Advisor</span>
+              <span className="text-xs font-semibold text-slate-200">(Training Mode • Coming Soon)</span>
+              <div className="w-2 h-2 bg-slate-900 border-t border-r border-amber-500/40 transform rotate-45 absolute -right-1 top-1/2 -translate-y-1/2"></div>
+            </div>
+          </button>
+        )}
+      </div>
+
+      {/* Expanded Smart Chat Box (Floats Bottom Right) */}
+      <SmartBot isOpen={chatOpen} onClose={() => setChatOpen(false)} />
+
+      {/* DRAGGABLE DIAL MENU (Right Edge - Desktop & Tablet Only to prevent mobile touch obstruction) */}
+      {!hideWheel && (
+        <div 
+          className={`fixed right-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-700 ease-in-out hidden md:block ${isVisible ? 'translate-x-0 opacity-100 visible' : 'translate-x-[150px] opacity-0 invisible'}`} 
+          style={{ width: '0px' }}
+        >
         
         {/* Closed State Trigger (Visible when wheel is closed) */}
         {!isWheelOpen && (
@@ -326,6 +313,7 @@ export default function FloatingSupport({ contactPhone, whatsappPhone }: { conta
           </div>
         </div>
       </div>
+      )}
     </>
   );
 }

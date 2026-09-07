@@ -49,6 +49,7 @@ model Lead {
   city           String   @default("Agra")
   employmentType String?
   source         String   @default("Direct Search")
+  message        String?
   referralCode   String?
   status         String   @default("NEW") // NEW, CONTACTED, INTERESTED, APPLICATION_FILED, APPROVED, REJECTED, DISBURSED
   userId         String?
@@ -214,6 +215,100 @@ model Review {
   location  String?  @default("India")
   rating    Int      @default(5)
   text      String
+  category  String?  @default("LOAN") // ITR, MSME, LOAN, CREDIT, INSURANCE
   status    String   @default("APPROVED") // PENDING, APPROVED
   createdAt DateTime @default(now())
 }
+
+model Complaint {
+  id          String   @id @default(uuid())
+  email       String
+  targetName  String
+  subject     String
+  description String
+  status      String   @default("PENDING") // PENDING, INVESTIGATING, RESOLVED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model BotTrainingRule {
+  id          String   @id @default(uuid())
+  topic       String
+  instruction String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BotChatLog {
+  id          String   @id @default(uuid())
+  sessionId   String
+  userMessage String
+  botReply    String
+  corrected   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model BotScenario {
+  id         String   @id @default(uuid())
+  userSays   String
+  botReplies String
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
+
+model KnowledgeDocument {
+  id        String   @id @default(uuid())
+  filename  String
+  fileUrl   String
+  status    String   @default("PROCESSED")
+  createdAt DateTime @default(now())
+}
+
+model JobPost {
+  id           String           @id @default(uuid())
+  title        String
+  department   String
+  location     String           @default("Agra")
+  type         String           @default("Full-time")
+  experience   String
+  salary       String           @default("Industry Standard")
+  incentive    String?
+  description  String
+  requirements String
+  isActive     Boolean          @default(true)
+  expiresAt    DateTime?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  
+  applications JobApplication[]
+}
+
+model JobApplication {
+  id        String   @id @default(uuid())
+  jobId     String
+  job       JobPost  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  name      String
+  email     String
+  phone     String
+  city      String?
+  experience String?
+  currentSalary String?
+  resumeUrl String?  
+  coverText String?
+  status    String   @default("NEW") // NEW, REVIEWED, SHORTLISTED, REJECTED
+  createdAt DateTime @default(now())
+}
+
+model CalculatorFAQ {
+  id          String   @id @default(uuid())
+  calculatorId String  
+  question    String
+  answer      String
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+

@@ -1,0 +1,24 @@
+{
+  "name": "Bhardwaj Financial Services (BFS)",
+  "short_name": "BFS Finance",
+  "description": "India's #1 Trusted Home Loan & Project Finance Portal. Low rates starting @ 7.15%*",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

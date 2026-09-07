@@ -1,0 +1,1 @@
+const fs = require("fs"); let code = fs.readFileSync("src/lib/nlp.ts", "utf8"); code = code.replace(/\/\/ Context 3: CIBIL Score Follow-up[\s\S]*?(?=\/\/ Context 4)/, ""); fs.writeFileSync("src/lib/nlp.ts", code);

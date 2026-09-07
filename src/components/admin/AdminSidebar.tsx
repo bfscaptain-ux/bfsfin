@@ -20,7 +20,10 @@ import {
   LogOut,
   Building,
   Image as ImageIcon,
-  HelpCircle
+  HelpCircle,
+  CreditCard,
+  Umbrella,
+  Calculator
 } from "lucide-react";
 
 export default function AdminSidebar() {
@@ -28,10 +31,15 @@ export default function AdminSidebar() {
 
   const navItems = [
     { label: "Dashboard Overview", href: "/admin/dashboard", icon: LayoutDashboard },
+    { label: "AI Bot Training (RAG)", href: "/admin/bot-training", icon: ShieldCheck, badge: "AI" },
     { label: "Website Leads", href: "/admin/leads", icon: Users, badge: "NEW" },
     { label: "Consultations", href: "/admin/appointments", icon: CalendarDays },
     { label: "Callback Requests", href: "/admin/callbacks", icon: PhoneCall, badge: "URGENT" },
+    { label: "Complaints & Grievances", href: "/admin/complaints", icon: ShieldCheck, highlight: true },
     { label: "Bank Rates CMS", href: "/admin/rates", icon: TrendingDown },
+    { label: "Credit Cards CMS", href: "/admin/credit-cards", icon: CreditCard, highlight: true },
+    { label: "Insurance CMS", href: "/admin/insurance", icon: Umbrella, highlight: true },
+    { label: "Product & Service FAQs", href: "/admin/calculator-faqs", icon: HelpCircle, highlight: true },
     { label: "Hero Content CMS", href: "/admin/hero-images", icon: ImageIcon, highlight: true },
     { label: "Bank Partner Logos", href: "/admin/bank-logos", icon: Building, highlight: true },
     { label: "Service Areas CMS", href: "/admin/service-areas", icon: Globe, highlight: true },
@@ -41,6 +49,7 @@ export default function AdminSidebar() {
     { label: "Client Reviews CMS", href: "/admin/reviews", icon: MessageSquare, highlight: true },
     { label: "Blog & Articles CMS", href: "/admin/articles", icon: FileText },
     { label: "FAQ CMS", href: "/admin/faqs", icon: HelpCircle },
+    { label: "Careers & Jobs CMS", href: "/admin/careers", icon: Briefcase, highlight: true },
     { label: "Website Settings", href: "/admin/settings", icon: Settings },
   ];
 

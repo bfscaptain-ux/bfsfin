@@ -40,6 +40,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/testimonials', priority: 0.8, freq: 'weekly' },
     { path: '/reviews', priority: 0.8, freq: 'daily' },
     { path: '/products', priority: 0.9, freq: 'weekly' },
+    { path: '/services/itr-filing', priority: 0.95, freq: 'daily' },
+    { path: '/services/msme-registration', priority: 0.95, freq: 'daily' },
     // Tools
     { path: '/tools/affordability', priority: 0.8, freq: 'monthly' },
     { path: '/tools/balance-transfer', priority: 0.8, freq: 'monthly' },

@@ -14,6 +14,7 @@ interface LeadItem {
   city: string;
   employmentType: string | null;
   source: string;
+  message?: string;
   referralCode: string | null;
   status: string;
   createdAt?: string;
@@ -94,8 +95,14 @@ export default function AdminLeadsCRM() {
     setLeads(leads.map(l => l.id === id ? { ...l, status } : l));
   };
 
+  const [activeTab, setActiveTab] = useState("ALL_LEADS");
+
   const filtered = leads.filter(l => {
-    const matchesSearch = l.name.toLowerCase().includes(search.toLowerCase()) || l.phone.includes(search) || l.email.toLowerCase().includes(search.toLowerCase());
+    const isBotLead = l.message?.includes("(Via SmartBot)") || l.source?.includes("SmartBot");
+    if (activeTab === "BOT_LEADS" && !isBotLead) return false;
+    if (activeTab === "GENERAL_LEADS" && isBotLead) return false;
+
+    const matchesSearch = l.name.toLowerCase().includes(search.toLowerCase()) || l.phone.includes(search) || l.email?.toLowerCase().includes(search.toLowerCase());
     const matchesStatus = statusFilter === "ALL" || l.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -105,9 +112,9 @@ export default function AdminLeadsCRM() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-emerald-900 border border-emerald-800 p-6 rounded-3xl">
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-2">
-            <Users className="w-6 h-6 text-emerald-400" /> Website Leads Collector
+            <Users className="w-6 h-6 text-emerald-400" /> Leads Management
           </h1>
-          <p className="text-xs text-slate-400 mt-1">Review public inquiries from the website and export them to your main CRM.</p>
+          <p className="text-xs text-slate-400 mt-1">Review public inquiries from the website and AI SmartBot.</p>
         </div>
 
         <button
@@ -115,6 +122,28 @@ export default function AdminLeadsCRM() {
           className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-1.5 shadow-lg transition"
         >
           <Plus className="w-4 h-4" /> Add Lead Manually
+        </button>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex bg-emerald-900/50 p-1.5 rounded-xl border border-emerald-800 w-fit">
+        <button 
+          onClick={() => setActiveTab("ALL_LEADS")}
+          className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === "ALL_LEADS" ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-400 hover:text-white'}`}
+        >
+          All Leads
+        </button>
+        <button 
+          onClick={() => setActiveTab("GENERAL_LEADS")}
+          className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === "GENERAL_LEADS" ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-400 hover:text-white'}`}
+        >
+          Website Forms
+        </button>
+        <button 
+          onClick={() => setActiveTab("BOT_LEADS")}
+          className={`px-6 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === "BOT_LEADS" ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-400 hover:text-white'}`}
+        >
+          🤖 AI Bot Leads
         </button>
       </div>
 
@@ -154,9 +183,8 @@ export default function AdminLeadsCRM() {
             <thead className="bg-emerald-950 text-slate-400 uppercase text-[10px] tracking-wider border-b border-emerald-800">
               <tr>
                 <th className="py-3 px-4">Client Contact</th>
-                  <th className="py-3 px-4">Date & Time</th>
-                  <th className="py-3 px-4">Loan Needed</th>
-                <th className="py-3 px-4">Income &amp; Profile</th>
+                <th className="py-3 px-4">Loan Needed</th>
+                <th className="py-3 px-4">Profile & Notes</th>
                 <th className="py-3 px-4">Lead Source</th>
                 <th className="py-3 px-4">Status</th>
                 <th className="py-3 px-4">Quick Action</th>
@@ -170,24 +198,30 @@ export default function AdminLeadsCRM() {
                     <span className="text-slate-400 text-[11px]">{l.phone} | {l.email}</span>
                   </td>
                   <td className="py-3.5 px-4 font-black text-emerald-400">
-                    ₹{(l.loanAmount / 100000).toFixed(1)} Lakhs
+                    ₹{l.loanAmount > 0 ? (l.loanAmount / 100000).toFixed(1) + " Lakhs" : "N/A"}
                     <span className="block text-[10px] text-slate-400 font-normal">{l.loanType}</span>
                   </td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 max-w-xs">
                     <span className="text-slate-200 font-semibold">{l.employmentType || "Salaried"}</span>
-                    <span className="block text-[10px] text-slate-400">
+                    <span className="block text-[10px] text-slate-400 mb-1">
                       Income: ₹{l.income ? (l.income / 100000).toFixed(1) + "L/yr" : "N/A"}
                     </span>
+                    {(l.message || l.source?.includes("SmartBot")) && (
+                      <div className="bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 p-2 rounded-lg text-[10px] mt-1 whitespace-pre-wrap">
+                        <strong className="text-indigo-200 block mb-0.5">🤖 Bot Conversation Data:</strong>
+                        {l.message || "SmartBot Lead"}
+                      </div>
+                    )}
                   </td>
                   <td className="py-3.5 px-4 text-slate-300">
                     {l.source}
                     {l.referralCode && <span className="block text-[10px] text-emerald-400 font-mono">{l.referralCode}</span>}
                   </td>
                   <td className="py-3.5 px-4 font-bold">
-                    {l.status === "EXPORTED" && <span className="text-emerald-400">EXPORTED ✅</span>}
-                    {l.status === "CONTACTED" && <span className="text-purple-400">CONTACTED ⏳</span>}
-                    {l.status === "NEW" && <span className="text-emerald-400">NEW INQUIRY ⭕</span>}
-                    {l.status === "JUNK" && <span className="text-slate-500">JUNK ❌</span>}
+                    {l.status === "EXPORTED" && <span className="text-emerald-400">EXPORTED ✓</span>}
+                    {l.status === "CONTACTED" && <span className="text-purple-400">CONTACTED 📞</span>}
+                    {l.status === "NEW" && <span className="text-emerald-400">NEW INQUIRY ✨</span>}
+                    {l.status === "JUNK" && <span className="text-slate-500">JUNK 🚫</span>}
                   </td>
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-1.5 flex-wrap">

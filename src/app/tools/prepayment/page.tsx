@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
 import PrepaymentCalculator from "@/components/calculators/PrepaymentCalculator";
+import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
 
 export const metadata: Metadata = {
   title: "Home Loan Prepayment Calculator | bfsfin.in",
@@ -25,6 +26,21 @@ export default function PrepaymentPage() {
         </div>
 
         <PrepaymentCalculator />
+
+        <HowToUse steps={[
+          "Enter your Current Outstanding Loan Amount.",
+          "Enter your Interest Rate and Remaining Tenure.",
+          "Enter the Prepayment Amount you plan to pay.",
+          "The calculator will instantly show your revised tenure and total interest saved."
+        ]} />
+
+        <CalculatorFAQ calculatorId="prepayment" />
+
+        <RelatedCalculators tools={[
+          { name: "EMI Calculator", link: "/calculator", desc: "Calculate your exact monthly payments." },
+          { name: "Balance Transfer Tool", link: "/tools/balance-transfer", desc: "Calculate savings by switching to a lower interest rate." },
+          { name: "Stamp Duty Calculator", link: "/tools/stamp-duty", desc: "Estimate the property registration cost in your state." }
+        ]} />
       </main>
 
       <Footer />

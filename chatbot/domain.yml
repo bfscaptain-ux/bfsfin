@@ -1,0 +1,190 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_about_bfs
+  - ask_documents
+  - inform_employment
+  - smalltalk_how_are_you
+  - thank_you
+  - express_worry_cibil
+  - ask_finance_general
+  - ask_home_loan
+  - ask_business_loan
+  - ask_personal_loan
+  - ask_lap
+  - ask_balance_transfer
+  - ask_insurance_general
+  - ask_health_insurance
+  - ask_life_insurance
+  - ask_motor_insurance
+  - ask_insurance_claim
+  - ask_credit_card_general
+  - ask_credit_card_free
+  - ask_credit_card_lounge
+  - ask_credit_card_cashback
+  - ask_credit_card_eligibility
+  - ask_apply_product
+  - ask_contact_support
+  - check_home_loan_eligibility
+  - check_personal_loan_eligibility
+  - check_business_loan_eligibility
+  - check_lap_eligibility
+  - check_gold_loan_eligibility
+  - check_general_loan_eligibility
+  - check_credit_card_eligibility_advanced
+  - check_health_insurance_eligibility
+  - check_term_life_eligibility
+  - check_motor_insurance_eligibility
+
+entities:
+  - employment_type
+  - cibil_score
+  - salary_amount
+
+slots:
+  employment_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: employment_type
+  cibil_score:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: cibil_score
+
+responses:
+  utter_greet:
+  - text: "Namaste! 🙏 Welcome to Bhardwaj Financial Services. Main aapka personal AI Advisor hoon. Hum aapki madad 3 mukhya sevaon mein karte hain:\n1️⃣ Finance (Home, Business, Personal, LAP Loan)\n2️⃣ Insurance (Health, Term Life, Motor Bima)\n3️⃣ Credit Cards (Lifetime Free, Airport Lounge, Cashback)\n\nBoliye, aaj aap kis baare mein janna chahte hain?"
+
+  utter_how_are_you:
+  - text: "Main bilkul theek hoon! Bhardwaj Financial Services mein aapka dost aur guide. Kahiye, aaj aapko Finance, Insurance ya Credit Card mein kis cheez par jankari chahiye? 😊"
+
+  utter_welcome:
+  - text: "Arre koi baat nahi! Ye toh mera farz hai. Aapki financial journey ko aasaan banana hi Bhardwaj Financial Services ka maksad hai. Aur kuch janna hai aapko? 😇"
+
+  utter_comfort_cibil:
+  - text: "Aap bilkul pareshan mat hoiye. CIBIL score upar-neeche hota rehta hai, aur iska solution hum nikalenge! Humare paas aise partner banks hain jo low CIBIL par bhi loan ya credit card consider karte hain. Main hoon na aapki madad ke liye! 💪"
+
+  utter_ask_employment_type:
+  - text: "Zaroor! Documents ki list aapki profile par depend karti hai. Kya aap Naukri (Salaried) karte hain ya apna Business (Self-Employed) hai?"
+
+  utter_documents_salaried:
+  - text: "Agar aap Naukri-pesha (Salaried) hain, toh bahut hi aasaan se documents chahiye hote hain. Bas ye ready rakhiye:\n1. 3 mahine ki Salary Slip\n2. 6 mahine ka Bank Statement\n3. Form 16 (ya 2 saal ka ITR)\n4. KYC (Aadhar/PAN Card)\n5. Passport Size Photo."
+
+  utter_documents_self_employed:
+  - text: "Agar aapka apna Business hai (Self-Employed), toh humein in basic documents ki zaroorat padegi:\n1. 3 saal ki ITR (Income Tax Return)\n2. 1 saal ka Current Bank Statement\n3. Business Proof (GST/Udyam Certificate/Shop Act)\n4. KYC (Aadhar/PAN Card)\n5. Passport Size Photo."
+
+  utter_about_bfs:
+  - text: "🏛️ **Bhardwaj Financial Services (BFS)**\n\n**BFS ka Full Form:** **Bhardwaj Financial Services**\nHum Bharat ke agrani aur vishwasniya Financial Distribution & Advisory Platform hain. Hum 2,500+ se adhik parivaron aur vyapariyon ko sabse kam byaj daron par loan, bima aur credit cards uplabdh kara chuke hain.\n\n⭐ **Humari Mukhya Visheshatayein:**\n• 🏠 **Home Loan:** Market me sabse kam byaj dar — **7.15%** se shuru! (Up to 90% funding & 30 saal tenure)\n• 💼 **Business Loan:** ₹5 Lakh se ₹50 Lakh tak Unsecured Funding bina kisi girvi ke (MSME/GST)\n• 👤 **Personal Loan:** Instant approval up to ₹15 Lakhs minimal documents par\n• 🏢 **Loan Against Property (LAP):** Saste rate (9.00% se) par badi limit\n• 🛡️ **Insurance:** 10,000+ hospitals me 100% Cashless Health & Term Life Cover\n• ⚡ **100% Transparent:** Zero upfront fees, koi chhupe huye charges nahi, aur direct doorstep service!\n\n📍 **Head Office:** Sanjay Place, Agra, UP | Pan-India Digital Support\n📞 **Helpline:** +91 9258-724-227 | 💬 **WhatsApp:** +91 7900-979-001"
+
+  utter_finance_general:
+  - text: "Bhardwaj Financial Services (BFS) sabhi pramukh loans par lowest interest rates aur fast approval provide karta hai:\n1️⃣ 🏠 Home Loan: 7.15% se shuru, up to 90% property funding (30 saal EMI)\n2️⃣ 💼 Business Loan: Unsecured funding up to ₹50 Lakhs bina kisi girvi ke (MSME/GST)\n3️⃣ 👤 Personal Loan: Instant cash up to ₹15 Lakhs minimal documents par\n4️⃣ 🏢 Loan Against Property (LAP): Saste rate (9.00% se) par bada loan\n5️⃣ 🔄 Balance Transfer + Top-Up: Mehenge loan ko kam byaj par shift karke bachat\n\nAapko kis loan ke baare mein jankari chahiye?"
+
+  utter_home_loan:
+  - text: "🏠 Home Loan Highlights:\n• Interest Rates: 7.15% se shuru (Best CIBIL par maximum discount)\n• Loan Amount: Property value ka 80% se 90% tak\n• Tenure: 30 saal tak aasan EMI\n• Purpose: Naya flat/house purchase, Plot + Construction, ya Renovation.\n\nAap humari website par instant apply kar sakte hain ya eligibility calculate kar sakte hain!"
+
+  utter_business_loan:
+  - text: "💼 Business Loan (Vyapar Loan):\n• Unsecured Loan: ₹5 Lakh se ₹50 Lakh+ tak bina kisi mortgage ke.\n• Fast Sanction: 48 se 72 ghante mein bank approval.\n• Eligibility: GST return / MSME Udyam, aur 1 saal ka banking.\n• Purpose: Working capital, machinery khareedna, ya dukaan ka vistar.\n\nKya aapka GST registered business hai?"
+
+  utter_personal_loan:
+  - text: "👤 Personal Loan Highlights:\n• Loan Amount: ₹50,000 se ₹15 Lakh tak instant cash.\n• Tenure: 1 saal se 5 saal tak flexible repayment.\n• Eligibility: Minimum ₹15,000 monthly in-hand salary.\n• Zero Collateral: Kisi property ya guarantor ki zaroorat nahi.\n\nKripya batayein aapko kitne amount ki zaroorat hai?"
+
+  utter_lap:
+  - text: "🏢 Loan Against Property (LAP / Mortgage Loan):\n• Apni Residential ya Commercial property girvi rakhkar bada fund paayein.\n• Interest Rate: 9.00% se shuru (Personal loan se lagbhag aadha byaj).\n• High Amount: Property market value ka 60% se 75% tak sanction.\n• Long Tenure: 15 se 20 saal tak aasan EMI."
+
+  utter_balance_transfer:
+  - text: "🔄 Balance Transfer & Top-Up:\n• Agar aapka purana loan kisi mehenge bank/NBFC me chal raha hai, toh use hum saste interest rate par shift karwayenge.\n• EMI me har mahine hazaron rupaye ki bachat hoti hai.\n• Sath hi aapko extra Top-Up loan bhi mil jata hai personal ya business use ke liye!"
+
+  utter_insurance_general:
+  - text: "🛡️ Bhardwaj Financial Services Insurance Portfolio:\n1️⃣ 🏥 Health Insurance: 10,000+ top hospitals me 100% Cashless, Section 80D tax saving\n2️⃣ 👨‍👩‍👧‍👦 Term Life Insurance: ₹1 Crore se ₹5 Crore tak family protection cover, Section 80C bachat\n3️⃣ 🚗 Motor Insurance: Car/Bike Zero Depreciation (0-Dep) aur 24x7 roadside help\n4️⃣ 📑 Free Claim Settlement Support: Hospital cashless aur claim rejection re-opening me poori madad\n\nAapko kis insurance ke baare mein vistar se jaanna hai?"
+
+  utter_health_insurance:
+  - text: "🏥 Health Insurance (Mediclaim) Benefits:\n• 100% Cashless hospitalization sabhi bade private hospitals mein\n• Pre & Post hospitalization kharche covered\n• No Claim Bonus (NCB) har saal claim na lene par\n• Section 80D ke tahat ₹75,000 tak Income Tax bachat!\n• OPD, Maternity aur Critical Illness riders available.\n\nAap individual plan chahte hain ya poori family ke liye family floater?"
+
+  utter_life_insurance:
+  - text: "👨‍👩‍👧‍👦 Term / Life Insurance Highlights:\n• Kam premium mein ₹1 Crore se ₹5 Crore tak ka family protection cover.\n• Parivar ke bhavishya ki 100% financial security.\n• Tax deduction u/s Section 80C (₹1.5 Lakh tak bachat).\n• Critical illness aur accidental death riders.\n• 99%+ claim settlement ratio wale top partner insurers."
+
+  utter_motor_insurance:
+  - text: "🚗 Motor Insurance (Car & Bike Bima):\n• Comprehensive & Zero Depreciation (0-Dep) plans\n• 24x7 Roadside Breakdown Assistance\n• Cashless Garages network pan-India\n• Instant policy download within 2 minutes!\n\nApna gadi number aur model batayein, hum best quote provide karenge."
+
+  utter_insurance_claim:
+  - text: "📑 Insurance Claim Settlement Support:\n• Cashless Claim: Network hospital ya cashless garage par policy card dikhaiye, TPA approval 1-2 ghante mein aata hai.\n• Reimbursement Claim: Discharge ke baad sabhi bills aur reports submit karein, paisa direct account mein aata hai.\n• BFS Advantage: Hamari team claim settlement me end-to-end help karti hai taaki claim reject na ho!"
+
+  utter_credit_card_general:
+  - text: "💳 Credit Card Services at BFS:\nHum sabhi top banks (HDFC, SBI, ICICI, Axis, AU Bank) ke credit cards provide karate hain:\n1️⃣ 🆓 Lifetime Free Credit Cards: Forever Zero Joining & Annual Fee!\n2️⃣ ✈️ Airport Lounge Access Cards: Har quarter 2 se 4 free luxury lounge visits\n3️⃣ 🛍️ Cashback & Shopping Cards: Amazon, Flipkart par up to 5% flat cashback\n4️⃣ 📋 Low CIBIL / FD-Backed Cards: New to credit ya low score par guaranteed approval\n\nAapko kis type ka card chahiye?"
+
+  utter_credit_card_free:
+  - text: "🆓 Lifetime Free Credit Cards:\n• Isme koi bhi Joining Fee ya Annual/Renewal Fee nahi hoti (Forever Zero Cost).\n• Sabhi standard benefits: 50 days interest-free period, reward points, aur merchant discounts.\n• First-time users ke liye sabse best option bina kisi maintenance tension ke!"
+
+  utter_credit_card_lounge:
+  - text: "✈️ Airport Lounge Access Credit Cards:\n• Har quarter 2 se 4 complimentary domestic aur international airport lounge visits.\n• Free buffet meals, AC relaxing lounge aur Wi-Fi access.\n• Flight tickets aur hotel booking par exclusive discounts.\n• Frequent flyers aur travel enthusiasts ke liye perfect!"
+
+  utter_credit_card_cashback:
+  - text: "🛍️ Cashback & Reward Credit Cards:\n• Amazon, Flipkart, Myntra, Swiggy, Zomato par up to 5% direct cashback.\n• Petrol pumps par 1% fuel surcharge waiver.\n• Utility bill payment aur grocery par extra reward points."
+
+  utter_credit_card_eligibility:
+  - text: "📋 Credit Card Eligibility Criteria:\n• Salaried: Minimum net monthly salary ₹20,000+\n• Self-Employed: Minimum 1 saal ka ITR ₹3.5 Lakh+\n• CIBIL Score: 710+ score par instant approval milta hai.\n• Note: Agar aapka CIBIL nahi bana hai, toh hum Fixed Deposit (FD) backed secure credit card provide karate hain jisse aapka CIBIL 750+ ban jaye!"
+
+  utter_apply_product:
+  - text: "📝 Apply karne ka process bahut simple hai:\n1. Website par Apply Now page par jaayein (`/apply`).\n2. Apna category chunein: Finance, Insurance, ya Credit Card.\n3. Basic profile details bharein aur OTP verify karein.\nHumare senior financial advisors 24 ghante mein aapse call par baat karenge!"
+
+  utter_contact_support:
+  - text: "📞 Aap Bhardwaj Financial Services se seedha sampark kar sakte hain:\n• 📱 Calling Helpline: +91 9258-724-227\n• 💬 WhatsApp Support: +91 7900-979-001\n• 🏢 Head Office: Shop No. 4, Block 58/2, Sanjay Place, Agra, UP - 282002\n• 👨‍💼 Founder: Adv. Praveen Bhardwaj"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Ji bilkul! 😊 Agar aapko kisi loan (Home, Business, Personal, LAP), Insurance ya Credit Card ke baare mein jaanna hai ya apply karna hai, toh batayein:"
+
+  utter_goodbye:
+  - text: "Bhardwaj Financial Services mein aane ke liye shukriya. Have a great day!"
+
+  utter_iamabot:
+  - text: "Main Bhardwaj Financial Services ka personal AI Advisor bot hoon. Main Finance, Insurance aur Credit Card mein aapki help kar sakta hoon."
+
+  utter_home_loan_eligibility:
+  - text: "🏠 **Home Loan Eligibility Matrix (Bhardwaj Financial Services)**:\n• **Min In-Hand Salary:** ₹15,000/month (Salaried) ya ₹2.5 Lakh ITR (Self-Employed)\n• **CIBIL Score Benchmarks:**\n  - **750+:** Lowest 7.15% interest rate + Zero/Discounted processing fee!\n  - **650 - 749:** Standard approval (7.50% - 8.25%)\n  - **< 650:** Co-applicant (Patni/Father) add karke ya NBFC pathway se approval.\n• **Maximum Funding:** Property market value ka 80% se 90% tak\n• **Max Loan Capacity Formula:** (Monthly In-hand Salary x 50% - Purani EMIs) x ~160 (30 Years Tenure)\n  - *Example:* ₹30,000 salary par lagbhag **₹22 Lakh se ₹26 Lakh** tak loan mil sakta hai!\n👉 **[Online Apply Karein](/apply?product=home-loan)** ya Helpline par call karein: **+91 9258-724-227**"
+
+  utter_personal_loan_eligibility:
+  - text: "👤 **Personal Loan Eligibility (Instant Unsecured Cash)**:\n• **Min In-Hand Salary:** ₹15,000 - ₹20,000/month (Direct Bank Transfer zaroori hai)\n• **Loan Amount Multiplier:** Net Monthly Salary ka **10x se 20x** (₹50,000 se ₹15 Lakh tak)\n  - *Example:* ₹25,000 salary par **₹2.5 Lakh se ₹4 Lakh** instant sanction!\n• **CIBIL Score:** 680+ par 24 ghante me approval. Zero collateral / property zaroorat nahi.\n• **Tenure:** 12 se 60 mahine (Flexible EMI)\n👉 **[Instant Personal Loan Form](/apply?product=personal-loan)** bharein aur hamare expert se baat karein."
+
+  utter_business_loan_eligibility:
+  - text: "💼 **Business Loan (Vyapar Loan) Eligibility**:\n• **Collateral-Free Limit:** ₹5 Lakh se ₹50 Lakh tak bina kisi mortgage ke\n• **Eligibility Requirements:**\n  1. Minimum 1 saal ka GST Return ya MSME Udyam Registration\n  2. 12 mahine ka Current Account Banking Statement (Consistent transactions)\n  3. Minimum Annual Turnover: ₹12 Lakh+\n• **Approval Time:** 48 se 72 hours me direct account credit\n👉 **[Business Loan Apply Karein](/apply?product=business-loan)** ya Sanjay Place office visit karein."
+
+  utter_lap_eligibility:
+  - text: "🏢 **Loan Against Property (LAP / Mortgage Loan) Eligibility**:\n• **Eligible Properties:** Residential House, Commercial Shop, Plot, ya Industrial Unit\n• **Loan to Value (LTV):** Property Registered Market Value ka **60% se 75%** tak\n• **Interest Rate:** 9.00% se shuru (Personal loan se lagbhag aadha byaj!)\n• **Tenure:** 15 se 20 saal tak aasan EMI\n• **Eligibility:** Salaried (Min ₹25k) ya Self-Employed (Min ₹3 Lakh ITR)\n👉 **[LAP Form Submit Karein](/apply?product=lap)**"
+
+  utter_gold_loan_eligibility:
+  - text: "🪙 **Instant Gold Loan Eligibility**:\n• **CIBIL Requirement:** 0% (Koi CIBIL check nahi hota, zero CIBIL pe bhi instant milta hai)\n• **Income Proof:** Kisi salary slip ya ITR ki zaroorat nahi!\n• **Funding:** Gold Market Value ka up to **75% LTV** turant cash/transfer\n• **Gold Purity:** 18k se 24k Gold Jewelry\n• **Process Time:** Sirf 30 minute me gold valuation aur paisa haath mein."
+
+  utter_general_loan_eligibility:
+  - text: "🎯 **Bhardwaj Financial Services Loan Eligibility Check**:\nHum aapki profile ke hisaab se best loan arrange karate hain:\n1️⃣ **Home Loan:** 7.15% se shuru (Salary ₹15k+, 30 saal tenure)\n2️⃣ **Personal Loan:** Instant cash (Salary ₹15k+, 10x-20x multiplier)\n3️⃣ **Business Loan:** ₹5L to ₹50L bina mortgage (GST / MSME proof)\n4️⃣ **Loan Against Property (LAP):** Saste 9% byaj par bada fund\n5️⃣ **Gold Loan:** 30 minute instant cash bina income proof ke\n\nApna preferred loan type aur monthly income batayein, main turant exact amount calculate karke batata hoon!"
+
+  utter_credit_card_eligibility_advanced:
+  - text: "💳 **Credit Card Eligibility & Card Recommendations**:\n• **Salaried Profile:** Net salary ₹20,000+/month (HDFC, ICICI, SBI, Axis)\n• **Self-Employed Profile:** Minimum ITR ₹3.5 Lakh+/year\n• **CIBIL Score Scenarios:**\n  - **720+ Score:** Lifetime Free Cards + Airport Lounge Access + Flat 5% Cashback\n  - **New to Credit / Low CIBIL (<700):** **100% Guaranteed FD-Backed Secured Credit Card** (Isse 3-6 mahine me aapka CIBIL 750+ ban jata hai!)\n👉 **[Free Credit Card Apply](/apply?product=credit-card)**"
+
+  utter_health_insurance_eligibility:
+  - text: "🏥 **Health Insurance (Mediclaim) Eligibility**:\n• **Age Criteria:** 91 din se lekar 65 saal tak (Senior Citizen special plans available)\n• **Income Proof:** Koi salary proof zaroori nahi hota\n• **Pre-Existing Diseases (BP, Sugar, Thyroid):** 1 se 3 saal ke waiting period ke baad poora kharcha cover hota hai\n• **BFS Exclusive Benefits:**\n  - 10,000+ top network hospitals me 100% Cashless\n  - Income Tax Section 80D ke tahat ₹75,000 tak bachat\n  - BFS 24x7 Claim Settlement Assistance team aapke sath!\n👉 **[Health Insurance Quote Paayein](/apply?product=insurance)**"
+
+  utter_term_life_eligibility:
+  - text: "👨‍👩‍👧‍👦 **Term Life Insurance Eligibility (Family Protection)**:\n• **Age Limit:** 18 saal se 65 saal\n• **Minimum Annual Income:** ₹3,00,000/year (Salaried/Business dono eligible)\n• **Life Cover Amount:** Annual Income ka **10x se 25x** (e.g. ₹5 Lakh income par ₹1 Crore ka cover)\n• **Medical Test:** ₹1 Crore tak ke plans par aamtaur par video tele-medical test hota hai\n• **Tax Benefit:** Section 80C me ₹1.5 Lakh tak tax छूट\n👉 **[Term Plan Details & Quote](/apply?product=insurance)**"
+
+  utter_motor_insurance_eligibility:
+  - text: "🚗 **Motor Insurance (Car & Two-Wheeler) Eligibility**:\n• **Required Details:** Sirf Vehicle Registration Number (RC) aur purani policy copy\n• **Zero Depreciation (0-Dep) Cover:** 5 se 7 saal purani cars ke liye 100% eligible\n• **Expired Policy:** Agar policy expire bhi ho gayi hai, toh instant break-in inspection ke sath 2 minute me renew ho jayegi\n• **No Claim Bonus (NCB):** 20% se 50% tak purani company se direct transfer discount!\n👉 Helpline: **+91 9258-724-227**"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

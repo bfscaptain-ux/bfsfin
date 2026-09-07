@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 import { CallbackRequest } from '@/types/callback';
+import { sendToGoogleSheets } from '@/lib/googleSheets';
+import { resolveClientLocation } from '@/lib/geo';
 
 const dataFilePath = path.join(process.cwd(), 'src', 'data', 'callbacks.json');
 
@@ -50,6 +52,48 @@ export async function POST(request: Request) {
     await fs.mkdir(path.dirname(dataFilePath), { recursive: true }).catch(() => {});
     await fs.writeFile(dataFilePath, JSON.stringify(callbacks, null, 2));
     
+    // Resolve Geolocation of Customer
+    const geo = await resolveClientLocation(request, data.lat, data.lng);
+
+    // Send to Google Sheets (Dedicated "Contact Inquiries" & Master Sheet)
+    await sendToGoogleSheets({
+      formType: "Contact Inquiry",
+      name: newEntry.name,
+      phone: newEntry.phone,
+      email: newEntry.email,
+      state: newEntry.state || geo.region,
+      city: newEntry.city || geo.city,
+      userLocation: geo.fullAddress,
+      mapsUrl: geo.mapsUrl,
+      loanType: newEntry.loanType,
+      productType: "Finance",
+      subType: newEntry.loanSubType || newEntry.loanType,
+      message: newEntry.message || `Contact Form Inquiry from ${newEntry.city}, ${newEntry.state}`,
+      status: "New Lead",
+    });
+
+    // Send Confirmation Email to Customer
+    if (newEntry.email && !newEntry.email.includes("no-email")) {
+      const { sendEmail } = await import("@/lib/mailer");
+      const { generateCallbackEmail } = await import("@/lib/emailTemplates");
+
+      const emailContent = generateCallbackEmail({
+        name: newEntry.name,
+        phone: newEntry.phone,
+        email: newEntry.email,
+        city: `${newEntry.city}, ${newEntry.state}`,
+        category: newEntry.loanType || "Advisory Inquiry",
+        subType: newEntry.loanSubType || newEntry.loanType || "General",
+        notes: newEntry.message
+      });
+
+      sendEmail({
+        to: newEntry.email,
+        subject: emailContent.subject,
+        html: emailContent.html,
+      }).catch(console.error);
+    }
+
     return NextResponse.json(newEntry, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 });

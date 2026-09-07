@@ -257,6 +257,14 @@ export default function AdminFaqsCMS() {
                       <option value="Bank of Baroda">Bank of Baroda</option>
                       <option value="Central Bank of India">Central Bank of India</option>
                     </optgroup>
+                    <optgroup label="Calculator Pages">
+                      <option value="hlv">HLV – Human Life Value Calculator</option>
+                      <option value="health-premium">Health Insurance Premium Estimator</option>
+                      <option value="tax-saver">80C &amp; 80D Tax Saver Calculator</option>
+                      <option value="payoff">Credit Card Payoff Calculator</option>
+                      <option value="minimum-due">Minimum Due Trap Calculator</option>
+                      <option value="rewards">CC Reward Maximizer Calculator</option>
+                    </optgroup>
                   </select>
                 </div>
 

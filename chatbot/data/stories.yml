@@ -1,0 +1,94 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+- story: document request salaried
+  steps:
+  - intent: ask_documents
+  - action: utter_ask_employment_type
+  - intent: inform_employment
+    entities:
+    - employment_type: salaried
+  - action: utter_documents_salaried
+
+- story: document request self employed
+  steps:
+  - intent: ask_documents
+  - action: utter_ask_employment_type
+  - intent: inform_employment
+    entities:
+    - employment_type: self-employed
+  - action: utter_documents_self_employed
+
+- story: user asks about loans and then applies
+  steps:
+  - intent: ask_finance_general
+  - action: utter_finance_general
+  - intent: ask_home_loan
+  - action: utter_home_loan
+  - intent: ask_apply_product
+  - action: utter_apply_product
+
+- story: user asks about health insurance
+  steps:
+  - intent: ask_insurance_general
+  - action: utter_insurance_general
+  - intent: ask_health_insurance
+  - action: utter_health_insurance
+  - intent: ask_insurance_claim
+  - action: utter_insurance_claim
+
+- story: user asks about credit card
+  steps:
+  - intent: ask_credit_card_general
+  - action: utter_credit_card_general
+  - intent: ask_credit_card_free
+  - action: utter_credit_card_free
+  - intent: ask_credit_card_eligibility
+  - action: utter_credit_card_eligibility
+
+- story: user checks loan eligibility then applies
+  steps:
+  - intent: check_home_loan_eligibility
+  - action: utter_home_loan_eligibility
+  - intent: ask_apply_product
+  - action: utter_apply_product
+
+- story: user checks card eligibility then contacts
+  steps:
+  - intent: check_credit_card_eligibility_advanced
+  - action: utter_credit_card_eligibility_advanced
+  - intent: ask_contact_support
+  - action: utter_contact_support
+
+- story: user asks about BFS
+  steps:
+  - intent: ask_about_bfs
+  - action: utter_about_bfs
+
+

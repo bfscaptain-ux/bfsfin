@@ -77,9 +77,10 @@ html.light .glass-card:hover {
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: #059669;
@@ -87,6 +88,16 @@ html.light .glass-card:hover {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #10b981;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Ticker marquee animation */
@@ -153,3 +164,127 @@ html.light .glass-card:hover {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Stats Cards Infinite Marquee */
+@keyframes stats-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-stats-marquee {
+  animation: stats-marquee 25s linear infinite;
+}
+
+.animate-stats-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* MSME & Services Ribbon Infinite Marquee */
+@keyframes ribbon-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ribbon-marquee {
+  animation: ribbon-marquee 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-ribbon-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Clean Left-to-Right Text Shine & Contour Glow */
+@keyframes text-shine-ltr {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shine-text-glow {
+  background: linear-gradient(
+    90deg,
+    #059669 0%,
+    #10b981 25%,
+    #6ee7b7 42%,
+    #ffffff 50%,
+    #6ee7b7 58%,
+    #10b981 75%,
+    #059669 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine-ltr 2.6s linear infinite;
+  display: inline-block;
+  line-height: 1.35;
+  padding-top: 0.1em;
+  padding-bottom: 0.25em;
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.75))
+          drop-shadow(0 0 28px rgba(52, 211, 153, 0.45));
+}
+
+html.dark .shine-text-glow {
+  background: linear-gradient(
+    90deg,
+    #10b981 0%,
+    #34d399 25%,
+    #a7f3d0 42%,
+    #ffffff 50%,
+    #a7f3d0 58%,
+    #34d399 75%,
+    #10b981 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(52, 211, 153, 0.85))
+          drop-shadow(0 0 35px rgba(16, 185, 129, 0.55));
+}
+
+/* Ultra-Vibrant Animated Form Glow */
+@keyframes form-halo-pulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1.02);
+    filter: blur(28px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+    filter: blur(40px);
+  }
+}
+
+.animate-form-halo {
+  animation: form-halo-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes form-gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-glow-border {
+  background-size: 300% 300%;
+  animation: form-gradient-rotate 3.5s linear infinite;
+}
+
+.active-form-glow {
+  box-shadow: 0 0 45px -5px rgba(16, 185, 129, 0.45),
+              0 0 70px 10px rgba(52, 211, 153, 0.25),
+              0 0 100px 20px rgba(20, 184, 166, 0.18);
+}
+

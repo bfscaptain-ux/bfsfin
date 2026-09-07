@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -26,38 +26,45 @@ export default function CareersClient() {
     transition: { duration: 0.6 }
   };
 
-  const jobs = [
-    {
-      id: 1,
-      title: "Relationship Manager - Home Loans",
-      department: "Sales & Marketing",
-      location: "Pan India",
-      type: "Full-Time",
-      salary: "₹15,000 - ₹45,000 / month + Incentives",
-      desc: "Drive home loan sales by building relationships with real estate developers and clients. Responsible for end-to-end file processing and loan disbursement.",
-      reqs: ["Min. 1-2 years experience in Banking/DSA sales.", "Strong communication skills.", "Two-wheeler mandatory."]
-    },
-    {
-      id: 2,
-      title: "Telecalling Executive",
-      department: "Customer Outreach",
-      location: "Pan India",
-      type: "Full-Time",
-      salary: "₹10,000 - ₹25,000 / month + Incentives",
-      desc: "Connect with prospective clients, explain our loan products (Home Loan, LAP), and generate high-quality leads for the sales team.",
-      reqs: ["Freshers can apply.", "Fluent in Hindi and basic English.", "Good persuasion and listening skills."]
-    },
-    {
-      id: 3,
-      title: "Credit Analyst / File Processing Officer",
-      department: "Operations",
-      location: "Pan India",
-      type: "Full-Time",
-      salary: "Industry Standard",
-      desc: "Analyze customer financial profiles, CIBIL reports, and KYC documents to ensure quick file login and sanctioning from partner banks.",
-      reqs: ["Experience in login/processing in a Bank/NBFC.", "Knowledge of banking software and portals.", "High attention to detail."]
+    const [jobs, setJobs] = useState<any[]>([]);
+  const [selectedJob, setSelectedJob] = useState<any>(null);
+  const [applyForm, setApplyForm] = useState({ name: "", phone: "", email: "", coverText: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/jobs")
+      .then(r => r.json())
+      .then(d => {
+        if (d.success && d.jobs) {
+          const now = new Date();
+          const activeJobs = d.jobs.filter((j: any) => {
+            if (!j.isActive) return false;
+            if (j.expiresAt && new Date(j.expiresAt) < now) return false;
+            return true;
+          });
+          setJobs(activeJobs);
+        }
+      });
+  }, []);
+
+  const handleApply = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await fetch("/api/jobs/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...applyForm, jobId: selectedJob.id })
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setSelectedJob(null);
+        setApplyForm({ name: "", phone: "", email: "", coverText: "" });
+      }, 3000);
+    } catch (e) {
+      console.log(e);
     }
-  ];
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-emerald-950 font-sans selection:bg-emerald-500/30">
@@ -163,6 +170,7 @@ export default function CareersClient() {
           </div>
 
           <div className="space-y-6">
+            {jobs.length === 0 && <p className="text-center text-slate-500 py-10">Loading positions...</p>}
             {jobs.map((job, idx) => (
               <motion.div 
                 key={job.id}
@@ -175,27 +183,29 @@ export default function CareersClient() {
                       <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-xs font-bold rounded-full">{job.department}</span>
                       <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-full flex items-center gap-1"><MapPin className="w-3 h-3"/> {job.location}</span>
                       <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-full flex items-center gap-1"><Clock className="w-3 h-3"/> {job.type}</span>
+                      {job.expiresAt && (
+                        <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold rounded-full border border-red-200 dark:border-red-800/50">
+                          ⏳ Apply by: {new Date(job.expiresAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                        </span>
+                      )}
                     </div>
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">{job.title}</h3>
-                    <p className="text-emerald-600 dark:text-emerald-400 font-semibold text-sm mb-4">{job.salary}</p>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed max-w-3xl">{job.desc}</p>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1.5 rounded-lg border border-emerald-200 dark:border-emerald-800">💰 Base: {job.salary}</p>
+                      {job.incentive && <p className="text-indigo-600 dark:text-indigo-400 font-bold text-sm bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-indigo-800">🚀 {job.incentive}</p>}
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed max-w-3xl">{job.description}</p>
                     
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">Requirements:</h4>
-                      <ul className="space-y-1">
-                        {job.reqs.map((req, i) => (
-                          <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                            <span className="text-emerald-500 mt-1">•</span> {req}
-                          </li>
-                        ))}
-                      </ul>
+                      <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">Requirements / Details:</h4>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 whitespace-pre-wrap">{job.requirements}</p>
                     </div>
                   </div>
                   
                   <div className="shrink-0 pt-4 lg:pt-0">
-                    <a href={`mailto:hr@bhardwajfinance.com?subject=Application for ${job.title}`} className="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-6 py-3 bg-emerald-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white transition-colors">
+                    <Link href={`/careers/apply/${job.id}`} className="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-6 py-3 bg-emerald-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white transition-colors">
                       Apply Now <Send className="w-4 h-4" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -203,6 +213,8 @@ export default function CareersClient() {
           </div>
         </div>
       </section>
+
+
 
       {/* 4. CAN'T FIND ROLE CTA */}
       <section className="py-24 bg-emerald-600 text-center px-4">

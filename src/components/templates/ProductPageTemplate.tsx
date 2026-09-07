@@ -123,7 +123,7 @@ export default function ProductPageTemplate({ data, calculator }: { data: Produc
               {data.heroDescription}
             </p>
             <div className="pt-4 flex flex-wrap gap-4">
-              <Link href="/apply" className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 to-emerald-600 text-white font-extrabold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-emerald-500/25 flex items-center gap-2">
+              <Link href={`/apply?product=Finance&subType=${encodeURIComponent(data.name)}`} className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 to-emerald-600 text-white font-extrabold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-emerald-500/25 flex items-center gap-2">
                 <span className="relative z-10">Apply For {data.name}</span> 
                 <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               </Link>

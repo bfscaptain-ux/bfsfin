@@ -4,19 +4,19 @@ import { prisma } from "@/lib/prisma";
 
 // Advanced SEO & AEO (Answer Engine Optimization) Metadata for the Founder Page
 export const metadata: Metadata = {
-  title: 'Founder & Leadership Team | Bhardwaj Financial Services',
-  description: 'Meet the visionary founder of Bhardwaj Financial Services (BFS). With 15+ years of banking experience, our leadership team ensures India\'s fastest loan approvals.',
+  title: 'Founder & Leadership Team | Bhardwaj Financial Services (BFS)',
+  description: 'Meet the visionary leadership behind Bhardwaj Financial Services (BFS). Guiding India\'s premier 3-in-1 financial hub for Loans @ 7.15%* ROI, 100% Cashless Insurance with free claim support, and Lifetime-Free Credit Cards.',
   keywords: [
-    'Founder Finance', 'BFS Agra Founder', 'Loan DSA Director', 
-    'Top Finance Consultant India', 'Home Loan Expert Agra', 'Bhardwaj Financial Services Team',
-    'Pan India Banking Partner', 'DSA Approved Expert'
+    'Founder BFS Agra', 'Praveen Bhardwaj BFS', 'Loan DSA Director Agra', 
+    'Top Finance Consultant India', 'Home Loan Expert Agra 7.15', 'Cashless Health Insurance Agra',
+    'Credit Card Advisory Agra', 'Bhardwaj Financial Services Team', 'Pan India Banking Partner'
   ].join(', '),
   alternates: {
     canonical: 'https://bhardwajfinance.com/about/founder',
   },
   openGraph: {
-    title: 'Leadership Team | Bhardwaj Financial Services',
-    description: 'The visionary minds behind India\'s fastest 5-Day Loan Sanction process. Meet the core team changing the finance sector.',
+    title: 'Leadership Team | Bhardwaj Financial Services (BFS)',
+    description: 'The visionary minds behind India\'s premier 3-in-1 financial hub: Loans @ 7.15%*, 100% Cashless Insurance, and Lifetime-Free Credit Cards.',
     url: 'https://bhardwajfinance.com/about/founder',
     siteName: 'Bhardwaj Financial Services',
     type: 'profile',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Founder & Team | Bhardwaj Financial Services',
-    description: 'Meet the founder and the core team behind India\'s fastest loan processing network.',
+    description: 'Meet the leadership team behind India\'s premier financial distribution hub.',
   }
 };
 
@@ -39,10 +39,10 @@ export default async function FounderPage() {
   });
 
   const ownerConfig = {
-    name: settingsRecords.find(s => s.key === "ownerName")?.value || "Vineeta Sharma",
+    name: settingsRecords.find(s => s.key === "ownerName")?.value || "Adv. Praveen Bhardwaj",
     role: settingsRecords.find(s => s.key === "ownerRole")?.value || "Founder & Managing Director, BFS",
-    quote: settingsRecords.find(s => s.key === "ownerQuote")?.value || "We don't just secure loans; we legally vet your lifetime investment. Total transparency, zero hidden brokerage.",
-    image: settingsRecords.find(s => s.key === "ownerImage")?.value || "/owner.png"
+    quote: settingsRecords.find(s => s.key === "ownerQuote")?.value || "We don't just secure loans; we legally protect your family's healthcare with cashless insurance and unlock smart credit cards. Total transparency, zero hidden brokerage.",
+    image: settingsRecords.find(s => s.key === "ownerImage")?.value || "/praveen_bhardwaj.png"
   };
 
   // Rich JSON-LD Structured Data for AEO/GEO (Person & Organization schema)
@@ -59,10 +59,10 @@ export default async function FounderPage() {
           "@id": "https://bhardwajfinance.com/#organization",
           "name": "Bhardwaj Financial Services"
         },
-        "description": `Founder of Bhardwaj Financial Services with over 15 years of deep expertise in the Indian banking and DSA sector.`,
+        "description": `Founder of Bhardwaj Financial Services with legal and financial expertise delivering Home Loans from 7.15%* ROI, Cashless Insurance, and Lifetime-Free Credit Cards.`,
         "url": "https://bhardwajfinance.com/about/founder",
-        "alumniOf": "Banking Sector India",
-        "knowsAbout": ["Home Loans", "Mortgage Processing", "DSA Partnerships", "Credit Risk Analysis"]
+        "alumniOf": "Legal & Financial Advisory India",
+        "knowsAbout": ["Home Loans from 7.15% ROI", "Cashless Health Insurance", "Free Claim Settlement", "Lifetime Free Credit Cards", "Multi-Bank DSA Sanctions"]
       },
       {
         "@type": "Organization",

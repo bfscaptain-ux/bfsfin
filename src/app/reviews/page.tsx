@@ -18,7 +18,7 @@ export default async function AllReviewsPage({ searchParams }: { searchParams: {
   const limit = 21;
   const skip = (page - 1) * limit;
 
-  const [reviews, totalCount, heroImage, aggregates] = await Promise.all([
+  const [reviews, totalCount, heroImage, aggregates, itrCount, msmeCount, loanCount, insCount, creditCount] = await Promise.all([
     prisma.review.findMany({
       where: { status: "APPROVED" },
       orderBy: { createdAt: "desc" },
@@ -34,11 +34,85 @@ export default async function AllReviewsPage({ searchParams }: { searchParams: {
     prisma.review.aggregate({
       where: { status: "APPROVED" },
       _avg: { rating: true }
-    })
+    }),
+    prisma.review.count({
+      where: {
+        status: "APPROVED",
+        OR: [
+          { text: { contains: "ITR" } },
+          { text: { contains: "income tax" } },
+          { text: { contains: "Income Tax" } },
+          { text: { contains: "TDS refund" } },
+          { text: { contains: "Tax Regime" } },
+          { text: { contains: "Form 16" } },
+        ]
+      }
+    }),
+    prisma.review.count({
+      where: {
+        status: "APPROVED",
+        OR: [
+          { text: { contains: "MSME" } },
+          { text: { contains: "Udyam" } },
+          { text: { contains: "PMEGP" } },
+          { text: { contains: "CGTMSE" } },
+          { text: { contains: "Mudra" } },
+          { text: { contains: "Working Capital" } },
+          { text: { contains: "Machinery Loan" } },
+        ]
+      }
+    }),
+    prisma.review.count({
+      where: {
+        status: "APPROVED",
+        OR: [
+          { text: { contains: "Home Loan" } },
+          { text: { contains: "Loan Against Property" } },
+          { text: { contains: "Balance Transfer" } },
+          { text: { contains: "Plot Purchase" } },
+          { text: { contains: "Construction" } },
+        ]
+      }
+    }),
+    prisma.review.count({
+      where: {
+        status: "APPROVED",
+        OR: [
+          { text: { contains: "Term Life Insurance" } },
+          { text: { contains: "health insurance" } },
+          { text: { contains: "Health Insurance" } },
+          { text: { contains: "motor insurance" } },
+          { text: { contains: "fire and burglary" } },
+          { text: { contains: "Keyman Insurance" } },
+          { text: { contains: "Marine transit" } },
+          { text: { contains: "liability insurance" } },
+        ]
+      }
+    }),
+    prisma.review.count({
+      where: {
+        status: "APPROVED",
+        OR: [
+          { text: { contains: "Credit Card" } },
+          { text: { contains: "credit card" } },
+          { text: { contains: "CIBIL" } },
+          { text: { contains: "Overdraft" } },
+          { text: { contains: "line of credit" } },
+        ]
+      }
+    }),
   ]);
 
-  const averageRating = (aggregates._avg.rating || 5.0).toFixed(1);
+  const categoryCounts: Record<string, number> = {
+    all: totalCount,
+    itr: itrCount,
+    msme: msmeCount,
+    loan: loanCount,
+    credit: creditCount,
+    insurance: insCount,
+  };
 
+  const averageRating = (aggregates._avg.rating || 5.0).toFixed(1);
   const totalPages = Math.ceil(totalCount / limit);
 
   return (
@@ -55,7 +129,7 @@ export default async function AllReviewsPage({ searchParams }: { searchParams: {
       `}} />
       
       {/* Curved Hero Section */}
-      <div className="relative bg-emerald-900 pt-20 pb-40 overflow-hidden">
+      <div className="relative bg-emerald-900 pt-16 pb-28 md:pb-32 overflow-hidden">
         {/* Background decorative elements */}
         {heroImage?.imageUrl ? (
           <div className="absolute top-0 left-0 w-full h-full z-0">
@@ -137,6 +211,8 @@ export default async function AllReviewsPage({ searchParams }: { searchParams: {
           initialReviews={reviews} 
           totalPages={totalPages} 
           currentPage={page} 
+          initialTotalCount={totalCount}
+          initialCategoryCounts={categoryCounts}
         />
       </div>
       <Footer />

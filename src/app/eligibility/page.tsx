@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
 import QuickEligibility from "@/components/QuickEligibility";
+import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
 
 export const metadata: Metadata = {
   title: "Check Home Loan Eligibility Online India | bfsfin.in",
@@ -32,6 +33,21 @@ export default function EligibilityPage() {
         </div>
 
         <QuickEligibility />
+
+        <HowToUse steps={[
+          "Enter your Net Monthly Income (take-home salary).",
+          "Input the total of all your existing EMIs (car loan, personal loan, etc.).",
+          "Select the loan tenure you want (usually 15-20 years).",
+          "The calculator will instantly show the maximum home loan amount you can get approved for."
+        ]} />
+
+        <CalculatorFAQ calculatorId="eligibility" />
+
+        <RelatedCalculators tools={[
+          { name: "EMI Calculator", link: "/calculator", desc: "Calculate your exact monthly payments for the eligible loan amount." },
+          { name: "Prepayment Savings", link: "/tools/prepayment", desc: "See how part-payments can reduce your loan tenure." },
+          { name: "Stamp Duty Calculator", link: "/tools/stamp-duty", desc: "Estimate the property registration cost in your state." }
+        ]} />
       </main>
 
       <Footer />

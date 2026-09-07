@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
 import StampDutyCalculator from "@/components/calculators/StampDutyCalculator";
+import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
 
 export const metadata: Metadata = {
   title: "Stamp Duty & Registration Calculator | bfsfin.in",
@@ -25,6 +26,21 @@ export default function StampDutyPage() {
         </div>
 
         <StampDutyCalculator />
+
+        <HowToUse steps={[
+          "Select the State where the property is located.",
+          "Enter the total Property Value (or Circle Rate, whichever is higher).",
+          "Select the Owner Gender to see if you qualify for a rebate.",
+          "The calculator will display the total Stamp Duty and Registration Charges you need to pay."
+        ]} />
+
+        <CalculatorFAQ calculatorId="stamp-duty" />
+
+        <RelatedCalculators tools={[
+          { name: "EMI Calculator", link: "/calculator", desc: "Calculate your exact monthly home loan payments." },
+          { name: "Loan Eligibility Calculator", link: "/eligibility", desc: "Check how much loan you are eligible for based on your income." },
+          { name: "Prepayment Savings", link: "/tools/prepayment", desc: "See how part-payments can reduce your loan tenure." }
+        ]} />
       </main>
 
       <Footer />

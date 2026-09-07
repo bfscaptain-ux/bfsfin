@@ -1,9 +1,20 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 
 export async function POST(req: Request) {
   try {
+    // 0. Protect against OTP SMS/SMTP bombing (Max 5 requests per minute)
+    const clientIp = getClientIp(req);
+    const rateCheck = checkRateLimit(`otp-${clientIp}`, 5, 60 * 1000);
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        { success: false, error: "Too many OTP requests from this IP. Please wait 1 minute." },
+        { status: 429 }
+      );
+    }
+
     const { email, name } = await req.json();
 
     if (!email) {

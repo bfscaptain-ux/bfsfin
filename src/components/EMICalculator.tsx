@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Calculator, ArrowRight, Award, ChevronDown, ChevronUp, Info } from "lucide-react";
+import { Calculator, ArrowRight, Award, ChevronDown, ChevronUp, Info, Share2, Download, MessageCircle, FileText } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from "recharts";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedToolLogo from "./AnimatedToolLogo";
@@ -12,6 +12,7 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
   const [rate, setRate] = useState(defaultRate);
   const [tenure, setTenure] = useState(20); // 20 years default
   const [showAmortization, setShowAmortization] = useState(false);
+  const [includeReportInPrint, setIncludeReportInPrint] = useState(true);
 
   // EMI Formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
   const monthlyRate = rate / 12 / 100;
@@ -28,7 +29,7 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
 
   const chartData = [
     { name: "Principal Amount", value: loanAmount, color: "#10b981" }, // emerald-500
-    { name: "Total Interest", value: Math.max(0, totalInterest), color: "#3b82f6" }, // blue-500
+    { name: "Total Interest", value: Math.max(0, totalInterest), color: "#f59e0b" }, // amber-500
   ];
 
   // Generate Amortization Schedule
@@ -55,197 +56,185 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
     return schedule;
   }, [loanAmount, tenure, emi, monthlyRate]);
 
+  const handleWhatsAppShare = () => {
+    const text = `🏠 *My Home Loan EMI Estimate* 🏠\n\n💰 Loan Amount: ₹${loanAmount.toLocaleString('en-IN')}\n📈 Interest Rate: ${rate}% p.a.\n⏳ Tenure: ${tenure} Years\n\n✨ *Monthly EMI: ₹${emi.toLocaleString('en-IN')}*\nTotal Interest: ₹${totalInterest.toLocaleString('en-IN')}\nTotal Payment: ₹${totalPayment.toLocaleString('en-IN')}\n\nCalculated using the advanced BFSFIN EMI Tool. Calculate yours at: https://bfsfin.com/calculator`;
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
+  const handleDownloadPdf = () => {
+    window.print();
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-emerald-950/80 border border-slate-100 dark:border-emerald-800 rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-emerald-900/20 backdrop-blur-3xl transition-colors duration-300 relative overflow-hidden print:p-0 print:border-none print:shadow-none print:bg-transparent"
     >
-      <AnimatedToolLogo />
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-emerald-800 gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-            <Calculator className="w-7 h-7" />
+      <div className="print:hidden"><AnimatedToolLogo /></div>
+      
+      {/* Header of Calculator inside the card */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 pb-6 border-b border-slate-100 dark:border-emerald-800/50 gap-4 print:mb-4 print:pb-4">
+        <div className="flex items-center gap-4 sm:gap-5">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-inner print:hidden">
+            <Calculator className="w-7 h-7 sm:w-8 sm:h-8" />
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-              Interactive EMI Calculator
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight print:text-2xl print:text-black">
+              Smart EMI Calculator
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Accurate Home Loan EMI & Repayment Schedule
+            <p className="text-sm text-slate-500 dark:text-emerald-400/80 font-medium mt-1 print:text-black">
+              Loan: ₹{(loanAmount / 100000).toFixed(1)}L • Rate: {rate}% • Term: {tenure} Yrs
             </p>
           </div>
         </div>
-        <div className="flex items-center self-start sm:self-auto space-x-2 bg-emerald-50 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 text-xs px-4 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 font-medium">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span>Live Rate Sync</span>
+        
+        <div className="hidden print:block text-right">
+          <div className="font-bold text-lg text-emerald-800">Bhardwaj Finance</div>
+          <div className="text-sm">www.bfsfin.com</div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 print:gap-4 print:flex print:flex-col">
         {/* Sliders Area (7 cols) */}
-        <div className="lg:col-span-7 space-y-8">
+        <div className="lg:col-span-7 flex flex-col justify-center space-y-12 print:hidden">
+          
           {/* Loan Amount */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
-              <span className="text-slate-700 dark:text-slate-300">Desired Loan Amount</span>
-              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2 py-1">
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold mr-1">₹</span>
+          <div className="space-y-5">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
+              <span className="text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide">Loan Amount</span>
+              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-xl px-4 py-2.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
+                <span className="text-emerald-600 dark:text-emerald-400 font-black mr-1 text-lg">₹</span>
                 <input
                   type="number"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(Number(e.target.value))}
-                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-xl w-32 outline-none text-right"
+                  className="bg-transparent text-slate-900 dark:text-white font-black text-2xl w-32 sm:w-40 outline-none text-right placeholder-slate-300"
                 />
               </div>
             </div>
-            <input
-              type="range"
-              min={500000}
-              max={1000000000}
-              step={100000}
-              value={loanAmount}
-              onChange={(e) => setLoanAmount(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 transition-all hover:h-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-            />
-            <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
-              <span>₹5 Lakhs</span>
-              <span>₹50 Cr</span>
-              <span>₹100 Cr</span>
+            <div className="relative pt-2">
+              <input
+                type="range"
+                min={500000}
+                max={100000000}
+                step={100000}
+                value={loanAmount}
+                onChange={(e) => setLoanAmount(Number(e.target.value))}
+                className="w-full h-2.5 sm:h-3 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600 transition-all hover:h-3.5"
+              />
+            </div>
+            <div className="flex justify-between text-[11px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
+              <span>5 Lakhs</span>
+              <span>10 Cr</span>
             </div>
           </div>
 
           {/* Interest Rate */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
-              <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                Interest Rate (% p.a.)
-                <Info className="w-4 h-4 text-slate-400" />
+          <div className="space-y-5">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
+              <span className="text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide flex items-center gap-1.5">
+                Interest Rate 
+                <Info className="w-4 h-4 text-emerald-400" />
               </span>
-              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2 py-1">
+              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-xl px-4 py-2.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
                 <input
                   type="number"
                   value={rate}
                   onChange={(e) => setRate(Number(e.target.value))}
-                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-xl w-20 outline-none text-right"
+                  className="bg-transparent text-slate-900 dark:text-white font-black text-2xl w-20 sm:w-24 outline-none text-right"
                 />
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1">%</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-black ml-1 text-lg">%</span>
               </div>
             </div>
-            <input
-              type="range"
-              min={1}
-              max={40}
-              step={0.05}
-              value={rate}
-              onChange={(e) => setRate(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500 transition-all hover:h-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-            />
-            <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
-              <span>1.00%</span>
-              <span>15.00%</span>
-              <span>30.00%</span>
+            <div className="relative pt-2">
+              <input
+                type="range"
+                min={1}
+                max={20}
+                step={0.05}
+                value={rate}
+                onChange={(e) => setRate(Number(e.target.value))}
+                className="w-full h-2.5 sm:h-3 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600 transition-all hover:h-3.5"
+              />
+            </div>
+            <div className="flex justify-between text-[11px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
+              <span>1%</span>
+              <span>20%</span>
             </div>
           </div>
 
           {/* Tenure */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
-              <span className="text-slate-700 dark:text-slate-300">Loan Tenure</span>
-              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2 py-1">
+          <div className="space-y-5">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
+              <span className="text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide">Loan Tenure</span>
+              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-xl px-4 py-2.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
                 <input
                   type="number"
                   value={tenure}
                   onChange={(e) => setTenure(Number(e.target.value))}
-                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-xl w-16 outline-none text-right"
+                  className="bg-transparent text-slate-900 dark:text-white font-black text-2xl w-20 sm:w-24 outline-none text-right"
                 />
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1">Yrs</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1.5 text-base">Yrs</span>
               </div>
             </div>
-            <input
-              type="range"
-              min={5}
-              max={30}
-              step={1}
-              value={tenure}
-              onChange={(e) => setTenure(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 transition-all hover:h-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-            />
-            <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
-              <span>5 Years</span>
-              <span>15 Years</span>
+            <div className="relative pt-2">
+              <input
+                type="range"
+                min={1}
+                max={30}
+                step={1}
+                value={tenure}
+                onChange={(e) => setTenure(Number(e.target.value))}
+                className="w-full h-2.5 sm:h-3 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600 transition-all hover:h-3.5"
+              />
+            </div>
+            <div className="flex justify-between text-[11px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
+              <span>1 Year</span>
               <span>30 Years</span>
             </div>
           </div>
 
-          {/* Recommendation Box */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="p-5 bg-gradient-to-r from-emerald-50 to-emerald-50 dark:from-emerald-950/40 dark:to-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm"
-          >
-            <div className="flex items-center gap-4">
-              <div className="bg-white dark:bg-emerald-900 p-2 rounded-xl shadow-sm border border-slate-100 dark:border-emerald-800">
-                <Award className="w-8 h-8 text-emerald-500 shrink-0" />
-              </div>
-              <div className="text-sm">
-                <div className="font-extrabold text-slate-800 dark:text-slate-200">
-                  Fastest 5-Day Loan Approvals
-                </div>
-                <div className="text-slate-600 dark:text-slate-400 mt-1 leading-snug">
-                  Apply now to get your documents digitally verified and securely processed.
-                </div>
-              </div>
-            </div>
-            <Link
-              href="/apply"
-              className="w-full sm:w-auto bg-emerald-500 text-white dark:text-slate-950 text-sm font-bold px-6 py-3 rounded-xl hover:bg-emerald-600 dark:hover:bg-emerald-400 transition-all shadow-md hover:shadow-lg text-center whitespace-nowrap"
-            >
-              Apply Now
-            </Link>
-          </motion.div>
         </div>
 
         {/* Results Card (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm relative overflow-hidden group">
-            {/* Subtle background glow effect */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/30 transition-all duration-500"></div>
+        <div className="lg:col-span-5 print:w-full flex flex-col gap-6 relative print:block">
+          <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 border border-emerald-800 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden h-full print:border-none print:shadow-none print:bg-transparent print:p-0 print:h-auto print:block print:mt-4">
+            {/* Background Glow inside card */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none print:hidden"></div>
 
-            <div className="space-y-6 relative z-10">
-              <div>
-                <div className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
-                  Calculated Monthly EMI
+            <div className="space-y-8 relative z-10 print:flex print:flex-row print:items-center print:justify-between print:space-y-0 print:border-t print:border-b print:border-slate-200 print:py-6">
+              <div className="text-center sm:text-left">
+                <div className="text-emerald-300/80 text-xs font-bold uppercase tracking-[0.25em] mb-3 print:text-slate-500 print:mb-1">
+                  Your Monthly EMI
                 </div>
                 <motion.div
                   key={emi}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white flex items-baseline gap-1"
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="text-5xl sm:text-6xl font-black text-white flex items-baseline justify-center sm:justify-start gap-1 tracking-tighter print:text-black print:text-5xl"
                 >
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-300">
-                    ₹{emi.toLocaleString("en-IN")}
-                  </span>
-                  <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">/mo</span>
+                  <span className="text-3xl sm:text-4xl text-emerald-400/70 print:text-slate-800">₹</span>
+                  {emi.toLocaleString("en-IN")}
+                  <span className="text-base text-emerald-400/70 font-medium ml-1 print:text-slate-600">/mo</span>
                 </motion.div>
               </div>
 
               {/* Recharts Pie Chart */}
-              <div className="h-48 w-full">
+              <div className="h-56 w-full relative my-6 print:h-32 print:w-32 print:my-0">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={chartData}
                       cx="50%"
                       cy="50%"
-                      innerRadius={50}
-                      outerRadius={80}
-                      paddingAngle={5}
+                      innerRadius="60%"
+                      outerRadius="90%"
+                      paddingAngle={4}
                       dataKey="value"
                       stroke="none"
+                      cornerRadius={6}
                     >
                       {chartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
@@ -254,11 +243,12 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                     <RechartsTooltip
                       formatter={(value: number) => `₹${value.toLocaleString("en-IN")}`}
                       contentStyle={{
-                        backgroundColor: "#0f172a",
-                        borderColor: "#1e293b",
-                        borderRadius: "0.5rem",
-                        color: "white",
-                        fontSize: "0.875rem",
+                         backgroundColor: "#064e3b", // emerald-900
+                         borderColor: "#047857", // emerald-700
+                         borderRadius: "12px",
+                         color: "white",
+                         fontWeight: "bold",
+                         boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)"
                       }}
                       itemStyle={{ color: "#ffffff" }}
                     />
@@ -266,114 +256,129 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                 </ResponsiveContainer>
               </div>
 
-              <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-emerald-800/50 text-sm">
-                <div className="flex justify-between items-center text-slate-600 dark:text-slate-300">
-                  <span className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-                    Principal Amount
+              <div className="space-y-5 pt-6 border-t border-emerald-800/60 print:border-none print:pt-0 print:w-64">
+                <div className="flex justify-between items-center print:border-b print:border-slate-200 print:pb-2">
+                  <span className="flex items-center gap-3 text-emerald-100 font-medium text-sm print:text-slate-700">
+                    <span className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.6)] print:shadow-none"></span>
+                    Principal
                   </span>
-                  <span className="font-bold text-slate-900 dark:text-white">
+                  <span className="font-bold text-white text-lg tracking-wide print:text-black">
                     ₹{loanAmount.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-slate-600 dark:text-slate-300">
-                  <span className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-                    Total Interest
+                <div className="flex justify-between items-center print:border-b print:border-slate-200 print:pb-2">
+                  <span className="flex items-center gap-3 text-emerald-100 font-medium text-sm print:text-slate-700">
+                    <span className="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.6)] print:shadow-none"></span>
+                    Interest
                   </span>
-                  <span className="font-bold text-slate-900 dark:text-white">
+                  <span className="font-bold text-white text-lg tracking-wide print:text-black">
                     ₹{totalInterest.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-slate-900 dark:text-slate-100 pt-2 font-bold text-lg border-t border-slate-200 dark:border-emerald-800/50 mt-2">
-                  <span>Total Payable</span>
-                  <span>₹{totalPayment.toLocaleString("en-IN")}</span>
+                <div className="hidden print:flex justify-between items-center print:pt-1">
+                  <span className="flex items-center gap-3 font-bold text-sm text-black">
+                    Total Payable
+                  </span>
+                  <span className="font-black text-black text-lg tracking-wide">
+                    ₹{totalPayment.toLocaleString("en-IN")}
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="space-y-3">
-            <Link
-              href="/apply"
-              className="group w-full flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 to-emerald-600 hover:from-emerald-500 hover:to-emerald-500 dark:from-emerald-500 dark:to-emerald-600 dark:hover:from-emerald-400 dark:hover:to-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <span className="text-lg">Get Instant Pre-Approval</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <button
-              onClick={() => setShowAmortization(!showAmortization)}
-              className="w-full flex items-center justify-center gap-2 text-slate-600 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 py-3 text-sm font-semibold transition-colors rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50"
-            >
-              <span>{showAmortization ? "Hide" : "View"} Year-wise Repayment Schedule</span>
-              {showAmortization ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-            </button>
           </div>
         </div>
       </div>
 
-      {/* Amortization Table */}
-      <AnimatePresence>
-        {showAmortization && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-10 overflow-hidden"
-          >
-            <div className="pt-6 border-t border-slate-200 dark:border-emerald-800">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-2">
-                <h4 className="text-lg font-black text-slate-900 dark:text-white">
-                  Amortization Schedule (Year-by-Year)
-                </h4>
-                <div className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-3 py-1.5 rounded-lg font-medium">
-                  Loan: ₹{(loanAmount / 100000).toFixed(1)}L @ {rate}% for {tenure} Yrs
-                </div>
-              </div>
+      {/* Action Buttons (Themed) */}
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 print:hidden">
+        <button
+          onClick={handleWhatsAppShare}
+          className="flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 px-4 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <span className="tracking-wide">WhatsApp</span>
+        </button>
+        
+        <button
+          onClick={() => setShowAmortization(!showAmortization)}
+          className="flex items-center justify-center gap-2.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-4 px-4 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+        >
+          <Calculator className="w-5 h-5" />
+          <span className="tracking-wide">{showAmortization ? "Hide Details" : "View Schedule"}</span>
+        </button>
 
-              <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-emerald-800 bg-white dark:bg-emerald-950/50">
-                <table className="w-full text-left text-sm text-slate-600 dark:text-slate-300 min-w-[600px]">
-                  <thead className="bg-slate-50 dark:bg-emerald-900/50 text-slate-500 dark:text-slate-400 uppercase text-[11px] font-bold tracking-wider border-b border-slate-200 dark:border-emerald-800">
-                    <tr>
-                      <th className="py-4 px-5">Year</th>
-                      <th className="py-4 px-5 text-right">Principal Paid</th>
-                      <th className="py-4 px-5 text-right">Interest Paid</th>
-                      <th className="py-4 px-5 text-right">Total Payment</th>
-                      <th className="py-4 px-5 text-right">Remaining Balance</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60">
-                    {amortizationSchedule.map((row) => (
-                      <tr
-                        key={row.year}
-                        className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors"
-                      >
-                        <td className="py-3 px-5 font-bold text-slate-900 dark:text-white">
-                          Year {row.year}
-                        </td>
-                        <td className="py-3 px-5 text-right font-medium text-emerald-600 dark:text-emerald-400">
-                          ₹{row.principal.toLocaleString("en-IN")}
-                        </td>
-                        <td className="py-3 px-5 text-right font-medium text-emerald-600 dark:text-emerald-400">
-                          ₹{row.interest.toLocaleString("en-IN")}
-                        </td>
-                        <td className="py-3 px-5 text-right font-semibold text-slate-700 dark:text-slate-200">
-                          ₹{(row.principal + row.interest).toLocaleString("en-IN")}
-                        </td>
-                        <td className="py-3 px-5 text-right font-medium text-slate-500 dark:text-slate-400">
-                          ₹{row.balance.toLocaleString("en-IN")}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+        {/* PDF Print Controls */}
+        <div className="sm:col-span-2 flex flex-col sm:flex-row items-center gap-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-2 rounded-2xl">
+          <label className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 cursor-pointer pl-4 w-full sm:w-auto flex-1">
+            <input 
+              type="checkbox" 
+              checked={includeReportInPrint}
+              onChange={(e) => setIncludeReportInPrint(e.target.checked)}
+              className="w-5 h-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-600 accent-emerald-600 cursor-pointer"
+            />
+            Include Detailed Report
+          </label>
+          <button
+            onClick={handleDownloadPdf}
+            className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold py-3 px-6 rounded-xl transition-all border border-emerald-200"
+          >
+            <Download className="w-5 h-5" />
+            <span className="tracking-wide">Print PDF</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Amortization Table */}
+      <div className={`mt-12 overflow-hidden transition-all duration-300 ${showAmortization ? 'block opacity-100' : 'hidden opacity-0'} ${includeReportInPrint ? 'print:block print:opacity-100' : 'print:hidden'}`}>
+        <div className="pt-8 border-t border-emerald-100 dark:border-emerald-800/50 print:border-t-2 print:border-emerald-800 print:mt-12 print:pt-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3 print:mb-2">
+            <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight print:text-black">
+              Year-wise Repayment Schedule
+            </h4>
+            <div className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm px-4 py-2.5 rounded-xl font-bold border border-emerald-200 dark:border-emerald-800/50 print:hidden">
+              ₹{(loanAmount / 100000).toFixed(1)}L • {rate}% • {tenure} Yrs
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-emerald-100 dark:border-emerald-800 shadow-sm bg-white dark:bg-emerald-950/30 print:shadow-none print:border-none">
+            <table className="w-full text-left text-sm text-slate-600 dark:text-slate-300 min-w-[600px] print:text-black print:text-xs">
+              <thead className="bg-emerald-50/80 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 uppercase text-[11px] font-black tracking-widest border-b border-emerald-100 dark:border-emerald-800 print:bg-slate-100 print:text-slate-800">
+                <tr>
+                  <th className="py-5 px-6 print:py-2">Year</th>
+                  <th className="py-5 px-6 text-right print:py-2">Principal Paid</th>
+                  <th className="py-5 px-6 text-right print:py-2">Interest Paid</th>
+                  <th className="py-5 px-6 text-right print:py-2">Total Payment</th>
+                  <th className="py-5 px-6 text-right print:py-2">Balance</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-emerald-50 dark:divide-emerald-900/40 print:divide-slate-200">
+                {amortizationSchedule.map((row) => (
+                  <tr
+                    key={row.year}
+                    className="hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 transition-colors"
+                  >
+                    <td className="py-4 px-6 font-black text-slate-900 dark:text-white print:py-1 print:text-black">
+                      Year {row.year}
+                    </td>
+                    <td className="py-4 px-6 text-right font-bold text-emerald-600 dark:text-emerald-400 print:py-1 print:text-black">
+                      ₹{row.principal.toLocaleString("en-IN")}
+                    </td>
+                    <td className="py-4 px-6 text-right font-bold text-amber-500 dark:text-amber-400 print:py-1 print:text-black">
+                      ₹{row.interest.toLocaleString("en-IN")}
+                    </td>
+                    <td className="py-4 px-6 text-right font-bold text-slate-700 dark:text-slate-200 print:py-1 print:text-black">
+                      ₹{(row.principal + row.interest).toLocaleString("en-IN")}
+                    </td>
+                    <td className="py-4 px-6 text-right font-semibold text-slate-400 dark:text-slate-500 print:py-1 print:text-black">
+                      ₹{row.balance.toLocaleString("en-IN")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

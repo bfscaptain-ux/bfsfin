@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import CertificationsClient from "./CertificationsClient";
 
 export const metadata: Metadata = {
-  title: "RBI Registrations & Certifications | Bhardwaj Financial Services",
-  description: "Bhardwaj Financial Services is an authorized DSA for 50+ Banks & NBFCs operating under strict RBI guidelines. We ensure 100% transparent and secure loan processing.",
+  title: "Official Compliance & Certifications | Bhardwaj Financial Services",
+  description: "Bhardwaj Financial Services (BFS) operates under strict RBI lending guidelines, IRDAI insurance compliance, and authorized banking distribution standards. 100% secure processing for Loans, Insurance & Credit Cards in Agra and Pan-India.",
   keywords: [
-    "RBI approved loan consultant",
-    "authorized DSA for banks",
-    "certified loan agent India",
-    "RBI guidelines home loans",
-    "Bhardwaj Finance certifications",
-    "secure loan processing Agra",
+    "authorized DSA India",
+    "RBI compliant loan partner",
+    "IRDAI insurance distribution agra",
+    "certified financial consultant agra",
+    "bhardwaj financial services certifications",
+    "secure loan processing agra sanjay place",
     "ISO compliant finance company",
     "trusted loan broker India"
   ],
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Official Registrations & Certifications - Bhardwaj Financial Services",
-    description: "Your trust is our priority. Explore our DSA authorizations and compliance standards that guarantee a secure, 100% transparent loan process.",
+    description: "Your trust is our priority. Explore our DSA authorizations and regulatory compliance standards across Loans, Insurance, and Credit Cards.",
     url: "https://bhardwajfinance.com/about/certifications",
     siteName: "Bhardwaj Financial Services",
     images: [
@@ -71,26 +71,26 @@ export default function CertificationsPage() {
         "certification": [
           {
             "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "Direct Selling Agent (DSA)",
+            "credentialCategory": "RBI-Compliant Lending Distribution Partner",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "State Bank of India (SBI)"
+              "name": "Institutional Lending Network"
             }
           },
           {
             "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "Direct Selling Agent (DSA)",
+            "credentialCategory": "IRDAI-Aligned Insurance Distribution & Claim Advisory",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "HDFC Bank"
+              "name": "General & Health Insurance Desks"
             }
           },
           {
             "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "Direct Selling Agent (DSA)",
+            "credentialCategory": "Authorized Credit Card Sourcing Channel",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "Punjab National Bank (PNB)"
+              "name": "Banking Card Sourcing Bureau"
             }
           }
         ]

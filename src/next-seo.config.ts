@@ -7,7 +7,7 @@ export const defaultSeoConfig: any = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://www.bfsagra.com",
+    url: "https://www.bfsfin.com",
     site_name: "BFS AGRA",
     images: [
       {
@@ -19,8 +19,8 @@ export const defaultSeoConfig: any = {
     ],
   },
   twitter: {
-    handle: "@bfsagra",
-    site: "@bfsagra",
+    handle: "@bfsfin",
+    site: "@bfsfin",
     cardType: "summary_large_image",
   },
 };

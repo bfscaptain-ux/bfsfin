@@ -16,6 +16,12 @@ export default function HeroContentCMS() {
   const [imageUrl, setImageUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState("");
+  const [conversionInfo, setConversionInfo] = useState<{
+    originalName: string;
+    originalSize: number;
+    newSize: number;
+    savings: number;
+  } | null>(null);
   const [heroText, setHeroText] = useState({
     heroBadgeText: "RBI Registered & Verified Partners",
     heroTitlePart1: "Your Dream Home,",
@@ -154,6 +160,7 @@ export default function HeroContentCMS() {
                   setImageUrl(pageImages[val] || "");
                   setPreviewUrl("");
                   setSelectedFile(null);
+                  setConversionInfo(null);
                 }}
                 className="w-full sm:w-auto min-w-[300px] bg-white border-2 border-emerald-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-bold text-emerald-800 shadow-sm"
               >
@@ -162,6 +169,12 @@ export default function HeroContentCMS() {
                   <option value="about">About Us Page</option>
                   <option value="contact">Contact Us Page</option>
                   <option value="reviews">Client Reviews Page</option>
+                  <option value="complaint">Complaint & Grievance Page</option>
+                  <option value="appointment">Book Appointment Page</option>
+                  <option value="apply">Apply Now Page</option>
+                  <option value="careers">Careers Page</option>
+                  <option value="blog">Blog & Articles Page</option>
+                  <option value="testimonials">Testimonials Page</option>
                 </optgroup>
                 <optgroup label="Loan Products">
                   <option value="products/home-loan">Home Loan</option>
@@ -180,11 +193,45 @@ export default function HeroContentCMS() {
                   <option value="products/working-capital">Working Capital</option>
                   <option value="products/loan-against-securities">Loan Against Securities</option>
                 </optgroup>
+                <optgroup label="Credit Cards">
+                  <option value="products/credit-cards">Credit Cards (Main Page)</option>
+                  <option value="products/credit-cards/hdfc-millennia">HDFC Millennia Card</option>
+                  <option value="products/credit-cards/sbi-simplyclick">SBI SimplyCLICK Card</option>
+                  <option value="products/credit-cards/icici-amazon-pay">ICICI Amazon Pay Card</option>
+                  <option value="products/credit-cards/axis-flipkart">Axis Flipkart Card</option>
+                  <option value="products/credit-cards/hdfc-regalia">HDFC Regalia Card</option>
+                  <option value="products/credit-cards/amex-platinum">Amex Platinum Card</option>
+                </optgroup>
+                <optgroup label="Insurance Products">
+                  <option value="products/insurance">Insurance (Main Page)</option>
+                  <option value="products/insurance/health-insurance">Health Insurance</option>
+                  <option value="products/insurance/term-life">Term Life Insurance</option>
+                  <option value="products/insurance/family-floater">Family Floater Plans</option>
+                  <option value="products/insurance/critical-illness">Critical Illness Cover</option>
+                  <option value="products/insurance/car-insurance">Car / Motor Insurance</option>
+                  <option value="products/insurance/two-wheeler-insurance">Two Wheeler Insurance</option>
+                  <option value="products/insurance/home-insurance">Home & Fire Insurance</option>
+                </optgroup>
+                <optgroup label="Tax & Compliance Services">
+                  <option value="services/itr-filing">ITR Filing Desk</option>
+                  <option value="services/msme-registration">MSME / Udyam Registration</option>
+                </optgroup>
+                <optgroup label="Tools & Calculators">
+                  <option value="calculator">EMI Calculator (Main)</option>
+                  <option value="eligibility">Loan Eligibility Checker</option>
+                  <option value="tools/balance-transfer">Balance Transfer Savings Tool</option>
+                  <option value="tools/stamp-duty">Stamp Duty Calculator</option>
+                  <option value="tools/prepayment">Prepayment Impact Tool</option>
+                </optgroup>
                 <optgroup label="Partner Banks">
                   <option value="banks/hdfc">HDFC Bank</option>
                   <option value="banks/icici">ICICI Bank</option>
                   <option value="banks/pnb">PNB</option>
+                  <option value="banks/sbi">SBI</option>
+                  <option value="banks/axis">Axis Bank</option>
                   <option value="banks/central-bank">Central Bank</option>
+                  <option value="banks/idbi">IDBI Bank</option>
+                  <option value="banks/bob">Bank of Baroda</option>
                 </optgroup>
               </select>
               <p className="text-xs text-emerald-600 mt-2 font-medium">Tip: Select a page from the dropdown to update its specific background image.</p>
@@ -205,22 +252,96 @@ export default function HeroContentCMS() {
               
               <div className="max-w-3xl space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wide">Upload New Image (From Your System)</label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                      Upload New Image (From Your System)
+                    </label>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-md shadow-xs">
+                      ⚡ Auto-Converts to .WebP
+                    </span>
+                  </div>
                   <input 
                     type="file" 
-                    accept="image/*"
-                    onChange={(e) => {
+                    accept="image/*,.webp,.png,.jpg,.jpeg,.gif,.bmp"
+                    onChange={async (e) => {
                       const file = e.target.files?.[0];
                       if (file) {
-                        setSelectedFile(file);
-                        setPreviewUrl(URL.createObjectURL(file));
+                        try {
+                          const originalSizeKb = Math.round(file.size / 1024);
+                          // Automatic conversion to .webp using native HTML5 Canvas
+                          const img = new Image();
+                          const objectUrl = URL.createObjectURL(file);
+                          img.onload = () => {
+                            const canvas = document.createElement("canvas");
+                            canvas.width = img.naturalWidth || img.width;
+                            canvas.height = img.naturalHeight || img.height;
+                            const ctx = canvas.getContext("2d");
+                            if (ctx) {
+                              ctx.drawImage(img, 0, 0);
+                              canvas.toBlob(
+                                (blob) => {
+                                  if (blob) {
+                                    const baseName = file.name.replace(/\.[^/.]+$/, "");
+                                    const webpFile = new File([blob], `${baseName}.webp`, { type: "image/webp" });
+                                    const newSizeKb = Math.round(blob.size / 1024);
+                                    setSelectedFile(webpFile);
+                                    setPreviewUrl(URL.createObjectURL(blob));
+                                    setConversionInfo({
+                                      originalName: file.name,
+                                      originalSize: originalSizeKb,
+                                      newSize: newSizeKb,
+                                      savings: originalSizeKb > 0 ? Math.round(((originalSizeKb - newSizeKb) / originalSizeKb) * 100) : 0
+                                    });
+                                  } else {
+                                    setSelectedFile(file);
+                                    setPreviewUrl(objectUrl);
+                                  }
+                                },
+                                "image/webp",
+                                0.88 // 88% quality: visually lossless, maximum compression
+                              );
+                            } else {
+                              setSelectedFile(file);
+                              setPreviewUrl(objectUrl);
+                            }
+                          };
+                          img.onerror = () => {
+                            setSelectedFile(file);
+                            setPreviewUrl(objectUrl);
+                          };
+                          img.src = objectUrl;
+                        } catch (err) {
+                          console.error("WebP conversion fallback", err);
+                          setSelectedFile(file);
+                          setPreviewUrl(URL.createObjectURL(file));
+                        }
                       }
                     }} 
                     className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100" 
                   />
+
+                  {/* Conversion Details Notice */}
+                  {conversionInfo && (
+                    <div className="mt-2.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between text-xs text-emerald-900 animate-in fade-in">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                        <span>
+                          <strong>Converted to WebP:</strong> &ldquo;{conversionInfo.originalName}&rdquo; ({conversionInfo.originalSize} KB) → <strong>{conversionInfo.newSize} KB (.webp)</strong>
+                        </span>
+                      </div>
+                      {conversionInfo.savings > 0 && (
+                        <span className="font-black text-emerald-700 bg-emerald-200/80 px-2 py-0.5 rounded-md">
+                          {conversionInfo.savings}% Smaller!
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-1 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                    <strong>Smart Compression Active:</strong> Aap JPG, PNG ya koi bhi format choose karein, system automatically use high-performance <strong>.webp</strong> format mein convert karke hi save karega.
+                  </p>
                 </div>
-                
-                {/* URL input removed as per your request - only local uploads are allowed now */}
               </div>
             </div>
 

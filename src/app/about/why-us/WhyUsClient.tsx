@@ -69,8 +69,8 @@ export default function WhyUsClient() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-tight tracking-tight mb-6"
           >
-            Stop fighting for a loan. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500">Start building your home.</span>
+            Stop fighting for finance. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500">Loans, Insurance & Credit Cards.</span>
           </motion.h1>
           
           <motion.p 
@@ -79,7 +79,7 @@ export default function WhyUsClient() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-base md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-light mb-8 max-w-2xl mx-auto"
           >
-            Getting a home loan in India shouldn't feel like a battle. We bypass the red tape, hidden fees, and bank rejections to get you approved in as little as 5 days.
+            Getting a Home Loan from 7.15%* ROI, 100% cashless health insurance with free claim support, or lifetime-free credit cards shouldn't feel like a battle. We eliminate red tape across 50+ institutional partner pools.
           </motion.p>
           
           <motion.div 
@@ -89,7 +89,10 @@ export default function WhyUsClient() {
             className="flex flex-wrap gap-4 justify-center"
           >
             <Link href="/apply" className="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-bold text-sm transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 flex items-center gap-2">
-              Apply Now <ArrowRight className="w-4 h-4" />
+              Apply for Loan <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/insurance" className="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-slate-900 dark:text-white border border-slate-300 dark:border-white/20 rounded-xl font-bold text-sm transition-all hover:scale-105 flex items-center gap-2">
+              Explore Insurance & Cards
             </Link>
           </motion.div>
         </div>
@@ -342,8 +345,8 @@ export default function WhyUsClient() {
               },
               {
                 icon: Landmark,
-                title: "All Banks Under One Roof",
-                desc: "SBI, HDFC, ICICI, PNB, Bajaj... we check your eligibility across all of them with a single file."
+                title: "50+ Institutional Partner Pools",
+                desc: "We check your eligibility across leading nationalized banks, private institutions, and top NBFCs simultaneously with zero CIBIL impact."
               },
               {
                 icon: ShieldCheck,

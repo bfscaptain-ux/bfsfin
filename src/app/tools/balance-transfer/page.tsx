@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
 import BalanceTransferCalculator from "@/components/calculators/BalanceTransferCalculator";
+import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
 
 export const metadata: Metadata = {
   title: "Home Loan Balance Transfer Calculator | bfsfin.in",
@@ -31,6 +32,22 @@ export default async function BalanceTransferPage() {
         </div>
 
         <BalanceTransferCalculator defaultRate={defaultRate} />
+
+        <HowToUse steps={[
+          "Enter your Outstanding Loan Balance.",
+          "Enter your Existing Interest Rate.",
+          "Enter the New Interest Rate offered by the target bank.",
+          "Enter your Remaining Loan Tenure in months.",
+          "The calculator will show your exact monthly EMI savings and total interest saved."
+        ]} />
+
+        <CalculatorFAQ calculatorId="balance-transfer" />
+
+        <RelatedCalculators tools={[
+          { name: "EMI Calculator", link: "/calculator", desc: "Calculate your exact monthly payments." },
+          { name: "Prepayment Savings", link: "/tools/prepayment", desc: "See how part-payments can reduce your loan tenure." },
+          { name: "Loan Eligibility Calculator", link: "/eligibility", desc: "Check how much loan you are eligible for based on your income." }
+        ]} />
       </main>
 
       <Footer />

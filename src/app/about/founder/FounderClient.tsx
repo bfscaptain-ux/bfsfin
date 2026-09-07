@@ -11,6 +11,7 @@ import { Award, ShieldCheck, CheckCircle2, Users, Rocket, TrendingUp, ChevronRig
 export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
 
     const [teamMembers, setTeamMembers] = useState<any[]>([]);
+    const [socialLinks, setSocialLinks] = useState<Record<string, string>>({});
 
   useEffect(() => {
     fetch("/api/team")
@@ -19,6 +20,20 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
         if (Array.isArray(data)) setTeamMembers(data);
       })
       .catch(console.error);
+    
+    fetch("/api/settings")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.settings) {
+          setSocialLinks({
+            linkedin: data.settings.socialLinkedIn || "",
+            twitter: data.settings.socialTwitter || "",
+            facebook: data.settings.socialFacebook || "",
+            instagram: data.settings.socialInstagram || "",
+          });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const owner = ownerConfig || {
@@ -27,6 +42,40 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
     quote: "We don't just secure loans; we legally vet your lifetime investment. Total transparency, zero hidden brokerage.",
     image: "/owner.png"
   };
+
+  const defaultTeam = [
+    {
+      name: owner?.name || "Adv. Praveen Bhardwaj",
+      role: owner?.role || "Founder & Managing Director",
+      desc: "Dual expertise in Corporate Law (LLB) and Banking Finance (MBA). Leading transparent multi-bank lending & consumer financial advisory across North India.",
+      color: "emerald",
+      initials: "PB",
+      imageUrl: owner?.image || "/praveen_bhardwaj.png"
+    },
+    {
+      name: "Credit Underwriting Desk",
+      role: "Head of Multi-Bank Sanctions",
+      desc: "Direct coordination with 50+ institutional lending pools to ensure Home & Business Loans get approved at minimum ROI with express 5-day TAT.",
+      color: "blue",
+      initials: "CU"
+    },
+    {
+      name: "Insurance & Claims Concierge",
+      role: "Head of Bima & Cashless Settlements",
+      desc: "Providing 100% free claim settlement assistance across 10,000+ cashless network hospitals and 0-depreciation motor insurance claims.",
+      color: "purple",
+      initials: "IC"
+    },
+    {
+      name: "Cards & Credit Advisory",
+      role: "Lead Portfolio & CIBIL Specialist",
+      desc: "Curating lifetime-free credit cards, airport lounge privileges, and personalized credit score rebuilding strategies.",
+      color: "orange",
+      initials: "CS"
+    }
+  ];
+
+  const displayTeam = teamMembers && teamMembers.length > 0 ? teamMembers : defaultTeam;
 
   const fadeInUp = {
     initial: { opacity: 0, y: 40 },
@@ -76,7 +125,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                   className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight tracking-tight mb-3"
                 >
                   The Minds Behind Your <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500">Dream Home.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500">Financial Freedom.</span>
                 </motion.h1>
                 
                 <motion.p 
@@ -85,7 +134,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-light mb-5 max-w-xl"
                 >
-                  With over a decade of banking expertise, our leadership team is dedicated to breaking down financial barriers and making loan approvals faster, transparent, and hassle-free.
+                  With over 15 years of legal and financial expertise, our leadership team provides transparent, single-window solutions across Loans @ 7.15%* ROI, 100% Cashless Insurance, and Lifetime-Free Credit Cards.
                 </motion.p>
                 
                 <motion.div 
@@ -94,8 +143,8 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="flex flex-wrap gap-3"
                 >
-                  <button className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-bold text-sm transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105">Meet the Team</button>
-                  <button className="px-6 py-2.5 bg-emerald-900/5 hover:bg-emerald-900/10 dark:bg-white/5 dark:hover:bg-white/10 text-slate-900 dark:text-white border border-slate-900/10 dark:border-white/10 rounded-xl font-bold text-sm transition-all backdrop-blur-md hover:scale-105 flex items-center gap-2">Join BFS <ChevronRight className="w-4 h-4" /></button>
+                  <a href="#leadership-team" className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-bold text-sm transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105">Meet the Team</a>
+                  <a href="/contact" className="px-6 py-2.5 bg-emerald-900/5 hover:bg-emerald-900/10 dark:bg-white/5 dark:hover:bg-white/10 text-slate-900 dark:text-white border border-slate-900/10 dark:border-white/10 rounded-xl font-bold text-sm transition-all backdrop-blur-md hover:scale-105 flex items-center gap-2">Contact BFS <ChevronRight className="w-4 h-4" /></a>
                 </motion.div>
               </div>
 
@@ -224,9 +273,11 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
               </blockquote>
               
               <div className="flex gap-4 pt-4">
-                <a href="#" className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-emerald-100 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-slate-500">
+                {socialLinks.linkedin && (
+                <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-emerald-100 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-slate-500">
                   <Linkedin className="w-5 h-5" />
                 </a>
+                )}
                 <a href="mailto:director@bhardwajfinance.com" className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-emerald-100 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-slate-500">
                   <Mail className="w-5 h-5" />
                 </a>
@@ -250,9 +301,10 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                id="leadership-team"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
               >
-                {teamMembers.length > 0 ? teamMembers.map((member, i) => {
+                {displayTeam.map((member, i) => {
                   const color = member.color || "emerald";
                   
                   const colorClasses: Record<string, { bg: string, text: string }> = {
@@ -266,7 +318,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                   return (
                     <motion.div key={member.id || i} variants={fadeInUp} className="group relative bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 rounded-3xl p-6 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(16,185,129,0.1)] text-center shadow-sm">
                       <div className={`w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br ${currentColors.bg} p-1 group-hover:scale-110 transition-transform duration-300`}>
-                        <div className="w-full h-full rounded-full bg-white dark:bg-emerald-900 flex items-center justify-center text-3xl font-black text-slate-800 dark:text-white shadow-inner overflow-hidden relative">
+                        <div className="w-full h-full rounded-full bg-white dark:bg-emerald-900 flex items-center justify-center text-2xl font-black text-slate-800 dark:text-white shadow-inner overflow-hidden relative">
                           {member.imageUrl ? (
                             <Image src={member.imageUrl} alt={member.name} fill className="object-cover" />
                           ) : (
@@ -281,11 +333,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                       </p>
                     </motion.div>
                   );
-                }) : (
-                  <div className="col-span-full text-center text-slate-500 py-12">
-                    No team members found. Add them in the Admin Panel.
-                  </div>
-                )}
+                })}
               </motion.div>
 
           </div>

@@ -1,0 +1,1 @@
+const fs = require("fs"); let code = fs.readFileSync("src/lib/nlp.ts", "utf8"); code = code.replace(/if \(context\.includes\("CIBIL"\) \|\| context\.includes\("score"\)\) \{[\s\S]*?\n\s*\}/, ""); fs.writeFileSync("src/lib/nlp.ts", code);
