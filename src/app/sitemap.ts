@@ -26,29 +26,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 1. STATIC PAGES (Core & Structural)
   const staticRoutes = [
     { path: '', priority: 1.0, freq: 'daily' },
+    // About
     { path: '/about', priority: 0.8, freq: 'monthly' },
     { path: '/about/founder', priority: 0.8, freq: 'monthly' },
     { path: '/about/why-us', priority: 0.8, freq: 'monthly' },
     { path: '/about/certifications', priority: 0.7, freq: 'monthly' },
+    // Banks
+    { path: '/banks/central-bank', priority: 0.8, freq: 'monthly' },
+    { path: '/banks/hdfc', priority: 0.8, freq: 'monthly' },
+    { path: '/banks/icici', priority: 0.8, freq: 'monthly' },
+    { path: '/banks/pnb', priority: 0.8, freq: 'monthly' },
+    // Contact & Support
     { path: '/contact', priority: 0.9, freq: 'monthly' },
     { path: '/contact/locations', priority: 0.9, freq: 'monthly' },
-    { path: '/apply', priority: 0.9, freq: 'weekly' },
-    { path: '/calculator', priority: 0.9, freq: 'monthly' },
-    { path: '/eligibility', priority: 0.9, freq: 'monthly' },
-    { path: '/blog', priority: 0.9, freq: 'daily' },
-    { path: '/faq', priority: 0.8, freq: 'weekly' },
-    { path: '/testimonials', priority: 0.8, freq: 'weekly' },
-    { path: '/reviews', priority: 0.8, freq: 'daily' },
+    { path: '/complaint', priority: 0.8, freq: 'yearly' },
+    { path: '/appointment', priority: 0.9, freq: 'weekly' },
+    // Legal
+    { path: '/disclaimer', priority: 0.5, freq: 'yearly' },
+    // Careers
+    { path: '/careers', priority: 0.7, freq: 'weekly' },
+    // AI
+    { path: '/ai-loan-advisor', priority: 0.9, freq: 'daily' },
+    // Products
     { path: '/products', priority: 0.9, freq: 'weekly' },
+    { path: '/products/credit-cards', priority: 0.9, freq: 'weekly' },
+    { path: '/products/insurance', priority: 0.9, freq: 'weekly' },
+    // Services
     { path: '/services/itr-filing', priority: 0.95, freq: 'daily' },
     { path: '/services/msme-registration', priority: 0.95, freq: 'daily' },
+    // Calculators
+    { path: '/calculator', priority: 0.9, freq: 'monthly' },
+    { path: '/calculator/credit-cards/minimum-due', priority: 0.8, freq: 'monthly' },
+    { path: '/calculator/credit-cards/payoff', priority: 0.8, freq: 'monthly' },
+    { path: '/calculator/credit-cards/rewards', priority: 0.8, freq: 'monthly' },
+    { path: '/calculator/insurance/health-premium', priority: 0.8, freq: 'monthly' },
+    { path: '/calculator/insurance/hlv', priority: 0.8, freq: 'monthly' },
+    { path: '/calculator/insurance/tax-saver', priority: 0.8, freq: 'monthly' },
     // Tools
     { path: '/tools/affordability', priority: 0.8, freq: 'monthly' },
     { path: '/tools/balance-transfer', priority: 0.8, freq: 'monthly' },
     { path: '/tools/interest-rate-compare', priority: 0.8, freq: 'monthly' },
     { path: '/tools/prepayment', priority: 0.8, freq: 'monthly' },
     { path: '/tools/stamp-duty', priority: 0.8, freq: 'monthly' },
-    { path: '/tools/tax-benefit', priority: 0.8, freq: 'monthly' }
+    { path: '/tools/tax-benefit', priority: 0.8, freq: 'monthly' },
+    // Resources
+    { path: '/resources/credit-score', priority: 0.8, freq: 'monthly' },
+    { path: '/resources/documents', priority: 0.8, freq: 'monthly' },
+    { path: '/resources/downloads', priority: 0.8, freq: 'monthly' },
+    { path: '/resources/process', priority: 0.8, freq: 'monthly' },
+    // Miscellaneous
+    { path: '/apply', priority: 0.9, freq: 'weekly' },
+    { path: '/eligibility', priority: 0.9, freq: 'monthly' },
+    { path: '/blog', priority: 0.9, freq: 'daily' },
+    { path: '/faq', priority: 0.8, freq: 'weekly' },
+    { path: '/testimonials', priority: 0.8, freq: 'weekly' },
+    { path: '/reviews', priority: 0.8, freq: 'daily' }
   ];
 
   staticRoutes.forEach(route => {
@@ -159,6 +191,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   } catch (e) {
     console.error('Sitemap: Failed to fetch reviews');
+  }
+
+  // 7. HARDCODED DYNAMIC CREDIT CARDS
+  const creditCardSlugs = ['hdfc-millennia', 'sbi-simplyclick', 'icici-amazon-pay', 'axis-ace', 'sbi-elite', 'axis-magnus'];
+  creditCardSlugs.forEach(slug => {
+    sitemapEntries.push({
+      url: `${BASE_URL}/products/credit-cards/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    });
+  });
+
+  // 8. HARDCODED DYNAMIC INSURANCE
+  const insuranceSlugs = ['term-life', 'health-insurance', 'family-floater', 'critical-illness', 'car-insurance', 'two-wheeler-insurance', 'home-insurance', 'business-insurance'];
+  insuranceSlugs.forEach(slug => {
+    sitemapEntries.push({
+      url: `${BASE_URL}/products/insurance/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    });
+  });
+
+  // 9. DYNAMIC JOBS
+  try {
+    const dbJobs = await prisma.jobPost.findMany({
+      where: { status: 'PUBLISHED' },
+      select: { id: true, updatedAt: true }
+    });
+    dbJobs.forEach(job => {
+      sitemapEntries.push({
+        url: `${BASE_URL}/careers/apply/${job.id}`,
+        lastModified: job.updatedAt,
+        changeFrequency: 'weekly',
+        priority: 0.7,
+      });
+    });
+  } catch (e) {
+    console.error('Sitemap: Failed to fetch jobs');
   }
 
   // Deduplicate URLs in case of overlap between DB and JSON
