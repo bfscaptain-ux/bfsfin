@@ -218,7 +218,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 9. DYNAMIC JOBS
   try {
     const dbJobs = await prisma.jobPost.findMany({
-      where: { status: 'PUBLISHED' },
+      where: { isActive: true },
       select: { id: true, updatedAt: true }
     });
     dbJobs.forEach(job => {
