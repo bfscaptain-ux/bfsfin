@@ -194,7 +194,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // 7. HARDCODED DYNAMIC CREDIT CARDS
-  const creditCardSlugs = ['hdfc-millennia', 'sbi-simplyclick', 'icici-amazon-pay', 'axis-ace', 'sbi-elite', 'axis-magnus'];
+  const creditCardSlugs = ['hdfc-millennia', 'sbi-simplyclick', 'icici-amazon-pay', 'axis-flipkart', 'axis-ace', 'sbi-elite', 'axis-magnus'];
   creditCardSlugs.forEach(slug => {
     sitemapEntries.push({
       url: `${BASE_URL}/products/credit-cards/${slug}`,

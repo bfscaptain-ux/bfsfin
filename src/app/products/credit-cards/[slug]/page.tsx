@@ -47,6 +47,20 @@ const CARDS_DB = {
     ],
     rating: "4.9"
   },
+  "axis-flipkart": {
+    title: "Flipkart Axis Bank Credit Card",
+    description: "One of the best cashback cards for online shopping, especially on Flipkart and Myntra.",
+    image: "/images/cards/axis-flipkart.png",
+    joiningFee: "₹500",
+    annualFee: "₹500",
+    benefits: [
+      "5% unlimited cashback on Flipkart",
+      "4% cashback on Cleartrip, Cult.fit, PVR, Swiggy, and Uber",
+      "1.5% unlimited cashback on all other spends",
+      "4 complimentary domestic lounge visits per year"
+    ],
+    rating: "4.8"
+  },
   "axis-ace": {
     title: "Axis Bank ACE Credit Card",
     description: "Earn flat 2% cashback on all spends, with no upper limit.",
