@@ -129,18 +129,49 @@ export default function PrivacyPolicyPage() {
               If you have any questions, concerns, or requests regarding your data, or if you wish to withdraw your consent for data processing, please contact our Grievance and Compliance Desk:
             </p>
             
-            <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-xl border border-emerald-100 dark:border-emerald-800/30 mt-6 not-prose">
-              <p className="text-slate-900 dark:text-white font-bold mb-1">Bhardwaj Financial Services</p>
-              <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, UP - 282002</p>
+            <div className="relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800/40 mt-8 shadow-sm group hover:shadow-md transition-all duration-300 not-prose">
+              {/* Decorative shapes */}
+              <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-emerald-500/10 blur-2xl group-hover:bg-emerald-500/20 transition-all duration-500"></div>
+              <div className="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 rounded-full bg-teal-500/10 blur-xl group-hover:bg-teal-500/20 transition-all duration-500"></div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="mailto:privacy@bhardwajfinance.com" className="inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-semibold hover:underline">
-                  <Mail className="w-4 h-4" /> privacy@bhardwajfinance.com
-                </a>
-                <span className="hidden sm:inline text-slate-300 dark:text-slate-600">|</span>
-                <a href="tel:+919258724227" className="inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-semibold hover:underline">
-                  +91 9258-724-227
-                </a>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center border border-emerald-100 dark:border-slate-700">
+                    <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">Bhardwaj Financial Services</h4>
+                    <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">Grievance & Compliance Desk</p>
+                  </div>
+                </div>
+                
+                <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 mt-4 ml-1">
+                  Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, UP - 282002
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 ml-1">
+                  <a 
+                    href="mailto:info@bfsfin.com" 
+                    className="group/link flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors bg-white dark:bg-slate-800/80 px-4 py-2.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700/50"
+                  >
+                    <div className="bg-emerald-100 dark:bg-emerald-900/40 p-1.5 rounded-lg group-hover/link:scale-110 transition-transform">
+                      <Mail className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                    <span className="font-semibold text-sm">info@bfsfin.com</span>
+                  </a>
+                  
+                  <a 
+                    href="tel:+917900979001" 
+                    className="group/link flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors bg-white dark:bg-slate-800/80 px-4 py-2.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700/50"
+                  >
+                    <div className="bg-emerald-100 dark:bg-emerald-900/40 p-1.5 rounded-lg group-hover/link:scale-110 transition-transform">
+                      <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-sm">+91 7900-979-001</span>
+                  </a>
+                </div>
               </div>
             </div>
 
