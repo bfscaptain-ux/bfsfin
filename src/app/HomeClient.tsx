@@ -1575,7 +1575,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 </ul>
               </div>
               <Link
-                href="/insurance"
+                href="/products/insurance"
                 className="w-full py-3 sm:py-3.5 px-4 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-600/20"
               >
                 Explore Insurance <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -1670,7 +1670,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               </div>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3 sm:pt-4">
                 <Link
-                  href="/insurance"
+                  href="/products/insurance"
                   className="px-6 py-3.5 bg-teal-600 hover:bg-teal-500 text-white font-black text-sm rounded-xl shadow-lg shadow-teal-600/20 transition-all flex items-center justify-center gap-2 active:scale-95 text-center"
                 >
                   Explore Insurance Plans <ArrowRight className="w-4 h-4" />
