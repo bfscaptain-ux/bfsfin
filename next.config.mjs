@@ -6,6 +6,20 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  async redirects() {
+    return [
+      {
+        source: '/insurance',
+        destination: '/products/insurance',
+        permanent: true,
+      },
+      {
+        source: '/credit-cards',
+        destination: '/products/credit-cards',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
