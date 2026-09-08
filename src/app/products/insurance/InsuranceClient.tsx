@@ -79,6 +79,8 @@ export default function InsuranceClient({ heroImageUrl }: { heroImageUrl?: strin
       bg: "bg-slate-100 dark:bg-slate-700/30",
       features: ["Shop & Office Insurance", "Group Health Plans", "Liability Covers"]
     }
+  ];
+
   // Form State
   const [formData, setFormData] = useState({ name: "", phone: "", insuranceType: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
