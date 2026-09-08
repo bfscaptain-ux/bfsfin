@@ -1,161 +1,97 @@
-"use client";
-import Link from "next/link";
-import { ShieldCheck, CheckCircle2, ArrowRight, HeartPulse, Umbrella, Car, Briefcase, Award, Star, Activity, FileCheck, Users, ActivitySquare, ShieldAlert, Bike, Home } from "lucide-react";
-import { motion } from "framer-motion";
-
-export default function InsuranceClient({ heroImageUrl }: { heroImageUrl?: string }) {
-  // 8 Specific Insurance Products mapped for SEO and better backlinking
-  const insuranceProducts = [
-    {
-      slug: "health-insurance",
-      title: "Health & Medical",
-      desc: "Comprehensive health cover for medical emergencies.",
-      icon: HeartPulse,
-      color: "text-emerald-500",
-      bg: "bg-emerald-50 dark:bg-emerald-500/10",
-      features: ["Individual & Family Floater", "Pre-existing Disease Cover", "Cashless Network Hospitals"]
-    },
-    {
-      slug: "term-life",
-      title: "Term Life Cover",
-      desc: "High life cover at an affordable premium.",
-      icon: Umbrella,
-      color: "text-teal-500",
-      bg: "bg-teal-50 dark:bg-teal-500/10",
-      features: ["High Cover at Low Premium", "Critical Illness Riders", "Tax Benefits under 80C"]
-    },
-    {
-      slug: "family-floater",
-      title: "Family Floater",
-      desc: "One policy to cover your entire family's health.",
-      icon: Users,
-      color: "text-emerald-600",
-      bg: "bg-emerald-50 dark:bg-emerald-600/10",
-      features: ["Single Premium for Family", "Shared Sum Insured", "Maternity Cover Options"]
-    },
-    {
-      slug: "critical-illness",
-      title: "Critical Illness",
-      desc: "Lump-sum payout on diagnosis of major illnesses.",
-      icon: ActivitySquare,
-      color: "text-rose-500",
-      bg: "bg-rose-50 dark:bg-rose-500/10",
-      features: ["Covers Cancer, Heart Attack etc.", "Lump-sum Tax-free Payout", "No Hospital Bills Required"]
-    },
-    {
-      slug: "car-insurance",
-      title: "Car Insurance",
-      desc: "Comprehensive protection for your four-wheeler.",
-      icon: Car,
-      color: "text-blue-500",
-      bg: "bg-blue-50 dark:bg-blue-500/10",
-      features: ["Zero Depreciation Cover", "24x7 Roadside Assistance", "Cashless Garage Network"]
-    },
-    {
-      slug: "two-wheeler-insurance",
-      title: "Two-Wheeler Cover",
-      desc: "Stay safe on the roads with bike/scooter insurance.",
-      icon: Bike,
-      color: "text-indigo-500",
-      bg: "bg-indigo-50 dark:bg-indigo-500/10",
-      features: ["Third-Party & Own Damage", "Instant Policy Issuance", "No Claim Bonus Protection"]
-    },
-    {
-      slug: "home-insurance",
-      title: "Home Property",
-      desc: "Protect your house and belongings from natural disasters.",
-      icon: Home,
-      color: "text-amber-500",
-      bg: "bg-amber-50 dark:bg-amber-500/10",
-      features: ["Fire & Burglary Cover", "Natural Calamity Protection", "Valuables Cover"]
-    },
-    {
-      slug: "business-insurance",
-      title: "Business & SME",
-      desc: "Safeguard your enterprise against operational risks.",
-      icon: Briefcase,
-      color: "text-slate-600 dark:text-slate-400",
-      bg: "bg-slate-100 dark:bg-slate-700/30",
-      features: ["Shop & Office Insurance", "Group Health Plans", "Liability Covers"]
-    }
-  ];
-
-  return (
-    <>
       {/* 1. HERO SECTION WITH LEAD FORM */}
-      <section className="relative bg-emerald-950 pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
-        {heroImageUrl && (
-          <div className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" style={{ backgroundImage: `url(${heroImageUrl})` }}></div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/90 to-emerald-900/60 opacity-80 mix-blend-multiply"></div>
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} 
-          className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-emerald-500/30 rounded-full mix-blend-screen filter blur-[120px]"
-        ></motion.div>
+      <section className="relative bg-[#061811] pt-28 pb-24 lg:pt-36 lg:pb-32 overflow-hidden">
+        {/* Dynamic Abstract Background */}
+        <div className="absolute inset-0">
+          {heroImageUrl ? (
+            <div className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity" style={{ backgroundImage: `url(${heroImageUrl})` }}></div>
+          ) : (
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+          )}
+          <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-emerald-600/20 rounded-full blur-[120px] mix-blend-screen"></div>
+          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-teal-600/20 rounded-full blur-[150px] mix-blend-screen"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#061811]/50 to-[#061811]"></div>
+        </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Content (Spans 7 cols) */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }} 
               animate={{ opacity: 1, x: 0 }} 
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-7"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-[0.2em] uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
                 <ShieldCheck className="w-4 h-4" /> 100% Cashless Claim Assistance
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
-                Secure Your Family&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Future & Assets</span>
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight">
+                Secure Your <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 drop-shadow-sm">
+                  Family & Assets
+                </span>
               </h1>
-              <p className="text-lg md:text-xl text-emerald-50/80 mb-8 max-w-xl leading-relaxed font-medium">
-                Compare and buy top-rated Life, Health, Motor, and Business insurance policies. Get unbiased advice and lifetime claim support from India&apos;s trusted experts.
+              <p className="text-lg md:text-xl text-emerald-100/70 mb-10 max-w-xl leading-relaxed font-medium">
+                Compare and buy top-rated Life, Health, Motor, and Business insurance policies. Get unbiased advice and lifetime claim support.
               </p>
               
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 text-sm text-emerald-100 font-bold bg-white/5 px-4 py-2.5 rounded-xl border border-white/10 backdrop-blur shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Life & Term
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2.5 text-sm text-white font-semibold bg-white/5 hover:bg-white/10 px-5 py-3 rounded-2xl border border-white/10 backdrop-blur-md transition-colors">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /></div> Life & Term
                 </div>
-                <div className="flex items-center gap-2 text-sm text-emerald-100 font-bold bg-white/5 px-4 py-2.5 rounded-xl border border-white/10 backdrop-blur shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Health & Medical
+                <div className="flex items-center gap-2.5 text-sm text-white font-semibold bg-white/5 hover:bg-white/10 px-5 py-3 rounded-2xl border border-white/10 backdrop-blur-md transition-colors">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /></div> Health & Medical
                 </div>
-                <div className="flex items-center gap-2 text-sm text-emerald-100 font-bold bg-white/5 px-4 py-2.5 rounded-xl border border-white/10 backdrop-blur shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> General & Assets
+                <div className="flex items-center gap-2.5 text-sm text-white font-semibold bg-white/5 hover:bg-white/10 px-5 py-3 rounded-2xl border border-white/10 backdrop-blur-md transition-colors">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /></div> Assets
                 </div>
               </div>
             </motion.div>
             
-            {/* Right Form */}
+            {/* Right Form (Spans 5 cols) */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }} 
               animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:ml-auto w-full max-w-md relative"
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="lg:col-span-5 w-full relative"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-[2rem] blur opacity-30"></div>
-              <div className="bg-white/95 dark:bg-emerald-950/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/40 dark:border-emerald-800/50 relative overflow-hidden">
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Get a Free Quote</h3>
-                <p className="text-slate-500 dark:text-emerald-200/80 text-sm mb-6 font-medium">Enter details to check your premium instantly.</p>
+              {/* Premium Glow Behind Form */}
+              <div className="absolute -inset-1.5 bg-gradient-to-br from-emerald-500/40 via-teal-400/20 to-transparent rounded-[2.5rem] blur-xl opacity-50"></div>
+              
+              <div className="bg-white/95 dark:bg-[#0a1f16]/90 backdrop-blur-2xl rounded-[2rem] p-8 sm:p-10 shadow-2xl border border-white/60 dark:border-emerald-800/50 relative overflow-hidden flex flex-col">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
                 
-                <form className="space-y-4" action="/apply">
-                  <div>
-                    <input type="text" required placeholder="Your Full Name" className="w-full bg-slate-50 dark:bg-emerald-900/40 border border-slate-200 dark:border-emerald-800/80 px-4 py-3 sm:py-3.5 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all font-medium" />
+                <div className="mb-8 relative z-10">
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Check Premium Instantly</h3>
+                  <p className="text-slate-500 dark:text-emerald-200/60 text-sm font-medium">Takes less than 60 seconds. No spam.</p>
+                </div>
+                
+                <form className="space-y-5 relative z-10" action="/apply">
+                  <div className="relative">
+                    <input type="text" id="insName" required className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold placeholder-transparent" placeholder="Full Name" />
+                    <label htmlFor="insName" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-emerald-500 peer-focus:font-bold transition-all pointer-events-none">Full Name</label>
                   </div>
-                  <div>
-                    <input type="tel" required placeholder="Mobile Number" className="w-full bg-slate-50 dark:bg-emerald-900/40 border border-slate-200 dark:border-emerald-800/80 px-4 py-3 sm:py-3.5 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all font-medium" />
+                  
+                  <div className="relative">
+                    <input type="tel" id="insPhone" required className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold placeholder-transparent" placeholder="Mobile Number" />
+                    <label htmlFor="insPhone" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-emerald-500 peer-focus:font-bold transition-all pointer-events-none">Mobile Number</label>
                   </div>
-                  <div>
-                    <select required className="w-full bg-slate-50 dark:bg-emerald-900/40 border border-slate-200 dark:border-emerald-800/80 px-4 py-3 sm:py-3.5 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 appearance-none transition-all font-medium cursor-pointer">
-                      <option value="">Select Insurance Type</option>
-                      <option value="health">Health Insurance</option>
-                      <option value="life">Term Life Insurance</option>
-                      <option value="motor">Car / Two Wheeler</option>
-                      <option value="business">Business / SME Cover</option>
+                  
+                  <div className="relative">
+                    <select id="insType" required className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold cursor-pointer appearance-none">
+                      <option value="" disabled selected hidden></option>
+                      <option value="health" className="font-semibold text-slate-900">Health Insurance</option>
+                      <option value="life" className="font-semibold text-slate-900">Term Life Insurance</option>
+                      <option value="motor" className="font-semibold text-slate-900">Car / Two Wheeler</option>
+                      <option value="business" className="font-semibold text-slate-900">Business / SME Cover</option>
                     </select>
+                    <label htmlFor="insType" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-emerald-500 transition-all pointer-events-none">Insurance Type</label>
                   </div>
-                  <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold py-3.5 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 mt-2">
-                    View Instant Quotes <ArrowRight className="w-4 h-4" />
+                  
+                  <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-bold py-4 rounded-xl shadow-[0_10px_20px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_15px_30px_-10px_rgba(16,185,129,0.6)] transition-all flex items-center justify-center gap-2 mt-4">
+                    View Free Quotes <ArrowRight className="w-5 h-5" />
                   </button>
+                  <p className="text-center text-[10px] font-medium text-slate-400 mt-3">By clicking, you agree to our Terms & Conditions.</p>
                 </form>
               </div>
             </motion.div>
