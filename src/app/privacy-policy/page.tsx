@@ -65,12 +65,26 @@ export default function PrivacyPolicyPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-sm text-emerald-100/60 mb-8">
-              <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white font-medium">Privacy Center</span>
-            </nav>
+            {/* Top Navigation & Logo Area */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12">
+              <Link href="/" className="group flex items-center gap-3">
+                <div className="bg-white p-2 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] group-hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-shadow">
+                  <img src="/logo.png" alt="BFS Logo" className="h-10 w-auto object-contain" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white font-bold text-lg leading-none tracking-wide">BFS AGRA</span>
+                  <span className="text-emerald-400/80 text-xs font-semibold tracking-widest uppercase mt-1">Privacy Center</span>
+                </div>
+              </Link>
+              
+              <Link 
+                href="/" 
+                className="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/50 rounded-full backdrop-blur-md transition-all duration-300"
+              >
+                <span>Back to Home</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
