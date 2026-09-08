@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Lock, Eye, FileText, Database, Server, Mail, ChevronRight, Fingerprint, Activity, Clock, Cookie, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Lock, Eye, FileText, Database, Server, Mail, ChevronRight, Fingerprint, Activity, Clock, Cookie, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const SECTIONS = [
   { id: "overview", title: "1. Overview & Commitment" },
@@ -68,9 +68,9 @@ export default function PrivacyPolicyPage() {
             {/* Top Navigation & Logo Area */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
               <Link href="/" className="group flex items-center gap-3">
-                <img src="/logo.png" alt="BFS Logo" className="h-12 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform" />
+                <img src="/logo.png" alt="BFS Logo" className="h-12 w-auto object-contain drop-shadow-md brightness-0 invert group-hover:scale-105 transition-transform" />
                 <div className="flex flex-col">
-                  <span className="text-white font-black text-lg leading-none tracking-wider">BFS AGRA</span>
+                  <span className="text-white font-black text-lg leading-none tracking-wider">Bhardwaj Financial Services</span>
                   <span className="text-emerald-400/90 text-[10px] font-bold tracking-[0.2em] uppercase mt-1">Privacy Center</span>
                 </div>
               </Link>
@@ -79,8 +79,8 @@ export default function PrivacyPolicyPage() {
                 href="/" 
                 className="group relative inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/50 rounded-full backdrop-blur-md transition-all duration-300"
               >
+                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
                 <span>Back to Home</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
