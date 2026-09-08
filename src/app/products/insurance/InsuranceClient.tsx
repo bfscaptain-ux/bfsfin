@@ -183,32 +183,46 @@ export default function InsuranceClient({ heroImageUrl }: { heroImageUrl?: strin
                 <Link 
                   key={product.slug}
                   href={`/products/insurance/${product.slug}`} 
-                  className="group bg-white dark:bg-emerald-900/60 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-2xl hover:shadow-emerald-900/10 dark:hover:shadow-emerald-500/10 transition-all duration-300 border border-slate-200 dark:border-emerald-800/80 hover:-translate-y-2 flex flex-col relative overflow-hidden"
+                  className="group relative bg-white dark:bg-emerald-950 rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(16,185,129,0.15)] dark:shadow-none border border-slate-200/60 dark:border-emerald-800/50 hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2 flex flex-col overflow-hidden"
                 >
-                  {/* Subtle hover gradient background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-transparent dark:from-emerald-800/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  {/* Decorative Gradient Background */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-transform duration-700 group-hover:scale-150"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-teal-500/10 dark:bg-teal-500/20 rounded-full blur-2xl -ml-5 -mb-5 transition-transform duration-700 group-hover:scale-150"></div>
                   
-                  <div className="relative z-10">
-                    <div className={`w-14 h-14 rounded-2xl ${product.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-white/50 dark:border-emerald-800/50`}>
-                      <Icon className={`w-7 h-7 ${product.color}`} />
+                  {/* Premium Top Line Accent */}
+                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+
+                  <div className="relative z-10 flex-1 flex flex-col">
+                    <div className="flex justify-between items-start mb-6">
+                      <div className={`w-16 h-16 rounded-2xl ${product.bg} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm border border-emerald-100 dark:border-emerald-800/50`}>
+                        <Icon className={`w-8 h-8 ${product.color} filter drop-shadow-sm`} />
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-slate-50 dark:bg-emerald-900/50 flex items-center justify-center border border-slate-100 dark:border-emerald-800/50 group-hover:bg-emerald-500 group-hover:border-emerald-500 group-hover:text-white text-slate-400 transition-colors duration-300">
+                        <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2">{product.title}</h3>
-                    <p className="text-sm text-slate-500 dark:text-emerald-200/70 mb-5 font-medium leading-relaxed">{product.desc}</p>
                     
-                    <ul className="space-y-2.5 mb-6 flex-1">
-                      {product.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="text-xs font-semibold text-slate-600 dark:text-emerald-100/90 flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-500 mt-0.5" /> 
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                    <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{product.title}</h3>
+                    <p className="text-sm text-slate-500 dark:text-emerald-200/70 mb-6 font-medium leading-relaxed">{product.desc}</p>
+                    
+                    <div className="mt-auto">
+                      <div className="h-px w-full bg-gradient-to-r from-slate-100 via-slate-200 to-transparent dark:from-emerald-800/50 dark:via-emerald-700/50 mb-5"></div>
+                      <ul className="space-y-3">
+                        {product.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="text-xs font-semibold text-slate-600 dark:text-emerald-100/90 flex items-start gap-2.5">
+                            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-500 drop-shadow-sm" /> 
+                            <span className="leading-tight pt-0.5">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                   
-                  <div className="mt-auto pt-4 border-t border-slate-100 dark:border-emerald-800/50 relative z-10">
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                      View Plans <ArrowRight className="w-4 h-4" />
-                    </span>
+                  {/* Bottom Action Button (appears on hover) */}
+                  <div className="relative z-10 mt-8 pt-4 overflow-hidden h-0 group-hover:h-12 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                     <div className="w-full bg-emerald-50 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-sm text-center py-3 rounded-xl border border-emerald-100 dark:border-emerald-800/80">
+                       Explore {product.title} Details
+                     </div>
                   </div>
                 </Link>
               );
