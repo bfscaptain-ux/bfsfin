@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 selection:bg-emerald-500/30">
       
       {/* 🚀 BEAUTIFUL HERO SECTION */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900 border-b border-white/10">
+      <section className="relative pt-24 pb-12 lg:pt-28 lg:pb-16 overflow-hidden bg-slate-900 border-b border-white/10">
         {/* Animated Background Mesh */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] bg-emerald-500/20 rounded-full blur-[120px] mix-blend-screen animate-pulse duration-10000" />
@@ -66,23 +66,21 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             {/* Top Navigation & Logo Area */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
               <Link href="/" className="group flex items-center gap-3">
-                <div className="bg-white p-2 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] group-hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-shadow">
-                  <img src="/logo.png" alt="BFS Logo" className="h-10 w-auto object-contain" />
-                </div>
+                <img src="/logo.png" alt="BFS Logo" className="h-12 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform" />
                 <div className="flex flex-col">
-                  <span className="text-white font-bold text-lg leading-none tracking-wide">BFS AGRA</span>
-                  <span className="text-emerald-400/80 text-xs font-semibold tracking-widest uppercase mt-1">Privacy Center</span>
+                  <span className="text-white font-black text-lg leading-none tracking-wider">BFS AGRA</span>
+                  <span className="text-emerald-400/90 text-[10px] font-bold tracking-[0.2em] uppercase mt-1">Privacy Center</span>
                 </div>
               </Link>
               
               <Link 
                 href="/" 
-                className="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/50 rounded-full backdrop-blur-md transition-all duration-300"
+                className="group relative inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/50 rounded-full backdrop-blur-md transition-all duration-300"
               >
                 <span>Back to Home</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
@@ -91,16 +89,16 @@ export default function PrivacyPolicyPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-300 text-sm font-bold mb-6 border border-emerald-500/20 backdrop-blur-md">
-                <ShieldCheck className="w-4 h-4" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-bold mb-4 border border-emerald-500/20 backdrop-blur-md">
+                <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Last Updated: September 2026</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 leading-[1.1]">
                 Your Privacy is our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Top Priority.</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl font-light">
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light">
                 At Bhardwaj Financial Services (BFS Agra), we employ bank-grade encryption and RBI-compliant policies to ensure your personal and financial data remains absolutely secure.
               </p>
             </motion.div>
