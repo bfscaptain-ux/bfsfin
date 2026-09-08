@@ -1,3 +1,87 @@
+"use client";
+import Link from "next/link";
+import { ShieldCheck, CheckCircle2, ArrowRight, HeartPulse, Umbrella, Car, Briefcase, Award, Star, Activity, FileCheck, Users, ActivitySquare, ShieldAlert, Bike, Home } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function InsuranceClient({ heroImageUrl }: { heroImageUrl?: string }) {
+  // 8 Specific Insurance Products mapped for SEO and better backlinking
+  const insuranceProducts = [
+    {
+      slug: "health-insurance",
+      title: "Health & Medical",
+      desc: "Comprehensive health cover for medical emergencies.",
+      icon: HeartPulse,
+      color: "text-emerald-500",
+      bg: "bg-emerald-50 dark:bg-emerald-500/10",
+      features: ["Individual & Family Floater", "Pre-existing Disease Cover", "Cashless Network Hospitals"]
+    },
+    {
+      slug: "term-life",
+      title: "Term Life Cover",
+      desc: "High life cover at an affordable premium.",
+      icon: Umbrella,
+      color: "text-teal-500",
+      bg: "bg-teal-50 dark:bg-teal-500/10",
+      features: ["High Cover at Low Premium", "Critical Illness Riders", "Tax Benefits under 80C"]
+    },
+    {
+      slug: "family-floater",
+      title: "Family Floater",
+      desc: "One policy to cover your entire family's health.",
+      icon: Users,
+      color: "text-emerald-600",
+      bg: "bg-emerald-50 dark:bg-emerald-600/10",
+      features: ["Single Premium for Family", "Shared Sum Insured", "Maternity Cover Options"]
+    },
+    {
+      slug: "critical-illness",
+      title: "Critical Illness",
+      desc: "Lump-sum payout on diagnosis of major illnesses.",
+      icon: ActivitySquare,
+      color: "text-rose-500",
+      bg: "bg-rose-50 dark:bg-rose-500/10",
+      features: ["Covers Cancer, Heart Attack etc.", "Lump-sum Tax-free Payout", "No Hospital Bills Required"]
+    },
+    {
+      slug: "car-insurance",
+      title: "Car Insurance",
+      desc: "Comprehensive protection for your four-wheeler.",
+      icon: Car,
+      color: "text-blue-500",
+      bg: "bg-blue-50 dark:bg-blue-500/10",
+      features: ["Zero Depreciation Cover", "24x7 Roadside Assistance", "Cashless Garage Network"]
+    },
+    {
+      slug: "two-wheeler-insurance",
+      title: "Two-Wheeler Cover",
+      desc: "Stay safe on the roads with bike/scooter insurance.",
+      icon: Bike,
+      color: "text-indigo-500",
+      bg: "bg-indigo-50 dark:bg-indigo-500/10",
+      features: ["Third-Party & Own Damage", "Instant Policy Issuance", "No Claim Bonus Protection"]
+    },
+    {
+      slug: "home-insurance",
+      title: "Home Property",
+      desc: "Protect your house and belongings from natural disasters.",
+      icon: Home,
+      color: "text-amber-500",
+      bg: "bg-amber-50 dark:bg-amber-500/10",
+      features: ["Fire & Burglary Cover", "Natural Calamity Protection", "Valuables Cover"]
+    },
+    {
+      slug: "business-insurance",
+      title: "Business & SME",
+      desc: "Safeguard your enterprise against operational risks.",
+      icon: Briefcase,
+      color: "text-slate-600 dark:text-slate-400",
+      bg: "bg-slate-100 dark:bg-slate-700/30",
+      features: ["Shop & Office Insurance", "Group Health Plans", "Liability Covers"]
+    }
+  ];
+
+  return (
+    <>
       {/* 1. HERO SECTION WITH LEAD FORM */}
       <section className="relative bg-[#061811] pt-28 pb-24 lg:pt-36 lg:pb-32 overflow-hidden">
         {/* Dynamic Abstract Background */}
