@@ -1,6 +1,6 @@
 {
-  "name": "bfs-agra-portal",
-  "version": "1.0.0",
+  "name": "bfs-agra",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
