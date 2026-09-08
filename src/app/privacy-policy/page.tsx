@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lock, Eye, FileText, Database, Server, Mail, ChevronRight, Fingerprint, Activity, Clock, Cookie, ArrowRight, ArrowLeft } from 'lucide-react';
+import FloatingHomeButton from '@/components/FloatingHomeButton';
 
 const SECTIONS = [
   { id: "overview", title: "1. Overview & Commitment" },
@@ -354,6 +355,7 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
       </section>
+      <FloatingHomeButton />
     </div>
   );
 }
