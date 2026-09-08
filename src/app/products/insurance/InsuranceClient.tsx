@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle2, ArrowRight, HeartPulse, Umbrella, Car, Briefcase, Award, Star, Activity, FileCheck, Users, ActivitySquare, ShieldAlert, Bike, Home } from "lucide-react";
 import { motion } from "framer-motion";
@@ -78,7 +79,31 @@ export default function InsuranceClient({ heroImageUrl }: { heroImageUrl?: strin
       bg: "bg-slate-100 dark:bg-slate-700/30",
       features: ["Shop & Office Insurance", "Group Health Plans", "Liability Covers"]
     }
-  ];
+  // Form State
+  const [formData, setFormData] = useState({ name: "", phone: "", insuranceType: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/insurance-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: "", phone: "", insuranceType: "" });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }
+    } catch (err) {
+      alert("Submission failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -142,41 +167,63 @@ export default function InsuranceClient({ heroImageUrl }: { heroImageUrl?: strin
               {/* Premium Glow Behind Form */}
               <div className="absolute -inset-1.5 bg-gradient-to-br from-emerald-500/40 via-teal-400/20 to-transparent rounded-[2.5rem] blur-xl opacity-50"></div>
               
-              <div className="bg-white/95 dark:bg-[#0a1f16]/90 backdrop-blur-2xl rounded-[2rem] p-8 sm:p-10 shadow-2xl border border-white/60 dark:border-emerald-800/50 relative overflow-hidden flex flex-col">
+              <div className="bg-white/95 dark:bg-[#0a1f16]/90 backdrop-blur-2xl rounded-[2rem] p-8 sm:p-10 shadow-2xl border border-white/60 dark:border-emerald-800/50 relative overflow-hidden flex flex-col min-h-[400px] justify-center">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
                 
-                <div className="mb-8 relative z-10">
-                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Check Premium Instantly</h3>
-                  <p className="text-slate-500 dark:text-emerald-200/60 text-sm font-medium">Takes less than 60 seconds. No spam.</p>
-                </div>
-                
-                <form className="space-y-5 relative z-10" action="/apply">
-                  <div className="relative">
-                    <input type="text" id="insName" required className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold placeholder-transparent" placeholder="Full Name" />
-                    <label htmlFor="insName" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-emerald-500 peer-focus:font-bold transition-all pointer-events-none">Full Name</label>
-                  </div>
-                  
-                  <div className="relative">
-                    <input type="tel" id="insPhone" required className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold placeholder-transparent" placeholder="Mobile Number" />
-                    <label htmlFor="insPhone" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-emerald-500 peer-focus:font-bold transition-all pointer-events-none">Mobile Number</label>
-                  </div>
-                  
-                  <div className="relative">
-                    <select id="insType" required className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold cursor-pointer appearance-none">
-                      <option value="" disabled selected hidden></option>
-                      <option value="health" className="font-semibold text-slate-900">Health Insurance</option>
-                      <option value="life" className="font-semibold text-slate-900">Term Life Insurance</option>
-                      <option value="motor" className="font-semibold text-slate-900">Car / Two Wheeler</option>
-                      <option value="business" className="font-semibold text-slate-900">Business / SME Cover</option>
-                    </select>
-                    <label htmlFor="insType" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-emerald-500 transition-all pointer-events-none">Insurance Type</label>
-                  </div>
-                  
-                  <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-bold py-4 rounded-xl shadow-[0_10px_20px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_15px_30px_-10px_rgba(16,185,129,0.6)] transition-all flex items-center justify-center gap-2 mt-4">
-                    View Free Quotes <ArrowRight className="w-5 h-5" />
-                  </button>
-                  <p className="text-center text-[10px] font-medium text-slate-400 mt-3">By clicking, you agree to our Terms & Conditions.</p>
-                </form>
+                {isSubmitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center relative z-10"
+                  >
+                    <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-2xl font-black text-white mb-2">Request Received!</h3>
+                    <p className="text-emerald-100/70 text-sm">We will contact you shortly with the best quotes.</p>
+                  </motion.div>
+                ) : (
+                  <>
+                    <div className="mb-8 relative z-10">
+                      <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Check Premium Instantly</h3>
+                      <p className="text-slate-500 dark:text-emerald-200/60 text-sm font-medium">Takes less than 60 seconds. No spam.</p>
+                    </div>
+                    
+                    <form className="space-y-5 relative z-10" onSubmit={handleSubmit}>
+                      <div className="relative">
+                        <input type="text" id="insName" required 
+                          value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold placeholder-transparent" placeholder="Full Name" />
+                        <label htmlFor="insName" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-emerald-500 peer-focus:font-bold transition-all pointer-events-none">Full Name</label>
+                      </div>
+                      
+                      <div className="relative">
+                        <input type="tel" id="insPhone" required 
+                          value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold placeholder-transparent" placeholder="Mobile Number" />
+                        <label htmlFor="insPhone" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-slate-400 peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:font-medium peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-emerald-500 peer-focus:font-bold transition-all pointer-events-none">Mobile Number</label>
+                      </div>
+                      
+                      <div className="relative">
+                        <select id="insType" required 
+                          value={formData.insuranceType} onChange={(e) => setFormData({...formData, insuranceType: e.target.value})}
+                          className="peer w-full bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 px-4 pt-6 pb-2 rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-semibold cursor-pointer appearance-none">
+                          <option value="" disabled hidden></option>
+                          <option value="Health Insurance" className="font-semibold text-slate-900">Health Insurance</option>
+                          <option value="Term Life Insurance" className="font-semibold text-slate-900">Term Life Insurance</option>
+                          <option value="Motor Insurance" className="font-semibold text-slate-900">Car / Two Wheeler</option>
+                          <option value="Business Insurance" className="font-semibold text-slate-900">Business / SME Cover</option>
+                        </select>
+                        <label htmlFor="insType" className="absolute left-4 top-2 text-[10px] uppercase font-bold tracking-wider text-emerald-500 transition-all pointer-events-none">Insurance Type</label>
+                      </div>
+                      
+                      <button type="submit" disabled={isSubmitting} className="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white font-bold py-4 rounded-xl shadow-[0_10px_20px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_15px_30px_-10px_rgba(16,185,129,0.6)] transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-70 disabled:cursor-not-allowed">
+                        {isSubmitting ? "Submitting..." : "View Free Quotes"} {!isSubmitting && <ArrowRight className="w-5 h-5" />}
+                      </button>
+                      <p className="text-center text-[10px] font-medium text-slate-400 mt-3">By clicking, you agree to our Terms & Conditions.</p>
+                    </form>
+                  </>
+                )}
               </div>
             </motion.div>
           </div>
