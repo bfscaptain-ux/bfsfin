@@ -22,7 +22,7 @@ export default function FAQPage() {
 
   useEffect(() => {
     fetchFaqs();
-  }, [page]);
+  }, []);
 
   const fetchFaqs = () => {
     setLoading(true);
@@ -44,6 +44,15 @@ export default function FAQPage() {
     const matchesCategory = category === "All" || f.category === category;
     return matchesSearch && matchesCategory;
   });
+
+  const itemsPerPage = 21;
+  const totalClientPages = Math.max(1, Math.ceil(filteredFaqs.length / itemsPerPage));
+  const paginatedFaqs = filteredFaqs.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+
+  // Reset to page 1 when search or category changes
+  useEffect(() => {
+    setPage(1);
+  }, [search, category]);
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -148,7 +157,7 @@ export default function FAQPage() {
           </div>
         ) : (
           <div className="space-y-4">
-            {filteredFaqs.map((faq, idx) => (
+            {paginatedFaqs.map((faq, idx) => (
               <motion.div 
                 key={faq.id} 
                 initial={{ opacity: 0, y: 20 }} 
@@ -170,22 +179,22 @@ export default function FAQPage() {
         )}
 
         {/* Pagination Controls */}
-        {!loading && totalPages > 1 && (
+        {!loading && totalClientPages > 1 && (
           <div className="flex justify-center items-center gap-4 mt-12">
             <button 
               onClick={() => setPage(p => Math.max(1, p - 1))}
               disabled={page === 1}
-              className="p-2 rounded-full bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 text-slate-700 dark:text-slate-300 disabled:opacity-50 hover:bg-emerald-50 dark:hover:bg-emerald-800 transition"
+              className="p-2 rounded-full bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 text-slate-700 dark:text-slate-300 disabled:opacity-50 hover:bg-emerald-50 dark:hover:bg-emerald-800 transition shadow-sm"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <span className="font-bold text-slate-600 dark:text-slate-400">
-              Page {page} of {totalPages}
+              Page {page} of {totalClientPages}
             </span>
             <button 
-              onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-              disabled={page === totalPages}
-              className="p-2 rounded-full bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 text-slate-700 dark:text-slate-300 disabled:opacity-50 hover:bg-emerald-50 dark:hover:bg-emerald-800 transition"
+              onClick={() => setPage(p => Math.min(totalClientPages, p + 1))}
+              disabled={page === totalClientPages}
+              className="p-2 rounded-full bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 text-slate-700 dark:text-slate-300 disabled:opacity-50 hover:bg-emerald-50 dark:hover:bg-emerald-800 transition shadow-sm"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
