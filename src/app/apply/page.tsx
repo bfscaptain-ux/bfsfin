@@ -174,7 +174,7 @@ function ApplyFormContent() {
       const res = await fetch("/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email, name: formData.name, productType: formData.productType })
+        body: JSON.stringify({ email: formData.email, name: formData.name, productType: productCategory })
       });
       const data = await res.json();
       
