@@ -46,7 +46,7 @@ export default function ComplaintClient({ heroImage }: { heroImage: string }) {
       const otpRes = await fetch("/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name: "Valued Client" }),
+        body: JSON.stringify({ email, name: "Valued Client", formType: "Complaint" }),
       });
       const otpData = await otpRes.json();
 

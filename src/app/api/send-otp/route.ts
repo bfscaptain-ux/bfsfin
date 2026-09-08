@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { email, name } = await req.json();
+    const { email, name, formType, productType } = await req.json();
 
     if (!email) {
       return NextResponse.json({ success: false, error: "Email is required" }, { status: 400 });
@@ -48,19 +48,35 @@ export async function POST(req: Request) {
       },
     });
 
-    // 4. Beautiful HTML Email Template
+    // 4. Determine Dynamic Texts
+    const type = formType || productType || "Application";
+    let portalName = "Bhardwaj Financial Services";
+    let initMessage = "Thank you for initiating your application with BFS Agra.";
+
+    if (type.toLowerCase().includes("itr") || type.toLowerCase().includes("tax")) {
+      portalName = "BFS E-Filing Tax Portal";
+      initMessage = "Thank you for initiating your ITR Filing request with BFS Agra.";
+    } else if (type.toLowerCase().includes("msme") || type.toLowerCase().includes("udyam")) {
+      portalName = "BFS MSME Registration Desk";
+      initMessage = "Thank you for initiating your MSME / Udyam Registration request with BFS Agra.";
+    } else if (type.toLowerCase().includes("loan") || type.toLowerCase().includes("finance")) {
+      portalName = "Enterprise Home Loan Portal";
+      initMessage = "Thank you for initiating your loan application with BFS Agra.";
+    }
+
+    // 5. Beautiful HTML Email Template
     const htmlTemplate = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
         <div style="background-color: #059669; padding: 24px; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 24px; font-weight: bold;">Bhardwaj Financial Services</h1>
-          <p style="color: #6ee7b7; margin: 8px 0 0 0; font-size: 14px;">Enterprise Home Loan Portal</p>
+          <p style="color: #6ee7b7; margin: 8px 0 0 0; font-size: 14px;">${portalName}</p>
         </div>
         
         <div style="padding: 32px 24px; background-color: #ffffff;">
           <h2 style="color: #1e293b; margin-top: 0; font-size: 20px;">Email Verification</h2>
           <p style="color: #475569; line-height: 1.6; margin-bottom: 24px;">
             Dear ${name || "Client"},<br><br>
-            Thank you for initiating your loan application with BFS Agra. Please use the One Time Password (OTP) below to verify your email address and proceed with your application.
+            ${initMessage} Please use the One Time Password (OTP) below to verify your email address and proceed with your request.
           </p>
           
           <div style="text-align: center; margin: 32px 0;">
@@ -75,7 +91,7 @@ export async function POST(req: Request) {
           <p style="color: #475569; line-height: 1.6; font-size: 14px; margin-top: 24px;">
             Best Regards,<br>
             <strong>BFS Agra Team</strong><br>
-            <span style="color: #64748b; font-size: 12px;">RBI Compliant & Certified Mortgage Broker</span>
+            <span style="color: #64748b; font-size: 12px;">RBI Compliant & Certified Financial Advisory</span>
           </p>
         </div>
         
