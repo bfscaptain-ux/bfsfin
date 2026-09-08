@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
-const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyUZfubKYW-IqndF1fd8CEhqdaK5scEag55HyUjPR58y2BPtWPwREUfoGTuhHmrf58P/exec";
+const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbymBNLS0IXJ_ZTAHSdQdADRLhWrz33zIgiv_fZP_4nTayLPD-WLNPVsFndKhcBxBy0G/exec";
 
 export async function sendToGoogleSheets(payload: Record<string, any>) {
   try {
