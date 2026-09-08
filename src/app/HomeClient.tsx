@@ -683,7 +683,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                   </Link>
 
                   <Link
-                    href="/insurance"
+                    href="/products/insurance"
                     className="w-full sm:w-max px-5 py-3.5 bg-white/90 dark:bg-emerald-900/60 hover:bg-slate-100 dark:hover:bg-emerald-800/80 text-emerald-900 dark:text-emerald-200 font-bold text-[14px] rounded-2xl transition-all border border-emerald-300/80 dark:border-emerald-700/60 flex items-center justify-center gap-2 text-center active:scale-95 shadow-sm"
                   >
                     <Shield className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -934,7 +934,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     </div>
 
                     <Link
-                      href="/insurance"
+                      href="/products/insurance"
                       className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
                     >
                       Explore Cashless Bima <ArrowRight className="w-3.5 h-3.5" />
