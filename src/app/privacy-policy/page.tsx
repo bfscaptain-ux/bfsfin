@@ -27,18 +27,25 @@ export default function PrivacyPolicyPage() {
           <span className="text-slate-900 dark:text-slate-200 font-medium">Privacy Policy</span>
         </nav>
 
-        {/* Header Section */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-sm font-bold mb-6 shadow-sm border border-emerald-200/50 dark:border-emerald-800/50">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Updated: September 2026</span>
+        {/* Short Height Beautiful Hero Section */}
+        <div className="relative mb-12 rounded-3xl overflow-hidden bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-white/60 dark:border-slate-800/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] p-8 sm:p-10 text-center">
+          {/* Subtle inside gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20 dark:to-transparent pointer-events-none"></div>
+          
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-bold mb-5 shadow-sm border border-emerald-100 dark:border-slate-700">
+              <ShieldCheck className="w-4 h-4" />
+              <span>Updated: September 2026</span>
+            </div>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+              Privacy & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Data Protection</span>
+            </h1>
+            
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+              At Bhardwaj Financial Services (BFS Agra), we take your privacy and data security seriously. As an RBI-compliant financial advisory, we implement enterprise-grade security to ensure your personal and financial information remains strictly confidential.
+            </p>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6 leading-tight">
-            Privacy & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Data Protection</span>
-          </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
-            At Bhardwaj Financial Services (BFS Agra), we take your privacy and data security seriously. As an RBI-compliant financial advisory, we implement enterprise-grade security to ensure your personal and financial information remains strictly confidential.
-          </p>
         </div>
 
         {/* Content Container - Glassmorphic Card */}
