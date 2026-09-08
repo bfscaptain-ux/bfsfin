@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const data = await request.json();
     
     // Resolve Geolocation of Customer
-    const geo = await resolveClientLocation(request, null, null);
+    const geo = await resolveClientLocation(request);
 
     // Send to Google Sheets
     await sendToGoogleSheets({
