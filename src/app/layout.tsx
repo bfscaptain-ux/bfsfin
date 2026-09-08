@@ -6,7 +6,7 @@ import NavigationProgress from "@/components/NavigationProgress";
 import SecurityGuard from "@/components/SecurityGuard";
 import MobileInstallPrompt from "@/components/MobileInstallPrompt";
 import VisitorTracker from "@/components/VisitorTracker";
-
+import CookieConsent from "@/components/CookieConsent";
 export const metadata: Metadata = {
   title: "BFS AGRA — Enterprise Home Loan Portal | Vineeta Sharma",
   description: "Agra's #1 Home Loan Portal. Approved in 5 Days! ₹20L to ₹1Cr+ starting @ 6.50% p.a. Direct priority partner for PNB, Central Bank of India, IDBI & HDFC.",
@@ -102,6 +102,7 @@ export default function RootLayout({
         />
         <ThemeProvider>
           {children}
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
