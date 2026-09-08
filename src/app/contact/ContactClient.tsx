@@ -130,8 +130,8 @@ export default function ContactClient() {
     phone: "",
     email: "",
     loanAmount: "",
-    loanType: "Home Loan",
-    loanSubType: "",
+    productCategory: "Loans",
+    productType: "",
     state: "",
     city: "",
     message: ""
@@ -144,12 +144,24 @@ export default function ContactClient() {
   const [otpLoading, setOtpLoading] = useState(false);
   const [otpError, setOtpError] = useState("");
 
-  // Constants for Dropdowns
-  const LOAN_PRODUCTS: Record<string, string[]> = {
-    "Home Loan": ["Fresh Home Loan", "Home Extension", "Home Renovation", "Plot Purchase"],
-    "Loan Against Property": ["Residential LAP", "Commercial LAP", "Industrial LAP"],
-    "Balance Transfer": ["Home Loan BT", "LAP BT", "Top-up Loan"],
-    "Project Funding": ["Builder Finance", "Construction Loan", "Land Acquisition"]
+  // Constants for Dropdowns (Now covering ALL Products)
+  const ALL_PRODUCTS: Record<string, string[]> = {
+    "Loans": [
+      "Home Loan", "Loan Against Property", "Personal Loan", "Business Loan", 
+      "Balance Transfer", "Top-Up Loan", "Car Loan", "Education Loan", "Gold Loan"
+    ],
+    "Insurance": [
+      "Health Insurance", "Term Life Cover", "Family Floater", 
+      "Critical Illness", "Car Insurance", "Two-Wheeler Insurance", 
+      "Home Property Insurance", "Business & SME Insurance"
+    ],
+    "Credit Cards": [
+      "Cashback & Shopping Cards", "Travel & Lounge Cards", 
+      "Lifetime Free Cards", "Premium/Super-Premium Cards"
+    ],
+    "Other / Advisory": [
+      "Wealth Management", "Tax Planning", "General Consultation"
+    ]
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -160,8 +172,8 @@ export default function ContactClient() {
       setFormData({ ...formData, state: value, city: "" });
       return;
     }
-    if (name === "loanType") {
-      setFormData({ ...formData, loanType: value, loanSubType: "" });
+    if (name === "productCategory") {
+      setFormData({ ...formData, productCategory: value, productType: "" });
       return;
     }
 
@@ -179,8 +191,8 @@ export default function ContactClient() {
       setFormData({ ...formData, state: value, city: "" });
       return;
     }
-    if (name === "loanType") {
-      setFormData({ ...formData, loanType: value, loanSubType: "" });
+    if (name === "productCategory") {
+      setFormData({ ...formData, productCategory: value, productType: "" });
       return;
     }
 
@@ -258,7 +270,7 @@ export default function ContactClient() {
       });
       if (res.ok) {
         setIsSubmitted(true);
-        setFormData({ name: "", phone: "", email: "", loanAmount: "", loanType: "Home Loan", loanSubType: "", state: "", city: "", message: "" });
+        setFormData({ name: "", phone: "", email: "", loanAmount: "", productCategory: "Loans", productType: "", state: "", city: "", message: "" });
         setOtpSent(false);
         setOtpVerified(false);
         setOtpCode("");
@@ -471,24 +483,24 @@ export default function ContactClient() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Loan Product *</label>
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Product Category *</label>
                     <CustomSelect 
-                      name="loanType" 
-                      value={formData.loanType} 
+                      name="productCategory" 
+                      value={formData.productCategory} 
                       onChange={handleSelectChange}
-                      options={Object.keys(LOAN_PRODUCTS)}
-                      placeholder="Select Product"
+                      options={Object.keys(ALL_PRODUCTS)}
+                      placeholder="Select Category"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Loan Sub-type *</label>
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Specific Product *</label>
                     <CustomSelect 
-                      name="loanSubType" 
-                      disabled={!formData.loanType}
-                      value={formData.loanSubType} 
+                      name="productType" 
+                      disabled={!formData.productCategory}
+                      value={formData.productType} 
                       onChange={handleSelectChange}
-                      options={formData.loanType ? LOAN_PRODUCTS[formData.loanType] : []}
-                      placeholder="Select Sub-type"
+                      options={formData.productCategory ? ALL_PRODUCTS[formData.productCategory] : []}
+                      placeholder="Select Product"
                     />
                   </div>
                 </div>
@@ -523,6 +535,45 @@ export default function ContactClient() {
                 </button>
               </motion.form>
             )}
+          </div>
+        </div>
+
+        {/* Backlinking Section for SEO & UX */}
+        <div className="mt-16 sm:mt-24 border-t border-slate-200/60 dark:border-emerald-900/40 pt-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-3">Explore Our Core Solutions</h2>
+            <p className="text-slate-600 dark:text-emerald-100/70 text-sm max-w-2xl mx-auto font-medium">Looking for something specific? Browse our comprehensive range of financial and insurance products.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <Link href="/products" className="group bg-white dark:bg-emerald-900/20 rounded-2xl p-6 border border-slate-200/60 dark:border-emerald-800/50 hover:shadow-xl hover:border-emerald-500/30 transition-all flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4 group-hover:scale-110 transition-transform">
+                <Building className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-slate-900 dark:text-white mb-2">Loan Products</h3>
+              <p className="text-xs text-slate-500 dark:text-emerald-200/60 font-medium">Home Loans, LAP, Business & Personal Loans.</p>
+            </Link>
+            
+            <Link href="/products/insurance" className="group bg-white dark:bg-emerald-900/20 rounded-2xl p-6 border border-slate-200/60 dark:border-emerald-800/50 hover:shadow-xl hover:border-emerald-500/30 transition-all flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-500/10 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-4 group-hover:scale-110 transition-transform">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-slate-900 dark:text-white mb-2">Insurance Hub</h3>
+              <p className="text-xs text-slate-500 dark:text-emerald-200/60 font-medium">Health, Life, Motor, and General Insurance.</p>
+            </Link>
+
+            <Link href="/products/credit-cards" className="group bg-white dark:bg-emerald-900/20 rounded-2xl p-6 border border-slate-200/60 dark:border-emerald-800/50 hover:shadow-xl hover:border-emerald-500/30 transition-all flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 mb-4 group-hover:scale-110 transition-transform">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-slate-900 dark:text-white mb-2">Credit Cards</h3>
+              <p className="text-xs text-slate-500 dark:text-emerald-200/60 font-medium">Top Cashback, Travel, and Rewards Cards.</p>
+            </Link>
           </div>
         </div>
       </main>
