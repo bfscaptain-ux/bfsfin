@@ -169,8 +169,7 @@ export async function PUT(request: Request) {
       status: updatedBlog.status || blogs[index].status,
       seoTitle: updatedBlog.seoTitle || updatedBlog.title,
       metaDescription: updatedBlog.metaDescription || updatedBlog.excerpt || '',
-      readTime,
-      updatedAt: new Date().toISOString()
+      readTime
     };
 
     await fs.writeFile(dataFilePath, JSON.stringify(blogs, null, 2));
