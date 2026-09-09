@@ -139,3 +139,43 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: 'Failed to delete blog' }, { status: 500 });
   }
 }
+
+export async function PUT(request: Request) {
+  try {
+    const updatedBlog = await request.json();
+    
+    if (!updatedBlog.id || !updatedBlog.title || !updatedBlog.content) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    const fileContents = await fs.readFile(dataFilePath, 'utf8');
+    let blogs: BlogPost[] = JSON.parse(fileContents);
+    
+    const index = blogs.findIndex((b) => b.id === updatedBlog.id);
+    if (index === -1) {
+      return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+    }
+
+    const readTime = calculateReadTime(updatedBlog.content);
+    
+    blogs[index] = {
+      ...blogs[index],
+      title: updatedBlog.title,
+      content: updatedBlog.content,
+      excerpt: updatedBlog.excerpt || '',
+      category: updatedBlog.category || blogs[index].category,
+      author: updatedBlog.author || blogs[index].author,
+      imageUrl: updatedBlog.imageUrl || blogs[index].imageUrl,
+      status: updatedBlog.status || blogs[index].status,
+      seoTitle: updatedBlog.seoTitle || updatedBlog.title,
+      metaDescription: updatedBlog.metaDescription || updatedBlog.excerpt || '',
+      readTime,
+      updatedAt: new Date().toISOString()
+    };
+
+    await fs.writeFile(dataFilePath, JSON.stringify(blogs, null, 2));
+    return NextResponse.json(blogs[index], { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to update blog' }, { status: 500 });
+  }
+}

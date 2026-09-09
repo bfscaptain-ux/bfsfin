@@ -14,6 +14,7 @@ export default function AdminArticlesCMS() {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editId, setEditId] = useState<string | null>(null);
 
   // Form State
   const [title, setTitle] = useState("");
@@ -73,16 +74,18 @@ export default function AdminArticlesCMS() {
     fetchArticles();
   }, []);
 
-  const handleCreate = async (e: React.FormEvent, publishStatus: 'draft' | 'published') => {
+  const handleSave = async (e: React.FormEvent, publishStatus: 'draft' | 'published') => {
     e.preventDefault();
     if (!title || !content) return;
     setIsSubmitting(true);
 
     try {
+      const method = editId ? "PUT" : "POST";
       const res = await fetch("/api/blogs", {
-        method: "POST",
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          id: editId,
           title,
           category,
           content,
@@ -101,7 +104,7 @@ export default function AdminArticlesCMS() {
         resetForm();
       }
     } catch (error) {
-      console.error("Error creating blog:", error);
+      console.error("Error saving blog:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -120,6 +123,7 @@ export default function AdminArticlesCMS() {
   };
 
   const resetForm = () => {
+    setEditId(null);
     setTitle("");
     setCategory("Home Loans");
     setContent("");
@@ -127,6 +131,20 @@ export default function AdminArticlesCMS() {
     setImageUrl("");
     setSeoTitle("");
     setMetaDescription("");
+  };
+
+  const handleEdit = (blog: BlogPost) => {
+    setEditId(blog.id);
+    setTitle(blog.title);
+    setCategory(blog.category || 'Home Loans');
+    setContent(blog.content);
+    setExcerpt(blog.excerpt || '');
+    setAuthor(blog.author || 'Adv. Praveen Bhardwaj');
+    setImageUrl(blog.imageUrl || '');
+    setStatus(blog.status || 'published');
+    setSeoTitle(blog.seoTitle || '');
+    setMetaDescription(blog.metaDescription || '');
+    setShowModal(true);
   };
 
   const modules = {
@@ -196,6 +214,9 @@ export default function AdminArticlesCMS() {
                     <td className="py-3.5 px-4 text-emerald-400 font-bold">{a.views || 0}</td>
                     <td className="py-3.5 px-4 text-slate-400">{a.date}</td>
                     <td className="py-3.5 px-4 flex items-center gap-2">
+                      <button onClick={() => handleEdit(a)} className="text-emerald-400 hover:text-emerald-300 p-1 bg-emerald-400/10 rounded">
+                        <Edit2 className="w-4 h-4" />
+                      </button>
                       <button onClick={() => handleDelete(a.id)} className="text-red-400 hover:text-red-300 p-1 bg-red-400/10 rounded">
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -211,10 +232,10 @@ export default function AdminArticlesCMS() {
       {showModal && (
         <div className="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-emerald-900 border border-emerald-500/40 rounded-3xl p-6 max-w-4xl w-full my-8 shadow-2xl relative">
-            <button onClick={() => setShowModal(false)} className="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <button onClick={() => { setShowModal(false); resetForm(); }} className="absolute top-6 right-6 text-slate-400 hover:text-white">
               <X className="w-6 h-6" />
             </button>
-            <h3 className="text-xl font-black text-white mb-6">Create New Article</h3>
+            <h3 className="text-xl font-black text-white mb-6">{editId ? 'Edit Article' : 'Create New Article'}</h3>
             
             <form className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
               
@@ -283,11 +304,11 @@ export default function AdminArticlesCMS() {
                 </div>
 
                 <div className="pt-6 grid grid-cols-2 gap-2">
-                  <button type="button" onClick={(e) => handleCreate(e, 'draft')} disabled={isSubmitting} className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition">
+                  <button type="button" onClick={(e) => handleSave(e, 'draft')} disabled={isSubmitting} className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition">
                     <Save className="w-4 h-4" /> Save Draft
                   </button>
-                  <button type="button" onClick={(e) => handleCreate(e, 'published')} disabled={isSubmitting} className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                    <Plus className="w-4 h-4" /> Publish Live
+                  <button type="button" onClick={(e) => handleSave(e, 'published')} disabled={isSubmitting} className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                    <Plus className="w-4 h-4" /> {editId ? 'Update Live' : 'Publish Live'}
                   </button>
                 </div>
               </div>
