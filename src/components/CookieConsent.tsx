@@ -15,7 +15,7 @@ export default function CookieConsent() {
       // Delay showing the banner slightly for better UX
       const timer = setTimeout(() => {
         setShow(true);
-      }, 2000);
+      }, 15000);
       return () => clearTimeout(timer);
     }
   }, []);
