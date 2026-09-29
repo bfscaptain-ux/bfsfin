@@ -3,14 +3,18 @@
 import React from "react";
 import "./SmartMarquee.css";
 
-export default function SmartMarquee({ items, speed = 20 }: { items: any[], speed?: number }) {
+export default function SmartMarquee({ items, speed = 1 }: { items: any[], speed?: number }) {
   if (!items || items.length === 0) return null;
+
+  // Convert old JS pixel-based speed to CSS seconds. 
+  // If speed is e.g. 0.5, we want ~60s duration. If 1, we want ~30s.
+  const cssDuration = speed < 10 ? Math.floor(30 / speed) : speed;
 
   return (
     <div className="smart-marquee-container w-full overflow-hidden relative group">
       <div 
         className="smart-marquee-track flex whitespace-nowrap will-change-transform"
-        style={{ animationDuration: `${speed}s` }}
+        style={{ animationDuration: `${cssDuration}s` }}
       >
         {/* Set 1 */}
         <div className="flex shrink-0 items-center justify-around min-w-full">
