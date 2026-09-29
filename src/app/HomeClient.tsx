@@ -473,7 +473,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
       accentBorder: "border-emerald-400/50",
       accentText: "text-emerald-700 dark:text-emerald-400",
       cardGlow: "from-emerald-500/30 via-teal-500/20 to-emerald-600/30",
-      pillActive: "bg-emerald-600 text-white shadow-md shadow-emerald-600/25",
+      pillActive: "bg-emerald-700 text-white shadow-md shadow-emerald-600/25",
       cardBg: "from-emerald-950 via-teal-950 to-slate-950",
       cardBorder: "border-emerald-500/40 shadow-[0_20px_50px_rgba(6,78,59,0.35)]",
       chipColor: "from-emerald-200 via-teal-300 to-emerald-400 border-emerald-300",
@@ -677,7 +677,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                   `}} />
                   <Link
                     href="/appointment"
-                    className="relative group w-full sm:w-max px-7 py-3.5 bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-extrabold text-[15px] rounded-2xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:shadow-[0_0_30px_rgba(16,185,129,0.55)] flex items-center justify-center gap-2 hover:-translate-y-0.5 active:scale-95 overflow-hidden ring-2 ring-emerald-500/30 ring-offset-2 dark:ring-offset-emerald-950 text-center"
+                    className="relative group w-full sm:w-max px-7 py-3.5 bg-emerald-700 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white font-extrabold text-[15px] rounded-2xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:shadow-[0_0_30px_rgba(16,185,129,0.55)] flex items-center justify-center gap-2 hover:-translate-y-0.5 active:scale-95 overflow-hidden ring-2 ring-emerald-500/30 ring-offset-2 dark:ring-offset-emerald-950 text-center"
                   >
                     <div className="absolute top-0 bottom-0 left-0 w-1/2 -translate-x-full animate-button-shine bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
                     Apply For Loan (7.15%*) <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -893,7 +893,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                       </div>
                       <Link
                         href="/appointment"
-                        className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1"
+                        className="px-4 py-2 bg-emerald-700 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1"
                       >
                         Apply <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -936,7 +936,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
                     <Link
                       href="/products/insurance"
-                      className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
+                      className="w-full py-2.5 bg-emerald-700 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
                     >
                       Explore Cashless Bima <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
@@ -978,7 +978,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
                     <Link
                       href="/products/credit-cards"
-                      className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
+                      className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
                     >
                       Compare & Apply Cards <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
@@ -1368,7 +1368,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                       onClick={() => setHlAmount(amt)}
                       className={`py-1.5 px-1 rounded-xl text-xs font-bold transition-all active:scale-95 ${
                         hlAmount === amt
-                          ? 'bg-emerald-600 text-white shadow-xs'
+                          ? 'bg-emerald-700 text-white shadow-xs'
                           : 'bg-slate-100 dark:bg-emerald-800/50 text-slate-600 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-emerald-800'
                       }`}
                     >
@@ -1450,7 +1450,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               <div className="flex flex-col sm:flex-row gap-2.5">
                 <Link
                   href="/products/home-loan"
-                  className="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm text-center shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all group"
+                  className="flex-1 py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm text-center shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all group"
                 >
                   <span>Apply For Home Loan</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -1529,7 +1529,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               </div>
               <Link
                 href="/products/home-loan"
-                className="w-full py-3 sm:py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
+                className="w-full py-3 sm:py-3.5 px-4 bg-emerald-700 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
               >
                 Apply for Loan <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -1625,7 +1625,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               </div>
               <Link
                 href="/products/credit-cards"
-                className="w-full py-3 sm:py-3.5 px-4 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-600 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
+                className="w-full py-3 sm:py-3.5 px-4 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
               >
                 Find Best Card <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -2017,7 +2017,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
                       <Link
                         href="/products/credit-cards"
-                        className="w-full sm:w-auto px-5 py-3 sm:py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 active:scale-95 text-center"
+                        className="w-full sm:w-auto px-5 py-3 sm:py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 active:scale-95 text-center"
                       >
                         Apply For This Card <ArrowRight className="w-4 h-4" />
                       </Link>
@@ -2085,7 +2085,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <BadgePercent className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Max Tax Refund</h4>
@@ -2102,7 +2102,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <Landmark className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Bank Loan-Ready ITR</h4>
@@ -2119,7 +2119,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">100% Notice-Safe</h4>
@@ -2136,7 +2136,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <Clock className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">24h Express Filing</h4>
@@ -2238,7 +2238,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <Landmark className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">₹5 Cr CGTMSE Loans</h4>
@@ -2255,7 +2255,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <Percent className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">1% Interest Subvention</h4>
@@ -2272,7 +2272,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <Award className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">50% Trademark Subsidy</h4>
@@ -2289,7 +2289,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
                 <Clock className="w-5 h-5" />
               </div>
               <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">24h Digital Certificate</h4>
@@ -2444,7 +2444,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 
                 <div className="flex items-center justify-center mb-4">
                   <div className="h-[2px] bg-emerald-100 dark:bg-emerald-800 flex-1"></div>
-                  <div className="w-1.5 h-1.5 rotate-45 bg-[#00A160] dark:bg-emerald-600 mx-3 rounded-[1px]"></div>
+                  <div className="w-1.5 h-1.5 rotate-45 bg-[#00A160] dark:bg-emerald-700 mx-3 rounded-[1px]"></div>
                   <div className="h-[2px] bg-emerald-100 dark:bg-emerald-800 flex-1"></div>
                 </div>
 
@@ -2459,7 +2459,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
                 <div className="flex items-center justify-center mt-4 sm:mt-6 mb-4">
                   <div className="h-[2px] bg-emerald-100 dark:bg-emerald-800 flex-1"></div>
-                  <div className="w-1.5 h-1.5 rotate-45 bg-[#00A160] dark:bg-emerald-600 mx-3 rounded-[1px]"></div>
+                  <div className="w-1.5 h-1.5 rotate-45 bg-[#00A160] dark:bg-emerald-700 mx-3 rounded-[1px]"></div>
                   <div className="h-[2px] bg-emerald-100 dark:bg-emerald-800 flex-1"></div>
                 </div>
 
@@ -2538,7 +2538,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                   onClick={() => setActiveLoanFilter(filter.id as any)}
                   className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all active:scale-95 ${
                     activeLoanFilter === filter.id
-                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                      ? "bg-emerald-700 text-white shadow-md shadow-emerald-600/30"
                       : "bg-white dark:bg-emerald-900/60 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-emerald-800 hover:border-emerald-400"
                   }`}
                 >
