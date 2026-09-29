@@ -1035,15 +1035,15 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-10 sm:mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-              Apna Dream Home Banao, <br className="hidden sm:inline" />
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+              Professional Loan, Credit &amp; Insurance Solutions <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-300">
-                Direct Institutional Bank Sanctions
-              </span> Ke Saath.
+                Tailored for Your Growth.
+              </span>
             </h2>
             
             <p className="mt-3.5 sm:mt-4 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-              Home loans are Bhardwaj Financial Services’ foundational core expertise. We bridge homebuyers directly with credit committees across 50+ nationalized & private institutional banks — unlocking up to <strong className="text-slate-900 dark:text-white font-bold">90% property funding</strong>, lowest benchmark rates starting from <strong className="text-emerald-600 dark:text-emerald-400 font-bold">{homeLoanRate || "7.15"}%* ROI</strong>, and formal sanctions in <strong className="text-slate-900 dark:text-white font-bold">5 business days</strong> with zero hidden broker commissions.
+              Your trusted partner for all financial needs. We provide expert guidance and direct approvals for <strong className="text-slate-900 dark:text-white font-bold">Loans, Credit, and Insurance</strong>. Secure funding from <strong className="text-emerald-600 dark:text-emerald-400 font-bold">₹10 Lakhs to ₹50 Lakhs+</strong> with the lowest benchmark rates starting at <strong className="text-emerald-600 dark:text-emerald-400 font-bold">{homeLoanRate || "7.15"}%* ROI</strong> and fast 5-day approvals from 50+ top institutional banks.
             </p>
 
             {/* 4 Trust Feature Badges */}
