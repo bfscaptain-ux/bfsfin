@@ -155,6 +155,8 @@ export default function BlogPage() {
                   <img 
                     src={blog.imageUrl} 
                     alt={blog.title} 
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    fetchPriority={idx === 0 ? "high" : "auto"}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4 bg-emerald-500 text-slate-900 font-bold px-3 py-1 rounded-full text-xs shadow-lg">
