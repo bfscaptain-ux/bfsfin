@@ -95,13 +95,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Social Share Sidebar (Desktop) */}
         <div className="hidden lg:flex flex-col gap-4 sticky top-32 h-fit">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-widest writing-vertical-rl rotate-180 mb-4">Share Article</span>
-          <button className="w-10 h-10 rounded-full bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 hover:bg-emerald-500 hover:text-white transition shadow-sm hover:shadow-emerald-500/30">
+          <button aria-label="Share on Facebook" className="w-10 h-10 rounded-full bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 hover:bg-emerald-500 hover:text-white transition shadow-sm hover:shadow-emerald-500/30">
             <Facebook className="w-4 h-4" />
           </button>
-          <button className="w-10 h-10 rounded-full bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 hover:bg-emerald-500 hover:text-white transition shadow-sm hover:shadow-emerald-500/30">
+          <button aria-label="Share on Twitter" className="w-10 h-10 rounded-full bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 hover:bg-emerald-500 hover:text-white transition shadow-sm hover:shadow-emerald-500/30">
             <Twitter className="w-4 h-4" />
           </button>
-          <button className="w-10 h-10 rounded-full bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 hover:bg-emerald-500 hover:text-white transition shadow-sm hover:shadow-emerald-500/30">
+          <button aria-label="Share on LinkedIn" className="w-10 h-10 rounded-full bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 hover:bg-emerald-500 hover:text-white transition shadow-sm hover:shadow-emerald-500/30">
             <Linkedin className="w-4 h-4" />
           </button>
         </div>
@@ -147,7 +147,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               {relatedArticles.map((rel: any) => (
                 <Link href={`/blog/${rel.slug}`} key={rel.id} className="bg-white dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition group">
                   <div className="h-40 overflow-hidden">
-                    <img src={rel.imageUrl} alt={rel.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                    <img src={rel.imageUrl} alt={rel.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                   </div>
                   <div className="p-5">
                     <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition line-clamp-2">{rel.title}</h4>
