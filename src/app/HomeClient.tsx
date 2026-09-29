@@ -611,8 +611,8 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] md:bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-white/80 via-transparent to-transparent"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
             
             {/* Left Content - Trust & Value (Sophisticated Text & Motion) */}
             <motion.div 

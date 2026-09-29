@@ -93,7 +93,7 @@ export default function Header() {
 
         {/* PREMIUM TOP BANNER - Dark Corporate Look */}
         <div className="hidden md:flex bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 px-4 py-2.5 text-[11px] font-medium tracking-wide text-emerald-100/70 justify-between items-center border-b border-emerald-800/50">
-          <div className="max-w-7xl mx-auto w-full flex justify-between items-center px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-[1920px] mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-1.5 text-emerald-300 drop-shadow-sm">
                 <ShieldCheck className="w-3.5 h-3.5" /> 
@@ -135,7 +135,7 @@ export default function Header() {
         </div>
 
         {/* MAIN NAVIGATION BAR */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex items-center justify-between h-20">
             {/* Logo & Brand Name */}
             <Link href="/" className="flex items-center gap-2 group shrink-0 pr-8">
