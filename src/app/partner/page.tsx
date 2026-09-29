@@ -43,6 +43,21 @@ export default function PartnerPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-emerald-950 text-slate-900 dark:text-slate-100 flex flex-col">
       <Header />
       
+      {/* Slim Hero Banner */}
+      <div className="w-full h-48 sm:h-64 lg:h-72 relative overflow-hidden mt-[72px]">
+        <img 
+          src="/partner-hero.jpg" 
+          alt="BFS Partnership" 
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-transparent"></div>
+        <div className="absolute inset-0 flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white max-w-2xl">
+            Partner With Excellence
+          </h1>
+        </div>
+      </div>
+
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
