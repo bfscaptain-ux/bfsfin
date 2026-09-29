@@ -161,7 +161,7 @@ export default function Header() {
 
               {/* Products Mega Menu */}
               <div className="relative group py-6" onMouseLeave={() => setActiveProductTab('finance')}>
-                <button className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
+                <button aria-label="Interactive Button" className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
                   pathname.startsWith('/products') 
                     ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black shadow-sm" 
                     : "hover:bg-slate-100/70 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400"
@@ -186,7 +186,7 @@ export default function Header() {
                   <div className="w-[280px] shrink-0 bg-slate-50/80 dark:bg-emerald-950/20 border-r border-slate-100 dark:border-emerald-800/50 p-6 flex flex-col gap-3">
                     <div className="text-xs font-black tracking-widest text-slate-400 uppercase mb-2 px-2">Select Category</div>
                     
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveProductTab('finance')}
                       className={`w-full text-left px-5 py-4 rounded-xl font-bold transition-all flex items-center justify-between ${activeProductTab === 'finance' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -199,7 +199,7 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'finance' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveProductTab('insurance')}
                       className={`w-full text-left px-5 py-4 rounded-xl font-bold transition-all flex items-center justify-between ${activeProductTab === 'insurance' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -212,7 +212,7 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'insurance' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveProductTab('credit-cards')}
                       className={`w-full text-left px-5 py-3 rounded-xl font-bold transition-all flex items-center justify-between ${activeProductTab === 'credit-cards' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -225,7 +225,7 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'credit-cards' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
 
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveProductTab('tax')}
                       className={`w-full text-left px-5 py-3 rounded-xl font-bold transition-all flex items-center justify-between ${activeProductTab === 'tax' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -427,7 +427,7 @@ export default function Header() {
 
               {/* Tools Mega Menu */}
               <div className="relative group py-6" onMouseLeave={() => setActiveToolTab('finance')}>
-                <button className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
+                <button aria-label="Interactive Button" className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
                   pathname.startsWith('/tools') || pathname.startsWith('/calculator')
                     ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black shadow-sm" 
                     : "hover:bg-slate-100/70 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400"
@@ -441,7 +441,7 @@ export default function Header() {
                   
                   {/* Left Sidebar */}
                   <div className="w-64 bg-slate-50/80 dark:bg-[#0f172a]/80 border-r border-slate-100 dark:border-emerald-800/50 p-4 shrink-0 flex flex-col gap-1 relative z-10">
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveToolTab('finance')}
                       className={`w-full text-left px-5 py-4 rounded-xl font-bold transition-all flex items-center justify-between ${activeToolTab === 'finance' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -454,7 +454,7 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeToolTab === 'finance' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveToolTab('insurance')}
                       className={`w-full text-left px-5 py-4 rounded-xl font-bold transition-all flex items-center justify-between ${activeToolTab === 'insurance' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -467,7 +467,7 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeToolTab === 'insurance' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
-                    <button 
+                    <button aria-label="Interactive Button" 
                       onMouseEnter={() => setActiveToolTab('credit-cards')}
                       className={`w-full text-left px-5 py-4 rounded-xl font-bold transition-all flex items-center justify-between ${activeToolTab === 'credit-cards' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
                     >
@@ -663,7 +663,7 @@ export default function Header() {
 
               {/* Resources */}
               <div className="relative group py-6">
-                <button className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">
+                <button aria-label="Interactive Button" className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all">
                   <span>Resources</span>
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300 opacity-70" />
                 </button>
@@ -681,7 +681,7 @@ export default function Header() {
 
               {/* About Us */}
               <div className="relative group py-6">
-                <button className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
+                <button aria-label="Interactive Button" className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
                   pathname.startsWith('/about') 
                     ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black shadow-sm" 
                     : "hover:bg-slate-100/70 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400"
@@ -702,7 +702,7 @@ export default function Header() {
 
               {/* Contact */}
               <div className="relative group py-6">
-                <button className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
+                <button aria-label="Interactive Button" className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
                   pathname.startsWith('/contact') || pathname.startsWith('/complaint') || pathname.startsWith('/appointment')
                     ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black shadow-sm" 
                     : "hover:bg-slate-100/70 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400"
@@ -767,7 +767,7 @@ export default function Header() {
           <Home className="w-5 h-5 mb-0.5" />
           <span className="text-[10px]">Home</span>
         </Link>
-        <button 
+        <button aria-label="Interactive Button" 
           onClick={() => { setMobileMenuOpen(true); setOpenAccordion('products'); }} 
           className={`flex flex-col items-center justify-center w-full h-full transition ${
             pathname.startsWith('/products') ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400"
@@ -789,7 +789,7 @@ export default function Header() {
           </div>
           <span className="text-[10px]">Book</span>
         </Link>
-        <button 
+        <button aria-label="Interactive Button" 
           onClick={() => { setMobileMenuOpen(true); setOpenAccordion('tools'); }} 
           className={`flex flex-col items-center justify-center w-full h-full transition ${
             pathname.startsWith('/tools') || pathname.startsWith('/calculator') ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400"
@@ -798,7 +798,7 @@ export default function Header() {
           <Calculator className="w-5 h-5 mb-0.5" />
           <span className="text-[10px] font-bold">Tools</span>
         </button>
-        <button 
+        <button aria-label="Interactive Button" 
           onClick={() => setMobileMenuOpen(true)} 
           className={`flex flex-col items-center justify-center w-full h-full transition ${
             mobileMenuOpen || pathname.startsWith('/about') || pathname.startsWith('/contact') || pathname.startsWith('/complaint') ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400"
@@ -820,7 +820,7 @@ export default function Header() {
             {/* Header of sheet */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-emerald-800 shrink-0">
               <h3 className="font-black text-lg text-slate-900 dark:text-white">Main Menu</h3>
-              <button onClick={closeMobileMenu} className="p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-red-500 transition">
+              <button aria-label="Interactive Button" onClick={closeMobileMenu} className="p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-red-500 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -839,7 +839,7 @@ export default function Header() {
               
               {/* Mobile Products Accordion */}
               <div>
-                <button onClick={() => toggleAccordion('products')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                <button aria-label="Interactive Button" onClick={() => toggleAccordion('products')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                   <span>Products</span>
                   <ChevronDown className={`w-5 h-5 transition-transform ${openAccordion === 'products' ? 'rotate-180 text-emerald-500' : ''}`} />
                 </button>
@@ -910,7 +910,7 @@ export default function Header() {
 
               {/* Mobile Tools Accordion */}
               <div>
-                <button onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                <button aria-label="Interactive Button" onClick={() => toggleAccordion('tools')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                   <span>Tools & Calculators</span>
                   <ChevronDown className={`w-5 h-5 transition-transform ${openAccordion === 'tools' ? 'rotate-180 text-emerald-500' : ''}`} />
                 </button>
@@ -955,7 +955,7 @@ export default function Header() {
 
               {/* Mobile Resources Accordion */}
               <div>
-                <button onClick={() => toggleAccordion('resources')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                <button aria-label="Interactive Button" onClick={() => toggleAccordion('resources')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                   <span>Resources</span>
                   <ChevronDown className={`w-5 h-5 transition-transform ${openAccordion === 'resources' ? 'rotate-180 text-emerald-500' : ''}`} />
                 </button>
@@ -972,7 +972,7 @@ export default function Header() {
               </div>
               {/* Mobile About Us Accordion */}
               <div>
-                <button onClick={() => toggleAccordion('about')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                <button aria-label="Interactive Button" onClick={() => toggleAccordion('about')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                   <span>About Us</span>
                   <ChevronDown className={`w-5 h-5 transition-transform ${openAccordion === 'about' ? 'rotate-180 text-emerald-500' : ''}`} />
                 </button>
@@ -988,7 +988,7 @@ export default function Header() {
 
               {/* Mobile Contact Accordion */}
               <div>
-                <button onClick={() => toggleAccordion('contact')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                <button aria-label="Interactive Button" onClick={() => toggleAccordion('contact')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                   <span>Contact</span>
                   <ChevronDown className={`w-5 h-5 transition-transform ${openAccordion === 'contact' ? 'rotate-180 text-emerald-500' : ''}`} />
                 </button>

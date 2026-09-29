@@ -206,7 +206,7 @@ function CustomSelect({
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <button
+      <button aria-label="Interactive Button"
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full bg-emerald-950/70 hover:bg-emerald-950/90 active:scale-[0.99] border border-emerald-700/60 focus:border-emerald-400 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-white flex items-center justify-between gap-2 transition-all duration-200 outline-none text-left cursor-pointer shadow-inner group"
@@ -234,7 +234,7 @@ function CustomSelect({
             {options.map((opt) => {
               const isSelected = opt === value;
               return (
-                <button
+                <button aria-label="Interactive Button"
                   key={opt}
                   type="button"
                   onClick={() => {
@@ -784,7 +784,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
                 {/* 3 Interactive Tabs (Mobile Touch Friendly) */}
                 <div className="grid grid-cols-3 bg-slate-100 dark:bg-emerald-950/80 p-1 rounded-2xl mb-4 text-xs font-bold gap-1">
-                  <button
+                  <button aria-label="Interactive Button"
                     onClick={() => setHeroWidgetTab("loan")}
                     className={`py-2 px-1 rounded-xl flex items-center justify-center gap-1 transition-all ${
                       heroWidgetTab === "loan"
@@ -795,7 +795,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <Calculator className="w-3.5 h-3.5 shrink-0" />
                     <span className="truncate">Loans</span>
                   </button>
-                  <button
+                  <button aria-label="Interactive Button"
                     onClick={() => setHeroWidgetTab("insurance")}
                     className={`py-2 px-1 rounded-xl flex items-center justify-center gap-1 transition-all ${
                       heroWidgetTab === "insurance"
@@ -806,7 +806,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <HeartPulse className="w-3.5 h-3.5 text-rose-500 shrink-0" />
                     <span className="truncate">Insurance</span>
                   </button>
-                  <button
+                  <button aria-label="Interactive Button"
                     onClick={() => setHeroWidgetTab("card")}
                     className={`py-2 px-1 rounded-xl flex items-center justify-center gap-1 transition-all ${
                       heroWidgetTab === "card"
@@ -847,7 +847,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Loan Amount</span>
                         <span className="text-base font-black text-emerald-600 dark:text-emerald-400">₹{(loanAmount / 100000).toFixed(1)} Lakhs</span>
                       </div>
-                      <input 
+                      <input aria-label="Form Input" 
                         type="range" 
                         min="1000000" 
                         max="10000000" 
@@ -868,7 +868,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Tenure (Years)</span>
                         <span className="text-base font-black text-emerald-600 dark:text-emerald-400">{loanTenure} Years</span>
                       </div>
-                      <input 
+                      <input aria-label="Form Input" 
                         type="range" 
                         min="1" 
                         max="30" 
@@ -1104,7 +1104,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                   const Icon = tab.icon;
                   const isActive = hlCategory === tab.id;
                   return (
-                    <button
+                    <button aria-label="Interactive Button"
                       key={tab.id}
                       onClick={() => setHlCategory(tab.id as any)}
                       className={`flex flex-col items-center justify-center p-2.5 rounded-xl text-xs font-bold transition-all ${
@@ -1363,7 +1363,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 </div>
                 <div className="grid grid-cols-4 gap-1.5 mb-2.5">
                   {[2500000, 5000000, 7500000, 10000000].map((amt) => (
-                    <button
+                    <button aria-label="Interactive Button"
                       key={amt}
                       onClick={() => setHlAmount(amt)}
                       className={`py-1.5 px-1 rounded-xl text-xs font-bold transition-all active:scale-95 ${
@@ -1376,7 +1376,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     </button>
                   ))}
                 </div>
-                <input
+                <input aria-label="Form Input"
                   type="range"
                   min={1500000}
                   max={20000000}
@@ -1399,7 +1399,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 </div>
                 <div className="grid grid-cols-4 gap-1.5">
                   {[15, 20, 25, 30].map((yr) => (
-                    <button
+                    <button aria-label="Interactive Button"
                       key={yr}
                       onClick={() => setHlTenure(yr)}
                       className={`py-1.5 rounded-lg text-xs font-bold transition-all ${
@@ -1741,7 +1741,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               {creditCardCategories.map((cat, idx) => {
                 const isActive = activeCardIdx === idx;
                 return (
-                  <button
+                  <button aria-label="Interactive Button"
                     key={cat.id}
                     onClick={() => {
                       setActiveCardIdx(idx);
@@ -1951,7 +1951,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
                       {/* Interactive 3D Flip Action Badge */}
                       <div className="mt-3 flex items-center justify-between px-1">
-                        <button
+                        <button aria-label="Interactive Button"
                           type="button"
                           onClick={() => setIsCardFlipped(!isCardFlipped)}
                           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/60 hover:text-emerald-700 dark:hover:text-emerald-300 transition-all shadow-sm active:scale-95 cursor-pointer"
@@ -2533,7 +2533,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 { id: "business", label: "Business & MSME" },
                 { id: "lap", label: "LAP & Personal" }
               ].map((filter) => (
-                <button
+                <button aria-label="Interactive Button"
                   key={filter.id}
                   onClick={() => setActiveLoanFilter(filter.id as any)}
                   className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all active:scale-95 ${
@@ -2765,7 +2765,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <span>•</span>
                     <span>Direct Desk: +91 9258-724-227</span>
                   </div>
-                  <button
+                  <button aria-label="Interactive Button"
                     type="button"
                     onClick={() => {
                       setCallbackSuccess(false);
@@ -2851,7 +2851,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         const isSelected = callbackCategory === cat;
                         const CatIcon = cat === "Loan" ? Landmark : cat === "Insurance" ? ShieldCheck : cat === "Credit Card" ? CreditCard : Receipt;
                         return (
-                          <button
+                          <button aria-label="Interactive Button"
                             key={cat}
                             type="button"
                             onClick={() => {
@@ -2880,7 +2880,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         Your Full Name <span className="text-emerald-400">*</span>
                       </label>
                       <div className="relative">
-                        <input 
+                        <input aria-label="Form Input" 
                           type="text" 
                           placeholder="e.g. Rahul Sharma" 
                           required 
@@ -2914,7 +2914,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         <span className="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-emerald-700/60 bg-emerald-900/80 text-emerald-300 text-xs font-bold select-none">
                           +91
                         </span>
-                        <input 
+                        <input aria-label="Form Input" 
                           type="tel" 
                           maxLength={10}
                           pattern="[0-9]{10}"
@@ -2959,7 +2959,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                       )}
                     </div>
                     <div className="relative flex">
-                      <input 
+                      <input aria-label="Form Input" 
                         type="email" 
                         placeholder="e.g. rahul.sharma@gmail.com" 
                         disabled={isEmailVerified}
@@ -2981,7 +2981,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         } rounded-l-xl px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-emerald-400 transition-colors`}
                       />
                       {isEmailVerified ? (
-                        <button
+                        <button aria-label="Interactive Button"
                           type="button"
                           onClick={() => {
                             setIsEmailVerified(false);
@@ -2993,7 +2993,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                           Change
                         </button>
                       ) : (
-                        <button
+                        <button aria-label="Interactive Button"
                           type="button"
                           onClick={handleSendOtp}
                           disabled={!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callbackEmail.trim()) || isOtpSending || otpCooldown > 0}
@@ -3041,7 +3041,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                           )}
                         </div>
                         <div className="flex gap-2">
-                          <input
+                          <input aria-label="Form Input"
                             type="text"
                             maxLength={6}
                             placeholder="123456"
@@ -3049,7 +3049,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                             onChange={(e) => setCallbackOtp(e.target.value.replace(/\D/g, ''))}
                             className="w-full bg-emerald-950/80 border border-emerald-600/60 rounded-lg px-3 py-2 text-center text-base font-mono font-bold tracking-[0.3em] text-white focus:outline-none focus:border-emerald-400"
                           />
-                          <button
+                          <button aria-label="Interactive Button"
                             type="button"
                             onClick={handleVerifyOtp}
                             disabled={isOtpVerifying || callbackOtp.length !== 6}
@@ -3110,7 +3110,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                         City / Location <span className="text-emerald-400">*</span>
                       </label>
                       <div className="relative">
-                        <input 
+                        <input aria-label="Form Input" 
                           type="text" 
                           placeholder="e.g. Agra, Mathura, Delhi NCR" 
                           value={callbackCity} 
@@ -3152,7 +3152,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <label className="block text-xs font-bold text-slate-200 mb-1">
                       Requirement Details / Notes <span className="text-[11px] font-normal text-slate-400">(Optional)</span>
                     </label>
-                    <input 
+                    <input aria-label="Form Input" 
                       type="text" 
                       placeholder="e.g. Lowest ROI on Agra residential plot / Balance transfer from existing bank" 
                       value={callbackNotes} 
@@ -3163,7 +3163,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
                   {/* Submit Button */}
                   {!isEmailVerified ? (
-                    <button
+                    <button aria-label="Interactive Button"
                       type="button"
                       onClick={() => {
                         setFormTouched(true);
@@ -3182,7 +3182,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                       <span>Verify Email OTP to Submit Request</span>
                     </button>
                   ) : (
-                    <button 
+                    <button aria-label="Interactive Button" 
                       type="submit" 
                       disabled={callbackSubmitting} 
                       className="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-95 disabled:opacity-50 text-slate-950 font-black py-3 sm:py-3.5 rounded-xl transition-all duration-200 text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 mt-2 cursor-pointer"

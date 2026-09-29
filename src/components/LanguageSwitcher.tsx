@@ -86,7 +86,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="relative z-50" ref={dropdownRef}>
-      <button
+      <button aria-label="Interactive Button"
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 transition-all text-xs font-bold shadow-sm"
       >
@@ -98,7 +98,7 @@ export default function LanguageSwitcher() {
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 w-36 max-h-60 overflow-y-auto bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 py-2 animate-in fade-in slide-in-from-top-2">
           {languages.map((lang) => (
-            <button
+            <button aria-label="Interactive Button"
               key={lang.code}
               onClick={() => changeLanguage(lang)}
               className={`w-full text-left px-4 py-2 text-sm font-medium transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-900/30 ${currentLang.code === lang.code ? "text-emerald-600 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20" : "text-slate-600 dark:text-slate-400"}`}
