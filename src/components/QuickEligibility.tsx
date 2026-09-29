@@ -78,7 +78,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
               Employment Category
             </label>
             <div className="grid grid-cols-2 gap-2.5">
-              <button aria-label="Interactive Button"
+              <button
                 type="button"
                 onClick={() => setEmpType("salaried")}
                 className={`py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 ${
@@ -90,7 +90,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
                 {empType === "salaried" && <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />}
                 <span>Salaried Employee</span>
               </button>
-              <button aria-label="Interactive Button"
+              <button
                 type="button"
                 onClick={() => setEmpType("self-employed")}
                 className={`py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 ${
@@ -120,7 +120,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
             </div>
 
             {/* Full-width Touch Slider */}
-            <input aria-label="Form Input"
+            <input aria-label="Input field"
               type="range"
               min={300000}
               max={10000000}
@@ -138,7 +138,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
               <span className="text-[10px] font-semibold text-slate-400 shrink-0">Quick:</span>
               {incomePresets.map((preset) => (
-                <button aria-label="Interactive Button"
+                <button
                   key={preset.value}
                   type="button"
                   onClick={() => setAnnualIncome(preset.value)}
@@ -166,7 +166,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
             </div>
 
             {/* Full-width Touch Slider */}
-            <input aria-label="Form Input"
+            <input aria-label="Input field"
               type="range"
               min={21}
               max={65}
@@ -184,7 +184,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
               <span className="text-[10px] font-semibold text-slate-400 shrink-0">Quick:</span>
               {agePresets.map((a) => (
-                <button aria-label="Interactive Button"
+                <button
                   key={a}
                   type="button"
                   onClick={() => setAge(a)}
@@ -218,7 +218,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
               <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">
                 ₹
               </span>
-              <input aria-label="Form Input"
+              <input aria-label="Input field"
                 type="number"
                 value={existingEmi || ""}
                 onChange={(e) => setExistingEmi(Math.max(0, Number(e.target.value)))}
@@ -231,7 +231,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
               <span className="text-[10px] font-semibold text-slate-400 shrink-0">Quick:</span>
               {emiPresets.map((preset) => (
-                <button aria-label="Interactive Button"
+                <button
                   key={preset.value}
                   type="button"
                   onClick={() => setExistingEmi(preset.value)}

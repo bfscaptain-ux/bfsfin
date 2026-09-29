@@ -150,7 +150,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
           
           {/* Column 1: Loans & Mortgages */}
           <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button aria-label="Interactive Button"
+            <button
               type="button"
               onClick={() => toggleSection("loans")}
               className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
@@ -176,7 +176,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
           {/* Column 2: Insurance Plans */}
           <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button aria-label="Interactive Button"
+            <button
               type="button"
               onClick={() => toggleSection("insurance")}
               className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
@@ -200,7 +200,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
           {/* Column 3: Credit Cards */}
           <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button aria-label="Interactive Button"
+            <button
               type="button"
               onClick={() => toggleSection("cards")}
               className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
@@ -224,7 +224,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
           {/* Column 4: Tools & Calculators */}
           <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button aria-label="Interactive Button"
+            <button
               type="button"
               onClick={() => toggleSection("tools")}
               className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
@@ -248,7 +248,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
           {/* Column 5: Company & Trust */}
           <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button aria-label="Interactive Button"
+            <button
               type="button"
               onClick={() => toggleSection("company")}
               className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
