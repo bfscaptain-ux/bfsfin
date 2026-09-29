@@ -6,11 +6,11 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SmartMarquee from "@/components/SmartMarquee";
-import LiveTicker from "@/components/LiveTicker";
-import QuickEligibility from "@/components/QuickEligibility";
-import EMICalculator from "@/components/EMICalculator";
-import InteractiveStatsMarquee from "@/components/InteractiveStatsMarquee";
+const SmartMarquee = dynamic(() => import("@/components/SmartMarquee"));
+const LiveTicker = dynamic(() => import("@/components/LiveTicker"));
+const QuickEligibility = dynamic(() => import("@/components/QuickEligibility"));
+const EMICalculator = dynamic(() => import("@/components/EMICalculator"));
+const InteractiveStatsMarquee = dynamic(() => import("@/components/InteractiveStatsMarquee"));
 
 // Lazy-loaded below-the-fold components to accelerate First Contentful Paint
 const DynamicFaq = dynamic(() => import("@/components/DynamicFaq"), { ssr: false });

@@ -98,7 +98,7 @@ export default function SmartMarquee({ items, speed = 1 }: { items: any[], speed
         <div className="flex shrink-0 items-center justify-around min-w-full">
           {items.map((logo, idx) => (
             <div key={`first-${idx}`} className="flex-shrink-0 mx-2 sm:mx-4 flex items-center justify-center h-5 sm:h-7 w-14 sm:w-20 opacity-90 hover:opacity-100 transition-all duration-300">
-              <img
+              <img width={80} height={30}
                 src={logo.logoUrl || logo.logo || logo}
                 alt={logo.bankName || logo.name || 'Bank'}
                 title={logo.bankName || logo.name || 'Bank'}
@@ -113,7 +113,7 @@ export default function SmartMarquee({ items, speed = 1 }: { items: any[], speed
         <div className="flex shrink-0 items-center justify-around min-w-full">
           {items.map((logo, idx) => (
             <div key={`second-${idx}`} className="flex-shrink-0 mx-2 sm:mx-4 flex items-center justify-center h-5 sm:h-7 w-14 sm:w-20 opacity-90 hover:opacity-100 transition-all duration-300">
-              <img
+              <img width={80} height={30}
                 src={logo.logoUrl || logo.logo || logo}
                 alt={logo.bankName || logo.name || 'Bank'}
                 title={logo.bankName || logo.name || 'Bank'}
