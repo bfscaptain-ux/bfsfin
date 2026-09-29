@@ -22,6 +22,9 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
 /* GLOBAL COPY PREVENTION */
 * {
   -webkit-user-select: none !important;
