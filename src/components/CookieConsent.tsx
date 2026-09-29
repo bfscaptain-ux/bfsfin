@@ -6,6 +6,7 @@ import { Cookie, X, Check } from "lucide-react";
 import Link from "next/link";
 
 export default function CookieConsent() {
+  return null;
   const [show, setShow] = useState(false);
 
   useEffect(() => {
