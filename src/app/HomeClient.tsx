@@ -1031,7 +1031,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "150px" }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-10 sm:mb-14"
           >
@@ -1089,7 +1089,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, x: -25 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5 }}
               className="lg:col-span-7 flex flex-col gap-4"
             >
@@ -1333,7 +1333,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, x: 25 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5 }}
               className="lg:col-span-5 bg-gradient-to-b from-white to-slate-50 dark:from-emerald-900/60 dark:to-emerald-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-emerald-500/30 dark:border-emerald-700/80 shadow-xl relative overflow-hidden"
             >
@@ -1491,7 +1491,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5, delay: 0.05 }}
               whileHover={{ y: -6 }}
               className="group bg-white dark:bg-emerald-900/50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/80 dark:border-emerald-800/80 shadow-md hover:shadow-2xl hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
@@ -1539,7 +1539,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5, delay: 0.15 }}
               whileHover={{ y: -6 }}
               className="group bg-white dark:bg-emerald-900/50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/80 dark:border-emerald-800/80 shadow-md hover:shadow-2xl hover:border-teal-500/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
@@ -1587,7 +1587,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5, delay: 0.25 }}
               whileHover={{ y: -6 }}
               className="group bg-white dark:bg-emerald-900/50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/80 dark:border-emerald-800/80 shadow-md hover:shadow-2xl hover:border-sky-500/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
@@ -1642,7 +1642,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-7 space-y-4 sm:space-y-6"
             >
@@ -1688,7 +1688,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="lg:col-span-5 bg-white dark:bg-white/5 border border-teal-200/80 dark:border-white/10 p-5 sm:p-8 rounded-3xl shadow-lg shadow-teal-500/5 backdrop-blur-md"
             >
@@ -2080,7 +2080,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.05 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2097,7 +2097,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.12 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2114,7 +2114,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.2 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2131,7 +2131,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.28 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2151,7 +2151,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "150px" }}
           transition={{ duration: 0.5 }}
           className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border-y border-emerald-500/30 w-full mt-10"
         >
@@ -2234,7 +2234,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.05 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2251,7 +2251,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.12 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2268,7 +2268,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.2 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2285,7 +2285,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.28 }}
               className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
             >
@@ -2305,7 +2305,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "150px" }}
           transition={{ duration: 0.5 }}
           className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border-y border-emerald-500/30 w-full mt-10"
         >
@@ -2364,7 +2364,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "150px" }}
                 transition={{ duration: 0.5 }}
                 className="lg:col-span-4 flex flex-col items-center relative pb-8 lg:pb-0"
               >
@@ -2398,7 +2398,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "150px" }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left pt-8 lg:pt-0 border-t lg:border-t-0 lg:border-r border-slate-200/60 dark:border-emerald-800 lg:pr-12"
               >
@@ -2439,7 +2439,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "150px" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="lg:col-span-4 flex flex-col justify-between h-full lg:pl-4 pt-8 lg:pt-0 border-t lg:border-t-0 border-slate-200/60 dark:border-emerald-800"
               >
@@ -2485,7 +2485,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.05 }}
               className="flex flex-col items-center p-5 sm:p-6 space-y-2.5 sm:space-y-3"
             >
@@ -2496,7 +2496,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.15 }}
               className="flex flex-col items-center p-5 sm:p-6 space-y-2.5 sm:space-y-3"
             >
@@ -2507,7 +2507,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.25 }}
               className="flex flex-col items-center p-5 sm:p-6 space-y-2.5 sm:space-y-3"
             >
@@ -2615,7 +2615,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "150px" }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto mb-10 sm:mb-16"
           >
@@ -2645,7 +2645,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 key={idx}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "150px" }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 whileHover={{ y: -6 }}
                 className="relative text-center p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-slate-50 dark:bg-emerald-900/30 border border-slate-200/80 dark:border-emerald-800/80 hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 group"
@@ -2674,7 +2674,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5 }}
               className="lg:col-span-6 space-y-5"
             >
@@ -2732,7 +2732,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="lg:col-span-6 bg-white/5 backdrop-blur-md p-4 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl"
             >
