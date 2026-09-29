@@ -727,8 +727,15 @@ export default function Header() {
               </div>
             </nav>
 
-            {/* Premium Apply Action Button (Desktop Only) */}
-            <div className="hidden xl:flex items-center shrink-0 pl-6 border-l border-slate-200 dark:border-emerald-800">
+            {/* Premium Apply & Partner Action Buttons (Desktop Only) */}
+            <div className="hidden xl:flex items-center shrink-0 pl-6 border-l border-slate-200 dark:border-emerald-800 gap-3">
+              <Link
+                href="/partner"
+                className="relative group inline-flex items-center justify-center gap-1.5 bg-slate-100 dark:bg-emerald-900/40 hover:bg-slate-200 dark:hover:bg-emerald-900/70 text-slate-700 dark:text-emerald-100 font-bold px-4 py-2.5 rounded-xl border border-slate-200 dark:border-emerald-800 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <Users className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-[14px]">Partner With Us</span>
+              </Link>
               <Link
                 href="/apply"
                 className="relative group inline-flex items-center justify-center gap-2 bg-emerald-600 dark:bg-emerald-500 text-white font-bold px-6 py-2.5 rounded-xl shadow-[0_0_15px_rgba(16,185,129,0.25)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
