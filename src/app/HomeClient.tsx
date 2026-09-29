@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -594,14 +595,14 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         
         {/* Absolute Background Image (Subtle Texture) */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src={hConfig.imageUrl} 
             alt="Bhardwaj Finance Hero Background" 
-            loading="eager"
-            // @ts-ignore
-            fetchPriority="high"
-            decoding="sync"
-            className="w-full h-full object-cover object-[center_35%] opacity-100"
+            priority
+            fill
+            sizes="100vw"
+            quality={85}
+            className="object-cover object-[center_35%] opacity-100"
           />
           {/* Smooth, Professional Gradient Overlay - vertical on mobile, horizontal on desktop */}
           <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white/95 via-white/85 md:via-white/70 to-white/40 md:to-transparent dark:from-slate-950/95 dark:via-slate-950/90 dark:to-slate-950/40"></div>
@@ -2370,13 +2371,13 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-[260px] md:h-[260px] rounded-full p-2 bg-gradient-to-b from-emerald-200 via-emerald-100 to-transparent dark:from-emerald-700 dark:via-emerald-800 dark:to-transparent flex items-center justify-center shadow-sm">
                   
                   {/* Thick White Border + Image */}
-                  <div className="w-[96%] h-[96%] rounded-full overflow-hidden border-[6px] border-white dark:border-emerald-900 shadow-sm bg-slate-100 dark:bg-emerald-800">
-                    <img 
+                  <div className="relative w-[96%] h-[96%] rounded-full overflow-hidden border-[6px] border-white dark:border-emerald-900 shadow-sm bg-slate-100 dark:bg-emerald-800">
+                    <Image 
                       src={owner.image} 
                       alt={owner.name} 
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top"
+                      fill
+                      sizes="(max-width: 768px) 256px, 260px"
+                      className="object-cover object-top"
                     />
                   </div>
                 </div>
