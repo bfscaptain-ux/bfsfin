@@ -69,7 +69,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       
       {/* 1. TOP INTERACTIVE CALL & WHATSAPP STRIP (Exact Emerald Theme Match) */}
       <div className="border-b border-emerald-900/60 bg-[#02140e] py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full px-4 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
             {/* Left Header */}
@@ -145,7 +145,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       </div>
 
       {/* 2. MAIN NAVIGATION SECTION (Zero Clutter, Clean Headings) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="w-full px-4 lg:px-10 px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-10">
           
           {/* Column 1: Loans & Mortgages */}
@@ -295,7 +295,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
       {/* 3. CORPORATE HEADQUARTERS & CREDENTIALS */}
       <div className="bg-[#02140e] border-t border-emerald-900/60 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full px-4 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-between">
             
             {/* Brand column */}
@@ -392,7 +392,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
       {/* 4. STATUTORY DISCLAIMER STRIP (Clean & Positive with Link to Full Legal Page) */}
       <div className="bg-[#010a07] border-t border-emerald-950 py-5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] leading-relaxed text-emerald-100/60">
+        <div className="w-full px-4 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] leading-relaxed text-emerald-100/60">
           <p className="text-center md:text-left max-w-4xl">
             <strong className="text-emerald-300 font-bold">Regulatory Disclosure:</strong> Bhardwaj Financial Services is an authorized corporate channel partner for leading Banks and NBFCs across India. Credit sanctions, interest rates, and disbursals are governed exclusively by lending bank norms. BFS operates strictly under a zero upfront fee policy.
           </p>
@@ -407,7 +407,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
       {/* 5. BOTTOM STRIP & LEGAL PROTECTION */}
       <div className="bg-black py-6 border-t border-emerald-950 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col gap-4">
+        <div className="w-full px-4 lg:px-10 flex flex-col gap-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-emerald-100/50">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               <p>© {new Date().getFullYear()} Bhardwaj Financial Services. All Rights Reserved.</p>

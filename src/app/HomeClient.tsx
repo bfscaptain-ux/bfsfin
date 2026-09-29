@@ -2145,19 +2145,21 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               </p>
             </motion.div>
           </div>
+        </div>
 
-          {/* Interactive Profile Selector Banner */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border border-emerald-500/30"
-          >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 blur-3xl pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-500/10 blur-2xl pointer-events-none"></div>
-            
-            <div className="relative z-10 space-y-2 sm:space-y-3 text-center lg:text-left">
+        {/* Interactive Profile Selector Banner - Full Width */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border-y border-emerald-500/30 w-full mt-10"
+        >
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-500/10 blur-2xl pointer-events-none"></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 relative z-10">
+            <div className="space-y-2 sm:space-y-3 text-center lg:text-left">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
                 AY 2025-26 & Past Backlog Returns (ITR-U)
@@ -2165,12 +2167,12 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-black">
                 Select Your Filing Category & Get CA Guidance
               </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/80 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-emerald-100/80 max-w-xl leading-relaxed mx-auto lg:mx-0">
                 Covering ITR-1 (Salaried / Form 16), ITR-4 (Presumptive 44AD Small Business), ITR-3 (Audit / Balance Sheet), and Capital Gains.
               </p>
             </div>
 
-            <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
               <Link
                 href="/services/itr-filing"
                 className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-2 text-center group cursor-pointer"
@@ -2188,9 +2190,8 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 <span>Chat with CA</span>
               </a>
             </div>
-          </motion.div>
-
-        </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* 7. OFFICIAL MSME / UDYAM REGISTRATION SHOWCASE (GOVT BENEFITS & CGTMSE LOANS) */}
@@ -2298,19 +2299,21 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               </p>
             </motion.div>
           </div>
+        </div>
 
-          {/* Quick Registration Bar */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border border-emerald-500/30"
-          >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 blur-3xl pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-500/10 blur-2xl pointer-events-none"></div>
-            
-            <div className="relative z-10 space-y-2 sm:space-y-3 text-center lg:text-left">
+        {/* Quick Registration Bar - Full Width */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border-y border-emerald-500/30 w-full mt-10"
+        >
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-500/10 blur-2xl pointer-events-none"></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 relative z-10">
+            <div className="space-y-2 sm:space-y-3 text-center lg:text-left">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
                 Micro, Small & Medium Enterprise Certificate
@@ -2318,12 +2321,12 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-black">
                 Start Your Business Registration Online in 2 Minutes
               </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/80 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-emerald-100/80 max-w-xl leading-relaxed mx-auto lg:mx-0">
                 100% paperless Aadhaar-linked verification. Zero physical visits needed. Trusted by 2,500+ businesses across Agra & Pan-India.
               </p>
             </div>
 
-            <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
               <Link
                 href="/services/msme-registration"
                 className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-2 text-center group cursor-pointer"
@@ -2341,9 +2344,8 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 <span>WhatsApp Desk</span>
               </a>
             </div>
-          </motion.div>
-
-        </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* 8. FOUNDER & AUTHORITY MESSAGE */}
