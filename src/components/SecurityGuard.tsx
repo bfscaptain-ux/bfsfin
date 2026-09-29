@@ -65,14 +65,37 @@ export default function SecurityGuard() {
       }
     };
 
+    // 4. Block text selection and copy operations natively
+    const handleCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      triggerSecurityWarning();
+      return false;
+    };
+    
+    const handleSelectStart = (e: Event) => {
+      // Allow selection inside input fields only
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        return true;
+      }
+      e.preventDefault();
+      return false;
+    };
+
     document.addEventListener("contextmenu", handleContextMenu, { capture: true });
     document.addEventListener("keydown", handleKeyDown, { capture: true });
     document.addEventListener("dragstart", handleDragStart, { capture: true });
+    document.addEventListener("copy", handleCopy, { capture: true });
+    document.addEventListener("cut", handleCopy, { capture: true });
+    document.addEventListener("selectstart", handleSelectStart, { capture: true });
 
     return () => {
       document.removeEventListener("contextmenu", handleContextMenu, { capture: true });
       document.removeEventListener("keydown", handleKeyDown, { capture: true });
       document.removeEventListener("dragstart", handleDragStart, { capture: true });
+      document.removeEventListener("copy", handleCopy, { capture: true });
+      document.removeEventListener("cut", handleCopy, { capture: true });
+      document.removeEventListener("selectstart", handleSelectStart, { capture: true });
     };
   }, []);
 
