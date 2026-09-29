@@ -102,6 +102,8 @@ export default function SmartMarquee({ items, speed = 1 }: { items: any[], speed
                 src={logo.logoUrl || logo.logo || logo}
                 alt={logo.bankName || logo.name || 'Bank'}
                 title={logo.bankName || logo.name || 'Bank'}
+                loading="lazy"
+                fetchPriority="low"
                 className="max-h-full max-w-full object-contain select-none pointer-events-none"
                 draggable={false}
               />
