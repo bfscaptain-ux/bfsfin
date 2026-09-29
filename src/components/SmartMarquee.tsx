@@ -28,7 +28,7 @@ export default function SmartMarquee({ items, speed = 1 }: { items: any[], speed
                 title={logo.bankName || logo.name || 'Bank'}
                 loading="lazy"
                 fetchPriority="low"
-                className="max-h-full max-w-full object-contain select-none pointer-events-none grayscale hover:grayscale-0"
+                className="max-h-full max-w-full object-contain select-none pointer-events-none"
                 draggable={false}
               />
             </div>
