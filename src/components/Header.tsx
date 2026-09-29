@@ -1004,6 +1004,13 @@ export default function Header() {
 
               <div className="pt-4 pb-8 flex flex-col gap-3 px-2">
                 <Link
+                  href="/partner"
+                  onClick={closeMobileMenu}
+                  className="w-full flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm"
+                >
+                  <Users className="w-5 h-5 text-emerald-600 dark:text-emerald-400" /> Partner With Us
+                </Link>
+                <Link
                   href="/apply"
                   onClick={closeMobileMenu}
                   className="w-full text-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg"
