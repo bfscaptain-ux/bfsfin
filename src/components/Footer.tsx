@@ -431,7 +431,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
             </div>
           </div>
 
-          <p className="text-[10px] text-center md:text-left text-emerald-100/30 leading-relaxed border-t border-emerald-950/60 pt-3">
+          <p className="text-[10px] text-center md:text-left text-emerald-100/60 leading-relaxed border-t border-emerald-950/60 pt-3">
             <strong>Copyright & IP Notice:</strong> All proprietary financial algorithms, EMI calculator formulas, website design layout, trademarks, and editorial content are protected under the Indian Copyright Act, 1957. Unauthorized automated scraping, source code decompilation, or cloning is strictly punishable by law.
           </p>
         </div>

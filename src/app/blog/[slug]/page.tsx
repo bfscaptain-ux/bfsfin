@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             prose-headings:font-black prose-headings:text-slate-900 dark:prose-headings:text-emerald-400
             prose-a:text-emerald-600 dark:prose-a:text-emerald-400 prose-a:font-bold prose-a:no-underline hover:prose-a:underline
             prose-img:rounded-3xl prose-img:shadow-xl
-            prose-strong:text-slate-900 dark:prose-strong:text-emerald-300"
+            prose-strong:text-slate-900 dark:prose-strong:text-emerald-100"
             dangerouslySetInnerHTML={{ __html: blog.content }} 
           />
         </article>
@@ -122,9 +122,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Right Sidebar (Table of Contents / Ads) */}
         <aside className="hidden xl:block w-72 sticky top-32 h-fit">
           <div className="bg-white dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800/50 rounded-3xl p-6 shadow-sm">
-            <h3 className="font-black text-lg text-slate-900 dark:text-emerald-400 mb-4 border-b border-emerald-100 dark:border-emerald-800/50 pb-4">
+            <h2 className="font-black text-lg text-slate-900 dark:text-emerald-400 mb-4 border-b border-emerald-100 dark:border-emerald-800/50 pb-4">
               Need a Home Loan?
-            </h3>
+            </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
               Get the best interest rates starting at 6.50% p.a. with our fast 5-day approval process.
             </p>
@@ -165,9 +165,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       
       {/* Mobile Share Floating Bar */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-emerald-950 border-t border-slate-200 dark:border-emerald-900 p-4 flex justify-center gap-6 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.1)]">
-        <button className="text-emerald-600 dark:text-emerald-400 hover:scale-110 transition"><Facebook className="w-6 h-6" /></button>
-        <button className="text-emerald-600 dark:text-emerald-400 hover:scale-110 transition"><Twitter className="w-6 h-6" /></button>
-        <button className="text-emerald-600 dark:text-emerald-400 hover:scale-110 transition"><Linkedin className="w-6 h-6" /></button>
+        <button aria-label="Share on Facebook" className="text-emerald-600 dark:text-emerald-400 hover:scale-110 transition"><Facebook className="w-6 h-6" /></button>
+        <button aria-label="Share on Twitter" className="text-emerald-600 dark:text-emerald-400 hover:scale-110 transition"><Twitter className="w-6 h-6" /></button>
+        <button aria-label="Share on LinkedIn" className="text-emerald-600 dark:text-emerald-400 hover:scale-110 transition"><Linkedin className="w-6 h-6" /></button>
       </div>
     </div>
   );

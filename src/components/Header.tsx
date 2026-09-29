@@ -142,7 +142,7 @@ export default function Header() {
               <img src="/logo.png" alt="BFS Logo" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
               <div className="flex flex-col justify-center">
                 <span className="text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">Bhardwaj Finance</span>
-                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 tracking-widest uppercase mt-1">Services</span>
+                <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-400 tracking-widest uppercase mt-1">Services</span>
               </div>
             </Link>
 
