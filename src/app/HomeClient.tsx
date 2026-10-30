@@ -28,6 +28,7 @@ const InteractiveStatsMarquee = dynamic(() => import("@/components/InteractiveSt
 const DynamicFaq = dynamic(() => import("@/components/DynamicFaq"), { ssr: false });
 const FloatingSupport = dynamic(() => import("@/components/FloatingSupport"), { ssr: false });
 const ReviewsSection = dynamic(() => import("@/components/ReviewsSection"), { ssr: false });
+const CrmIntroductionSection = dynamic(() => import("@/components/CrmIntroductionSection"), { ssr: false });
 
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -1891,6 +1892,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
           </div>
         </div>
       </section>
+
+      {/* CRM ENTERPRISE INTRO SECTION */}
+      <CrmIntroductionSection />
 
       {/* 9. HEAD OFFICE / CONTACT BLOCK (MOBILE OPTIMIZED) */}
       <section className="py-14 sm:py-20 bg-emerald-950 text-white border-t border-emerald-800/80 relative overflow-hidden">

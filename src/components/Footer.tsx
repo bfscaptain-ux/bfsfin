@@ -164,6 +164,17 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <li><Link href="/about/certifications" className="hover:text-white transition-colors block py-0.5">Udyam &amp; GST Credentials</Link></li>
               <li><Link href="/testimonials" className="hover:text-white transition-colors block py-0.5">Customer Reviews (4.9★)</Link></li>
               <li><Link href="/partner" className="text-emerald-400 font-bold hover:underline block py-0.5">Become a Partner / DSA →</Link></li>
+              <li>
+                <a 
+                  href="https://crm.bfsfin.cloud/login.php" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-white transition-colors bg-emerald-900/60 hover:bg-emerald-800/80 border border-emerald-700/60 px-2.5 py-1 rounded-lg mt-1"
+                >
+                  <span>🔒 Partner &amp; Staff CRM Portal</span>
+                  <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.2 rounded font-mono font-bold">LIVE</span>
+                </a>
+              </li>
               <li><Link href="/appointment" className="hover:text-white transition-colors block py-0.5">Book Priority Appointment</Link></li>
             </ul>
           </div>

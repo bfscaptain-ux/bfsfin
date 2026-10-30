@@ -30,18 +30,18 @@ export const metadata: Metadata = {
     "CGTMSE collateral free loan"
   ],
   alternates: {
-    canonical: "https://bhardwajfinance.com/",
+    canonical: "https://bfsfin.com/",
   },
   openGraph: {
     title: "Bhardwaj Financial Services (BFS) | Loans, Insurance & Credit Cards",
     description: "Your 3-in-1 financial hub in Agra & across India. Lowest Home Loan ROI from 7.15%*, 100% Cashless Insurance, and Lifetime-Free Credit Cards with zero hidden fees.",
-    url: "https://bhardwajfinance.com/",
+    url: "https://bfsfin.com/",
     siteName: "Bhardwaj Financial Services",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://bhardwajfinance.com/og-image.jpg",
+        url: "https://bfsfin.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Bhardwaj Financial Services",
@@ -56,18 +56,18 @@ export default async function HomePage() {
     "@graph": [
       {
         "@type": "FinancialService",
-        "@id": "https://bhardwajfinance.com/#organization",
+        "@id": "https://bfsfin.com/#organization",
         "name": "Bhardwaj Financial Services",
         "alternateName": "BFS",
-        "url": "https://bhardwajfinance.com",
-        "logo": "https://bhardwajfinance.com/logo.png",
-        "image": "https://bhardwajfinance.com/logo.png",
+        "url": "https://bfsfin.com",
+        "logo": "https://bfsfin.com/logo.png",
+        "image": "https://bfsfin.com/logo.png",
         "description": "Premier financial institution providing Home Loans from 7.15%* min ROI, Unsecured Business Loans, 100% Cashless Health & Term Insurance with Free Claim Assistance, and Lifetime-Free Credit Cards across Agra and Pan-India.",
         "founder": {
           "@type": "Person",
           "name": "Adv. Praveen Bhardwaj",
           "jobTitle": "Founder & Managing Director",
-          "url": "https://bhardwajfinance.com/about/founder"
+          "url": "https://bfsfin.com/about/founder"
         },
         "address": {
           "@type": "PostalAddress",
@@ -83,7 +83,7 @@ export default async function HomePage() {
           "longitude": "78.0053"
         },
         "telephone": "+91-9258724227",
-        "email": "info@bhardwajfinance.com",
+        "email": "info@bfsfin.com",
         "areaServed": ["Agra", "Mathura", "Firozabad", "Noida", "Gurgaon", "Delhi NCR", "Mumbai", "Bangalore", "Jaipur", "Pan India"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
