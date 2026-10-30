@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   authors: [{ name: "Bhardwaj Financial Services (BFS AGRA)" }],
   icons: {
     icon: [
-      { url: "/favicon.png?v=2", type: "image/png" },
-      { url: "/logo.png?v=2", type: "image/png" },
-      { url: "/favicon.ico?v=2" }
+      { url: "/favicon.png?v=5", type: "image/png" },
+      { url: "/logo.png?v=5", type: "image/png" },
+      { url: "/favicon.ico?v=5" }
     ],
-    shortcut: "/favicon.png?v=2",
-    apple: "/logo.png?v=2",
+    shortcut: "/favicon.png?v=5",
+    apple: "/apple-touch-icon.png?v=5",
   },
   manifest: "/manifest.json",
 };
@@ -37,10 +37,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/png" sizes="192x192" href="/logo.png?v=3" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png?v=3" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=3" />
-        <link rel="shortcut icon" href="/logo.png?v=3" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=5" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=5" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=5" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5" />
+        <link rel="shortcut icon" href="/favicon.ico?v=5" />
         <style dangerouslySetInnerHTML={{__html: `
           .goog-te-banner-frame.skiptranslate { display: none !important; }
           .VIpgJd-ZVi9od-aZ2wEe-wOHMyf { display: none !important; }
