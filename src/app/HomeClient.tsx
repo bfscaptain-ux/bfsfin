@@ -28,7 +28,7 @@ const InteractiveStatsMarquee = dynamic(() => import("@/components/InteractiveSt
 const DynamicFaq = dynamic(() => import("@/components/DynamicFaq"), { ssr: false });
 const FloatingSupport = dynamic(() => import("@/components/FloatingSupport"), { ssr: false });
 const ReviewsSection = dynamic(() => import("@/components/ReviewsSection"), { ssr: false });
-const CrmIntroductionSection = dynamic(() => import("@/components/CrmIntroductionSection"), { ssr: false });
+const CrmIntroductionSection = dynamic(() => import("@/components/CrmIntroductionSection"), { ssr: true });
 
 import { motion, AnimatePresence } from "framer-motion";
 import {
