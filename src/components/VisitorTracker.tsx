@@ -14,7 +14,17 @@ export default function VisitorTracker() {
     if (lastTrackedPath.current === pathname) return;
     lastTrackedPath.current = pathname;
 
-    // Use requestIdleCallback or setTimeout to ensure zero impact on page load speed
+    // Check session storage to avoid spamming the server on rapid back-forth navigation
+    try {
+      const sessionKey = `bfs_tracked_${pathname || "/"}`;
+      const lastSessionTrack = sessionStorage.getItem(sessionKey);
+      if (lastSessionTrack && Date.now() - parseInt(lastSessionTrack, 10) < 60000) {
+        return; // Already tracked within the last 60 seconds
+      }
+      sessionStorage.setItem(sessionKey, Date.now().toString());
+    } catch {}
+
+    // Use setTimeout to ensure zero impact on initial page paint
     const timeoutId = setTimeout(() => {
       try {
         fetch("/api/track-visitor", {
@@ -26,7 +36,7 @@ export default function VisitorTracker() {
           }),
         }).catch(() => {});
       } catch (e) {}
-    }, 1500);
+    }, 2000);
 
     return () => clearTimeout(timeoutId);
   }, [pathname]);

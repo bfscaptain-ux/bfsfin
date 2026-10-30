@@ -94,7 +94,7 @@ export default function LoanAgainstPropertyClient({ heroImageUrl, startingRate }
                 <Wallet className="w-5 h-5" />
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Max Amount</span>
               </div>
-              <span className="text-3xl sm:text-4xl font-black text-white">₹10 Cr+</span>
+              <span className="text-2xl sm:text-3xl font-black text-white">₹10L to Unlimited</span>
             </div>
 
           </div>

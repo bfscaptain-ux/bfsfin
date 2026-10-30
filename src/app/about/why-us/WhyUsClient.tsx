@@ -91,7 +91,7 @@ export default function WhyUsClient() {
             <Link href="/apply" className="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-bold text-sm transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 flex items-center gap-2">
               Apply for Loan <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/insurance" className="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-slate-900 dark:text-white border border-slate-300 dark:border-white/20 rounded-xl font-bold text-sm transition-all hover:scale-105 flex items-center gap-2">
+            <Link href="/products/insurance" className="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-slate-900 dark:text-white border border-slate-300 dark:border-white/20 rounded-xl font-bold text-sm transition-all hover:scale-105 flex items-center gap-2">
               Explore Insurance & Cards
             </Link>
           </motion.div>

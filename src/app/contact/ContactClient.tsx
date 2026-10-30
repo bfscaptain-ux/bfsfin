@@ -6,6 +6,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
+import HeroAdvisorHuman2D from "@/components/illustrations/HeroAdvisorHuman2D";
+import EligibilitySuccessHuman2D from "@/components/illustrations/EligibilitySuccessHuman2D";
 import { 
   MapPin, 
   PhoneCall, 
@@ -102,7 +104,7 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [settings, setSettings] = useState({
-    officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Palace, Sanjay Place,\nAgra, Uttar Pradesh - 282002\nIndia",
+    officeAddress: "C-11, Cloth Market, Sanjay Place,\nAgra, Uttar Pradesh - 282002\nIndia",
     contactPhone: "+91 7900-979-001",
     officialEmail: "info@bfsfin.com",
     workingHours: "Mon-Sat: 10AM - 6PM"
@@ -126,6 +128,7 @@ export default function ContactClient() {
   }, []);
 
   // Form State
+  const [consentChecked, setConsentChecked] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -261,13 +264,22 @@ export default function ContactClient() {
       setOtpError("Please verify your email first.");
       return;
     }
+    if (!consentChecked) {
+      setOtpError("Please authorize contact consent by ticking the checkbox.");
+      return;
+    }
     setIsSubmitting(true);
     
     try {
       const res = await fetch('/api/callbacks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          consentGiven: true,
+          consentTimestamp: new Date().toISOString(),
+          message: `${formData.message || ""} | [DPDP Consent Authorized (Overrides DND)]`
+        })
       });
       if (res.ok) {
         setIsSubmitted(true);
@@ -348,7 +360,12 @@ export default function ContactClient() {
               </div>
             </div>
 
-            <div className="relative z-10 mt-8 lg:mt-16 pt-6 lg:pt-8 border-t border-emerald-800 flex items-center gap-3 lg:gap-4">
+            {/* Relatable 2D Financial Relationship Advisor Graphic */}
+            <div className="relative z-10 w-full max-w-[260px] h-36 mx-auto mt-4 mb-2 flex items-center justify-center">
+              <HeroAdvisorHuman2D className="w-full h-full object-contain" />
+            </div>
+
+            <div className="relative z-10 mt-4 lg:mt-6 pt-6 lg:pt-8 border-t border-emerald-800 flex items-center gap-3 lg:gap-4">
               <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-emerald-500 shrink-0" />
               <p className="text-emerald-200/60 text-xs lg:text-sm">Available {settings.workingHours}</p>
             </div>
@@ -362,8 +379,8 @@ export default function ContactClient() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="h-full flex flex-col items-center justify-center text-center space-y-6 py-20"
               >
-                <div className="w-24 h-24 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-500 rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-12 h-12" />
+                <div className="w-full max-w-[260px] h-36 mx-auto flex items-center justify-center">
+                  <EligibilitySuccessHuman2D className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Request Received!</h3>
@@ -516,10 +533,25 @@ export default function ContactClient() {
                   />
                 </div>
 
+                {/* Phase 2: Explicit DPDP & Telecom / DND Consent Checkbox */}
+                <div className="bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 p-3.5 rounded-xl text-left">
+                  <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-700 dark:text-slate-300 leading-relaxed select-none">
+                    <input
+                      type="checkbox"
+                      checked={consentChecked}
+                      onChange={(e) => setConsentChecked(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 rounded border-emerald-500 text-emerald-600 focus:ring-emerald-500 cursor-pointer shrink-0 accent-emerald-500"
+                    />
+                    <span>
+                      I authorize Bhardwaj Financial Services and its authorized banking partners to contact me via Call, WhatsApp, SMS, or Email regarding this enquiry. I understand that BFS is a loan facilitator and this authorization overrides my DND/NDNC registration. (Read <a href="/terms" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Terms</a> &amp; <a href="/privacy-policy" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Privacy Policy</a>)
+                    </span>
+                  </label>
+                </div>
+
                 {/* Submit Button */}
                 <button 
                   type="submit" 
-                  disabled={isSubmitting || !otpVerified}
+                  disabled={isSubmitting || !otpVerified || !consentChecked}
                   className={`w-full font-black py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 ${
                     otpVerified 
                       ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 hover:shadow-emerald-500/25 cursor-pointer' 

@@ -5,18 +5,29 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import HomeLoanHuman2D from "@/components/illustrations/HomeLoanHuman2D";
+import InsuranceHuman2D from "@/components/illustrations/InsuranceHuman2D";
+import CreditCardHuman2D from "@/components/illustrations/CreditCardHuman2D";
+import HealthHeroHuman2D from "@/components/illustrations/HealthHeroHuman2D";
+import ProcessHuman2D from "@/components/illustrations/ProcessHuman2D";
+import HeroAdvisorHuman2D from "@/components/illustrations/HeroAdvisorHuman2D";
+import ProcessBgAmbient2D from "@/components/illustrations/ProcessBgAmbient2D";
+import { PillarsLeftBg2D, PillarsRightBg2D } from "@/components/illustrations/PillarsBgCharacters2D";
+import { LoanPortfolioLeftBg2D, LoanPortfolioRightBg2D } from "@/components/illustrations/LoanPortfolioBg2D";
+import { CashlessBimaLeftBg2D, CashlessBimaRightBg2D } from "@/components/illustrations/CashlessBimaBg2D";
+import { CreditCardsLeftBg2D, CreditCardsRightBg2D } from "@/components/illustrations/CreditCardsBg2D";
+import LegalAdvisorBg2D from "@/components/illustrations/LegalAdvisorBg2D";
+
+
 import Footer from "@/components/Footer";
 const SmartMarquee = dynamic(() => import("@/components/SmartMarquee"));
-const LiveTicker = dynamic(() => import("@/components/LiveTicker"));
-const QuickEligibility = dynamic(() => import("@/components/QuickEligibility"));
-const EMICalculator = dynamic(() => import("@/components/EMICalculator"));
-const InteractiveStatsMarquee = dynamic(() => import("@/components/InteractiveStatsMarquee"));
+const QuickEligibility = dynamic(() => import("@/components/QuickEligibility"), { ssr: false });
+const InteractiveStatsMarquee = dynamic(() => import("@/components/InteractiveStatsMarquee"), { ssr: false });
 
 // Lazy-loaded below-the-fold components to accelerate First Contentful Paint
 const DynamicFaq = dynamic(() => import("@/components/DynamicFaq"), { ssr: false });
 const FloatingSupport = dynamic(() => import("@/components/FloatingSupport"), { ssr: false });
 const ReviewsSection = dynamic(() => import("@/components/ReviewsSection"), { ssr: false });
-const Scrolled3DBackground = dynamic(() => import("@/components/Scrolled3DBackground"), { ssr: false });
 
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -25,6 +36,7 @@ import {
   CheckCircle2,
   Clock,
   Building2,
+  Wallet,
   Award,
   ArrowRight,
   FileCheck,
@@ -137,26 +149,6 @@ const CALLBACK_SERVICES = {
       "₹2,50,000+ / month",
       "Business Turnover Based"
     ]
-  },
-  "Tax & Compliance": {
-    label: "Tax & Compliance Desk",
-    subTypes: [
-      "Online ITR Filing (CA-Assisted / AY 2025-26)",
-      "MSME / Udyam Registration (Govt Certificate)",
-      "Loan Computation Sheet & Balance Sheet Audit",
-      "CGTMSE Collateral-Free Loan Advisory",
-      "GST / Business Filing Assistance",
-      "Notice Reply & Tax Optimization"
-    ],
-    amountLabel: "Annual Income / Business Turnover",
-    amounts: [
-      "Up to ₹5 Lakh (Salaried / Small Business)",
-      "₹5 Lakh – ₹15 Lakh",
-      "₹15 Lakh – ₹50 Lakh",
-      "₹50 Lakh – ₹2 Crore",
-      "₹2 Crore – ₹10 Crore+",
-      "New Business / Just Starting"
-    ]
   }
 } as const;
 
@@ -261,7 +253,7 @@ function CustomSelect({
   );
 }
 
-export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, homeLoanRate, balanceTransferRate, selfEmployedRate, businessLoanRate, lapRate, personalLoanRate, goldLoanRate, contactPhone, whatsappPhone }: { heroConfig?: any, ownerConfig?: any, liveBankRates?: any[], homeLoanRate?: string, balanceTransferRate?: string, selfEmployedRate?: string, businessLoanRate?: string, lapRate?: string, personalLoanRate?: string, goldLoanRate?: string, contactPhone?: string, whatsappPhone?: string }) {
+export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], homeLoanRate, balanceTransferRate, selfEmployedRate, businessLoanRate, lapRate, personalLoanRate, goldLoanRate, contactPhone, whatsappPhone }: { heroConfig?: any, ownerConfig?: any, bankLogos?: { id: string; bankName: string; logoUrl: string }[], homeLoanRate?: string, balanceTransferRate?: string, selfEmployedRate?: string, businessLoanRate?: string, lapRate?: string, personalLoanRate?: string, goldLoanRate?: string, contactPhone?: string, whatsappPhone?: string }) {
   
   const owner = ownerConfig || {
     name: "Vineeta Sharma",
@@ -292,26 +284,9 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
   const [callbackNotes, setCallbackNotes] = useState("");
   const [callbackSubmitting, setCallbackSubmitting] = useState(false);
   const [callbackSuccess, setCallbackSuccess] = useState(false);
+  const [consentChecked, setConsentChecked] = useState(false);
 
   // Flagship Home Loan Showcase Interactive State
-  const [hlCategory, setHlCategory] = useState<'purchase' | 'transfer' | 'construction' | 'renovation'>('purchase');
-  const [hlAmount, setHlAmount] = useState<number>(5000000);
-  const [hlTenure, setHlTenure] = useState<number>(20);
-
-  // Derived Home Loan Showcase Calculations
-  const currentHlRate = parseFloat(homeLoanRate || "7.15");
-  const hlMonthlyRate = (currentHlRate / 100) / 12;
-  const hlMonths = hlTenure * 12;
-  const calculatedHlEmi = Math.round(
-    (hlAmount * hlMonthlyRate * Math.pow(1 + hlMonthlyRate, hlMonths)) /
-    (Math.pow(1 + hlMonthlyRate, hlMonths) - 1)
-  );
-  const standardMonthlyRate = (8.75 / 100) / 12;
-  const standardEmi = Math.round(
-    (hlAmount * standardMonthlyRate * Math.pow(1 + standardMonthlyRate, hlMonths)) /
-    (Math.pow(1 + standardMonthlyRate, hlMonths) - 1)
-  );
-  const estimatedHlSavings = Math.max(0, (standardEmi - calculatedHlEmi) * hlMonths);
 
   useEffect(() => {
     if (otpCooldown <= 0) return;
@@ -411,7 +386,6 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
     }
     setIsOtpVerifying(false);
   };
-  const [bankLogos, setBankLogos] = useState<{id: string; bankName: string; logoUrl: string}[]>([]);
   const [activeBullet, setActiveBullet] = useState(0);
   const [heroWidgetTab, setHeroWidgetTab] = useState<"loan" | "insurance" | "card">("loan");
   const [activeLoanFilter, setActiveLoanFilter] = useState<"all" | "home" | "business" | "lap">("all");
@@ -557,11 +531,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
     }
   };
 
-  useEffect(() => {
-    fetch("/api/bank-logos").then(r => r.json()).then(data => {
-      if (Array.isArray(data)) setBankLogos(data);
-    }).catch(() => {});
-  }, []);
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -585,8 +555,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-emerald-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-emerald-900 selection:text-white transition-colors duration-300 relative w-full">
-      {/* 3D Scrolled Background Animation Layer */}
-      <Scrolled3DBackground />
+
 
       <Header />
 
@@ -601,7 +570,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             priority
             fill
             sizes="100vw"
-            quality={85}
+            quality={75}
             className="object-cover object-[center_35%] opacity-100"
           />
           {/* Smooth, Professional Gradient Overlay - vertical on mobile, horizontal on desktop */}
@@ -610,6 +579,8 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
           {/* A second soft radial gradient to ensure the text area is highly readable without blowing out the rest of the image */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] md:bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-white/80 via-transparent to-transparent"></div>
         </div>
+
+
 
         <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
@@ -666,15 +637,6 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               
               {/* CTAs & Mobile Quick-Action Strip */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <style dangerouslySetInnerHTML={{__html: `
-                    @keyframes shine {
-                      0% { transform: translateX(-150%) skewX(-15deg); }
-                      40%, 100% { transform: translateX(250%) skewX(-15deg); }
-                    }
-                    .animate-button-shine {
-                      animation: shine 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-                    }
-                  `}} />
                   <Link
                     href="/appointment"
                     className="relative group w-full sm:w-max px-7 py-3.5 bg-emerald-700 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white font-extrabold text-[15px] rounded-2xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:shadow-[0_0_30px_rgba(16,185,129,0.55)] flex items-center justify-center gap-2 hover:-translate-y-0.5 active:scale-95 overflow-hidden ring-2 ring-emerald-500/30 ring-offset-2 dark:ring-offset-emerald-950 text-center"
@@ -690,32 +652,6 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <Shield className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                     Cashless Bima
                   </Link>
-              </div>
-
-              {/* Instant Compliance Services Strip (Direct Backlinks to ITR & MSME) */}
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="text-[11px] uppercase tracking-wider font-extrabold text-slate-500 dark:text-slate-400 shrink-0 flex items-center gap-1">
-                  <BadgePercent className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-                  Tax & Govt Desk:
-                </span>
-                <Link
-                  href="/services/itr-filing"
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-teal-200 border border-teal-300/70 dark:border-teal-700/60 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-300 shadow-sm transition-all hover:scale-105"
-                  title="File CA-Assisted ITR Online in 24 Hours"
-                >
-                  <Receipt className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-                  <span>ITR Filing (24h CA Desk)</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                </Link>
-                <Link
-                  href="/services/msme-registration"
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-teal-200 border border-teal-300/70 dark:border-teal-700/60 hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-300 shadow-sm transition-all hover:scale-105"
-                  title="Govt MSME / Udyam Certificate Registration"
-                >
-                  <Factory className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-                  <span>MSME / Udyam Reg.</span>
-                  <span className="text-[10px] px-1.5 py-0.2 bg-teal-100 dark:bg-teal-900/60 text-teal-700 dark:text-teal-300 rounded font-black">Govt Approved</span>
-                </Link>
               </div>
 
               {/* Unified Trust & Support Bar (Strictly Single Clean Line on Mobile & Desktop) */}
@@ -845,21 +781,23 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     <div>
                       <div className="flex justify-between items-end mb-1.5">
                         <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Loan Amount</span>
-                        <span className="text-base font-black text-emerald-600 dark:text-emerald-400">₹{(loanAmount / 100000).toFixed(1)} Lakhs</span>
+                        <span className="text-base font-black text-emerald-600 dark:text-emerald-400">
+                          {loanAmount >= 10000000 ? `₹${(loanAmount / 10000000).toFixed(2)} Cr` : `₹${(loanAmount / 100000).toFixed(1)} Lakhs`}
+                        </span>
                       </div>
                       <input aria-label="Input field" 
                         type="range" 
                         min="1000000" 
-                        max="10000000" 
+                        max="250000000" 
                         step="500000"
                         value={loanAmount}
                         onChange={(e) => setLoanAmount(Number(e.target.value))}
                         className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600 hover:accent-emerald-500 transition-all touch-none"
                       />
                       <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                        <span>₹10 L</span>
-                        <span>₹50 L</span>
-                        <span>₹1 Cr</span>
+                        <span>₹10 L (Min)</span>
+                        <span>₹10 Cr</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">₹25 Cr+ (No Limit)</span>
                       </div>
                     </div>
 
@@ -884,16 +822,16 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                       </div>
                     </div>
 
-                    <div className="bg-slate-50/70 dark:bg-emerald-950/60 p-3 rounded-2xl border border-slate-100 dark:border-emerald-800 flex justify-between items-center">
-                      <div>
+                    <div className="bg-slate-50/70 dark:bg-emerald-950/60 p-3 rounded-2xl border border-slate-100 dark:border-emerald-800 flex justify-between items-center relative overflow-hidden">
+                      <div className="relative z-10">
                         <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider mb-0.5">Est. Monthly EMI</p>
                         <p className="text-lg font-black text-slate-900 dark:text-white">
                           ₹{Math.round((loanAmount * (parseFloat(homeLoanRate || "7.15") / 100) / 12) / (1 - Math.pow(1 + (parseFloat(homeLoanRate || "7.15") / 100) / 12, -(loanTenure * 12)))).toLocaleString('en-IN')}
                         </p>
                       </div>
                       <Link
-                        href="/appointment"
-                        className="px-4 py-2 bg-emerald-700 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1"
+                        href={`/apply?service=home-loan&amount=${loanAmount}&source=hero_calculator`}
+                        className="px-4 py-2 bg-emerald-700 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1 shrink-0 relative z-10"
                       >
                         Apply <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -935,7 +873,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     </div>
 
                     <Link
-                      href="/products/insurance"
+                      href="/apply?product=Insurance&source=hero_insurance"
                       className="w-full py-2.5 bg-emerald-700 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
                     >
                       Explore Cashless Bima <ArrowRight className="w-3.5 h-3.5" />
@@ -977,10 +915,10 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                     </div>
 
                     <Link
-                      href="/products/credit-cards"
-                      className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
+                      href="/apply?product=Credit+Card&source=hero_card"
+                      className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
                     >
-                      Compare & Apply Cards <ArrowRight className="w-3.5 h-3.5" />
+                      Compare &amp; Apply Cards <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </motion.div>
                 )}
@@ -991,22 +929,22 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
       </section>
 
       {/* 2. BANKING PARTNERS TRUST BAND - COMPACT SLEEK MARQUEE */}
-      <section className="border-b border-slate-200/80 dark:border-emerald-800/60 bg-slate-50/50 dark:bg-emerald-950/80 py-1 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 relative flex items-center justify-center mb-1">
+      <section className="border-b border-slate-200/80 dark:border-emerald-800/60 bg-slate-100/60 dark:bg-emerald-950/80 py-2 sm:py-2.5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 relative flex items-center justify-center mb-1.5">
           <div className="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-emerald-700/60 to-transparent flex-1 max-w-[120px] sm:max-w-[200px]"></div>
-          <p className="relative z-10 text-[9px] sm:text-[10px] font-extrabold text-slate-500 dark:text-emerald-300/80 uppercase tracking-[0.2em] text-center px-3">
-            50+ Institutional Partner Pools
+          <p className="relative z-10 text-[10px] sm:text-[11px] font-black text-slate-700 dark:text-emerald-300 uppercase tracking-wider text-center px-3">
+            Facilitating loans through leading Banks & HFCs
           </p>
           <div className="h-px bg-gradient-to-r from-slate-300 dark:from-emerald-700/60 via-transparent to-transparent flex-1 max-w-[120px] sm:max-w-[200px]"></div>
         </div>
         {bankLogos.length > 0 ? (
           <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-slate-50 dark:from-emerald-950 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-slate-50 dark:from-emerald-950 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-slate-100/60 dark:from-emerald-950 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-slate-100/60 dark:from-emerald-950 to-transparent z-10 pointer-events-none"></div>
             <SmartMarquee items={bankLogos} speed={0.5} />
           </div>
         ) : (
-          <div className="flex justify-center items-center gap-6 sm:gap-10 opacity-50 grayscale text-xs sm:text-base">
+          <div className="flex justify-center items-center gap-6 sm:gap-10 text-xs sm:text-base">
             {["Nationalized Banks", "Private Banks", "Housing Finance NBFCs", "Institutional Pools"].map((name) => (
               <div key={name} className="flex items-center gap-2">
                 <Building className="w-4 h-4 text-slate-800 dark:text-slate-200" />
@@ -1017,466 +955,18 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         )}
       </section>
 
-      {/* 2. LIVE TICKER */}
-      <LiveTicker rates={liveBankRates} />
-
-      {/* 2.5 FLAGSHIP SIGNATURE CORE PRODUCT: HOME LOANS SHOWCASE */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white via-emerald-50/40 to-slate-50 dark:from-emerald-950/90 dark:via-emerald-950/60 dark:to-[#021811] border-b border-emerald-500/20 dark:border-emerald-800/60 relative overflow-hidden">
-        {/* Subtle Decorative Ambient Glows */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/10 dark:bg-emerald-500/15 blur-[140px] rounded-full pointer-events-none"></div>
-        <div className="absolute -bottom-24 -right-24 w-[400px] h-[400px] bg-teal-500/10 blur-[130px] rounded-full pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Flagship Header */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "150px" }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-10 sm:mb-14"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-              Professional Loan, Credit &amp; Insurance Solutions <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-300">
-                Tailored for Your Growth.
-              </span>
-            </h2>
-            
-            <p className="mt-3.5 sm:mt-4 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-              Your trusted partner for all financial needs. We provide expert guidance and direct approvals for <strong className="text-slate-900 dark:text-white font-bold">Loans, Credit, and Insurance</strong>. Secure funding from <strong className="text-emerald-600 dark:text-emerald-400 font-bold">₹10 Lakhs to ₹50 Lakhs+</strong> with the lowest benchmark rates starting at <strong className="text-emerald-600 dark:text-emerald-400 font-bold">{homeLoanRate || "7.15"}%* ROI</strong> and fast 5-day approvals from 50+ top institutional banks.
-            </p>
-
-            {/* 4 Trust Feature Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mt-6 sm:mt-8 max-w-3xl mx-auto text-left">
-              <div className="bg-white/90 dark:bg-emerald-900/50 backdrop-blur-xs border border-emerald-500/20 rounded-2xl p-3 sm:p-3.5 shadow-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <Clock className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">5-Day Sanction</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">Direct bank credit desk liaison, zero retail queues.</p>
-              </div>
-
-              <div className="bg-white/90 dark:bg-emerald-900/50 backdrop-blur-xs border border-emerald-500/20 rounded-2xl p-3 sm:p-3.5 shadow-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <BadgePercent className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">Up to 90% LTV</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">Maximum property valuation sanction approval.</p>
-              </div>
-
-              <div className="bg-white/90 dark:bg-emerald-900/50 backdrop-blur-xs border border-emerald-500/20 rounded-2xl p-3 sm:p-3.5 shadow-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <Percent className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">From {homeLoanRate || "7.15"}%* ROI</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">Direct wholesale institutional lending pool rates.</p>
-              </div>
-
-              <div className="bg-white/90 dark:bg-emerald-900/50 backdrop-blur-xs border border-emerald-500/20 rounded-2xl p-3 sm:p-3.5 shadow-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">Zero Brokerage</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">Free legal title search & doorstep assistance.</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Interactive Flagship Showcase Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Left Column: Interactive Loan Variant Tabs & Details */}
-            <motion.div 
-              initial={{ opacity: 0, x: -25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-7 flex flex-col gap-4"
-            >
-              {/* Category Pills */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-100/90 dark:bg-emerald-900/40 p-1.5 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80">
-                {[
-                  { id: 'purchase', label: 'New Purchase', icon: Home, badge: '90% LTV' },
-                  { id: 'transfer', label: 'Balance Transfer', icon: RefreshCw, badge: 'Save ₹3.5k' },
-                  { id: 'construction', label: 'Plot + Build', icon: Building2, badge: 'Tranches' },
-                  { id: 'renovation', label: 'Renovation', icon: Key, badge: 'Top-Up' }
-                ].map((tab) => {
-                  const Icon = tab.icon;
-                  const isActive = hlCategory === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setHlCategory(tab.id as any)}
-                      className={`flex flex-col items-center justify-center p-2.5 rounded-xl text-xs font-bold transition-all ${
-                        isActive
-                          ? 'bg-white dark:bg-emerald-700 text-emerald-800 dark:text-white shadow-md border border-emerald-500/30'
-                          : 'text-slate-600 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-white/50 dark:hover:bg-emerald-800/30'
-                      }`}
-                    >
-                      <div className="flex items-center gap-1.5 mb-1">
-                        <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-emerald-600 dark:text-emerald-300' : 'text-slate-400'}`} />
-                        <span className="truncate">{tab.label}</span>
-                      </div>
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${
-                        isActive 
-                          ? 'bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200' 
-                          : 'bg-slate-200/70 dark:bg-emerald-950/60 text-slate-500 dark:text-slate-400'
-                      }`}>
-                        {tab.badge}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Active Tab Details Card */}
-              <div className="bg-white dark:bg-emerald-900/40 rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-slate-200/90 dark:border-emerald-800/80 shadow-md relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={hlCategory}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    {hlCategory === 'purchase' && (
-                      <div className="space-y-3.5 sm:space-y-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-800/70 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-bold shrink-0">
-                              <Home className="w-5 h-5" />
-                            </div>
-                            <div>
-                              <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">New Home Purchase</h4>
-                              <p className="text-xs text-slate-500 dark:text-slate-400">Flats, Villas, Builder Floors & Resale Properties</p>
-                            </div>
-                          </div>
-                          <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-800/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700 w-max">
-                            Up to 30 Yrs Tenure
-                          </span>
-                        </div>
-
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          Finance up to 90% of your property value with institutional sanction pools. We clear legal vetting, verify property titles, and lock in the lowest interest rates from day one.
-                        </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Pre-Approved Sanctions:</strong> Letter ready before property finalization.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Free Title Search:</strong> 100% legal verification by senior advocates.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>PMAY Subsidy (CLSS):</strong> Interest subsidy guidance up to ₹2.67 Lakh.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Zero Brokerage:</strong> No hidden commission from applicant.</span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {hlCategory === 'transfer' && (
-                      <div className="space-y-3.5 sm:space-y-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-800/70 text-teal-700 dark:text-teal-300 flex items-center justify-center font-bold shrink-0">
-                              <RefreshCw className="w-5 h-5" />
-                            </div>
-                            <div>
-                              <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Home Loan Balance Transfer</h4>
-                              <p className="text-xs text-slate-500 dark:text-slate-400">Slash Running High-Interest EMI + Get Instant Top-Up</p>
-                            </div>
-                          </div>
-                          <span className="text-xs font-bold px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-800/60 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-700 w-max">
-                            Save ₹3,500/Mo
-                          </span>
-                        </div>
-
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          Still paying 8.5%–9.5% on an old home loan? Switch to our institutional desk rate pools. We manage entire documentation retrieval, NOC, and title deed handover from your current bank.
-                        </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
-                            <span><strong>Instant Rate Slash:</strong> Bring ROI down to wholesale benchmark.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
-                            <span><strong>Top-Up Liquidity:</strong> Up to ₹50 Lakh extra for personal/business use.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
-                            <span><strong>Zero Hassle Takeover:</strong> BFS team handles inter-bank NOC clearance.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
-                            <span><strong>Substantial Savings:</strong> Save up to ₹5–8 Lakhs in remaining interest.</span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {hlCategory === 'construction' && (
-                      <div className="space-y-3.5 sm:space-y-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-800/70 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-bold shrink-0">
-                              <Building2 className="w-5 h-5" />
-                            </div>
-                            <div>
-                              <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Plot Purchase + Construction Loan</h4>
-                              <p className="text-xs text-slate-500 dark:text-slate-400">Independent Villa & Self-Build Phased Financing</p>
-                            </div>
-                          </div>
-                          <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-800/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700 w-max">
-                            Milestone Tranches
-                          </span>
-                        </div>
-
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          Build your house step by step. Get joint financing for land acquisition and structural civil construction, with funds released smoothly as work progresses.
-                        </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Pay Only on Disbursed Funds:</strong> Zero interest on unreleased loan.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Tranche Alignment:</strong> Released on foundation, plinth, slab & finishing.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Sanctioned Map Approvals:</strong> Complete ADA & layout compliance help.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                            <span><strong>Architect Estimate Vetting:</strong> Fast valuation engineer clearance.</span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {hlCategory === 'renovation' && (
-                      <div className="space-y-3.5 sm:space-y-4">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-800/70 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold shrink-0">
-                              <Key className="w-5 h-5" />
-                            </div>
-                            <div>
-                              <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Home Renovation & Extension</h4>
-                              <p className="text-xs text-slate-500 dark:text-slate-400">Modular Kitchen, Floor Addition & Premium Interiors</p>
-                            </div>
-                          </div>
-                          <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-800/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700 w-max">
-                            Lowest Interest
-                          </span>
-                        </div>
-
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          Don’t take high-interest 14% personal loans for interior furnishing or adding a floor. Unlock low-cost home loan funds with long repayment flexibility.
-                        </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                            <span><strong>Cheaper than Personal Loans:</strong> Save up to 5%–7% in yearly interest.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                            <span><strong>Comfortable 15-Yr Tenure:</strong> Extremely manageable monthly installments.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                            <span><strong>48-Hour Rapid Sanction:</strong> Minimal document formalities.</span>
-                          </div>
-                          <div className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                            <span><strong>Sec 24 Tax Exemption:</strong> Claim income tax rebate on interest paid.</span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Bottom Action Bar */}
-                <div className="pt-4 mt-4 border-t border-slate-100 dark:border-emerald-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
-                    <span className="text-xs font-bold text-slate-600 dark:text-slate-300">
-                      Live Sanction Desk Active • 50+ Bank Panels
-                    </span>
-                  </div>
-                  <Link
-                    href="/products/home-loan"
-                    className="inline-flex items-center gap-1.5 text-xs font-black text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 underline underline-offset-4"
-                  >
-                    View All Home Loan Guidelines & Policies <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Column: Live Interactive Flagship Home Loan EMI & Savings Calculator */}
-            <motion.div 
-              initial={{ opacity: 0, x: 25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-5 bg-gradient-to-b from-white to-slate-50 dark:from-emerald-900/60 dark:to-emerald-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-emerald-500/30 dark:border-emerald-700/80 shadow-xl relative overflow-hidden"
-            >
-              <div className="flex items-center justify-between mb-4 sm:mb-5">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block mb-0.5">
-                    Live Sanction Estimator
-                  </span>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">
-                    Calculate Your Home EMI
-                  </h3>
-                </div>
-                <div className="text-right">
-                  <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-800 text-emerald-800 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700">
-                    {homeLoanRate || "7.15"}%* ROI
-                  </span>
-                </div>
-              </div>
-
-              {/* Amount Quick Presets */}
-              <div className="mb-4">
-                <div className="flex justify-between text-xs font-bold mb-2">
-                  <span className="text-slate-600 dark:text-slate-300">Loan Amount:</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 text-sm font-black">
-                    ₹{(hlAmount / 100000).toLocaleString('en-IN')} Lakhs
-                  </span>
-                </div>
-                <div className="grid grid-cols-4 gap-1.5 mb-2.5">
-                  {[2500000, 5000000, 7500000, 10000000].map((amt) => (
-                    <button
-                      key={amt}
-                      onClick={() => setHlAmount(amt)}
-                      className={`py-1.5 px-1 rounded-xl text-xs font-bold transition-all active:scale-95 ${
-                        hlAmount === amt
-                          ? 'bg-emerald-700 text-white shadow-xs'
-                          : 'bg-slate-100 dark:bg-emerald-800/50 text-slate-600 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-emerald-800'
-                      }`}
-                    >
-                      ₹{amt >= 10000000 ? "1Cr" : `${amt / 100000}L`}
-                    </button>
-                  ))}
-                </div>
-                <input aria-label="Input field"
-                  type="range"
-                  min={1500000}
-                  max={20000000}
-                  step={250000}
-                  value={hlAmount}
-                  onChange={(e) => setHlAmount(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-200 dark:bg-emerald-950 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-                />
-                <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                  <span>₹15 Lakhs</span>
-                  <span>₹2.0 Crore</span>
-                </div>
-              </div>
-
-              {/* Tenure Selector */}
-              <div className="mb-5">
-                <div className="flex justify-between text-xs font-bold mb-2">
-                  <span className="text-slate-600 dark:text-slate-300">Repayment Tenure:</span>
-                  <span className="text-slate-900 dark:text-white font-black">{hlTenure} Years</span>
-                </div>
-                <div className="grid grid-cols-4 gap-1.5">
-                  {[15, 20, 25, 30].map((yr) => (
-                    <button
-                      key={yr}
-                      onClick={() => setHlTenure(yr)}
-                      className={`py-1.5 rounded-lg text-xs font-bold transition-all ${
-                        hlTenure === yr
-                          ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs'
-                          : 'bg-slate-100 dark:bg-emerald-800/40 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
-                      }`}
-                    >
-                      {yr} Yrs
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Calculated EMI Display Box */}
-              <div className="bg-emerald-50/80 dark:bg-emerald-950/90 border border-emerald-300/80 dark:border-emerald-700/80 rounded-2xl p-4 mb-4 text-center">
-                <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-0.5">
-                  Estimated Monthly EMI
-                </span>
-                <div className="text-3xl sm:text-4xl font-black text-emerald-700 dark:text-emerald-300">
-                  ₹{calculatedHlEmi.toLocaleString('en-IN')}
-                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 ml-1">/ month</span>
-                </div>
-                {estimatedHlSavings > 0 && (
-                  <p className="mt-1.5 text-[11px] font-bold text-teal-700 dark:text-teal-300 bg-teal-100/70 dark:bg-teal-900/50 py-1 px-2.5 rounded-lg inline-block">
-                    💡 Save approx ₹{(estimatedHlSavings / 100000).toFixed(1)} Lakhs vs standard 8.75% retail desk rates!
-                  </p>
-                )}
-              </div>
-
-              {/* Trust Features Checklist */}
-              <div className="space-y-1.5 mb-5 text-[11px] text-slate-600 dark:text-slate-300">
-                <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>Direct Bank Sanction Letter in 5 Days</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>Zero Processing Brokerage Paid by Customer</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>Doorstep Document Pick & Free Legal Clearance in Agra & NCR</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-2.5">
-                <Link
-                  href="/products/home-loan"
-                  className="flex-1 py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm text-center shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all group"
-                >
-                  <span>Apply For Home Loan</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/calculator"
-                  className="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-emerald-800/50 dark:hover:bg-emerald-700/60 text-slate-800 dark:text-emerald-100 font-bold text-xs sm:text-sm text-center border border-slate-300 dark:border-emerald-700 transition-all flex items-center justify-center gap-1.5"
-                >
-                  <Calculator className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  <span>Full Calculator</span>
-                </Link>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
       {/* 3. THE 3 CORE PILLARS SHOWCASE (FINANCE, INSURANCE, CREDIT CARDS) - INTERACTIVE & MOBILE OPTIMIZED */}
       <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 dark:bg-emerald-950/60 border-b border-slate-200/80 dark:border-emerald-800/60 relative overflow-hidden">
+        {/* Ambient 2D Character Background Artworks (Flanking the 3 Pillars) */}
+        <div className="absolute -left-10 lg:left-0 bottom-4 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <PillarsLeftBg2D className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute -right-10 lg:right-0 top-16 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <PillarsRightBg2D className="w-full h-full object-contain" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black tracking-widest uppercase bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              Unified Financial Architecture
-            </span>
+
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
               One Trusted Partner. <br className="hidden sm:block" />
               <span className="text-emerald-600 dark:text-emerald-400">Three Financial Pillars.</span>
@@ -1498,13 +988,17 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none"></div>
               <div>
-                <div className="flex items-center justify-between mb-5 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-800/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
-                    <Building2 className="w-6 h-6 sm:w-7 sm:h-7" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-emerald-100 dark:bg-emerald-800/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                    <Building2 className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-xs font-black px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-800 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60">
                     From {homeLoanRate || "7.15"}%* ROI
                   </span>
+                </div>
+                {/* Relatable 2D Human Character Graphic */}
+                <div className="w-full h-36 sm:h-40 mb-4 flex items-center justify-center bg-slate-50/70 dark:bg-slate-900/40 rounded-2xl p-2 border border-slate-100 dark:border-slate-800/60 group-hover:scale-[1.02] transition-transform duration-300">
+                  <HomeLoanHuman2D className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   Finance & Loans
@@ -1528,8 +1022,8 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 </ul>
               </div>
               <Link
-                href="/products/home-loan"
-                className="w-full py-3 sm:py-3.5 px-4 bg-emerald-700 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
+                href="/apply?service=home-loan"
+                className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20"
               >
                 Apply for Loan <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -1546,13 +1040,17 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl group-hover:bg-teal-500/20 transition-all pointer-events-none"></div>
               <div>
-                <div className="flex items-center justify-between mb-5 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-teal-100 dark:bg-teal-800/60 text-teal-700 dark:text-teal-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
-                    <Shield className="w-6 h-6 sm:w-7 sm:h-7" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-teal-100 dark:bg-teal-800/60 text-teal-700 dark:text-teal-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                    <Shield className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-xs font-black px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-800 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-700">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/60">
                     100% Free Claim Help
                   </span>
+                </div>
+                {/* Relatable 2D Human Character Graphic */}
+                <div className="w-full h-36 sm:h-40 mb-4 flex items-center justify-center bg-slate-50/70 dark:bg-slate-900/40 rounded-2xl p-2 border border-slate-100 dark:border-slate-800/60 group-hover:scale-[1.02] transition-transform duration-300">
+                  <InsuranceHuman2D className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                   Insurance Solutions
@@ -1576,8 +1074,8 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                 </ul>
               </div>
               <Link
-                href="/products/insurance"
-                className="w-full py-3 sm:py-3.5 px-4 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-600/20"
+                href="/apply?service=insurance"
+                className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20"
               >
                 Explore Insurance <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -1594,13 +1092,17 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl group-hover:bg-sky-500/20 transition-all pointer-events-none"></div>
               <div>
-                <div className="flex items-center justify-between mb-5 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-100 dark:bg-sky-800/60 text-sky-700 dark:text-sky-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
-                    <CreditCard className="w-6 h-6 sm:w-7 sm:h-7" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-sky-100 dark:bg-sky-800/60 text-sky-700 dark:text-sky-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                    <CreditCard className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-xs font-black px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-800 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-700">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/80 dark:border-sky-800/60">
                     Lifetime Free ₹0 Fee
                   </span>
+                </div>
+                {/* Relatable 2D Human Character Graphic */}
+                <div className="w-full h-36 sm:h-40 mb-4 flex items-center justify-center bg-slate-50/70 dark:bg-slate-900/40 rounded-2xl p-2 border border-slate-100 dark:border-slate-800/60 group-hover:scale-[1.02] transition-transform duration-300">
+                  <CreditCardHuman2D className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
                   Curated Credit Cards
@@ -1634,9 +1136,108 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         </div>
       </section>
 
+      {/* 4. LOAN OFFERINGS PORTFOLIO (INTERACTIVE & FILTERABLE CARDS) */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-slate-50 dark:bg-emerald-900/30 relative overflow-hidden">
+        {/* Ambient 2D Character Background Artworks (Flanking the Loan Portfolio Grid) */}
+        <div className="absolute -left-12 lg:left-2 bottom-12 w-60 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <LoanPortfolioLeftBg2D className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute -right-12 lg:right-2 top-20 w-60 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <LoanPortfolioRightBg2D className="w-full h-full object-contain" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Our Loan Portfolio</span>
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mt-2 mb-3">Specialized Financial Solutions</h3>
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg">Transparent retail and commercial financing processed directly with 50+ institutional pools across India.</p>
+            
+            {/* Interactive Filter Pills for Mobile & Desktop */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mt-6 sm:mt-8">
+              {[
+                { id: "all", label: "All Financing" },
+                { id: "home", label: "Home Loans & BT (7.15%*)" },
+                { id: "business", label: "Business & MSME" },
+                { id: "lap", label: "LAP & Personal" }
+              ].map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => setActiveLoanFilter(filter.id as any)}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all active:scale-95 ${
+                    activeLoanFilter === filter.id
+                      ? "bg-emerald-700 text-white shadow-md shadow-emerald-600/30"
+                      : "bg-white dark:bg-emerald-900/60 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-emerald-800 hover:border-emerald-400"
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {(() => {
+            const allLoanProducts = [
+              { id: "home", icon: <Building2 className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Home Loans", desc: "Flat, independent house, plot purchase or self-construction with flexible up to 30-year tenure.", features: ["₹10L to Unlimited (No Cap)", `Starting at ${homeLoanRate || "7.15"}%* ROI`, "5-Day Express Sanctions"], href: "/products/home-loan", color: "from-emerald-500 to-emerald-600" },
+              { id: "home", icon: <RefreshCw className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Balance Transfer", desc: "Shift existing high-cost loan to lowest rate partner pools and slash your EMIs immediately.", features: [`BT Rate from ${balanceTransferRate || "6.45"}%`, "Instant Top-Up Capital", "Zero Foreclosure Stress"], href: "/products/balance-transfer", color: "from-teal-500 to-teal-600" },
+              { id: "lap", icon: <Award className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Loan Against Property", desc: "Unlock high-value liquidity by mortgaging your residential, commercial, or industrial property.", features: [`Starting at ${lapRate || "7.50"}%`, "₹10L to Unlimited", "15-Year Long Tenure"], href: "/products/loan-against-property", color: "from-emerald-600 to-emerald-700" },
+              { id: "business", icon: <Briefcase className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Business Loans", desc: "Accelerate your enterprise with rapid unsecured capital. No property pledge needed.", features: [`Starting at ${businessLoanRate || "12.50"}%`, "₹10L to Unlimited", "48-Hr Priority Sanction"], href: "/products/business-loan", color: "from-emerald-500 to-teal-500" },
+              { id: "lap", icon: <Smile className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Personal Loans", desc: "Immediate liquidity for weddings, emergency medical bills, travel, or child education.", features: [`Starting at ${personalLoanRate || "10.50"}%`, "Minimal Documentation", "Same-Day Disbursal"], href: "/products/personal-loan", color: "from-teal-600 to-emerald-600" },
+              { id: "lap", icon: <Landmark className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Gold Loan", desc: "Unlock immediate liquid cash against gold ornaments at nationalized benchmark interest rates.", features: [`Starting at ${goldLoanRate || "8.50"}%`, "Up to 90% Gold Valuation", "Instant 30-Min Release"], href: "/products/gold-loan", color: "from-amber-500 to-amber-600" }
+            ];
+            const filteredLoans = allLoanProducts.filter((p) => activeLoanFilter === "all" || p.id === activeLoanFilter);
+            const gridClass = filteredLoans.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+            return (
+              <div className={`grid gap-6 ${gridClass}`}>
+                {filteredLoans.map((product, idx) => (
+              <motion.div
+                key={product.title}
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: idx * 0.05 }}
+              >
+                <Link href={product.href} className="group bg-white dark:bg-emerald-900/60 rounded-3xl p-6 sm:p-7 border border-slate-200 dark:border-emerald-800 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full relative overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-white/20 group-hover:border-white/30 group-hover:text-white transition-all duration-300">
+                        {product.icon}
+                      </div>
+
+                    </div>
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-white transition-colors">{product.title}</h4>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-5 flex-grow group-hover:text-white/80 transition-colors leading-relaxed">{product.desc}</p>
+                    <ul className="space-y-2 mb-6">
+                      {product.features.map((f, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium group-hover:text-white/90 transition-colors">
+                          <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 group-hover:text-white/80 transition-colors shrink-0" />{f}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400 group-hover:text-white transition-colors pt-3 border-t border-slate-100 dark:border-emerald-800 group-hover:border-white/20 mt-auto">
+                      View Details & Eligibility <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+                ))}
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+      
+
       {/* 4. CASHLESS INSURANCE & CLAIM ADVOCACY SHOWCASE (THEME HARMONIZED & RESPONSIVE) */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-50 via-teal-50/40 to-slate-100/70 dark:from-teal-950 dark:via-emerald-950 dark:to-slate-950 text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300 border-y border-teal-100/80 dark:border-teal-900/50">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(20,184,166,0.12),transparent_55%)] pointer-events-none"></div>
+        {/* Ambient 2D Healthcare & Claim Protection Background Artworks */}
+        <div className="absolute -left-10 lg:left-0 bottom-4 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <CashlessBimaLeftBg2D className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute -right-10 lg:right-0 top-12 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <CashlessBimaRightBg2D className="w-full h-full object-contain" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <motion.div 
@@ -1646,10 +1247,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               transition={{ duration: 0.6 }}
               className="lg:col-span-7 space-y-4 sm:space-y-6"
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-teal-100 dark:bg-teal-500/20 text-teal-800 dark:text-teal-300 border border-teal-300 dark:border-teal-400/30">
-                <HeartPulse className="w-3.5 h-3.5 text-teal-600 dark:text-teal-300" />
-                Zero-Stress Medical Safety
-              </span>
+
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight text-slate-900 dark:text-white">
                 100% Cashless Health Bima with <br />
                 <span className="text-teal-600 dark:text-teal-400">Free Claim Settlement Concierge.</span>
@@ -1692,7 +1290,11 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               transition={{ duration: 0.6, delay: 0.1 }}
               className="lg:col-span-5 bg-white dark:bg-white/5 border border-teal-200/80 dark:border-white/10 p-5 sm:p-8 rounded-3xl shadow-lg shadow-teal-500/5 backdrop-blur-md"
             >
-              <h3 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              {/* Relatable 2D Healthcare Illustration */}
+              <div className="w-full h-40 sm:h-44 mb-4 flex items-center justify-center bg-teal-50/60 dark:bg-slate-900/50 rounded-2xl p-2 border border-teal-100 dark:border-teal-900/40">
+                <HealthHeroHuman2D className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white mb-3 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-teal-600 dark:text-teal-400" /> Insurance Portfolio Highlights
               </h3>
               <div className="space-y-3 sm:space-y-4 text-sm">
@@ -1719,15 +1321,20 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         {/* Ambient Glow Aura */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/10 dark:bg-emerald-400/15 blur-[120px] rounded-full pointer-events-none"></div>
 
+        {/* Ambient 2D Lifestyle Traveler & Credit Privilege Characters */}
+        <div className="absolute -left-10 lg:left-0 bottom-4 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <CreditCardsLeftBg2D className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute -right-10 lg:right-0 top-12 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+          <CreditCardsRightBg2D className="w-full h-full object-contain" />
+        </div>
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header & Tabs In Single Clean Row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-widest bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 mb-1.5 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 animate-pulse" />
-                Interactive Card Showcase
-              </div>
+
               <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                 Smart Spending Power & Privilege
               </h2>
@@ -1970,7 +1577,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                   <div className="lg:col-span-7 space-y-3.5">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider bg-slate-100 dark:bg-emerald-900/60 border border-slate-200 dark:border-emerald-700 ${curCard.accentText}`}>
+                        <span className={`text-xs font-black uppercase tracking-wider ${curCard.accentText}`}>
                           {curCard.categoryName}
                         </span>
                         <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
@@ -2039,315 +1646,6 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
         </div>
       </section>
 
-      {/* 6. ONLINE ITR FILING SHOWCASE (CA-ASSISTED, TAX REFUND & LOAN-READY COMPUTATIONS) */}
-      <section className="py-14 sm:py-20 bg-gradient-to-b from-slate-50/80 via-emerald-50/20 to-white dark:from-slate-950 dark:via-emerald-950/20 dark:to-slate-950 border-b border-slate-200/80 dark:border-emerald-800/80 text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-400/10 blur-[130px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-500/10 dark:bg-teal-400/10 blur-[120px] rounded-full pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-emerald-50 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200/90 dark:border-emerald-700/80 mb-3 shadow-sm">
-                <Receipt className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                Income Tax Compliance & Refund Desk
-              </div>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                CA-Assisted ITR Filing. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-400">
-                  Maximum Refunds, 100% Notice-Proof.
-                </span>
-              </h2>
-              <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Whether you are a salaried employee with Form 16, a business proprietor needing audit-ready balance sheets, or preparing ITR for banking loan approval — our chartered tax specialists file accurately in 24 hours.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Link
-                href="/services/itr-filing"
-                className="px-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-emerald-600/25 active:scale-95 transition-all flex items-center gap-2 group cursor-pointer"
-              >
-                <span>File Your ITR Now</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
-          </div>
-
-          {/* 4 Feature Highlights Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-10">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <BadgePercent className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Max Tax Refund</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Full optimization under Section 80C, 80D, 24(b) home loan interest, and 87A rebate for lowest tax outgo.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.12 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <Landmark className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Bank Loan-Ready ITR</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Income computation sheets aligned with banking credit appraisal norms for fast home & business loan approvals.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">100% Notice-Safe</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Automatic cross-matching with AIS, TIS, and Form 26AS portal data before submission to eliminate scrutiny risk.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.28 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <Clock className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">24h Express Filing</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Dedicated tax manager assigned to file and send official ITR-V acknowledgment directly to your WhatsApp & Email.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Interactive Profile Selector Banner - Full Width */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "150px" }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border-y border-emerald-500/30 w-full mt-10"
-        >
-          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-500/10 blur-2xl pointer-events-none"></div>
-          
-          <div className="w-full px-4 sm:px-8 lg:px-16 2xl:px-24 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 relative z-10">
-            <div className="space-y-2 sm:space-y-3 text-center lg:text-left flex-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
-                AY 2025-26 & Past Backlog Returns (ITR-U)
-              </span>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black">
-                Select Your Filing Category & Get CA Guidance
-              </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed mx-auto lg:mx-0 lg:pr-10">
-                Covering ITR-1 (Salaried / Form 16), ITR-4 (Presumptive 44AD Small Business), ITR-3 (Audit / Balance Sheet), and Capital Gains.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
-              <Link
-                href="/services/itr-filing"
-                className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-2 text-center group cursor-pointer"
-              >
-                <span>Open ITR Portal</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <a
-                href="https://wa.me/917900979001?text=Hi%20BFS,%20I%20need%20help%20with%20ITR%20filing."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-sm rounded-xl border border-emerald-500/30 backdrop-blur-sm transition-all flex items-center justify-center gap-2 text-center"
-              >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
-                <span>Chat with CA</span>
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 7. OFFICIAL MSME / UDYAM REGISTRATION SHOWCASE (GOVT BENEFITS & CGTMSE LOANS) */}
-      <section className="py-14 sm:py-20 bg-gradient-to-b from-slate-50/50 via-teal-50/15 to-white dark:from-slate-950 dark:via-teal-950/20 dark:to-slate-950 border-b border-slate-200/80 dark:border-emerald-800/80 text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
-        <div className="absolute top-1/2 left-0 w-80 h-80 bg-teal-500/10 dark:bg-teal-400/10 blur-[130px] rounded-full pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-emerald-50 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200/90 dark:border-emerald-700/80 mb-3 shadow-sm">
-                <Factory className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                Ministry of MSME Govt Gateway
-              </div>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                Official MSME / Udyam Registration. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-400">
-                  Unlock ₹5 Cr Collateral-Free Bank Loans.
-                </span>
-              </h2>
-              <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Empower your proprietorship, partnership, private limited company, or retail shop with Government of India Udyam recognition. Get lifetime valid certificate, priority lending, and direct interest subsidies.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Link
-                href="/services/msme-registration"
-                className="px-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-emerald-600/25 active:scale-95 transition-all flex items-center gap-2 group cursor-pointer"
-              >
-                <span>Register MSME Online</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
-          </div>
-
-          {/* 4 Feature Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-10">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <Landmark className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">₹5 Cr CGTMSE Loans</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Priority sanction for collateral-free bank working capital and machinery loans backed by CGTMSE credit guarantee.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.12 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <Percent className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">1% Interest Subvention</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Avail up to 1% annual interest rate rebate on business overdraft and term loans from scheduled commercial banks.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <Award className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">50% Trademark Subsidy</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                50% concession on government trademark, patent, and IP filing fees to protect your brand name and logo legally.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.4, delay: 0.28 }}
-              className="bg-white dark:bg-emerald-900/30 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-emerald-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-4 group-hover:scale-110 group-hover:bg-emerald-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                <Clock className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-white mb-1.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">24h Digital Certificate</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Official Udyam Registration number with QR-coded downloadable government certificate valid for lifetime.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Quick Registration Bar - Full Width */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "150px" }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border-y border-emerald-500/30 w-full mt-10"
-        >
-          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/15 blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-500/10 blur-2xl pointer-events-none"></div>
-          
-          <div className="w-full px-4 sm:px-8 lg:px-16 2xl:px-24 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 relative z-10">
-            <div className="space-y-2 sm:space-y-3 text-center lg:text-left flex-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
-                Micro, Small & Medium Enterprise Certificate
-              </span>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black">
-                Start Your Business Registration Online in 2 Minutes
-              </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed mx-auto lg:mx-0 lg:pr-10">
-                100% paperless Aadhaar-linked verification. Zero physical visits needed. Trusted by 2,500+ businesses across Agra & Pan-India.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
-              <Link
-                href="/services/msme-registration"
-                className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-2 text-center group cursor-pointer"
-              >
-                <span>Apply for Udyam Certificate</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <a
-                href="https://wa.me/917900979001?text=Hi%20BFS,%20I%20want%20to%20apply%20for%20MSME%20Udyam%20Registration."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-sm rounded-xl border border-emerald-500/30 backdrop-blur-sm transition-all flex items-center justify-center gap-2 text-center"
-              >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
-                <span>WhatsApp Desk</span>
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
       {/* 8. FOUNDER & AUTHORITY MESSAGE */}
       <section className="pt-6 pb-12 bg-slate-50 dark:bg-emerald-950 relative overflow-hidden">
         <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -2357,6 +1655,11 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             {/* Dotted Pattern Background */}
             <div className="absolute top-0 left-0 w-64 h-full bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] dark:bg-[radial-gradient(#064e3b_2px,transparent_2px)] [background-size:16px_16px] opacity-60"></div>
             <div className="absolute top-0 left-0 w-64 h-full bg-gradient-to-r from-transparent to-white dark:to-emerald-900"></div>
+
+            {/* Ambient 2D Legal Advocate & Governance Background Character */}
+            <div className="absolute right-0 bottom-0 w-64 sm:w-80 lg:w-96 opacity-15 dark:opacity-20 pointer-events-none select-none z-0 hidden md:block">
+              <LegalAdvisorBg2D className="w-full h-full object-contain" />
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
               
@@ -2450,13 +1753,10 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
                   <div className="h-[2px] bg-emerald-100 dark:bg-emerald-800 flex-1"></div>
                 </div>
 
-                <div className="flex-1 flex flex-col justify-center py-4 relative">
-                  {/* Huge SVG Quote Mark in the background for exact design match */}
-                  <div className="absolute top-0 left-0 text-[#00A160] opacity-90 font-serif text-[60px] sm:text-[80px] leading-none">“</div>
-                  <p className="text-xl sm:text-2xl md:text-3xl italic font-medium leading-[1.6] text-slate-800 dark:text-slate-200 mt-4 z-10 relative">
-                    {owner.quote}
+                <div className="flex-1 flex flex-col justify-center py-6 px-4 sm:px-6 bg-slate-50 dark:bg-emerald-950/40 rounded-2xl border border-slate-100 dark:border-emerald-800/40 relative">
+                  <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed text-slate-800 dark:text-slate-200 italic">
+                    &ldquo;{owner.quote}&rdquo;
                   </p>
-                  <div className="absolute bottom-0 right-0 text-[#00A160] opacity-90 font-serif text-[60px] sm:text-[80px] leading-none transform rotate-180 translate-y-6 sm:translate-y-8">“</div>
                 </div>
 
                 <div className="flex items-center justify-center mt-4 sm:mt-6 mb-4">
@@ -2481,120 +1781,46 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
       {/* 7. OFFICIAL TRUST BADGES */}
       <section className="py-10 sm:py-12 bg-white dark:bg-emerald-950 border-y border-slate-200 dark:border-emerald-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-800 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="flex flex-col items-center p-5 sm:p-6 space-y-2.5 sm:space-y-3"
+              className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-2.5"
             >
-              <ShieldCheck className="w-9 h-9 sm:w-10 sm:h-10 text-emerald-600 dark:text-emerald-500" />
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">100% RBI & IRDAI Compliant</h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Strict adherence to national banking & insurance regulatory standards.</p>
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">100% RBI &amp; IRDAI Compliant</h4>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Strict adherence to national banking &amp; insurance regulatory standards.</p>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="flex flex-col items-center p-5 sm:p-6 space-y-2.5 sm:space-y-3"
+              className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-2.5"
             >
-              <Scale className="w-9 h-9 sm:w-10 sm:h-10 text-emerald-600 dark:text-emerald-500" />
+              <div className="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center text-teal-600 dark:text-teal-400">
+                <Scale className="w-6 h-6" />
+              </div>
               <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Legally Vetted Projects</h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Our in-house legal advocate team protects your lifelong financial safety.</p>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Our in-house legal advocate team protects your lifelong financial safety.</p>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.4, delay: 0.25 }}
-              className="flex flex-col items-center p-5 sm:p-6 space-y-2.5 sm:space-y-3"
+              className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-2.5"
             >
-              <FileCheck className="w-9 h-9 sm:w-10 sm:h-10 text-emerald-600 dark:text-emerald-500" />
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <FileCheck className="w-6 h-6" />
+              </div>
               <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Zero Hidden Brokerage</h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Direct institutional pricing with 100% transparent documentation.</p>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Direct institutional pricing with 100% transparent documentation.</p>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. LOAN OFFERINGS (INTERACTIVE & MOBILE-FIRST FILTERABLE CARDS) */}
-      <section className="py-14 sm:py-20 lg:py-28 bg-slate-50 dark:bg-emerald-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Our Loan Portfolio</span>
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mt-2 mb-3">Specialized Financial Solutions</h3>
-            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg">Transparent retail and commercial financing processed directly with 50+ institutional pools across India.</p>
-            
-            {/* Interactive Filter Pills for Mobile & Desktop */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mt-6 sm:mt-8">
-              {[
-                { id: "all", label: "All Financing" },
-                { id: "home", label: "Home Loans & BT (7.15%*)" },
-                { id: "business", label: "Business & MSME" },
-                { id: "lap", label: "LAP & Personal" }
-              ].map((filter) => (
-                <button
-                  key={filter.id}
-                  onClick={() => setActiveLoanFilter(filter.id as any)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all active:scale-95 ${
-                    activeLoanFilter === filter.id
-                      ? "bg-emerald-700 text-white shadow-md shadow-emerald-600/30"
-                      : "bg-white dark:bg-emerald-900/60 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-emerald-800 hover:border-emerald-400"
-                  }`}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              { id: "home", icon: <Building2 className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Home Loans", desc: "Flat, independent house, plot purchase or self-construction with flexible up to 30-year tenure.", features: ["₹20L to ₹5Cr+", `Starting at ${homeLoanRate || "7.15"}%* ROI`, "5-Day Express Sanctions"], href: "/products/home-loan", color: "from-emerald-500 to-emerald-600", badge: "Most Popular" },
-              { id: "home", icon: <RefreshCw className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Balance Transfer", desc: "Shift existing high-cost loan to lowest rate partner pools and slash your EMIs immediately.", features: [`BT Rate from ${balanceTransferRate || "6.45"}%`, "Instant Top-Up Capital", "Zero Foreclosure Stress"], href: "/products/balance-transfer", color: "from-teal-500 to-teal-600", badge: "Instant Savings" },
-              { id: "lap", icon: <Award className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Loan Against Property", desc: "Unlock high-value liquidity by mortgaging your residential, commercial, or industrial property.", features: [`Starting at ${lapRate || "7.50"}%`, "Up to 70% Property LTV", "15-Year Long Tenure"], href: "/products/loan-against-property", color: "from-emerald-600 to-emerald-700" },
-              { id: "business", icon: <Briefcase className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Business Loans", desc: "Accelerate your enterprise with rapid unsecured capital. No property pledge needed.", features: [`Starting at ${businessLoanRate || "12.50"}%`, "Up to ₹5 Cr Limit", "48-Hr Priority Sanction"], href: "/products/business-loan", color: "from-emerald-500 to-teal-500", badge: "Collateral-Free" },
-              { id: "lap", icon: <Smile className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Personal Loans", desc: "Immediate liquidity for weddings, emergency medical bills, travel, or child education.", features: [`Starting at ${personalLoanRate || "10.50"}%`, "Minimal Documentation", "Same-Day Disbursal"], href: "/products/personal-loan", color: "from-teal-600 to-emerald-600" },
-              { id: "lap", icon: <Landmark className="w-6 h-6 sm:w-7 sm:h-7" />, title: "Gold Loan", desc: "Unlock immediate liquid cash against gold ornaments at nationalized benchmark interest rates.", features: [`Starting at ${goldLoanRate || "8.50"}%`, "Up to 90% Gold Valuation", "Instant 30-Min Release"], href: "/products/gold-loan", color: "from-amber-500 to-amber-600" }
-            ].filter((product) => activeLoanFilter === "all" || product.id === activeLoanFilter).map((product, idx) => (
-              <motion.div
-                key={product.title}
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: idx * 0.05 }}
-              >
-                <Link href={product.href} className="group bg-white dark:bg-emerald-900/60 rounded-3xl p-6 sm:p-7 border border-slate-200 dark:border-emerald-800 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full relative overflow-hidden">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                  
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-800/50 border border-emerald-100 dark:border-emerald-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-white/20 group-hover:border-white/30 group-hover:text-white transition-all duration-300">
-                        {product.icon}
-                      </div>
-                      {product.badge && (
-                        <span className="text-[10px] font-black px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-800 text-emerald-800 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700 group-hover:bg-white/20 group-hover:text-white group-hover:border-white/30 transition-colors">
-                          {product.badge}
-                        </span>
-                      )}
-                    </div>
-                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-white transition-colors">{product.title}</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-5 flex-grow group-hover:text-white/80 transition-colors leading-relaxed">{product.desc}</p>
-                    <ul className="space-y-2 mb-6">
-                      {product.features.map((f, i) => (
-                        <li key={i} className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium group-hover:text-white/90 transition-colors">
-                          <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 group-hover:text-white/80 transition-colors shrink-0" />{f}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400 group-hover:text-white transition-colors pt-3 border-t border-slate-100 dark:border-emerald-800 group-hover:border-white/20 mt-auto">
-                      View Details & Eligibility <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -2619,16 +1845,17 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto mb-10 sm:mb-16"
           >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 mb-3">
-              <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              Transparent Workflow
-            </span>
+
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white mt-1 mb-3 tracking-tight">
               Standardised 5-Day Processing
             </h2>
             <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
               A fully digital, legally vetted step-by-step process with zero branch visits and complete real-time tracking.
             </p>
+            {/* Relatable 2D Fast Sanction Character Graphic */}
+            <div className="w-full max-w-[280px] sm:max-w-[320px] mx-auto h-36 sm:h-44 mt-4 flex items-center justify-center">
+              <ProcessHuman2D className="w-full h-full object-contain" />
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
@@ -2668,6 +1895,10 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
       {/* 9. HEAD OFFICE / CONTACT BLOCK (MOBILE OPTIMIZED) */}
       <section className="py-14 sm:py-20 bg-emerald-950 text-white border-t border-emerald-800/80 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.1),transparent_60%)] pointer-events-none"></div>
+        {/* Ambient 2D Character Collaboration Background Watermark */}
+        <div className="absolute -left-12 -bottom-10 w-72 sm:w-96 lg:w-[480px] opacity-15 dark:opacity-20 pointer-events-none select-none z-0">
+          <ProcessBgAmbient2D className="w-full h-full object-contain" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
@@ -2678,10 +1909,7 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               transition={{ duration: 0.5 }}
               className="lg:col-span-6 space-y-5"
             >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-emerald-800/60 text-emerald-300 border border-emerald-700/60">
-                <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                Physical Headquarters
-              </span>
+
               <h3 className="text-2xl sm:text-4xl font-black tracking-tight">
                 Visit Our Agra Head Office
               </h3>
@@ -2734,481 +1962,79 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "150px" }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="lg:col-span-6 bg-white/5 backdrop-blur-md p-4 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl"
+              className="lg:col-span-6 bg-white/5 backdrop-blur-md p-5 sm:p-8 rounded-3xl border border-white/15 shadow-2xl flex flex-col justify-between"
             >
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="font-black text-lg sm:text-xl text-white">Request an Instant Callback</h4>
-                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-emerald-300 bg-emerald-950/90 px-2.5 sm:px-3 py-1 rounded-full border border-emerald-500/30">
-                  <Clock className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>30-Min Response Desk</span>
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed">
-                Connect directly with our dedicated loan, insurance, or credit card underwriting desk.
-              </p>
-              {callbackSuccess ? (
-                <div className="text-center py-10 px-4 bg-emerald-950/60 rounded-2xl border border-emerald-500/40 shadow-inner relative overflow-hidden">
-                  <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-400/40 shadow-lg shadow-emerald-500/30">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 mb-2">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-                    Verified Priority Dispatch
-                  </div>
-                  <h5 className="font-black text-white text-2xl mb-1.5">Priority Callback Confirmed!</h5>
-                  <p className="text-xs sm:text-sm text-emerald-200/90 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-white">{callbackName}</strong>. Your verified submission for <span className="text-emerald-300 font-semibold">{callbackCategory} — {callbackSubType}</span> has been dispatched to our underwriting desk.
-                  </p>
-                  <p className="text-xs text-emerald-300/90 mt-2">
-                    An advisor will reach out at <span className="text-white font-mono font-bold">+91 {callbackPhone}</span> ({callbackTime}) and your verification receipt has been logged for <span className="text-white font-mono font-bold">{callbackEmail}</span>.
-                  </p>
-                  <div className="mt-5 pt-4 border-t border-emerald-800/60 flex items-center justify-center gap-4 text-xs text-emerald-300/80">
-                    <span>Reference ID: #BFS-{Date.now().toString().slice(-6)}</span>
-                    <span>•</span>
-                    <span>Direct Desk: +91 9258-724-227</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCallbackSuccess(false);
-                      setCallbackName("");
-                      setCallbackPhone("");
-                      setCallbackEmail("");
-                      setCallbackOtp("");
-                      setIsEmailVerified(false);
-                      setIsOtpSent(false);
-                      setCallbackNotes("");
-                      setFormTouched(false);
-                    }}
-                    className="mt-6 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all cursor-pointer"
-                  >
-                    Request Another Callback
-                  </button>
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-black text-xl sm:text-2xl text-white">Unified Smart Application Desk</h4>
                 </div>
-              ) : (
-                <form className="space-y-3.5 sm:space-y-4" onSubmit={async (e) => {
-                  e.preventDefault();
-                  setFormTouched(true);
-                  const isNameValid = callbackName.trim().length >= 3 && /^[a-zA-Z\s.'-]+$/.test(callbackName.trim());
-                  const isPhoneValid = /^[6-9]\d{9}$/.test(callbackPhone.trim());
-                  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callbackEmail.trim().toLowerCase());
-                  const isCityValid = callbackCity.trim().length >= 2;
-                  
-                  if (!isNameValid || !isPhoneValid || !isEmailValid || !isCityValid) {
-                    return;
-                  }
-                  if (!isEmailVerified) {
-                    setOtpError("Mandatory email OTP verification required before submitting.");
-                    return;
-                  }
-                  
-                  setCallbackSubmitting(true);
-                  try {
-                    const numericAmount = 
-                      callbackCategory === "Loan"
-                        ? (callbackAmount.includes("1.5 Crore – ₹5 Crore") ? 30000000 
-                           : callbackAmount.includes("75 Lakh – ₹1.5") ? 15000000 
-                           : callbackAmount.includes("35 Lakh – ₹75") ? 7500000 
-                           : callbackAmount.includes("15 Lakh – ₹35") ? 3500000 
-                           : callbackAmount.includes("5 Lakh – ₹15") ? 1500000 
-                           : 2500000)
-                        : callbackCategory === "Insurance"
-                        ? (callbackAmount.includes("1 Crore") ? 10000000
-                           : callbackAmount.includes("50 Lakh") ? 5000000
-                           : callbackAmount.includes("25 Lakh") ? 2500000
-                           : callbackAmount.includes("10 Lakh") ? 1000000
-                           : callbackAmount.includes("5 Lakh") ? 500000
-                           : 1000000)
-                        : 0;
+                {/* Relatable 2D Banking Advisor Character Graphic */}
+                <div className="w-full h-36 sm:h-40 mb-4 flex items-center justify-center bg-white/5 rounded-2xl p-2 border border-white/10">
+                  <HeroAdvisorHuman2D className="w-full h-full object-contain" />
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+                  Select your requirement below to open our intelligent, zero-lag single application desk. Direct multi-bank sanctioning across 50+ institutional partners.
+                </p>
 
-                    await fetch('/api/leads', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        name: callbackName.trim(),
-                        phone: callbackPhone.trim(),
-                        email: callbackEmail.trim().toLowerCase(),
-                        productType: callbackCategory,
-                        subType: callbackSubType,
-                        loanType: `${callbackCategory} - ${callbackSubType}`,
-                        loanAmount: numericAmount,
-                        city: callbackCity.trim() || "Agra",
-                        source: "Homepage Instant Callback Desk",
-                        message: `Category: ${callbackCategory} | Sub-Type: ${callbackSubType} | Slot: ${callbackTime} | Band: ${callbackAmount} | Email: ${callbackEmail.trim().toLowerCase()} | City: ${callbackCity} | Note: ${callbackNotes.trim() || "Standard Callback"}`
-                      })
-                    });
-                    triggerCelebration();
-                    setCallbackSuccess(true);
-                  } catch { /* ignore */ }
-                  setCallbackSubmitting(false);
-                }}>
-                  
-                  {/* Category Selector Tabs */}
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                      1. Select Category <span className="text-emerald-400">*</span>
-                    </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-emerald-950/80 p-1.5 rounded-xl border border-emerald-700/60">
-                      {(["Loan", "Insurance", "Credit Card", "Tax & Compliance"] as CallbackCategory[]).map((cat) => {
-                        const isSelected = callbackCategory === cat;
-                        const CatIcon = cat === "Loan" ? Landmark : cat === "Insurance" ? ShieldCheck : cat === "Credit Card" ? CreditCard : Receipt;
-                        return (
-                          <button
-                            key={cat}
-                            type="button"
-                            onClick={() => {
-                              setCallbackCategory(cat);
-                              setCallbackSubType(CALLBACK_SERVICES[cat].subTypes[0]);
-                              setCallbackAmount(CALLBACK_SERVICES[cat].amounts[0]);
-                            }}
-                            className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold transition-all duration-150 cursor-pointer ${
-                              isSelected
-                                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
-                                : "text-slate-300 hover:text-white hover:bg-white/5"
-                            }`}
-                          >
-                            <CatIcon className={`w-3.5 h-3.5 shrink-0 ${isSelected ? "text-slate-950" : "text-emerald-400"}`} />
-                            <span className="truncate">{cat === "Tax & Compliance" ? "Tax & MSME" : cat}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Row 1: Name & Phone Number */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-200 mb-1">
-                        Your Full Name <span className="text-emerald-400">*</span>
-                      </label>
-                      <div className="relative">
-                        <input aria-label="Input field" 
-                          type="text" 
-                          placeholder="e.g. Rahul Sharma" 
-                          required 
-                          value={callbackName} 
-                          onChange={(e) => setCallbackName(e.target.value)} 
-                          className={`w-full bg-emerald-950/70 border ${
-                            formTouched && (!callbackName.trim() || callbackName.trim().length < 3 || !/^[a-zA-Z\s.'-]+$/.test(callbackName.trim()))
-                              ? "border-rose-500" 
-                              : callbackName.trim().length >= 3 && /^[a-zA-Z\s.'-]+$/.test(callbackName.trim())
-                              ? "border-emerald-500" 
-                              : "border-emerald-700/60"
-                          } rounded-xl px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-emerald-400 transition-colors pr-9`} 
-                        />
-                        {callbackName.trim().length >= 3 && /^[a-zA-Z\s.'-]+$/.test(callbackName.trim()) && (
-                          <Check className="w-4 h-4 text-emerald-400 absolute right-3 top-3" />
-                        )}
-                      </div>
-                      {formTouched && (!callbackName.trim() || callbackName.trim().length < 3 || !/^[a-zA-Z\s.'-]+$/.test(callbackName.trim())) && (
-                        <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3 h-3" />
-                          <span>Legal name required (min 3 letters, alphabets only)</span>
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-200 mb-1">
-                        10-Digit Mobile Number <span className="text-emerald-400">*</span>
-                      </label>
-                      <div className="relative flex">
-                        <span className="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-emerald-700/60 bg-emerald-900/80 text-emerald-300 text-xs font-bold select-none">
-                          +91
-                        </span>
-                        <input aria-label="Input field" 
-                          type="tel" 
-                          maxLength={10}
-                          pattern="[0-9]{10}"
-                          placeholder="9876543210" 
-                          required 
-                          value={callbackPhone} 
-                          onChange={(e) => setCallbackPhone(e.target.value.replace(/\D/g, ''))} 
-                          className={`w-full bg-emerald-950/70 border ${
-                            formTouched && !/^[6-9]\d{9}$/.test(callbackPhone.trim())
-                              ? "border-rose-500"
-                              : /^[6-9]\d{9}$/.test(callbackPhone.trim())
-                              ? "border-emerald-500"
-                              : "border-emerald-700/60"
-                          } rounded-r-xl px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-emerald-400 transition-colors pr-9`} 
-                        />
-                        {/^[6-9]\d{9}$/.test(callbackPhone.trim()) && (
-                          <Check className="w-4 h-4 text-emerald-400 absolute right-3 top-3" />
-                        )}
-                      </div>
-                      {formTouched && !/^[6-9]\d{9}$/.test(callbackPhone.trim()) && (
-                        <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3 h-3" />
-                          <span>Enter valid 10-digit number (starting with 6, 7, 8, 9)</span>
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Row 2: Email Address & Mandatory OTP Verification */}
-                  <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="text-xs font-bold text-slate-200 flex items-center gap-1.5">
-                        <Mail className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Email Address (OTP Verification Required)</span>
-                        <span className="text-emerald-400">*</span>
-                      </label>
-                      {isEmailVerified && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-300 bg-emerald-950/90 px-2 py-0.5 rounded-md border border-emerald-500/40">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                          Verified
-                        </span>
-                      )}
-                    </div>
-                    <div className="relative flex">
-                      <input aria-label="Input field" 
-                        type="email" 
-                        placeholder="e.g. rahul.sharma@gmail.com" 
-                        disabled={isEmailVerified}
-                        required 
-                        value={callbackEmail} 
-                        onChange={(e) => {
-                          setCallbackEmail(e.target.value);
-                          if (isEmailVerified) setIsEmailVerified(false);
-                          setIsOtpSent(false);
-                          setCallbackOtp("");
-                          setOtpError("");
-                        }} 
-                        className={`w-full bg-emerald-950/70 border ${
-                          isEmailVerified 
-                            ? "border-emerald-500 text-emerald-200 font-medium" 
-                            : formTouched && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callbackEmail.trim())
-                            ? "border-rose-500" 
-                            : "border-emerald-700/60"
-                        } rounded-l-xl px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-emerald-400 transition-colors`}
-                      />
-                      {isEmailVerified ? (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setIsEmailVerified(false);
-                            setIsOtpSent(false);
-                            setCallbackOtp("");
-                          }}
-                          className="px-3.5 rounded-r-xl border border-l-0 border-emerald-700/60 bg-emerald-900/60 hover:bg-emerald-800/80 text-emerald-300 text-xs font-bold transition-colors cursor-pointer select-none"
-                        >
-                          Change
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={handleSendOtp}
-                          disabled={!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callbackEmail.trim()) || isOtpSending || otpCooldown > 0}
-                          className="px-3.5 rounded-r-xl border border-l-0 border-emerald-600/70 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-slate-950 text-xs font-black transition-colors cursor-pointer select-none shrink-0 flex items-center gap-1.5"
-                        >
-                          {isOtpSending ? (
-                            <>
-                              <RotateCw className="w-3.5 h-3.5 animate-spin" />
-                              <span>Sending...</span>
-                            </>
-                          ) : otpCooldown > 0 ? (
-                            <span>Resend ({otpCooldown}s)</span>
-                          ) : isOtpSent ? (
-                            <span>Resend OTP</span>
-                          ) : (
-                            <>
-                              <KeyRound className="w-3.5 h-3.5" />
-                              <span>Send OTP</span>
-                            </>
-                          )}
-                        </button>
-                      )}
-                    </div>
-                    {formTouched && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callbackEmail.trim()) && (
-                      <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" />
-                        <span>Please enter a valid email address (e.g. name@example.com)</span>
-                      </p>
-                    )}
-
-                    {/* Inline OTP Verification Panel */}
-                    {isOtpSent && !isEmailVerified && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: -4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-2.5 p-3 rounded-xl bg-slate-950/90 border border-emerald-500/40 shadow-inner"
+                {/* Quick Selection Grid - Themed Icons */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                  {[
+                    { label: "Home Loan", query: "home-loan", icon: Building2, sub: "From 7.15%*" },
+                    { label: "Balance Transfer", query: "balance-transfer", icon: RefreshCw, sub: "Slash EMI 35%" },
+                    { label: "Loan Against Property", query: "lap", icon: Landmark, sub: "₹10L to Unlimited" },
+                    { label: "Business Loan", query: "business-loan", icon: Briefcase, sub: "Collateral-Free" },
+                    { label: "Personal Loan", query: "personal-loan", icon: Wallet, sub: "Same Day Funds" },
+                    { label: "Cashless Insurance", query: "insurance", icon: ShieldCheck, sub: "100% Free Claim" },
+                  ].map((item) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <Link
+                        key={item.query}
+                        href={`/apply?service=${item.query}&source=homepage_hub`}
+                        className="group p-3.5 rounded-2xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/60 hover:border-emerald-400 transition-all duration-300 flex flex-col text-left shadow-sm hover:shadow-lg hover:shadow-emerald-950/50 hover:-translate-y-0.5 active:scale-95"
                       >
-                        <div className="flex items-center justify-between text-xs mb-1.5">
-                          <span className="text-slate-200 font-bold flex items-center gap-1.5">
-                            <KeyRound className="w-3.5 h-3.5 text-emerald-400" />
-                            Enter 6-Digit OTP sent to your email
-                          </span>
-                          {otpCooldown > 0 && (
-                            <span className="text-[11px] text-slate-400">Valid for 10 mins</span>
-                          )}
+                        <div className="w-9 h-9 rounded-xl bg-emerald-900/90 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mb-2.5 group-hover:bg-emerald-400 group-hover:text-slate-950 group-hover:border-emerald-300 transition-all duration-300 shadow-sm">
+                          <IconComponent className="w-4 h-4" />
                         </div>
-                        <div className="flex gap-2">
-                          <input aria-label="Input field"
-                            type="text"
-                            maxLength={6}
-                            placeholder="123456"
-                            value={callbackOtp}
-                            onChange={(e) => setCallbackOtp(e.target.value.replace(/\D/g, ''))}
-                            className="w-full bg-emerald-950/80 border border-emerald-600/60 rounded-lg px-3 py-2 text-center text-base font-mono font-bold tracking-[0.3em] text-white focus:outline-none focus:border-emerald-400"
-                          />
-                          <button
-                            type="button"
-                            onClick={handleVerifyOtp}
-                            disabled={isOtpVerifying || callbackOtp.length !== 6}
-                            className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-slate-950 font-bold text-xs rounded-lg transition-colors shrink-0 cursor-pointer flex items-center gap-1.5 shadow-md"
-                          >
-                            {isOtpVerifying ? (
-                              <RotateCw className="w-3.5 h-3.5 animate-spin" />
-                            ) : (
-                              <Check className="w-3.5 h-3.5" />
-                            )}
-                            <span>Verify OTP</span>
-                          </button>
-                        </div>
-                        {mockOtpHint && (
-                          <p className="text-[11px] text-amber-300/90 mt-1.5 font-mono">
-                            Dev Mode Code: <strong className="text-amber-200 underline">{mockOtpHint}</strong>
-                          </p>
-                        )}
-                        {otpError && (
-                          <p className="text-[11px] text-rose-400 mt-1.5 flex items-center gap-1">
-                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-                            <span>{otpError}</span>
-                          </p>
-                        )}
-                      </motion.div>
-                    )}
-                  </div>
+                        <span className="text-xs font-black text-white group-hover:text-emerald-300 leading-tight">
+                          {item.label}
+                        </span>
+                        <span className="text-[10px] text-emerald-400 font-bold mt-1">
+                          {item.sub}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
 
-                  {/* Row 3: Dynamic Sub-Type & Requirement Amount */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-30">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-200 mb-1">
-                        {callbackCategory} Sub-Type <span className="text-emerald-400">*</span>
-                      </label>
-                      <CustomSelect 
-                        value={callbackSubType}
-                        onChange={setCallbackSubType}
-                        options={CALLBACK_SERVICES[callbackCategory].subTypes}
-                      />
-                    </div>
+              <div className="space-y-3 pt-2">
+                {/* Master CTA */}
+                <Link
+                  href="/apply?source=homepage_universal"
+                  className="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 font-black py-4 px-6 rounded-2xl text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-emerald-950/50 transition-all cursor-pointer group"
+                >
+                  <span>Open Universal Smart Application Desk</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
 
-                    <div>
-                      <label className="block text-xs font-bold text-slate-200 mb-1">
-                        {CALLBACK_SERVICES[callbackCategory].amountLabel}
-                      </label>
-                      <CustomSelect 
-                        value={callbackAmount}
-                        onChange={setCallbackAmount}
-                        options={CALLBACK_SERVICES[callbackCategory].amounts}
-                      />
-                    </div>
-                  </div>
+                {/* Direct Action Chips */}
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs text-slate-300">
+                  <a href="tel:9258724227" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors">
+                    <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Helpline: +91 9258-724-227</span>
+                  </a>
+                  <a href="https://wa.me/917900979001" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold border border-emerald-700/60 transition-colors">
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>WhatsApp Desk: 7900-979-001</span>
+                  </a>
+                </div>
 
-                  {/* Row 4: City & Preferred Callback Slot */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-20">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-200 mb-1">
-                        City / Location <span className="text-emerald-400">*</span>
-                      </label>
-                      <div className="relative">
-                        <input aria-label="Input field" 
-                          type="text" 
-                          placeholder="e.g. Agra, Mathura, Delhi NCR" 
-                          value={callbackCity} 
-                          onChange={(e) => setCallbackCity(e.target.value)} 
-                          className={`w-full bg-emerald-950/70 border ${
-                            formTouched && callbackCity.trim().length < 2
-                              ? "border-rose-500" 
-                              : callbackCity.trim().length >= 2
-                              ? "border-emerald-500" 
-                              : "border-emerald-700/60"
-                          } rounded-xl px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-emerald-400 transition-colors pr-9`} 
-                        />
-                        {callbackCity.trim().length >= 2 && (
-                          <Check className="w-4 h-4 text-emerald-400 absolute right-3 top-3" />
-                        )}
-                      </div>
-                      {formTouched && callbackCity.trim().length < 2 && (
-                        <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3 h-3" />
-                          <span>City/location is required (min 2 characters)</span>
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-200 mb-1">
-                        Preferred Callback Slot
-                      </label>
-                      <CustomSelect 
-                        value={callbackTime}
-                        onChange={setCallbackTime}
-                        options={CALLBACK_SLOTS}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 5: Specific Note (Optional) */}
-                  <div className="relative z-10">
-                    <label className="block text-xs font-bold text-slate-200 mb-1">
-                      Requirement Details / Notes <span className="text-[11px] font-normal text-slate-400">(Optional)</span>
-                    </label>
-                    <input aria-label="Input field" 
-                      type="text" 
-                      placeholder="e.g. Lowest ROI on Agra residential plot / Balance transfer from existing bank" 
-                      value={callbackNotes} 
-                      onChange={(e) => setCallbackNotes(e.target.value)} 
-                      className="w-full bg-emerald-950/70 border border-emerald-700/60 rounded-xl px-3.5 py-2 text-base sm:text-sm text-white placeholder-emerald-300/40 focus:outline-none focus:border-emerald-400 transition-colors" 
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  {!isEmailVerified ? (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setFormTouched(true);
-                        const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callbackEmail.trim().toLowerCase());
-                        if (!isEmailValid) {
-                          setOtpError("Please enter a valid email address first.");
-                        } else if (!isOtpSent) {
-                          handleSendOtp();
-                        } else {
-                          setOtpError("Please enter the 6-digit OTP to verify your email.");
-                        }
-                      }}
-                      className="w-full bg-slate-800/90 hover:bg-slate-800 text-slate-200 font-bold py-3 sm:py-3.5 rounded-xl transition-all duration-200 text-sm flex items-center justify-center gap-2 border border-emerald-500/30 cursor-pointer mt-2 shadow-inner group"
-                    >
-                      <KeyRound className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-                      <span>Verify Email OTP to Submit Request</span>
-                    </button>
-                  ) : (
-                    <button 
-                      type="submit" 
-                      disabled={callbackSubmitting} 
-                      className="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-95 disabled:opacity-50 text-slate-950 font-black py-3 sm:py-3.5 rounded-xl transition-all duration-200 text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 mt-2 cursor-pointer"
-                    >
-                      {callbackSubmitting ? (
-                        <>
-                          <RotateCw className="w-4 h-4 animate-spin" />
-                          <span>Submitting Verified Request...</span>
-                        </>
-                      ) : (
-                        <>
-                          <PhoneCall className="w-4 h-4" /> 
-                          <span>Request Priority Callback</span>
-                        </>
-                      )}
-                    </button>
-                  )}
-
-                  <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-300/80 pt-1">
-                    <Lock className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>100% Confidential • In-House Senior Advisory Desk • Direct Bank Liaison</span>
-                  </div>
-                </form>
-              )}
+                <div className="flex items-center justify-center gap-2 text-[10px] text-emerald-300/80 pt-1 text-center">
+                  <Lock className="w-3 h-3 text-emerald-400" />
+                  <span>DPDP Act Compliant • 256-Bit SSL • Strictly Zero Upfront Brokerage Policy</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -3218,8 +2044,12 @@ export default function HomeClient({ heroConfig, ownerConfig, liveBankRates, hom
       <ReviewsSection />
 
       {/* 11. FAQ SECTION */}
-      <section className="py-20 bg-white dark:bg-emerald-900 border-t border-slate-200 dark:border-emerald-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white dark:bg-emerald-900 border-t border-slate-200 dark:border-emerald-800 relative overflow-hidden">
+        {/* Ambient 2D Financial Advisor Support Watermark */}
+        <div className="absolute -left-10 lg:left-4 bottom-8 w-56 sm:w-72 lg:w-80 opacity-15 dark:opacity-20 pointer-events-none select-none z-0 hidden md:block">
+          <HeroAdvisorHuman2D className="w-full h-full object-contain" />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-black text-slate-900 dark:text-white">Frequently Asked Questions</h3>
           </div>

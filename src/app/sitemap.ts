@@ -55,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/services/itr-filing', priority: 0.95, freq: 'daily' },
     { path: '/services/msme-registration', priority: 0.95, freq: 'daily' },
     // Calculators
-    { path: '/calculator', priority: 0.9, freq: 'monthly' },
+    { path: '/calculator', priority: 1.0, freq: 'daily' },
     { path: '/calculator/credit-cards/minimum-due', priority: 0.8, freq: 'monthly' },
     { path: '/calculator/credit-cards/payoff', priority: 0.8, freq: 'monthly' },
     { path: '/calculator/credit-cards/rewards', priority: 0.8, freq: 'monthly' },
@@ -63,12 +63,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/calculator/insurance/hlv', priority: 0.8, freq: 'monthly' },
     { path: '/calculator/insurance/tax-saver', priority: 0.8, freq: 'monthly' },
     // Tools
-    { path: '/tools/affordability', priority: 0.8, freq: 'monthly' },
-    { path: '/tools/balance-transfer', priority: 0.8, freq: 'monthly' },
-    { path: '/tools/interest-rate-compare', priority: 0.8, freq: 'monthly' },
-    { path: '/tools/prepayment', priority: 0.8, freq: 'monthly' },
-    { path: '/tools/stamp-duty', priority: 0.8, freq: 'monthly' },
-    { path: '/tools/tax-benefit', priority: 0.8, freq: 'monthly' },
+    { path: '/tools/affordability', priority: 0.95, freq: 'weekly' },
+    { path: '/tools/balance-transfer', priority: 0.95, freq: 'weekly' },
+    { path: '/tools/interest-rate-compare', priority: 0.95, freq: 'weekly' },
+    { path: '/tools/prepayment', priority: 0.95, freq: 'weekly' },
+    { path: '/tools/stamp-duty', priority: 0.95, freq: 'weekly' },
+    { path: '/tools/tax-benefit', priority: 0.95, freq: 'weekly' },
     // Resources
     { path: '/resources/credit-score', priority: 0.8, freq: 'monthly' },
     { path: '/resources/documents', priority: 0.8, freq: 'monthly' },

@@ -70,10 +70,17 @@ export function CalculatorFAQ({ faqs: initialFaqs, calculatorId }: { faqs?: { qu
   };
 
   return (
-    <div className="my-16">
+    <div className="my-12 sm:my-16 w-full print:hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-8 text-center">Frequently Asked Questions</h2>
-      <div className="max-w-4xl mx-auto space-y-4">
+      <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Clear answers to common questions about loans, interest rates, and EMI calculations.
+        </p>
+      </div>
+      <div className="w-full space-y-3.5">
         {faqs.map((faq, index) => (
           <div key={index} className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
             <button 
@@ -173,7 +180,7 @@ export function CalculatorChart({ data, colors }: { data: { name: string, value:
 /* 5. Formula & Example Component */
 export function FormulaAndExample({ formulaName, formulaText, exampleText }: { formulaName: string, formulaText: string, exampleText: string }) {
   return (
-    <div className="my-16 grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+    <div className="my-12 sm:my-16 grid md:grid-cols-2 gap-6 w-full print:hidden">
       <div className="bg-slate-900 rounded-2xl p-6 md:p-8 shadow-xl border border-slate-800 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
         <div className="flex items-center gap-3 mb-4">
@@ -205,17 +212,46 @@ export function FormulaAndExample({ formulaName, formulaText, exampleText }: { f
 
 /* 6. How To Use Step-by-Step */
 export function HowToUse({ steps }: { steps: string[] }) {
+  const isFourSteps = steps.length === 4;
   return (
-    <div className="my-16 max-w-4xl mx-auto text-center">
-      <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-8">How to Use This Calculator</h2>
-      <div className="grid md:grid-cols-3 gap-6 relative">
-        <div className="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0"></div>
+    <div className="my-12 sm:my-16 w-full text-center print:hidden">
+      <div className="max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+          How to Use This Calculator
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Follow these quick steps to calculate your exact monthly payments and loan schedule in seconds.
+        </p>
+      </div>
+
+      <div className={`grid gap-4 sm:gap-6 relative w-full ${
+        isFourSteps 
+          ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" 
+          : steps.length === 3 
+            ? "grid-cols-1 md:grid-cols-3" 
+            : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+      }`}>
         {steps.map((step, idx) => (
-          <div key={idx} className="relative z-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-10 h-10 mx-auto bg-emerald-600 text-white rounded-full flex items-center justify-center font-black text-lg mb-4 shadow-lg shadow-emerald-500/30">
-              {idx + 1}
+          <div 
+            key={idx} 
+            className="group relative bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center justify-between h-full"
+          >
+            <div className="w-full flex flex-col items-center">
+              {/* Step Number Badge */}
+              <div className="w-12 h-12 mx-auto bg-gradient-to-tr from-emerald-700 to-emerald-500 text-white rounded-2xl flex items-center justify-center font-black text-lg mb-5 shadow-lg shadow-emerald-600/25 group-hover:scale-110 transition-transform">
+                {idx + 1}
+              </div>
+              
+              {/* Step Content */}
+              <p className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 leading-relaxed">
+                {step}
+              </p>
             </div>
-            <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{step}</p>
+
+            {/* Subtle Step Counter Pill */}
+            <span className="mt-5 inline-block text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-900">
+              Step {idx + 1} of {steps.length}
+            </span>
           </div>
         ))}
       </div>
@@ -226,12 +262,19 @@ export function HowToUse({ steps }: { steps: string[] }) {
 /* 7. Related Calculators */
 export function RelatedCalculators({ tools }: { tools: { name: string, link: string, desc: string }[] }) {
   return (
-    <div className="my-16 max-w-5xl mx-auto">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-1 h-6 bg-emerald-500 rounded-full"></div>
-        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Related Financial Tools</h2>
+    <div className="my-12 sm:my-16 w-full print:hidden">
+      <div className="flex items-center gap-3 mb-6 sm:mb-8">
+        <div className="w-1.5 h-7 bg-emerald-600 rounded-full"></div>
+        <div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+            Related Financial Tools & Calculators
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Explore our complete suite of institutional-grade financial decision tools.
+          </p>
+        </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
         {tools.map((tool, idx) => (
           <Link key={idx} href={tool.link} className="block bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-emerald-500/50 hover:shadow-lg transition-all group">
             <h3 className="font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{tool.name}</h3>

@@ -1,5 +1,7 @@
 "use client";
 
+import EligibilitySuccessHuman2D from "@/components/illustrations/EligibilitySuccessHuman2D";
+
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, ShieldCheck, TrendingUp, Sparkles, Building2 } from "lucide-react";
@@ -26,12 +28,12 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
     : "BFS MSME & Business Growth Pool";
 
   const incomePresets = [
-    { label: "₹5L", value: 500000 },
     { label: "₹10L", value: 1000000 },
-    { label: "₹15L", value: 1500000 },
     { label: "₹25L", value: 2500000 },
     { label: "₹50L", value: 5000000 },
     { label: "₹1Cr", value: 10000000 },
+    { label: "₹2.5Cr", value: 25000000 },
+    { label: "₹5Cr+", value: 50000000 },
   ];
 
   const agePresets = [25, 30, 35, 42, 50];
@@ -56,10 +58,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
 
       {/* Header Section */}
       <div className="text-center mb-6 sm:mb-8 border-b border-slate-100 dark:border-emerald-800/60 pb-4 sm:pb-6">
-        <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs uppercase tracking-widest font-black text-emerald-800 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-900/60 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-700 shadow-sm">
-          <TrendingUp className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-          2-Minute Instant Calculator
-        </span>
+
         <h3 className="text-xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2.5 sm:mt-3 tracking-tight">
           Check Home Loan Eligibility
         </h3>
@@ -259,7 +258,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 Sanction Assessment
               </span>
-              <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300">
+              <span className="text-xs font-black text-emerald-700 dark:text-emerald-300">
                 Rate from {homeLoanRate || "7.15"}%*
               </span>
             </div>
@@ -270,11 +269,27 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
                 Maximum Eligible Loan
               </div>
               <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mt-1">
-                ₹{eligibleLoanLakhs.toFixed(1)}{" "}
-                <span className="text-emerald-600 dark:text-emerald-400 text-2xl sm:text-3xl">
-                  Lakhs
-                </span>
+                {eligibleLoanLakhs >= 100 ? (
+                  <>
+                    ₹{(eligibleLoanLakhs / 100).toFixed(2)}{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400 text-2xl sm:text-3xl">
+                      Crores
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    ₹{eligibleLoanLakhs.toFixed(1)}{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400 text-2xl sm:text-3xl">
+                      Lakhs
+                    </span>
+                  </>
+                )}
               </div>
+            </div>
+
+            {/* Relatable 2D Character Celebrating Pre-Approval */}
+            <div className="w-full h-28 sm:h-32 my-1 flex items-center justify-center bg-slate-50/70 dark:bg-emerald-950/40 rounded-2xl border border-slate-100 dark:border-emerald-800/40">
+              <EligibilitySuccessHuman2D className="w-full h-full object-contain" />
             </div>
 
             {/* 3 Metric Rows */}
@@ -303,7 +318,7 @@ export default function QuickEligibility({ homeLoanRate, selfEmployedRate }: { h
             <div className="p-3 bg-white/80 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 rounded-xl text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2 shadow-sm">
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
               <span className="leading-snug">
-                Official in-principle sanction letter issued within 5 business days upon digital document upload.
+                Official sanction letters issued for loan sizes starting from ₹10 Lakhs to unlimited institutional ticket sizes.
               </span>
             </div>
           </div>

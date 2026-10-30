@@ -212,10 +212,6 @@ export default function HeroContentCMS() {
                   <option value="products/insurance/two-wheeler-insurance">Two Wheeler Insurance</option>
                   <option value="products/insurance/home-insurance">Home & Fire Insurance</option>
                 </optgroup>
-                <optgroup label="Tax & Compliance Services">
-                  <option value="services/itr-filing">ITR Filing Desk</option>
-                  <option value="services/msme-registration">MSME / Udyam Registration</option>
-                </optgroup>
                 <optgroup label="Tools & Calculators">
                   <option value="calculator">EMI Calculator (Main)</option>
                   <option value="eligibility">Loan Eligibility Checker</option>

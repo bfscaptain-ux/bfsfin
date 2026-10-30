@@ -88,21 +88,24 @@ export default function Header() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </div>
-          INDIA'S MOST TRUSTED LOAN PARTNER
+          Authorized Loan Facilitator • Udyam Registered • Serving Agra & UP
         </div>
 
         {/* PREMIUM TOP BANNER - Dark Corporate Look */}
         <div className="hidden md:flex bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 px-4 py-2.5 text-[11px] font-medium tracking-wide text-emerald-100/70 justify-between items-center border-b border-emerald-800/50">
           <div className="w-full max-w-[1920px] mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-12 xl:px-16">
-            <div className="flex items-center gap-6">
-              <span className="flex items-center gap-1.5 text-emerald-300 drop-shadow-sm">
-                <ShieldCheck className="w-3.5 h-3.5" /> 
-                <span className="font-semibold">RBI Registered & Compliant</span>
+            <div className="flex items-center gap-3 lg:gap-4">
+              <span className="flex items-center gap-1.5 text-emerald-300 drop-shadow-sm font-bold">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> 
+                <span>Authorized Loan Facilitator</span>
               </span>
-              <span className="text-emerald-800">|</span>
-              <span className="flex items-center gap-1.5 text-emerald-50 drop-shadow-sm">
-                <TrendingUp className="w-3.5 h-3.5 text-emerald-300" />
-                <span className="font-semibold">Fastest 5-Day Home Loan Approvals</span>
+              <span className="text-emerald-700 font-bold">•</span>
+              <span className="text-emerald-100 font-semibold drop-shadow-sm">
+                Udyam Registered
+              </span>
+              <span className="text-emerald-700 font-bold">•</span>
+              <span className="text-emerald-100 font-semibold drop-shadow-sm">
+                Serving Agra & UP
               </span>
             </div>
             <div className="flex items-center gap-5">
@@ -223,19 +226,6 @@ export default function Header() {
                         Credit Cards
                       </div>
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'credit-cards' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
-                    </button>
-
-                    <button 
-                      onMouseEnter={() => setActiveProductTab('tax')}
-                      className={`w-full text-left px-5 py-3 rounded-xl font-bold transition-all flex items-center justify-between ${activeProductTab === 'tax' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg ${activeProductTab === 'tax' ? 'bg-emerald-50 dark:bg-emerald-950/50' : 'bg-slate-100 dark:bg-slate-800/50'}`}>
-                          <FileText className="w-5 h-5" />
-                        </div>
-                        Tax &amp; Compliance
-                      </div>
-                      <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'tax' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
                     {/* Bottom Promo Banner in Sidebar */}
@@ -366,57 +356,6 @@ export default function Header() {
                            <Link href="/products/credit-cards" className="relative z-10 bg-white text-emerald-700 hover:bg-emerald-50 font-bold py-2.5 px-4 rounded-xl text-center text-sm transition-all mt-6 shadow-md hover:shadow-lg active:scale-95">
                              Compare Now
                            </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tax & Compliance Content Tab */}
-                    <div className={`absolute inset-0 p-10 transition-all duration-300 ${activeProductTab === 'tax' ? 'opacity-100 z-10 translate-y-0' : 'opacity-0 z-0 translate-y-4 pointer-events-none'}`}>
-                      <div className="grid grid-cols-3 gap-8 text-left">
-                        {/* Column 1: ITR Filing */}
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 border-b border-slate-100 dark:border-emerald-800/50 pb-3 mb-5">
-                            <FileText className="w-5 h-5" />
-                            <h4 className="font-black text-slate-900 dark:text-white text-base">ITR Filing Desk</h4>
-                          </div>
-                          <Link href="/services/itr-filing" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Salaried ITR (Form 16)</Link>
-                          <Link href="/services/itr-filing" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Business &amp; Traders (44AD)</Link>
-                          <Link href="/services/itr-filing" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Loan-Purpose Financials</Link>
-                          <Link href="/services/itr-filing" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Past 2-3 Years Backlog ITR</Link>
-                          <Link href="/services/itr-filing" className="block text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:translate-x-1 transition-all mt-3 border-t border-slate-100 dark:border-emerald-800/50 pt-2">File ITR with CA →</Link>
-                        </div>
-
-                        {/* Column 2: MSME & Business Setup */}
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-2 text-teal-600 dark:text-teal-400 border-b border-slate-100 dark:border-emerald-800/50 pb-3 mb-5">
-                            <Building2 className="w-5 h-5" />
-                            <h4 className="font-black text-slate-900 dark:text-white text-base">MSME Registration</h4>
-                          </div>
-                          <Link href="/services/msme-registration" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:translate-x-1 transition-all">New Udyam Registration</Link>
-                          <Link href="/services/msme-registration" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:translate-x-1 transition-all">Collateral-Free Loan Scheme</Link>
-                          <Link href="/services/msme-registration" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:translate-x-1 transition-all">1% Bank Interest Concession</Link>
-                          <Link href="/services/msme-registration" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 hover:translate-x-1 transition-all">MSME Renewal &amp; Updation</Link>
-                          <Link href="/services/msme-registration" className="block text-sm font-bold text-teal-600 dark:text-teal-400 hover:translate-x-1 transition-all mt-3 border-t border-slate-100 dark:border-emerald-800/50 pt-2">Apply for Udyam in 24 Hrs →</Link>
-                        </div>
-
-                        {/* Column 3: Promo Banner */}
-                        <div className="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-2xl p-6 text-white flex flex-col justify-between relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(16,185,129,0.5)]">
-                          <div className="absolute top-0 right-0 p-4 opacity-15 pointer-events-none">
-                            <FileText className="w-24 h-24 transform rotate-12 translate-x-4 -translate-y-4" />
-                          </div>
-                          <div className="relative z-10">
-                            <div className="inline-block bg-white/20 backdrop-blur-md text-emerald-50 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-3 border border-white/20 shadow-sm">One-Stop Solution</div>
-                            <div className="font-black text-xl mb-2 leading-tight">Need a Loan but No ITR?</div>
-                            <div className="text-emerald-50/90 text-[13px] leading-relaxed font-medium">BFS prepares your ITR &amp; MSME Certificate to ensure 100% bank eligibility for Home &amp; Business Loans.</div>
-                          </div>
-                          <div className="flex gap-2 relative z-10 mt-6">
-                            <Link href="/services/itr-filing" className="flex-1 bg-white text-emerald-800 hover:bg-emerald-50 font-bold py-2 px-3 rounded-xl text-center text-xs transition-all shadow-md">
-                              File ITR
-                            </Link>
-                            <Link href="/services/msme-registration" className="flex-1 bg-emerald-950/60 hover:bg-emerald-950 text-white font-bold py-2 px-3 rounded-xl text-center text-xs border border-emerald-400/40 transition-all">
-                              Get MSME
-                            </Link>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -892,15 +831,6 @@ export default function Header() {
                         <Link href="/products/credit-cards/icici-amazon-pay" onClick={closeMobileMenu} className="block py-1">ICICI Amazon Pay</Link>
                         <Link href="/products/credit-cards/axis-flipkart" onClick={closeMobileMenu} className="block py-1">Axis Flipkart</Link>
                         <Link href="/products/credit-cards" onClick={closeMobileMenu} className="block py-1 text-emerald-600 font-bold">View All Cards →</Link>
-                      </div>
-                    </div>
-
-                    {/* Tax & Compliance Section */}
-                    <div>
-                      <div className="font-black text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-700 px-3 py-2 rounded-lg mb-2">Tax &amp; Compliance</div>
-                      <div className="pl-4 space-y-2">
-                        <Link href="/services/itr-filing" onClick={closeMobileMenu} className="block py-1 font-semibold text-emerald-600 dark:text-emerald-400">ITR Filing Desk (Salaried &amp; Business)</Link>
-                        <Link href="/services/msme-registration" onClick={closeMobileMenu} className="block py-1 font-semibold text-teal-600 dark:text-teal-400">MSME / Udyam Registration (24-48 Hrs)</Link>
                       </div>
                     </div>
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
   ArrowRight, PhoneCall, ChevronDown, MessageCircle, ExternalLink, MapPin,
-  ShieldCheck, Lock
+  ShieldCheck, Lock, ShieldAlert
 } from "lucide-react";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -55,13 +55,9 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
   const partnerBanks = [
     { name: "Punjab National Bank", href: "/banks/pnb" },
-    { name: "State Bank of India", href: "/banks/sbi" },
     { name: "HDFC Bank", href: "/banks/hdfc" },
     { name: "ICICI Bank", href: "/banks/icici" },
-    { name: "Axis Bank", href: "/banks/axis" },
     { name: "Central Bank of India", href: "/banks/central-bank" },
-    { name: "IDBI Bank", href: "/banks/idbi" },
-    { name: "Bank of Baroda", href: "/banks/bob" },
   ];
 
   return (
@@ -69,7 +65,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       
       {/* 1. TOP INTERACTIVE CALL & WHATSAPP STRIP (Exact Emerald Theme Match) */}
       <div className="border-b border-emerald-900/60 bg-[#02140e] py-8 px-4 sm:px-6 lg:px-8">
-        <div className="w-full px-4 lg:px-10">
+        <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
             {/* Left Header */}
@@ -144,130 +140,159 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
         </div>
       </div>
 
-      {/* 2. MAIN NAVIGATION SECTION (Zero Clutter, Clean Headings) */}
-      <div className="w-full px-4 lg:px-10 px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-10">
+            {/* 2. MAIN NAVIGATION SECTION: 5-COLUMN LOGICALLY CATEGORIZED MATRIX */}
+      <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8 lg:gap-6 xl:gap-8">
           
-          {/* Column 1: Loans & Mortgages */}
-          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button
-              type="button"
-              onClick={() => toggleSection("loans")}
-              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
-            >
-              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider">
-                Loans & Mortgages
-              </h4>
-              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "loans" ? "rotate-180" : ""}`} />
-            </button>
-            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "loans" ? "block" : "hidden md:block"}`}>
-              <li><Link href="/products/home-loan" className="hover:text-white transition-colors block py-0.5">Home Loan (Purchase)</Link></li>
-              <li><Link href="/products/balance-transfer" className="hover:text-white transition-colors block py-0.5">Balance Transfer (Lower EMI)</Link></li>
-              <li><Link href="/products/loan-against-property" className="hover:text-white transition-colors block py-0.5">Loan Against Property (LAP)</Link></li>
-              <li><Link href="/products/business-loan" className="hover:text-white transition-colors block py-0.5">Business / MSME Loan</Link></li>
-              <li><Link href="/products/personal-loan" className="hover:text-white transition-colors block py-0.5">Personal Loan</Link></li>
-              <li><Link href="/products/plot-loan" className="hover:text-white transition-colors block py-0.5">Plot & Land Loan</Link></li>
-              <li><Link href="/products/construction-loan" className="hover:text-white transition-colors block py-0.5">Construction Loan</Link></li>
-              <li><Link href="/products/gold-loan" className="hover:text-white transition-colors block py-0.5">Gold Loan</Link></li>
-              <li><Link href="/services/itr-filing" className="text-emerald-400 hover:underline font-bold transition-colors block py-0.5">ITR Filing Desk</Link></li>
-              <li><Link href="/services/msme-registration" className="text-teal-400 hover:underline font-bold transition-colors block py-0.5">MSME / Udyam Registration</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 2: Insurance Plans */}
-          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button
-              type="button"
-              onClick={() => toggleSection("insurance")}
-              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
-            >
-              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider">
-                Insurance Plans
-              </h4>
-              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "insurance" ? "rotate-180" : ""}`} />
-            </button>
-            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "insurance" ? "block" : "hidden md:block"}`}>
-              <li><Link href="/products/insurance" className="text-emerald-400 font-bold hover:underline block py-0.5">View All 50+ Policies →</Link></li>
-              <li><Link href="/products/insurance/health-insurance" className="hover:text-white transition-colors block py-0.5">Health Insurance</Link></li>
-              <li><Link href="/products/insurance/term-life" className="hover:text-white transition-colors block py-0.5">Term Life Insurance</Link></li>
-              <li><Link href="/products/insurance/family-floater" className="hover:text-white transition-colors block py-0.5">Family Floater Plans</Link></li>
-              <li><Link href="/products/insurance/critical-illness" className="hover:text-white transition-colors block py-0.5">Critical Illness Cover</Link></li>
-              <li><Link href="/products/insurance/car-insurance" className="hover:text-white transition-colors block py-0.5">Car / Motor Insurance</Link></li>
-              <li><Link href="/products/insurance/two-wheeler-insurance" className="hover:text-white transition-colors block py-0.5">Two Wheeler Policy</Link></li>
-              <li><Link href="/products/insurance/home-insurance" className="hover:text-white transition-colors block py-0.5">Home & Fire Insurance</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Credit Cards */}
-          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button
-              type="button"
-              onClick={() => toggleSection("cards")}
-              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
-            >
-              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider">
-                Credit Cards
-              </h4>
-              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "cards" ? "rotate-180" : ""}`} />
-            </button>
-            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "cards" ? "block" : "hidden md:block"}`}>
-              <li><Link href="/products/credit-cards" className="text-emerald-400 font-bold hover:underline block py-0.5">Compare Best Cards →</Link></li>
-              <li><Link href="/products/credit-cards/hdfc-millennia" className="hover:text-white transition-colors block py-0.5">HDFC Millennia</Link></li>
-              <li><Link href="/products/credit-cards/sbi-simplyclick" className="hover:text-white transition-colors block py-0.5">SBI SimplyCLICK</Link></li>
-              <li><Link href="/products/credit-cards/icici-amazon-pay" className="hover:text-white transition-colors block py-0.5">ICICI Amazon Pay</Link></li>
-              <li><Link href="/products/credit-cards/axis-flipkart" className="hover:text-white transition-colors block py-0.5">Axis Flipkart Card</Link></li>
-              <li><Link href="/products/credit-cards?category=cashback" className="hover:text-white transition-colors block py-0.5">Cashback Cards</Link></li>
-              <li><Link href="/products/credit-cards?category=travel" className="hover:text-white transition-colors block py-0.5">Airport Lounge Cards</Link></li>
-              <li><Link href="/products/credit-cards?category=free" className="hover:text-white transition-colors block py-0.5">Lifetime Free Cards</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Tools & Calculators */}
-          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
-            <button
-              type="button"
-              onClick={() => toggleSection("tools")}
-              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
-            >
-              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider">
-                Tools & Calculators
-              </h4>
-              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "tools" ? "rotate-180" : ""}`} />
-            </button>
-            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "tools" ? "block" : "hidden md:block"}`}>
-              <li><Link href="/calculator" className="hover:text-white transition-colors block py-0.5">Home Loan EMI Calculator</Link></li>
-              <li><Link href="/eligibility" className="hover:text-white transition-colors block py-0.5">Loan Eligibility Checker</Link></li>
-              <li><Link href="/tools/balance-transfer" className="hover:text-white transition-colors block py-0.5">Balance Transfer Savings</Link></li>
-              <li><Link href="/tools/stamp-duty" className="hover:text-white transition-colors block py-0.5">Stamp Duty Calculator</Link></li>
-              <li><Link href="/tools/prepayment" className="hover:text-white transition-colors block py-0.5">Prepayment Impact Tool</Link></li>
-              <li><Link href="/calculator/insurance/hlv" className="hover:text-white transition-colors block py-0.5">Human Life Value (HLV)</Link></li>
-              <li><Link href="/calculator/insurance/tax-saver" className="hover:text-white transition-colors block py-0.5">80C & 80D Tax Benefit Tool</Link></li>
-              <li><Link href="/calculator/credit-cards/payoff" className="hover:text-white transition-colors block py-0.5">Credit Card Debt Payoff</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 5: Company & Trust */}
+          {/* Column 1: [ Company Overview ] */}
           <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
             <button
               type="button"
               onClick={() => toggleSection("company")}
               className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
             >
-              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider">
-                Company & Trust
+              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Company Overview
               </h4>
               <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "company" ? "rotate-180" : ""}`} />
             </button>
             <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "company" ? "block" : "hidden md:block"}`}>
-              <li><Link href="/about" className="hover:text-white transition-colors block py-0.5">About BFS Agra</Link></li>
-              <li><Link href="/about/founder" className="hover:text-white transition-colors block py-0.5">Founder & Leadership</Link></li>
-              <li><Link href="/about/why-us" className="hover:text-white transition-colors block py-0.5">Why Choose BFS</Link></li>
-              <li><Link href="/about/certifications" className="hover:text-white transition-colors block py-0.5">RBI Compliance Status</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors block py-0.5">About BFS</Link></li>
+              <li><Link href="/about/why-us" className="hover:text-white transition-colors block py-0.5">Vision &amp; Values</Link></li>
+              <li><Link href="/about/founder" className="hover:text-white transition-colors block py-0.5">Founder &amp; Leadership</Link></li>
+              <li><Link href="/about/certifications" className="hover:text-white transition-colors block py-0.5">Udyam &amp; GST Credentials</Link></li>
               <li><Link href="/testimonials" className="hover:text-white transition-colors block py-0.5">Customer Reviews (4.9★)</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors block py-0.5">Financial Blog & Guides</Link></li>
-              <li><Link href="/careers" className="hover:text-white transition-colors block py-0.5">Careers & DSA Partner</Link></li>
-              <li><Link href="/appointment" className="hover:text-white transition-colors block py-0.5">Book Appointment</Link></li>
+              <li><Link href="/partner" className="text-emerald-400 font-bold hover:underline block py-0.5">Become a Partner / DSA →</Link></li>
+              <li><Link href="/appointment" className="hover:text-white transition-colors block py-0.5">Book Priority Appointment</Link></li>
             </ul>
+          </div>
+
+          {/* Column 2: [ Loan Products ] */}
+          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
+            <button
+              type="button"
+              onClick={() => toggleSection("loans")}
+              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
+            >
+              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Loan Products
+              </h4>
+              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "loans" ? "rotate-180" : ""}`} />
+            </button>
+            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "loans" ? "block" : "hidden md:block"}`}>
+              <li><Link href="/products/home-loan" className="hover:text-white transition-colors block py-0.5">Home Loans (Purchase &amp; Plot)</Link></li>
+              <li><Link href="/products/loan-against-property" className="hover:text-white transition-colors block py-0.5">Loan Against Property (LAP)</Link></li>
+              <li><Link href="/products/balance-transfer" className="hover:text-white transition-colors block py-0.5">Balance Transfer (Lower EMI)</Link></li>
+              <li><Link href="/products/business-loan" className="hover:text-white transition-colors block py-0.5">Business &amp; MSME Loans</Link></li>
+              <li><Link href="/products/personal-loan" className="hover:text-white transition-colors block py-0.5">Unsecured Personal Loans</Link></li>
+              <li><Link href="/products/construction-loan" className="hover:text-white transition-colors block py-0.5">Construction &amp; Renovation</Link></li>
+              <li><Link href="/products/gold-loan" className="hover:text-white transition-colors block py-0.5">Gold Loans</Link></li>
+              <li><Link href="/apply" className="text-emerald-400 font-bold hover:underline block py-0.5">Apply Online (Instant Desk) →</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: [ Calculators & Tools ] */}
+          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
+            <button
+              type="button"
+              onClick={() => toggleSection("calculators")}
+              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
+            >
+              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Calculators &amp; Tools
+              </h4>
+              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "calculators" ? "rotate-180" : ""}`} />
+            </button>
+            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "calculators" ? "block" : "hidden md:block"}`}>
+              <li><Link href="/calculator" className="hover:text-white transition-colors block py-0.5">Smart EMI Calculator</Link></li>
+              <li><Link href="/eligibility" className="hover:text-white transition-colors block py-0.5">Loan Eligibility Checker</Link></li>
+              <li><Link href="/tools/balance-transfer" className="hover:text-white transition-colors block py-0.5">Balance Transfer Savings</Link></li>
+              <li><Link href="/tools/affordability" className="hover:text-white transition-colors block py-0.5">Property Affordability Tool</Link></li>
+              <li><Link href="/tools/prepayment" className="hover:text-white transition-colors block py-0.5">Prepayment Savings Calculator</Link></li>
+              <li><Link href="/tools/stamp-duty" className="hover:text-white transition-colors block py-0.5">Stamp Duty &amp; Registry (UP)</Link></li>
+              <li><Link href="/tools/tax-benefit" className="hover:text-white transition-colors block py-0.5">Income Tax Benefit Calculator</Link></li>
+              <li><Link href="/tools/interest-rate-compare" className="text-emerald-400 font-bold hover:underline block py-0.5">Compare Bank Rates →</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: [ Insurance Products ] */}
+          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
+            <button
+              type="button"
+              onClick={() => toggleSection("insurance")}
+              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
+            >
+              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Insurance Products
+              </h4>
+              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "insurance" ? "rotate-180" : ""}`} />
+            </button>
+            <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "insurance" ? "block" : "hidden md:block"}`}>
+              <li><Link href="/products/insurance/health-insurance" className="hover:text-white transition-colors block py-0.5">Cashless Health Insurance</Link></li>
+              <li><Link href="/products/insurance/family-floater" className="hover:text-white transition-colors block py-0.5">Family Floater Mediclaim</Link></li>
+              <li><Link href="/products/insurance/term-life" className="hover:text-white transition-colors block py-0.5">Term Life Protection</Link></li>
+              <li><Link href="/products/insurance/car-insurance" className="hover:text-white transition-colors block py-0.5">Car &amp; Motor Insurance</Link></li>
+              <li><Link href="/products/insurance/two-wheeler-insurance" className="hover:text-white transition-colors block py-0.5">Two-Wheeler Insurance</Link></li>
+              <li><Link href="/products/insurance/critical-illness" className="hover:text-white transition-colors block py-0.5">Critical Illness Cover</Link></li>
+              <li><Link href="/products/insurance/home-insurance" className="hover:text-white transition-colors block py-0.5">Home &amp; Property Insurance</Link></li>
+              <li><Link href="/products/insurance" className="text-emerald-400 font-bold hover:underline block py-0.5">Explore All Insurance →</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 5: [ Compliance & Grievance Desk ] */}
+          <div className="border-b md:border-b-0 border-emerald-900/60 pb-4 md:pb-0">
+            <button
+              type="button"
+              onClick={() => toggleSection("compliance")}
+              className="w-full flex items-center justify-between md:cursor-default text-left pb-2.5 mb-4 border-b border-emerald-800/60"
+            >
+              <h4 className="text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Compliance &amp; Grievance
+              </h4>
+              <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "compliance" ? "rotate-180" : ""}`} />
+            </button>
+            <div className={`space-y-3 ${openSection === "compliance" ? "block" : "hidden md:block"}`}>
+              <ul className="space-y-2 text-xs font-medium text-emerald-100/75">
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors block py-0.5">Privacy Policy (DPDP Compliant)</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors block py-0.5">Terms &amp; Conditions</Link></li>
+                <li><Link href="/disclaimer" className="hover:text-white transition-colors block py-0.5">Lender Disclaimer</Link></li>
+                <li><Link href="/refund-cancellation" className="hover:text-white transition-colors block py-0.5">Refund &amp; Cancellation</Link></li>
+                <li><Link href="/about/certifications" className="hover:text-white transition-colors block py-0.5">Statutory Registrations</Link></li>
+              </ul>
+
+              {/* Nodal Officer Box */}
+              <div className="bg-[#04261c] p-3 rounded-xl border border-emerald-800/60 space-y-1">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400 block">Nodal Grievance Officer</span>
+                <p className="font-bold text-white text-xs sm:text-sm">Praveen Bhardwaj</p>
+                <p className="text-[11px] text-emerald-200/80">Compliance &amp; Legal Desk</p>
+                <div className="pt-1 text-[11px] text-emerald-100/70 space-y-0.5">
+                  <p><span className="text-emerald-400 font-bold">Email:</span> <a href="mailto:grievance@bfsfin.com" className="text-white underline hover:text-emerald-300">grievance@bfsfin.com</a></p>
+                  <p><span className="text-emerald-400 font-bold">TAT:</span> <span className="text-emerald-300 font-semibold">48 Working Hours</span></p>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-1 flex flex-col gap-2">
+                <Link
+                  href="/complaint"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-rose-950/80 hover:bg-rose-900 px-3 py-2 rounded-xl border border-rose-700/60 transition-colors shadow-sm"
+                >
+                  <ShieldAlert className="w-3.5 h-3.5 text-rose-400" />
+                  File Staff / Service Complaint →
+                </Link>
+                <Link
+                  href="/grievance"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-white bg-emerald-950 hover:bg-emerald-900 px-3 py-1.5 rounded-lg border border-emerald-700/60 transition-colors"
+                >
+                  Grievance Redressal Matrix →
+                </Link>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -295,7 +320,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
       {/* 3. CORPORATE HEADQUARTERS & CREDENTIALS */}
       <div className="bg-[#02140e] border-t border-emerald-900/60 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="w-full px-4 lg:px-10">
+        <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-between">
             
             {/* Brand column */}
@@ -365,12 +390,13 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <div className="font-extrabold text-white uppercase tracking-wider text-[11px] mb-1.5 flex items-center justify-center lg:justify-start gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400" /> Agra Corporate Headquarters
               </div>
-              <p>Block-C11, Shop No.-5, First Floor, near MK Tailor,</p>
-              <p>Sanjay Palace, Sanjay Place, Agra, Uttar Pradesh - 282002</p>
+              <p>C-11, Cloth Market, Sanjay Place,</p>
+              <p>Agra, Uttar Pradesh - 282002, India</p>
               <div className="pt-2 flex flex-col gap-1 text-emerald-200 font-semibold">
                 <p>Call Helpline: <a href="tel:9258724227" className="text-emerald-400 hover:underline">+91 9258-724-227</a></p>
                 <p>WhatsApp Desk: <a href="https://wa.me/917900979001" className="text-emerald-400 hover:underline">+91 7900-979-001</a></p>
-                <p>Email: <a href="mailto:info@bfsfin.com" className="hover:text-emerald-400">info@bfsfin.com</a></p>
+                <p>Corporate Email: <a href="mailto:info@bfsfin.com" className="hover:text-emerald-400">info@bfsfin.com</a></p>
+                <p>Grievance Officer: <a href="mailto:grievance@bfsfin.com" className="text-emerald-400 hover:underline">grievance@bfsfin.com</a></p>
               </div>
             </div>
 
@@ -392,9 +418,9 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
       {/* 4. STATUTORY DISCLAIMER STRIP (Clean & Positive with Link to Full Legal Page) */}
       <div className="bg-[#010a07] border-t border-emerald-950 py-5 px-4 sm:px-6 lg:px-8">
-        <div className="w-full px-4 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] leading-relaxed text-emerald-100/60">
+        <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] leading-relaxed text-emerald-100/60">
           <p className="text-center md:text-left max-w-4xl">
-            <strong className="text-emerald-300 font-bold">Regulatory Disclosure:</strong> Bhardwaj Financial Services is an authorized corporate channel partner for leading Banks and NBFCs across India. Credit sanctions, interest rates, and disbursals are governed exclusively by lending bank norms. BFS operates strictly under a zero upfront fee policy.
+            <strong className="text-emerald-300 font-bold">Lender Disclaimer:</strong> Bhardwaj Financial Services is an independent loan facilitator/channel partner, not a direct lender or banking institution. Loan sanctioning, interest rates, processing fees, and disbursements are governed solely by partner Banks/NBFCs based on individual credit evaluation. BFS operates strictly under a zero upfront fee policy.
           </p>
           <Link 
             href="/disclaimer" 
@@ -407,7 +433,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
       {/* 5. BOTTOM STRIP & LEGAL PROTECTION */}
       <div className="bg-black py-6 border-t border-emerald-950 px-4 sm:px-6 lg:px-8">
-        <div className="w-full px-4 lg:px-10 flex flex-col gap-4">
+        <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col gap-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-emerald-100/50">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               <p>© {new Date().getFullYear()} Bhardwaj Financial Services. All Rights Reserved.</p>
@@ -424,15 +450,24 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-5 text-emerald-100/60 font-medium">
-              <Link href="/privacy" className="hover:text-emerald-400 transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-emerald-400 transition-colors">Terms of Service</Link>
-              <Link href="/disclaimer" className="hover:text-emerald-400 transition-colors">Disclaimer</Link>
-              <Link href="/sitemap" className="hover:text-emerald-400 transition-colors">Sitemap</Link>
+              <Link href="/privacy-policy" className="hover:text-emerald-400 transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-emerald-400 transition-colors">Terms &amp; Conditions</Link>
+              <Link href="/disclaimer" className="hover:text-emerald-400 transition-colors">Lender Disclaimer</Link>
+              <Link href="/refund-cancellation" className="hover:text-emerald-400 transition-colors">Refund &amp; Cancellation</Link>
+              <Link href="/grievance" className="hover:text-emerald-400 transition-colors">Grievance Desk</Link>
             </div>
           </div>
 
-          <p className="text-[10px] text-center md:text-left text-emerald-100/60 leading-relaxed border-t border-emerald-950/60 pt-3">
-            <strong>Copyright & IP Notice:</strong> All proprietary financial algorithms, EMI calculator formulas, website design layout, trademarks, and editorial content are protected under the Indian Copyright Act, 1957. Unauthorized automated scraping, source code decompilation, or cloning is strictly punishable by law.
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2 border-t border-emerald-950/60 pt-3 text-[10.5px] text-emerald-200/70 text-center md:text-left">
+            <p>
+              <strong className="text-emerald-400 font-bold">Registration Credentials:</strong> Bhardwaj Financial Services is registered under Udyam (Govt. of India) &amp; GST. Operating as an authorized loan distribution channel partner.
+            </p>
+            <p className="text-[10px] text-emerald-100/40">
+              Agra HQ • Uttar Pradesh Jurisdiction
+            </p>
+          </div>
+          <p className="text-[10px] text-center md:text-left text-emerald-100/50 leading-relaxed pt-1">
+            <strong>Copyright &amp; IP Notice:</strong> All proprietary financial algorithms, EMI calculator formulas, website design layout, trademarks, and editorial content are protected under the Indian Copyright Act, 1957.
           </p>
         </div>
         {/* Mobile clearance padding */}

@@ -180,7 +180,7 @@ const InChatLtvCalc = ({ onApply }: { onApply: (amount: number) => void }) => {
           <div className="flex justify-between text-xs font-bold text-slate-500 mb-2">
             <span>Property Value</span><span className="text-indigo-600">₹{(propertyValue/100000).toFixed(1)} L</span>
           </div>
-          <input type="range" min="1000000" max="100000000" step="500000" value={propertyValue} onChange={(e) => setPropertyValue(Number(e.target.value))} className="w-full accent-indigo-500 h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer" />
+          <input type="range" min="1000000" max="500000000" step="1000000" value={propertyValue} onChange={(e) => setPropertyValue(Number(e.target.value))} className="w-full accent-indigo-500 h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer" />
         </div>
         <div>
           <div className="flex justify-between text-xs font-bold text-slate-500 mb-2">
@@ -197,7 +197,7 @@ const InChatLtvCalc = ({ onApply }: { onApply: (amount: number) => void }) => {
       </div>
       <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 p-3 rounded-lg border border-indigo-100 mb-3">
         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Max Loan Amount ({ltvPercent * 100}%)</p>
-        <p className="text-2xl font-black text-indigo-700">₹{(maxLoan/100000).toFixed(1)} Lakhs</p>
+        <p className="text-2xl font-black text-indigo-700">{maxLoan >= 10000000 ? `₹${(maxLoan/10000000).toFixed(2)} Crores` : `₹${(maxLoan/100000).toFixed(1)} Lakhs`}</p>
       </div>
       <button onClick={() => onApply(maxLoan)} className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2.5 rounded-lg text-xs transition-colors shadow-md shadow-indigo-500/20">Proceed with this amount</button>
     </div>

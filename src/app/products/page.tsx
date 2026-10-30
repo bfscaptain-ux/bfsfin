@@ -104,7 +104,7 @@ const LOANS = [
     desc: "Large ticket size term loans for opening new branches, factories, or warehouses.",
     icon: TrendingUp,
     rate: "Flexible Tenure",
-    feature: "Up to ₹10 Crore+",
+    feature: "₹10 Lakh to Unlimited",
     link: "/products/business-loan"
   },
   {

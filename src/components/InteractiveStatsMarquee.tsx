@@ -160,12 +160,24 @@ export default function InteractiveStatsMarquee() {
     };
   }, [updateMetrics]);
 
-  // Butter-smooth 60fps/120fps continuous drift loop
+  // Butter-smooth 60fps/120fps continuous drift loop (active ONLY when in viewport to save CPU)
   useEffect(() => {
     let animId: number;
     let lastTime = performance.now();
+    let isVisible = false;
     // 18 pixels per second: steady, silky-smooth calm drift
     const PIXELS_PER_SECOND = 18;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        lastTime = performance.now();
+      }
+    }, { threshold: 0.05 });
+
+    if (scrollRef.current) {
+      observer.observe(scrollRef.current);
+    }
 
     const step = (currentTime: number) => {
       const dt = Math.min((currentTime - lastTime) / 1000, 0.05);
@@ -174,7 +186,7 @@ export default function InteractiveStatsMarquee() {
       const el = scrollRef.current;
       const oneSet = oneSetWidthRef.current;
 
-      if (el && !isInteractingRef.current && oneSet > 0) {
+      if (isVisible && el && !isInteractingRef.current && oneSet > 0) {
         scrollPosRef.current += PIXELS_PER_SECOND * dt;
 
         // Invisible wrap-around
@@ -193,6 +205,7 @@ export default function InteractiveStatsMarquee() {
     animId = requestAnimationFrame(step);
     return () => {
       cancelAnimationFrame(animId);
+      observer.disconnect();
       if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
   }, []);
@@ -293,10 +306,7 @@ export default function InteractiveStatsMarquee() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 dark:bg-emerald-400/15 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-6 sm:mb-8 text-center">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-widest bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 mb-2 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 animate-pulse" />
-          Verified National Scale & Impact
-        </span>
+
         <h3 className="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
           BFS Milestones Driving Real Lives
         </h3>
@@ -316,27 +326,7 @@ export default function InteractiveStatsMarquee() {
         <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-28 bg-gradient-to-r from-slate-50 via-slate-50/90 dark:from-slate-950 dark:via-slate-950/90 to-transparent z-20 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-28 bg-gradient-to-l from-slate-50 via-slate-50/90 dark:from-slate-950 dark:via-slate-950/90 to-transparent z-20 pointer-events-none"></div>
 
-        {/* Floating Manual Left Chevron Button (Desktop only, so mobile cards stay unobstructed) */}
-        <button
-          type="button"
-          onClick={() => handleManualSlide(-320)}
-          className="hidden md:flex absolute left-3 lg:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-md items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-950 hover:border-emerald-400 hover:text-emerald-600 transition-all opacity-80 hover:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
-          aria-label="Slide left"
-          title="Slide left"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-
-        {/* Floating Manual Right Chevron Button (Desktop only) */}
-        <button
-          type="button"
-          onClick={() => handleManualSlide(320)}
-          className="hidden md:flex absolute right-3 lg:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-md items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-emerald-950 hover:border-emerald-400 hover:text-emerald-600 transition-all opacity-80 hover:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
-          aria-label="Slide right"
-          title="Slide right"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
+        
 
         {/* Continuous Smooth Scrolling Track (Freely swipeable on touch & draggable with mouse) */}
         <div

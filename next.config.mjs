@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  compress: true,
+  swcMinify: true,
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   images: {
-    unoptimized: true
+    formats: ['image/avif', 'image/webp'],
   },
   async redirects() {
     return [
@@ -16,6 +18,11 @@ const nextConfig = {
       {
         source: '/credit-cards',
         destination: '/products/credit-cards',
+        permanent: true,
+      },
+      {
+        source: '/privacy',
+        destination: '/privacy-policy',
         permanent: true,
       },
     ];

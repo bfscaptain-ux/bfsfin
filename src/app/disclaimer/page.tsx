@@ -49,6 +49,17 @@ export default function DisclaimerPage() {
       {/* 2. MAIN CONTENT BODY */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12">
         
+        {/* Statutory Front Disclosure Required by RBI Guidelines */}
+        <div className="bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-500/50 p-6 sm:p-7 rounded-3xl shadow-sm space-y-2">
+          <div className="flex items-center gap-2.5 text-emerald-900 dark:text-emerald-300 font-black text-base sm:text-lg">
+            <Scale className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            Statutory Channel Partner Disclaimer
+          </div>
+          <p className="text-sm sm:text-base text-emerald-900 dark:text-emerald-100 leading-relaxed font-semibold">
+            &quot;Bhardwaj Financial Services is an independent loan facilitator/channel partner, not a direct lender or banking institution. Loan sanctioning, interest rates, processing fees, and disbursements are governed solely by partner Banks/NBFCs based on individual credit evaluation.&quot;
+          </p>
+        </div>
+
         {/* Anti-Fraud Warning Box */}
         <div className="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-6 rounded-2xl shadow-sm space-y-2">
           <div className="flex items-center gap-2.5 text-amber-900 dark:text-amber-300 font-extrabold text-base">

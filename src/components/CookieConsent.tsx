@@ -2,33 +2,35 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cookie, X, Check } from "lucide-react";
+import { Cookie, X, Check, Shield } from "lucide-react";
 import Link from "next/link";
 
 export default function CookieConsent() {
-  return null;
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // Check if user has already accepted cookies
+    // Check if user has already made a cookie choice
     const consent = localStorage.getItem("bfs_cookie_consent");
     if (!consent) {
-      // Delay showing the banner slightly for better UX
+      // Show subtly after 1.5 seconds
       const timer = setTimeout(() => {
         setShow(true);
-      }, 15000);
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem("bfs_cookie_consent", "true");
+  const handleAcceptAll = () => {
+    try {
+      localStorage.setItem("bfs_cookie_consent", "all");
+    } catch {}
     setShow(false);
   };
 
-  const handleDecline = () => {
-    // Even if declined, we set a flag so we don't bother them again this session
-    sessionStorage.setItem("bfs_cookie_consent", "declined");
+  const handleEssentialsOnly = () => {
+    try {
+      localStorage.setItem("bfs_cookie_consent", "essentials");
+    } catch {}
     setShow(false);
   };
 
@@ -36,50 +38,66 @@ export default function CookieConsent() {
     <AnimatePresence>
       {show && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 left-4 right-4 md:left-8 md:right-auto md:max-w-sm z-[9999]"
+          exit={{ y: 80, opacity: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="fixed bottom-3 left-3 right-3 sm:bottom-5 sm:left-6 sm:right-6 md:left-auto md:right-6 md:max-w-lg z-[9999]"
         >
-          <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/50 dark:border-slate-800/50 shadow-2xl rounded-2xl p-6 relative overflow-hidden">
+          <div className="bg-slate-950/95 text-slate-100 backdrop-blur-xl border border-emerald-500/40 shadow-2xl rounded-2xl p-4 sm:p-5 relative overflow-hidden ring-1 ring-emerald-500/20">
             {/* Top decorative gradient line */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-teal-600"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600" />
             
             <button 
-              onClick={handleDecline}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-              aria-label="Close"
+              onClick={handleEssentialsOnly}
+              className="absolute top-3 right-3 text-slate-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
+              aria-label="Dismiss cookie notice"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0 border border-emerald-100 dark:border-emerald-800/50">
-                <Cookie className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            <div className="flex items-start gap-3.5 pr-6">
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 text-emerald-400 mt-0.5">
+                <Cookie className="w-4 h-4" />
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">We value your privacy</h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                  We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of cookies.
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-xs sm:text-sm font-black text-white tracking-wide uppercase">
+                    Cookie & Data Notice
+                  </h4>
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.2 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">
+                    <Shield className="w-2.5 h-2.5" /> DPDP
+                  </span>
+                </div>
+                <p className="text-[11px] sm:text-xs text-slate-300/90 leading-relaxed font-normal">
+                  We use essential cookies and tracking analytics to provide loan assessment services and enhance user experience. By continuing to browse, you agree to our{" "}
+                  <Link href="/privacy-policy" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">
+                    Privacy Policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/terms" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">
+                    Terms of Service
+                  </Link>.
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap sm:flex-nowrap gap-2 justify-end">
               <button 
-                onClick={handleAccept}
-                className="flex-1 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-[0_4px_10px_-2px_rgba(16,185,129,0.4)] hover:shadow-[0_6px_15px_-2px_rgba(16,185,129,0.5)]"
+                onClick={handleEssentialsOnly}
+                type="button"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-bold transition-all text-center"
               >
-                <Check className="w-3.5 h-3.5" /> Accept All
+                ESSENTIALS ONLY
               </button>
-              <Link 
-                href="/privacy-policy"
-                onClick={() => setShow(false)}
-                className="flex-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-95 text-slate-700 dark:text-slate-200 text-xs font-bold py-2.5 px-4 rounded-xl transition-all flex items-center justify-center border border-slate-200 dark:border-slate-700"
+              <button 
+                onClick={handleAcceptAll}
+                type="button"
+                className="w-full sm:w-auto px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black transition-all shadow-md shadow-emerald-500/20 flex items-center justify-center gap-1.5"
               >
-                Privacy Policy
-              </Link>
+                <Check className="w-3.5 h-3.5" />
+                ACCEPT ALL
+              </button>
             </div>
           </div>
         </motion.div>

@@ -464,7 +464,7 @@ export default function AboutClient({
                     <span className="font-semibold text-teal-600 dark:text-teal-400">99.8% Settlement</span>
                   </div>
                   <Link 
-                    href="/insurance"
+                    href="/products/insurance"
                     className="w-full py-3 px-4 bg-teal-600 hover:bg-teal-500 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-teal-500/20 transition-all"
                   >
                     Explore Insurance <ArrowRight className="w-4 h-4" />
@@ -516,7 +516,7 @@ export default function AboutClient({
                     <span className="font-semibold text-cyan-600 dark:text-cyan-400">Pre-Approved Limits</span>
                   </div>
                   <Link 
-                    href="/credit-cards"
+                    href="/products/credit-cards"
                     className="w-full py-3 px-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-cyan-500/20 transition-all"
                   >
                     Explore Credit Cards <ArrowRight className="w-4 h-4" />
@@ -791,7 +791,7 @@ export default function AboutClient({
                 Apply for Loan <ArrowRight className="w-4 h-4" />
               </Link>
               <Link 
-                href="/insurance" 
+                href="/products/insurance" 
                 className="px-6 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
               >
                 Explore Insurance & Cards

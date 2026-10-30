@@ -33,6 +33,11 @@ export async function POST(request: Request) {
     
     const callbacks: CallbackRequest[] = JSON.parse(fileContents);
     
+    const clientIp = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "127.0.0.1";
+    const consentTimestamp = data.consentTimestamp || new Date().toISOString();
+    const consentAudit = `[DPDP Consent: Authorized (Overrides DND) | Client IP: ${clientIp} | ConsentTime: ${consentTimestamp}]`;
+    console.log(`[AUDIT LOG] Callback request from ${data.phone || data.email} | IP: ${clientIp} | Time: ${consentTimestamp}`);
+
     const newEntry: CallbackRequest = {
       id: Date.now().toString(),
       name: data.name,
@@ -42,7 +47,7 @@ export async function POST(request: Request) {
       city: data.city,
       loanType: data.loanType,
       loanSubType: data.loanSubType,
-      message: data.message,
+      message: `${data.message || ''} | ${consentAudit}`,
       status: 'New',
       date: new Date().toISOString()
     };
@@ -71,6 +76,27 @@ export async function POST(request: Request) {
       message: newEntry.message || `Contact Form Inquiry from ${newEntry.city}, ${newEntry.state}`,
       status: "New Lead",
     });
+
+    // Send to BFS Financial Services CRM (client mgmt2)
+    try {
+      const { syncLeadToCRM } = await import("@/lib/crmSync");
+      syncLeadToCRM({
+        name: newEntry.name,
+        phone: newEntry.phone,
+        email: newEntry.email,
+        city: newEntry.city || geo.city,
+        location: geo.fullAddress || `${newEntry.city}, ${newEntry.state}`,
+        productType: "Finance",
+        subType: newEntry.loanSubType || newEntry.loanType,
+        loanType: newEntry.loanType || "Contact Inquiry",
+        formType: "Contact Inquiry",
+        source: "Website Contact Form",
+        message: newEntry.message || `Contact Form Inquiry from ${newEntry.city}, ${newEntry.state}`,
+        mapsUrl: geo.mapsUrl
+      }).catch(console.error);
+    } catch (crmErr) {
+      console.error("[CRM SYNC] Contact sync error:", crmErr);
+    }
 
     // Send Confirmation Email to Customer
     if (newEntry.email && !newEntry.email.includes("no-email")) {

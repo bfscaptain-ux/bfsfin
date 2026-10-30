@@ -137,6 +137,7 @@ export default function AppointmentClient() {
   const [mockOtpHint, setMockOtpHint] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consentChecked, setConsentChecked] = useState(false);
 
   // Auto-set first subType whenever category changes
   const handleCategoryChange = (newCat: PrimaryCategory) => {
@@ -272,6 +273,10 @@ export default function AppointmentClient() {
       setOtpError("Please verify your email via OTP before confirming the appointment.");
       return;
     }
+    if (!consentChecked) {
+      setOtpError("Please authorize the contact consent checkbox before confirming.");
+      return;
+    }
 
     setIsSubmitting(true);
     try {
@@ -286,6 +291,9 @@ export default function AppointmentClient() {
           subType: subType,
           loanType: `${category} - ${subType}`,
           city: formData.city || "Agra",
+          consentGiven: true,
+          consentTimestamp: new Date().toISOString(),
+          message: `Appointment: ${category} - ${subType} | Slot: ${selectedDate} ${selectedTime} | [DPDP Consent Authorized (Overrides DND)]`,
           source: `APPOINTMENT: ${selectedDate} | ${selectedTime}`
         })
       });
@@ -795,6 +803,21 @@ export default function AppointmentClient() {
                         )}
                       </div>
 
+                      {/* Phase 2: Explicit DPDP & Telecom / DND Consent Checkbox */}
+                      <div className="bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 p-3.5 rounded-xl my-3 text-left">
+                        <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-700 dark:text-slate-300 leading-relaxed select-none">
+                          <input
+                            type="checkbox"
+                            checked={consentChecked}
+                            onChange={(e) => setConsentChecked(e.target.checked)}
+                            className="mt-0.5 w-4 h-4 rounded border-emerald-500 text-emerald-600 focus:ring-emerald-500 cursor-pointer shrink-0 accent-emerald-500"
+                          />
+                          <span>
+                            I authorize Bhardwaj Financial Services and its authorized banking partners to contact me via Call, WhatsApp, SMS, or Email regarding this enquiry. I understand that BFS is a loan facilitator and this authorization overrides my DND/NDNC registration. (Read <a href="/terms" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Terms</a> &amp; <a href="/privacy-policy" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Privacy Policy</a>)
+                          </span>
+                        </label>
+                      </div>
+
                       {/* Actions */}
                       <div className="pt-4 border-t border-slate-100 dark:border-emerald-800/80 flex justify-between items-center">
                         <button 
@@ -806,7 +829,7 @@ export default function AppointmentClient() {
                         </button>
                         <button 
                           type="submit" 
-                          disabled={isSubmitting || !formData.name || formData.phone.length < 10 || !isEmailVerified}
+                          disabled={isSubmitting || !formData.name || formData.phone.length < 10 || !isEmailVerified || !consentChecked}
                           className="px-7 py-3.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl shadow-lg hover:shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer text-sm"
                         >
                           {isSubmitting ? (

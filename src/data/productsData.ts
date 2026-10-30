@@ -348,7 +348,7 @@ export const productsData: Record<string, ProductData> = {
       "Bhardwaj Financial Services offers LAP with incredibly flexible repayment tenures extending up to 15 years. This ensures that even for multi-crore loan amounts, your monthly EMIs remain comfortably within your cash flow limits. We also offer LAP as an Overdraft (OD) facility, meaning you only pay interest on the funds you actually withdraw, making it the ultimate tool for managing business liquidity."
     ],
     benefits: [
-      "Access high-value loans ranging from ₹10 Lakhs to ₹15 Crores+.",
+      "Access high-value loans starting from ₹10 Lakhs with No Upper Limit (Institutional Multi-Crore Sanctions).",
       "Interest rates are significantly lower than unsecured business or personal loans.",
       "No restrictions on end-use: use for business expansion, weddings, or medical needs.",
       "Flexible, long-term repayment tenures up to 15 years.",
@@ -356,7 +356,7 @@ export const productsData: Record<string, ProductData> = {
       "Accepts a wide range of collaterals including residential, commercial, and industrial properties."
     ],
     quickFacts: [
-      { label: "Loan Amount", value: "₹10 Lakhs to ₹15 Crores", highlight: true },
+      { label: "Loan Amount", value: "₹10 Lakhs to Unlimited (No Cap)", highlight: true },
       { label: "Interest Rate", value: "9.50% p.a. onwards" },
       { label: "LTV", value: "Up to 65% of Property Value" },
       { label: "Property Type", value: "Residential, Commercial, Industrial", highlight: true },
@@ -797,7 +797,7 @@ export const productsData: Record<string, ProductData> = {
       "Accepts a wide range of securities including Mutual Funds, Demat Shares, Bonds, and FDs."
     ],
     quickFacts: [
-      { label: "Limit", value: "Up to ₹10 Crores" },
+      { label: "Limit", value: "₹10 Lakhs onwards (No Upper Limit)" },
       { label: "LTV", value: "Up to 50% for Equity, 80% for Debt", highlight: true },
       { label: "Process", value: "100% Digital via CAMS/KFintech", highlight: true },
       { label: "Interest", value: "Only on utilized amount" },

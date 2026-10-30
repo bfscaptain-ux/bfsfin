@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Receipt, Landmark } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedToolLogo from "../AnimatedToolLogo";
+import CalculatorHuman2D, { CalculatorBgAmbient2D } from "../illustrations/CalculatorHuman2D";
 
 export default function TaxBenefitCalculator() {
   const [loanAmount, setLoanAmount] = useState(3500000);
@@ -58,6 +59,10 @@ export default function TaxBenefitCalculator() {
       className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
     >
       <AnimatedToolLogo />
+      {/* Subtle 2D Character Ambient Watermark */}
+      <div className="absolute -bottom-8 -right-8 w-80 h-60 pointer-events-none select-none opacity-20 dark:opacity-10 z-0">
+        <CalculatorBgAmbient2D className="w-full h-full object-contain" />
+      </div>
       
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-emerald-800 gap-4 relative z-10">
         <div className="flex items-center gap-4">
@@ -213,6 +218,11 @@ export default function TaxBenefitCalculator() {
                 <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm font-medium">
                   First year tax savings under Old Tax Regime.
                 </p>
+              </div>
+
+                            {/* 2D Fintech Character */}
+              <div className="w-full h-24 sm:h-28 my-1 flex items-center justify-center bg-black/5 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/10 p-1 relative overflow-hidden group">
+                <CalculatorHuman2D className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-300" />
               </div>
 
               <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-emerald-800/60 text-sm">

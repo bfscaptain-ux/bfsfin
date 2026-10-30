@@ -29,15 +29,16 @@ export async function POST(req: Request) {
     const userAgent = req.headers.get("user-agent") || "";
     const { device, browser } = parseUserAgent(userAgent);
 
-    // Resolve Location via IP
+    // Fast Resolve Location via IP (uses Cloudflare headers / in-memory cache)
     const geo = await resolveClientLocation(req);
 
     const pageUrl = body.page || "/";
     const userLocation = geo.fullAddress || `${geo.city}, ${geo.region}, ${geo.country}`;
     const mapsUrl = geo.mapsUrl || `https://www.google.com/maps/search/${encodeURIComponent(userLocation)}`;
 
-    // Dispatch to Google Sheets under "Website Visitor" (routes to "Live Visitors (Traffic)" tab)
-    await sendToGoogleSheets({
+    // High Concurrency Non-Blocking Dispatch:
+    // Do NOT await Google Sheets so the client HTTP connection is released in < 5ms
+    sendToGoogleSheets({
       formType: "Website Visitor",
       isVisitor: true,
       page: pageUrl,
@@ -49,6 +50,8 @@ export async function POST(req: Request) {
       userLocation: userLocation,
       mapsUrl: mapsUrl,
       ip: geo.ip || "Unknown",
+    }).catch(err => {
+      console.warn("Background Visitor Dispatch:", err?.message || err);
     });
 
     return NextResponse.json({

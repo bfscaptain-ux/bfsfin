@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Star, MapPin, X, PlusCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ReviewsLeftBg2D, ReviewsRightBg2D } from "@/components/illustrations/ReviewsBgCharacters2D";
 
 type Review = {
   id: string;
@@ -111,8 +112,16 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-emerald-950 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-slate-50 dark:bg-emerald-950 overflow-hidden relative">
+      {/* Ambient 2D Review Celebration Background Artworks */}
+      <div className="absolute -left-10 lg:left-0 top-12 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+        <ReviewsLeftBg2D className="w-full h-full object-contain" />
+      </div>
+      <div className="absolute -right-10 lg:right-0 top-12 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
+        <ReviewsRightBg2D className="w-full h-full object-contain" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6">

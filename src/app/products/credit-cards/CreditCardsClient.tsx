@@ -254,13 +254,7 @@ export default function CreditCardsClient({ heroImageUrl }: { heroImageUrl?: str
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 font-medium leading-relaxed">
             We have an extensive catalog of over 50+ credit cards across all major banks. Let our Smart AI recommend the perfect card based on your spending habits.
           </p>
-          <Link 
-            href="/compare-cards" 
-            className="inline-flex items-center justify-center px-8 py-4 sm:px-10 sm:py-5 text-base sm:text-lg font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] hover:-translate-y-1 active:scale-95"
-          >
-            Compare All 50+ Cards
-            <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
-          </Link>
+
         </motion.div>
       </section>
     </>

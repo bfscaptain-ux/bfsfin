@@ -54,11 +54,11 @@ export default function ContactPage() {
         "name": "Bhardwaj Financial Services",
         "image": "https://bhardwajfinance.com/logo.png",
         "url": "https://bhardwajfinance.com",
-        "telephone": "+91-9999999999", 
-        "email": "info@bhardwajfinance.com",
+        "telephone": "+91-9258724227", 
+        "email": "info@bfsfin.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Sanjay Place Commercial Hub",
+          "streetAddress": "C-11, Cloth Market, Sanjay Place",
           "addressLocality": "Agra",
           "addressRegion": "UP",
           "postalCode": "282002",
@@ -90,7 +90,7 @@ export default function ContactPage() {
         "@type": "ContactPage",
         "mainEntity": {
           "@type": "ContactPoint",
-          "telephone": "+91-9999999999",
+          "telephone": "+91-9258724227",
           "contactType": "customer service",
           "areaServed": "IN",
           "availableLanguage": ["en", "hi"]

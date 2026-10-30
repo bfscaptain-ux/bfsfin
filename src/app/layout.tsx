@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/png" sizes="192x192" href="/logo.png?v=3" />
         <link rel="icon" type="image/png" sizes="32x32" href="/logo.png?v=3" />
@@ -52,7 +52,7 @@ export default function RootLayout({
           #google_translate_element { display: none !important; }
         `}} />
       </head>
-      <body className="antialiased min-h-screen selection:bg-emerald-200 selection:text-emerald-900 pb-16 xl:pb-0 bg-slate-50 text-slate-900">
+      <body suppressHydrationWarning className="antialiased min-h-screen selection:bg-emerald-200 selection:text-emerald-900 pb-16 xl:pb-0 bg-slate-50 text-slate-900">
         <NavigationProgress />
         <SecurityGuard />
         <MobileInstallPrompt />

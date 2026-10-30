@@ -307,3 +307,47 @@ html.dark .shine-text-glow {
               0 0 100px 20px rgba(20, 184, 166, 0.18);
 }
 
+@keyframes button-shine {
+  0% { transform: translateX(-150%) skewX(-15deg); }
+  40%, 100% { transform: translateX(250%) skewX(-15deg); }
+}
+
+.animate-button-shine {
+  animation: button-shine 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+
+/* PRINT REPORT OPTIMIZATION: Show ONLY the loan summary and repayment schedule */
+@media print {
+  header, footer, nav, aside,
+  .print\:hidden,
+  [data-print-hidden="true"],
+  .no-print,
+  #google_translate_element,
+  .goog-te-banner-frame {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Table page breaks */
+  table {
+    page-break-inside: auto !important;
+  }
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+  thead {
+    display: table-header-group !important;
+  }
+  tfoot {
+    display: table-footer-group !important;
+  }
+}

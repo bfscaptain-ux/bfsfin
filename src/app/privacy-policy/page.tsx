@@ -172,19 +172,28 @@ export default function PrivacyPolicyPage() {
                   2. Information We Collect
                 </h2>
                 <p>
-                  To seamlessly process your loan applications, ITR filings, and MSME registrations, we require certain necessary data. We practice <strong>Data Minimization</strong>—collecting only what is absolutely required.
+                  To accurately compute your borrowing power and process retail loans, we collect only the minimal data points necessary under RBI guidelines and the DPDP Act, 2023:
                 </p>
                 <ul className="space-y-4">
                   <li>
-                    <strong>Personally Identifiable Information (PII):</strong> Full name, date of birth, residential address, email address, and mobile number.
+                    <strong>Name &amp; Identity Details:</strong> Full name as per official government records (Aadhaar / PAN card).
                   </li>
                   <li>
-                    <strong>Financial & KYC Data:</strong> PAN card details, Aadhaar number, income bracket, employment status, credit score requirements, and banking history (only when processing loan approvals).
+                    <strong>Contact Number:</strong> Active mobile phone number for application updates, OTP authentication, and relationship advisor callbacks.
                   </li>
                   <li>
-                    <strong>Technical & Usage Data:</strong> IP address, geolocation (to assign the nearest relationship manager), browser type, device information, and interaction metrics on our website.
+                    <strong>Income Bracket:</strong> Monthly in-hand salary or verified business turnover to match eligible lending programs.
+                  </li>
+                  <li>
+                    <strong>CIBIL / Credit Score Range:</strong> Self-declared or bank-verified credit tier to identify the lowest interest rate partner banks.
+                  </li>
+                  <li>
+                    <strong>Technical &amp; Consent Metadata:</strong> Client IP address, explicit consent timestamp, and browser details recorded strictly for regulatory compliance auditing.
                   </li>
                 </ul>
+                <div className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 p-4 rounded-2xl text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 font-semibold my-4">
+                  🛡️ <strong>Zero Telemarketing Guarantee:</strong> Your information is processed exclusively for your requested loan or mortgage product. We strictly DO NOT sell, rent, monetize, or disclose your contact data to third-party telemarketing call centers, spam aggregators, or external advertisers.
+                </div>
               </div>
 
               <hr className="border-slate-100 dark:border-slate-800 my-10" />
@@ -280,16 +289,16 @@ export default function PrivacyPolicyPage() {
               <div id="rights" className="scroll-mt-32">
                 <h2 className="flex items-center gap-3">
                   <ShieldCheck className="w-7 h-7 text-emerald-500" />
-                  8. Your Privacy Rights
+                  8. Your Privacy Rights &amp; Right to Erasure
                 </h2>
                 <p>
-                  You possess ultimate control over your data. Under applicable data protection frameworks, you have the right to:
+                  Under India's Digital Personal Data Protection (DPDP) Act, you possess clear rights regarding your personal records:
                 </p>
-                <ul>
-                  <li>Request access to the personal data we hold about you.</li>
-                  <li>Request correction of inaccurate or incomplete information.</li>
-                  <li>Request erasure/deletion of your data (subject to RBI/legal retention mandates).</li>
-                  <li>Withdraw your consent at any time for non-essential processing.</li>
+                <ul className="space-y-2">
+                  <li><strong>Right to Access:</strong> Request a full copy of the personal and application data we hold about you.</li>
+                  <li><strong>Right to Rectification:</strong> Request correction or updating of inaccurate or outdated contact information.</li>
+                  <li><strong>Right to Erasure (Data Deletion):</strong> You have the absolute right to have your personal data permanently purged from our systems. Simply send an email to <a href="mailto:grievance@bfsfin.com" className="text-emerald-600 dark:text-emerald-400 font-bold underline">grievance@bfsfin.com</a> with the subject line <em>&quot;Data Erasure Request&quot;</em>. Our compliance desk will process your deletion request and confirm within <strong>48 working hours</strong> (subject only to statutory loan retention laws).</li>
+                  <li><strong>Right to Withdraw Consent:</strong> You can revoke marketing or communication permissions at any time.</li>
                 </ul>
               </div>
 
@@ -315,28 +324,29 @@ export default function PrivacyPolicyPage() {
                         <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">Bhardwaj Financial Services</h4>
-                        <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">Data Protection Officer (DPO)</p>
+                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">Praveen Bhardwaj</h4>
+                        <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">Nodal Grievance &amp; Data Protection Officer (DPO)</p>
                       </div>
                     </div>
                     
-                    <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 mt-4 ml-1">
-                      Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, UP - 282002
+                    <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 mt-4 ml-1">
+                      <strong>Office:</strong> C-11, Cloth Market, Sanjay Place, Agra, Uttar Pradesh - 282002, India<br />
+                      <strong>TAT:</strong> 48 Working Hours Resolution Guarantee
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 ml-1">
                       <a 
-                        href="mailto:info@bfsfin.com" 
+                        href="mailto:grievance@bfsfin.com" 
                         className="group/link flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors bg-white dark:bg-slate-800/80 px-4 py-2.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700/50"
                       >
                         <div className="bg-emerald-100 dark:bg-emerald-900/40 p-1.5 rounded-lg group-hover/link:scale-110 transition-transform">
                           <Mail className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                         </div>
-                        <span className="font-semibold text-sm">info@bfsfin.com</span>
+                        <span className="font-semibold text-sm">grievance@bfsfin.com</span>
                       </a>
                       
                       <a 
-                        href="tel:+917900979001" 
+                        href="tel:+919258724227" 
                         className="group/link flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors bg-white dark:bg-slate-800/80 px-4 py-2.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700/50"
                       >
                         <div className="bg-emerald-100 dark:bg-emerald-900/40 p-1.5 rounded-lg group-hover/link:scale-110 transition-transform">
@@ -344,7 +354,7 @@ export default function PrivacyPolicyPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
                         </div>
-                        <span className="font-semibold text-sm">+91 7900-979-001</span>
+                        <span className="font-semibold text-sm">+91 9258-724-227</span>
                       </a>
                     </div>
                   </div>

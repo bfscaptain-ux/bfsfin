@@ -116,15 +116,6 @@ export default async function HomePage() {
                 { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "Airport Lounge Access Cards" } },
                 { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "Low CIBIL Credit Builder Cards" } }
               ]
-            },
-            {
-              "@type": "OfferCatalog",
-              "name": "Tax & Business Compliance",
-              "itemListElement": [
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CA-Assisted Online ITR Filing (Form 16 & Business)", "url": "https://bhardwajfinance.com/services/itr-filing" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Official MSME / Udyam Registration (24h Certificate)", "url": "https://bhardwajfinance.com/services/msme-registration" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bank Loan Computation & Balance Sheet Audit" } }
-              ]
             }
           ]
         }
@@ -133,7 +124,7 @@ export default async function HomePage() {
   };
 
   // Fetch Hero Configuration & Real Review Count from DB
-  const [homeHeroImage, settingsRecords, realReviewCount, liveBankRates] = await Promise.all([
+  const [homeHeroImage, settingsRecords, realReviewCount, bankLogos] = await Promise.all([
     prisma.heroImage.findUnique({ where: { pageId: "home" } }),
     prisma.systemSetting.findMany({
       where: {
@@ -148,9 +139,8 @@ export default async function HomePage() {
       }
     }),
     prisma.review.count({ where: { status: "APPROVED" } }),
-    prisma.bankRate.findMany({
-      orderBy: { interestRate: "asc" },
-      take: 10
+    prisma.bankLogo.findMany({
+      orderBy: { sortOrder: "asc" }
     })
   ]);
 
@@ -190,7 +180,7 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <HomeClient heroConfig={heroConfig} ownerConfig={ownerConfig} liveBankRates={liveBankRates} homeLoanRate={homeLoanRate} balanceTransferRate={balanceTransferRate} selfEmployedRate={selfEmployedRate} businessLoanRate={businessLoanRate} lapRate={lapRate} personalLoanRate={personalLoanRate} goldLoanRate={goldLoanRate} contactPhone={contactPhone} whatsappPhone={whatsappPhone} />
+      <HomeClient heroConfig={heroConfig} ownerConfig={ownerConfig} bankLogos={bankLogos} homeLoanRate={homeLoanRate} balanceTransferRate={balanceTransferRate} selfEmployedRate={selfEmployedRate} businessLoanRate={businessLoanRate} lapRate={lapRate} personalLoanRate={personalLoanRate} goldLoanRate={goldLoanRate} contactPhone={contactPhone} whatsappPhone={whatsappPhone} />
     </>
   );
 }

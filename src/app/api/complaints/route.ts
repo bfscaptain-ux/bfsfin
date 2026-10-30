@@ -6,10 +6,10 @@ import { resolveClientLocation } from "@/lib/geo";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, targetName, subject, description } = body;
+    const { email, targetName, subject, description, name, phone, category, refNumber, incidentDate } = body;
 
     if (!email || !targetName || !subject || !description) {
-      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+      return NextResponse.json({ error: "All required fields must be filled" }, { status: 400 });
     }
 
     // Check for existing active complaint for this email
@@ -24,60 +24,80 @@ export async function POST(req: Request) {
 
     if (existingActiveComplaint) {
       return NextResponse.json(
-        { error: "You already have an active complaint being processed. Please wait until it is resolved before filing another." },
+        { error: "You already have an active grievance being investigated. Our Nodal Officer will contact you within 48 hours." },
         { status: 400 }
       );
     }
 
+    const complainantName = name || email.split("@")[0] || "Client";
+    const complainantPhone = phone || "Not Provided";
+    const complaintCategory = category || "Staff Misconduct / Service Deficiency";
+    const refTag = refNumber ? ` | Loan/Ref ID: ${refNumber}` : "";
+    const dateTag = incidentDate ? ` | Incident Date: ${incidentDate}` : "";
+
+    const fullSubject = `[${complaintCategory}] Regarding ${targetName} - ${subject}`;
+    const fullDescription = `Complainant: ${complainantName} | Phone: ${complainantPhone}${refTag}${dateTag}\nAgainst Executive/Staff: ${targetName}\nGrievance Category: ${complaintCategory}\n\nIncident Statement:\n${description}\n\n[Review Desk: Praveen Bhardwaj (Nodal Grievance Officer) | TAT: 48 Working Hours | Logged: ${new Date().toISOString()}]`;
+
+    // Fast Database Write in WAL mode
     const complaint = await prisma.complaint.create({
       data: {
         email,
         targetName,
-        subject,
-        description,
+        subject: fullSubject,
+        description: fullDescription,
       },
     });
 
-    // Resolve Geolocation of Complainant
-    const geo = await resolveClientLocation(req, body.lat, body.lng);
+    const ticketId = `BFS-GRV-${complaint.id.slice(-6).toUpperCase()}`;
 
-    // Send to Google Sheets (Dedicated "Complaints (Grievance)" & Master Sheet)
-    await sendToGoogleSheets({
-      formType: "Grievance Complaint",
-      email: complaint.email,
-      name: `Complainant (${complaint.email.split("@")[0]})`,
-      targetName: complaint.targetName,
-      subject: complaint.subject,
-      description: complaint.description,
-      userLocation: geo.fullAddress,
-      mapsUrl: geo.mapsUrl,
-      city: geo.city,
-      state: geo.region,
-      message: `[Regarding: ${complaint.targetName}] ${complaint.subject}: ${complaint.description}`,
-      status: "Under Review",
-    });
+    // Fast Geolocation Promise
+    const geoPromise = resolveClientLocation(req, body.lat, body.lng);
 
-    // Send Confirmation Email to Complainant
-    const { sendEmail } = await import("@/lib/mailer");
-    const { generateGrievanceEmail } = await import("@/lib/emailTemplates");
-    const ticketId = complaint.id.slice(-6).toUpperCase();
+    // Background Async Dispatch (Non-Blocking)
+    (async () => {
+      try {
+        const geo = await geoPromise;
+        // Send to Google Sheets (Dedicated "Complaints (Grievance)" & Master Sheet)
+        await sendToGoogleSheets({
+          formType: "Grievance Complaint",
+          email: complaint.email,
+          name: `${complainantName} (Phone: ${complainantPhone})`,
+          targetName: complaint.targetName,
+          subject: fullSubject,
+          description: fullDescription,
+          userLocation: geo.fullAddress,
+          mapsUrl: geo.mapsUrl,
+          city: geo.city,
+          state: geo.region,
+          message: `[Ticket: ${ticketId}] Against: ${targetName} | Category: ${complaintCategory}`,
+          status: "Under Review",
+        });
 
-    const emailContent = generateGrievanceEmail({
-      name: complaint.email.split("@")[0] || "Valued Customer",
-      email: complaint.email,
-      ticketId,
-      targetName: complaint.targetName,
-      subject: complaint.subject,
-      description: complaint.description
-    });
+        // Send Confirmation Email to Complainant
+        const { sendEmail } = await import("@/lib/mailer");
+        const { generateGrievanceEmail } = await import("@/lib/emailTemplates");
 
-    sendEmail({
-      to: complaint.email,
-      subject: emailContent.subject,
-      html: emailContent.html,
-    }).catch(console.error);
+        const emailContent = generateGrievanceEmail({
+          name: complainantName,
+          email: complaint.email,
+          ticketId,
+          targetName: complaint.targetName,
+          subject: fullSubject,
+          description: fullDescription
+        });
 
-    return NextResponse.json(complaint, { status: 201 });
+        await sendEmail({
+          to: complaint.email,
+          subject: emailContent.subject,
+          html: emailContent.html,
+        });
+      } catch (e) {
+        console.error("Background complaint notification error:", e);
+      }
+    })();
+
+    // Instant Response to User
+    return NextResponse.json({ ...complaint, ticketId }, { status: 201 });
   } catch (error) {
     console.error("Error creating complaint:", error);
     return NextResponse.json({ error: "Failed to create complaint" }, { status: 500 });
