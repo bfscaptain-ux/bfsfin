@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { 
   ShieldCheck, PhoneCall, ChevronDown, ChevronRight, Menu, X, ArrowRight, 
   Home, TrendingUp, Calculator, Building, Building2, Landmark, BadgePercent,
-  FileText, Users, Mail, CreditCard, Activity, Sparkles, CalendarCheck, HeartPulse
+  FileText, Users, Mail, CreditCard, Activity, Sparkles, CalendarCheck, HeartPulse, Newspaper
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -596,9 +596,26 @@ export default function Header() {
                       </div>
                     </div>
 
-                  </div>
+                                    </div>
                 </div>
               </div>
+
+              {/* Direct News Nav Link */}
+              <Link 
+                href="/news" 
+                className={`relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-all duration-200 ${
+                  pathname.startsWith('/news') 
+                    ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black shadow-sm" 
+                    : "hover:bg-slate-100/70 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400"
+                }`}
+              >
+                <Newspaper className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>News</span>
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+              </Link>
 
               {/* Resources */}
               <div className="relative group py-6">
@@ -776,6 +793,26 @@ export default function Header() {
 
               </div>
               
+              {/* Mobile Financial News Link */}
+              <Link 
+                href="/news" 
+                onClick={closeMobileMenu}
+                className={`flex items-center justify-between py-3 px-4 rounded-xl font-bold transition mb-1 ${
+                  pathname.startsWith('/news')
+                    ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                    : "text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <Newspaper className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  <span>Financial News & Alerts</span>
+                </div>
+                <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  LIVE
+                </span>
+              </Link>
+
               {/* Mobile Products Accordion */}
               <div>
                 <button onClick={() => toggleAccordion('products')} className="w-full flex items-center justify-between py-3 px-4 rounded-xl font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">

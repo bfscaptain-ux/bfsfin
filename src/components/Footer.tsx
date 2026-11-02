@@ -218,6 +218,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <ChevronDown className={`w-4 h-4 text-emerald-400 md:hidden transition-transform ${openSection === "calculators" ? "rotate-180" : ""}`} />
             </button>
             <ul className={`space-y-2.5 text-xs sm:text-sm font-medium text-emerald-100/75 ${openSection === "calculators" ? "block" : "hidden md:block"}`}>
+              <li><Link href="/news" className="hover:text-white transition-colors flex items-center gap-1.5 py-0.5 text-emerald-300 font-semibold"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Financial News &amp; Alerts</Link></li>
               <li><Link href="/calculator" className="hover:text-white transition-colors block py-0.5">Smart EMI Calculator</Link></li>
               <li><Link href="/eligibility" className="hover:text-white transition-colors block py-0.5">Loan Eligibility Checker</Link></li>
               <li><Link href="/tools/balance-transfer" className="hover:text-white transition-colors block py-0.5">Balance Transfer Savings</Link></li>
