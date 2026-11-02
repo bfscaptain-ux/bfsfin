@@ -25,6 +25,31 @@ const nextConfig = {
         destination: '/privacy-policy',
         permanent: true,
       },
+      {
+        source: '/blogs',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blogs/:slug*',
+        destination: '/blog/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/faqs',
+        destination: '/faq',
+        permanent: true,
+      },
+      {
+        source: '/faqs/:slug*',
+        destination: '/faq/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/calculators',
+        destination: '/calculator',
+        permanent: true,
+      },
     ];
   },
   async headers() {

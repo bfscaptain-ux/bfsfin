@@ -8,6 +8,10 @@ import MobileInstallPrompt from "@/components/MobileInstallPrompt";
 import VisitorTracker from "@/components/VisitorTracker";
 import CookieConsent from "@/components/CookieConsent";
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bfsfin.com'),
+  alternates: {
+    canonical: './',
+  },
   title: "BFS AGRA — Enterprise Home Loan Portal | Vineeta Sharma",
   description: "Agra's #1 Home Loan Portal. Approved in 5 Days! ₹20L to ₹1Cr+ starting @ 6.50% p.a. Direct priority partner for PNB, Central Bank of India, IDBI & HDFC.",
   keywords: ["Home Loan Agra", "PNB Home Loan Rate Agra", "Balance Transfer Agra", "BFS Agra", "Vineeta Sharma", "Low interest home loan UP"],

@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/appointment', priority: 0.9, freq: 'weekly' },
     // Legal
     { path: '/disclaimer', priority: 0.5, freq: 'yearly' },
-    // Careers
+    // Careers Hub
     { path: '/careers', priority: 0.7, freq: 'weekly' },
     // AI
     { path: '/ai-loan-advisor', priority: 0.9, freq: 'daily' },
@@ -74,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/resources/documents', priority: 0.8, freq: 'monthly' },
     { path: '/resources/downloads', priority: 0.8, freq: 'monthly' },
     { path: '/resources/process', priority: 0.8, freq: 'monthly' },
-    // Miscellaneous
+    // Main Hubs
     { path: '/apply', priority: 0.9, freq: 'weekly' },
     { path: '/eligibility', priority: 0.9, freq: 'monthly' },
     { path: '/blog', priority: 0.9, freq: 'daily' },
@@ -174,26 +174,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   } catch (e) {}
 
-  // 6. DYNAMIC REVIEWS (User Generated Content for Freshness & Trust)
-  try {
-    const dbReviews = await prisma.review.findMany({
-      where: { status: 'APPROVED' },
-      select: { id: true, createdAt: true }
-    });
-    
-    dbReviews.forEach(review => {
-      sitemapEntries.push({
-        url: `${BASE_URL}/reviews/${review.id}`,
-        lastModified: review.createdAt,
-        changeFrequency: 'monthly',
-        priority: 0.6,
-      });
-    });
-  } catch (e) {
-    console.error('Sitemap: Failed to fetch reviews');
-  }
-
-  // 7. HARDCODED DYNAMIC CREDIT CARDS
+  // 6. HARDCODED DYNAMIC CREDIT CARDS
   const creditCardSlugs = ['hdfc-millennia', 'sbi-simplyclick', 'icici-amazon-pay', 'axis-flipkart', 'axis-ace', 'sbi-elite', 'axis-magnus'];
   creditCardSlugs.forEach(slug => {
     sitemapEntries.push({
@@ -204,7 +185,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   });
 
-  // 8. HARDCODED DYNAMIC INSURANCE
+  // 7. HARDCODED DYNAMIC INSURANCE
   const insuranceSlugs = ['term-life', 'health-insurance', 'family-floater', 'critical-illness', 'car-insurance', 'two-wheeler-insurance', 'home-insurance', 'business-insurance'];
   insuranceSlugs.forEach(slug => {
     sitemapEntries.push({
@@ -215,25 +196,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   });
 
-  // 9. DYNAMIC JOBS
-  try {
-    const dbJobs = await prisma.jobPost.findMany({
-      where: { isActive: true },
-      select: { id: true, updatedAt: true }
-    });
-    dbJobs.forEach(job => {
-      sitemapEntries.push({
-        url: `${BASE_URL}/careers/apply/${job.id}`,
-        lastModified: job.updatedAt,
-        changeFrequency: 'weekly',
-        priority: 0.7,
-      });
-    });
-  } catch (e) {
-    console.error('Sitemap: Failed to fetch jobs');
-  }
-
-  // Deduplicate URLs in case of overlap between DB and JSON
+  // Deduplicate URLs
   const uniqueSitemap = Array.from(new Map(sitemapEntries.map(item => [item.url, item])).values());
 
   return uniqueSitemap;
