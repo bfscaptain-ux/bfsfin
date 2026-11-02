@@ -560,6 +560,26 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
 
       <Header />
 
+      {/* 0. LIVE FINANCIAL ALERT & BREAKING NEWS TICKER */}
+      <div className="bg-slate-900 text-white border-b border-emerald-500/20 py-2 px-4 text-xs relative z-20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span className="font-extrabold uppercase tracking-wider text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
+              Breaking Alert
+            </span>
+          </div>
+          <div className="truncate flex-grow text-slate-300 font-medium text-xs sm:text-sm">
+            <Link href="/news" className="hover:text-emerald-400 transition-colors">
+              RBI MPC Keeps Repo Rate Unchanged at 6.50% • Festive Home Loan ROI Starting from 7.15%* • Read Full Advisory →
+            </Link>
+          </div>
+          <Link href="/news" className="shrink-0 text-emerald-400 hover:text-emerald-300 font-bold hidden md:inline-flex items-center gap-1 text-xs">
+            All News <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </div>
+
       {/* 1. EMOTIONAL & TRUST-FOCUSED HERO SECTION (MOBILE OPTIMIZED & ANIMATED) */}
       <section className="relative pt-4 pb-8 sm:pt-8 sm:pb-12 lg:pt-12 lg:pb-16 overflow-hidden flex items-center bg-slate-50 dark:bg-emerald-950">
         

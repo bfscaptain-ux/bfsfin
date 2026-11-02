@@ -891,6 +891,7 @@ export default function Header() {
                 </button>
                 {openAccordion === 'resources' && (
                   <div className="pl-8 pr-4 py-2 space-y-2 bg-slate-50 dark:bg-slate-800/30 rounded-xl mt-1 text-sm text-slate-600 dark:text-slate-300">
+                    <Link href="/news" onClick={closeMobileMenu} className="block py-1.5 font-bold text-emerald-600 dark:text-emerald-400">Financial News & Alerts</Link>
                     <Link href="/blog" onClick={closeMobileMenu} className="block py-1.5 font-bold">Blog</Link>
                     <Link href="/resources/documents" onClick={closeMobileMenu} className="block py-1.5">Documents Required</Link>
                     <Link href="/resources/process" onClick={closeMobileMenu} className="block py-1.5">Loan Process Guide</Link>

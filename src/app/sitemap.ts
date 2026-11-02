@@ -78,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/apply', priority: 0.9, freq: 'weekly' },
     { path: '/eligibility', priority: 0.9, freq: 'monthly' },
     { path: '/blog', priority: 0.9, freq: 'daily' },
+    { path: '/news', priority: 0.95, freq: 'daily' },
     { path: '/faq', priority: 0.8, freq: 'weekly' },
     { path: '/testimonials', priority: 0.8, freq: 'weekly' },
     { path: '/reviews', priority: 0.8, freq: 'daily' }
@@ -135,6 +136,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   } catch (e) {
     console.error('Sitemap: Failed to fetch DB blogs');
+  }
+
+  // 3.1 DYNAMIC NEWS ARTICLES (Google News, AEO & Timely Discover Feeds)
+  try {
+    const newsFilePath = path.join(process.cwd(), 'src', 'data', 'news.json');
+    const newsContents = await fs.readFile(newsFilePath, 'utf8');
+    const newsArticles: any[] = JSON.parse(newsContents);
+    const publishedNews = newsArticles.filter(n => (n.status || 'published') === 'published');
+    publishedNews.forEach(article => {
+      sitemapEntries.push({
+        url: `${BASE_URL}/news/${article.slug}`,
+        lastModified: new Date(article.publishedAt || currentDate),
+        changeFrequency: 'daily',
+        priority: 0.9,
+      });
+    });
+  } catch (e) {
+    console.error('Sitemap: Failed to parse news.json');
   }
 
   // 4. DYNAMIC FAQS (Long-tail SEO & Answer Engine Optimization - AEO)
