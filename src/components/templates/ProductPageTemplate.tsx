@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import DynamicFaq from "@/components/DynamicFaq";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
+import { buildLoanGraph } from "@/lib/seo-schema";
 
 // Map string names from data to Lucide Icons
 const iconMap: Record<string, React.FC<any>> = {
@@ -47,43 +48,25 @@ export default function ProductPageTemplate({ data, calculator }: { data: Produc
     transition: { staggerChildren: 0.2 }
   };
 
-  // Structured Data for SEO/AEO (FAQ Schema)
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": data.faqs.map((faq) => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
-  // Structured Data for FinancialProduct
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "FinancialProduct",
-    "name": data.name,
-    "brand": {
-      "@type": "Brand",
-      "name": "Bhardwaj Financial Services"
-    },
-    "description": data.heroDescription,
-    "offers": {
-      "@type": "Offer",
-      "url": `https://bfsfin.in/products/${data.slug}`
-    }
-  };
+  // Structured Data for SEO/AEO/GEO (LoanOrCredit, Breadcrumbs, FAQ Schema)
+  const structuredData = buildLoanGraph({
+    name: data.name,
+    description: data.heroDescription,
+    slug: data.slug,
+    faqs: data.faqs,
+    breadcrumbs: [
+      { name: "Home", url: "https://bfsfin.com" },
+      { name: "Products", url: "https://bfsfin.com/products" },
+      { name: data.name, url: `https://bfsfin.com/products/${data.slug}` }
+    ]
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-emerald-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
       <Header />
       
       {/* Inject Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       {/* Hero Section with Bottom Curve */}
       <section className="relative overflow-hidden pt-20 pb-32 lg:pb-40 bg-gradient-to-br from-emerald-50 to-emerald-50 dark:from-slate-900 dark:to-emerald-950">

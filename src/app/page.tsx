@@ -84,6 +84,11 @@ export default async function HomePage() {
         },
         "telephone": "+91-9258724227",
         "email": "info@bfsfin.com",
+        "sameAs": [
+          "https://www.facebook.com/bhardwajfinancialservices",
+          "https://www.instagram.com/bhardwajfinancialservices",
+          "https://www.linkedin.com/company/bhardwaj-financial-services"
+        ],
         "areaServed": ["Agra", "Mathura", "Firozabad", "Noida", "Gurgaon", "Delhi NCR", "Mumbai", "Bangalore", "Jaipur", "Pan India"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",

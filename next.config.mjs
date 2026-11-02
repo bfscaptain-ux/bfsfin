@@ -11,6 +11,17 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.bfsfin.com',
+          },
+        ],
+        destination: 'https://bfsfin.com/:path*',
+        permanent: true,
+      },
+      {
         source: '/insurance',
         destination: '/products/insurance',
         permanent: true,
