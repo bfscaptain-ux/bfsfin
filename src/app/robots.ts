@@ -5,12 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: [
-        '/admin/',
-        '/portal/',
-        '/api/',
-        '/partner-dashboard/',
-      ],
     },
     sitemap: 'https://bfsfin.com/sitemap.xml',
   };

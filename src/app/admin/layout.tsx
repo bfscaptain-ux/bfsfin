@@ -1,9 +1,18 @@
 import React from "react";
+import type { Metadata } from "next";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import ThemeToggle from "@/components/ThemeToggle";
 import Link from "next/link";
 import { ShieldCheck, Bell, Search, Lock, Plus } from "lucide-react";
 import AdminAuthWrapper from "@/components/admin/AdminAuthWrapper";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
+};
 
 export default function AdminLayout({
   children,
