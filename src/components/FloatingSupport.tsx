@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, PhoneCall, Bot, Sparkles } from "lucide-react";
+import { MessageCircle, PhoneCall, Bot, Sparkles, X } from "lucide-react";
 import SmartBot from "./SmartBot";
 
 export default function FloatingSupport({ 
@@ -14,8 +14,8 @@ export default function FloatingSupport({
 }) {
   const [chatOpen, setChatOpen] = useState(false);
 
-  const cleanWhatsapp = (whatsappPhone || "917900979001").replace(/[^0-9]/g, "");
-  const cleanPhone = (contactPhone || "+917900979001").replace(/[^0-9+]/g, "");
+  const cleanWhatsapp = (whatsappPhone || "919286683232").replace(/[^0-9]/g, "");
+  const cleanPhone = (contactPhone || "+919258724227").replace(/[^0-9+]/g, "");
 
   return (
     <>
@@ -24,25 +24,30 @@ export default function FloatingSupport({
         aria-label="Quick Support Contacts" 
         className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col gap-3 items-end pointer-events-auto select-none"
       >
-        {/* WhatsApp Quick Connect */}
-        <a 
-          href={`https://wa.me/${cleanWhatsapp}?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance.`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex items-center gap-2.5 pl-3.5 pr-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-lg shadow-emerald-700/25 hover:shadow-xl hover:shadow-emerald-600/40 border border-emerald-400/40 transition-all duration-300 hover:scale-105 active:scale-95"
-          title="Direct WhatsApp Support"
+        {/* WhatsApp Quick Connect & Chatbot Trigger */}
+        <button 
+          type="button"
+          onClick={() => setChatOpen(!chatOpen)}
+          className="group relative flex items-center gap-2.5 pl-3.5 pr-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-lg shadow-emerald-700/25 hover:shadow-xl hover:shadow-emerald-600/40 border border-emerald-400/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+          title="Direct WhatsApp Chatbot Support (+91 9286-683-232)"
         >
           <span className="hidden sm:inline-block text-xs font-bold tracking-wide">
-            WhatsApp
+            {chatOpen ? "Close Bot" : "WhatsApp Bot"}
           </span>
           <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-            <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
+            {chatOpen ? (
+              <X className="w-4 h-4 text-white" />
+            ) : (
+              <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
+            )}
           </div>
-          <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
-          </span>
-        </a>
+          {!chatOpen && (
+            <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+            </span>
+          )}
+        </button>
 
         {/* Instant Phone Call */}
         <a 
@@ -57,23 +62,9 @@ export default function FloatingSupport({
             <PhoneCall className="w-4 h-4 group-hover:rotate-12 transition-transform" />
           </div>
         </a>
-
-        {/* AI Chatbot Trigger (Optional Discreet Pill) */}
-        {!chatOpen && (
-          <button 
-            type="button"
-            onClick={() => setChatOpen(true)}
-            className="group relative w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 shadow-md flex items-center justify-center text-slate-300 hover:text-emerald-400 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md"
-            title="Chat with BFS AI Assistant"
-            aria-label="Open AI Assistant"
-          >
-            <Bot className="w-5 h-5" />
-            <Sparkles className="w-2.5 h-2.5 text-amber-400 absolute top-1 right-1" />
-          </button>
-        )}
       </aside>
 
-      {/* Expanded Smart Chat Box */}
+      {/* Expanded Smart WhatsApp Chat Box */}
       <SmartBot isOpen={chatOpen} onClose={() => setChatOpen(false)} />
     </>
   );

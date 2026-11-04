@@ -169,7 +169,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
       "• 🛡️ **Insurance:** 10,000+ hospitals me 100% Cashless Health & Term Life Cover\n" +
       "• ⚡ **100% Transparent:** Zero upfront fees, koi chhupe huye charges nahi, aur direct doorstep service!\n\n" +
       "📍 **Head Office:** Sanjay Place, Agra, UP | Pan-India Digital Support\n" +
-      "📞 **Helpline:** +91 9258-724-227 | 💬 **WhatsApp:** +91 7900-979-001",
+      "📞 **Helpline:** +91 9258-724-227 | 💬 **WhatsApp:** +91 9286-683-232",
       ["Home Loan (7.15%*) 🏠", "Check Eligibility 🔢", "WhatsApp Executive 💬", "Finance & Loans 💰"]
     );
   }

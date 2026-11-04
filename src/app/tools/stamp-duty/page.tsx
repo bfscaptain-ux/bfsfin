@@ -8,7 +8,17 @@ import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calcul
 export const metadata: Metadata = {
   title: "Stamp Duty & Property Registration Calculator (2026) | UP, Delhi, Haryana | BFS",
   description: "Calculate exact stamp duty and registry charges for property purchase in Uttar Pradesh (Agra, Noida, Lucknow, Mathura), Delhi, Haryana, and Maharashtra. Female rebate calculations included.",
-  keywords: ["Stamp Duty Calculator UP", "Agra Property Registration Charges", "Uttar Pradesh Stamp Duty Calculator", "Property Registry Fee Calculator", "Stamp Duty Female Rebate UP", "Circle Rate Registry Calculator Agra", "Bhardwaj Finance Stamp Duty Tool"],
+  keywords: [
+    "Agra Property Registration Charges & Stamp Duty Calculator",
+    "Stamp Duty Calculator UP 2026",
+    "Uttar Pradesh Property Registry Fee Calculator",
+    "Stamp Duty Female Rebate UP",
+    "Circle Rate Registry Calculator Agra",
+    "Property Registry Fees Sanjay Place Agra",
+    "Property Registry Fees Dayal Bagh Agra",
+    "Property Registry Fees Kamla Nagar Agra",
+    "Bhardwaj Finance Stamp Duty Tool"
+  ],
   alternates: {
     canonical: "https://bfsfin.com/tools/stamp-duty",
   },

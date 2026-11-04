@@ -157,7 +157,7 @@ export default async function HomePage() {
   const goldLoanRate = settingsRecords.find(s => s.key === "goldLoanRate")?.value || "8.50";
   const balanceTransferRate = settingsRecords.find(s => s.key === "balanceTransferRate")?.value || "6.45";
   const contactPhone = settingsRecords.find(s => s.key === "contactPhone")?.value || "+91 9258-724-227";
-  const whatsappPhone = settingsRecords.find(s => s.key === "whatsappPhone")?.value || "917900979001";
+  const whatsappPhone = settingsRecords.find(s => s.key === "whatsappPhone")?.value || "919286683232";
 
   const heroConfig = {
     imageUrl: homeHeroImage?.imageUrl || "/hero_image.jpg",

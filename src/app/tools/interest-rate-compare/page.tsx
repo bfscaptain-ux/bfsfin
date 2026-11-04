@@ -7,7 +7,16 @@ import InterestRateCompare from "@/components/calculators/InterestRateCompare";
 export const metadata: Metadata = {
   title: "Compare Bank Home Loan Interest Rates (2026) | SBI vs HDFC vs PNB | BFS",
   description: "Compare current home loan interest rates, processing fees, and monthly EMIs across top Indian banks (SBI, HDFC, ICICI, PNB, Bank of Baroda) vs BFS special partner rates.",
-  keywords: ["Compare Bank Home Loan Rates India", "SBI vs HDFC Home Loan Comparison", "PNB vs Bank of Baroda Home Loan", "Lowest Interest Rate Bank India", "Home Loan Rate Comparison Agra UP", "Bhardwaj Finance Bank Comparison Tool"],
+  keywords: [
+    "Compare Bank Home Loan Rates India 2026",
+    "SBI vs HDFC Home Loan Rate Comparison",
+    "PNB vs Bank of Baroda Home Loan Rates",
+    "Lowest Interest Rate Bank India",
+    "Repo Linked Lending Rate RLLR Comparison",
+    "Home Loan Rate Comparison Agra UP",
+    "Best Bank for Home Loan in Sanjay Place Agra",
+    "Bhardwaj Finance Bank Comparison Tool"
+  ],
   alternates: {
     canonical: "https://bfsfin.com/tools/interest-rate-compare",
   },

@@ -6,8 +6,27 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Home Loans starting at 6.50% | BFS",
-  description: "Get up to 90% financing for your dream home with zero hidden brokerage. Apply for a BFS Home Loan today and get a sanction in 5 days.",
+  title: "Best Home Loans in Agra & India starting 7.15%* | Fast 5-Day Sanction | Bhardwaj Finance",
+  description: "Apply for the lowest interest rate home loans starting 7.15%* with direct bank approvals (HDFC, SBI, ICICI, PNB). Up to 90% property funding with 30-year tenure, zero brokerage, and doorstep document pickup across Agra, UP & India.",
+  keywords: [
+    "Home Loan Provider Agra",
+    "Home Loan Agra",
+    "Home Loan in Sanjay Place",
+    "Home Loan in Kamla Nagar",
+    "Home Loan in Dayalbagh",
+    "Home Loan in Shahganj",
+    "Best home loan Agra",
+    "Top home loan Agra",
+    "Low interest home loan Agra",
+    "Near me home loan Agra",
+    "Quick approval home loan Agra",
+    "Mortgage Loan Agra",
+    "Finance Broker Agra",
+    "Mortgage Broker Agra",
+    "Loan Consultant Agra",
+    "Bhardwaj Financial Services Home Loan",
+    "Bhardwaj Financial Services Agra"
+  ],
   alternates: { canonical: "https://bfsfin.com/products/home-loan" }
 };
 

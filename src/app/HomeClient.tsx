@@ -1961,7 +1961,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   <div>
                     <h4 className="font-bold text-white text-sm sm:text-base">Direct Customer Hotline</h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                      {contactPhone || "+91 9258-724-227"} / {whatsappPhone || "+91 7900-979-001"}<br />
+                      {contactPhone || "+91 9258-724-227"} / {whatsappPhone || "+91 9286-683-232"}<br />
                       <span className="text-emerald-400 text-xs">Available Mon–Sat: 10:00 AM – 7:00 PM</span>
                     </p>
                   </div>
@@ -2048,9 +2048,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                     <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Helpline: +91 9258-724-227</span>
                   </a>
-                  <a href="https://wa.me/917900979001" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold border border-emerald-700/60 transition-colors">
+                  <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold border border-emerald-700/60 transition-colors">
                     <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>WhatsApp Desk: 7900-979-001</span>
+                    <span>WhatsApp Desk: 9286-683-232</span>
                   </a>
                 </div>
 

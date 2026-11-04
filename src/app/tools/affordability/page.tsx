@@ -7,7 +7,18 @@ import AffordabilityCalculator from "@/components/calculators/AffordabilityCalcu
 export const metadata: Metadata = {
   title: "Home Loan Affordability Calculator India (2026) | Maximum Property Budget | BFS",
   description: "Calculate your maximum property purchase budget and eligible home loan based on salary, existing EMIs, and down payment. Compliant with RBI & bank FOIR limits in Agra, UP & India.",
-  keywords: ["Home Loan Affordability Calculator", "Property Budget Calculator India", "How much loan can I get on my salary", "Home loan eligibility calculator Agra", "FOIR calculator India", "Maximum home loan limit calculator", "Bhardwaj Finance Affordability Tool"],
+  keywords: [
+    "Home Loan Affordability Calculator India",
+    "Property Budget Calculator India 2026",
+    "How much home loan can I get on my salary",
+    "Home loan eligibility calculator Agra",
+    "FOIR Calculator India for Home Loans",
+    "Maximum home loan limit calculator",
+    "Net Take Home Salary Loan Eligibility",
+    "Home loan eligibility Sanjay Place Agra",
+    "Home loan eligibility Kamla Nagar Agra",
+    "Bhardwaj Finance Affordability Tool"
+  ],
   alternates: {
     canonical: "https://bfsfin.com/tools/affordability",
   },

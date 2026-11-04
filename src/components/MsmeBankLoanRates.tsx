@@ -158,7 +158,7 @@ export default function MsmeBankLoanRates({ onApplyClick }: MsmeBankLoanRatesPro
             </span>
             <span>BFS liaisons directly with PNB, SBI, BOB &amp; HDFC bank credit managers for your unit.</span>
             <a
-              href="https://wa.me/917900979001?text=Hello%20BFS%2C%20I%20want%20to%20consult%20regarding%20MSME%20Bank%20Loan."
+              href="https://wa.me/919286683232?text=Hello%20BFS%2C%20I%20want%20to%20consult%20regarding%20MSME%20Bank%20Loan."
               target="_blank"
               rel="noopener noreferrer"
               className="text-teal-600 dark:text-teal-400 font-bold hover:underline"

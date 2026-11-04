@@ -7,7 +7,15 @@ import TaxBenefitCalculator from "@/components/calculators/TaxBenefitCalculator"
 export const metadata: Metadata = {
   title: "Home Loan Tax Benefit Calculator (FY 2025-26) | Section 24(b) & 80C | BFS",
   description: "Calculate your annual income tax savings under Section 24(b) (up to ₹2 Lakhs on interest) and Section 80C (up to ₹1.5 Lakhs on principal) under Old vs New Tax Regimes in India.",
-  keywords: ["Home Loan Tax Benefit Calculator", "Section 24b Interest Deduction Calculator", "Section 80C Home Loan Rebate", "Income Tax Savings on Home Loan", "Tax Exemption Calculator India", "Home Loan Tax Saver Agra UP", "Bhardwaj Finance Tax Calculator"],
+  keywords: [
+    "Home Loan Tax Benefit Calculator FY 2025-26",
+    "Section 24b Interest Deduction Calculator",
+    "Section 80C Home Loan Principal Rebate",
+    "Income Tax Savings on Home Loan India",
+    "Old vs New Tax Regime Home Loan Benefit",
+    "Home Loan Tax Saver Agra UP",
+    "Bhardwaj Finance Tax Calculator"
+  ],
   alternates: {
     canonical: "https://bfsfin.com/tools/tax-benefit",
   },

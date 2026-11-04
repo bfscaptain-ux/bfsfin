@@ -4,8 +4,22 @@ import { prisma } from "@/lib/prisma";
 import { buildLoanGraph } from "@/lib/seo-schema";
 
 export const metadata: Metadata = {
-  title: "Personal Loan | BFS",
-  description: "Achieve your personal goals with fast, unsecured personal loans up to ₹50 Lakhs at starting rates of 10.50% from BFS India.",
+  title: "Instant Personal Loans in Agra & India up to ₹50 Lakhs | Bhardwaj Finance",
+  description: "Instant personal loans up to ₹50 Lakhs for salaried and self-employed professionals with lowest interest rates, same-day approval, and digital processing in Agra, UP & India.",
+  keywords: [
+    "Personal Loan Agra",
+    "Best personal loan Agra",
+    "Top personal loan Agra",
+    "Low interest personal loan Agra",
+    "Quick approval personal loan Agra",
+    "Near me personal loan Agra",
+    "Personal Loan Sanjay Place Agra",
+    "Personal Loan Kamla Nagar Agra",
+    "Personal Loan Dayalbagh Agra",
+    "Personal Loan Shahganj Agra",
+    "Instant Personal Loan India",
+    "Bhardwaj Financial Services Personal Loan"
+  ],
   alternates: { canonical: "https://bfsfin.com/products/personal-loan" }
 };
 

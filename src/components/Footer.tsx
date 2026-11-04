@@ -15,8 +15,8 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
   const [phones, setPhones] = useState({
     callPhone: propContactPhone || "+91 9258-724-227",
     rawCall: "9258724227",
-    whatsappDisplay: "+91 7900-979-001",
-    whatsappRaw: propWhatsappPhone || "917900979001"
+    whatsappDisplay: "+91 9286-683-232",
+    whatsappRaw: propWhatsappPhone || "919286683232"
   });
 
   const [socialLinks, setSocialLinks] = useState<Record<string, string>>({});
@@ -27,11 +27,11 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       .then(data => {
         if (data.success && data.settings) {
           const cp = data.settings.contactPhone || propContactPhone || "+91 9258-724-227";
-          const wp = data.settings.whatsappPhone || propWhatsappPhone || "917900979001";
+          const wp = data.settings.whatsappPhone || propWhatsappPhone || "919286683232";
           setPhones({
             callPhone: cp.includes("+91") ? cp : `+91 ${cp}`,
             rawCall: cp.replace(/[^0-9]/g, "").slice(-10),
-            whatsappDisplay: "+91 7900-979-001",
+            whatsappDisplay: "+91 9286-683-232",
             whatsappRaw: wp.replace(/[^0-9]/g, "")
           });
           setSocialLinks({
@@ -109,7 +109,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
               {/* WhatsApp Card */}
               <a 
-                href={`https://wa.me/917900979001?text=${encodeURIComponent("Hello BFS Team, I would like to consult regarding a Loan / Insurance.")}`}
+                href={`https://wa.me/919286683232?text=${encodeURIComponent("Hello BFS Team, I would like to consult regarding a Loan / Insurance.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 sm:p-5 rounded-2xl bg-[#04261c] border border-emerald-800/60 hover:border-emerald-400 hover:bg-[#063326] transition-all duration-300 flex items-center justify-between shadow-lg hover:shadow-emerald-900/30"
@@ -125,7 +125,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
                       WhatsApp Active Now
                     </span>
                     <span className="text-lg sm:text-xl font-black text-white group-hover:text-emerald-300 transition-colors block">
-                      +91 7900-979-001
+                      +91 9286-683-232
                     </span>
                   </div>
                 </div>
@@ -406,7 +406,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <p>Agra, Uttar Pradesh - 282002, India</p>
               <div className="pt-2 flex flex-col gap-1 text-emerald-200 font-semibold">
                 <p>Call Helpline: <a href="tel:9258724227" className="text-emerald-400 hover:underline">+91 9258-724-227</a></p>
-                <p>WhatsApp Desk: <a href="https://wa.me/917900979001" className="text-emerald-400 hover:underline">+91 7900-979-001</a></p>
+                <p>WhatsApp Desk: <a href="https://wa.me/919286683232" className="text-emerald-400 hover:underline">+91 9286-683-232</a></p>
                 <p>Corporate Email: <a href="mailto:info@bfsfin.com" className="hover:text-emerald-400">info@bfsfin.com</a></p>
                 <p>Grievance Officer: <a href="mailto:grievance@bfsfin.com" className="text-emerald-400 hover:underline">grievance@bfsfin.com</a></p>
               </div>

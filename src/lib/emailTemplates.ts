@@ -49,7 +49,7 @@ const BRAND = {
   tagline: "Premier Financial Advisory & Compliance Hub",
   address: "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, UP - 282002",
   phone: "+91 9258-724-227",
-  whatsapp: "+91 7900-979-001",
+  whatsapp: "+91 9286-683-232",
   website: "https://bhardwajfinance.com",
 };
 
@@ -194,7 +194,7 @@ function emailLayout({
       </p>
       <p style="color: #0f172a; font-size: 13.5px; margin: 0 0 20px; font-weight: 700;">
         📞 <a href="tel:${BRAND.phone}" style="color: #059669; text-decoration: none;">${BRAND.phone}</a> &nbsp;|&nbsp; 
-        💬 <a href="https://wa.me/917900979001" style="color: #059669; text-decoration: none;">WhatsApp: ${BRAND.whatsapp}</a>
+        💬 <a href="https://wa.me/919286683232" style="color: #059669; text-decoration: none;">WhatsApp: ${BRAND.whatsapp}</a>
       </p>
 
       <!-- Signature -->

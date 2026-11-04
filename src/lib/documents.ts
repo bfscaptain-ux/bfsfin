@@ -218,7 +218,7 @@ export function parseDocumentQuery(text: string): DocumentChecklistResult {
       <a href="/apply?product=${product === 'general' ? 'finance' : product.replace('_', '-')}" class="text-[11px] bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg transition shadow-xs">
         Apply Online 📝
       </a>
-      <a href="https://wa.me/917900979001?text=${encodeURIComponent(`Namaste BFS Team, mujhe ${productLabel} (${empLabel}) ke documents verify karwane hain.`)}" target="_blank" class="text-[11px] bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-3 py-1.5 rounded-lg transition shadow-xs">
+      <a href="https://wa.me/919286683232?text=${encodeURIComponent(`Namaste BFS Team, mujhe ${productLabel} (${empLabel}) ke documents verify karwane hain.`)}" target="_blank" class="text-[11px] bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-3 py-1.5 rounded-lg transition shadow-xs">
         WhatsApp Desk 💬
       </a>
     </div>

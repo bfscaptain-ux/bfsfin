@@ -6,8 +6,24 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Business Loans up to ₹1 Cr | BFS",
-  description: "Fuel your business growth with unsecured business loans. Quick 48-hour approvals and flexible repayment options.",
+  title: "Fast Business Loans in Agra & India up to ₹1 Crore | 48-Hour Approval | Bhardwaj Finance",
+  description: "Collateral-free unsecured business loans up to ₹1 Crore for MSMEs, retailers, and traders. 48-hour approval, low interest, minimum documentation, and doorstep service in Agra, UP & India.",
+  keywords: [
+    "Business Loan Agra",
+    "Best business loan Agra",
+    "Top business loan Agra",
+    "Low interest business loan Agra",
+    "Quick approval business loan Agra",
+    "Near me business loan Agra",
+    "Business Loan Sanjay Place Agra",
+    "Business Loan Kamla Nagar Agra",
+    "Business Loan Dayalbagh Agra",
+    "Business Loan Shahganj Agra",
+    "Unsecured Business Loan India",
+    "MSME Loan Consultant Agra",
+    "Finance Consultant Agra",
+    "Bhardwaj Financial Services Business Loan"
+  ],
   alternates: { canonical: "https://bfsfin.com/products/business-loan" }
 };
 

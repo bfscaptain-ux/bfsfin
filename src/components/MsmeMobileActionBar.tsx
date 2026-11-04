@@ -31,7 +31,7 @@ export default function MsmeMobileActionBar({ onApplyClick }: MsmeMobileActionBa
       <div className="flex items-center gap-2">
         {/* Call Helpline */}
         <a
-          href="tel:7900979001"
+          href="tel:9286683232"
           className="flex-1 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 flex items-center justify-center gap-1.5 text-xs font-bold transition-all active:scale-95"
           title="Call MSME Helpline"
         >
@@ -41,7 +41,7 @@ export default function MsmeMobileActionBar({ onApplyClick }: MsmeMobileActionBa
 
         {/* WhatsApp Chat */}
         <a
-          href="https://wa.me/917900979001?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20for%20MSME%20Udyam%20Registration."
+          href="https://wa.me/919286683232?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20for%20MSME%20Udyam%20Registration."
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-1.5 text-xs font-bold transition-all active:scale-95 shadow-sm shadow-emerald-600/30"

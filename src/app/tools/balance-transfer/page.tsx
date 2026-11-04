@@ -8,7 +8,20 @@ import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calcul
 export const metadata: Metadata = {
   title: "Home Loan Balance Transfer Calculator India (2026) | EMI Savings | BFS",
   description: "Calculate exact net interest and EMI savings by switching your high-interest home loan to lowest bank rates (SBI, PNB, BoB, HDFC). Calculate takeover fees and top-up eligibility in Agra & UP.",
-  keywords: ["Home Loan Balance Transfer Calculator", "Loan Takeover Savings Calculator", "Switch Home Loan to SBI PNB", "Reduce Home Loan Interest Rate", "Balance Transfer Calculator India", "Home Loan Transfer Agra UP", "Bhardwaj Finance Balance Transfer"],
+  keywords: [
+    "Home Loan Balance Transfer Calculator India",
+    "Loan Takeover Net Interest Savings Calculator",
+    "Switch Home Loan to SBI PNB HDFC",
+    "Reduce Home Loan Interest Rate Calculator",
+    "Balance Transfer Calculator India 2026",
+    "Home Loan Transfer Agra UP",
+    "Balance Transfer Sanjay Place Agra",
+    "Balance Transfer Kamla Nagar Agra",
+    "Balance Transfer Dayalbagh Agra",
+    "Top Up Loan on Balance Transfer Calculator",
+    "Switch NBFC Home Loan to Nationalized Bank",
+    "Bhardwaj Finance Balance Transfer"
+  ],
   alternates: {
     canonical: "https://bfsfin.com/tools/balance-transfer",
   },

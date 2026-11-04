@@ -180,14 +180,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const serviceAreas: any[] = JSON.parse(saContents);
     
     serviceAreas.forEach(city => {
+      // City level hub
+      sitemapEntries.push({
+        url: `${BASE_URL}/locations/${generateSlug(city.name)}`,
+        lastModified: currentDate,
+        changeFrequency: 'daily',
+        priority: 1.0,
+      });
+
       if (city.localAreas) {
-        city.localAreas.forEach((area: string) => {
-          sitemapEntries.push({
-            url: `${BASE_URL}/locations/${generateSlug(city.name)}/${generateSlug(area)}`,
-            lastModified: currentDate,
-            changeFrequency: 'monthly',
-            priority: 0.85,
-          });
+        city.localAreas.forEach((area: any) => {
+          const areaName = typeof area === 'string' ? area : (area?.name || '');
+          if (areaName) {
+            sitemapEntries.push({
+              url: `${BASE_URL}/locations/${generateSlug(city.name)}/${generateSlug(areaName)}`,
+              lastModified: currentDate,
+              changeFrequency: 'weekly',
+              priority: 0.95,
+            });
+          }
         });
       }
     });

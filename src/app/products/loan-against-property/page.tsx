@@ -6,8 +6,24 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Loan Against Property (LAP) | BFS",
-  description: "Unlock the value of your property with our LAP solutions. Get high-value capital for business expansion or personal milestones.",
+  title: "Loan Against Property (LAP) & Mortgage Loan Agra | Up to ₹15 Cr | Bhardwaj Finance",
+  description: "Unlock up to 75% market value of your residential, commercial, or industrial property at low starting ROI (from 7.50%*). Fast sanction, 20-year tenure, zero brokerage in Agra, UP & India.",
+  keywords: [
+    "Loan Against Property Agra",
+    "Mortgage Loan Agra",
+    "Mortgage Broker Agra",
+    "Mortgage Lender Agra",
+    "Best loan against property Agra",
+    "Top loan against property Agra",
+    "Low interest loan against property Agra",
+    "Near me loan against property Agra",
+    "Loan Against Property Sanjay Place Agra",
+    "Loan Against Property Kamla Nagar Agra",
+    "Loan Against Property Dayalbagh Agra",
+    "Loan Against Property Shahganj Agra",
+    "LAP Loan Consultant Agra",
+    "Bhardwaj Financial Services LAP"
+  ],
   alternates: { canonical: "https://bfsfin.com/products/loan-against-property" }
 };
 

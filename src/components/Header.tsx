@@ -111,9 +111,9 @@ export default function Header() {
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-2 text-emerald-100/80">
                 <span>Talk to a Loan Expert:</span>
-                <a href="tel:7900979001" className="flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors drop-shadow-sm">
+                <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." className="flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors drop-shadow-sm">
                   <PhoneCall className="w-3 h-3 text-emerald-400" /> 
-                  <span className="font-bold text-[12px]">7900-979-001</span>
+                  <span className="font-bold text-[12px]">9286-683-232</span>
                 </a>
               </div>
               <span className="text-emerald-800">|</span>
@@ -786,7 +786,7 @@ export default function Header() {
               
               {/* Mobile Contact & Login (Moved from Top Banner) */}
               <div className="flex gap-2 mb-4">
-                <a href="tel:7900979001" className="flex-1 flex flex-col items-center justify-center gap-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 py-3 rounded-xl border border-emerald-200 dark:border-emerald-800/30 hover:bg-emerald-100 transition-colors">
+                <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." className="flex-1 flex flex-col items-center justify-center gap-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 py-3 rounded-xl border border-emerald-200 dark:border-emerald-800/30 hover:bg-emerald-100 transition-colors">
                   <PhoneCall className="w-5 h-5" />
                   <span className="text-xs font-bold">Call Us</span>
                 </a>

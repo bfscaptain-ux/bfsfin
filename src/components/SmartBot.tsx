@@ -555,7 +555,7 @@ const InChatEligibilityCalc = ({ onComplete }: { onComplete: (eligibleAmt: numbe
           </button>
         )}
         <a
-          href="https://wa.me/917900979001"
+          href="https://wa.me/919286683232"
           target="_blank"
           rel="noopener noreferrer"
           className="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition flex items-center justify-center"
@@ -582,7 +582,7 @@ const InChatWhatsAppConnect = ({
   const defaultMsg = queryClean
     ? `Namaste BFS team, mujhe is vishay me guidance chahiye: "${queryClean}"`
     : "Namaste BFS team, mujhe expert loan/insurance/credit card guidance chahiye.";
-  const waUrl = `https://wa.me/917900979001?text=${encodeURIComponent(defaultMsg)}`;
+  const waUrl = `https://wa.me/919286683232?text=${encodeURIComponent(defaultMsg)}`;
 
   return (
     <div className="bg-gradient-to-br from-emerald-50 via-teal-50/40 to-white rounded-2xl mt-3 p-0 shadow-md border border-emerald-200 overflow-hidden font-sans animate-in fade-in zoom-in-95 duration-200">
@@ -745,9 +745,9 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
     });
     setIsInitialized(true);
     triggerBotMessage(
-      `Namaste! 🙏 Welcome to Bhardwaj Financial Services.\n\n🚧 **AI Advisor — Training Mode**\nHumara AI Advisor abhi advanced training phase mein hai. Bahut jaldi yeh fully automated ho jayega aur aapke sabhi sawaalon ka instant jawab dega!\n\n🔜 **Coming Soon Features:**\n• 24/7 Instant AI Chat Support\n• Smart Loan Eligibility Check\n• Personalized Financial Advice\n• Document Guidance & More\n\n✅ **Abhi Immediate Help Chahiye?**\nHumare expert team se seedha baat karein — WhatsApp ya Call karein!\n\n📞 Call: 9258025786\n💬 WhatsApp: Niche button press karein`,
-      ["WhatsApp Expert 💬", "Call Now 📞", "Visit Office 🏢"],
-      800, undefined, false 
+      `Namaste! 🙏 Welcome to BFS Circle WhatsApp Advisory Desk (+91 9286-683-232).\n\nAapko kis loan ya financial service ke baare mein jaankari chahiye? Niche diye gaye options mein se chunein ya apna sawaal yahan type karein:`,
+      ["Home Loan 🏡", "Business Loan 💼", "Check Eligibility 🔢", "Open WhatsApp App 💬"],
+      600, undefined, false
     );
   };
 
@@ -896,69 +896,50 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
       setIsTyping(true);
     }
 
-    // ── AI TRAINING MODE — Intercept ALL messages ──────────────────
-    // AI is not trained yet, so redirect all user queries to human experts
-    
+    // ── Process user action through NLP and conversational flow ──
     const lowerText = text.toLowerCase().trim();
     
-    // Handle WhatsApp quick reply
-    if (lowerText.includes("whatsapp")) {
+    // Direct WhatsApp App quick launch
+    if (lowerText.includes('open whatsapp') || text === 'WhatsApp Expert 💬' || text === 'Open WhatsApp App 💬') {
       setIsTyping(false);
+      window.open('https://wa.me/919286683232?text=' + encodeURIComponent('Hi BFS, I am looking for loan assistance.'), '_blank');
       triggerBotMessage(
-        `💬 **WhatsApp Connect**\n\nHumare senior advisor se seedha baat karein:\n\n📱 WhatsApp: wa.me/919258025786\n\nEk click mein connect ho jayenge! Aapko turant response milega.\n\n🚀 Jab humara AI Advisor launch hoga, yahan pe instant automated help milegi!`,
-        ["Call Instead 📞", "Visit Office 🏢", "Main Menu 🏠"],
-        600
-      );
-      // Also open WhatsApp
-      window.open("https://wa.me/919258025786?text=Hi%20BFS%2C%20mujhe%20financial%20services%20ke%20baare%20mein%20jankari%20chahiye", "_blank");
-      return;
-    }
-
-    // Handle Call quick reply
-    if (lowerText.includes("call")) {
-      setIsTyping(false);
-      triggerBotMessage(
-        `📞 **Direct Call**\n\nHumare expert team se abhi baat karein:\n\n📞 Phone: 9258025786\n📞 Office: 9258025786\n\n⏰ Available: Mon-Sat, 10 AM - 7 PM\n\n🚀 AI Advisor coming soon — tab 24/7 instant help milegi!`,
-        ["WhatsApp Instead 💬", "Visit Office 🏢", "Main Menu 🏠"],
-        600
-      );
-      window.open("tel:9258025786", "_self");
-      return;
-    }
-
-    // Handle Visit Office quick reply
-    if (lowerText.includes("visit") || lowerText.includes("office")) {
-      setIsTyping(false);
-      triggerBotMessage(
-        `🏢 **BFS Head Office**\n\n📍 Address:\nBhardwaj Financial Services\nAgra, Uttar Pradesh\n\n⏰ Office Hours: Mon-Sat, 10 AM - 7 PM\n\n📞 Appointment: 9258025786\n💬 WhatsApp: wa.me/919258025786\n\nAap bina appointment bhi aa sakte hain! 🤝`,
-        ["WhatsApp Expert 💬", "Call Now 📞", "Main Menu 🏠"],
+        'WhatsApp open ho raha hai! Aap humein seedha WhatsApp par bhi message bhej sakte hain: wa.me/919286683232',
+        ['Home Loan 🏡', 'Business Loan 💼', 'Check Eligibility 🔢', 'Main Menu 🏠'],
         600
       );
       return;
     }
 
-    // Handle Main Menu
-    if (lowerText.includes("main menu") || lowerText.includes("menu") || lowerText.includes("start")) {
+    if (lowerText.includes('call') && !lowerText.includes('calc')) {
+      setIsTyping(false);
+      window.open('tel:9286683232', '_self');
+      triggerBotMessage(
+        '📞 Call dialer open ho gaya hai. Aap hamare helpline 9286-683-232 par seedha call kar sakte hain!',
+        ['WhatsApp 💬', 'Home Loan 🏡', 'Main Menu 🏠'],
+        600
+      );
+      return;
+    }
+
+    if (lowerText === 'main menu' || lowerText === 'start over' || lowerText === 'menu') {
       setIsTyping(false);
       startNewSession();
       return;
     }
 
-    // ── DEFAULT: Coming Soon response for ANY other message ──
-    setIsTyping(false);
-    
-    const comingSoonResponses = [
-      `🚧 **AI Advisor — Training Mode**\n\nAbhi humara AI model training phase mein hai aur aapke iss sawaal ka automated jawab nahi de sakta.\n\n✨ Bahut jaldi yeh feature fully active hoga!\n\n✅ **Abhi help chahiye?**\nHumare human experts ready hain aapki madad ke liye:`,
-      `🤖 **Coming Soon!**\n\nHumara AI Advisor abhi seekh raha hai aur jaldi hi aapke har sawaal ka smart jawab dega!\n\n💡 Tab tak aap seedha humare experts se baat kar sakte hain:`,
-      `⏳ **AI Under Development**\n\nYeh feature abhi build ho raha hai. Hum ise best possible banane mein lage hain!\n\n🎯 Aapki query ke liye abhi humare experts available hain:`
-    ];
-    
-    const randomResponse = comingSoonResponses[Math.floor(Math.random() * comingSoonResponses.length)];
-    triggerBotMessage(
-      randomResponse,
-      ["WhatsApp Expert 💬", "Call Now 📞", "Visit Office 🏢"],
-      600
-    );
+    try {
+      const nlpResult = await processUserMessage(text, botKnowledge);
+      await processServerResponse(text, nlpResult);
+    } catch (err) {
+      console.error('Bot processing error:', err);
+      setIsTyping(false);
+      triggerBotMessage(
+        'Aap hamare official WhatsApp Desk se seedha connect ho sakte hain:\n\n📱 WhatsApp: wa.me/919286683232',
+        ['Home Loan 🏡', 'Business Loan 💼', 'WhatsApp 💬'],
+        600
+      );
+    }
   };
 
   const processServerResponse = async (text: string, nlpResult: any) => {
@@ -976,7 +957,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
       Boolean(lower.match(/\b(whatsapp|human|executive|agent|advisor|officer|insan|customer care|helpline|support|baat karni hai|call me|phone pe baat|help desk)\b/));
 
     if (text === "WhatsApp 💬" || text === "WhatsApp Executive 💬") {
-      const waUrl = `https://wa.me/917900979001?text=${encodeURIComponent("Namaste BFS team, mujhe expert consultation chahiye.")}`;
+      const waUrl = `https://wa.me/919286683232?text=${encodeURIComponent("Namaste BFS team, mujhe expert consultation chahiye.")}`;
       window.open(waUrl, "_blank");
       triggerBotMessage(
         "WhatsApp open ho raha hai! Aap hamare senior executive se seedha connect ho rahe hain. Agar koi aur jankari chahiye toh batayein:",
@@ -1067,7 +1048,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
           "• 🛡️ **Insurance:** 10,000+ hospitals me 100% Cashless Health & Term Life Cover\n" +
           "• ⚡ **100% Transparent:** Zero upfront fees, koi chhupe huye charges nahi, aur direct doorstep service!\n\n" +
           "📍 **Head Office:** Sanjay Place, Agra, UP | Pan-India Digital Support\n" +
-          "📞 **Helpline:** +91 9258-724-227 | 💬 **WhatsApp:** +91 7900-979-001"
+          "📞 **Helpline:** +91 9258-724-227 | 💬 **WhatsApp:** +91 9286-683-232"
         ),
         ["Home Loan (7.15%*) 🏠", "Check Eligibility 🔢", "WhatsApp Executive 💬", "Finance & Loans 💰"],
         400
@@ -1292,7 +1273,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
     }
 
     if (text === "Talk to Claim Expert 📞" || text === "Talk to Human Expert" || text === "Expert Call 📞" || text === "Call Now 📞") {
-      triggerBotMessage("Aap hamare senior expert Adv. Praveen Bhardwaj se seedha baat kar sakte hain:\n📞 +91 9258-724-227\n💬 WhatsApp: 7900-979-001", ["WhatsApp 💬", "Apply Online 📝", "Start Over 🔄"]);
+      triggerBotMessage("Aap hamare senior expert Adv. Praveen Bhardwaj se seedha baat kar sakte hain:\n📞 +91 9258-724-227\n💬 WhatsApp: 9286-683-232", ["WhatsApp 💬", "Apply Online 📝", "Start Over 🔄"]);
       return;
     }
 
@@ -1361,10 +1342,10 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
     switch (currentStep) {
       case "GREETING":
         if (text === "Talk to Human Expert" || text === "Expert Call 📞" || text === "Call Now 📞") {
-          triggerBotMessage("Zarur! Aap hamare senior expert Adv. Praveen Bhardwaj se seedha baat kar sakte hain:\n📞 +91 9258-724-227\n💬 WhatsApp: 7900-979-001", ["WhatsApp 💬", "Apply Online 📝", "Start Over 🔄"]);
+          triggerBotMessage("Zarur! Aap hamare senior expert Adv. Praveen Bhardwaj se seedha baat kar sakte hain:\n📞 +91 9258-724-227\n💬 WhatsApp: 9286-683-232", ["WhatsApp 💬", "Apply Online 📝", "Start Over 🔄"]);
         } else if (text === "WhatsApp 💬") {
-          window.open("https://wa.me/917900979001", "_blank");
-          triggerBotMessage("WhatsApp open ho raha hai! Aap humein 7900-979-001 par bhi message bhej sakte hain.", ["Continue Chat", "Start Over 🔄"]);
+          window.open("https://wa.me/919286683232", "_blank");
+          triggerBotMessage("WhatsApp open ho raha hai! Aap humein 9286-683-232 par bhi message bhej sakte hain.", ["Continue Chat", "Start Over 🔄"]);
         } else if (text === "Apply Online 📝" || text === "Apply Now 📝") {
           triggerBotMessage("Aapko kis category mein apply karna hai?", ["Apply Finance 💰", "Apply Insurance 🛡️", "Apply Credit Card 💳"]);
         } else if (text === "Apply Finance 💰" || text === "Apply for Finance 💰") {
@@ -1599,7 +1580,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
 
       case "LOAN_AMOUNT":
         if (text === "Talk to Expert" || text === "Pehle Expert Se Baat Karein") {
-           triggerBotMessage("Zarur! Aap seedha call karein: 📞 7900-979-001 — Adv. Praveen Bhardwaj aapki poori help karenge!"); setCurrentStep("CLOSED"); break;
+           triggerBotMessage("Zarur! Aap seedha call karein: 📞 9286-683-232 — Adv. Praveen Bhardwaj aapki poori help karenge!"); setCurrentStep("CLOSED"); break;
         }
         if (text.includes("?")) {
            triggerBotMessage("Bilkul valid sawaal hai aapka! 😊 Pehle loan amount bata dein, main aapko poori detail samjhata hun. Amount number mein likhein (jaise: 25 Lakh ya 50 Lakh).", ["Cancel"]);
@@ -2041,8 +2022,8 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
               </div>
               <div>
                 <p className="text-[13px] font-bold text-slate-800 leading-none">BFS Advisor</p>
-                <p className="text-[10px] text-amber-500 font-medium flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full inline-block animate-pulse"></span> Training Mode • Coming Soon
+                <p className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block animate-pulse"></span> Online • Official WhatsApp Desk
                 </p>
               </div>
             </div>
