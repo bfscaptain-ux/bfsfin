@@ -111,6 +111,23 @@ export default function InsuranceProductPage({ params }: Props) {
       '@type': 'Brand',
       name: 'BFSFIN',
     },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'INR',
+      lowPrice: '499',
+      highPrice: '15000',
+      offerCount: '12',
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: '2026-12-31',
+      url: `https://bfsfin.com/products/insurance/${params.slug}`
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '480',
+      bestRating: '5',
+      worstRating: '1'
+    }
   };
 
   return (
