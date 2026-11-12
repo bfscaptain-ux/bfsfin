@@ -13,8 +13,12 @@ export interface CRMLeadPayload {
   loanAmount?: number | string;
   income?: number | string | null;
   city?: string;
+  state?: string;
   location?: string;
   employmentType?: string;
+  profession?: string;
+  experience?: string;
+  monthlyVolume?: string;
   formType?: string;
   source?: string;
   message?: string;
