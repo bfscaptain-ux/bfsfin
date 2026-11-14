@@ -101,7 +101,7 @@ export default function RefundCancellationPage() {
           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm">
             <p><strong>Nodal Officer:</strong> Praveen Bhardwaj (Grievance &amp; Compliance)</p>
             <p><strong>Email:</strong> <a href="mailto:grievance@bfsfin.com" className="text-emerald-600 underline font-bold">grievance@bfsfin.com</a></p>
-            <p><strong>Address:</strong> C-11, Cloth Market, Sanjay Place, Agra, Uttar Pradesh - 282002</p>
+            <p><strong>Address:</strong> Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</p>
             <p><strong>Phone:</strong> <a href="tel:9258724227" className="text-emerald-600 underline font-bold">+91 9258-724-227</a></p>
           </div>
         </section>

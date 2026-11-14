@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     "finance company Bangalore"
   ],
   alternates: {
-    canonical: "https://bhardwajfinance.com/contact/locations",
+    canonical: "https://bfsfin.com/contact/locations",
   },
   openGraph: {
     title: "Office Locations | Bhardwaj Financial Services",
     description: "Visit our Agra Headquarters or connect with our regional representatives across India. Serving 7+ major cities.",
-    url: "https://bhardwajfinance.com/contact/locations",
+    url: "https://bfsfin.com/contact/locations",
     siteName: "Bhardwaj Financial Services",
     locale: "en_IN",
     type: "website",
@@ -37,35 +37,40 @@ export default function LocationsPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bhardwajfinance.com/"
+            "item": "https://bfsfin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Contact",
-            "item": "https://bhardwajfinance.com/contact"
+            "item": "https://bfsfin.com/contact"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Locations",
-            "item": "https://bhardwajfinance.com/contact/locations"
+            "item": "https://bfsfin.com/contact/locations"
           }
         ]
       },
       {
         "@type": "LocalBusiness",
-        "@id": "https://bhardwajfinance.com/#hq",
+        "@id": "https://bfsfin.com/#hq",
         "name": "Bhardwaj Financial Services - Agra HQ",
-        "image": "https://bhardwajfinance.com/logo.png",
-        "telephone": "+91-9999999999",
+        "image": "https://bfsfin.com/logo.png",
+        "telephone": "+91-9258724227",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Sanjay Place Commercial Hub",
+          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
           "addressLocality": "Agra",
-          "addressRegion": "UP",
+          "addressRegion": "Uttar Pradesh",
           "postalCode": "282002",
           "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 27.199777,
+          "longitude": 78.006699
         },
         "areaServed": [
           "Agra", "Mathura", "Noida", "Gurgaon", "Mumbai", "Bangalore", "Jaipur"

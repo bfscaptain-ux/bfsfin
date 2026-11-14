@@ -58,16 +58,16 @@ export default function ContactPage() {
         "email": "info@bfsfin.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "C-11, Cloth Market, Sanjay Place",
+          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
           "addressLocality": "Agra",
-          "addressRegion": "UP",
+          "addressRegion": "Uttar Pradesh",
           "postalCode": "282002",
           "addressCountry": "IN"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 27.1994,
-          "longitude": 78.0044
+          "latitude": 27.199777,
+          "longitude": 78.006699
         },
         "areaServed": [
           "Agra", "Mathura", "Noida", "Gurgaon", "Delhi NCR", "Mumbai", "Bangalore", "Jaipur", "Pan India"

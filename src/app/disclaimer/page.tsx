@@ -86,7 +86,7 @@ export default function DisclaimerPage() {
           </div>
 
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            <strong>Bhardwaj Financial Services</strong> (hereinafter referred to as &quot;BFS&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;the Platform&quot;), having its principal corporate office at <strong>Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Palace, Agra, Uttar Pradesh - 282002</strong>, operates exclusively as an authorized Direct Selling Agent (DSA), loan distribution partner, corporate facilitator, and multi-lender aggregator.
+            <strong>Bhardwaj Financial Services</strong> (hereinafter referred to as &quot;BFS&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;the Platform&quot;), having its principal corporate office at <strong>Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</strong>, operates exclusively as an authorized Direct Selling Agent (DSA), loan distribution partner, corporate facilitator, and multi-lender aggregator.
           </p>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             BFS is <strong>not a Non-Banking Financial Company (NBFC)</strong>, Bank, or primary underwriting credit institution as defined under the Reserve Bank of India (RBI) Act, 1934. We do not independently sanction, underwrite, lend, or disburse funds from our balance sheet. We bridge the gap between retail borrowers and our authorized lending banking partners.
@@ -221,7 +221,7 @@ export default function DisclaimerPage() {
           </div>
 
           <div className="pt-2 text-xs text-slate-400">
-            <strong>Registered Address:</strong> Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Palace, Sanjay Place, Agra, Uttar Pradesh - 282002.
+            <strong>Registered Address:</strong> Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002.
           </div>
         </section>
 

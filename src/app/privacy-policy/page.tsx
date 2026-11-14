@@ -330,7 +330,7 @@ export default function PrivacyPolicyPage() {
                     </div>
                     
                     <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 mt-4 ml-1">
-                      <strong>Office:</strong> C-11, Cloth Market, Sanjay Place, Agra, Uttar Pradesh - 282002, India<br />
+                      <strong>Office:</strong> Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002<br />
                       <strong>TAT:</strong> 48 Working Hours Resolution Guarantee
                     </p>
                     

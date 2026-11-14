@@ -81,9 +81,9 @@ export async function resolveClientLocation(req: Request, clientLat?: number, cl
       city: "Agra",
       region: "Uttar Pradesh",
       country: "India",
-      latitude: 27.1767,
-      longitude: 78.0081,
-      mapsUrl: "https://www.google.com/maps?q=27.1767,78.0081",
+      latitude: 27.199777,
+      longitude: 78.006699,
+      mapsUrl: "https://www.google.com/maps?q=27.199777,78.006699",
       fullAddress: "Agra, Uttar Pradesh, India (Localhost Test IP)"
     };
     ipCache.set(ip, { result: localResult, expiresAt: now + 3600 * 1000 });
@@ -135,9 +135,9 @@ export async function resolveClientLocation(req: Request, clientLat?: number, cl
     city: "Agra",
     region: "Uttar Pradesh",
     country: "India",
-    latitude: 27.1767,
-    longitude: 78.0081,
-    mapsUrl: "https://www.google.com/maps?q=27.1767,78.0081",
+    latitude: 27.199777,
+    longitude: 78.006699,
+    mapsUrl: "https://www.google.com/maps?q=27.199777,78.006699",
     fullAddress: `Agra Region (IP: ${ip})`
   };
   ipCache.set(ip, { result: fallbackResult, expiresAt: now + 600 * 1000 });

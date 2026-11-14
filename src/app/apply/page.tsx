@@ -725,7 +725,7 @@ function ApplyFormContent() {
                   </div>
                   <div className="sm:col-span-2">
                     <span className="text-slate-400 font-bold block">Office Address:</span>
-                    <span className="font-semibold text-slate-800">C-11, Cloth Market, Sanjay Place, Agra - 282002, Uttar Pradesh</span>
+                    <span className="font-semibold text-slate-800">Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</span>
                   </div>
                 </div>
               </div>

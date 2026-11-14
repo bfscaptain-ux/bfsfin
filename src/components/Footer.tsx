@@ -402,8 +402,8 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <div className="font-extrabold text-white uppercase tracking-wider text-[11px] mb-1.5 flex items-center justify-center lg:justify-start gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400" /> Agra Corporate Headquarters
               </div>
-              <p>C-11, Cloth Market, Sanjay Place,</p>
-              <p>Agra, Uttar Pradesh - 282002, India</p>
+              <p>Block-C11, Shop No.-5, First Floor, near MK Tailor,</p>
+              <p>Sanjay Place, Agra, Uttar Pradesh 282002</p>
               <div className="pt-2 flex flex-col gap-1 text-emerald-200 font-semibold">
                 <p>Call Helpline: <a href="tel:9258724227" className="text-emerald-400 hover:underline">+91 9258-724-227</a></p>
                 <p>WhatsApp Desk: <a href="https://wa.me/919286683232" className="text-emerald-400 hover:underline">+91 9286-683-232</a></p>

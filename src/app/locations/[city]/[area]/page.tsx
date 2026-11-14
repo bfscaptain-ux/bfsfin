@@ -94,8 +94,8 @@ export async function generateMetadata({ params }: { params: { city: string, are
     other: {
       "geo.region": "IN-UP",
       "geo.placename": `${areaDisp}, ${cityDisp}, Uttar Pradesh, India`,
-      "geo.position": "27.1983;78.0069",
-      "ICBM": "27.1983, 78.0069",
+      "geo.position": "27.199777;78.006699",
+      "ICBM": "27.199777, 78.006699",
     }
   };
 }
@@ -146,7 +146,7 @@ export default async function LocalAreaPage({ params }: { params: { city: string
         "image": "https://bfsfin.com/hero_image.jpg",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "C-11, Cloth Market, Sanjay Place",
+          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
           "addressLocality": city,
           "addressRegion": "Uttar Pradesh",
           "postalCode": "282002",
@@ -154,8 +154,8 @@ export default async function LocalAreaPage({ params }: { params: { city: string
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 27.1983,
-          "longitude": 78.0069
+          "latitude": 27.199777,
+          "longitude": 78.006699
         },
         "openingHoursSpecification": [
           {

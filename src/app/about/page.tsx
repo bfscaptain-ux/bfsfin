@@ -45,7 +45,7 @@ export default async function AboutPage() {
         description: 'Bhardwaj Financial Services (BFS) is Agra\'s premier financial institution providing transparent Loans (Home Loan from 7.15% min ROI, Business & Personal Loans), 100% Cashless Insurance (Health, Term Life & Motor with Free Claim Assistance), and Lifetime-Free Credit Cards with Airport Lounge Access.',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'Sanjay Place, Commercial Hub',
+          streetAddress: 'Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place',
           addressLocality: 'Agra',
           addressRegion: 'Uttar Pradesh',
           postalCode: '282002',
@@ -53,8 +53,8 @@ export default async function AboutPage() {
         },
         geo: {
           '@type': 'GeoCoordinates',
-          latitude: '27.1994',
-          longitude: '78.0053',
+          latitude: '27.199777',
+          longitude: '78.006699',
         },
         telephone: '+919876543210',
         founder: {

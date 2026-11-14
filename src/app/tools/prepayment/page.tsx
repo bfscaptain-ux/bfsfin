@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-UP",
     "geo.placename": "Agra, Uttar Pradesh, India",
-    "geo.position": "27.1983;78.0069",
-    "ICBM": "27.1983, 78.0069",
+    "geo.position": "27.199777;78.006699",
+    "ICBM": "27.199777, 78.006699",
   }
 };
 
@@ -91,7 +91,7 @@ export default function PrepaymentPage() {
         "telephone": "+91-7900-979-001",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Sanjay Place Commercial Hub",
+          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
           "addressLocality": "Agra",
           "addressRegion": "Uttar Pradesh",
           "postalCode": "282002",
@@ -99,8 +99,8 @@ export default function PrepaymentPage() {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 27.1983,
-          "longitude": 78.0069
+          "latitude": 27.199777,
+          "longitude": 78.006699
         }
       }
     ]

@@ -47,7 +47,7 @@ const BRAND = {
   name: "Bhardwaj Financial Services",
   shortName: "BFS Agra",
   tagline: "Premier Financial Advisory & Compliance Hub",
-  address: "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, UP - 282002",
+  address: "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002",
   phone: "+91 9258-724-227",
   whatsapp: "+91 9286-683-232",
   website: "https://bhardwajfinance.com",

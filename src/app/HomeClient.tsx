@@ -1949,7 +1949,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   <div>
                     <h4 className="font-bold text-white text-sm sm:text-base">Corporate Headquarters</h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                      Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Palace, Sanjay Place, Agra, UP 282002
+                      Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002
                     </p>
                   </div>
                 </div>

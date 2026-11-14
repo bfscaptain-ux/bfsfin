@@ -104,7 +104,7 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [settings, setSettings] = useState({
-    officeAddress: "C-11, Cloth Market, Sanjay Place,\nAgra, Uttar Pradesh - 282002\nIndia",
+    officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Place, Agra, Uttar Pradesh 282002",
     contactPhone: "+91 7900-979-001",
     officialEmail: "info@bfsfin.com",
     workingHours: "Mon-Sat: 10AM - 6PM"

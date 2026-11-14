@@ -471,7 +471,7 @@ export default function ComplaintClient({ heroImage }: { heroImage: string }) {
                 <div className="space-y-3 pt-2 text-xs text-slate-600 dark:text-slate-300">
                   <div className="flex items-start gap-2.5">
                     <MapPin className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>C-11, Cloth Market, Sanjay Place, Agra, UP - 282002</span>
+                    <span>Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Mail className="w-4 h-4 text-emerald-500 shrink-0" />

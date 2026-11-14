@@ -54,7 +54,7 @@ export default function AdminSettingsCMS() {
     salesPhone: "7900-979-001",
     supportPhone: "7900-979-002",
     officialEmail: "info@bfsfin.com",
-    officeAddress: "Sanjay Place, Commercial Hub, Agra, UP - 282002",
+    officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002",
     tickerText: "⚡ Fastest Home Loan Approval in Agra (5 Days Guarantee)",
     rbiComplianceBadge: "RBI Compliant & Certified Mortgage Broker",
     maxLoanCap: "₹1 Crore+",

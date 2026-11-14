@@ -98,7 +98,7 @@ export default function GrievancePage() {
                 <div>
                   <span className="text-xs text-slate-500 dark:text-slate-400 block">Registered Physical Office</span>
                   <p className="font-bold text-slate-900 dark:text-white">
-                    Block-C11, Shop No.-5, First Floor, Cloth Market (near MK Tailor), Sanjay Place, Agra, Uttar Pradesh - 282002
+                    Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002
                   </p>
                 </div>
               </div>

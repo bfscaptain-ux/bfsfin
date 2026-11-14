@@ -79,8 +79,8 @@ export default async function HomePage() {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "27.1994",
-          "longitude": "78.0053"
+          "latitude": "27.199777",
+          "longitude": "78.006699"
         },
         "telephone": "+91-9258724227",
         "email": "info@bfsfin.com",

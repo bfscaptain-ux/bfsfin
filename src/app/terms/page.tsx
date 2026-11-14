@@ -145,7 +145,7 @@ export default function TermsPage() {
               <p><strong>Email:</strong> <a href="mailto:grievance@bfsfin.com" className="text-emerald-600 underline font-bold">grievance@bfsfin.com</a></p>
             </div>
             <div>
-              <p><strong>Office:</strong> C-11, Cloth Market, Sanjay Place, Agra - 282002</p>
+              <p><strong>Office:</strong> Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</p>
               <p><strong>Turnaround Time (TAT):</strong> 48 working hours</p>
               <p><strong>Helpline:</strong> <a href="tel:9258724227" className="text-emerald-600 underline font-bold">+91 9258-724-227</a></p>
             </div>

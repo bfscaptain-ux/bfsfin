@@ -55,8 +55,8 @@ export const BFS_ORGANIZATION = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "27.1994",
-    longitude: "78.0053",
+    latitude: "27.199777",
+    longitude: "78.006699",
   },
   sameAs: [
     "https://www.facebook.com/bhardwajfinancialservices",

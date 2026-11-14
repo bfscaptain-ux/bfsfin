@@ -24,7 +24,7 @@ export default function LocationsClient() {
   const [serviceCities, setServiceCities] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [settings, setSettings] = useState({
-    officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Palace, Sanjay Place,\nAgra, Uttar Pradesh - 282002\nIndia",
+    officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Place, Agra, Uttar Pradesh 282002",
     contactPhone: "+91 7900-979-001",
     officialEmail: "info@bfsfin.com",
     workingHours: "Mon-Sat: 10AM - 6PM"
@@ -120,7 +120,7 @@ export default function LocationsClient() {
                 <a href={`tel:${settings.contactPhone.replace(/\D/g, '')}`} className="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold rounded-xl shadow-lg transition flex items-center gap-2">
                   <Phone className="w-4 h-4" /> Call HQ Directly
                 </a>
-                <a href="https://maps.google.com/?q=Sanjay+Place+Commercial+Hub+Agra" target="_blank" rel="noreferrer" className="px-8 py-4 bg-emerald-900 hover:bg-emerald-800 text-white border border-emerald-500/50 font-bold rounded-xl transition flex items-center gap-2">
+                <a href="https://www.google.com/maps?q=27.199777,78.006699" target="_blank" rel="noreferrer" className="px-8 py-4 bg-emerald-900 hover:bg-emerald-800 text-white border border-emerald-500/50 font-bold rounded-xl transition flex items-center gap-2">
                   <Navigation className="w-4 h-4 text-emerald-400" /> Get Directions
                 </a>
               </div>

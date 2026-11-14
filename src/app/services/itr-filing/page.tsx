@@ -464,7 +464,7 @@ export default function ItrFilingPage() {
         "openingHours": "Mo-Sa 10:00-19:30",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Sanjay Place, Commercial Hub",
+          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
           "addressLocality": "Agra",
           "addressRegion": "Uttar Pradesh",
           "postalCode": "282002",
@@ -472,8 +472,8 @@ export default function ItrFilingPage() {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 27.1983,
-          "longitude": 78.0069
+          "latitude": 27.199777,
+          "longitude": 78.006699
         },
         "areaServed": [
           { "@type": "City", "name": "Agra" },
@@ -2153,7 +2153,7 @@ export default function ItrFilingPage() {
             <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
               <p className="flex items-start gap-2">
                 <Building2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                <span>Sanjay Place Commercial Complex, Agra, Uttar Pradesh - 282002</span>
+                <span>Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</span>
               </p>
               <p className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-emerald-500 shrink-0" />
@@ -2167,7 +2167,7 @@ export default function ItrFilingPage() {
 
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <a
-                href="https://maps.google.com/?q=Sanjay+Place+Agra+Uttar+Pradesh"
+                href="https://www.google.com/maps?q=27.199777,78.006699"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-bold text-xs hover:bg-slate-800 transition-all shadow-xs"
