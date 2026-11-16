@@ -6,21 +6,21 @@ import QuickEligibility from "@/components/QuickEligibility";
 import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
 
 export const metadata: Metadata = {
-  title: "Home Loan Eligibility Calculator Online | Kitni Salary Chahiye | Bhardwaj Financial Services Agra",
-  description: "Check your home loan eligibility instantly. Find out home loan ke liye kitni salary chahiye, maximum loan amount, and FOIR calculation for SBI, HDFC, ICICI, PNB in Agra.",
+  title: "Home Loan Eligibility Calculator India | Salary Based Loan Check | BFS",
+  description: "Check your home loan eligibility instantly. Find out home loan eligibility based on salary, how much home loan can I get on 50000 salary, how to increase home loan eligibility, and FOIR calculation for SBI, HDFC, ICICI, PNB across India.",
   keywords: [
     "home loan eligibility calculator",
+    "home loan eligibility based on salary",
+    "how much home loan can I get on 50000 salary",
+    "how to increase home loan eligibility",
+    "home loan ke liye eligibility",
     "home loan ke liye kitni salary chahiye",
-    "home loan eligibility check",
-    "home loan in Agra",
-    "home loan agent in Agra",
-    "home loan consultant Agra",
-    "home loan for salaried / self-employed",
-    "CIBIL score kam ho to loan milega kya",
-    "sabse sasta home loan",
-    "loan consultant near me",
-    "Bhardwaj Financial Services",
-    "Online Home Loan Approval Agra"
+    "home loan with low CIBIL score",
+    "CIBIL score kam ho to home loan kaise milega",
+    "home loan for salaried employees",
+    "home loan for self-employed",
+    "free loan consultation",
+    "Bhardwaj Financial Services"
   ],
   alternates: {
     canonical: "https://bfsfin.com/eligibility",

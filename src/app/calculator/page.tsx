@@ -9,24 +9,23 @@ import { prisma } from "@/lib/prisma";
 import { MapPin, ShieldCheck, Award, Building2, TrendingUp, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Home Loan EMI Calculator 2026 | Compare SBI, HDFC, ICICI Rates | Bhardwaj Financial Services Agra",
-  description: "Calculate exact Home Loan, LAP & Business Loan EMIs in 2026. Compare SBI, HDFC, ICICI, PNB & Axis Bank rates starting 7.15%*. Download year-by-year amortization schedule in Excel/PDF.",
+  title: "Home Loan EMI Calculator India (2026) | Compare Bank Rates & Prepayment | BFS",
+  description: "Calculate exact Home Loan, LAP & Business Loan EMIs in 2026. Compare SBI, HDFC, ICICI, PNB & Axis Bank rates starting 7.15%*. Learn how to calculate home loan EMI, how to reduce home loan EMI, and download year-by-year amortization schedules.",
   keywords: [
     "home loan EMI calculator",
     "home loan interest rate 2026",
+    "home loan EMI kaise calculate kare",
+    "how to reduce home loan EMI",
+    "home loan prepayment",
+    "compare home loan interest rates",
     "home loan eligibility calculator",
     "SBI home loan EMI calculator",
     "HDFC loan EMI calculator",
     "ICICI Bank home loan EMI calculator",
     "PNB home loan calculator",
+    "lowest home loan interest rate in India",
     "home loan in Agra",
-    "home loan agent in Agra",
-    "home loan consultant Agra",
-    "best home loan Agra",
-    "low interest home loan",
     "home loan balance transfer",
-    "LAP (loan against property) Agra",
-    "sabse sasta home loan",
     "Bhardwaj Financial Services Calculator"
   ],
   alternates: {

@@ -9,13 +9,12 @@ export const metadata: Metadata = {
   title: "Loan Prepayment & Part-Payment Calculator (2026) | Tenure Reduction | BFS",
   description: "Calculate how part-payments and annual prepayments reduce your loan tenure and save lakhs in compound interest. Exact amortization impact for Indian home loans in Agra & UP.",
   keywords: [
+    "home loan prepayment",
+    "how to reduce home loan EMI",
     "Loan Prepayment Calculator India 2026",
     "Home Loan Part Payment Calculator",
     "Tenure Reduction Calculator on Prepayment",
-    "Part Prepayment Interest Savings Calculator",
-    "How to pay off 20 year home loan in 10 years",
     "Prepay Loan Early Calculator India",
-    "Home Loan Prepayment Agra UP",
     "Bhardwaj Finance Prepayment Tool"
   ],
   alternates: {

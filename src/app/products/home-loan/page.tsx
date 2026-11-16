@@ -6,61 +6,76 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Home Loan in Agra | Bhardwaj Financial Services – Expert Loan Advisor",
-  description: "Looking for the best home loan in Agra? Bhardwaj Financial Services is Agra's top home loan DSA & consultant at Sanjay Place. Lowest interest rates starting 7.15%*, fast 5-day sanction, SBI, HDFC, ICICI & PNB bank approvals. Apply today!",
+  title: "Home Loan in India & Agra starting 7.15%* | Bhardwaj Financial Services – Expert Loan Advisor",
+  description: "Apply for the best home loan in India & Agra starting 7.15%* p.a. Calculate EMI, check eligibility, view documents required, compare SBI, HDFC, ICICI, PNB rates, and get 5-day fast approval with Bhardwaj Financial Services.",
   keywords: [
+    "home loan",
+    "home loan interest rate",
+    "home loan interest rate 2026",
+    "home loan EMI calculator",
+    "home loan eligibility calculator",
+    "home loan eligibility",
+    "home loan documents required",
+    "home loan apply online",
+    "home loan for salaried employees",
+    "home loan for self-employed",
+    "best home loan in India",
+    "lowest home loan interest rate in India",
+    "home loan balance transfer",
+    "home loan top up",
+    "home loan processing fee",
+    "home loan prepayment",
+    "home loan consultant in India",
+    "home loan advisor online",
+    "online home loan assistance",
+    "home loan with low CIBIL score",
+    "home loan for first-time home buyers India",
+    "home loan tax benefit section 80C 24b",
+    "home loan for NRI",
+    "home loan for under construction property",
+    "home loan for plot purchase",
+    "home loan for women borrowers",
+    "home loan without income proof",
+    "home loan DSA India",
+    "compare home loan interest rates",
+    "financial advisor online India",
+    "loan advisor India",
+    "online loan consultant",
+    "loan assistance service",
+    "free loan consultation",
+    "financial planning for home buyers",
+    "how to choose best home loan",
+    "how to get home loan with low CIBIL score",
+    "home loan eligibility based on salary",
+    "how much home loan can I get on 50000 salary",
+    "home loan vs LAP which is better",
+    "how to reduce home loan EMI",
+    "home loan balance transfer kab karna chahiye",
+    "home loan documents for self-employed",
+    "how to increase home loan eligibility",
+    "home loan rejection reasons",
+    "home loan kaise le",
+    "home loan kaise milta hai",
+    "home loan ke liye eligibility",
+    "home loan ke liye documents",
+    "sabse kam interest wala home loan",
+    "home loan EMI kaise calculate kare",
+    "home loan ka interest rate kitna hai",
+    "CIBIL score kam ho to home loan kaise milega",
     "home loan in Agra",
     "home loan agent in Agra",
     "home loan consultant Agra",
     "best home loan Agra",
     "home loan DSA Agra",
-    "home loan interest rate 2026",
-    "home loan eligibility calculator",
-    "home loan EMI calculator",
-    "home loan documents required",
-    "home loan for salaried / self-employed",
-    "home loan for salaried",
-    "home loan for self-employed",
-    "home loan balance transfer",
-    "home loan top up",
-    "LAP (loan against property) Agra",
-    "plot loan / construction loan Agra",
-    "plot loan Agra",
-    "construction loan Agra",
-    "home loan for first-time buyers",
-    "low interest home loan",
-    "home loan approval fast",
     "SBI / HDFC / ICICI / Axis home loan Agra",
-    "SBI home loan Agra",
-    "HDFC home loan Agra",
-    "ICICI home loan Agra",
-    "Axis home loan Agra",
-    "financial advisor in Agra",
-    "loan advisor Agra",
     "loan consultant near me",
-    "financial consultant Agra",
-    "loan broker in Agra",
-    "best financial services in Agra",
-    "CIBIL score improvement advice",
-    "loan planning consultant",
-    "Agra mein home loan kaise le",
-    "ghar ke liye loan Agra",
-    "sabse sasta home loan",
-    "home loan ke liye kitni salary chahiye",
-    "loan agent near me",
-    "ghar kharidne ke liye loan",
-    "CIBIL score kam ho to loan milega kya",
-    "home loan near me",
     "loan consultant near Sanjay Place",
     "loan consultant near Kamla Nagar",
     "loan consultant near Sikandra",
     "loan consultant near Dayalbagh",
     "financial services Agra Uttar Pradesh",
     "Bhardwaj Financial Services",
-    "BFS Agra",
-    "Praveen Bhardwaj loan consultant Agra",
-    "Cash salary home loan Agra",
-    "Home loan without ITR Agra"
+    "BFS Agra"
 ],
   alternates: { canonical: "https://bfsfin.com/products/home-loan" }
 };
@@ -78,38 +93,46 @@ export default async function HomeLoanPage() {
     minAmount: 500000,
     maxAmount: 100000000,
     tenureYears: 30,
-        faqs: [
+            faqs: [
       {
-        question: "Home loan in Agra: Bhardwaj Financial Services se loan lene ke kya benefits hain?",
-        answer: "Bhardwaj Financial Services (BFS) Agra ka #1 Home Loan DSA aur financial consultant hai (Sanjay Place HQ). Hum PNB, SBI, HDFC, ICICI aur Axis Bank se direct priority processing, lowest starting rate from 7.15%* p.a., 5-day fast sanction, aur zero hidden charges provide karte hain."
+        question: "Home loan kaise le aur home loan kaise milta hai? (Complete Step-by-Step Process)",
+        answer: "Home loan lene ke 4 aasan steps hain: 1) Online apply karein ya Bhardwaj Financial Services (Sanjay Place, Agra) par visit karein. 2) Eligibility check: Income aur CIBIL score ke hisab se best bank (SBI, HDFC, ICICI, PNB, Central Bank) choose karein. 3) Required documents (KYC, Salary Slips/ITR, Property Chain) submit karein. 4) Verification ke baad 5 working days mein loan sanction letter prapt karein."
       },
       {
-        question: "Agra mein home loan kaise le? (Full Process)",
-        answer: "Agra mein home loan lene ke 3 aasan steps hain: 1) BFS Sanjay Place office visit karein ya WhatsApp (+91 79009-79001 / +91 92587-24227) par sampark karein. 2) Apne basic documents (Aadhaar, PAN, Salary Slip/ITR, Property Chain) share karein. 3) Hamari Senior Loan Advisor team aapke liye best bank chun kar 5 din mein loan sanction karati hai."
+        question: "Lowest home loan interest rate in India 2026 kitna hai aur sabse kam interest wala home loan kaunsa hai?",
+        answer: "India mein 2026 ke current rates ke anusaar, home loan interest rates 7.15%* p.a. se shuru hote hain. Lowest rates 750+ CIBIL score, stable income, aur verified property profiles par milte hain."
       },
       {
-        question: "Ghar ke liye loan Agra mein sabse sasta kahan milega?",
-        answer: "Sabse sasta home loan nationalized aur private banks jaise PNB, SBI, HDFC aur ICICI mein starting from 7.15%* p.a. se shuru hota hai. Final interest rate aapke CIBIL score, income stability aur property profile par depend karta hai."
+        question: "Home loan eligibility based on salary: How much home loan can I get on 50,000 salary?",
+        answer: "Banks 50% FOIR (Fixed Obligation to Income Ratio) rule follow karte hain. Agar aapki net monthly salary ₹50,000 hai, toh ₹25,000 ki monthly EMI par 30 saal ke tenure mein lagbhag ₹36 Lakhs se ₹38 Lakhs tak ka home loan sanction ho sakta hai. Agar co-applicant add karte hain toh eligibility aur badh jati hai."
       },
       {
-        question: "Home loan ke liye kitni salary chahiye?",
-        answer: "Salaried applicants ke liye minimum net monthly take-home salary ₹15,000 se ₹25,000 honi chahiye. Agar aap cash salary ya self-employed hain aur ITR nahi hai, toh bhi BFS alternative banking aur surrogate programs ke through loan arrange karata hai."
+        question: "How to get home loan with low CIBIL score? (CIBIL score kam ho to home loan kaise milega)",
+        answer: "Low CIBIL score (600-700) par loan lene ke liye: 1) Ek high CIBIL score wale co-applicant (spouse ya parents) ko add karein. 2) Lower LTV (property cost ka 60-70%) apply karein. 3) Bhardwaj Financial Services ke expert advisor se NBFC ya specialized housing finance banking surrogate routes evaluate karwayein."
       },
       {
-        question: "CIBIL score kam ho to loan milega kya?",
-        answer: "Haan, agar aapka CIBIL score kam hai (650-700) ya CIBIL -1 (fresh history) hai, toh bhi co-applicant add karke, collateral structuring, ya housing finance company route se loan sanction karaya ja sakta hai. BFS free CIBIL score improvement advice bhi provide karta hai."
+        question: "Home loan documents for self-employed and salaried employees: Kya kya chahiye?",
+        answer: "Salaried ke liye: PAN, Aadhaar, 3 months salary slips, 6 months bank statement, Form 16 / ITR. Self-employed ke liye: PAN, Aadhaar, 2-3 years ITR with computation, P&L sheet, 12 months bank statements, GST/Udyam certificate, aur property chain registry papers."
       },
       {
-        question: "Home loan documents required: Kaun-kaun se documents chahiye?",
-        answer: "1) KYC: PAN Card aur Aadhaar Card. 2) Income: Salaried ke liye last 3 months salary slips aur 6 months bank statement; Self-employed ke liye 2 years ITR aur 12 months bank statement. 3) Property: Registry, chain documents, approved map aur Agreement to Sale."
+        question: "Home loan balance transfer kab karna chahiye aur how to reduce home loan EMI?",
+        answer: "Agar aapka existing home loan 8.50% ya usse zyada par chal raha hai aur market mein 7.15%* available hai, toh Balance Transfer se lakhon rupaye interest bachta hai. EMI kam karne ke liye tenure increase kar sakte hain ya part-prepayment karke principal reduce kar sakte hain."
       },
       {
-        question: "Home loan balance transfer aur top up loan Agra mein kaise karwaye?",
-        answer: "Agar aapka existing loan kisi bank mein high interest rate (8.5% - 9.5%+) par chal raha hai, toh BFS ke through 7.15%* par switch (balance transfer) karayein aur saath hi emergency ya business ke liye extra Top-Up Loan fund prapt karein."
+        question: "Home loan vs LAP (Loan Against Property): Which is better?",
+        answer: "Home loan sirf nayi property kharidne, flat lene, plot purchase ya construction ke liye hota hai (lowest rate 7.15%*). LAP (Loan Against Property) aapki existing property mortgage karke business growth, personal emergency ya working capital ke liye un-restricted funds deta hai."
       },
       {
-        question: "Loan consultant near me: Sanjay Place, Kamla Nagar, Sikandra, Dayalbagh mein service available hai?",
-        answer: "Haan, Bhardwaj Financial Services Sanjay Place, Kamla Nagar, Dayalbagh, Sikandra, Shahganj, Bodla, Fatehabad Road aur poore Agra mein free doorstep document pickup aur financial advisor assistance provide karta hai."
+        question: "Home loan tax benefit section 80C 24b: Tax savings kaise milti hai?",
+        answer: "Old Tax Regime mein Section 24(b) ke tahat interest payment par ₹2 Lakh tak ka annual deduction milta hai, aur Section 80C ke tahat principal repayment par ₹1.5 Lakh tak ka deduction milta hai. Stamp duty par bhi deduction claim kiya ja sakta hai."
+      },
+      {
+        question: "Home loan for first-time home buyers in India & women borrowers ke kya benefits hain?",
+        answer: "First-time home buyers aur women co-applicants ko banks 0.05% se 0.10% tak interest rate concession aur state stamp duty mein rebate dete hain."
+      },
+      {
+        question: "Home loan rejection reasons: Agar loan reject ho jaye toh kya karein?",
+        answer: "Major rejection reasons hote hain: Low CIBIL score, high existing EMIs (high FOIR), unstable job history, ya property title issues. Rejection ke baad BFS team aapka CIBIL dispute resolve karke, debt consolidate karke, ya co-applicant structure karke re-file karati hai."
       }
     ]
   });

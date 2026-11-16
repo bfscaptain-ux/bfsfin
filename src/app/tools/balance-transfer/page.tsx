@@ -9,17 +9,11 @@ export const metadata: Metadata = {
   title: "Home Loan Balance Transfer Calculator India (2026) | EMI Savings | BFS",
   description: "Calculate exact net interest and EMI savings by switching your high-interest home loan to lowest bank rates (SBI, PNB, BoB, HDFC). Calculate takeover fees and top-up eligibility in Agra & UP.",
   keywords: [
-    "Home Loan Balance Transfer Calculator India",
-    "Loan Takeover Net Interest Savings Calculator",
-    "Switch Home Loan to SBI PNB HDFC",
-    "Reduce Home Loan Interest Rate Calculator",
-    "Balance Transfer Calculator India 2026",
-    "Home Loan Transfer Agra UP",
-    "Balance Transfer Sanjay Place Agra",
-    "Balance Transfer Kamla Nagar Agra",
-    "Balance Transfer Dayalbagh Agra",
-    "Top Up Loan on Balance Transfer Calculator",
-    "Switch NBFC Home Loan to Nationalized Bank",
+    "home loan balance transfer kab karna chahiye",
+    "home loan balance transfer",
+    "home loan top up",
+    "Balance Transfer Savings Calculator",
+    "Switch Home Loan to Lower Interest Rate",
     "Bhardwaj Finance Balance Transfer"
   ],
   alternates: {
