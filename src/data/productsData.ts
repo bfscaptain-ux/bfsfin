@@ -5,14 +5,14 @@ export const productsData: Record<string, ProductData> = {
     id: "home-loan",
     slug: "home-loan",
     name: "Home Loan",
-    seoTitle: "Best Home Loans in India at 8.50% p.a. | Bhardwaj Financial Services",
-    seoDescription: "Apply for a Home Loan with Bhardwaj Financial Services. Enjoy lowest interest rates starting at 8.50%, flexible tenure up to 30 years, and quick 5-day sanction. Check eligibility today.",
+    seoTitle: "Best Home Loans in India from 7.15%* p.a. | Bhardwaj Financial Services",
+    seoDescription: "Apply for a Home Loan with Bhardwaj Financial Services. Enjoy lowest interest rates starting at 7.15%*, flexible tenure up to 30 years, and quick 5-day sanction. Check eligibility today.",
     badge: "Most Popular",
     heroHeadline: "India's Most Trusted Home Loans",
-    heroDescription: "Unlock the door to your dream home with unparalleled interest rates starting at just 8.50% p.a. Experience a seamless, transparent, and 100% digital application process designed for the modern Indian homebuyer.",
+    heroDescription: "Unlock the door to your dream home with unparalleled interest rates starting from 7.15%* p.a. Experience a seamless, transparent, and 100% digital application process designed for the modern Indian homebuyer.",
     overview: [
       "Buying a home is one of the most significant financial decisions you will ever make. At Bhardwaj Financial Services, we simplify this journey with our highly customized Home Loan solutions. Whether you are purchasing a ready-to-move-in apartment, booking an under-construction property, or buying a resale house, our home loans are tailored to fit your specific financial profile.",
-      "We understand that every homebuyer's needs are unique. That's why we have partnered with India's leading banks and NBFCs to offer you the most competitive interest rates starting at 8.50% p.a., ensuring that your monthly EMIs remain affordable. Our dedicated relationship managers guide you through every step, from initial eligibility checks to final property registration, making the process completely hassle-free.",
+      "We understand that every homebuyer's needs are unique. That's why we have partnered with India's leading banks and NBFCs to offer you the most competitive interest rates starting from 7.15%* p.a., ensuring that your monthly EMIs remain affordable. Our dedicated relationship managers guide you through every step, from initial eligibility checks to final property registration, making the process completely hassle-free.",
       "With tenures stretching up to 30 years, you have the ultimate flexibility in managing your monthly cash flows. Furthermore, we leverage advanced digital onboarding and AI-driven credit assessments to guarantee a 5-day sanction process once your documents are submitted."
     ],
     benefits: [
@@ -25,7 +25,7 @@ export const productsData: Record<string, ProductData> = {
     ],
     quickFacts: [
       { label: "Loan Amount", value: "₹20 Lakhs to ₹5 Crores+" },
-      { label: "Interest Rate", value: "8.50% p.a. onwards", highlight: true },
+      { label: "Interest Rate", value: "7.15%* p.a. onwards", highlight: true },
       { label: "Tenure", value: "Up to 30 Years" },
       { label: "Processing Fee", value: "Nil to 0.5%" },
       { label: "Pre-Payment", value: "Zero Charges", highlight: true },
@@ -34,7 +34,7 @@ export const productsData: Record<string, ProductData> = {
       {
         icon: "Percent",
         title: "Lowest Interest Rates",
-        description: "Leveraging our institutional partnerships, we secure preferential rates starting at 8.50% p.a., saving you Lakhs over your tenure."
+        description: "Leveraging our institutional partnerships, we secure preferential rates starting from 7.15%* p.a., saving you Lakhs over your tenure."
       },
       {
         icon: "Target",
@@ -68,7 +68,7 @@ export const productsData: Record<string, ProductData> = {
       }
     ],
     faqs: [
-      { question: "What is the current home loan interest rate?", answer: "Our home loan interest rates start from 8.50% p.a. However, the final rate depends on your credit score, income profile, and loan amount." },
+      { question: "What is the current home loan interest rate?", answer: "Our home loan interest rates start from 7.15%* p.a. However, the final rate depends on your credit score, income profile, and loan amount." },
       { question: "Can I prepay my home loan without penalty?", answer: "Yes, as per RBI guidelines, there are zero pre-payment or foreclosure charges on floating rate home loans for individual borrowers." },
       { question: "How long does it take to get a sanction?", answer: "We guarantee a 5-day sanction process once all required documents are submitted." },
       { question: "Are there any tax benefits on a home loan?", answer: "Yes, you can claim up to ₹1.5 Lakhs on principal repayment under Section 80C and up to ₹2 Lakhs on interest payments under Section 24b of the Income Tax Act." },
@@ -98,7 +98,7 @@ export const productsData: Record<string, ProductData> = {
       "Completely digital and hassle-free transition process managed by our experts."
     ],
     quickFacts: [
-      { label: "Interest Rate", value: "Starting at 8.50% p.a.", highlight: true },
+      { label: "Interest Rate", value: "Starting from 7.15%* p.a.", highlight: true },
       { label: "Top-Up Loan", value: "Available instantly", highlight: true },
       { label: "Processing Fee", value: "Nominal or Waived" },
       { label: "Documentation", value: "Minimal, Hassle-free" },

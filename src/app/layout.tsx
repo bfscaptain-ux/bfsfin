@@ -12,10 +12,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
-  title: "BFS AGRA — Enterprise Home Loan Portal | Vineeta Sharma",
-  description: "Agra's #1 Home Loan Portal. Approved in 5 Days! ₹20L to ₹1Cr+ starting @ 6.50% p.a. Direct priority partner for PNB, Central Bank of India, IDBI & HDFC.",
-  keywords: ["Home Loan Agra", "PNB Home Loan Rate Agra", "Balance Transfer Agra", "BFS Agra", "Vineeta Sharma", "Low interest home loan UP"],
-  authors: [{ name: "Bhardwaj Financial Services (BFS AGRA)" }],
+  title: {
+    default: "Bhardwaj Financial Services (BFS) | Home Loans from 7.15%*, Business Loan & LAP in Agra",
+    template: "%s | Bhardwaj Financial Services"
+  },
+  description: "Agra's premier financial institution at Sanjay Place. Lowest Home Loan ROI starting from 7.15%* p.a., Business Loans up to ₹5 Cr, Loan Against Property (LAP) & Balance Transfer with fast approval.",
+  keywords: [
+    "Home Loan Agra",
+    "Best Home Loan Consultant Agra",
+    "Home Loan Agent Agra",
+    "Home Loan Sanjay Place Agra",
+    "Loan Against Property Agra",
+    "Business Loan Agra",
+    "Mortgage Loan Agra",
+    "Lowest Interest Rate Home Loan 7.15",
+    "Cash salary home loan Agra",
+    "Home loan without ITR Agra",
+    "Balance Transfer Home Loan Agra",
+    "Bhardwaj Financial Services",
+    "BFS Agra"
+  ],
+  authors: [{ name: "Bhardwaj Financial Services (BFS)", url: "https://bfsfin.com" }],
   icons: {
     icon: [
       { url: "/favicon.png?v=5", type: "image/png" },

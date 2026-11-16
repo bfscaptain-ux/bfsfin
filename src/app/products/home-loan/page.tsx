@@ -11,21 +11,22 @@ export const metadata: Metadata = {
   keywords: [
     "Home Loan Provider Agra",
     "Home Loan Agra",
-    "Home Loan in Sanjay Place",
-    "Home Loan in Kamla Nagar",
-    "Home Loan in Dayalbagh",
-    "Home Loan in Shahganj",
-    "Best home loan Agra",
-    "Top home loan Agra",
-    "Low interest home loan Agra",
-    "Near me home loan Agra",
+    "Home Loan in Sanjay Place Agra",
+    "Home Loan in Kamla Nagar Agra",
+    "Home Loan in Dayalbagh Agra",
+    "Home Loan in Shahganj Agra",
+    "Home Loan in Sikandra Agra",
+    "Best home loan consultant Agra",
+    "Low interest home loan 7.15 Agra",
+    "Cash salary home loan Agra",
+    "Home loan without ITR Agra",
+    "Home loan balance transfer Agra",
+    "Near me home loan agent Agra",
     "Quick approval home loan Agra",
     "Mortgage Loan Agra",
-    "Finance Broker Agra",
-    "Mortgage Broker Agra",
-    "Loan Consultant Agra",
+    "Loan Consultant Sanjay Place Agra",
     "Bhardwaj Financial Services Home Loan",
-    "Bhardwaj Financial Services Agra"
+    "Praveen Bhardwaj loan consultant Agra"
   ],
   alternates: { canonical: "https://bfsfin.com/products/home-loan" }
 };
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 export default async function HomeLoanPage() {
   const heroImage = await prisma.heroImage.findUnique({ where: { pageId: 'products/home-loan' } });
   const rateSetting = await prisma.systemSetting.findUnique({ where: { key: 'homeLoanRate' } });
-  const startingRate = rateSetting?.value || "6.50";
+  const startingRate = rateSetting?.value || "7.15";
 
   const structuredData = buildLoanGraph({
     name: "Home Loan",
@@ -46,7 +47,7 @@ export default async function HomeLoanPage() {
     faqs: [
       {
         question: "What is the minimum interest rate for a Home Loan at BFS?",
-        answer: "Home loan interest rates at BFS start from 6.50% to 7.15% per annum based on CIBIL score, income stability, and loan amount."
+        answer: "Home loan interest rates at BFS start from 7.15%* onwards per annum based on CIBIL score, income stability, and loan amount."
       },
       {
         question: "How much loan amount can I get for a Home Loan?",
