@@ -72,8 +72,13 @@ export default async function NewsDetailPage({
     notFound();
   }
 
-  const related = articles
-    .filter((a) => a.id !== article.id && a.status === "published")
+  const publishedArticles = articles.filter((a) => a.status === "published");
+  const currentIndex = publishedArticles.findIndex((a) => a.id === article.id);
+  const prevArticle = currentIndex > 0 ? publishedArticles[currentIndex - 1] : null;
+  const nextArticle = currentIndex < publishedArticles.length - 1 ? publishedArticles[currentIndex + 1] : null;
+
+  const related = publishedArticles
+    .filter((a) => a.id !== article.id)
     .sort((a, b) => {
       // Prioritize same category
       if (a.category === article.category && b.category !== article.category) return -1;
@@ -144,7 +149,12 @@ export default async function NewsDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <NewsArticleClient article={article} relatedArticles={related} />
+      <NewsArticleClient
+        article={article}
+        relatedArticles={related}
+        prevArticle={prevArticle}
+        nextArticle={nextArticle}
+      />
     </>
   );
 }
