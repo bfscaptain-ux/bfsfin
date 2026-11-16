@@ -6,11 +6,24 @@ import QuickEligibility from "@/components/QuickEligibility";
 import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
 
 export const metadata: Metadata = {
-  title: "Check Home Loan Eligibility Online India | bfsfin.in",
-  description: "Calculate your Home Loan Eligibility instantly. Find out your maximum loan sanction amount based on income, age, and existing EMIs. Lowest rates guaranteed across India.",
-  keywords: ["Home Loan Eligibility India", "Check Home Loan Eligibility", "Home Loan Calculator India", "bfsfin.in", "bfsfin.com", "Bhardwaj Financial Services", "Online Home Loan Approval"],
+  title: "Home Loan Eligibility Calculator Online | Kitni Salary Chahiye | Bhardwaj Financial Services Agra",
+  description: "Check your home loan eligibility instantly. Find out home loan ke liye kitni salary chahiye, maximum loan amount, and FOIR calculation for SBI, HDFC, ICICI, PNB in Agra.",
+  keywords: [
+    "home loan eligibility calculator",
+    "home loan ke liye kitni salary chahiye",
+    "home loan eligibility check",
+    "home loan in Agra",
+    "home loan agent in Agra",
+    "home loan consultant Agra",
+    "home loan for salaried / self-employed",
+    "CIBIL score kam ho to loan milega kya",
+    "sabse sasta home loan",
+    "loan consultant near me",
+    "Bhardwaj Financial Services",
+    "Online Home Loan Approval Agra"
+  ],
   alternates: {
-    canonical: "https://bfsfin.in/eligibility",
+    canonical: "https://bfsfin.com/eligibility",
   }
 };
 

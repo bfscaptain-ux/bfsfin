@@ -6,28 +6,62 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Best Home Loans in Agra & India starting 7.15%* | Fast 5-Day Sanction | Bhardwaj Finance",
-  description: "Apply for the lowest interest rate home loans starting 7.15%* with direct bank approvals (HDFC, SBI, ICICI, PNB). Up to 90% property funding with 30-year tenure, zero brokerage, and doorstep document pickup across Agra, UP & India.",
+  title: "Home Loan in Agra | Bhardwaj Financial Services – Expert Loan Advisor",
+  description: "Looking for the best home loan in Agra? Bhardwaj Financial Services is Agra's top home loan DSA & consultant at Sanjay Place. Lowest interest rates starting 7.15%*, fast 5-day sanction, SBI, HDFC, ICICI & PNB bank approvals. Apply today!",
   keywords: [
-    "Home Loan Provider Agra",
-    "Home Loan Agra",
-    "Home Loan in Sanjay Place Agra",
-    "Home Loan in Kamla Nagar Agra",
-    "Home Loan in Dayalbagh Agra",
-    "Home Loan in Shahganj Agra",
-    "Home Loan in Sikandra Agra",
-    "Best home loan consultant Agra",
-    "Low interest home loan 7.15 Agra",
+    "home loan in Agra",
+    "home loan agent in Agra",
+    "home loan consultant Agra",
+    "best home loan Agra",
+    "home loan DSA Agra",
+    "home loan interest rate 2026",
+    "home loan eligibility calculator",
+    "home loan EMI calculator",
+    "home loan documents required",
+    "home loan for salaried / self-employed",
+    "home loan for salaried",
+    "home loan for self-employed",
+    "home loan balance transfer",
+    "home loan top up",
+    "LAP (loan against property) Agra",
+    "plot loan / construction loan Agra",
+    "plot loan Agra",
+    "construction loan Agra",
+    "home loan for first-time buyers",
+    "low interest home loan",
+    "home loan approval fast",
+    "SBI / HDFC / ICICI / Axis home loan Agra",
+    "SBI home loan Agra",
+    "HDFC home loan Agra",
+    "ICICI home loan Agra",
+    "Axis home loan Agra",
+    "financial advisor in Agra",
+    "loan advisor Agra",
+    "loan consultant near me",
+    "financial consultant Agra",
+    "loan broker in Agra",
+    "best financial services in Agra",
+    "CIBIL score improvement advice",
+    "loan planning consultant",
+    "Agra mein home loan kaise le",
+    "ghar ke liye loan Agra",
+    "sabse sasta home loan",
+    "home loan ke liye kitni salary chahiye",
+    "loan agent near me",
+    "ghar kharidne ke liye loan",
+    "CIBIL score kam ho to loan milega kya",
+    "home loan near me",
+    "loan consultant near Sanjay Place",
+    "loan consultant near Kamla Nagar",
+    "loan consultant near Sikandra",
+    "loan consultant near Dayalbagh",
+    "financial services Agra Uttar Pradesh",
+    "Bhardwaj Financial Services",
+    "BFS Agra",
+    "Praveen Bhardwaj loan consultant Agra",
     "Cash salary home loan Agra",
-    "Home loan without ITR Agra",
-    "Home loan balance transfer Agra",
-    "Near me home loan agent Agra",
-    "Quick approval home loan Agra",
-    "Mortgage Loan Agra",
-    "Loan Consultant Sanjay Place Agra",
-    "Bhardwaj Financial Services Home Loan",
-    "Praveen Bhardwaj loan consultant Agra"
-  ],
+    "Home loan without ITR Agra"
+],
   alternates: { canonical: "https://bfsfin.com/products/home-loan" }
 };
 
@@ -44,22 +78,38 @@ export default async function HomeLoanPage() {
     minAmount: 500000,
     maxAmount: 100000000,
     tenureYears: 30,
-    faqs: [
+        faqs: [
       {
-        question: "What is the minimum interest rate for a Home Loan at BFS?",
-        answer: "Home loan interest rates at BFS start from 7.15%* onwards per annum based on CIBIL score, income stability, and loan amount."
+        question: "Home loan in Agra: Bhardwaj Financial Services se loan lene ke kya benefits hain?",
+        answer: "Bhardwaj Financial Services (BFS) Agra ka #1 Home Loan DSA aur financial consultant hai (Sanjay Place HQ). Hum PNB, SBI, HDFC, ICICI aur Axis Bank se direct priority processing, lowest starting rate from 7.15%* p.a., 5-day fast sanction, aur zero hidden charges provide karte hain."
       },
       {
-        question: "How much loan amount can I get for a Home Loan?",
-        answer: "BFS offers financing up to 85%-90% of the property value, with loan amounts ranging from ₹10 Lakhs up to ₹10 Crores."
+        question: "Agra mein home loan kaise le? (Full Process)",
+        answer: "Agra mein home loan lene ke 3 aasan steps hain: 1) BFS Sanjay Place office visit karein ya WhatsApp (+91 79009-79001 / +91 92587-24227) par sampark karein. 2) Apne basic documents (Aadhaar, PAN, Salary Slip/ITR, Property Chain) share karein. 3) Hamari Senior Loan Advisor team aapke liye best bank chun kar 5 din mein loan sanction karati hai."
       },
       {
-        question: "What is the maximum repayment tenure for a home loan?",
-        answer: "The maximum repayment tenure offered for home loans is up to 30 years."
+        question: "Ghar ke liye loan Agra mein sabse sasta kahan milega?",
+        answer: "Sabse sasta home loan nationalized aur private banks jaise PNB, SBI, HDFC aur ICICI mein starting from 7.15%* p.a. se shuru hota hai. Final interest rate aapke CIBIL score, income stability aur property profile par depend karta hai."
       },
       {
-        question: "What documents are required to apply for a Home Loan?",
-        answer: "PAN card, Aadhaar card, last 3 months salary slips or 2 years ITR for self-employed, last 6 months bank statements, and property chain documents."
+        question: "Home loan ke liye kitni salary chahiye?",
+        answer: "Salaried applicants ke liye minimum net monthly take-home salary ₹15,000 se ₹25,000 honi chahiye. Agar aap cash salary ya self-employed hain aur ITR nahi hai, toh bhi BFS alternative banking aur surrogate programs ke through loan arrange karata hai."
+      },
+      {
+        question: "CIBIL score kam ho to loan milega kya?",
+        answer: "Haan, agar aapka CIBIL score kam hai (650-700) ya CIBIL -1 (fresh history) hai, toh bhi co-applicant add karke, collateral structuring, ya housing finance company route se loan sanction karaya ja sakta hai. BFS free CIBIL score improvement advice bhi provide karta hai."
+      },
+      {
+        question: "Home loan documents required: Kaun-kaun se documents chahiye?",
+        answer: "1) KYC: PAN Card aur Aadhaar Card. 2) Income: Salaried ke liye last 3 months salary slips aur 6 months bank statement; Self-employed ke liye 2 years ITR aur 12 months bank statement. 3) Property: Registry, chain documents, approved map aur Agreement to Sale."
+      },
+      {
+        question: "Home loan balance transfer aur top up loan Agra mein kaise karwaye?",
+        answer: "Agar aapka existing loan kisi bank mein high interest rate (8.5% - 9.5%+) par chal raha hai, toh BFS ke through 7.15%* par switch (balance transfer) karayein aur saath hi emergency ya business ke liye extra Top-Up Loan fund prapt karein."
+      },
+      {
+        question: "Loan consultant near me: Sanjay Place, Kamla Nagar, Sikandra, Dayalbagh mein service available hai?",
+        answer: "Haan, Bhardwaj Financial Services Sanjay Place, Kamla Nagar, Dayalbagh, Sikandra, Shahganj, Bodla, Fatehabad Road aur poore Agra mein free doorstep document pickup aur financial advisor assistance provide karta hai."
       }
     ]
   });
