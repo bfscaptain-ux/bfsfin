@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight, FileCheck, Newspaper, RefreshCw } from "lucide-react";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -287,6 +289,49 @@ export default async function CalculatorPage() {
             { name: "Stamp Duty Calculator", link: "/tools/stamp-duty", desc: "Calculate registry and stamp duty charges for UP, Delhi & NCR." },
             { name: "Tax Benefit Calculator", link: "/tools/tax-benefit", desc: "Calculate tax deduction under Section 24(b) & 80C." }
           ]} />
+
+          {/* BFS Direct Loan Products & Guidance Interlinking */}
+          <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950 via-slate-900 to-[#020617] text-white border border-emerald-500/30 shadow-xl">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div>
+                <span className="text-xs uppercase font-extrabold text-emerald-400 bg-emerald-500/15 px-3 py-1 rounded-full border border-emerald-500/30">
+                  Ready to Apply?
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-white mt-2">
+                  Get Home Loans from 7.15%* with Zero Brokerage
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+                  Compare 50+ banking partners, get complete doorstep legal vetting by High Court advocate desk, and fast 5-day sanction.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/products/home-loan"
+                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5"
+                >
+                  Apply Home Loan <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/products/balance-transfer"
+                  className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
+                >
+                  <RefreshCw className="w-3.5 h-3.5 text-teal-400" /> Balance Transfer
+                </Link>
+                <Link
+                  href="/resources/documents"
+                  className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
+                >
+                  <FileCheck className="w-3.5 h-3.5 text-amber-400" /> Documents
+                </Link>
+                <Link
+                  href="/news"
+                  className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
+                >
+                  <Newspaper className="w-3.5 h-3.5 text-blue-400" /> Market News
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 

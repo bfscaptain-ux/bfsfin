@@ -42,7 +42,7 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="fixed bottom-3 left-3 right-3 sm:bottom-5 sm:left-6 sm:right-6 md:left-auto md:right-6 md:max-w-lg z-[9999]"
+          className="fixed bottom-3 left-3 right-3 sm:bottom-5 sm:left-6 sm:right-6 md:left-auto md:right-6 md:max-w-lg z-[9999] print:hidden"
         >
           <div className="bg-slate-950/95 text-slate-100 backdrop-blur-xl border border-emerald-500/40 shadow-2xl rounded-2xl p-4 sm:p-5 relative overflow-hidden ring-1 ring-emerald-500/20">
             {/* Top decorative gradient line */}

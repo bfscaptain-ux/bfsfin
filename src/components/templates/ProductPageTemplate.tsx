@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, FileText, ChevronDown, Percent, Target, Wallet, TrendingDown, Zap, PiggyBank, ShieldCheck, Clock, Map, CheckCircle, Shield, Hammer, Building, RefreshCw, Globe, Users, Briefcase, Unlock, GraduationCap, Box, Car } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileText, ChevronDown, Percent, Target, Wallet, TrendingDown, Zap, PiggyBank, ShieldCheck, Clock, Map, CheckCircle, Shield, Hammer, Building, RefreshCw, Globe, Users, Briefcase, Unlock, GraduationCap, Box, Car, Calculator, TrendingUp, Newspaper, FileCheck, BookOpen } from "lucide-react";
 import { ProductData } from "@/types/product";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
@@ -241,6 +241,83 @@ export default function ProductPageTemplate({ data, calculator }: { data: Produc
                 </div>
               ))}
             </div>
+          </div>
+        </motion.section>
+
+        {/* Related Products & Financial Calculators Interlinking Hub */}
+        <motion.section {...fadeIn} className="space-y-8 mt-16 pt-12 border-t border-slate-200 dark:border-emerald-800">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block text-xs uppercase font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
+              BFS Lending Network
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+              Related Financing Solutions, Tools &amp; Intelligence
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              Calculate your EMIs, assess borrower eligibility, or explore sister financing products backed by 50+ banking partners.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              href="/products/home-loan"
+              className="p-5 rounded-2xl bg-white dark:bg-emerald-900/60 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 shadow-xs hover:shadow-md transition-all group"
+            >
+              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-black text-sm mb-1.5">
+                <Building className="w-4 h-4" /> Home Loan (7.15%*)
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-400">
+                Purchase ready-to-move flats, resale houses or self-construction with 90% funding.
+              </p>
+              <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-3 inline-block group-hover:translate-x-1 transition-transform">
+                Explore Home Loans &rarr;
+              </span>
+            </Link>
+
+            <Link
+              href="/calculator"
+              className="p-5 rounded-2xl bg-white dark:bg-emerald-900/60 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 shadow-xs hover:shadow-md transition-all group"
+            >
+              <div className="flex items-center gap-2 text-teal-600 dark:text-teal-400 font-black text-sm mb-1.5">
+                <Calculator className="w-4 h-4" /> EMI Calculator
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-400">
+                Simulate monthly installments, amortizations, and bank rate comparisons.
+              </p>
+              <span className="text-[11px] font-bold text-teal-600 dark:text-teal-400 mt-3 inline-block group-hover:translate-x-1 transition-transform">
+                Calculate Exact EMI &rarr;
+              </span>
+            </Link>
+
+            <Link
+              href="/eligibility"
+              className="p-5 rounded-2xl bg-white dark:bg-emerald-900/60 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 shadow-xs hover:shadow-md transition-all group"
+            >
+              <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-black text-sm mb-1.5">
+                <Percent className="w-4 h-4" /> Eligibility Check
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-400">
+                Check salary multipliers and FOIR norms across SBI, HDFC, ICICI, and PNB.
+              </p>
+              <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 mt-3 inline-block group-hover:translate-x-1 transition-transform">
+                Assess Loan Eligibility &rarr;
+              </span>
+            </Link>
+
+            <Link
+              href="/news"
+              className="p-5 rounded-2xl bg-white dark:bg-emerald-900/60 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 shadow-xs hover:shadow-md transition-all group"
+            >
+              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-black text-sm mb-1.5">
+                <Newspaper className="w-4 h-4" /> Market News Desk
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-400">
+                RBI monetary policy, repo rate revisions, CGTMSE limits, and festive rate alerts.
+              </p>
+              <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-3 inline-block group-hover:translate-x-1 transition-transform">
+                Read Financial News &rarr;
+              </span>
+            </Link>
           </div>
         </motion.section>
 

@@ -15,7 +15,13 @@ import {
   ShieldCheck,
   Percent,
   Wallet,
-  Briefcase
+  Briefcase,
+  Calculator,
+  TrendingUp,
+  RefreshCw,
+  FileCheck,
+  BookOpen,
+  Newspaper
 } from "lucide-react";
 
 export default function HomeLoanClient({ heroImageUrl, startingRate }: { heroImageUrl?: string; startingRate?: string }) {
@@ -78,7 +84,7 @@ export default function HomeLoanClient({ heroImageUrl, startingRate }: { heroIma
                 <Percent className="w-5 h-5" />
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Starting Rate</span>
               </div>
-              <span className="text-3xl sm:text-4xl font-black text-white">{startingRate || "6.50"}%</span>
+              <span className="text-3xl sm:text-4xl font-black text-white">{startingRate || "7.15"}%*</span>
             </div>
 
             <div className="flex-1 w-full flex flex-col items-center text-center px-4 pt-8 sm:pt-0">
@@ -182,49 +188,251 @@ export default function HomeLoanClient({ heroImageUrl, startingRate }: { heroIma
                   <div>
                     <h4 className="font-bold text-slate-900 dark:text-white">Credit Score (CIBIL)</h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">750+ for best rates. 650+ considered on a case-by-case basis.</p>
+                    <Link href="/resources/credit-score" className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">
+                      CIBIL score improvement advice &rarr;
+                    </Link>
                   </div>
                 </li>
               </ul>
+
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-emerald-800/60">
+                <Link
+                  href="/eligibility"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all"
+                >
+                  <Calculator className="w-3.5 h-3.5" /> Calculate Salary Eligibility &amp; FOIR &rarr;
+                </Link>
+              </div>
             </div>
 
             {/* Documents Block */}
-            <div className="bg-slate-50 dark:bg-emerald-900 rounded-2xl p-8 border border-slate-200 dark:border-emerald-800">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                <FileText className="w-6 h-6 text-emerald-600" /> Required Documents
-              </h3>
-              
-              <div className="space-y-4">
-                <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
-                  <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">1. Basic KYC</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> PAN Card, Aadhaar Card, Passport Size Photos
-                  </p>
-                </div>
+            <div className="bg-slate-50 dark:bg-emerald-900 rounded-2xl p-8 border border-slate-200 dark:border-emerald-800 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                  <FileText className="w-6 h-6 text-emerald-600" /> Required Documents
+                </h3>
                 
-                <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
-                  <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">2. Financial Documents</h4>
-                  {activeTab === 'salaried' ? (
-                    <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Last 3 months Salary Slips</li>
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Last 6 months Bank Statement</li>
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Form 16 (Latest 2 years)</li>
-                    </ul>
-                  ) : (
-                    <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> ITR with Computation (Last 3 years)</li>
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> CA Certified Balance Sheet</li>
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Current Account Statement (Last 12 months)</li>
-                    </ul>
-                  )}
-                </div>
+                <div className="space-y-4">
+                  <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">1. Basic KYC</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500" /> PAN Card, Aadhaar Card, Passport Size Photos
+                    </p>
+                  </div>
+                  
+                  <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">2. Financial Documents</h4>
+                    {activeTab === 'salaried' ? (
+                      <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Last 3 months Salary Slips</li>
+                        <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Last 6 months Bank Statement</li>
+                        <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Form 16 (Latest 2 years)</li>
+                      </ul>
+                    ) : (
+                      <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> ITR with Computation (Last 3 years)</li>
+                        <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> CA Certified Balance Sheet</li>
+                        <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Current Account Statement (Last 12 months)</li>
+                      </ul>
+                    )}
+                  </div>
 
-                <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
-                  <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">3. Property Documents</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Agreement to Sell / Chain Deeds / Approved Map
-                  </p>
+                  <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">3. Property Documents</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Agreement to Sell / Chain Deeds / Approved Map
+                    </p>
+                  </div>
                 </div>
               </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-emerald-800/60">
+                <Link
+                  href="/resources/documents"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 font-bold text-xs shadow-sm transition-all"
+                >
+                  <FileCheck className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" /> Full 15+ Banks Document Checklist &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. DEDICATED BFS ECOSYSTEM INTERLINKING & TOOLS */}
+      <section className="py-20 bg-slate-100 dark:bg-[#031512] border-t border-slate-200 dark:border-emerald-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="inline-block text-xs uppercase font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-3">
+              BFS Lending Network
+            </span>
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              Related Home Loan Solutions, Tools &amp; Expert Guides
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">
+              Everything you need to compare, calculate, save interest, and secure legal approval for your property.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* Tool 1: Balance Transfer */}
+            <Link
+              href="/products/balance-transfer"
+              className="p-6 rounded-2xl bg-white dark:bg-emerald-950/80 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <RefreshCw className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                Home Loan Balance Transfer
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Switch your high-interest running home loan to BFS rates starting from 7.15%* and save ₹4 to ₹12 Lakhs.
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-4 group-hover:translate-x-1 transition-transform">
+                Explore Balance Transfer &rarr;
+              </span>
+            </Link>
+
+            {/* Tool 2: Loan Against Property */}
+            <Link
+              href="/products/loan-against-property"
+              className="p-6 rounded-2xl bg-white dark:bg-emerald-950/80 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                Loan Against Property (LAP)
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Mortgage your residential, commercial, or industrial property in Agra &amp; India for high-ticket funding up to ₹25 Cr.
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 mt-4 group-hover:translate-x-1 transition-transform">
+                Explore LAP Mortgage &rarr;
+              </span>
+            </Link>
+
+            {/* Tool 3: Plot & Construction Loan */}
+            <Link
+              href="/products/plot-loan"
+              className="p-6 rounded-2xl bg-white dark:bg-emerald-950/80 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                Plot &amp; Construction Loan
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Combined financing for land purchase and step-by-step construction of independent villas and residential floors.
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400 mt-4 group-hover:translate-x-1 transition-transform">
+                Explore Plot Loans &rarr;
+              </span>
+            </Link>
+
+            {/* Tool 4: Tax Benefits Calculator */}
+            <Link
+              href="/tools/tax-benefit"
+              className="p-6 rounded-2xl bg-white dark:bg-emerald-950/80 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                Tax Benefits Calculator (Sec 24b &amp; 80C)
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Calculate your exact yearly income tax deductions on home loan principal and interest payments up to ₹3.5 Lakhs.
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-purple-400 mt-4 group-hover:translate-x-1 transition-transform">
+                Calculate Tax Savings &rarr;
+              </span>
+            </Link>
+
+            {/* Tool 5: Prepayment Savings */}
+            <Link
+              href="/tools/prepayment"
+              className="p-6 rounded-2xl bg-white dark:bg-emerald-950/80 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Calculator className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                Prepayment &amp; Foreclosure Calculator
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Discover how paying an extra 5% or 1 EMI per year cuts your 25-year home loan down to under 14 years.
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-teal-600 dark:text-teal-400 mt-4 group-hover:translate-x-1 transition-transform">
+                Simulate Prepayment &rarr;
+              </span>
+            </Link>
+
+            {/* Tool 6: Financial News Hub */}
+            <Link
+              href="/news"
+              className="p-6 rounded-2xl bg-white dark:bg-emerald-950/80 border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Newspaper className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                BFS Financial Intelligence &amp; News
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Stay updated with verified RBI monetary policy decisions, bank repo rate revisions, and lending guidelines.
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-4 group-hover:translate-x-1 transition-transform">
+                Read Market Updates &rarr;
+              </span>
+            </Link>
+
+          </div>
+
+          {/* CLUSTER BLOG GUIDES INTERLINKING STRIP */}
+          <div className="mt-10 p-6 rounded-3xl bg-white dark:bg-emerald-950/90 border border-slate-200 dark:border-emerald-800/80 shadow-sm">
+            <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" /> Essential Home Buyer Reading Guides:
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link
+                href="/blog/how-to-get-home-loan-with-low-cibil-score"
+                className="p-3.5 rounded-xl bg-slate-50 dark:bg-emerald-900/40 hover:bg-emerald-50 dark:hover:bg-emerald-900/70 border border-slate-200/80 dark:border-emerald-800 transition-all block"
+              >
+                <div className="font-bold text-xs text-slate-900 dark:text-slate-100">
+                  How to Get a Home Loan with Low CIBIL Score
+                </div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+                  Guarantor, co-applicant &amp; NBFC strategies when score is below 680.
+                </div>
+              </Link>
+
+              <Link
+                href="/blog/home-loan-balance-transfer-kab-karna-chahiye"
+                className="p-3.5 rounded-xl bg-slate-50 dark:bg-emerald-900/40 hover:bg-emerald-50 dark:hover:bg-emerald-900/70 border border-slate-200/80 dark:border-emerald-800 transition-all block"
+              >
+                <div className="font-bold text-xs text-slate-900 dark:text-slate-100">
+                  Home Loan Balance Transfer Kab Karna Chahiye?
+                </div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+                  Exact interest gap math, processing fees &amp; break-even analysis.
+                </div>
+              </Link>
+
+              <Link
+                href="/blog/home-loan-vs-lap-which-is-better"
+                className="p-3.5 rounded-xl bg-slate-50 dark:bg-emerald-900/40 hover:bg-emerald-50 dark:hover:bg-emerald-900/70 border border-slate-200/80 dark:border-emerald-800 transition-all block"
+              >
+                <div className="font-bold text-xs text-slate-900 dark:text-slate-100">
+                  Home Loan vs Loan Against Property (LAP)
+                </div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+                  ROI difference, end-use restrictions, and tax deduction comparison.
+                </div>
+              </Link>
             </div>
           </div>
         </div>

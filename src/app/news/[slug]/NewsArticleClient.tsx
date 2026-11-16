@@ -28,7 +28,11 @@ import {
   Copy,
   ExternalLink,
   ThumbsUp,
-  BookOpen
+  BookOpen,
+  FileCheck,
+  Percent,
+  RefreshCw,
+  Building2
 } from "lucide-react";
 
 interface NewsArticleClientProps {
@@ -93,22 +97,32 @@ export default function NewsArticleClient({
     }
   };
 
-  const getFontSizeClass = () => {
-    switch (fontSize) {
-      case "large":
-        return "text-lg leading-relaxed";
-      case "xlarge":
-        return "text-xl leading-relaxed";
-      default:
-        return "text-base leading-relaxed";
+  // Font size definitions that forcefully style all children elements
+  const fontStyles = {
+    normal: {
+      fontSize: "16px",
+      lineHeight: "1.8",
+      cssClass: "[&_p]:text-[16px] [&_p]:leading-[1.8] [&_li]:text-[16px] [&_li]:leading-[1.8] [&_td]:text-[14px]"
+    },
+    large: {
+      fontSize: "19px",
+      lineHeight: "1.85",
+      cssClass: "[&_p]:text-[19px] [&_p]:leading-[1.85] [&_li]:text-[19px] [&_li]:leading-[1.85] [&_td]:text-[16px]"
+    },
+    xlarge: {
+      fontSize: "22px",
+      lineHeight: "1.9",
+      cssClass: "[&_p]:text-[22px] [&_p]:leading-[1.9] [&_li]:text-[22px] [&_li]:leading-[1.9] [&_td]:text-[18px]"
     }
   };
+
+  const currentFont = fontStyles[fontSize];
 
   const renderContextualCTA = () => {
     switch (article.ctaType) {
       case "business-loan":
         return (
-          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 text-white border border-blue-500/40 shadow-2xl relative overflow-hidden">
+          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 text-white border border-blue-500/40 shadow-2xl relative overflow-hidden print:hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="space-y-2">
@@ -144,7 +158,7 @@ export default function NewsArticleClient({
 
       case "cibil-check":
         return (
-          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-950 via-slate-900 to-indigo-950 text-white border border-purple-500/40 shadow-2xl relative overflow-hidden">
+          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-950 via-slate-900 to-indigo-950 text-white border border-purple-500/40 shadow-2xl relative overflow-hidden print:hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="space-y-2">
@@ -166,10 +180,10 @@ export default function NewsArticleClient({
                   <PhoneCall className="w-4 h-4 text-purple-400" /> Call Advisor
                 </a>
                 <Link
-                  href="/contact"
+                  href="/resources/credit-score"
                   className="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs sm:text-sm shadow-lg transition-colors flex items-center gap-1.5"
                 >
-                  Free Consultation <ArrowRight className="w-4 h-4" />
+                  CIBIL Improvement Guide <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -179,7 +193,7 @@ export default function NewsArticleClient({
       case "home-loan":
       default:
         return (
-          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950 via-slate-950 to-[#020617] text-white border border-emerald-500/40 shadow-2xl relative overflow-hidden">
+          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950 via-slate-950 to-[#020617] text-white border border-emerald-500/40 shadow-2xl relative overflow-hidden print:hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="space-y-2">
@@ -215,21 +229,133 @@ export default function NewsArticleClient({
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#070d19] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
-      {/* 1. TOP READING PROGRESS BAR */}
-      <div className="fixed top-0 left-0 w-full h-1.5 bg-slate-200/50 dark:bg-slate-800/50 z-50">
+      
+      {/* 0. PRINT-SPECIFIC CSS RULES (Guarantees clean 100% whitepaper print) */}
+      <style jsx global>{`
+        @media print {
+          /* Hide all headers, footers, navigation, sidebars and floating overlays */
+          header, footer, nav, aside,
+          .floating-support, [data-floating],
+          .no-print, .share-toolbar, .reading-progress,
+          .feedback-box, .prev-next-nav, .related-news-section,
+          button, a[href^="tel:"], a[href^="https://wa.me"] {
+            display: none !important;
+          }
+
+          body, html {
+            background: #ffffff !important;
+            color: #000000 !important;
+            font-size: 11pt !important;
+            line-height: 1.5 !important;
+          }
+
+          main {
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+
+          .print-article-wrapper {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          .print-header-letterhead {
+            display: block !important;
+            border-bottom: 2px solid #059669;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+          }
+
+          .print-footer-notice {
+            display: block !important;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 12px;
+            margin-top: 30px;
+            font-size: 9pt;
+            color: #64748b;
+          }
+
+          h1, h2, h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+            color: #0f172a !important;
+          }
+
+          table, figure, blockquote, .briefing-box {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            margin: 14px 0 !important;
+          }
+
+          th, td {
+            border: 1px solid #94a3b8 !important;
+            padding: 6px 8px !important;
+            color: #0f172a !important;
+          }
+
+          th {
+            background-color: #f1f5f9 !important;
+            font-weight: bold !important;
+          }
+
+          /* Ensure images don't overflow paper */
+          img {
+            max-width: 100% !important;
+            max-height: 220px !important;
+            object-fit: contain !important;
+          }
+        }
+      `}</style>
+
+      {/* 1. TOP READING PROGRESS BAR (Screen only) */}
+      <div className="fixed top-0 left-0 w-full h-1.5 bg-slate-200/50 dark:bg-slate-800/50 z-50 print:hidden reading-progress">
         <div
           className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600 transition-all duration-150 ease-out shadow-sm shadow-emerald-500/50"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      <Header />
+      <div className="print:hidden">
+        <Header />
+      </div>
 
       <main className="flex-grow py-6 sm:py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 print-article-wrapper">
           
-          {/* TOP BAR: BACK NAVIGATION & BREADCRUMBS */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800/80">
+          {/* PRINT-ONLY OFFICIAL BFS LETTERHEAD */}
+          <div className="hidden print:block print-header-letterhead">
+            <div className="flex justify-between items-start">
+              <div>
+                <h2 className="text-xl font-black text-emerald-800 uppercase tracking-tight m-0">
+                  BHARDWAJ FINANCIAL SERVICES (BFS)
+                </h2>
+                <p className="text-xs text-slate-700 font-semibold m-0 mt-0.5">
+                  Institutional Financial Advisory &amp; Legal Desk • Sanjay Place, Agra
+                </p>
+                <p className="text-[11px] text-slate-500 m-0">
+                  Helpline: +91 92587-24227 | WhatsApp: +91 79009-79001 | Portal: https://bfsfin.com
+                </p>
+              </div>
+              <div className="text-right">
+                <span className="inline-block text-[10px] font-black uppercase px-2 py-1 bg-emerald-100 text-emerald-900 border border-emerald-300 rounded">
+                  Official Research Report
+                </span>
+                <p className="text-[10px] text-slate-400 mt-1">
+                  Printed: {new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* TOP BAR: BACK NAVIGATION & BREADCRUMBS (Screen only) */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800/80 print:hidden">
             <div className="flex items-center gap-2 text-xs sm:text-sm">
               <Link
                 href="/news"
@@ -274,8 +400,8 @@ export default function NewsArticleClient({
                 <Clock className="w-3.5 h-3.5 text-teal-500" />
                 {article.readTime}
               </span>
-              <span className="text-slate-300 dark:text-slate-700">•</span>
-              <span className="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
+              <span className="text-slate-300 dark:text-slate-700 print:hidden">•</span>
+              <span className="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 font-medium print:hidden">
                 <Eye className="w-3.5 h-3.5 text-blue-500" />
                 {article.views ? article.views.toLocaleString() : "1,420"} reads
               </span>
@@ -292,8 +418,8 @@ export default function NewsArticleClient({
             )}
           </header>
 
-          {/* AUTHOR & TOOLBAR ROW */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 px-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm mb-8">
+          {/* AUTHOR & TOOLBAR ROW (Screen only) */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 px-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm mb-8 print:hidden share-toolbar">
             {/* Author Profile */}
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -319,38 +445,56 @@ export default function NewsArticleClient({
 
             {/* Actions: Font Size & Share Bar */}
             <div className="flex items-center gap-2.5 flex-wrap self-end sm:self-auto">
-              {/* Font Size Adjuster */}
-              <div className="flex items-center bg-slate-100 dark:bg-slate-800/80 rounded-xl p-0.5 border border-slate-200 dark:border-slate-700">
+              
+              {/* WORKING FONT SIZE ADJUSTER BUTTONS */}
+              <div className="flex items-center bg-slate-100 dark:bg-slate-800/80 rounded-xl p-1 border border-slate-200 dark:border-slate-700 gap-1">
                 <button
+                  type="button"
                   onClick={() => setFontSize("normal")}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${fontSize === "normal" ? "bg-white dark:bg-slate-900 text-emerald-600 shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"}`}
-                  title="Normal font size"
+                  className={`px-3 py-1 rounded-lg text-xs font-black transition-all ${
+                    fontSize === "normal"
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                  }`}
+                  title="Default font size (16px)"
                 >
                   A
                 </button>
                 <button
+                  type="button"
                   onClick={() => setFontSize("large")}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${fontSize === "large" ? "bg-white dark:bg-slate-900 text-emerald-600 shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"}`}
-                  title="Large font size"
+                  className={`px-3 py-1 rounded-lg text-xs font-black transition-all ${
+                    fontSize === "large"
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                  }`}
+                  title="Large font size (19px)"
                 >
                   A+
                 </button>
                 <button
+                  type="button"
                   onClick={() => setFontSize("xlarge")}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${fontSize === "xlarge" ? "bg-white dark:bg-slate-900 text-emerald-600 shadow-xs" : "text-slate-500 hover:text-slate-900 dark:hover:text-white"}`}
-                  title="Extra Large font size"
+                  className={`px-3 py-1 rounded-lg text-xs font-black transition-all ${
+                    fontSize === "xlarge"
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                  }`}
+                  title="Extra Large font size (22px)"
                 >
                   A++
                 </button>
               </div>
 
-              {/* Print Button */}
+              {/* FLAWLESS PRINT BUTTON */}
               <button
+                type="button"
                 onClick={handlePrint}
-                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
-                title="Print / Save as PDF"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:bg-emerald-50 hover:text-emerald-700 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700 font-bold text-xs"
+                title="Print Clean Article Report"
               >
-                <Printer className="w-4 h-4" />
+                <Printer className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Print</span>
               </button>
 
               {/* WhatsApp Share */}
@@ -358,7 +502,7 @@ export default function NewsArticleClient({
                 href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold transition-all shadow-sm shadow-[#25D366]/30"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-black transition-all shadow-sm shadow-[#25D366]/30"
                 title="Share on WhatsApp"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
@@ -370,7 +514,7 @@ export default function NewsArticleClient({
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0077b5] hover:bg-[#006097] text-white text-xs font-bold transition-all shadow-sm shadow-[#0077b5]/30"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#0077b5] hover:bg-[#006097] text-white text-xs font-black transition-all shadow-sm shadow-[#0077b5]/30"
                 title="Share on LinkedIn"
               >
                 <Share2 className="w-3.5 h-3.5" />
@@ -379,6 +523,7 @@ export default function NewsArticleClient({
 
               {/* Copy Link */}
               <button
+                type="button"
                 onClick={handleCopyLink}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700"
                 title="Copy Article Link"
@@ -395,19 +540,19 @@ export default function NewsArticleClient({
             {/* ======================================================== */}
             {/* LEFT COLUMN: MAIN ARTICLE (COL-SPAN-8)                   */}
             {/* ======================================================== */}
-            <div className="lg:col-span-8 space-y-8">
+            <div className="lg:col-span-8 space-y-8 print:w-full print:max-w-full">
               
               {/* FEATURED HERO IMAGE WITH CAPTION */}
-              <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl bg-slate-900 group">
+              <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl bg-slate-900 group hero-image-wrapper">
                 <div className="relative overflow-hidden">
                   <img
                     src={article.imageUrl}
                     alt={article.title}
                     className="w-full max-h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none"></div>
-                  <div className="absolute bottom-3 left-4 right-4 text-xs text-slate-300 font-medium flex items-center justify-between">
-                    <span>Market Intelligence & Policy Benchmark Analysis</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none print:hidden"></div>
+                  <div className="absolute bottom-3 left-4 right-4 text-xs text-slate-300 font-medium flex items-center justify-between print:hidden">
+                    <span>Market Intelligence &amp; Policy Benchmark Analysis</span>
                     <span className="hidden sm:inline-block text-slate-400">BFS Editorial Desk</span>
                   </div>
                 </div>
@@ -415,10 +560,10 @@ export default function NewsArticleClient({
 
               {/* TL;DR EXECUTIVE SUMMARY BRIEFING BOX */}
               {article.tldr && article.tldr.length > 0 && (
-                <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/30 dark:border-emerald-500/20 shadow-md">
+                <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/30 dark:border-emerald-500/20 shadow-md briefing-box">
                   <div className="flex items-center justify-between mb-4 pb-3 border-b border-emerald-500/20">
                     <h3 className="text-xs sm:text-sm font-black text-emerald-700 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-emerald-500 animate-pulse" />
+                      <Sparkles className="w-4 h-4 text-emerald-500 animate-pulse print:hidden" />
                       Executive Briefing • Key Highlights
                     </h3>
                     <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
@@ -455,9 +600,54 @@ export default function NewsArticleClient({
                 </div>
               )}
 
-              {/* ARTICLE BODY PROSE CONTENT */}
+              {/* IN-ARTICLE INTERLINKING QUICK SHORTCUTS (Screen only) */}
+              <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs print:hidden">
+                <span className="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider block mb-2.5">
+                  📌 Related BFS Lending Tools &amp; Solutions:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    href="/calculator"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 font-bold hover:border-emerald-500 border border-slate-200 dark:border-slate-700 shadow-xs"
+                  >
+                    <Calculator className="w-3.5 h-3.5" /> EMI Calculator
+                  </Link>
+                  <Link
+                    href="/eligibility"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:text-emerald-500 border border-slate-200 dark:border-slate-700 shadow-xs"
+                  >
+                    <Percent className="w-3.5 h-3.5 text-blue-500" /> Check Eligibility
+                  </Link>
+                  <Link
+                    href="/products/balance-transfer"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:text-emerald-500 border border-slate-200 dark:border-slate-700 shadow-xs"
+                  >
+                    <RefreshCw className="w-3.5 h-3.5 text-teal-500" /> Balance Transfer (Save Lakhs)
+                  </Link>
+                  <Link
+                    href="/resources/credit-score"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:text-emerald-500 border border-slate-200 dark:border-slate-700 shadow-xs"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-purple-500" /> CIBIL Score Advice
+                  </Link>
+                  <Link
+                    href="/resources/documents"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:text-emerald-500 border border-slate-200 dark:border-slate-700 shadow-xs"
+                  >
+                    <FileCheck className="w-3.5 h-3.5 text-amber-500" /> Documents Checklist
+                  </Link>
+                  <Link
+                    href="/products/home-loan"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-500 shadow-xs"
+                  >
+                    Apply Home Loan (7.15%*) &rarr;
+                  </Link>
+                </div>
+              </div>
+
+              {/* ARTICLE BODY PROSE CONTENT (Responsive to font size switch) */}
               <div
-                className={`prose prose-slate dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 ${getFontSizeClass()}
+                className={`prose prose-slate dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 transition-all duration-150 ${currentFont.cssClass}
                   prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900 dark:prose-headings:text-white
                   prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-5 prose-h2:border-b prose-h2:border-slate-200 dark:prose-h2:border-slate-800 prose-h2:pb-3
                   prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
@@ -467,14 +657,18 @@ export default function NewsArticleClient({
                   prose-th:bg-slate-900 prose-th:text-white prose-th:p-4 prose-th:font-extrabold prose-th:text-xs prose-th:uppercase prose-th:tracking-wider
                   prose-td:p-3.5 prose-td:border-b prose-td:border-slate-200 dark:prose-td:border-slate-800 prose-td:text-xs sm:prose-td:text-sm
                   prose-tr:nth-child(even):bg-slate-50 dark:prose-tr:nth-child(even):bg-slate-900/50`}
+                style={{
+                  fontSize: currentFont.fontSize,
+                  lineHeight: currentFont.lineHeight
+                }}
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
               {/* CONTEXTUAL ACTION CTA */}
               {renderContextualCTA()}
 
-              {/* WAS THIS ANALYSIS HELPFUL? INTERACTIVE FEEDBACK */}
-              <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              {/* WAS THIS ANALYSIS HELPFUL? INTERACTIVE FEEDBACK (Screen only) */}
+              <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 print:hidden feedback-box">
                 <div>
                   <h4 className="text-sm font-black text-slate-900 dark:text-white mb-0.5">
                     Was this financial analysis helpful?
@@ -485,6 +679,7 @@ export default function NewsArticleClient({
                 </div>
                 <div className="flex items-center gap-2">
                   <button
+                    type="button"
                     onClick={() => setFeedbackGiven("helpful")}
                     className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
                       feedbackGiven === "helpful"
@@ -510,7 +705,7 @@ export default function NewsArticleClient({
               {/* AUTHOR BIO & CREDENTIALS BOX */}
               <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <div className="flex flex-col sm:flex-row items-start gap-5">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center font-black text-xl shrink-0 shadow-lg">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center font-black text-xl shrink-0 shadow-lg print:hidden">
                     PB
                   </div>
                   <div className="space-y-2">
@@ -536,7 +731,7 @@ export default function NewsArticleClient({
                         href="https://wa.me/919258724227"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1"
+                        className="text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1 print:hidden"
                       >
                         <MessageCircle className="w-3.5 h-3.5" /> WhatsApp Desk
                       </a>
@@ -545,8 +740,8 @@ export default function NewsArticleClient({
                 </div>
               </div>
 
-              {/* PREVIOUS & NEXT ARTICLE NAVIGATION */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              {/* PREVIOUS & NEXT ARTICLE NAVIGATION (Screen only) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 print:hidden prev-next-nav">
                 {prevArticle ? (
                   <Link
                     href={`/news/${prevArticle.slug}`}
@@ -587,12 +782,19 @@ export default function NewsArticleClient({
                 </p>
               </div>
 
+              {/* PRINT-ONLY FOOTER NOTICE */}
+              <div className="hidden print:block print-footer-notice">
+                <p>
+                  &copy; {new Date().getFullYear()} Bhardwaj Financial Services (BFS). Published for informational and client guidance. Direct Call Helpline: +91 92587-24227 | WhatsApp: +91 79009-79001 | Office: Shop No. 4, Friends Center, Sanjay Place, Agra.
+                </p>
+              </div>
+
             </div>
 
             {/* ======================================================== */}
             {/* RIGHT COLUMN: STICKY EDITORIAL SIDEBAR (COL-SPAN-4)      */}
             {/* ======================================================== */}
-            <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+            <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24 print:hidden">
               
               {/* SIDEBAR WIDGET 1: DIRECT SENIOR LOAN ADVISOR DESK */}
               <div className="p-6 rounded-3xl bg-gradient-to-br from-emerald-900 via-slate-900 to-[#020617] text-white border border-emerald-500/30 shadow-xl relative overflow-hidden">
@@ -608,7 +810,7 @@ export default function NewsArticleClient({
 
                   <div>
                     <h4 className="text-lg font-black text-white">Adv. Praveen Bhardwaj</h4>
-                    <p className="text-xs text-slate-300">Senior Financial & Legal Advisor</p>
+                    <p className="text-xs text-slate-300">Senior Financial &amp; Legal Advisor</p>
                     <p className="text-[11px] text-emerald-400 font-medium mt-1">
                       Shop No. 4, Friends Center, Sanjay Place, Agra
                     </p>
@@ -767,14 +969,14 @@ export default function NewsArticleClient({
 
           </div>
 
-          {/* BOTTOM RELATED ARTICLES CAROUSEL/GRID */}
+          {/* BOTTOM RELATED ARTICLES CAROUSEL/GRID (Screen only) */}
           {relatedArticles && relatedArticles.length > 0 && (
-            <section className="pt-16 mt-16 border-t border-slate-200 dark:border-slate-800">
+            <section className="pt-16 mt-16 border-t border-slate-200 dark:border-slate-800 print:hidden related-news-section">
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h3 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
                     <TrendingUp className="w-6 h-6 text-emerald-500" />
-                    More Financial News & Analysis
+                    More Financial News &amp; Analysis
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
                     Stay informed with verified policy shifts, tax reforms, and interest rate movements.
@@ -835,8 +1037,10 @@ export default function NewsArticleClient({
         </div>
       </main>
 
-      <FloatingSupport />
-      <Footer />
+      <div className="print:hidden">
+        <FloatingSupport />
+        <Footer />
+      </div>
     </div>
   );
 }

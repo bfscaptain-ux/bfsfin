@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight, FileCheck, RefreshCw, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -61,6 +63,49 @@ export default function EligibilityPage() {
           { name: "Prepayment Savings", link: "/tools/prepayment", desc: "See how part-payments can reduce your loan tenure." },
           { name: "Stamp Duty Calculator", link: "/tools/stamp-duty", desc: "Estimate the property registration cost in your state." }
         ]} />
+
+        {/* Actionable Next Steps & Product Interlinking */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950 via-slate-900 to-[#020617] text-white border border-emerald-500/30 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div>
+              <span className="text-xs uppercase font-extrabold text-emerald-400 bg-emerald-500/15 px-3 py-1 rounded-full border border-emerald-500/30">
+                Instant Sanction Route
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-white mt-2">
+                Eligible for a Loan? Lock In BFS Starting Rates from 7.15%*
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+                Get free eligibility vetting with FOIR calculation across 50+ lenders, zero hidden fees, and doorstep documentation.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/products/home-loan"
+                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5"
+              >
+                Apply Home Loan <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/products/balance-transfer"
+                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
+              >
+                <RefreshCw className="w-3.5 h-3.5 text-teal-400" /> Balance Transfer
+              </Link>
+              <Link
+                href="/resources/credit-score"
+                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-purple-400" /> CIBIL Guide
+              </Link>
+              <Link
+                href="/resources/documents"
+                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
+              >
+                <FileCheck className="w-3.5 h-3.5 text-amber-400" /> Documents
+              </Link>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Footer />

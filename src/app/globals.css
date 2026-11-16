@@ -318,31 +318,79 @@ html.dark .shine-text-glow {
 }
 
 
-/* PRINT REPORT OPTIMIZATION: Show ONLY the loan summary and repayment schedule */
+/* PRINT REPORT OPTIMIZATION: Ultra-clean whitepaper print layout across all pages */
 @media print {
-  header, footer, nav, aside,
+  @page {
+    size: auto;
+    margin: 10mm 12mm 12mm 12mm;
+  }
+
+  /* Strict suppression of web-only and floating elements */
+  header, 
+  footer, 
+  nav, 
+  aside,
   .print\:hidden,
   [data-print-hidden="true"],
   .no-print,
   #google_translate_element,
-  .goog-te-banner-frame {
+  .goog-te-banner-frame,
+  .fixed,
+  [class*="fixed"],
+  #mobile-install-prompt,
+  .cookie-consent,
+  .share-toolbar,
+  .reading-progress,
+  .feedback-box,
+  .prev-next-nav,
+  .related-news-section,
+  .floating-support,
+  button,
+  .theme-toggle,
+  .language-switcher {
     display: none !important;
+    visibility: hidden !important;
   }
 
-  body {
+  body, html {
     background: #ffffff !important;
     color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.55 !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* Table page breaks */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Table and block page break protections */
   table {
+    width: 100% !important;
+    border-collapse: collapse !important;
     page-break-inside: auto !important;
+    break-inside: auto !important;
+    margin: 12px 0 !important;
   }
   tr {
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
     page-break-after: auto !important;
+  }
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 10px !important;
+    color: #0f172a !important;
+    font-size: 9.5pt !important;
+  }
+  th {
+    background: #f1f5f9 !important;
+    font-weight: 700 !important;
+    display: table-header-group !important;
   }
   thead {
     display: table-header-group !important;
@@ -350,4 +398,36 @@ html.dark .shine-text-glow {
   tfoot {
     display: table-footer-group !important;
   }
+
+  figure, blockquote, .briefing-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  h1, h2, h3, h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    color: #0f172a !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    max-height: 220px !important;
+    object-fit: cover !important;
+    page-break-inside: avoid !important;
+  }
+}
+
+/* FONT SIZE CONTROLS FOR ARTICLE BODY (Forceful overrides over Tailwind prose) */
+.article-font-normal p, .article-font-normal li {
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+}
+.article-font-large p, .article-font-large li {
+  font-size: 19px !important;
+  line-height: 1.85 !important;
+}
+.article-font-xlarge p, .article-font-xlarge li {
+  font-size: 22px !important;
+  line-height: 1.95 !important;
 }

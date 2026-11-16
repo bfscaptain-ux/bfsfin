@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { motion } from "framer-motion";
 import { Activity, Gauge, TrendingUp, AlertTriangle } from "lucide-react";
 import Header from "@/components/Header";
@@ -68,6 +70,49 @@ export default function CreditScorePage() {
               <li>3. Do not apply for multiple loans or credit cards simultaneously.</li>
               <li>4. Maintain a healthy mix of secured (Home Loan) and unsecured (Credit Card) loans.</li>
             </ul>
+          </div>
+        </div>
+
+        {/* CIBIL Interlinking Hub & Next Action Steps */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 shadow-md">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div>
+              <span className="text-xs uppercase font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-500/30">
+                Next Steps for Borrowers
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">
+                Have Credit Questions or Score Below 700?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+                Get free credit profile evaluation from Adv. Praveen Bhardwaj. Learn how to structure co-applicants, remove wrong bureau reporting, and secure approvals.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/blog/how-to-get-home-loan-with-low-cibil-score"
+                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all"
+              >
+                Low CIBIL Home Loan Guide &rarr;
+              </Link>
+              <Link
+                href="/news/new-cibil-score-rules-hard-inquiries-impact"
+                className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-emerald-950 text-slate-700 dark:text-slate-200 font-bold text-xs border border-slate-200 dark:border-emerald-800 transition-all"
+              >
+                15-Day Reporting Rules &rarr;
+              </Link>
+              <Link
+                href="/products/home-loan"
+                className="px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs transition-all"
+              >
+                Apply Home Loan (7.15%*)
+              </Link>
+              <Link
+                href="/calculator"
+                className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-emerald-950 text-slate-700 dark:text-slate-200 font-bold text-xs border border-slate-200 dark:border-emerald-800 transition-all"
+              >
+                EMI Calculator
+              </Link>
+            </div>
           </div>
         </div>
       </main>

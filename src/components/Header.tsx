@@ -74,7 +74,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`sticky top-0 z-50 transition-all duration-300 ease-in-out ${
+      <header className={`sticky top-0 z-50 transition-all duration-300 ease-in-out print:hidden ${
         isNavVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
       } ${
         isNavScrolled 
@@ -712,7 +712,7 @@ export default function Header() {
       </header>
 
       {/* Mobile Bottom Navigation Bar */}
-      <div className="xl:hidden fixed bottom-0 left-0 w-full bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl border-t border-slate-200 dark:border-emerald-800 z-[100] pb-safe flex justify-around items-center h-16 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.1)] transition-colors duration-300">
+      <div className="xl:hidden fixed bottom-0 left-0 w-full bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl border-t border-slate-200 dark:border-emerald-800 z-[100] pb-safe flex justify-around items-center h-16 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.1)] transition-colors duration-300 print:hidden">
         <Link 
           href="/" 
           onClick={closeMobileMenu} 

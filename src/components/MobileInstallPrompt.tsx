@@ -83,7 +83,7 @@ export default function MobileInstallPrompt() {
   if (!showPrompt || isStandalone) return null;
 
   return (
-    <div className="fixed bottom-20 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 z-[99990] animate-in fade-in slide-in-from-bottom-4 duration-300 pointer-events-auto">
+    <div className="fixed bottom-20 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 z-[99990] print:hidden animate-in fade-in slide-in-from-bottom-4 duration-300 pointer-events-auto">
       {/* Luxury Glassmorphic Card (White / Emerald Accent) */}
       <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-xl border border-emerald-500/25 shadow-[0_16px_45px_rgba(16,185,129,0.18)] p-3.5 sm:p-4 text-slate-900 transition-all hover:shadow-[0_20px_50px_rgba(16,185,129,0.25)]">
         
