@@ -6,6 +6,16 @@ import { NewsArticle } from '@/types/news';
 
 const dataFilePath = path.join(process.cwd(), 'src', 'data', 'news.json');
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 200, headers: corsHeaders });
+}
+
 const generateSlug = (title: string) => {
   return title
     .toLowerCase()
@@ -49,9 +59,9 @@ export async function GET(request: Request) {
     if (slug) {
       const single = articles.find(a => a.slug === slug);
       if (!single) {
-        return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+        return NextResponse.json({ error: 'Article not found' }, { status: 404, headers: corsHeaders });
       }
-      return NextResponse.json({ data: single });
+      return NextResponse.json({ data: single }, { headers: corsHeaders });
     }
 
     // Filter by status (default: 'published' unless explicitly 'all' or 'draft')
@@ -88,18 +98,21 @@ export async function GET(request: Request) {
     const startIndex = (page - 1) * limit;
     const paginated = articles.slice(startIndex, startIndex + limit);
 
-    return NextResponse.json({
-      data: paginated,
-      meta: {
-        total,
-        page,
-        limit,
-        totalPages: Math.ceil(total / limit),
+    return NextResponse.json(
+      {
+        data: paginated,
+        meta: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit),
+        },
       },
-    });
+      { headers: corsHeaders }
+    );
   } catch (error) {
     console.error('Error fetching news:', error);
-    return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500, headers: corsHeaders });
   }
 }
 
@@ -123,7 +136,7 @@ export async function POST(request: Request) {
     } = body;
 
     if (!title || !content) {
-      return NextResponse.json({ error: 'Title and content are required' }, { status: 400 });
+      return NextResponse.json({ error: 'Title and content are required' }, { status: 400, headers: corsHeaders });
     }
 
     const articles = await readNewsFile();
@@ -166,10 +179,10 @@ export async function POST(request: Request) {
     articles.unshift(newArticle);
     await writeNewsFile(articles);
 
-    return NextResponse.json({ success: true, data: newArticle }, { status: 201 });
+    return NextResponse.json({ success: true, data: newArticle }, { status: 201, headers: corsHeaders });
   } catch (error) {
     console.error('Error creating news:', error);
-    return NextResponse.json({ error: 'Failed to create news' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create news' }, { status: 500, headers: corsHeaders });
   }
 }
 
@@ -179,14 +192,14 @@ export async function PUT(request: Request) {
     const { id, ...updates } = body;
 
     if (!id) {
-      return NextResponse.json({ error: 'Article ID is required' }, { status: 400 });
+      return NextResponse.json({ error: 'Article ID is required' }, { status: 400, headers: corsHeaders });
     }
 
     const articles = await readNewsFile();
     const index = articles.findIndex(a => a.id === id);
 
     if (index === -1) {
-      return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+      return NextResponse.json({ error: 'Article not found' }, { status: 404, headers: corsHeaders });
     }
 
     if (updates.content) {
@@ -204,10 +217,10 @@ export async function PUT(request: Request) {
 
     await writeNewsFile(articles);
 
-    return NextResponse.json({ success: true, data: articles[index] });
+    return NextResponse.json({ success: true, data: articles[index] }, { headers: corsHeaders });
   } catch (error) {
     console.error('Error updating news:', error);
-    return NextResponse.json({ error: 'Failed to update news' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to update news' }, { status: 500, headers: corsHeaders });
   }
 }
 
@@ -217,7 +230,7 @@ export async function DELETE(request: Request) {
     const id = searchParams.get('id');
 
     if (!id) {
-      return NextResponse.json({ error: 'Article ID is required' }, { status: 400 });
+      return NextResponse.json({ error: 'Article ID is required' }, { status: 400, headers: corsHeaders });
     }
 
     let articles = await readNewsFile();
@@ -225,13 +238,13 @@ export async function DELETE(request: Request) {
     articles = articles.filter(a => a.id !== id);
 
     if (articles.length === initialLength) {
-      return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+      return NextResponse.json({ error: 'Article not found' }, { status: 404, headers: corsHeaders });
     }
 
     await writeNewsFile(articles);
-    return NextResponse.json({ success: true, message: 'Article deleted successfully' });
+    return NextResponse.json({ success: true, message: 'Article deleted successfully' }, { headers: corsHeaders });
   } catch (error) {
     console.error('Error deleting news:', error);
-    return NextResponse.json({ error: 'Failed to delete news' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to delete news' }, { status: 500, headers: corsHeaders });
   }
 }
