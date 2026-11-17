@@ -3,6 +3,14 @@ import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import { existsSync } from "fs";
 
+export async function OPTIONS() {
+  const res = new NextResponse(null, { status: 200 });
+  res.headers.set("Access-Control-Allow-Origin", "*");
+  res.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  return res;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -14,7 +22,7 @@ export async function POST(request: NextRequest) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
     const filename = `${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
-    const folder = formData.get("folder") as string || "uploads";
+    const folder = (formData.get("folder") as string) || "uploads";
     
     // Ensure the directory exists
     const uploadDir = path.join(process.cwd(), "public", folder);
@@ -27,7 +35,11 @@ export async function POST(request: NextRequest) {
 
     const fileUrl = `/${folder}/${filename}`;
 
-    return NextResponse.json({ success: true, url: fileUrl });
+    const res = NextResponse.json({ success: true, url: fileUrl });
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    res.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    return res;
   } catch (error) {
     console.error("Upload Error:", error);
     return NextResponse.json({ success: false, error: "Upload failed" }, { status: 500 });
