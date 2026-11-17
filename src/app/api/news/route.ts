@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import fs from 'fs/promises';
 import path from 'path';
 import { NewsArticle } from '@/types/news';
@@ -179,6 +180,14 @@ export async function POST(request: Request) {
     articles.unshift(newArticle);
     await writeNewsFile(articles);
 
+    try {
+      revalidatePath('/news');
+      revalidatePath('/news/[slug]', 'page');
+      revalidatePath('/');
+    } catch (e) {
+      // Ignored outside Next context
+    }
+
     return NextResponse.json({ success: true, data: newArticle }, { status: 201, headers: corsHeaders });
   } catch (error) {
     console.error('Error creating news:', error);
@@ -217,6 +226,14 @@ export async function PUT(request: Request) {
 
     await writeNewsFile(articles);
 
+    try {
+      revalidatePath('/news');
+      revalidatePath('/news/[slug]', 'page');
+      revalidatePath('/');
+    } catch (e) {
+      // Ignored outside Next context
+    }
+
     return NextResponse.json({ success: true, data: articles[index] }, { headers: corsHeaders });
   } catch (error) {
     console.error('Error updating news:', error);
@@ -242,6 +259,15 @@ export async function DELETE(request: Request) {
     }
 
     await writeNewsFile(articles);
+
+    try {
+      revalidatePath('/news');
+      revalidatePath('/news/[slug]', 'page');
+      revalidatePath('/');
+    } catch (e) {
+      // Ignored outside Next context
+    }
+
     return NextResponse.json({ success: true, message: 'Article deleted successfully' }, { headers: corsHeaders });
   } catch (error) {
     console.error('Error deleting news:', error);

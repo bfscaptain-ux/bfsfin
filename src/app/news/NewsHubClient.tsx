@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -37,15 +37,34 @@ const CATEGORIES = [
 ];
 
 export default function NewsHubClient({ initialArticles }: { initialArticles: NewsArticle[] }) {
+  const [articles, setArticles] = useState<NewsArticle[]>(initialArticles || []);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Real-time live client sync with API to guarantee immediate reflection of deletes/edits
+  useEffect(() => {
+    let isMounted = true;
+    fetch(`/api/news?status=published&_t=${Date.now()}`, { cache: "no-store" })
+      .then(res => res.json())
+      .then(json => {
+        if (isMounted && json && Array.isArray(json.data)) {
+          setArticles(json.data);
+        }
+      })
+      .catch(err => {
+        console.warn("Live news sync:", err);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const trendingArticle = useMemo(() => {
-    return initialArticles.find(a => a.isTrending) || initialArticles[0];
-  }, [initialArticles]);
+    return articles.find(a => a.isTrending) || articles[0];
+  }, [articles]);
 
   const filteredArticles = useMemo(() => {
-    return initialArticles.filter(article => {
+    return articles.filter(article => {
       const matchesCategory =
         selectedCategory === "All" ||
         article.category.toLowerCase() === selectedCategory.toLowerCase();
@@ -54,20 +73,20 @@ export default function NewsHubClient({ initialArticles }: { initialArticles: Ne
       const matchesSearch =
         !query ||
         article.title.toLowerCase().includes(query) ||
-        article.tldr.some(t => t.toLowerCase().includes(query)) ||
+        (article.tldr && article.tldr.some(t => t.toLowerCase().includes(query))) ||
         article.content.toLowerCase().includes(query);
 
       return matchesCategory && matchesSearch;
     });
-  }, [initialArticles, selectedCategory, searchQuery]);
+  }, [articles, selectedCategory, searchQuery]);
 
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { All: initialArticles.length };
-    initialArticles.forEach(a => {
+    const counts: Record<string, number> = { All: articles.length };
+    articles.forEach(a => {
       counts[a.category] = (counts[a.category] || 0) + 1;
     });
     return counts;
-  }, [initialArticles]);
+  }, [articles]);
 
   const getCategoryBadgeClass = (category: string) => {
     switch (category) {
