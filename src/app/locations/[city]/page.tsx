@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingSupport from '@/components/FloatingSupport';
+import MasterSeoSchema from '@/components/seo/MasterSeoSchema';
 import Link from 'next/link';
 import { 
   MapPin, Phone, Building2, ArrowRight, ShieldCheck, CheckCircle2, 
@@ -104,97 +105,16 @@ export default async function CityLocationPage({ params }: { params: { city: str
   const phoneSetting = await prisma.systemSetting.findUnique({ where: { key: 'whatsappPhone' } });
   const displayPhone = phoneSetting?.value || "9286683232";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["FinancialService", "LocalBusiness"],
-        "@id": `https://bfsfin.com/locations/${params.city}#localbusiness`,
-        "name": `Bhardwaj Financial Services - ${cityDisp} Headquarters`,
-        "url": `https://bfsfin.com/locations/${params.city}`,
-        "telephone": "+91-9286683232",
-        "priceRange": "₹₹₹",
-        "image": "https://bfsfin.com/hero_image.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
-          "addressLocality": cityDisp,
-          "addressRegion": state,
-          "postalCode": "282002",
-          "addressCountry": "IN"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 27.199777,
-          "longitude": 78.006699
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "10:00",
-            "closes": "19:00"
-          }
-        ],
-        "areaServed": [
-          { "@type": "City", "name": cityDisp },
-          { "@type": "AdministrativeArea", "name": state }
-        ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "555"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `https://bfsfin.com/locations/${params.city}#breadcrumb`,
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bfsfin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://bfsfin.com/contact/locations" },
-          { "@type": "ListItem", "position": 3, "name": cityDisp, "item": `https://bfsfin.com/locations/${params.city}` }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `https://bfsfin.com/locations/${params.city}#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `Who is the best home loan and mortgage broker in ${cityDisp}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Bhardwaj Financial Services is ${cityDisp}'s #1 rated financial advisor and loan consultancy with direct tie-ups with SBI, HDFC, ICICI, PNB, and Bank of Baroda.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `What is the starting interest rate for home loans in ${cityDisp}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Home loan interest rates start from 7.15%* per annum with zero processing fee and doorstep document pickup across all areas in ${cityDisp}.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Can I get collateral-free business loans in ${cityDisp}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes, BFS provides collateral-free MSME and unsecured business loans up to ₹1 Crore in ${cityDisp} with fast 48-hour approvals.`
-            }
-          }
-        ]
-      }
-    ]
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-emerald-500/30 flex flex-col">
       <Header />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <MasterSeoSchema
+        citySlug={params.city}
+        cityName={cityDisp}
+        stateName={state}
+        subLocationTitle={`Home Loan, LAP & Finance Broker in ${cityDisp} | Bhardwaj Finance`}
+        loanType="Home Loan, LAP & Business Loan"
       />
 
       {/* HERO SECTION */}

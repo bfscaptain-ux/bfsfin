@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingSupport from '@/components/FloatingSupport';
+import MasterSeoSchema from '@/components/seo/MasterSeoSchema';
 import Link from 'next/link';
 import { 
   MapPin, Phone, Building2, ArrowRight, ShieldCheck, CheckCircle2, 
@@ -227,108 +228,20 @@ export default async function LocalAreaPage({ params }: { params: { city: string
   const phoneSetting = await prisma.systemSetting.findUnique({ where: { key: 'whatsappPhone' } });
   const displayPhone = phoneSetting?.value || "9286683232";
 
-  // Comprehensive JSON-LD Structured Data for Local SEO & Rich Snippets
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["FinancialService", "LocalBusiness"],
-        "@id": `https://bfsfin.com/locations/${params.city}/${params.area}#localbusiness`,
-        "name": `Bhardwaj Financial Services - ${area}, ${city}`,
-        "url": `https://bfsfin.com/locations/${params.city}/${params.area}`,
-        "telephone": "+91-9286683232",
-        "priceRange": "₹₹₹",
-        "image": "https://bfsfin.com/hero_image.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",
-          "addressLocality": city,
-          "addressRegion": "Uttar Pradesh",
-          "postalCode": "282002",
-          "addressCountry": "IN"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 27.199777,
-          "longitude": 78.006699
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "10:00",
-            "closes": "19:00"
-          }
-        ],
-        "areaServed": [
-          { "@type": "AdministrativeArea", "name": area },
-          { "@type": "City", "name": city }
-        ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "555"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `https://bfsfin.com/locations/${params.city}/${params.area}#breadcrumb`,
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bfsfin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://bfsfin.com/contact/locations" },
-          { "@type": "ListItem", "position": 3, "name": city, "item": `https://bfsfin.com/locations/${params.city}` },
-          { "@type": "ListItem", "position": 4, "name": area, "item": `https://bfsfin.com/locations/${params.city}/${params.area}` }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `https://bfsfin.com/locations/${params.city}/${params.area}#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `How fast can I get a Home Loan or Business Loan in ${area}, ${city}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `With Bhardwaj Financial Services in ${area}, in-principle loan sanction is delivered within 48 hours to 5 working days with doorstep document verification.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Which bank offers the lowest home loan interest rate in ${area}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `BFS works directly with top public & private bank branches (SBI, HDFC, PNB, ICICI, Bank of Baroda) providing special discounted rates starting from 7.15%* with zero processing fees.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Does Bhardwaj Finance provide doorstep document collection in ${area}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes! Our dedicated local field agents collect loan documents directly from your home or office anywhere across ${area} and ${city}.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Can I transfer my existing high-interest home loan to lower rates in ${area}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes, our Home Loan Balance Transfer service allows you to switch your loan from any NBFC or bank to SBI/HDFC/PNB at starting rates of 7.15%* plus extra top-up funding.`
-            }
-          }
-        ]
-      }
-    ]
-  };
+  const loanType = data?.loanType || "Home Loan & Financial Advisory";
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-emerald-500/30 flex flex-col">
       <Header />
 
-      {/* JSON-LD Script Injection */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <MasterSeoSchema
+        citySlug={params.city}
+        cityName={city}
+        stateName={state}
+        subLocationSlug={params.area}
+        subLocationTitle={`${loanType} in ${area}, ${city}`}
+        areaName={area}
+        loanType={loanType}
       />
       
       {/* LOCAL SEO HERO */}
