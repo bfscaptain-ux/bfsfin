@@ -17,9 +17,60 @@ const toSlug = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').
 const cleanAreaName = (name: string) => {
   return name
     .replace(/^Home Loan & Balance Transfer in\s+/i, '')
+    .replace(/^Home Loan in\s+/i, '')
+    .replace(/^Loan Against Property \(LAP\) in\s+/i, '')
+    .replace(/^Loan Against Property in\s+/i, '')
+    .replace(/^Business Loan in\s+/i, '')
+    .replace(/^Personal Loan in\s+/i, '')
+    .replace(/^Home Loan Balance Transfer in\s+/i, '')
+    .replace(/^Home Loan & Financial Advisory in\s+/i, '')
     .replace(/,\s*Agra$/i, '')
+    .replace(/,\s*Uttar Pradesh$/i, '')
     .trim();
 };
+
+interface ParsedIntent {
+  loanType: string;
+  baseAreaSlug: string;
+}
+
+function parseAreaIntent(slug: string, citySlug: string): ParsedIntent {
+  const s = slug.toLowerCase();
+  if (s.startsWith('home-loan-balance-transfer-in-')) {
+    return {
+      loanType: 'Home Loan Balance Transfer',
+      baseAreaSlug: s.replace('home-loan-balance-transfer-in-', '')
+    };
+  }
+  if (s.startsWith('home-loan-in-')) {
+    return {
+      loanType: 'Home Loan',
+      baseAreaSlug: s.replace('home-loan-in-', '')
+    };
+  }
+  if (s.startsWith('loan-against-property-in-') || s.startsWith('lap-in-')) {
+    return {
+      loanType: 'Loan Against Property (LAP)',
+      baseAreaSlug: s.replace(/^(loan-against-property-in-|lap-in-)/, '')
+    };
+  }
+  if (s.startsWith('business-loan-in-')) {
+    return {
+      loanType: 'Business Loan',
+      baseAreaSlug: s.replace('business-loan-in-', '')
+    };
+  }
+  if (s.startsWith('personal-loan-in-')) {
+    return {
+      loanType: 'Personal Loan',
+      baseAreaSlug: s.replace('personal-loan-in-', '')
+    };
+  }
+  return {
+    loanType: 'Home Loan & Financial Advisory',
+    baseAreaSlug: s
+  };
+}
 
 async function getLocalAreaData(citySlug: string, areaSlug: string) {
   const dataFilePath = path.join(process.cwd(), 'src', 'data', 'service-areas.json');
@@ -27,16 +78,64 @@ async function getLocalAreaData(citySlug: string, areaSlug: string) {
     const fileContents = await fs.readFile(dataFilePath, 'utf8');
     const cities = JSON.parse(fileContents);
     
-    for (const city of cities) {
-      if (toSlug(city.name) === citySlug) {
-        if (city.localAreas) {
-          const matchedArea = city.localAreas.find((a: any) => toSlug(a.name) === areaSlug || toSlug(cleanAreaName(a.name)) === areaSlug);
-          if (matchedArea) {
-            return { city, area: matchedArea };
-          }
-        }
-      }
+    const city = cities.find((c: any) => toSlug(c.name) === citySlug);
+    if (!city) return null;
+
+    const { loanType, baseAreaSlug } = parseAreaIntent(areaSlug, citySlug);
+
+    // 1. Try finding in localAreas of this city
+    let matchedArea = null;
+    if (city.localAreas && city.localAreas.length > 0) {
+      matchedArea = city.localAreas.find((a: any) => {
+        const areaNameSlug = toSlug(cleanAreaName(a.name));
+        const fullSlug = toSlug(a.name);
+        return (
+          areaNameSlug === baseAreaSlug ||
+          fullSlug === areaSlug ||
+          fullSlug === baseAreaSlug ||
+          fullSlug.includes(baseAreaSlug) ||
+          baseAreaSlug.includes(areaNameSlug)
+        );
+      });
     }
+
+    if (matchedArea) {
+      return { city, area: matchedArea, loanType };
+    }
+
+    // 2. Dynamic City Service Intent (Never 404)
+    const cleanCitySlug = baseAreaSlug.replace(new RegExp(`-${citySlug}$`, 'i'), '');
+    const areaName = cleanCitySlug
+      ? cleanCitySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+      : city.name;
+
+    const syntheticArea = {
+      id: `${citySlug}-${toSlug(areaSlug)}`,
+      name: `${loanType} in ${areaName}`,
+      whyChooseUs: `Bhardwaj Financial Services provides doorstep document pickup, lowest starting interest rates from 7.15%*, and fast 5-day bank sanction across ${areaName} with direct PSU and private bank approvals.`,
+      customerRelateText: `Working or residing in ${areaName}? We eliminate bank queues, branch visits, and legal verification delays completely.`,
+      landmarkContext: `Serving all major commercial corridors, residential colonies, and industrial clusters across ${areaName}.`,
+      localExpertName: 'Adv. Praveen Bhardwaj',
+      localExpertPhone: '9286683232',
+      successStoryName: `Client (${areaName})`,
+      successStoryText: `Secured smooth sanction with lowest interest spread through Bhardwaj Financial Services desk in ${areaName}.`,
+      statsCleared: '500+ Loans Sanctioned',
+      statsTime: '48-72 Hours Approval',
+      valueProps: [
+        { title: 'Direct Bank Tie-ups', description: `We work directly with HDFC, ICICI, SBI, and PNB in ${city.name} for priority processing.` },
+        { title: 'Local Doorstep Pickup', description: `Our field agents collect and verify documents directly from your home or office in ${areaName}.` },
+        { title: 'Zero Brokerage Fees', description: `Direct accredited institutional channel partner with zero hidden commissions or upfront fees.` }
+      ],
+      keywords: [
+        `${loanType} in ${areaName}`,
+        `Best ${loanType} ${areaName}`,
+        `Lowest Interest ${loanType} ${areaName}`,
+        `Loan Consultant ${areaName}`,
+        `Financial Advisor ${areaName}`
+      ]
+    };
+
+    return { city, area: syntheticArea, loanType };
   } catch (e) {}
   return null;
 }
@@ -47,31 +146,27 @@ export async function generateMetadata({ params }: { params: { city: string, are
   const rawArea = data?.area.name || params.area.replace(/-/g, ' ');
   const areaDisp = cleanAreaName(rawArea);
   const cityDisp = rawCity.charAt(0).toUpperCase() + rawCity.slice(1);
+  const loanType = data?.loanType || 'Home Loan & Financial Advisory';
 
-  const title = `Best Home Loan & Finance Consultant in ${areaDisp}, ${cityDisp} | Bhardwaj Finance`;
-  const description = data?.area.whyChooseUs || `Apply for the lowest interest rate home loans, LAP, and business loans in ${areaDisp}, ${cityDisp}. Starting 7.15%* with direct bank approvals (HDFC, SBI, PNB, ICICI), zero brokerage, and 15-minute doorstep service. Phone: 9286-683-232.`;
+  const title = `Best ${loanType} in ${areaDisp}, ${cityDisp} | Starting 7.15%* ROI | Bhardwaj Finance`;
+  const description = data?.area.whyChooseUs || `Apply for the lowest interest rate ${loanType} in ${areaDisp}, ${cityDisp}. Starting 7.15%* with direct bank approvals (SBI, HDFC, PNB, ICICI), zero brokerage, and doorstep document service. Phone: 9286-683-232.`;
 
   const keywords = (data?.area?.keywords && data.area.keywords.length > 0)
     ? data.area.keywords
     : [
-        `Home Loan Provider ${areaDisp}`,
+        `${loanType} Provider ${areaDisp}`,
+        `${loanType} ${areaDisp}`,
+        `Best ${loanType} ${areaDisp}`,
         `Home Loan ${areaDisp}`,
-        `Best Home Loan ${areaDisp}`,
-        `Personal Loan ${areaDisp}`,
         `Business Loan ${areaDisp}`,
         `Loan Against Property ${areaDisp}`,
         `Mortgage Loan ${areaDisp}`,
         `Finance Broker ${areaDisp}`,
-        `Mortgage Broker ${areaDisp}`,
-        `Financial Advisor ${areaDisp}`,
-        `Loan Agency ${areaDisp}`,
         `Loan Consultant ${areaDisp}`,
-        `Finance Consultant ${areaDisp}`,
+        `Financial Advisor ${areaDisp}`,
         `Balance Transfer Loan ${areaDisp}`,
-        `Top Up Loan ${areaDisp}`,
-        `Near Me Home Loan ${areaDisp}`,
-        `Low Interest Home Loan ${areaDisp}`,
-        `Quick Approval Home Loan ${areaDisp}`,
+        `Near Me ${loanType} ${areaDisp}`,
+        `Low Interest ${loanType} ${areaDisp}`,
         `Bhardwaj Financial Services ${areaDisp}`,
         `Bhardwaj Financial Services ${cityDisp}`
       ];
@@ -258,7 +353,7 @@ export default async function LocalAreaPage({ params }: { params: { city: string
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-                Top Home Loan & Finance Consultant in <br/>
+                Top {data?.loanType || 'Home Loan & Finance Consultant'} in <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200">{area}.</span>
               </h1>
               

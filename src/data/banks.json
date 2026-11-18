@@ -355,12 +355,82 @@
     "bank-of-baroda": {
       "id": "bank-of-baroda",
       "slug": "bank-of-baroda",
-      "name": "BANK OF BARODA",
-      "logo": "/uploads/bank-logos/bank-of-baroda-1787660172929.jpeg",
-      "salariedRate": "8.50%",
-      "selfEmployedRate": "8.60%",
-      "processingFee": "Standard",
-      "baseRateValue": "6.50%"
+      "name": "Bank of Baroda (BOB)",
+      "logo": "Building",
+      "seoTitle": "Bank of Baroda Home Loan Interest Rates 2026 | Baroda Home Loan",
+      "seoDescription": "Apply for Bank of Baroda Home Loans starting from 8.40% p.a. Flexible repayment, high loan-to-value up to 90%, and fast approval with Bhardwaj Financial Services.",
+      "salariedRate": "8.40% - 9.10%",
+      "selfEmployedRate": "8.50% - 9.25%",
+      "maxLTV": "90%",
+      "processingFee": "0.25% - 0.50% (Subject to festive waivers)",
+      "processingFeeValue": 2500,
+      "baseRateType": "BRLLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "Bank of Baroda (BOB) is one of India's top 3 public sector banks, renowned for offering the most competitive starting mortgage interest rates and generous loan-to-value limits.",
+        "BOB Baroda Home Loan is ideal for purchasing flats, villas, plots, or undertaking extensive home construction. Borrowers with excellent credit credentials (750+ CIBIL) enjoy preferential concession slabs.",
+        "BFS acts as an authorized liaison desk for Bank of Baroda, ensuring fast-track branch clearance, digital in-principle sanction, and doorstep legal paperwork collection."
+      ],
+      "benefits": [
+        "Highly competitive starting interest rates from 8.40% p.a.",
+        "Baroda Home Loan Advantage (OD facility) to minimize interest accrual.",
+        "Generous loan limits up to ₹10 Crores for premium residential properties.",
+        "Concessionary pricing for women borrowers and balance transfer accounts.",
+        "Zero foreclosure penalties on floating interest loans."
+      ],
+      "features": [
+        {
+          "icon": "Percent",
+          "title": "Low Interest Rates",
+          "description": "BOB regularly features among the lowest borrowing rate providers among PSU banks."
+        },
+        {
+          "icon": "Zap",
+          "title": "Quick Sanction",
+          "description": "Digitized in-principle sanction with BFS branch coordination."
+        },
+        {
+          "icon": "ShieldCheck",
+          "title": "Transparent Terms",
+          "description": "Zero hidden brokerage or administrative markups."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC",
+          "items": [
+            "PAN Card",
+            "Aadhaar",
+            "Address proof"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "3 months salary slips",
+            "6 months bank statement",
+            "Form 16 / 2 years ITR"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Sale agreement",
+            "Title deed copies",
+            "Approved map"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is Baroda Home Loan Advantage?",
+          "answer": "It is an overdraft facility linked to your savings account that calculates interest only on the net outstanding amount, lowering your EMI burden."
+        },
+        {
+          "question": "What is the maximum tenure for Bank of Baroda Home Loan?",
+          "answer": "Bank of Baroda offers repayment tenures up to 30 years or till the borrower reaches 70 years of age."
+        }
+      ]
     },
     "canara-bank": {
       "id": "canara-bank",
@@ -455,12 +525,400 @@
     "axis-bank": {
       "id": "axis-bank",
       "slug": "axis-bank",
-      "name": "AXIS BANK",
-      "logo": "/uploads/bank-logos/axis-bank-1787660334117.jpeg",
-      "salariedRate": "8.50%",
-      "selfEmployedRate": "8.60%",
-      "processingFee": "Standard",
-      "baseRateValue": "6.50%"
+      "name": "Axis Bank",
+      "logo": "Landmark",
+      "seoTitle": "Axis Bank Home Loan Interest Rates 2026 | 30-Year Tenure | BFS",
+      "seoDescription": "Apply for Axis Bank Home Loans with interest rates starting at 8.75% p.a. Benefit from 12 EMI waivers on Shubh Aarambh loans, fast digital approvals, and minimal paperwork.",
+      "salariedRate": "8.75% - 9.30%",
+      "selfEmployedRate": "8.85% - 9.45%",
+      "maxLTV": "90%",
+      "processingFee": "Up to 1% or ₹10,000 + GST",
+      "processingFeeValue": 5000,
+      "baseRateType": "Repo Linked Rate",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "Axis Bank is one of India's largest private commercial lenders, known for cutting-edge digital mortgage journeys and customer-centric home loan schemes.",
+        "Axis Bank Shubh Aarambh Home Loan offers a unique reward: 12 EMI waivers (4 EMIs waived at the end of 4th, 8th, and 12th year) for borrowers maintaining consistent repayment records.",
+        "BFS provides an accelerated processing desk for Axis Bank, ensuring prompt valuation, legal search, and loan sanction in as little as 3-5 working days."
+      ],
+      "benefits": [
+        "Unique 12 EMI waiver feature with Axis Shubh Aarambh Home Loan.",
+        "High loan amounts up to ₹15 Crores for luxury residences and builder floors.",
+        "Instant digital in-principle approval with minimal initial documentation.",
+        "Flexible balance transfer options with substantial top-up loan limits.",
+        "Dedicated relationship manager support through BFS."
+      ],
+      "features": [
+        {
+          "icon": "Sparkles",
+          "title": "EMI Waivers",
+          "description": "Enjoy up to 12 monthly EMI waivers across the loan lifecycle on eligible schemes."
+        },
+        {
+          "icon": "Zap",
+          "title": "3-5 Day Sanction",
+          "description": "Seamless digital verification ensures rapid underwriting and approval."
+        },
+        {
+          "icon": "Wallet",
+          "title": "Attractive Top-Up",
+          "description": "Get bonus funding at identical home loan rates for home renovation or personal use."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card",
+            "Utility bill"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "3 months pay slips",
+            "6 months salary account statement",
+            "Form 16"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Allotment letter",
+            "Builder buyer agreement",
+            "Payment receipts"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does Axis Bank 12 EMI waiver work?",
+          "answer": "Borrowers on the Shubh Aarambh scheme receive 4 EMIs waived at the end of year 4, 8, and 12, provided repayments have zero defaults."
+        },
+        {
+          "question": "Can self-employed professionals get an Axis Bank Home Loan?",
+          "answer": "Yes, doctors, CAs, architects, and business owners can qualify with 2-3 years audited financial statements and ITRs."
+        }
+      ]
+    },
+    "sbi": {
+      "id": "sbi",
+      "slug": "sbi",
+      "name": "State Bank of India (SBI)",
+      "logo": "Landmark",
+      "seoTitle": "SBI Home Loan Interest Rates 2026 | Starting 8.50% | Bhardwaj Finance",
+      "seoDescription": "Apply for SBI Home Loans with India's largest lender. Interest rates starting from 8.50% p.a., loan tenure up to 30 years, minimal processing fees, and doorstep service through BFS.",
+      "salariedRate": "8.50% - 9.15%",
+      "selfEmployedRate": "8.60% - 9.35%",
+      "maxLTV": "90%",
+      "processingFee": "0.35% + GST (Min ₹2,000, Max ₹10,000)",
+      "processingFeeValue": 2500,
+      "baseRateType": "EBLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "State Bank of India (SBI) is India's largest public sector lender and the undeniable benchmark for home mortgages. SBI Regular Home Loan offers unmatched security, completely transparent lending terms, and the lowest spread over RBI repo rates.",
+        "Through Bhardwaj Financial Services (BFS), your SBI loan application avoids lengthy branch queues. Our dedicated banking desk coordinates directly with SBI RACPC and zonal credit teams in Agra and Pan-India to ensure rapid legal verification and smooth disbursement.",
+        "SBI offers specialized borrowing variants including SBI Maxgain (home loan with overdraft facility to save massive interest), SBI Yuva Home Loan for young salaried individuals, and SBI Shaurya for defense personnel."
+      ],
+      "benefits": [
+        "Lowest interest rate spread linked directly to RBI repo rate (EBLR).",
+        "SBI Maxgain overdraft option to park surplus funds and cut interest payout.",
+        "Zero prepayment penalty and transparent daily reducing balance interest calculation.",
+        "Maximum tenure up to 30 years with repayment flexibility up to 75 years of age.",
+        "Special interest concession of 5 bps (0.05%) for women borrowers."
+      ],
+      "features": [
+        {
+          "icon": "ShieldCheck",
+          "title": "Sovereign Trust",
+          "description": "Backed by Government of India sovereign stability with 100% legal title scrutiny."
+        },
+        {
+          "icon": "Wallet",
+          "title": "SBI Maxgain OD",
+          "description": "Use your home loan account as an overdraft to withdraw and deposit cash freely."
+        },
+        {
+          "icon": "Clock",
+          "title": "Fast Sanction Desk",
+          "description": "BFS fast-tracks SBI document appraisal and property vetting within 5-7 business days."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC Documents",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card",
+            "Passport / Voter ID",
+            "Passport size photographs"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Last 3 months salary slips",
+            "Last 6 months salary bank statement",
+            "Form 16 / Latest 2 years ITRs"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Registered Agreement to Sale",
+            "Chain of Title Deeds (13 to 30 years)",
+            "Approved Building Map",
+            "NOC from builder/society"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the minimum CIBIL score required for SBI Home Loan?",
+          "answer": "SBI requires a minimum CIBIL score of 700. Borrowers with scores of 750 or higher qualify for the lowest slab starting at 8.50% p.a."
+        },
+        {
+          "question": "Can I transfer my existing home loan to SBI through BFS?",
+          "answer": "Yes! SBI Home Loan Balance Transfer allows you to switch your high-interest mortgage to SBI with zero administrative charges through BFS."
+        },
+        {
+          "question": "What is SBI Maxgain Home Loan?",
+          "answer": "SBI Maxgain operates as an overdraft account. You can park surplus salary or business revenue in the account to reduce your daily interest burden."
+        }
+      ]
+    },
+    "lic-housing-finance": {
+      "id": "lic-housing-finance",
+      "slug": "lic-housing-finance",
+      "name": "LIC Housing Finance (LICHFL)",
+      "logo": "ShieldCheck",
+      "seoTitle": "LIC Housing Finance Home Loan Interest Rates 2026 | Griha Suvidha",
+      "seoDescription": "Apply for LIC Housing Finance home loans starting at 8.45% p.a. Specialized loans for salaried, self-employed, and pensioners with tenures up to 30 years and easy sanction.",
+      "salariedRate": "8.45% - 9.15%",
+      "selfEmployedRate": "8.55% - 9.30%",
+      "maxLTV": "90%",
+      "processingFee": "₹3,000 to ₹10,000 Flat + GST",
+      "processingFeeValue": 3500,
+      "baseRateType": "LHPLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "LIC Housing Finance Limited (LICHFL) is one of India's largest and most trusted housing finance companies, backed by the unmatched heritage and trust of Life Insurance Corporation of India (LIC).",
+        "LICHFL is celebrated for accommodating unique borrower demographics, including older borrowers, government staff, professionals with part-cash incomes (Griha Suvidha scheme), and retired pensioners.",
+        "Through Bhardwaj Financial Services, your LICHFL application receives direct area office representation with doorstep title scrutiny and minimal documentation delays."
+      ],
+      "benefits": [
+        "Backed by the immense trust and credibility of the LIC brand.",
+        "Competitive starting interest rates from 8.45% p.a. for borrowers with CIBIL 750+.",
+        "Griha Suvidha loans for individuals nearing retirement or with non-standard income structures.",
+        "Extended tenure up to 30 years or 75 years of age at loan maturity.",
+        "Transparent fee structure with zero hidden pre-closure penalties."
+      ],
+      "features": [
+        {
+          "icon": "ShieldCheck",
+          "title": "Unrivalled Trust",
+          "description": "Decades of housing finance heritage trusted by millions of Indian families."
+        },
+        {
+          "icon": "Users",
+          "title": "Flexible Slabs",
+          "description": "Accommodates extended ages and multi-generation co-applicants comfortably."
+        },
+        {
+          "icon": "Home",
+          "title": "Rural & Urban Slabs",
+          "description": "Funding for rural abadi plots, nagar nigam lands, and suburban housing."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC",
+          "items": [
+            "PAN",
+            "Aadhaar Card",
+            "Current address proof"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Salary slips of last 3 months",
+            "Bank statements for last 6-12 months",
+            "Form 16 / ITR"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Title deed copies",
+            "Khatauni/Registry proof",
+            "Approved building layout"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Can senior citizens or pensioners apply for LICHFL Home Loan?",
+          "answer": "Yes, LICHFL offers dedicated pension schemes where tenure can extend up to the age of 75 years with a legal heir co-applicant."
+        },
+        {
+          "question": "What is the processing time for LICHFL through BFS?",
+          "answer": "BFS coordinates direct area manager clearance to sanction in-principle approvals within 5 to 7 business days."
+        }
+      ]
+    },
+    "kotak-mahindra-bank": {
+      "id": "kotak-mahindra-bank",
+      "slug": "kotak-mahindra-bank",
+      "name": "Kotak Mahindra Bank",
+      "logo": "Building",
+      "seoTitle": "Kotak Mahindra Bank Home Loan Rates 2026 | Instant Approval | BFS",
+      "seoDescription": "Apply for Kotak Mahindra Bank Home Loans starting at 8.70% p.a. Fast digital processing, special concessions for women borrowers, and seamless balance transfers with BFS.",
+      "salariedRate": "8.70% - 9.25%",
+      "selfEmployedRate": "8.80% - 9.40%",
+      "maxLTV": "90%",
+      "processingFee": "0.50% + GST",
+      "processingFeeValue": 4000,
+      "baseRateType": "K-RLLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "Kotak Mahindra Bank is widely acknowledged as one of the most innovative and digitally savvy mortgage lenders in India.",
+        "Kotak Home Loans feature straightforward interest rate structures, completely transparent processing charges, and preferential balance transfer rates for high-credit borrowers.",
+        "BFS provides an expedited relationship channel with Kotak's credit underwriters, providing digital paperless approvals and doorstep document collection."
+      ],
+      "benefits": [
+        "Highly competitive rates starting from 8.70% p.a. for salaried and self-employed professionals.",
+        "Special interest rate concession of 0.05% for women primary applicants.",
+        "Fast digital in-principle sanction with simplified documentation.",
+        "Seamless balance transfer facility with attractive top-up loan options.",
+        "Dedicated relationship manager assigned through BFS."
+      ],
+      "features": [
+        {
+          "icon": "Zap",
+          "title": "Digital Speed",
+          "description": "Rapid underwriting with automated income assessment algorithms."
+        },
+        {
+          "icon": "Percent",
+          "title": "Women Concession",
+          "description": "0.05% ROI reduction when home is registered in woman's name."
+        },
+        {
+          "icon": "RefreshCw",
+          "title": "Balance Transfer",
+          "description": "Lower your running EMI by switching your loan to Kotak with BFS."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card",
+            "Photograph"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "Latest 3 months pay slips",
+            "6 months primary bank statement",
+            "Form 16"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Agreement to sell",
+            "Occupancy certificate / Approved plan",
+            "Title deeds"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Does Kotak Bank offer home loan balance transfer?",
+          "answer": "Yes, Kotak offers balance transfer rates starting 8.70% with high-value top-up funding for home improvement."
+        }
+      ]
+    },
+    "bajaj-housing-finance": {
+      "id": "bajaj-housing-finance",
+      "slug": "bajaj-housing-finance",
+      "name": "Bajaj Housing Finance (BHFL)",
+      "logo": "ShieldCheck",
+      "seoTitle": "Bajaj Housing Finance Home Loan Interest Rates 2026 | Up to ₹15 Cr | BFS",
+      "seoDescription": "Apply for Bajaj Housing Finance Home Loans starting at 8.50% p.a. High loan quantum up to ₹15 Crores, flexible repayment options, and speedy 48-hour approval.",
+      "salariedRate": "8.50% - 9.20%",
+      "selfEmployedRate": "8.65% - 9.40%",
+      "maxLTV": "90%",
+      "processingFee": "0.25% - 0.50% + GST",
+      "processingFeeValue": 3500,
+      "baseRateType": "BHFL-RLLR",
+      "baseRateValue": "6.50%",
+      "overview": [
+        "Bajaj Housing Finance Limited (BHFL) is India's premier AAA-rated non-banking housing finance company, part of the legendary Bajaj Group.",
+        "BHFL is renowned for its speed, delivering in-principle sanctions in as fast as 48 hours. They cater exceptionally well to high-net-worth individuals, business owners, and large mortgage seekers requiring loan amounts up to ₹15 Crores.",
+        "BFS partners directly with Bajaj Housing Finance to provide priority queue processing, customized repayment plans, and zero-brokerage doorstep assistance."
+      ],
+      "benefits": [
+        "High loan amounts ranging from ₹30 Lakhs up to ₹15 Crores.",
+        "Fastest turnaround time (TAT) with approval in 48 to 72 hours.",
+        "Customized repayment plans including interest-only moratorium periods.",
+        "High LTV up to 90% for affordable and premium residential properties.",
+        "Doorstep documentation and complete legal assistance via BFS."
+      ],
+      "features": [
+        {
+          "icon": "Zap",
+          "title": "48-Hour TAT",
+          "description": "Fastest credit assessment in the housing finance industry."
+        },
+        {
+          "icon": "Wallet",
+          "title": "Up to ₹15 Crores",
+          "description": "High ticket lending capacity for luxury bungalows and commercial plots."
+        },
+        {
+          "icon": "CheckCircle2",
+          "title": "Minimal Paperwork",
+          "description": "Digitized KYC and simplified income proof vetting."
+        }
+      ],
+      "documents": [
+        {
+          "category": "KYC",
+          "items": [
+            "PAN Card",
+            "Aadhaar Card",
+            "Passport photo"
+          ]
+        },
+        {
+          "category": "Income Proof",
+          "items": [
+            "3 months salary slip",
+            "6 months bank statement",
+            "Form 16 / 2 years ITR"
+          ]
+        },
+        {
+          "category": "Property Documents",
+          "items": [
+            "Registered agreement",
+            "Title deed chain",
+            "Approved building plan"
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How quickly can Bajaj Housing Finance disburse a home loan?",
+          "answer": "Once property title documents are legally verified, BHFL disburses funds within 3 to 4 business days."
+        }
+      ]
     }
   },
   "rbiRepoRate": "6.50%",

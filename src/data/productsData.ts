@@ -956,5 +956,189 @@ export const productsData: Record<string, ProductData> = {
       { question: "Do you accept gold bars or coins?", answer: "As per RBI guidelines, loans are primarily given against gold jewelry/ornaments. Gold coins are accepted only up to a maximum weight of 50 grams per customer." },
       { question: "Is my gold safe?", answer: "Absolutely. Your jewelry is valued, placed in a secure pouch, and sealed in your presence. It is then stored in a high-security vault and is fully insured for its entire value." }
     ]
+  },
+  "commercial-property-loan": {
+    id: "commercial-property-loan",
+    slug: "commercial-property-loan",
+    name: "Commercial Property Loan",
+    seoTitle: "Commercial Property Loan in Agra & India | Up to ₹25 Cr | BFS",
+    seoDescription: "Finance commercial office spaces, retail shops, showrooms, industrial sheds, and warehouses with Bhardwaj Financial Services. Interest rates from 8.25%* p.a. with 15-year tenure.",
+    badge: "High Ticket Lending",
+    heroHeadline: "Fuel Your Enterprise with Commercial Real Estate Funding",
+    heroDescription: "Acquire, construct, or refinance commercial property, retail spaces, warehouses, or corporate offices with customized mortgage facilities up to ₹25 Crores at lowest starting ROI.",
+    overview: [
+      "Commercial real estate investments represent massive wealth-creation opportunities for ambitious businesses and property investors. Bhardwaj Financial Services provides specialized Commercial Property Loans tailored for acquiring retail showrooms, office spaces, warehouses, and hotel properties across Agra, UP, and Pan-India.",
+      "Whether you are purchasing a ready commercial asset, constructing a commercial plaza, or transferring an existing high-interest commercial mortgage, our institutional desk liaises directly with top private and PSU banks to secure high loan-to-value (LTV) limits and flexible repayment structures.",
+      "With loan tenures extending up to 15 years and competitive commercial interest rates starting at 8.25%* p.a., your commercial rental yields comfortably service your monthly debt obligations."
+    ],
+    benefits: [
+      "High borrowing limits ranging from ₹50 Lakhs up to ₹25 Crores.",
+      "Funding available for retail shops, corporate offices, warehouses, and industrial land.",
+      "Lease Rental Discounting (LRD) options to monetize future rental cash flows.",
+      "Flexible repayment structures including step-up and structured balloon repayments.",
+      "End-to-end commercial title search, valuation, and legal vetting by High Court advocate desk."
+    ],
+    quickFacts: [
+      { label: "Loan Quantum", value: "₹50 Lakhs to ₹25 Crores+" },
+      { label: "Starting ROI", value: "8.25%* p.a. onwards", highlight: true },
+      { label: "Tenure", value: "Up to 15 Years" },
+      { label: "LTV Ratio", value: "Up to 70% of Market Value" },
+      { label: "Approval TAT", value: "5 - 7 Working Days", highlight: true }
+    ],
+    features: [
+      { icon: "Building2", title: "Versatile Asset Coverage", description: "Finance commercial shops, offices, multiplexes, healthcare facilities, and warehouses." },
+      { icon: "Percent", title: "Competitive Commercial Spreads", description: "Direct partner bank spreads ensuring lower monthly debt burden." },
+      { icon: "FileCheck", title: "In-House Legal Vetting", description: "BFS handles commercial zoning, master plan checks, and title clearances completely." }
+    ],
+    eligibility: [
+      { title: "Eligible Entities", description: "Proprietorships, Partnerships, Pvt Ltd, Public Ltd Companies, and high-income individual investors." },
+      { title: "Business Vintage", description: "Minimum 3 years of profitable operating history with verified audited balance sheets." }
+    ],
+    documents: [
+      { category: "Entity & KYC", items: ["PAN, GST Registration, MOA/AOA or Partnership Deed", "KYC of Directors/Partners"] },
+      { category: "Financials", items: ["Last 3 years audited balance sheets with CA certification", "Last 12 months primary bank statement", "Latest 3 years ITRs"] },
+      { category: "Property Deeds", items: ["Commercial title deed, approved municipal map, building sanction plan", "Lease agreements (if applying for LRD)"] }
+    ],
+    faqs: [
+      { question: "What is the maximum loan amount available for commercial property?", answer: "BFS facilitates commercial property financing from ₹50 Lakhs up to ₹25 Crores based on property market valuation and debt service coverage." },
+      { question: "Can I get a loan against existing commercial property to fund my business?", answer: "Yes! You can mortgage your existing commercial office or shop under a Commercial Loan Against Property (LAP) or Lease Rental Discounting (LRD)." }
+    ]
+  },
+  "msme-loan": {
+    id: "msme-loan",
+    slug: "msme-loan",
+    name: "MSME Business Loan",
+    seoTitle: "MSME Loans up to ₹5 Crore Collateral-Free (CGTMSE) | BFS India",
+    seoDescription: "Accelerate your enterprise with government-backed MSME loans up to ₹5 Crores collateral-free under CGTMSE, or secured facilities up to ₹20 Crores. 7-day fast sanction through BFS.",
+    badge: "Government Backed",
+    heroHeadline: "Empowering Indian MSMEs with Fast Capital Injection",
+    heroDescription: "Access collateral-free term loans and working capital credit up to ₹5 Crores with CGTMSE credit guarantee coverage, competitive interest rates, and minimal documentation.",
+    overview: [
+      "Micro, Small, and Medium Enterprises (MSMEs) are the backbone of India's manufacturing and trading economy. Bhardwaj Financial Services delivers comprehensive MSME financing programs designed to support capacity expansion, raw material procurement, and working capital cycles.",
+      "Under the revised Credit Guarantee Scheme for Micro & Small Enterprises (CGTMSE), eligible manufacturing and service units can secure up to ₹5 Crores without pledging physical property or providing third-party guarantees.",
+      "Our specialized credit advisory team prepares structured CMA data, project reports, and financial ratio benchmarks to secure rapid sanctions from nationalized banks (SBI, PNB, BOB, Central Bank) and specialized MSME NBFCs."
+    ],
+    benefits: [
+      "Zero physical collateral required up to ₹5 Crores under CGTMSE scheme.",
+      "Lower interest rates starting from 8.50%* p.a. with priority sector lending benefits.",
+      "Subsidized processing fees and annual guarantee charges for manufacturing units.",
+      "Combination of Term Loans for machinery and Working Capital limits for daily operations.",
+      "Direct guidance on Udyam Registration, ZED certification, and government interest subventions."
+    ],
+    quickFacts: [
+      { label: "Collateral-Free Limit", value: "Up to ₹5 Crores (CGTMSE)", highlight: true },
+      { label: "Secured Limit", value: "Up to ₹20 Crores" },
+      { label: "Interest Rate", value: "8.50%* p.a. onwards" },
+      { label: "Tenure", value: "1 to 7 Years" },
+      { label: "Sanction SLA", value: "7 Working Days", highlight: true }
+    ],
+    features: [
+      { icon: "ShieldCheck", title: "Government Guarantee", description: "Credit risk covered by CGTMSE trust, ensuring easy bank approval." },
+      { icon: "TrendingUp", title: "Tailored for Growth", description: "Funds raw material purchase, modernization, and business expansion." },
+      { icon: "Calculator", title: "CMA Data Preparation", description: "BFS prepares professional banking CMA reports for instant credit clearance." }
+    ],
+    eligibility: [
+      { title: "Entity Type", description: "Registered Micro, Small, and Medium Enterprises with valid Udyam Registration certificate." },
+      { title: "Turnover & Vintage", description: "Minimum 12 to 24 months of verified business operations with GST filings." }
+    ],
+    documents: [
+      { category: "Registration", items: ["Udyam Registration Certificate", "GST Returns (last 12 months)", "Business PAN & Incorporation Deed"] },
+      { category: "Financials", items: ["Last 2-3 years ITR & Audited Financials", "Last 12 months current account bank statements", "Projected CMA report"] }
+    ],
+    faqs: [
+      { question: "Is collateral strictly required for an MSME loan?", answer: "No! Under the Government of India CGTMSE scheme, loans up to ₹5 Crores are approved with zero collateral or third-party guarantee." },
+      { question: "Can newly established manufacturing units apply?", answer: "Yes, greenfield projects with a viable DPR (Detailed Project Report) and promoter equity contribution can qualify." }
+    ]
+  },
+  "overdraft-cash-credit-limit": {
+    id: "overdraft-cash-credit-limit",
+    slug: "overdraft-cash-credit-limit",
+    name: "Overdraft & Cash Credit Limit (OD / CC)",
+    seoTitle: "Overdraft (OD) & Cash Credit (CC) Limit for Business | BFS",
+    seoDescription: "Secure high-limit Overdraft (OD) and Cash Credit (CC) working capital facilities up to ₹15 Crores. Pay interest only on utilized funds. Fast sanction with Bhardwaj Financial Services.",
+    badge: "Flexible Working Capital",
+    heroHeadline: "Smart Liquidity: Pay Interest Only on What You Use",
+    heroDescription: "Overcome cash flow bottlenecks with institutional Overdraft (OD) and Cash Credit (CC) facilities secured against residential, commercial, or industrial assets.",
+    overview: [
+      "Managing working capital fluctuations, seasonal inventory surges, and supplier payment cycles demands on-demand liquidity. An Overdraft (OD) or Cash Credit (CC) limit gives your business the ultimate financial agility.",
+      "Unlike traditional term loans where interest is charged on the entire disbursed amount, with an OD/CC facility, interest is calculated daily only on the exact funds utilized. You can deposit revenue to bring your balance to zero and withdraw funds whenever business opportunities arise.",
+      "Bhardwaj Financial Services structures high-value OD and CC limits from ₹25 Lakhs up to ₹15 Crores through PSU and leading private banks, securing competitive spreads and flexible renewal terms."
+    ],
+    benefits: [
+      "Massive interest savings: Pay interest only on daily utilized funds, not the total limit.",
+      "High liquidity limits from ₹25 Lakhs up to ₹15 Crores.",
+      "Renewable annually with simplified annual review documentation.",
+      "Funding secured against residential property, commercial shops, industrial plots, or stock/debtors.",
+      "Seamless digital drawdowns via internet banking and mobile banking."
+    ],
+    quickFacts: [
+      { label: "Limit Amount", value: "₹25 Lakhs to ₹15 Crores+" },
+      { label: "Interest Rate", value: "8.15%* p.a. onwards (On utilized amount)", highlight: true },
+      { label: "Renewal Cycle", value: "Annual (12 Months)" },
+      { label: "Security", value: "Property Mortgage or Stock/Book Debts" },
+      { label: "Drawdown", value: "Unlimited 24/7 Access", highlight: true }
+    ],
+    features: [
+      { icon: "RefreshCw", title: "Daily Interest Savings", description: "Deposit surplus receipts daily to immediately stop interest accrual." },
+      { icon: "Zap", title: "Instant Drawdown", description: "Access liquid cash 24/7 through net banking or cheque book." },
+      { icon: "Wallet", title: "Stock & Book Debt Hypothecation", description: "Unlock liquidity tied up in inventory and unpaid client invoices." }
+    ],
+    eligibility: [
+      { title: "Borrower Profile", description: "Manufacturers, traders, distributors, service providers, and professionals with active current accounts." },
+      { title: "Turnover", description: "Minimum annual turnover of ₹50 Lakhs with healthy bank banking credits." }
+    ],
+    documents: [
+      { category: "Business Documents", items: ["GST Returns (GSTR-1 & GSTR-3B for 12 months)", "Business PAN & Address Proof"] },
+      { category: "Financials", items: ["Last 3 years audited balance sheets", "Last 12 months bank statements", "Stock and debtors statement"] }
+    ],
+    faqs: [
+      { question: "What is the difference between Term Loan and Cash Credit (CC)?", answer: "A term loan requires regular monthly EMI on the full principal, whereas CC allows you to withdraw and deposit funds freely, paying interest only on the daily utilized balance." }
+    ]
+  },
+  "machinery-loan": {
+    id: "machinery-loan",
+    slug: "machinery-loan",
+    name: "Machinery & Equipment Loan",
+    seoTitle: "Machinery Loan & Industrial Equipment Financing | Up to ₹10 Cr | BFS",
+    seoDescription: "Finance industrial machinery, plant equipment, CNC machines, and printing units with Bhardwaj Financial Services. Interest rates from 8.50%*, up to 85% equipment cost funding.",
+    badge: "Industrial Expansion",
+    heroHeadline: "Upgrade Industrial Capacity with Fast Machinery Financing",
+    heroDescription: "Acquire modern CNC machinery, plant equipment, manufacturing units, and commercial tools with customized equipment financing up to ₹10 Crores and 7-year repayment terms.",
+    overview: [
+      "In an increasingly competitive manufacturing economy, technological modernization is the key to business profitability and higher production margins. Bhardwaj Financial Services provides specialized Machinery and Equipment Loans for manufacturing enterprises across Agra, Firozabad, Mathura, and Pan-India.",
+      "We finance new and imported plant machinery, CNC machines, footwear manufacturing units, glass furnaces, packaging machinery, textile equipment, and diagnostic medical equipment with high loan-to-cost ratios.",
+      "Because the machinery itself acts as the primary hypothecation security, businesses can expand production without exhausting their physical property collateral."
+    ],
+    benefits: [
+      "Funding up to 85% of machinery invoice cost (including GST and customs duties for imported equipment).",
+      "Loan limits from ₹15 Lakhs up to ₹10 Crores.",
+      "Primary hypothecation of machinery itself — minimal additional collateral required.",
+      "Repayment tenures from 3 to 7 years aligned with equipment depreciation cycles.",
+      "Direct disbursement to domestic machinery manufacturers or international suppliers via Letter of Credit (LC)."
+    ],
+    quickFacts: [
+      { label: "Equipment Funding", value: "Up to 85% of Proforma Invoice", highlight: true },
+      { label: "Loan Quantum", value: "₹15 Lakhs to ₹10 Crores" },
+      { label: "Starting ROI", value: "8.50%* p.a. onwards" },
+      { label: "Tenure", value: "3 to 7 Years" },
+      { label: "Primary Security", value: "Hypothecation of Purchased Machinery", highlight: true }
+    ],
+    features: [
+      { icon: "Building2", title: "Direct Supplier Payout", description: "Funds disbursed directly to equipment suppliers for seamless procurement." },
+      { icon: "Percent", title: "Tax Depreciation Benefits", description: "Claim maximum depreciation deductions on new machinery capital expenditure." },
+      { icon: "ShieldCheck", title: "No Property Pledge Needed", description: "Equipment itself serves as primary hypothecation collateral on eligible profiles." }
+    ],
+    eligibility: [
+      { title: "Business Profile", description: "Manufacturing units, engineering firms, printers, food processors, and healthcare providers." },
+      { title: "Operating Vintage", description: "Minimum 2 years of manufacturing operations with positive cash accruals." }
+    ],
+    documents: [
+      { category: "Equipment Invoices", items: ["Proforma Invoice / Quotation from machine manufacturer", "Machinery technical specifications & utility assessment"] },
+      { category: "Financials", items: ["Last 2 years audited balance sheets", "Last 12 months current account bank statements", "GST returns"] }
+    ],
+    faqs: [
+      { question: "Can imported machinery be financed?", answer: "Yes! We finance imported CNC and industrial equipment including customs clearance and LC facilities." },
+      { question: "What is the margin money required for a machinery loan?", answer: "Typically 15% to 25% promoter margin is required, with the lender financing the remaining 75% to 85% of the total equipment cost." }
+    ]
   }
 };

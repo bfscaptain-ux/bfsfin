@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
@@ -51,6 +51,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function FaqPostPage({ params }: { params: { slug: string } }) {
+  if (params.slug && (params.slug.includes('review-') || params.slug.startsWith('what-makes-bhardwaj-finance-the-top-rated-loan-agency-in-agra-review-'))) {
+    redirect('/reviews');
+  }
+
   const { faq, allFaqs } = await getFaq(params.slug);
 
   if (!faq) {
