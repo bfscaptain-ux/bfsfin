@@ -66,7 +66,7 @@ export default async function CalculatorPage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/calculator#app",
-        "name": "Advanced Home Loan EMI Calculator - Bhardwaj Finance",
+        "name": "Advanced Home Loan EMI Calculator - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/calculator",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
@@ -162,7 +162,7 @@ export default async function CalculatorPage() {
             "name": "Which bank has the lowest Home Loan interest rate currently?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Top PSU banks like SBI, PNB, and Bank of Baroda offer home loan rates starting around 8.40% to 8.65%. Through Bhardwaj Finance's institutional partner pool, eligible borrowers with strong profiles can access special promotional sanction rates starting from 7.15%*."
+              "text": "Top PSU banks like SBI, PNB, and Bank of Baroda offer home loan rates starting around 8.40% to 8.65%. Through Bhardwaj Financial Services' institutional partner pool, eligible borrowers with strong profiles can access special promotional sanction rates starting from 7.15%*."
             }
           },
           {
@@ -170,7 +170,7 @@ export default async function CalculatorPage() {
             "name": "What is the maximum loan amount I can calculate?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "At Bhardwaj Finance, we process loans starting from ₹10 Lakhs with No Upper Limit. You can simulate loan amounts from ₹10 Lakhs up to ₹50 Crores, ₹100 Crores+, or any custom figure."
+              "text": "At Bhardwaj Financial Services, we process loans starting from ₹10 Lakhs with No Upper Limit. You can simulate loan amounts from ₹10 Lakhs up to ₹50 Crores, ₹100 Crores+, or any custom figure."
             }
           },
           {

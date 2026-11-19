@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Property Registry Fees Sanjay Place Agra",
     "Property Registry Fees Dayal Bagh Agra",
     "Property Registry Fees Kamla Nagar Agra",
-    "Bhardwaj Finance Stamp Duty Tool"
+    "Bhardwaj Financial Services Stamp Duty Tool"
   ],
   alternates: {
     canonical: "https://bfsfin.com/tools/stamp-duty",
@@ -47,7 +47,7 @@ export default function StampDutyPage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/tools/stamp-duty#app",
-        "name": "Stamp Duty & Property Registry Calculator - Bhardwaj Finance",
+        "name": "Stamp Duty & Property Registry Calculator - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/tools/stamp-duty",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",

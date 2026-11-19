@@ -71,7 +71,7 @@ export default function AllCalculatorsHub({ currentToolId }: AllCalculatorsHubPr
             Explore Other Calculators
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
-            100% free financial decision tools by Bhardwaj Finance.
+            100% free financial decision tools by Bhardwaj Financial Services.
           </p>
         </div>
 

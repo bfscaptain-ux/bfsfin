@@ -15,7 +15,7 @@ export default function FloatingSupport({
   const [chatOpen, setChatOpen] = useState(false);
 
   const cleanWhatsapp = (whatsappPhone || "919286683232").replace(/[^0-9]/g, "");
-  const cleanPhone = (contactPhone || "+919258724227").replace(/[^0-9+]/g, "");
+  const cleanPhone = (contactPhone || "+919286683232").replace(/[^0-9+]/g, "");
 
   return (
     <>

@@ -55,7 +55,7 @@ export default function AdminSettingsCMS() {
     supportPhone: "7900-979-002",
     officialEmail: "info@bfsfin.com",
     officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002",
-    tickerText: "⚡ Fastest Home Loan Approval in Agra (5 Days Guarantee)",
+    tickerText: "⚡ Express Home Loan Processing in Agra (3-5 Days TAT*)",
     rbiComplianceBadge: "RBI Compliant & Certified Mortgage Broker",
     maxLoanCap: "₹1 Crore+",
     minInterestRate: "6.50%",
@@ -69,7 +69,7 @@ export default function AdminSettingsCMS() {
     balanceTransferRate: "6.45",
     goldLoanRate: "1.00",
     contactPhone: "+91 7900-979-001",
-    whatsappPhone: "917900979001",
+    whatsappPhone: "919286683232",
     ownerName: "Vineeta Sharma",
     ownerRole: "Founder & Managing Director, BFS",
     ownerQuote: "We don't just secure loans; we legally vet your lifetime investment. Total transparency, zero hidden brokerage.",
@@ -235,7 +235,7 @@ export default function AdminSettingsCMS() {
                 value={settings.whatsappPhone}
                 onChange={(e) => setSettings({ ...settings, whatsappPhone: e.target.value })}
                 className="w-full bg-emerald-950 border border-emerald-800 rounded-xl px-3 py-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 font-bold"
-                placeholder="917900979001"
+                placeholder="919286683232"
               />
             </div>
           </div>

@@ -87,7 +87,7 @@ export default function CalculatorNavSwitcher({ currentToolId }: CalculatorNavSw
   const handleShare = () => {
     if (typeof window !== "undefined") {
       const text = encodeURIComponent(
-        `📊 Check out this ${activeTool.name} by Bhardwaj Finance:\n${window.location.href}`
+        `📊 Check out this ${activeTool.name} by Bhardwaj Financial Services:\n${window.location.href}`
       );
       window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
     }

@@ -25,7 +25,7 @@ export default function LocationsClient() {
   const [searchQuery, setSearchQuery] = useState("");
   const [settings, setSettings] = useState({
     officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Place, Agra, Uttar Pradesh 282002",
-    contactPhone: "+91 7900-979-001",
+    contactPhone: "+91 9286-683-232",
     officialEmail: "info@bfsfin.com",
     workingHours: "Mon-Sat: 10AM - 6PM"
   });
@@ -109,7 +109,7 @@ export default function LocationsClient() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight"
               >
-                Bhardwaj Finance <br className="hidden lg:block"/>
+                Bhardwaj Financial Services <br className="hidden lg:block"/>
                 <span className="text-emerald-400">Agra HQ.</span>
               </motion.h1>
               <p className="text-emerald-100 max-w-2xl mx-auto lg:mx-0 mb-8 text-lg">

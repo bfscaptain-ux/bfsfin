@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "chat bot loan agent",
     "home loan chatbot",
     "digital loan application",
-    "Bhardwaj Finance AI",
+    "Bhardwaj Financial Services AI",
     "instant loan eligibility check"
   ],
   alternates: {

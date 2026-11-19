@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "home loan processing fee",
     "SBI vs HDFC vs ICICI vs PNB Home Loan Rates",
     "Repo Linked Lending Rate RLLR Comparison",
-    "Bhardwaj Finance Bank Comparison Tool"
+    "Bhardwaj Financial Services Bank Comparison Tool"
   ],
   alternates: {
     canonical: "https://bfsfin.com/tools/interest-rate-compare",
@@ -44,7 +44,7 @@ export default function InterestRateComparePage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/tools/interest-rate-compare#app",
-        "name": "Multi-Bank Interest Rate & EMI Comparison Tool - Bhardwaj Finance",
+        "name": "Multi-Bank Interest Rate & EMI Comparison Tool - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/tools/interest-rate-compare",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",

@@ -352,7 +352,7 @@ export function generateLoanApplicationEmail(props: LeadEmailProps): { subject: 
  * 4. Instant Callback / Quick Inquiry Confirmation Template
  */
 export function generateCallbackEmail(props: CallbackEmailProps): { subject: string; html: string } {
-  const subject = `✅ पूछताछ दर्ज: ${props.category} - हम आपसे बहुत जल्द संपर्क करेंगे | Bhardwaj Finance`;
+  const subject = `✅ पूछताछ दर्ज: ${props.category} - हम आपसे बहुत जल्द संपर्क करेंगे | Bhardwaj Financial Services`;
 
   const html = emailLayout({
     badgeText: "CALLBACK INQUIRY RECEIVED",

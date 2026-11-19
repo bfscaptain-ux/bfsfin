@@ -56,7 +56,7 @@ export default async function AboutPage() {
           latitude: '27.199777',
           longitude: '78.006699',
         },
-        telephone: '+919876543210',
+        telephone: '+919286683232',
         founder: {
           '@type': 'Person',
           name: ownerConfig.name,
@@ -148,7 +148,7 @@ export default async function AboutPage() {
             name: 'What is the starting interest rate for Home Loans at BFS?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Home loans at Bhardwaj Financial Services start from a highly competitive minimum ROI of 7.15%* with a 5-day express sanction guarantee and zero hidden brokerage.'
+              text: 'Home loans at Bhardwaj Financial Services start from a promotional minimum ROI of 7.15%* with 5-day express in-principle processing* and zero hidden brokerage. *Subject to bank credit criteria, title verification, and applicant eligibility.'
             }
           },
           {

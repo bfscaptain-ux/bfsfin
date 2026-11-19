@@ -61,7 +61,7 @@ const FAQS = [
   },
   {
     q: "Where is BFS located in Agra for offline CA consultation?",
-    a: "BFS's central office is located at Sanjay Place, Commercial Hub, Agra, UP - 282002. Clients across Agra, Mathura, Firozabad, and Aligarh can either visit our office or use our 100% paperless digital desk via WhatsApp (+91-7900979001)."
+    a: "BFS's central office is located at Sanjay Place, Commercial Hub, Agra, UP - 282002. Clients across Agra, Mathura, Firozabad, and Aligarh can either visit our office or use our 100% paperless digital desk via WhatsApp (+91-9286683232)."
   },
   {
     q: "What documents are required to file ITR online with BFS?",
@@ -457,7 +457,7 @@ export default function ItrFilingPage() {
         "url": "https://bfsfin.com/services/itr-filing",
         "logo": "https://bfsfin.com/owner.png",
         "image": "https://bfsfin.com/owner.png",
-        "telephone": "+91-7900979001",
+        "telephone": "+91-9286683232",
         "priceRange": "₹499 - ₹2999",
         "currenciesAccepted": "INR",
         "paymentAccepted": "Cash, Credit Card, UPI, Net Banking",
@@ -683,7 +683,7 @@ export default function ItrFilingPage() {
               {/* Consultation Quick Links */}
               <div className="flex items-center gap-1.5 shrink-0">
                 <a
-                  href="https://wa.me/917900979001?text=Hello%20BFS%20Team%2C%20I%20want%20to%20file%20my%20ITR%20online."
+                  href="https://wa.me/919286683232?text=Hello%20BFS%20Team%2C%20I%20want%20to%20file%20my%20ITR%20online."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] shadow-xs transition-all active:scale-95 cursor-pointer"
@@ -692,7 +692,7 @@ export default function ItrFilingPage() {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href="tel:7900979001"
+                  href="tel:9286683232"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 font-bold text-[11px] border border-white/15 transition-all active:scale-95"
                 >
                   <PhoneCall className="w-3 h-3 text-emerald-400" />
@@ -906,7 +906,7 @@ export default function ItrFilingPage() {
 
                   <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800/60">
                     <a
-                      href="https://wa.me/917900979001?text=Hello%20BFS%20Team%2C%20I%20want%20to%20file%20my%20ITR%20via%20WhatsApp."
+                      href="https://wa.me/919286683232?text=Hello%20BFS%20Team%2C%20I%20want%20to%20file%20my%20ITR%20via%20WhatsApp."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline flex items-center gap-1"
@@ -1048,7 +1048,7 @@ export default function ItrFilingPage() {
                   {/* Direct Contact Action Buttons with Pre-filled Document WhatsApp Handover */}
                   <div className="space-y-2 pt-1">
                     <a
-                      href={`https://wa.me/917900979001?text=${encodeURIComponent(
+                      href={`https://wa.me/919286683232?text=${encodeURIComponent(
                         `Hello BFS Team, I have submitted my ITR Filing request on your portal.\n\n*Tracking Ref ID:* ${refId}\n*Taxpayer Name:* ${name}\n*PAN Number:* ${panNumber}\n*Category:* ${category}\n\nI am sharing my documents (Form 16 / Bank Statement) here for CA review.`
                       )}`}
                       target="_blank"
@@ -1061,7 +1061,7 @@ export default function ItrFilingPage() {
 
                     <div className="grid grid-cols-2 gap-2">
                       <a
-                        href="tel:7900979001"
+                        href="tel:9286683232"
                         className="p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-all"
                       >
                         <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
@@ -2161,7 +2161,7 @@ export default function ItrFilingPage() {
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Direct CA Desk: +91-7900979001</span>
+                <span>Direct CA Desk: +91-9286683232</span>
               </p>
             </div>
 
@@ -2176,7 +2176,7 @@ export default function ItrFilingPage() {
                 <span>Get Directions (Google Maps)</span>
               </a>
               <a
-                href="https://wa.me/917900979001?text=Hello%20BFS%2C%20I%20want%20to%20consult%20for%20ITR%20filing."
+                href="https://wa.me/919286683232?text=Hello%20BFS%2C%20I%20want%20to%20consult%20for%20ITR%20filing."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-xs transition-all"

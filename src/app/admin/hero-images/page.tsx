@@ -26,7 +26,7 @@ export default function HeroContentCMS() {
     heroBadgeText: "RBI Registered & Verified Partners",
     heroTitlePart1: "Your Dream Home,",
     heroTitlePart2: "Funded in 5 Days.",
-    heroBullet1: "Lowest Interest Rates Guaranteed (from 6.50%)",
+    heroBullet1: "Lowest Institutional Rates Starting from 7.15%* p.a.",
     heroBullet2: "Zero Processing Fees for Direct Applications",
     heroBullet3: "Doorstep Document Pickup & 100% Digital Process",
     heroSupportText: "Prefer talking to an expert? Call: 7900-979-001",

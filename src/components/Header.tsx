@@ -144,7 +144,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2 group shrink-0 pr-8">
               <img src="/logo.png" alt="BFS Logo" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
               <div className="flex flex-col justify-center">
-                <span className="text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">Bhardwaj Finance</span>
+                <span className="text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">Bhardwaj Financial</span>
                 <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-400 tracking-widest uppercase mt-1">Services</span>
               </div>
             </Link>
@@ -231,7 +231,7 @@ export default function Header() {
                     {/* Bottom Promo Banner in Sidebar */}
                     <div className="mt-auto p-4 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-lg relative overflow-hidden">
                       <div className="absolute top-0 right-0 p-2 opacity-20"><BadgePercent className="w-12 h-12" /></div>
-                      <div className="font-black text-sm relative z-10">Lowest ROI Guaranteed</div>
+                      <div className="font-black text-sm relative z-10">Lowest ROI Assured*</div>
                       <div className="text-xs text-emerald-100 mt-1 relative z-10">Compare 15+ banks in 2 mins.</div>
                     </div>
                   </div>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Home Loan Part Payment Calculator",
     "Tenure Reduction Calculator on Prepayment",
     "Prepay Loan Early Calculator India",
-    "Bhardwaj Finance Prepayment Tool"
+    "Bhardwaj Financial Services Prepayment Tool"
   ],
   alternates: {
     canonical: "https://bfsfin.com/tools/prepayment",
@@ -45,7 +45,7 @@ export default function PrepaymentPage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/tools/prepayment#app",
-        "name": "Home Loan Prepayment & Tenure Reduction Calculator - Bhardwaj Finance",
+        "name": "Home Loan Prepayment & Tenure Reduction Calculator - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/tools/prepayment",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",

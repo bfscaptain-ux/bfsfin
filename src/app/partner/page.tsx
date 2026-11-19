@@ -133,11 +133,11 @@ export default function PartnerPage() {
             <div className="bg-emerald-900/20 rounded-2xl p-5 border border-emerald-800/40 flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs font-bold text-emerald-400 uppercase tracking-wide">Direct Partner Desk Helpline</p>
-                <p className="text-lg font-black text-white">+91 9258-724-227</p>
+                <p className="text-lg font-black text-white">+91 9286-683-232</p>
                 <p className="text-xs text-slate-300">Office: C-11, Cloth Market, Sanjay Place, Agra</p>
               </div>
               <a
-                href="https://wa.me/917900979001?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20as%20a%20Channel%20Partner%20%2F%20DSA"
+                href="https://wa.me/919286683232?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20as%20a%20Channel%20Partner%20%2F%20DSA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shrink-0 transition-colors"

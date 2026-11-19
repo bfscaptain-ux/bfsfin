@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   keywords: [
     "finance jobs India",
     "banking jobs Pan India",
-    "Bhardwaj Finance careers",
+    "Bhardwaj Financial Services careers",
     "sales executive jobs",
     "loan consultant jobs",
     "telecalling jobs India",

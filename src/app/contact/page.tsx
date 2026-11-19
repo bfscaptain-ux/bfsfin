@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Contact Us | Agra's #1 Loan Consultant | Bhardwaj Financial Services",
   description: "Get in touch with Bhardwaj Financial Services. We offer home loans, LAP, and balance transfers across Agra, Mathura, Noida, Gurgaon, Mumbai, Bangalore, and Jaipur. Direct DSA partner.",
   keywords: [
-    "contact Bhardwaj Finance",
+    "contact Bhardwaj Financial Services",
     "home loan consultant Agra",
     "finance company contact number",
     "loan agent near me",
@@ -54,7 +54,7 @@ export default function ContactPage() {
         "name": "Bhardwaj Financial Services",
         "image": "https://bhardwajfinance.com/logo.png",
         "url": "https://bhardwajfinance.com",
-        "telephone": "+91-9258724227", 
+        "telephone": "+91-9286683232", 
         "email": "info@bfsfin.com",
         "address": {
           "@type": "PostalAddress",
@@ -90,7 +90,7 @@ export default function ContactPage() {
         "@type": "ContactPage",
         "mainEntity": {
           "@type": "ContactPoint",
-          "telephone": "+91-9258724227",
+          "telephone": "+91-9286683232",
           "contactType": "customer service",
           "areaServed": "IN",
           "availableLanguage": ["en", "hi"]

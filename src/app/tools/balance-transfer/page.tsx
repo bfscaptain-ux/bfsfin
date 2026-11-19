@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "home loan top up",
     "Balance Transfer Savings Calculator",
     "Switch Home Loan to Lower Interest Rate",
-    "Bhardwaj Finance Balance Transfer"
+    "Bhardwaj Financial Services Balance Transfer"
   ],
   alternates: {
     canonical: "https://bfsfin.com/tools/balance-transfer",
@@ -50,7 +50,7 @@ export default async function BalanceTransferPage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/tools/balance-transfer#app",
-        "name": "Home Loan Balance Transfer & Savings Calculator - Bhardwaj Finance",
+        "name": "Home Loan Balance Transfer & Savings Calculator - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/tools/balance-transfer",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",

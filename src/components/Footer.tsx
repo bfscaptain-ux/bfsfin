@@ -13,8 +13,8 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
 
   // Dynamic phones with admin sync
   const [phones, setPhones] = useState({
-    callPhone: propContactPhone || "+91 9258-724-227",
-    rawCall: "9258724227",
+    callPhone: propContactPhone || "+91 9286-683-232",
+    rawCall: "9286683232",
     whatsappDisplay: "+91 9286-683-232",
     whatsappRaw: propWhatsappPhone || "919286683232"
   });
@@ -26,7 +26,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       .then(res => res.json())
       .then(data => {
         if (data.success && data.settings) {
-          const cp = data.settings.contactPhone || propContactPhone || "+91 9258-724-227";
+          const cp = data.settings.contactPhone || propContactPhone || "+91 9286-683-232";
           const wp = data.settings.whatsappPhone || propWhatsappPhone || "919286683232";
           setPhones({
             callPhone: cp.includes("+91") ? cp : `+91 ${cp}`,
@@ -86,7 +86,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               
               {/* Call Card */}
               <a 
-                href={`tel:${phones.rawCall || '9258724227'}`}
+                href={`tel:${phones.rawCall || '9286683232'}`}
                 className="group p-4 sm:p-5 rounded-2xl bg-[#04261c] border border-emerald-800/60 hover:border-emerald-400 hover:bg-[#063326] transition-all duration-300 flex items-center justify-between shadow-lg hover:shadow-emerald-900/30"
               >
                 <div className="flex items-center gap-3.5">
@@ -98,7 +98,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
                       Call Loan Specialist
                     </span>
                     <span className="text-lg sm:text-xl font-black text-white group-hover:text-emerald-300 transition-colors block">
-                      +91 9258-724-227
+                      +91 9286-683-232
                     </span>
                   </div>
                 </div>
@@ -405,7 +405,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <p>Block-C11, Shop No.-5, First Floor, near MK Tailor,</p>
               <p>Sanjay Place, Agra, Uttar Pradesh 282002</p>
               <div className="pt-2 flex flex-col gap-1 text-emerald-200 font-semibold">
-                <p>Call Helpline: <a href="tel:9258724227" className="text-emerald-400 hover:underline">+91 9258-724-227</a></p>
+                <p>Call Helpline: <a href="tel:9286683232" className="text-emerald-400 hover:underline">+91 9286-683-232</a></p>
                 <p>WhatsApp Desk: <a href="https://wa.me/919286683232" className="text-emerald-400 hover:underline">+91 9286-683-232</a></p>
                 <p>Corporate Email: <a href="mailto:info@bfsfin.com" className="hover:text-emerald-400">info@bfsfin.com</a></p>
                 <p>Grievance Officer: <a href="mailto:grievance@bfsfin.com" className="text-emerald-400 hover:underline">grievance@bfsfin.com</a></p>
@@ -432,7 +432,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       <div className="bg-[#010a07] border-t border-emerald-950 py-5 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] leading-relaxed text-emerald-100/60">
           <p className="text-center md:text-left max-w-4xl">
-            <strong className="text-emerald-300 font-bold">Lender Disclaimer:</strong> Bhardwaj Financial Services is an independent loan facilitator/channel partner, not a direct lender or banking institution. Loan sanctioning, interest rates, processing fees, and disbursements are governed solely by partner Banks/NBFCs based on individual credit evaluation. BFS operates strictly under a zero upfront fee policy.
+            <strong className="text-emerald-300 font-bold">Lender Disclaimer &amp; Regulatory Notice:</strong> Bhardwaj Financial Services is an authorized loan facilitator / DSA partner and not a direct bank or NBFC lender. Loan approval, interest rates (including promotional starting rates from 7.15%* p.a.), sanction TAT (including 5-day express processing*), loan amount, and disbursals are strictly governed by partner Banks/NBFCs based on applicant credit appraisal, income verification, property legal clearance, and underwriting policies. Bank approval cannot be guaranteed. BFS operates strictly under a zero upfront fee policy.
           </p>
           <Link 
             href="/disclaimer" 

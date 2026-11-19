@@ -356,7 +356,7 @@ export default function MsmeRegistrationPage() {
           "@type": "FinancialService",
           "name": "Bhardwaj Financial Services (BFS Agra)",
           "url": "https://bfsfin.com",
-          "telephone": "+91-7900979001",
+          "telephone": "+91-9286683232",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Sanjay Place, Commercial Hub",
@@ -517,7 +517,7 @@ export default function MsmeRegistrationPage() {
               {/* Consultation Quick Links */}
               <div className="flex items-center gap-1.5 shrink-0">
                 <a
-                  href="https://wa.me/917900979001?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20for%20MSME%20Udyam%20Registration."
+                  href="https://wa.me/919286683232?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20for%20MSME%20Udyam%20Registration."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-bold text-[11px] shadow-xs transition-all active:scale-95 cursor-pointer"
@@ -527,7 +527,7 @@ export default function MsmeRegistrationPage() {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href="tel:7900979001"
+                  href="tel:9286683232"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 font-bold text-[11px] border border-white/15 transition-all active:scale-95"
                   title="Direct Call"
                 >
@@ -775,7 +775,7 @@ export default function MsmeRegistrationPage() {
 
                   <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800/60">
                     <a
-                      href="https://wa.me/917900979001?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20for%20MSME%20Registration%20via%20WhatsApp."
+                      href="https://wa.me/919286683232?text=Hello%20BFS%20Team%2C%20I%20want%20to%20apply%20for%20MSME%20Registration%20via%20WhatsApp."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-teal-600 dark:text-teal-400 font-bold hover:underline flex items-center gap-1"
@@ -917,7 +917,7 @@ export default function MsmeRegistrationPage() {
                   {/* Direct Contact Action Buttons with Pre-filled Document WhatsApp Handover */}
                   <div className="space-y-1.5 pt-1">
                     <a
-                      href={`https://wa.me/917900979001?text=${encodeURIComponent(
+                      href={`https://wa.me/919286683232?text=${encodeURIComponent(
                         `Hello BFS Team, I have submitted my MSME Registration request on your portal.\n\n*Ref ID:* ${refId}\n*Enterprise:* ${enterpriseName}\n*Applicant:* ${applicantName}\n\nI am sharing my Aadhaar & PAN details here for Udyam processing.`
                       )}`}
                       target="_blank"
@@ -930,7 +930,7 @@ export default function MsmeRegistrationPage() {
 
                     <div className="grid grid-cols-2 gap-2">
                       <a
-                        href="tel:7900979001"
+                        href="tel:9286683232"
                         className="p-2 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1 border border-slate-700 transition-all"
                       >
                         <PhoneCall className="w-3 h-3 text-teal-400" />

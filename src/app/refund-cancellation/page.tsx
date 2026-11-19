@@ -102,7 +102,7 @@ export default function RefundCancellationPage() {
             <p><strong>Nodal Officer:</strong> Praveen Bhardwaj (Grievance &amp; Compliance)</p>
             <p><strong>Email:</strong> <a href="mailto:grievance@bfsfin.com" className="text-emerald-600 underline font-bold">grievance@bfsfin.com</a></p>
             <p><strong>Address:</strong> Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002</p>
-            <p><strong>Phone:</strong> <a href="tel:9258724227" className="text-emerald-600 underline font-bold">+91 9258-724-227</a></p>
+            <p><strong>Phone:</strong> <a href="tel:9286683232" className="text-emerald-600 underline font-bold">+91 9286-683-232</a></p>
           </div>
         </section>
 

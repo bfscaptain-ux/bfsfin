@@ -149,7 +149,7 @@ export async function generateMetadata({ params }: { params: { city: string, are
   const cityDisp = rawCity.charAt(0).toUpperCase() + rawCity.slice(1);
   const loanType = data?.loanType || 'Home Loan & Financial Advisory';
 
-  const title = `Best ${loanType} in ${areaDisp}, ${cityDisp} | Starting 7.15%* ROI | Bhardwaj Finance`;
+  const title = `Best ${loanType} in ${areaDisp}, ${cityDisp} | Starting 7.15%* ROI | Bhardwaj Financial Services`;
   const description = data?.area.whyChooseUs || `Apply for the lowest interest rate ${loanType} in ${areaDisp}, ${cityDisp}. Starting 7.15%* with direct bank approvals (SBI, HDFC, PNB, ICICI), zero brokerage, and doorstep document service. Phone: 9286-683-232.`;
 
   const keywords = (data?.area?.keywords && data.area.keywords.length > 0)
@@ -473,7 +473,7 @@ export default async function LocalAreaPage({ params }: { params: { city: string
                   a: `BFS works directly with top public & private bank branches (SBI, HDFC, PNB, ICICI, Bank of Baroda) providing special discounted rates starting from 7.15%* with zero processing fees.`
                 },
                 {
-                  q: `Does Bhardwaj Finance provide doorstep document collection in ${area}?`,
+                  q: `Does Bhardwaj Financial Services provide doorstep document collection in ${area}?`,
                   a: `Yes! Our dedicated local field agents collect loan documents directly from your home or office anywhere across ${area} and ${city}.`
                 },
                 {
@@ -536,7 +536,7 @@ export default async function LocalAreaPage({ params }: { params: { city: string
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Ready to secure your loan in {area}?</h2>
-          <p className="text-emerald-200 mb-8 max-w-xl mx-auto">Talk to our local loan advisor in {area} today for lowest interest rate guaranteed.</p>
+          <p className="text-emerald-200 mb-8 max-w-xl mx-auto">Talk to our local loan advisor in {area} today for lowest institutional interest rates*.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply" className="inline-flex px-10 py-5 bg-white text-emerald-900 hover:bg-emerald-50 font-black rounded-2xl shadow-2xl transition-all items-center justify-center gap-3 text-lg transform hover:-translate-y-1">
               Start Online Application <ArrowRight className="w-6 h-6" />

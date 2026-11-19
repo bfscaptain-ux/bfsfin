@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Section 80C Home Loan Principal Rebate",
     "Income Tax Savings on Home Loan India",
     "Old vs New Tax Regime Home Loan Benefit",
-    "Bhardwaj Finance Tax Calculator"
+    "Bhardwaj Financial Services Tax Calculator"
   ],
   alternates: {
     canonical: "https://bfsfin.com/tools/tax-benefit",
@@ -44,7 +44,7 @@ export default function TaxBenefitPage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/tools/tax-benefit#app",
-        "name": "Home Loan Income Tax Benefit Calculator - Bhardwaj Finance",
+        "name": "Home Loan Income Tax Benefit Calculator - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/tools/tax-benefit",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",

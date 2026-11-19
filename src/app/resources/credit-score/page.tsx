@@ -40,7 +40,7 @@ export default function CreditScorePage() {
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="bg-white dark:bg-emerald-900 rounded-3xl p-8 shadow-xl border border-slate-200 dark:border-emerald-800 text-center">
           <Gauge className="w-20 h-20 text-emerald-500 mx-auto mb-6" />
           <h2 className="text-3xl font-black mb-4">Why CIBIL Matters?</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Your CIBIL score (ranging from 300 to 900) determines your creditworthiness. A score above 750 is considered excellent and guarantees the lowest interest rates on home loans.</p>
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Your CIBIL score (ranging from 300 to 900) determines your creditworthiness. A score above 750 is considered excellent and helps secure the lowest interest rates* on home loans.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">

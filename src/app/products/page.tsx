@@ -224,7 +224,7 @@ export default function ProductsLanding() {
             </h1>
             
             <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-light mb-8">
-              Processing ₹20L to ₹1Cr+ loans with a 5-day sanction guarantee across top banking partners like PNB, Central Bank, and HDFC.
+              Processing ₹20L to ₹1Cr+ loans with fast-track 5-day in-principle processing* across top banking partners like PNB, Central Bank, and HDFC.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">

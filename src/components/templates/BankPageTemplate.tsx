@@ -91,7 +91,7 @@ export default function BankPageTemplate({ data }: BankPageTemplateProps) {
               <Link href="/apply" className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg hover:shadow-emerald-500/25 transition transform hover:-translate-y-0.5 text-center">
                 Apply for Loan
               </Link>
-              <a href="tel:7900979001" className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold px-8 py-3.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition text-center flex justify-center items-center gap-2">
+              <a href="tel:9286683232" className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold px-8 py-3.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition text-center flex justify-center items-center gap-2">
                 <Phone className="w-4 h-4" /> Call 7900-979-001
               </a>
             </motion.div>

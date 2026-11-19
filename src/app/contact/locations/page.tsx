@@ -58,7 +58,7 @@ export default function LocationsPage() {
         "@id": "https://bfsfin.com/#hq",
         "name": "Bhardwaj Financial Services - Agra HQ",
         "image": "https://bfsfin.com/logo.png",
-        "telephone": "+91-9258724227",
+        "telephone": "+91-9286683232",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",

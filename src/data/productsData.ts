@@ -13,7 +13,7 @@ export const productsData: Record<string, ProductData> = {
     overview: [
       "Buying a home is one of the most significant financial decisions you will ever make. At Bhardwaj Financial Services, we simplify this journey with our highly customized Home Loan solutions. Whether you are purchasing a ready-to-move-in apartment, booking an under-construction property, or buying a resale house, our home loans are tailored to fit your specific financial profile.",
       "We understand that every homebuyer's needs are unique. That's why we have partnered with India's leading banks and NBFCs to offer you the most competitive interest rates starting from 7.15%* p.a., ensuring that your monthly EMIs remain affordable. Our dedicated relationship managers guide you through every step, from initial eligibility checks to final property registration, making the process completely hassle-free.",
-      "With tenures stretching up to 30 years, you have the ultimate flexibility in managing your monthly cash flows. Furthermore, we leverage advanced digital onboarding and AI-driven credit assessments to guarantee a 5-day sanction process once your documents are submitted."
+      "With tenures stretching up to 30 years, you have the ultimate flexibility in managing your monthly cash flows. Furthermore, we leverage advanced digital onboarding and streamlined credit assessments to expedite a 5-day in-principle sanction process* once your documents are submitted."
     ],
     benefits: [
       "High Loan-to-Value (LTV) ratio up to 90%, minimizing your out-of-pocket down payment.",
@@ -70,7 +70,7 @@ export const productsData: Record<string, ProductData> = {
     faqs: [
       { question: "What is the current home loan interest rate?", answer: "Our home loan interest rates start from 7.15%* p.a. However, the final rate depends on your credit score, income profile, and loan amount." },
       { question: "Can I prepay my home loan without penalty?", answer: "Yes, as per RBI guidelines, there are zero pre-payment or foreclosure charges on floating rate home loans for individual borrowers." },
-      { question: "How long does it take to get a sanction?", answer: "We guarantee a 5-day sanction process once all required documents are submitted." },
+      { question: "How long does it take to get a sanction?", answer: "We target express processing with in-principle sanction in 3 to 5 working days*, subject to prompt document verification and bank credit appraisal." },
       { question: "Are there any tax benefits on a home loan?", answer: "Yes, you can claim up to ₹1.5 Lakhs on principal repayment under Section 80C and up to ₹2 Lakhs on interest payments under Section 24b of the Income Tax Act." },
       { question: "Can I add a co-applicant to increase loan eligibility?", answer: "Absolutely. Adding a working spouse, parent, or sibling as a co-applicant can significantly increase your total loan eligibility as both incomes will be considered." }
     ]

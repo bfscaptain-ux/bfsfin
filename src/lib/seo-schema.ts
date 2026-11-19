@@ -43,7 +43,7 @@ export const BFS_ORGANIZATION = {
   url: "https://bfsfin.com",
   logo: "https://bfsfin.com/logo.png",
   image: "https://bfsfin.com/logo.png",
-  telephone: "+91-9258724227",
+  telephone: "+91-9286683232",
   email: "info@bfsfin.com",
   address: {
     "@type": "PostalAddress",

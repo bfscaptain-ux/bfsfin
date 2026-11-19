@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: { city: string } })
   const rawCity = city?.name || params.city.replace(/-/g, ' ');
   const cityDisp = rawCity.charAt(0).toUpperCase() + rawCity.slice(1);
 
-  const title = `Best Home Loan, Mortgage & Finance Broker in ${cityDisp} | Bhardwaj Finance`;
+  const title = `Best Home Loan, Mortgage & Finance Broker in ${cityDisp} | Bhardwaj Financial Services`;
   const description = city?.description || `Looking for top home loans, business loans, or loan against property in ${cityDisp}? Get lowest interest rates starting 7.15%*, zero brokerage, 48-hr fast approval, and doorstep document pickup. Phone: 9286-683-232.`;
 
   const keywords = city?.cityKeywords && city.cityKeywords.length > 0 
@@ -113,7 +113,7 @@ export default async function CityLocationPage({ params }: { params: { city: str
         citySlug={params.city}
         cityName={cityDisp}
         stateName={state}
-        subLocationTitle={`Home Loan, LAP & Finance Broker in ${cityDisp} | Bhardwaj Finance`}
+        subLocationTitle={`Home Loan, LAP & Finance Broker in ${cityDisp} | Bhardwaj Financial Services`}
         loanType="Home Loan, LAP & Business Loan"
       />
 

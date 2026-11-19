@@ -490,7 +490,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       id: "builder",
       categoryName: "Credit Score Builder",
       shortLabel: "Credit Builder",
-      tagline: "100% Guaranteed Approval (Low CIBIL / First-Time)",
+      tagline: "High Approval Probability (Low CIBIL / First-Time)*",
       cardName: "BFS Step-Up Booster",
       tier: "CIBIL STEP-UP",
       cardNumber: "4020  8391  0294  9924",
@@ -504,11 +504,11 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       cardBg: "from-slate-950 via-purple-950 to-indigo-950",
       cardBorder: "border-purple-500/40 shadow-[0_20px_50px_rgba(88,28,135,0.35)]",
       chipColor: "from-purple-200 via-purple-300 to-indigo-400 border-purple-300",
-      holoBadge: "GUARANTEED STEP-UP",
+      holoBadge: "CREDIT STEP-UP*",
       annualFee: "100% Free Lifetime",
       joiningBonus: "Zero Income Proof",
       estSavings: "750+ CIBIL in 6 Mos",
-      bullet1: "100% Guaranteed approval with ₹10k fixed deposit earning 7.5% p.a. interest",
+      bullet1: "Instant approval via ₹10k fixed deposit earning 7.5% p.a. interest*",
       bullet2: "Builds CIBIL score to 750+ in 6 months with monthly credit bureau reporting",
       icon: <Sparkles className="w-4 h-4" />
     }
@@ -546,10 +546,10 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
     badgeText: "RBI Registered & Verified Partners",
     titlePart1: "Building Wealth, Securing Lives,",
     titlePart2: "Loans, Insurance & Cards.",
-    bullet1: `Lowest Interest Rates Guaranteed (from ${homeLoanRate || "7.15"}%*)`,
+    bullet1: `Lowest Institutional Rates Starting from ${homeLoanRate || "7.15"}%* p.a.`, 
     bullet2: "100% Cashless Health Bima & Free Claim Assistance",
     bullet3: "Lifetime-Free Credit Cards with Airport Lounge Access",
-    supportText: `Prefer talking to an expert? Call: ${contactPhone || "+91 9258-724-227"}`,
+    supportText: `Prefer talking to an expert? Call: ${contactPhone || "+91 9286-683-232"}`, 
     googleRating: "4.9",
     googleReviewCount: "555+"
   };
@@ -587,7 +587,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
         <div className="absolute inset-0 z-0">
           <Image 
             src={hConfig.imageUrl} 
-            alt="Bhardwaj Finance Hero Background" 
+            alt="Bhardwaj Financial Services Hero Background" 
             priority
             fill
             sizes="100vw"
@@ -635,7 +635,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               
               {/* High-Conversion USPs (Rotating smartly) */}
               <div className="relative pt-1 pb-2 sm:pt-2 sm:pb-3 h-[42px] sm:h-[50px] overflow-hidden">
-                {[(hConfig.bullet1 || `Lowest Interest Rates Guaranteed (from ${homeLoanRate || "7.15"}%*)`).replace(/6\.50/g, "7.15"), hConfig.bullet2, hConfig.bullet3].map((bullet, idx) => (
+                {[(hConfig.bullet1 || `Lowest Institutional Rates Starting from ${homeLoanRate || "7.15"}%* p.a.`).replace(/6\.50/g, "7.15"), hConfig.bullet2, hConfig.bullet3].map((bullet, idx) => (
                   <div 
                     key={idx} 
                     className={`absolute inset-0 flex items-center gap-2.5 sm:gap-3 transition-all duration-500 ease-in-out ${
@@ -701,7 +701,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
 
                 {/* Phone Line */}
                 <a 
-                  href={`tel:${contactPhone?.replace(/[^0-9+]/g, "") || "+919258724227"}`} 
+                  href={`tel:${contactPhone?.replace(/[^0-9+]/g, "") || "+919286683232"}`} 
                   className="flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2.5 py-1 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-xl transition-colors group shrink-0"
                   title="Call BFS Advisory Desk"
                 >
@@ -714,7 +714,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                       Advisory Desk
                     </span>
                     <span className="text-[10px] sm:text-[11px] font-black text-slate-800 dark:text-white leading-none whitespace-nowrap">
-                      {contactPhone || "+91 9258-724-227"}
+                      {contactPhone || "+91 9286-683-232"}
                     </span>
                   </div>
                 </a>
@@ -931,7 +931,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                       </div>
                       <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
                         <CheckCircle2 className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                        <span><strong>Low CIBIL / FD-Backed</strong> cards for guaranteed approval</span>
+                        <span><strong>Low CIBIL / FD-Backed</strong> cards for fast credit building*</span>
                       </div>
                     </div>
 
@@ -1296,7 +1296,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   Explore Insurance Plans <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href={`tel:${contactPhone?.replace(/[^0-9+]/g, "") || "+919258724227"}`}
+                  href={`tel:${contactPhone?.replace(/[^0-9+]/g, "") || "+919286683232"}`}
                   className="px-5 py-3.5 bg-white hover:bg-teal-50 dark:bg-white/10 dark:hover:bg-white/20 text-slate-800 dark:text-white font-bold text-sm rounded-xl border border-teal-200 dark:border-white/20 shadow-sm transition-all flex items-center justify-center gap-2 active:scale-95 text-center"
                 >
                   <PhoneCall className="w-4 h-4 text-teal-600 dark:text-teal-400" /> Emergency Claim Desk
@@ -1566,7 +1566,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                           <div className="pt-1 border-t border-white/10 flex items-center justify-between text-[8px] text-slate-300/80">
                             <div>
                               <div className="font-semibold text-white/90">24x7 Privilege Desk</div>
-                              <div>+91 9258-724-227</div>
+                              <div>+91 9286-683-232</div>
                             </div>
                             <div className="text-right">
                               <div className="font-bold text-amber-400">CHIP & PIN PROTECTED</div>
@@ -1961,7 +1961,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   <div>
                     <h4 className="font-bold text-white text-sm sm:text-base">Direct Customer Hotline</h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                      {contactPhone || "+91 9258-724-227"} / {whatsappPhone || "+91 9286-683-232"}<br />
+                      {contactPhone || "+91 9286-683-232"} / {whatsappPhone || "+91 9286-683-232"}<br />
                       <span className="text-emerald-400 text-xs">Available Mon–Sat: 10:00 AM – 7:00 PM</span>
                     </p>
                   </div>
@@ -2044,9 +2044,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
 
                 {/* Direct Action Chips */}
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs text-slate-300">
-                  <a href="tel:9258724227" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors">
+                  <a href="tel:9286683232" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors">
                     <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Helpline: +91 9258-724-227</span>
+                    <span>Helpline: +91 9286-683-232</span>
                   </a>
                   <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold border border-emerald-700/60 transition-colors">
                     <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />

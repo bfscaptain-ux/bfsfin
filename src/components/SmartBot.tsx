@@ -628,7 +628,7 @@ const InChatWhatsAppConnect = ({
           </a>
 
           <a
-            href="tel:+919258724227"
+            href="tel:+919286683232"
             className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition-all shadow-md shadow-slate-900/10 active:scale-98 text-center"
           >
             <PhoneCall className="w-3.5 h-3.5" />

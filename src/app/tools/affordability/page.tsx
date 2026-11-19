@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Net Take Home Salary Loan Eligibility",
     "Home loan eligibility Sanjay Place Agra",
     "Home loan eligibility Kamla Nagar Agra",
-    "Bhardwaj Finance Affordability Tool"
+    "Bhardwaj Financial Services Affordability Tool"
   ],
   alternates: {
     canonical: "https://bfsfin.com/tools/affordability",
@@ -47,7 +47,7 @@ export default function AffordabilityPage() {
       {
         "@type": "WebApplication",
         "@id": "https://bfsfin.com/tools/affordability#app",
-        "name": "Property Affordability & Budget Calculator - Bhardwaj Finance",
+        "name": "Property Affordability & Budget Calculator - Bhardwaj Financial Services",
         "url": "https://bfsfin.com/tools/affordability",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",

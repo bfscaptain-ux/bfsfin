@@ -280,7 +280,7 @@ export default function ServiceAreasAdmin() {
                       type="text" 
                       value={city.description} 
                       onChange={(e) => updateCity(city.id, { description: e.target.value })}
-                      placeholder="e.g. Bhardwaj Finance offers the fastest home loan approvals..."
+                      placeholder="e.g. Bhardwaj Financial Services offers the fastest home loan approvals..."
                       className="w-full bg-emerald-950 border border-emerald-500/30 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>

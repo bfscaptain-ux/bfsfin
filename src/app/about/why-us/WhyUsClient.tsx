@@ -185,7 +185,7 @@ export default function WhyUsClient() {
                   "We force 50+ banks to compete for your loan.",
                   "We negotiate 100% processing fee waivers.",
                   "We fix CIBIL issues before applying.",
-                  "5-Day Guaranteed Approval."
+                  "Fast-Track 5-Day In-Principle Sanction*"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4">
                     <CheckCircle2 className="w-6 h-6 text-white shrink-0 mt-0.5" />
@@ -330,8 +330,8 @@ export default function WhyUsClient() {
             {[
               {
                 icon: Clock,
-                title: "5-Day Guaranteed Approval",
-                desc: "We process applications in parallel directly with bank credit managers to slash wait times."
+                title: "Fast-Track 5-Day Processing*",
+                desc: "We process applications in parallel directly with bank credit managers for express in-principle sanction*."
               },
               {
                 icon: TrendingDown,

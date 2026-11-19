@@ -346,7 +346,7 @@ export default function PrivacyPolicyPage() {
                       </a>
                       
                       <a 
-                        href="tel:+919258724227" 
+                        href="tel:+919286683232" 
                         className="group/link flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors bg-white dark:bg-slate-800/80 px-4 py-2.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700/50"
                       >
                         <div className="bg-emerald-100 dark:bg-emerald-900/40 p-1.5 rounded-lg group-hover/link:scale-110 transition-transform">
@@ -354,7 +354,7 @@ export default function PrivacyPolicyPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
                         </div>
-                        <span className="font-semibold text-sm">+91 9258-724-227</span>
+                        <span className="font-semibold text-sm">+91 9286-683-232</span>
                       </a>
                     </div>
                   </div>

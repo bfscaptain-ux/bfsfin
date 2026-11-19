@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 [PAGE: HOME]
 Welcome to Bhardwaj Financial Services (BFS Agra).
 We offer the fastest 5-Day Home Loan Approvals.
-Benefits: Lowest Interest Rates Guaranteed (from 6.50%), Zero Processing Fees for Direct Applications, Doorstep Document Pickup & 100% Digital Process.
+Benefits: Lowest Institutional Rates Starting from 7.15%* p.a., Zero Processing Fees for Direct Applications, Doorstep Document Pickup & 100% Digital Process.
 Success Rate: 98% Approvals. We are RBI Registered & Compliant.
 
 [PAGE: ABOUT US]

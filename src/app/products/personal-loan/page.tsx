@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { buildLoanGraph } from "@/lib/seo-schema";
 
 export const metadata: Metadata = {
-  title: "Instant Personal Loans in Agra & India up to ₹50 Lakhs | Bhardwaj Finance",
+  title: "Instant Personal Loans in Agra & India up to ₹50 Lakhs | Bhardwaj Financial Services",
   description: "Instant personal loans up to ₹50 Lakhs for salaried and self-employed professionals with lowest interest rates, same-day approval, and digital processing in Agra, UP & India.",
   keywords: [
     "Personal Loan Agra",

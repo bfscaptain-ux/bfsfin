@@ -212,7 +212,7 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </div>
         
         <div className="hidden print:block text-right">
-          <div className="font-bold text-base text-emerald-800">Bhardwaj Finance</div>
+          <div className="font-bold text-base text-emerald-800">Bhardwaj Financial Services</div>
           <div className="text-xs">www.bfsfin.com</div>
         </div>
       </div>

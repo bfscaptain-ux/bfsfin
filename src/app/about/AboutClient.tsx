@@ -408,7 +408,7 @@ export default function AboutClient({
 
                 <div>
                   <div className="pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-4">
-                    <span>Guaranteed 5-Day TAT</span>
+                    <span>Express 5-Day Processing*</span>
                     <span className="font-semibold text-emerald-600 dark:text-emerald-400">Zero Hidden Brokerage</span>
                   </div>
                   <Link 
@@ -591,7 +591,7 @@ export default function AboutClient({
           <div className="relative border-l-2 border-emerald-500/20 ml-3 md:ml-6 space-y-12">
             {[
               { year: "2010", title: "The Foundation in Agra", desc: "Established in Sanjay Place, Agra with a clear mission to simplify lending and eliminate tedious banking red tape for homebuyers." },
-              { year: "2015", title: "Authorized Institutional Network", desc: "Expanded direct channel partnerships across 50+ institutional lending pools, guaranteeing lowest market interest rates." },
+              { year: "2015", title: "Authorized Institutional Network", desc: "Expanded direct channel partnerships across 50+ institutional lending pools, facilitating lowest market interest rates*." },
               { year: "2020", title: "5,000+ Families Funded", desc: "Achieved the major milestone of funding dream homes and commercial spaces for over 5,000 satisfied families." },
               { year: "2024 - 2026", title: "Tri-Product Financial Powerhouse", desc: "Successfully expanded into a complete financial hub: offering Lowest ROI Loans, 100% Cashless Health & Life Insurance with Free Claim Assistance, and Lifetime-Free Credit Cards across Agra and Pan-India." }
             ].map((item, idx) => (

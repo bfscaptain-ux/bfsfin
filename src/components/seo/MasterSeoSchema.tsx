@@ -52,7 +52,7 @@ export default function MasterSeoSchema({
         "caption": "Bhardwaj Financial Services - Home Loan, LAP & Business Loan India"
       },
       "image": "https://bfsfin.com/logo.png",
-      "telephone": "+91-9258724227",
+      "telephone": "+91-9286683232",
       "priceRange": "₹₹",
       "currenciesAccepted": "INR",
       "paymentAccepted": "Bank Transfer, UPI, NEFT, RTGS, Cheque, Digital Banking",
@@ -95,7 +95,7 @@ export default function MasterSeoSchema({
       "contactPoint": [
         {
           "@type": "ContactPoint",
-          "telephone": "+91-9258724227",
+          "telephone": "+91-9286683232",
           "contactType": "customer service",
           "url": "https://bfsfin.com/contact",
           "areaServed": "IN",
@@ -103,7 +103,7 @@ export default function MasterSeoSchema({
         },
         {
           "@type": "ContactPoint",
-          "telephone": "+91-9258724227",
+          "telephone": "+91-9286683232",
           "contactType": "sales",
           "url": "https://bfsfin.com/appointment",
           "areaServed": "IN",
@@ -116,7 +116,7 @@ export default function MasterSeoSchema({
         "https://www.facebook.com/bhardwajfinancialservices",
         "https://www.instagram.com/praveenbhardwajagra/",
         "https://x.com/praveenagra22",
-        "https://wa.me/919258724227"
+        "https://wa.me/919286683232"
       ],
 
       "keywords": [
@@ -342,7 +342,7 @@ export default function MasterSeoSchema({
             "name": `Does Bhardwaj Financial Services provide doorstep service in ${targetArea}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `Yes, our dedicated loan advisors provide complete doorstep document pickup, digital loan file submission, and priority bank sanction across ${targetArea}. Call +91-9258724227 or apply online at https://bfsfin.com/apply.`
+              "text": `Yes, our dedicated loan advisors provide complete doorstep document pickup, digital loan file submission, and priority bank sanction across ${targetArea}. Call +91-9286683232 or apply online at https://bfsfin.com/apply.`
             }
           }
         ]

@@ -85,8 +85,8 @@ export default function GrievancePage() {
                 <PhoneCall className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="text-xs text-slate-500 dark:text-slate-400 block">Helpdesk Phone</span>
-                  <a href="tel:9258724227" className="font-bold text-slate-900 dark:text-white hover:underline">
-                    +91 9258-724-227
+                  <a href="tel:9286683232" className="font-bold text-slate-900 dark:text-white hover:underline">
+                    +91 9286-683-232
                   </a>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function GrievancePage() {
           <div className="space-y-1 text-center md:text-left">
             <span className="text-[10px] uppercase font-black tracking-widest text-emerald-400 block">Official Disciplinary & Conduct Desk</span>
             <h3 className="text-xl sm:text-2xl font-black">Want to file a complaint against staff or service?</h3>
-            <p className="text-xs sm:text-sm text-slate-300">Register an official grievance ticket directly with Praveen Bhardwaj. 48-Hour Resolution Guarantee.</p>
+            <p className="text-xs sm:text-sm text-slate-300">Register an official grievance ticket directly with Praveen Bhardwaj. 48-Hour Resolution Assurance.</p>
           </div>
           <Link
             href="/complaint"
@@ -153,7 +153,7 @@ export default function GrievancePage() {
                 <span className="text-[11px] font-bold text-slate-500">TAT: 24 Hours</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                Contact your assigned Loan Relationship Manager or call our central helpline at <a href="tel:9258724227" className="font-bold underline text-emerald-600">+91 9258-724-227</a>, or email <a href="mailto:info@bfsfin.com" className="font-bold underline text-emerald-600">info@bfsfin.com</a>.
+                Contact your assigned Loan Relationship Manager or call our central helpline at <a href="tel:9286683232" className="font-bold underline text-emerald-600">+91 9286-683-232</a>, or email <a href="mailto:info@bfsfin.com" className="font-bold underline text-emerald-600">info@bfsfin.com</a>.
               </p>
             </div>
 
