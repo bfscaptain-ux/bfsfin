@@ -278,7 +278,7 @@ export default function ContactClient() {
           ...formData,
           consentGiven: true,
           consentTimestamp: new Date().toISOString(),
-          message: `${formData.message || ""} | [DPDP Consent Authorized (Overrides DND)]`
+          message: `${formData.message || ""} | [DPDP Service Consent Authorized]`
         })
       });
       if (res.ok) {

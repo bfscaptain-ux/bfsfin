@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
             >
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-[10px] font-bold mb-3 border border-emerald-500/20 backdrop-blur-md">
                 <ShieldCheck className="w-3 h-3" />
-                <span>Updated: Sep 2026</span>
+                <span>Updated: November 2026 (DPDP Act 2023 Compliant)</span>
               </div>
               
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-2 leading-tight">
@@ -303,6 +303,35 @@ export default function PrivacyPolicyPage() {
               </div>
 
               <hr className="border-slate-100 dark:border-slate-800 my-10" />
+
+                            <hr className="border-slate-100 dark:border-slate-800 my-10" />
+
+              <div id="children" className="scroll-mt-32">
+                <h2 className="flex items-center gap-3">
+                  <ShieldCheck className="w-7 h-7 text-emerald-500" />
+                  8A. Protection of Children's Data
+                </h2>
+                <p>
+                  Bhardwaj Financial Services does not knowingly solicit, collect, or process personal or financial data from individuals under the age of 18 years. All financial and loan facilitation services are strictly intended for legally competent individuals who have attained the age of majority in India. If we discover that any minor's data has been inadvertently submitted without verified parental or legal guardian consent, it will be permanently deleted from our records immediately.
+                </p>
+              </div>
+
+              <hr className="border-slate-100 dark:border-slate-800 my-10" />
+
+              <div id="breach" className="scroll-mt-32">
+                <h2 className="flex items-center gap-3">
+                  <Activity className="w-7 h-7 text-emerald-500" />
+                  8B. Data Breach Notification Protocol
+                </h2>
+                <p>
+                  In compliance with the <strong>Digital Personal Data Protection (DPDP) Act, 2023</strong> and CERT-In cyber security directives, BFS maintains robust incident detection protocols. In the highly unlikely event of a security breach compromising customer personal data:
+                </p>
+                <ul className="space-y-2">
+                  <li>The BFS Data Protection Officer will notify affected users without unreasonable delay.</li>
+                  <li>Formal incident reporting will be delivered to the <strong>Data Protection Board of India</strong> within statutory timelines (72 hours).</li>
+                  <li>Immediate remedial actions, forensic containment, and customer guidance will be enacted to mitigate any prospective risk.</li>
+                </ul>
+              </div>
 
               <div id="contact" className="scroll-mt-32">
                 <h2 className="flex items-center gap-3">

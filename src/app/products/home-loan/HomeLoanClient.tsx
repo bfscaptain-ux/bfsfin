@@ -100,7 +100,7 @@ export default function HomeLoanClient({ heroImageUrl, startingRate }: { heroIma
                 <Wallet className="w-5 h-5" />
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Max Amount</span>
               </div>
-              <span className="text-3xl sm:text-4xl font-black text-white">₹5 Cr+</span>
+              <span className="text-3xl sm:text-4xl font-black text-white">₹50 Cr+</span>
             </div>
 
           </div>

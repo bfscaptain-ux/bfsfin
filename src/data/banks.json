@@ -482,9 +482,9 @@
       "processingFee": "Standard",
       "baseRateValue": "6.50%"
     },
-    "indian-oversease": {
-      "id": "indian-oversease",
-      "slug": "indian-oversease",
+    "indian-overseas-bank": {
+      "id": "indian-overseas-bank",
+      "slug": "indian-overseas-bank",
       "name": "INDIAN OVERSEAS BANK",
       "logo": "/uploads/bank-logos/indian-oversease-1787660281856.jpeg",
       "salariedRate": "8.50%",
@@ -502,9 +502,9 @@
       "processingFee": "Standard",
       "baseRateValue": "6.50%"
     },
-    "bank-of-maharastra": {
-      "id": "bank-of-maharastra",
-      "slug": "bank-of-maharastra",
+    "bank-of-maharashtra": {
+      "id": "bank-of-maharashtra",
+      "slug": "bank-of-maharashtra",
       "name": "BANK OF MAHARASHTRA",
       "logo": "/uploads/bank-logos/bank-of-maharastra-1787660305265.jpeg",
       "salariedRate": "8.50%",

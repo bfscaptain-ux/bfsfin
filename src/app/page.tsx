@@ -5,7 +5,9 @@ import { prisma } from "@/lib/prisma";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Home Loan, Financial Advisor & Loan Consultant in India & Agra | Bhardwaj Financial Services (BFS)",
+  title: {
+    absolute: "Home Loan, Financial Advisor & Loan Consultant in Agra & India | Bhardwaj Financial Services"
+  },
   description: "India's premier loan advisor & online financial consultant. Lowest home loan interest rates starting 7.15%*, LAP, Business Loans, 100% online assistance, free loan consultation & fast 5-day approvals. Headquartered at Sanjay Place, Agra with Pan-India service.",
   keywords: [
     "home loan",

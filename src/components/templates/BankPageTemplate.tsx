@@ -92,7 +92,7 @@ export default function BankPageTemplate({ data }: BankPageTemplateProps) {
                 Apply for Loan
               </Link>
               <a href="tel:9258724227" className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold px-8 py-3.5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition text-center flex justify-center items-center gap-2">
-                <Phone className="w-4 h-4" /> Call 7900-979-001
+                <Phone className="w-4 h-4" /> Call 9258-724-227
               </a>
             </motion.div>
           </div>

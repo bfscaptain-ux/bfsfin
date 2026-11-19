@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 
 // Advanced SEO & AEO (Answer Engine Optimization) Metadata for the Founder Page
 export const metadata: Metadata = {
-  title: 'Founder & Leadership Team | Bhardwaj Financial Services (BFS)',
+  title: 'Founder & Leadership Team | Over 15 Years of Financial Expertise',
   description: 'Meet the visionary leadership behind Bhardwaj Financial Services (BFS). Guiding India\'s premier 3-in-1 financial hub for Loans @ 7.15%* ROI, 100% Cashless Insurance with free claim support, and Lifetime-Free Credit Cards.',
   keywords: [
     'Founder BFS Agra', 'Praveen Bhardwaj BFS', 'Loan DSA Director Agra', 

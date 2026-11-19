@@ -105,7 +105,7 @@ export default async function CalculatorPage() {
         "provider": {
           "@type": "FinancialService",
           "name": "Bhardwaj Financial Services",
-          "telephone": "+91-7900-979-001",
+          "telephone": "+91-9258-724-227",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place",

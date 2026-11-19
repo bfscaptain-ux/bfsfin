@@ -3,26 +3,50 @@
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
+const DEFAULT_FAQS = [
+  {
+    id: "faq-1",
+    question: "Why choose Bhardwaj Financial Services (BFS) for loans?",
+    answer: "Bhardwaj Financial Services is an authorized banking facilitator in Agra and North India partnered with 50+ nationalized banks and NBFCs (including SBI, PNB, HDFC, ICICI, Axis). We compare live interest rates, handle documentation, and ensure doorstep processing with zero advisory markup."
+  },
+  {
+    id: "faq-2",
+    question: "What is the lowest interest rate offered on home loans?",
+    answer: "Home loan rates start from <strong>7.15%* p.a.</strong> depending on the applicant's CIBIL score (750+), employment profile (salaried or self-employed), and partner bank sanction terms."
+  },
+  {
+    id: "faq-3",
+    question: "How long does the loan sanction process take?",
+    answer: "We facilitate in-principle digital sanction within <strong>48 to 72 hours</strong> once complete KYC, income proofs, and property chain registry documents are verified."
+  },
+  {
+    id: "faq-4",
+    question: "Does BFS charge any upfront advisory fees from borrowers?",
+    answer: "No. BFS does not charge any upfront consultation or application fees from borrowers. Only official bank processing and statutory legal/valuation fees apply as mandated directly by the lending bank."
+  },
+  {
+    id: "faq-5",
+    question: "Is my personal and financial data secure with BFS?",
+    answer: "Yes. We adhere strictly to DPDP Act 2023 guidelines and RBI channel partner security standards. Customer KYC and financial documents are encrypted and shared exclusively with the underwriting desk of your selected partner bank."
+  }
+];
+
 export default function DynamicFaq({ category = "all" }: { category?: string }) {
-  const [faqs, setFaqs] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [faqs, setFaqs] = useState<any[]>(DEFAULT_FAQS);
 
   useEffect(() => {
     const fetchFaqs = async () => {
       try {
-        // Fetch all published FAQs
         const res = await fetch(`/api/faqs?limit=100&t=${Date.now()}`);
         const data = await res.json();
         
         let fetchedFaqs = data.data || [];
         
-        // Filter out drafts
         fetchedFaqs = fetchedFaqs.filter((f: any) => {
            const status = (f.status || 'Published').toLowerCase();
-           return status === 'published' || status === 'published';
+           return status === 'published';
         });
         
-        // Filter by category if specific category is requested
         if (category !== "all") {
           fetchedFaqs = fetchedFaqs.filter((f: any) => {
             const faqCat = (f.category || 'General').toLowerCase();
@@ -30,23 +54,15 @@ export default function DynamicFaq({ category = "all" }: { category?: string }) 
           });
         }
         
-        setFaqs(fetchedFaqs);
+        if (fetchedFaqs.length > 0) {
+          setFaqs(fetchedFaqs);
+        }
       } catch (err) {
-        console.error("Failed to fetch FAQs");
-      } finally {
-        setLoading(false);
+        // Keep DEFAULT_FAQS on failure
       }
     };
     fetchFaqs();
   }, [category]);
-
-  if (loading) {
-    return (
-      <div className="space-y-3 animate-pulse">
-        {[1,2,3,4].map(i => <div key={i} className="h-16 bg-slate-100 dark:bg-emerald-900/50 rounded-xl"></div>)}
-      </div>
-    );
-  }
 
   if (faqs.length === 0) {
     return null;

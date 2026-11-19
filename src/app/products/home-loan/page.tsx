@@ -6,7 +6,7 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Home Loan in India & Agra starting 7.15%* | Bhardwaj Financial Services – Expert Loan Advisor",
+  title: "Home Loan in India & Agra starting 7.15%* | Best Bank Rates & Instant Eligibility",
   description: "Apply for the best home loan in India & Agra starting 7.15%* p.a. Calculate EMI, check eligibility, view documents required, compare SBI, HDFC, ICICI, PNB rates, and get 5-day fast approval with Bhardwaj Financial Services.",
   keywords: [
     "home loan",

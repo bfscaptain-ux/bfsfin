@@ -25,7 +25,7 @@ const QuickEligibility = dynamic(() => import("@/components/QuickEligibility"), 
 const InteractiveStatsMarquee = dynamic(() => import("@/components/InteractiveStatsMarquee"), { ssr: false });
 
 // Lazy-loaded below-the-fold components to accelerate First Contentful Paint
-const DynamicFaq = dynamic(() => import("@/components/DynamicFaq"), { ssr: false });
+const DynamicFaq = dynamic(() => import("@/components/DynamicFaq"), { ssr: true });
 const FloatingSupport = dynamic(() => import("@/components/FloatingSupport"), { ssr: false });
 const ReviewsSection = dynamic(() => import("@/components/ReviewsSection"), { ssr: false });
 const CrmIntroductionSection = dynamic(() => import("@/components/CrmIntroductionSection"), { ssr: true });

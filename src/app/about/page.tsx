@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 
 export const metadata: Metadata = {
-  title: 'Bhardwaj Financial Services (BFS) | Loans @ 7.15%*, Insurance & Credit Cards in Agra & Pan-India',
+  title: 'About Us | Loans @ 7.15%*, Insurance & Credit Cards in Agra & Pan-India',
   description: 'Bhardwaj Financial Services (BFS) is Agra\'s premier financial hub offering 3 core products: Home Loans (min ROI 7.15%) & Business/Personal Loans, 100% Cashless Health, Term Life & Motor Insurance with free claim assistance, and Lifetime-Free Credit Cards with lounge access. Sanjay Place, Agra HQ & Pan-India service.',
   keywords: 'bhardwaj financial services, bfs agra, best finance company in agra, home loans agra 7.15, insurance services agra, cashless health insurance agra, term life cover agra, motor bima, lifetime free credit cards, airport lounge credit card, low cibil loan, dsa approved finance agra sanjay place, loan against property, business loan agra, mathura, noida, gurgaon, delhi ncr, mumbai, bangalore, jaipur',
   openGraph: {

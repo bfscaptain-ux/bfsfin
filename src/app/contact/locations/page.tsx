@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import LocationsClient from "./LocationsClient";
 
 export const metadata: Metadata = {
-  title: "Office Locations | Bhardwaj Financial Services (BFS)",
+  title: "Office Locations & Regional Branch Network in Agra & UP",
   description: "Find Bhardwaj Financial Services near you. We operate our Home Loan consulting services in Agra (HQ), Mathura, Noida, Gurgaon, Mumbai, Bangalore, and Jaipur.",
   keywords: [
     "finance office Agra",

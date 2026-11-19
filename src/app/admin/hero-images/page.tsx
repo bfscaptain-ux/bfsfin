@@ -29,7 +29,7 @@ export default function HeroContentCMS() {
     heroBullet1: "Lowest Institutional Rates Starting from 7.15%* p.a.",
     heroBullet2: "Zero Processing Fees for Direct Applications",
     heroBullet3: "Doorstep Document Pickup & 100% Digital Process",
-    heroSupportText: "Prefer talking to an expert? Call: 7900-979-001",
+    heroSupportText: "Prefer talking to an expert? Call: 9258-724-227",
     googleRating: "4.9",
     googleReviewCount: "1,200+"
   });
