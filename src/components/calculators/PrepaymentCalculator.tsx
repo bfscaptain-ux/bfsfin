@@ -261,16 +261,6 @@ export default function PrepaymentCalculator() {
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Lead Capture */}
-      <CalculatorLeadStrip
-        toolName="Home Loan Prepayment Calculator"
-        loanAmount={outstandingAmount}
-        monthlyEmi={currentEmi}
-        interestRate={interestRate}
-        tenureYears={remainingTenure}
-        customSummary={`Prepayment: ₹${prepaymentAmount.toLocaleString("en-IN")} | Total Interest Saved: ₹${results.interestSaved.toLocaleString("en-IN")}`}
-      />
     </motion.div>
   );
 }

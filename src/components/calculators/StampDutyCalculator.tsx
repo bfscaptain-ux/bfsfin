@@ -214,13 +214,6 @@ export default function StampDutyCalculator() {
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Lead Capture */}
-      <CalculatorLeadStrip
-        toolName="Stamp Duty & Registration Calculator"
-        loanAmount={propertyValue}
-        customSummary={`State: ${state.toUpperCase()} | Property: ₹${propertyValue.toLocaleString("en-IN")} | Total Govt Charges: ₹${totalAmount.toLocaleString("en-IN")}`}
-      />
     </motion.div>
   );
 }

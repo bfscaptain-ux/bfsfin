@@ -31,6 +31,26 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
   const [showAmortization, setShowAmortization] = useState(false);
   const [includeReportInPrint, setIncludeReportInPrint] = useState(true);
   const [leadModalOpen, setLeadModalOpen] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+
+  useEffect(() => {
+    try {
+      setIsVerified(!!localStorage.getItem("bfs_tool_verified_user"));
+    } catch (e) {}
+  }, []);
+
+  const handleActionWithVerification = (callback: () => void) => {
+    try {
+      const verified = !!localStorage.getItem("bfs_tool_verified_user");
+      if (verified) {
+        callback();
+      } else {
+        setLeadModalOpen(true);
+      }
+    } catch (e) {
+      setLeadModalOpen(true);
+    }
+  };
 
   // EMI Formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
   const monthlyRate = rate / 12 / 100;
@@ -425,37 +445,34 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </div>
       </div>
 
-      {/* WhatsApp Lead Capture: Collect Name & Phone for CRM Dispatch */}
-      <CalculatorLeadStrip
-        toolName="Home Loan EMI Calculator"
-        loanAmount={loanAmount}
-        monthlyEmi={emi}
-        interestRate={rate}
-        tenureYears={tenure}
-      />
-
       {/* Action Buttons & Export Suite (Compact Row) */}
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 print:hidden">
         <button
-          onClick={() => setLeadModalOpen(true)}
-          className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
+          onClick={() => {
+            if (isVerified) {
+              handleWhatsAppShare();
+            } else {
+              setLeadModalOpen(true);
+            }
+          }}
+          className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs cursor-pointer"
           title="Get verified loan sanction offers on WhatsApp"
         >
           <MessageCircle className="w-3.5 h-3.5 shrink-0" />
-          <span className="truncate">WhatsApp Offers</span>
+          <span className="truncate">{isVerified ? "Share WhatsApp" : "WhatsApp Offers"}</span>
         </button>
         
         <button
-          onClick={() => setShowAmortization(!showAmortization)}
-          className="flex items-center justify-center gap-1.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
+          onClick={() => handleActionWithVerification(() => setShowAmortization(!showAmortization))}
+          className="flex items-center justify-center gap-1.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs cursor-pointer"
         >
           <Table className="w-3.5 h-3.5 shrink-0" />
           <span className="truncate">{showAmortization ? "Hide Schedule" : "View Schedule"}</span>
         </button>
 
         <button
-          onClick={handleDownloadCsv}
-          className="flex items-center justify-center gap-1.5 bg-teal-700 hover:bg-teal-600 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
+          onClick={() => handleActionWithVerification(handleDownloadCsv)}
+          className="flex items-center justify-center gap-1.5 bg-teal-700 hover:bg-teal-600 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs cursor-pointer"
           title="Download complete year-wise schedule in Excel CSV"
         >
           <FileSpreadsheet className="w-3.5 h-3.5 shrink-0" />
@@ -476,8 +493,8 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </button>
 
         <button
-          onClick={handleDownloadPdf}
-          className="flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs col-span-2 sm:col-span-1"
+          onClick={() => handleActionWithVerification(handleDownloadPdf)}
+          className="flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs col-span-2 sm:col-span-1 cursor-pointer"
           title="Print official loan amortization report"
         >
           <Download className="w-3.5 h-3.5 shrink-0" />
@@ -622,7 +639,7 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </div>
       </div>
 
-      {/* WhatsApp Offers Modal */}
+      {/* WhatsApp & Email OTP Verification Modal */}
       <CalculatorLeadModal
         isOpen={leadModalOpen}
         onClose={() => setLeadModalOpen(false)}
@@ -631,6 +648,10 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         monthlyEmi={emi}
         interestRate={rate}
         tenureYears={tenure}
+        onSuccess={() => {
+          setIsVerified(true);
+          setShowAmortization(true);
+        }}
       />
     </motion.div>
   );

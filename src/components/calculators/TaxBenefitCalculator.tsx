@@ -254,15 +254,6 @@ export default function TaxBenefitCalculator() {
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Lead Capture */}
-      <CalculatorLeadStrip
-        toolName="Home Loan Tax Benefit Calculator"
-        loanAmount={loanAmount}
-        interestRate={interestRate}
-        tenureYears={tenure}
-        customSummary={`Tax Slab: ${taxSlab}% | Total Annual Tax Savings: ₹${Math.round(totalTaxSaved).toLocaleString("en-IN")}`}
-      />
     </motion.div>
   );
 }

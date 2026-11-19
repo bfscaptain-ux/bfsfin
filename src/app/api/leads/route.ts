@@ -198,6 +198,12 @@ export async function POST(req: Request) {
             slotDate: body.slotDate || "",
             slotTime: body.slotTime || "",
             mapsUrl: geo.mapsUrl || "",
+            otpVerified: body.otpVerified ?? (body.otpStatus === 'Verified' ? true : false),
+            toolName: body.toolName || specificType,
+            monthlyEmi: body.monthlyEmi || 0,
+            interestRate: body.interestRate || 0,
+            tenureYears: body.tenureYears || 0,
+            calculationSummary: body.customSummary || body.calculationSummary || body.message || "",
           });
         } catch (crmError) {
           console.error("Background CRM Lead Sync Error:", crmError);

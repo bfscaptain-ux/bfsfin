@@ -27,6 +27,12 @@ export interface CRMLeadPayload {
   slotDate?: string;
   slotTime?: string;
   mapsUrl?: string;
+  otpVerified?: boolean | number;
+  toolName?: string;
+  monthlyEmi?: number | string;
+  interestRate?: number | string;
+  tenureYears?: number | string;
+  calculationSummary?: string;
 }
 
 const DEFAULT_CRM_URL = process.env.CRM_API_URL || "https://crm.bfsfin.cloud/api_website_lead.php";

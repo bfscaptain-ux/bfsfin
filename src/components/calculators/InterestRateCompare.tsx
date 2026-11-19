@@ -205,16 +205,6 @@ export default function InterestRateCompare() {
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Lead Capture */}
-      <CalculatorLeadStrip
-        toolName="Interest Rate Compare"
-        loanAmount={loanAmount}
-        monthlyEmi={emi2}
-        interestRate={rate2}
-        tenureYears={tenure}
-        customSummary={`Rate Comparison: ${rate1}% (EMI ₹${emi1.toLocaleString("en-IN")}) vs ${rate2}% (EMI ₹${emi2.toLocaleString("en-IN")}) | Savings: ₹${totalSavings.toLocaleString("en-IN")}`}
-      />
     </motion.div>
   );
 }

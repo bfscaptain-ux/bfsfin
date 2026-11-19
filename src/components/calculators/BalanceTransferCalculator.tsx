@@ -226,16 +226,6 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Lead Capture */}
-      <CalculatorLeadStrip
-        toolName="Home Loan Balance Transfer"
-        loanAmount={outstandingAmount}
-        monthlyEmi={newEmi}
-        interestRate={newRate}
-        tenureYears={remainingTenure}
-        customSummary={`Net Savings: ₹${netSavings.toLocaleString("en-IN")} | Current Rate: ${currentRate}% -> New Rate: ${newRate}%`}
-      />
     </motion.div>
   );
 }

@@ -221,16 +221,6 @@ export default function AffordabilityCalculator() {
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Lead Capture */}
-      <CalculatorLeadStrip
-        toolName="Home Loan Affordability Calculator"
-        loanAmount={maxLoanAmount}
-        monthlyEmi={Math.round(maxHomeLoanEmi)}
-        interestRate={interestRate}
-        tenureYears={tenure}
-        customSummary={`Monthly Income: ₹${monthlyIncome.toLocaleString("en-IN")} | Max Budget: ₹${(maxPropertyBudget / 100000).toFixed(2)} Lakhs`}
-      />
     </motion.div>
   );
 }
