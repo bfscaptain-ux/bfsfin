@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import CalculatorNavSwitcher from "@/components/calculators/CalculatorNavSwitcher";
+import AllCalculatorsHub from "@/components/calculators/AllCalculatorsHub";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
@@ -114,6 +116,8 @@ export default function InterestRateComparePage() {
       />
 
       <main className="flex-1 py-8 sm:py-12 lg:py-16 w-full max-w-[1600px] 2xl:max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 space-y-10 sm:space-y-14">
+        {/* Interactive Top Switcher Bar */}
+        <CalculatorNavSwitcher currentToolId="interest-rate-compare" />
         <div className="text-center w-full max-w-5xl mx-auto space-y-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
             Compare <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-600 dark:from-emerald-400 dark:to-emerald-400">Interest Rates</span>
@@ -124,6 +128,9 @@ export default function InterestRateComparePage() {
         </div>
 
         <InterestRateCompare />
+
+        {/* Complete Interlinked Calculators Suite */}
+        <AllCalculatorsHub currentToolId="interest-rate-compare" />
       </main>
 
       <div className="print:hidden"><Footer /></div>

@@ -7,6 +7,8 @@ import FloatingSupport from "@/components/FloatingSupport";
 import EMICalculator from "@/components/EMICalculator";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "@/components/illustrations/CalculatorHuman2D";
 import { CalculatorFAQ, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
+import CalculatorNavSwitcher from "@/components/calculators/CalculatorNavSwitcher";
+import AllCalculatorsHub from "@/components/calculators/AllCalculatorsHub";
 import { prisma } from "@/lib/prisma";
 import { MapPin, ShieldCheck, Award, Building2, TrendingUp, CheckCircle2 } from "lucide-react";
 
@@ -203,6 +205,9 @@ export default async function CalculatorPage() {
       <div className="print:hidden"><Header /></div>
 
       <main className="flex-1 py-8 sm:py-12 lg:py-16 w-full max-w-[1600px] 2xl:max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 space-y-10 sm:space-y-14 print:block print:py-0 print:m-0 print:space-y-0">
+        {/* Interactive Top Switcher Bar */}
+        <CalculatorNavSwitcher currentToolId="emi-calculator" />
+
         <div className="text-center w-full max-w-5xl mx-auto space-y-4 print:hidden relative py-2 sm:py-4">
           {/* Ambient 2D Character & Growth Watermark */}
           <div className="absolute inset-0 -top-12 -bottom-12 pointer-events-none select-none opacity-25 dark:opacity-20 z-0 flex items-center justify-center">
@@ -333,6 +338,9 @@ export default async function CalculatorPage() {
             </div>
           </div>
         </div>
+
+        {/* Complete Interlinked Calculators Suite */}
+        <AllCalculatorsHub currentToolId="emi-calculator" />
       </main>
 
       <div className="print:hidden">

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Info, Calculator, FileText, ArrowRight } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import AllCalculatorsHub from './AllCalculatorsHub';
 
 /* 1. Sticky CTA Component */
 export function StickyCTA({ resultLabel, resultValue, ctaText, ctaLink }: { resultLabel: string, resultValue: string, ctaText: string, ctaLink: string }) {
@@ -260,7 +261,11 @@ export function HowToUse({ steps }: { steps: string[] }) {
 }
 
 /* 7. Related Calculators */
-export function RelatedCalculators({ tools }: { tools: { name: string, link: string, desc: string }[] }) {
+export function RelatedCalculators({ tools, currentToolId }: { tools?: { name: string, link: string, desc: string }[], currentToolId?: string }) {
+  if (!tools || tools.length === 0) {
+    return <AllCalculatorsHub currentToolId={currentToolId} />;
+  }
+
   return (
     <div className="my-12 sm:my-16 w-full print:hidden">
       <div className="flex items-center gap-3 mb-6 sm:mb-8">
@@ -285,3 +290,6 @@ export function RelatedCalculators({ tools }: { tools: { name: string, link: str
     </div>
   );
 }
+
+export { default as CalculatorNavSwitcher } from './CalculatorNavSwitcher';
+export { default as AllCalculatorsHub } from './AllCalculatorsHub';

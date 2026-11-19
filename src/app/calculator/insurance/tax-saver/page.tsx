@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import CalculatorNavSwitcher from "@/components/calculators/CalculatorNavSwitcher";
+import AllCalculatorsHub from "@/components/calculators/AllCalculatorsHub";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { StickyCTA, CalculatorFAQ, DualInput, CalculatorChart, FormulaAndExample, HowToUse, RelatedCalculators } from "@/components/calculators/CalculatorElements";
@@ -56,6 +58,8 @@ export default function TaxBenefitCalculator() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4">
+          {/* Top Switcher Bar */}
+          <CalculatorNavSwitcher currentToolId="tax-saver-insurance" />
           <div className="bg-white dark:bg-emerald-950/80 border border-slate-100 dark:border-emerald-800 rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-emerald-900/20 backdrop-blur-3xl mb-16">
             
             <div className="flex items-center gap-4 mb-10 pb-6 border-b border-slate-100 dark:border-emerald-800/50">
