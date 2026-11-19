@@ -204,79 +204,23 @@ export default async function CalculatorPage() {
 
       <div className="print:hidden"><Header /></div>
 
-      <main className="flex-1 py-8 sm:py-12 lg:py-16 w-full max-w-[1600px] 2xl:max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 space-y-10 sm:space-y-14 print:block print:py-0 print:m-0 print:space-y-0">
-        {/* Interactive Top Switcher Bar */}
+      <main className="flex-1 py-6 sm:py-10 w-full max-w-[1600px] 2xl:max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 space-y-8 print:block print:py-0 print:m-0 print:space-y-0">
+        {/* Sleek Top Switcher Bar */}
         <CalculatorNavSwitcher currentToolId="emi-calculator" />
 
-        <div className="text-center w-full max-w-5xl mx-auto space-y-4 print:hidden relative py-2 sm:py-4">
-          {/* Ambient 2D Character & Growth Watermark */}
-          <div className="absolute inset-0 -top-12 -bottom-12 pointer-events-none select-none opacity-25 dark:opacity-20 z-0 flex items-center justify-center">
-            <CalculatorBgAmbient2D className="w-full max-w-3xl h-full object-contain" />
-          </div>
-          {heroImageUrl && (
-            <div className="absolute inset-0 -mx-8 -my-4 rounded-3xl bg-cover bg-center opacity-10" style={{ backgroundImage: `url('${heroImageUrl}')` }}></div>
-          )}
-          <span className="inline-block text-xs uppercase font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider shadow-sm">
-            Precision Financial Tool • GEO Agra & Pan-India
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            Advanced <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-400">Home Loan EMI</span> Calculator
+        <div className="text-center w-full max-w-3xl mx-auto space-y-2 mb-6 print:hidden">
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            Home Loan <span className="text-emerald-600 dark:text-emerald-400">EMI Calculator</span>
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Simulate your home loan, LAP, and business loan interest rates, tenure, and repayments. Compare live bank rates (SBI, HDFC, PNB) and export your exact year-by-year amortization schedule.
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+            Simulate your monthly installment, compare top bank rates, and download your complete year-by-year amortization schedule.
           </p>
         </div>
 
         <EMICalculator defaultRate={defaultRate} />
         
-        {/* GEO & Local Authority Explainer for Google SEO */}
-        <section className="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6 print:hidden w-full">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 flex items-center justify-center shrink-0">
-              <MapPin className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-                Why Calculate Your Loan with Bhardwaj Financial Services (BFS)?
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                Agra's premier financial consultancy with 50+ institutional bank tie-ups & doorstep advisory across Uttar Pradesh & India.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 space-y-2">
-              <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm">
-                <CheckCircle2 className="w-4 h-4" /> 100% Mathematical Accuracy
-              </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Bank-standard reducing balance formula strictly aligned with RBI and nationalized bank underwriting benchmarks.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 space-y-2">
-              <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm">
-                <ShieldCheck className="w-4 h-4" /> ₹10 Lakhs to Unlimited
-              </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Whether you need a ₹15 Lakh home loan or a ₹50 Crore commercial industrial property loan, our underwriting desk has zero upper cap.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 space-y-2">
-              <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm">
-                <Award className="w-4 h-4" /> Multi-Bank Rate Compare
-              </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Compare current offers from SBI, HDFC, ICICI, PNB, and Bank of Baroda with BFS special partner concession rates starting from 7.15%*.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Guidance and FAQs hidden strictly on print so only the loan schedule prints */}
-        <div className="print:hidden">
+        {/* Guidance and FAQs */}
+        <div className="print:hidden space-y-8">
           <HowToUse steps={[
             "Enter your desired Loan Amount (from ₹10 Lakhs to unlimited).",
             "Set the Interest Rate based on current market offers or click any top bank to auto-load.",
@@ -285,58 +229,6 @@ export default async function CalculatorPage() {
           ]} />
 
           <CalculatorFAQ calculatorId="emi" />
-
-          <RelatedCalculators tools={[
-            { name: "Loan Eligibility Calculator", link: "/eligibility", desc: "Check how much loan you are eligible for based on your income." },
-            { name: "Prepayment Savings", link: "/tools/prepayment", desc: "See how part-payments can reduce your loan tenure." },
-            { name: "Balance Transfer Tool", link: "/tools/balance-transfer", desc: "Calculate savings by switching to a lower interest rate." },
-            { name: "Property Affordability", link: "/tools/affordability", desc: "Find out your maximum property purchase budget." },
-            { name: "Stamp Duty Calculator", link: "/tools/stamp-duty", desc: "Calculate registry and stamp duty charges for UP, Delhi & NCR." },
-            { name: "Tax Benefit Calculator", link: "/tools/tax-benefit", desc: "Calculate tax deduction under Section 24(b) & 80C." }
-          ]} />
-
-          {/* BFS Direct Loan Products & Guidance Interlinking */}
-          <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950 via-slate-900 to-[#020617] text-white border border-emerald-500/30 shadow-xl">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-              <div>
-                <span className="text-xs uppercase font-extrabold text-emerald-400 bg-emerald-500/15 px-3 py-1 rounded-full border border-emerald-500/30">
-                  Ready to Apply?
-                </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white mt-2">
-                  Get Home Loans from 7.15%* with Zero Brokerage
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-                  Compare 50+ banking partners, get complete doorstep legal vetting by High Court advocate desk, and fast 5-day sanction.
-                </p>
-              </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Link
-                  href="/products/home-loan"
-                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5"
-                >
-                  Apply Home Loan <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/products/balance-transfer"
-                  className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
-                >
-                  <RefreshCw className="w-3.5 h-3.5 text-teal-400" /> Balance Transfer
-                </Link>
-                <Link
-                  href="/resources/documents"
-                  className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
-                >
-                  <FileCheck className="w-3.5 h-3.5 text-amber-400" /> Documents
-                </Link>
-                <Link
-                  href="/news"
-                  className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-all flex items-center gap-1.5"
-                >
-                  <Newspaper className="w-3.5 h-3.5 text-blue-400" /> Market News
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Complete Interlinked Calculators Suite */}
