@@ -8,10 +8,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Legal Disclaimer & Regulatory Disclosures | Bhardwaj Financial Services",
+  title: "Legal Disclaimer & Regulatory Disclosures",
   description: "Official statutory disclosures, regulatory compliance standards, anti-fraud advisory, and limitation of liability for Bhardwaj Financial Services (BFS Agra).",
   alternates: {
-    canonical: "https://bhardwajfinance.com/disclaimer",
+    canonical: "https://bfsfin.com/disclaimer",
   }
 };
 
@@ -182,10 +182,10 @@ export default function DisclaimerPage() {
           </div>
 
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            By submitting your personal details (Name, Contact Number, Email Address, PAN/Aadhaar information, or Loan Requirement) on this website, you expressly authorize Bhardwaj Financial Services and its authorized representatives to contact you via <strong>Phone Call, SMS, WhatsApp, and Email</strong> to assist you with your application, share sanction updates, and communicate relevant financial offers.
+            By submitting your personal details (Name, Contact Number, Email Address, or Loan Requirement) on this website, you authorize Bhardwaj Financial Services to contact you via <strong>Phone Call, WhatsApp, and Email</strong> strictly in connection with your requested loan facilitation and application updates.
           </p>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            This consent overrides any National Customer Preference Register (NCPR) or Do Not Disturb (DND) registration on your mobile number in respect of transactional and advisory updates concerning your submitted request.
+            Communication will strictly pertain to your explicit advisory inquiry. BFS does not indulge in unsolicited cold marketing, and your contact information is never sold or shared with third-party telemarketing networks.
           </p>
         </section>
 
@@ -197,26 +197,28 @@ export default function DisclaimerPage() {
             </div>
             <div>
               <h2 className="text-xl font-black text-white">
-                Grievance Redressal & Nodal Officer Contact
+                Grievance Redressal &amp; Nodal Officer Contact
               </h2>
               <span className="text-xs text-emerald-300/80">Formal escalation matrix for customer feedback</span>
             </div>
           </div>
 
           <p className="text-sm leading-relaxed text-emerald-100/80">
-            In compliance with our commitment to fair practices, any complaint, discrepancy, or feedback regarding our advisory staff, DSA channel executives, or data handling may be registered directly with our Grievance Redressal Cell:
+            In compliance with our commitment to fair practices, any complaint, discrepancy, or feedback regarding our advisory staff or data handling may be registered directly with our Nodal Grievance Officer:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-300">
             <div className="bg-slate-900/80 p-4 rounded-2xl border border-emerald-800/40 space-y-1">
-              <span className="text-[10px] font-bold uppercase text-emerald-400 tracking-wider">Official Calling Helpline</span>
-              <p className="font-bold text-white text-base">+91 9258-724-227</p>
-              <p className="text-slate-400">Available: Mon - Sat (10:00 AM to 6:30 PM)</p>
+              <span className="text-[10px] font-bold uppercase text-emerald-400 tracking-wider">Nodal Officer &amp; Helpline</span>
+              <p className="font-bold text-white text-base">Praveen Bhardwaj</p>
+              <p className="text-xs text-emerald-300">Call: <a href="tel:9258724227" className="underline font-bold">+91 9258-724-227</a></p>
+              <p className="text-slate-400 text-xs">Hours: Mon - Sat (10:00 AM to 6:30 PM)</p>
             </div>
             <div className="bg-slate-900/80 p-4 rounded-2xl border border-emerald-800/40 space-y-1">
-              <span className="text-[10px] font-bold uppercase text-emerald-400 tracking-wider">WhatsApp & Email Desk</span>
-              <p className="font-bold text-white text-base">+91 7900-979-001</p>
-              <p className="text-slate-400">Email: <a href="mailto:info@bfsfin.com" className="text-emerald-400 hover:underline">info@bfsfin.com</a></p>
+              <span className="text-[10px] font-bold uppercase text-emerald-400 tracking-wider">WhatsApp &amp; Formal Email Desk</span>
+              <p className="font-bold text-white text-base">+91 9286-683-232</p>
+              <p className="text-slate-300 text-xs">Email: <a href="mailto:grievance@bfsfin.com" className="text-emerald-400 hover:underline font-bold">grievance@bfsfin.com</a></p>
+              <p className="text-slate-400 text-xs">Acknowledgment: 24 hrs | TAT: 48-72 hrs</p>
             </div>
           </div>
 

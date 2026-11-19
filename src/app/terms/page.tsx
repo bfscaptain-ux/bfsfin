@@ -8,10 +8,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Use & Service Agreement | Bhardwaj Financial Services",
+  title: "Terms of Use & Service Agreement",
   description: "Official terms and conditions governing the use of Bhardwaj Financial Services (bfsfin.com). Legal jurisdiction: Agra, Uttar Pradesh.",
   alternates: {
-    canonical: "https://bhardwajfinance.com/terms",
+    canonical: "https://bfsfin.com/terms",
   }
 };
 

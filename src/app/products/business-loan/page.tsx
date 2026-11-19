@@ -6,7 +6,7 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Fast Business Loans in Agra & India up to ₹1 Crore | 48-Hour Approval | Bhardwaj Financial Services",
+  title: "Fast Business Loans in Agra & India up to ₹1 Crore | 48-Hour Approval",
   description: "Collateral-free unsecured business loans up to ₹1 Crore for MSMEs, retailers, and traders. 48-hour approval, low interest, minimum documentation, and doorstep service in Agra, UP & India.",
   keywords: [
     "Business Loan Agra",

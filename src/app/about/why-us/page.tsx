@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import WhyUsClient from "./WhyUsClient";
 
 export const metadata: Metadata = {
-  title: "Why Choose Us | Loans @ 7.15%*, Insurance & Credit Cards | Bhardwaj Financial Services",
+  title: "Why Choose Us | Loans @ 7.15%*, Insurance & Credit Cards",
   description: "Discover why 10,000+ clients trust Bhardwaj Financial Services (BFS) across Agra and India. Express 5-day loan approvals from 7.15%* ROI, 100% Cashless Health Insurance with free claim settlement support, and Lifetime-Free Credit Cards with zero hidden fees.",
   keywords: [
     "why choose bhardwaj financial services",
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     "home loan agent in Jaipur"
   ],
   alternates: {
-    canonical: "https://bhardwajfinance.com/about/why-us",
+    canonical: "https://bfsfin.com/about/why-us",
   },
   openGraph: {
     title: "Why Choose Us - The Most Transparent Financial Hub in India",
     description: "Break down financial barriers with BFS. Access lowest interest Home Loans from 7.15%*, 100% Cashless Insurance, and Lifetime-Free Credit Cards under one roof.",
-    url: "https://bhardwajfinance.com/about/why-us",
+    url: "https://bfsfin.com/about/why-us",
     siteName: "Bhardwaj Financial Services",
     images: [
       {
@@ -52,29 +52,29 @@ export default function WhyChooseUsPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bhardwajfinance.com/"
+            "item": "https://bfsfin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "About Us",
-            "item": "https://bhardwajfinance.com/about"
+            "item": "https://bfsfin.com/about"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Why Choose Us",
-            "item": "https://bhardwajfinance.com/about/why-us"
+            "item": "https://bfsfin.com/about/why-us"
           }
         ]
       },
       {
         "@type": "FinancialService",
-        "@id": "https://bhardwajfinance.com/#organization",
+        "@id": "https://bfsfin.com/#organization",
         "name": "Bhardwaj Financial Services",
         "description": "Authorized institutional financial distribution partner across 50+ leading lending pools, specializing in transparent Home Loans from 7.15%* ROI, 100% Cashless Insurance with free claim support, and Lifetime-Free Credit Cards.",
-        "url": "https://bhardwajfinance.com",
-        "logo": "https://bhardwajfinance.com/logo.png",
+        "url": "https://bfsfin.com",
+        "logo": "https://bfsfin.com/logo.png",
         "foundingDate": "2010",
         "founder": {
           "@type": "Person",

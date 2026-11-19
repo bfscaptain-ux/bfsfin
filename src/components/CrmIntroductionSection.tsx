@@ -191,7 +191,7 @@ export default function CrmIntroductionSection() {
           </h2>
 
           <p className="mt-4 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-            Humara in-house proprietary CRM &amp; LOS operating system — jahan har loan application, appointment, partner referral aur RM milestone <strong className="text-slate-900 dark:text-white font-semibold">100% digital aur bank-grade precision</strong> ke sath live track hota hai.
+            Our proprietary enterprise CRM &amp; LOS operating system — where every loan application, appointment, partner referral, and milestone is tracked live with <strong className="text-slate-900 dark:text-white font-semibold">100% digital transparency and bank-grade security</strong>.
           </p>
         </motion.div>
 

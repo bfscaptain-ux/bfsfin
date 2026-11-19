@@ -1690,7 +1690,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
 
           // Generate Personalized Document Checklist
           let docs = [
-            "✅ PAN Card & Aadhar Card",
+            "✅ PAN Card & Aadhaar Card",
             "✅ 2 Passport Size Photographs",
             "✅ Current Residence Proof (Electricity Bill/Rent Agreement)"
           ];
@@ -1786,7 +1786,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
         setLeadData(newLeadData);
         
         let docs = [
-          "✅ PAN Card & Aadhar Card",
+          "✅ PAN Card & Aadhaar Card",
           "✅ 2 Passport Size Photographs",
           "✅ Current Residence Proof (Electricity Bill/Rent Agreement)"
         ];

@@ -23,15 +23,7 @@ export default function AnimatedToolLogo() {
           className="w-full h-full object-contain filter grayscale dark:invert-[0.8]"
         />
       </motion.div>
-      <div className="flex gap-2 mt-1">
-        <span className="text-[10px] font-bold text-slate-500 tracking-wider">
-          bfsfin.com
-        </span>
-        <span className="text-[10px] text-slate-400">|</span>
-        <span className="text-[10px] font-bold text-slate-500 tracking-wider">
-          bfsfin.in
-        </span>
-      </div>
+      <div className="flex items-center gap-1.5 mt-1"><span className="text-[10px] font-bold text-slate-500 tracking-wider">bfsfin.com</span></div>
     </div>
   );
 }

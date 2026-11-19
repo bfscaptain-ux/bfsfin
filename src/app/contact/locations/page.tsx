@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "https://bfsfin.com/contact/locations",
   },
   openGraph: {
-    title: "Office Locations | Bhardwaj Financial Services",
+    title: "Office Locations",
     description: "Visit our Agra Headquarters or connect with our regional representatives across India. Serving 7+ major cities.",
     url: "https://bfsfin.com/contact/locations",
     siteName: "Bhardwaj Financial Services",

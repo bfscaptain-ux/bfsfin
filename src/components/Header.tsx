@@ -235,8 +235,8 @@ export default function Header() {
                     {/* Bottom Promo Banner in Sidebar */}
                     <div className="mt-auto p-4 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-lg relative overflow-hidden">
                       <div className="absolute top-0 right-0 p-2 opacity-20"><BadgePercent className="w-12 h-12" /></div>
-                      <div className="font-black text-sm relative z-10">Lowest ROI Assured*</div>
-                      <div className="text-xs text-emerald-100 mt-1 relative z-10">Compare 15+ banks in 2 mins.</div>
+                      <div className="font-black text-sm relative z-10">Competitive Partner Rates*</div>
+                      <div className="text-xs text-emerald-100 mt-1 relative z-10">Compare 50+ partner banks in 2 mins.</div>
                     </div>
                   </div>
 

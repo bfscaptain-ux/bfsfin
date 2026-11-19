@@ -338,7 +338,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
         "💡 **ATS (Agreement to Sale) Kya Hota Hai?**\n\n" +
         "• Property khareedte waqt **Seller (Bechne Wale)** aur **Buyer (Khareedne Wale)** ke beech hone wale bayana/agreement ko ATS kehte hain.\n" +
         "• Isme property ka total soda/deal value, advance bayana amount aur registry ki antim tarikh likhi hoti hai.\n" +
-        "• **Bank kyu mangta hai?** Bank isi ATS ke aadhar par property ki value ka 80% se 90% loan sanction karta hai.",
+        "• **Bank kyu mangta hai?** Bank isi ATS ke aadhaar par property ki value ka 80% se 90% loan sanction karta hai.",
         ["Required Documents 📄", "Check Eligibility 🔢", "Apply Online 📝", "WhatsApp Executive 💬"]
       );
     }
@@ -438,7 +438,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
     // 9. Follow-up: Explanation / Summary ("Samajh nahi aaya", "Matlab kya hai", "Explain karo")
     if (lower.match(/summary|short|aasan shabdo|samajh nahi aaya|explain|matlab|kya bola/)) {
       if (ctxLower.includes("document") || ctxLower.includes("checklist")) {
-        return ok("context_followup", { fromContext: "explain_docs" }, "💡 **Aasaan Shabdo Mein Documents:**\nAapko sirf 3 cheezein deni hain:\n1️⃣ Identity Proof (Aadhar aur PAN Card)\n2️⃣ Income Proof (Salary Slip ya Bank Statement)\n3️⃣ Property Proof (Makan/Plot ki registry agar property loan hai).\n\nBas itne me aapka loan process shuru ho jata hai!", ["Apply Online 📝", "WhatsApp Executive 💬", "Start Over 🔄"]);
+        return ok("context_followup", { fromContext: "explain_docs" }, "💡 **Aasaan Shabdo Mein Documents:**\nAapko sirf 3 cheezein deni hain:\n1️⃣ Identity Proof (Aadhaar aur PAN Card)\n2️⃣ Income Proof (Salary Slip ya Bank Statement)\n3️⃣ Property Proof (Makan/Plot ki registry agar property loan hai).\n\nBas itne me aapka loan process shuru ho jata hai!", ["Apply Online 📝", "WhatsApp Executive 💬", "Start Over 🔄"]);
       }
       if (ctxLower.includes("eligibility") || ctxLower.includes("salary")) {
         return ok("context_followup", { fromContext: "explain_eligibility" }, "💡 **Aasaan Shabdo Mein Eligibility:**\nAapki in-hand salary ka lagbhag 50% hissa nayi EMI ke liye count hota hai. Us hisab se aapko 20-30 saal ke tenure par maximum loan limit milti hai!", ["Check Eligibility 🔢", "WhatsApp Executive 💬", "Start Over 🔄"]);
@@ -714,7 +714,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
   }
 
   // ── 11. Document query ──
-  if (lower.match(/document|kagaz|paper|itr|aadhar|pan|kyc/)) {
+  if (lower.match(/document|kagaz|paper|itr|aadhaar|pan|kyc/)) {
     return ok("document_query", {}, "");
   }
 

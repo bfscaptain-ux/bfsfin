@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import CertificationsClient from "./CertificationsClient";
 
 export const metadata: Metadata = {
-  title: "Official Compliance & Certifications | Bhardwaj Financial Services",
+  title: "Official Compliance & Certifications",
   description: "Bhardwaj Financial Services (BFS) operates under strict RBI lending guidelines, IRDAI insurance compliance, and authorized banking distribution standards. 100% secure processing for Loans, Insurance & Credit Cards in Agra and Pan-India.",
   keywords: [
     "authorized DSA India",
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     "trusted loan broker India"
   ],
   alternates: {
-    canonical: "https://bhardwajfinance.com/about/certifications",
+    canonical: "https://bfsfin.com/about/certifications",
   },
   openGraph: {
     title: "Official Registrations & Certifications - Bhardwaj Financial Services",
     description: "Your trust is our priority. Explore our DSA authorizations and regulatory compliance standards across Loans, Insurance, and Credit Cards.",
-    url: "https://bhardwajfinance.com/about/certifications",
+    url: "https://bfsfin.com/about/certifications",
     siteName: "Bhardwaj Financial Services",
     images: [
       {
@@ -46,28 +46,28 @@ export default function CertificationsPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bhardwajfinance.com/"
+            "item": "https://bfsfin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "About Us",
-            "item": "https://bhardwajfinance.com/about"
+            "item": "https://bfsfin.com/about"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Certifications",
-            "item": "https://bhardwajfinance.com/about/certifications"
+            "item": "https://bfsfin.com/about/certifications"
           }
         ]
       },
       {
         "@type": "Organization",
-        "@id": "https://bhardwajfinance.com/#organization",
+        "@id": "https://bfsfin.com/#organization",
         "name": "Bhardwaj Financial Services",
-        "url": "https://bhardwajfinance.com",
-        "logo": "https://bhardwajfinance.com/logo.png",
+        "url": "https://bfsfin.com",
+        "logo": "https://bfsfin.com/logo.png",
         "certification": [
           {
             "@type": "EducationalOccupationalCredential",

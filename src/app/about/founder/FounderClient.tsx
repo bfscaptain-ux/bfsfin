@@ -278,7 +278,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 )}
-                <a href="mailto:director@bhardwajfinance.com" className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-emerald-100 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-slate-500">
+                <a href="mailto:director@bfsfin.com" className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-emerald-100 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-slate-500">
                   <Mail className="w-5 h-5" />
                 </a>
               </div>

@@ -8,10 +8,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Grievance Redressal Mechanism & Officer | Bhardwaj Financial Services",
+  title: "Grievance Redressal Mechanism & Officer",
   description: "Official Grievance Redressal Officer contact and dispute resolution protocol for Bhardwaj Financial Services (bfsfin.com). Nodal Officer: Praveen Bhardwaj, Agra.",
   alternates: {
-    canonical: "https://bhardwajfinance.com/grievance",
+    canonical: "https://bfsfin.com/grievance",
   }
 };
 

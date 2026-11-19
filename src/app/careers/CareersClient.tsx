@@ -117,7 +117,7 @@ export default function CareersClient() {
               <a href="#openings" className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center justify-center gap-2">
                 View Open Positions <ChevronRight className="w-5 h-5" />
               </a>
-              <a href="mailto:hr@bhardwajfinance.com" className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+              <a href="mailto:hr@bfsfin.com" className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-emerald-900 border border-slate-200 dark:border-emerald-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
                 Email Resume <Mail className="w-5 h-5" />
               </a>
             </motion.div>
@@ -220,7 +220,7 @@ export default function CareersClient() {
       <section className="py-24 bg-emerald-600 text-center px-4">
         <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Don't see the right role?</h2>
         <p className="text-emerald-100 mb-8 max-w-2xl mx-auto">We are always on the lookout for talented individuals. Send us your resume, and we'll reach out if a suitable position opens up.</p>
-        <a href="mailto:hr@bhardwajfinance.com" className="inline-flex items-center gap-2 bg-white text-emerald-600 font-bold px-8 py-4 rounded-xl shadow-xl hover:scale-105 transition-transform">
+        <a href="mailto:hr@bfsfin.com" className="inline-flex items-center gap-2 bg-white text-emerald-600 font-bold px-8 py-4 rounded-xl shadow-xl hover:scale-105 transition-transform">
           Drop your Resume <Mail className="w-5 h-5" />
         </a>
       </section>

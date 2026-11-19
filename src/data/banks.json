@@ -475,7 +475,7 @@
     "cent-bank": {
       "id": "cent-bank",
       "slug": "cent-bank",
-      "name": "CENT BANK",
+      "name": "CENTRAL BANK OF INDIA",
       "logo": "/uploads/bank-logos/cent-bank-1787660258409.jpeg",
       "salariedRate": "8.50%",
       "selfEmployedRate": "8.60%",
@@ -485,7 +485,7 @@
     "indian-oversease": {
       "id": "indian-oversease",
       "slug": "indian-oversease",
-      "name": "INDIAN OVERSEASE",
+      "name": "INDIAN OVERSEAS BANK",
       "logo": "/uploads/bank-logos/indian-oversease-1787660281856.jpeg",
       "salariedRate": "8.50%",
       "selfEmployedRate": "8.60%",
@@ -505,7 +505,7 @@
     "bank-of-maharastra": {
       "id": "bank-of-maharastra",
       "slug": "bank-of-maharastra",
-      "name": "BANK OF MAHARASTRA",
+      "name": "BANK OF MAHARASHTRA",
       "logo": "/uploads/bank-logos/bank-of-maharastra-1787660305265.jpeg",
       "salariedRate": "8.50%",
       "selfEmployedRate": "8.60%",
@@ -515,7 +515,7 @@
     "panjab-sindh-bank": {
       "id": "panjab-sindh-bank",
       "slug": "panjab-sindh-bank",
-      "name": "PANJAB SINDH BANK",
+      "name": "PUNJAB & SIND BANK",
       "logo": "/uploads/bank-logos/panjab-sindh-bank-1787660320460.jpeg",
       "salariedRate": "8.50%",
       "selfEmployedRate": "8.60%",

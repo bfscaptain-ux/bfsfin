@@ -107,7 +107,7 @@ export default function ContactClient() {
     officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Place, Agra, Uttar Pradesh 282002",
     contactPhone: "+91 9258-724-227",
     officialEmail: "info@bfsfin.com",
-    workingHours: "Mon-Sat: 10AM - 6PM"
+    workingHours: "Mon-Sat: 10:00 AM – 6:30 PM"
   });
 
   useEffect(() => {
@@ -543,7 +543,7 @@ export default function ContactClient() {
                       className="mt-0.5 w-4 h-4 rounded border-emerald-500 text-emerald-600 focus:ring-emerald-500 cursor-pointer shrink-0 accent-emerald-500"
                     />
                     <span>
-                      I authorize Bhardwaj Financial Services and its authorized banking partners to contact me via Call, WhatsApp, SMS, or Email regarding this enquiry. I understand that BFS is a loan facilitator and this authorization overrides my DND/NDNC registration. (Read <a href="/terms" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Terms</a> &amp; <a href="/privacy-policy" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Privacy Policy</a>)
+                      I consent to Bhardwaj Financial Services contacting me exclusively regarding this specific loan inquiry via Call, WhatsApp, or Email in accordance with the DPDP framework. My details will never be sold or shared with third-party spam telemarketers. (Read <a href="/terms" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Terms</a> &amp; <a href="/privacy-policy" target="_blank" className="text-emerald-600 dark:text-emerald-400 underline font-semibold">Privacy Policy</a>)
                     </span>
                   </label>
                 </div>

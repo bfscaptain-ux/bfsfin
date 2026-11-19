@@ -29,7 +29,7 @@ const LOANS = [
     id: "balance-transfer",
     category: "Home Loans",
     title: "Balance Transfer (BT)",
-    desc: "Transfer your high-interest home loan to PNB/Cent Bank and save lakhs in interest.",
+    desc: "Transfer your high-interest home loan to PNB/Central Bank and save lakhs in interest.",
     icon: TrendingDown,
     rate: "Special 6.45% p.a.",
     feature: "Zero Processing Fee*",

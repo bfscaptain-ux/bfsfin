@@ -12,19 +12,19 @@ export const metadata: Metadata = {
     'Credit Card Advisory Agra', 'Bhardwaj Financial Services Team', 'Pan India Banking Partner'
   ].join(', '),
   alternates: {
-    canonical: 'https://bhardwajfinance.com/about/founder',
+    canonical: 'https://bfsfin.com/about/founder',
   },
   openGraph: {
     title: 'Leadership Team | Bhardwaj Financial Services (BFS)',
     description: 'The visionary minds behind India\'s premier 3-in-1 financial hub: Loans @ 7.15%*, 100% Cashless Insurance, and Lifetime-Free Credit Cards.',
-    url: 'https://bhardwajfinance.com/about/founder',
+    url: 'https://bfsfin.com/about/founder',
     siteName: 'Bhardwaj Financial Services',
     type: 'profile',
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Founder & Team | Bhardwaj Financial Services',
+    title: 'Founder & Team',
     description: 'Meet the leadership team behind India\'s premier financial distribution hub.',
   }
 };
@@ -51,25 +51,25 @@ export default async function FounderPage() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://bhardwajfinance.com/about/founder#founder",
+        "@id": "https://bfsfin.com/about/founder#founder",
         "name": ownerConfig.name,
         "jobTitle": ownerConfig.role,
         "worksFor": {
           "@type": "Organization",
-          "@id": "https://bhardwajfinance.com/#organization",
+          "@id": "https://bfsfin.com/#organization",
           "name": "Bhardwaj Financial Services"
         },
         "description": `Founder of Bhardwaj Financial Services with legal and financial expertise delivering Home Loans from 7.15%* ROI, Cashless Insurance, and Lifetime-Free Credit Cards.`,
-        "url": "https://bhardwajfinance.com/about/founder",
+        "url": "https://bfsfin.com/about/founder",
         "alumniOf": "Legal & Financial Advisory India",
         "knowsAbout": ["Home Loans from 7.15% ROI", "Cashless Health Insurance", "Free Claim Settlement", "Lifetime Free Credit Cards", "Multi-Bank DSA Sanctions"]
       },
       {
         "@type": "Organization",
-        "@id": "https://bhardwajfinance.com/#organization",
+        "@id": "https://bfsfin.com/#organization",
         "name": "Bhardwaj Financial Services",
         "founder": {
-          "@id": "https://bhardwajfinance.com/about/founder#founder"
+          "@id": "https://bfsfin.com/about/founder#founder"
         },
         "areaServed": ["Agra", "Mathura", "Noida", "Gurgaon", "Mumbai", "Bangalore", "Jaipur", "Pan India"]
       }

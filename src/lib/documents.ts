@@ -77,7 +77,7 @@ export function parseDocumentQuery(text: string): DocumentChecklistResult {
   // 3. Construct Personalized Document Categories
   const kycDocs = [
     "✅ **PAN Card**: Borrower aur Co-Applicant dono ka (CIBIL & tax verification ke liye).",
-    "✅ **Aadhar Card**: Address & Identity proof (Mobile linked for instant digital KYC).",
+    "✅ **Aadhaar Card**: Address & Identity proof (Mobile linked for instant digital KYC).",
     "✅ **2 Passport Size Photos**: Borrower aur Co-Applicant dono ki.",
     "✅ **Current Residence Proof**: Latest Bijli Bill, Water Bill ya Valid Rent Agreement."
   ];
@@ -149,7 +149,7 @@ export function parseDocumentQuery(text: string): DocumentChecklistResult {
     productDocs.push("✅ **List of Documents (LOD)**: Maujooda bank se milne wali documents ki list.");
     productDocs.push("✅ **Foreclosure / Outstanding Principal Letter**: Loan close karne ke liye amount letter.");
   } else if (product === "health_insurance") {
-    productDocs.push("✅ **Family KYC**: Sabhi insured members ke Aadhar Card.");
+    productDocs.push("✅ **Family KYC**: Sabhi insured members ke Aadhaar Card.");
     productDocs.push("✅ **Medical Records** (Sirf agar pehle se koi critical bimari/surgery hui ho, otherwise no medical report).");
     productDocs.push("❌ **No Income Proof Required**: Mediclaim ke liye koi salary slip ya ITR zaroori nahi!");
   } else if (product === "term_insurance") {

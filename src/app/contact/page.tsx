@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Agra's #1 Loan Consultant | Bhardwaj Financial Services",
+  title: "Contact Us | Agra's #1 Loan Consultant",
   description: "Get in touch with Bhardwaj Financial Services. We offer home loans, LAP, and balance transfers across Agra, Mathura, Noida, Gurgaon, Mumbai, Bangalore, and Jaipur. Direct DSA partner.",
   keywords: [
     "contact Bhardwaj Financial Services",
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     "Agra loan office"
   ],
   alternates: {
-    canonical: "https://bhardwajfinance.com/contact",
+    canonical: "https://bfsfin.com/contact",
   },
   openGraph: {
     title: "Contact Bhardwaj Financial Services | Pan India Loan Experts",
     description: "Reach out for home loan consultation, site visits, or application support. We operate across major Indian cities including Agra, Delhi NCR, Mumbai, and Bangalore.",
-    url: "https://bhardwajfinance.com/contact",
+    url: "https://bfsfin.com/contact",
     siteName: "Bhardwaj Financial Services",
     locale: "en_IN",
     type: "website",
@@ -38,22 +38,22 @@ export default function ContactPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bhardwajfinance.com/"
+            "item": "https://bfsfin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Contact Us",
-            "item": "https://bhardwajfinance.com/contact"
+            "item": "https://bfsfin.com/contact"
           }
         ]
       },
       {
         "@type": "FinancialService",
-        "@id": "https://bhardwajfinance.com/#financialservice",
+        "@id": "https://bfsfin.com/#financialservice",
         "name": "Bhardwaj Financial Services",
-        "image": "https://bhardwajfinance.com/logo.png",
-        "url": "https://bhardwajfinance.com",
+        "image": "https://bfsfin.com/logo.png",
+        "url": "https://bfsfin.com",
         "telephone": "+91-9258724227", 
         "email": "info@bfsfin.com",
         "address": {

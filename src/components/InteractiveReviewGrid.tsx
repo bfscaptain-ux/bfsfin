@@ -338,7 +338,7 @@ export default function InteractiveReviewGrid({
             onClick={handleResetFilters}
             className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
           >
-            Show All 860 Reviews
+            Show All Reviews
           </button>
         </div>
       )}

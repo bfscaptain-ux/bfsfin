@@ -8,10 +8,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy | Bhardwaj Financial Services",
+  title: "Refund & Cancellation Policy",
   description: "Official Refund & Cancellation Policy for Bhardwaj Financial Services (bfsfin.com). Strict zero-advance-brokerage guarantee.",
   alternates: {
-    canonical: "https://bhardwajfinance.com/refund-cancellation",
+    canonical: "https://bfsfin.com/refund-cancellation",
   }
 };
 

@@ -6,7 +6,7 @@ import { buildLoanGraph } from "@/lib/seo-schema";
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "Loan Against Property (LAP) & Mortgage Loan Agra | Up to ₹15 Cr | Bhardwaj Financial Services",
+  title: "Loan Against Property (LAP) & Mortgage Loan Agra | Up to ₹15 Cr",
   description: "Unlock up to 75% market value of your residential, commercial, or industrial property at low starting ROI (from 7.50%*). Fast sanction, 20-year tenure, zero brokerage in Agra, UP & India.",
   keywords: [
     "Loan Against Property Agra",

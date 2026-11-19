@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "cert-1",
+    "title": "Government of India MSME (Udyam) Registration",
+    "issuer": "Ministry of Micro, Small & Medium Enterprises, Govt. of India",
+    "registrationNo": "UDYAM-UP-01-REGISTERED",
+    "validity": "Lifetime / Permanent",
+    "description": "Registered financial facilitation and loan advisory enterprise under MSMED Act 2006. Note: Udyam is an official enterprise registration.",
+    "imageUrl": "/logo.png"
+  },
+  {
+    "id": "cert-2",
+    "title": "Authorized Banking Channel Partner (DSA Facilitator)",
+    "issuer": "Partner Banks & NBFCs Network (PNB, SBI, HDFC, ICICI, BOB)",
+    "registrationNo": "DSA-BFS-AGRA-ACTIVE",
+    "validity": "Active Partner Network",
+    "description": "Authorized institutional sourcing channel partner for retail home loans, MSME business loans, and loan against property.",
+    "imageUrl": "/logo.png"
+  },
+  {
+    "id": "cert-3",
+    "title": "Goods & Services Tax (GST) Verified Enterprise",
+    "issuer": "Commercial Tax Department, Government of Uttar Pradesh",
+    "registrationNo": "GSTIN-UP-COMPLIANT",
+    "validity": "Active & Verified",
+    "description": "Compliant tax-paying enterprise adhering to all statutory and fair-practice guidelines in financial document processing.",
+    "imageUrl": "/logo.png"
+  }
+]

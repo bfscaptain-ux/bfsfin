@@ -149,7 +149,7 @@ export async function generateMetadata({ params }: { params: { city: string, are
   const cityDisp = rawCity.charAt(0).toUpperCase() + rawCity.slice(1);
   const loanType = data?.loanType || 'Home Loan & Financial Advisory';
 
-  const title = `Best ${loanType} in ${areaDisp}, ${cityDisp} | Starting 7.15%* ROI | Bhardwaj Financial Services`;
+  const title = `Best ${loanType} in ${areaDisp}, ${cityDisp} | Starting 7.15%* ROI`;
   const description = data?.area.whyChooseUs || `Apply for the lowest interest rate ${loanType} in ${areaDisp}, ${cityDisp}. Starting 7.15%* with direct bank approvals (SBI, HDFC, PNB, ICICI), zero brokerage, and doorstep document service. Phone: 9286-683-232.`;
 
   const keywords = (data?.area?.keywords && data.area.keywords.length > 0)

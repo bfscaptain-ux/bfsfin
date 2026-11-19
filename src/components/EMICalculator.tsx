@@ -24,7 +24,7 @@ function formatIndianWords(num: number): string {
   return `₹${num}`;
 }
 
-export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: number }) {
+export default function EMICalculator({ defaultRate = 7.15 }: { defaultRate?: number }) {
   const [loanAmount, setLoanAmount] = useState(3500000); // ₹35 Lakhs default
   const [rate, setRate] = useState(defaultRate);
   const [tenure, setTenure] = useState(20); // 20 years default

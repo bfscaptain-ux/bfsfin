@@ -293,7 +293,7 @@ export default function CertificationsClient() {
                       "Complete transparency in interest rates and processing fees.",
                       "No coercion or undue pressure during the recovery process.",
                       "Clear communication of terms and conditions in vernacular languages.",
-                      "Prompt grievance redressal mechanism within 30 days."
+                      "Prompt grievance redressal: Initial acknowledgement in 24 hours, resolution within 48 to 72 working hours."
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
@@ -352,7 +352,7 @@ export default function CertificationsClient() {
               },
               {
                 title: "KYC Security",
-                desc: "Your PAN, Aadhar, and bank statements are shared only via encrypted channels directly to the bank's servers."
+                desc: "Your PAN, Aadhaar, and bank statements are shared only via encrypted channels directly to the bank's servers."
               },
               {
                 title: "No Unsolicited Calls",

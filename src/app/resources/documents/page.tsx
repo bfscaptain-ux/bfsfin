@@ -39,7 +39,7 @@ export default function DocumentsRequiredPage() {
       title: "Self-Employed Professionals",
       items: [
         "KYC: PAN Card & Aadhaar Card",
-        "Business Proof: GST Registration / Shop Act / Udyam Aadhar",
+        "Business Proof: GST Registration / Shop Act / Udyam Aadhaar",
         "Address Proof (Business & Residence)",
         "Income Proof: ITR with computation of income for last 3 years",
         "Financials: Audited Balance Sheet & P&L Statement for last 3 years",

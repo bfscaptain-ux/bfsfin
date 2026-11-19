@@ -213,7 +213,7 @@ export default function BusinessLoanClient({ heroImageUrl, startingRate }: { her
                 <div className="p-4 bg-white dark:bg-emerald-950 rounded-xl border border-slate-200 dark:border-emerald-800">
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">3. Business Proof</h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> GST Registration, Udyam Aadhar, Incorporation Certificate
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> GST Registration, Udyam Aadhaar, Incorporation Certificate
                   </p>
                 </div>
               </div>

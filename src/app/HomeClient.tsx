@@ -413,9 +413,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       categoryName: "Airport Lounge Elite",
       shortLabel: "Lounge & Travel",
       tagline: "Unlimited Airport Comfort & Global Air Miles",
-      cardName: "BFS Obsidian Black Reserve",
-      tier: "WORLD PRIVILEGE",
-      cardNumber: "4829  9912  3841  8842",
+      cardName: "Premium Lounge & Air Miles Card",
+      tier: "PARTNER BANK CARD",
+      cardNumber: "••••  ••••  ••••  8842",
       validThru: "12/30",
       theme: "amber",
       accentBg: "from-amber-500/15 via-yellow-500/10 to-transparent",
@@ -426,7 +426,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       cardBg: "from-zinc-950 via-neutral-900 to-black",
       cardBorder: "border-amber-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.35)]",
       chipColor: "from-amber-200 via-amber-400 to-amber-500 border-amber-300",
-      holoBadge: "WORLD ELITE",
+      holoBadge: "PARTNER BANK",
       annualFee: "Lifetime Free ₹0",
       joiningBonus: "₹10,000 Vouchers",
       estSavings: "₹24,000 / yr",
@@ -439,9 +439,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       categoryName: "5% Super Cashback",
       shortLabel: "5% Cashback",
       tagline: "Direct Statement Credits on Everyday Spends",
-      cardName: "BFS Sapphire Cashback",
-      tier: "INFINITE CASHBACK",
-      cardNumber: "5210  4418  9273  4129",
+      cardName: "Super Cashback & Shopping Card",
+      tier: "PARTNER BANK CARD",
+      cardNumber: "••••  ••••  ••••  4129",
       validThru: "08/30",
       theme: "emerald",
       accentBg: "from-emerald-500/15 via-teal-500/10 to-transparent",
@@ -452,7 +452,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       cardBg: "from-emerald-950 via-teal-950 to-slate-950",
       cardBorder: "border-emerald-500/40 shadow-[0_20px_50px_rgba(6,78,59,0.35)]",
       chipColor: "from-emerald-200 via-teal-300 to-emerald-400 border-emerald-300",
-      holoBadge: "INFINITE SELECT",
+      holoBadge: "PARTNER BANK",
       annualFee: "₹0 Annual Fee",
       joiningBonus: "Flat ₹500 Back",
       estSavings: "₹18,500 / yr",
@@ -465,9 +465,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       categoryName: "Fuel Surcharge & Highway",
       shortLabel: "Fuel & Highway",
       tagline: "100% Surcharge Waiver + FASTag Highway Perks",
-      cardName: "BFS Turbo Octane",
-      tier: "TURBO HIGHWAY",
-      cardNumber: "6011  7890  1254  6301",
+      cardName: "Fuel Surcharge Waiver Card",
+      tier: "PARTNER BANK CARD",
+      cardNumber: "••••  ••••  ••••  6301",
       validThru: "11/29",
       theme: "orange",
       accentBg: "from-orange-500/15 via-amber-500/10 to-transparent",
@@ -478,7 +478,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       cardBg: "from-stone-950 via-amber-950 to-orange-950",
       cardBorder: "border-orange-500/40 shadow-[0_20px_50px_rgba(124,45,18,0.35)]",
       chipColor: "from-amber-200 via-amber-300 to-orange-400 border-orange-300",
-      holoBadge: "OCTANE MOTOR",
+      holoBadge: "PARTNER BANK",
       annualFee: "₹0 Joining Fee",
       joiningBonus: "1,500 Fuel Points",
       estSavings: "₹14,200 / yr",
@@ -491,9 +491,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       categoryName: "Credit Score Builder",
       shortLabel: "Credit Builder",
       tagline: "High Approval Probability (Low CIBIL / First-Time)*",
-      cardName: "BFS Step-Up Booster",
-      tier: "CIBIL STEP-UP",
-      cardNumber: "4020  8391  0294  9924",
+      cardName: "Credit Score Step-Up Card",
+      tier: "FD SECURED CARD",
+      cardNumber: "••••  ••••  ••••  9924",
       validThru: "06/31",
       theme: "purple",
       accentBg: "from-purple-500/15 via-indigo-500/10 to-transparent",
@@ -504,7 +504,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       cardBg: "from-slate-950 via-purple-950 to-indigo-950",
       cardBorder: "border-purple-500/40 shadow-[0_20px_50px_rgba(88,28,135,0.35)]",
       chipColor: "from-purple-200 via-purple-300 to-indigo-400 border-purple-300",
-      holoBadge: "CREDIT STEP-UP*",
+      holoBadge: "SECURED CARD",
       annualFee: "100% Free Lifetime",
       joiningBonus: "Zero Income Proof",
       estSavings: "750+ CIBIL in 6 Mos",
@@ -571,7 +571,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
           </div>
           <div className="truncate flex-grow text-slate-300 font-medium text-xs sm:text-sm">
             <Link href="/news" className="hover:text-emerald-400 transition-colors">
-              RBI MPC Keeps Repo Rate Unchanged at 6.50% • Festive Home Loan ROI Starting from 7.15%* • Read Full Advisory →
+              Special Festive Home Loan ROI Starting from 7.15%* p.a. • Express 3-5 Day In-Principle Sanctions* • Compare Top Banks →
             </Link>
           </div>
           <Link href="/news" className="shrink-0 text-emerald-400 hover:text-emerald-300 font-bold hidden md:inline-flex items-center gap-1 text-xs">
@@ -1038,7 +1038,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span><strong>Business Loans & LAP:</strong> Up to ₹5 Cr without collaterals</span>
+                    <span><strong>Unsecured Business Loans:</strong> Up to ₹5 Cr • <strong>LAP:</strong> Up to ₹15 Cr (Mortgage)</span>
                   </li>
                 </ul>
               </div>
@@ -1541,7 +1541,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                         >
                           {/* Top Magnetic Stripe */}
                           <div className="-mx-5 sm:-mx-6 -mt-1 h-9 sm:h-11 bg-slate-950 border-y border-white/15 shadow-inner flex items-center justify-end px-4">
-                            <span className="text-[7px] font-mono tracking-widest text-slate-400/70">BFS SECURE MAGNETIC STRIPE</span>
+                            <span className="text-[7px] font-mono tracking-widest text-slate-400/70">PARTNER BANK ISSUED CARD</span>
                           </div>
 
                           {/* Signature Strip & CVV Security Box */}
@@ -1554,23 +1554,23 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                               </div>
                               <div className="bg-white text-slate-950 font-mono font-black text-xs px-2.5 py-1 rounded shadow-md flex items-center gap-1 border border-slate-300">
                                 <Lock className="w-2.5 h-2.5 text-amber-600" />
-                                <span>842</span>
+                                <span>•••</span>
                               </div>
                             </div>
                             <div className="text-[7px] text-slate-400 tracking-wider">
-                              Do not share your 3-digit CVV with anyone. BFS representatives will never ask for your PIN/OTP.
+                              Never share your CVV or PIN with anyone. Cards are underwritten and issued directly by partner banks.
                             </div>
                           </div>
 
                           {/* Back Footer: Toll-Free Desk & Hologram Compliance */}
                           <div className="pt-1 border-t border-white/10 flex items-center justify-between text-[8px] text-slate-300/80">
                             <div>
-                              <div className="font-semibold text-white/90">24x7 Privilege Desk</div>
+                              <div className="font-semibold text-white/90">Customer Helpline</div>
                               <div>+91 9258-724-227</div>
                             </div>
                             <div className="text-right">
-                              <div className="font-bold text-amber-400">CHIP & PIN PROTECTED</div>
-                              <div className="text-[7px] text-slate-400">RBI Regulated Co-Brand</div>
+                              <div className="font-bold text-amber-400">CHIP &amp; PIN PROTECTED</div>
+                              <div className="text-[7px] text-slate-400">Partner Bank Network</div>
                             </div>
                           </div>
                         </div>
@@ -1591,6 +1591,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                           <Zap className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> 60-Sec Digital KYC
                         </span>
                       </div>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 px-1 text-center italic">
+                        *Illustrative sample. Cards are issued and underwritten directly by partner banks (HDFC, SBI, ICICI, Axis). BFS is a facilitator.
+                      </p>
                     </div>
                   </div>
 
@@ -1813,8 +1816,8 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">100% RBI &amp; IRDAI Compliant</h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Strict adherence to national banking &amp; insurance regulatory standards.</p>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Authorized Banking Channel Partner</h4>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Direct authorized institutional facilitator for 50+ national &amp; private partner banks.</p>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
@@ -1962,7 +1965,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                     <h4 className="font-bold text-white text-sm sm:text-base">Direct Customer Hotline</h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
                       {contactPhone || "+91 9258-724-227"} / {whatsappPhone || "+91 9286-683-232"}<br />
-                      <span className="text-emerald-400 text-xs">Available Mon–Sat: 10:00 AM – 7:00 PM</span>
+                      <span className="text-emerald-400 text-xs">Available Mon–Sat: 10:00 AM – 6:30 PM</span>
                     </p>
                   </div>
                 </div>

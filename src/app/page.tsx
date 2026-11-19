@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     canonical: "https://bfsfin.com/",
   },
   openGraph: {
-    title: "Home Loan, Financial Advisor & Loan Consultant in India & Agra | Bhardwaj Financial Services",
+    title: "Home Loan, Financial Advisor & Loan Consultant in India & Agra",
     description: "Lowest Home Loan interest rates starting 7.15%*, LAP, Business Loans & free consultation with trusted financial advisors.",
     url: "https://bfsfin.com/",
     siteName: "Bhardwaj Financial Services",

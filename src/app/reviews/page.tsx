@@ -7,7 +7,7 @@ import InteractiveReviewGrid from "@/components/InteractiveReviewGrid";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "All Client Reviews | Bhardwaj Financial Services",
+  title: "All Client Reviews",
   description: "Read thousands of reviews from satisfied clients who got their home loans and LAP approved through Bhardwaj Financial Services.",
 };
 

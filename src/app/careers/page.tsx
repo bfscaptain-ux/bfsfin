@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import CareersClient from "./CareersClient";
 
 export const metadata: Metadata = {
-  title: "Careers | Join India's Top Finance Team | Bhardwaj Financial Services",
+  title: "Careers | Join India's Top Finance Team",
   description: "Build a high-growth career in finance with Bhardwaj Financial Services. We are hiring Relationship Managers, Telecallers, and Credit Analysts across India.",
   keywords: [
     "finance jobs India",
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     "high incentive jobs India"
   ],
   alternates: {
-    canonical: "https://bhardwajfinance.com/careers",
+    canonical: "https://bfsfin.com/careers",
   },
   openGraph: {
     title: "Careers at Bhardwaj Financial Services",
     description: "Accelerate your career in the financial sector. Join our dynamic team across India and work with 50+ top banks and NBFCs.",
-    url: "https://bhardwajfinance.com/careers",
+    url: "https://bfsfin.com/careers",
     siteName: "Bhardwaj Financial Services",
     images: [
       {
@@ -46,13 +46,13 @@ export default function CareersPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://bhardwajfinance.com/"
+            "item": "https://bfsfin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Careers",
-            "item": "https://bhardwajfinance.com/careers"
+            "item": "https://bfsfin.com/careers"
           }
         ]
       },
@@ -71,8 +71,8 @@ export default function CareersPage() {
         "hiringOrganization": {
           "@type": "Organization",
           "name": "Bhardwaj Financial Services",
-          "sameAs": "https://bhardwajfinance.com",
-          "logo": "https://bhardwajfinance.com/logo.png"
+          "sameAs": "https://bfsfin.com",
+          "logo": "https://bfsfin.com/logo.png"
         },
         "jobLocation": {
           "@type": "Place",
