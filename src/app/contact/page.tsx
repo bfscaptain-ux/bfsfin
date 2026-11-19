@@ -54,7 +54,7 @@ export default function ContactPage() {
         "name": "Bhardwaj Financial Services",
         "image": "https://bhardwajfinance.com/logo.png",
         "url": "https://bhardwajfinance.com",
-        "telephone": "+91-9286683232", 
+        "telephone": "+91-9258724227", 
         "email": "info@bfsfin.com",
         "address": {
           "@type": "PostalAddress",
@@ -90,7 +90,7 @@ export default function ContactPage() {
         "@type": "ContactPage",
         "mainEntity": {
           "@type": "ContactPoint",
-          "telephone": "+91-9286683232",
+          "telephone": "+91-9258724227",
           "contactType": "customer service",
           "areaServed": "IN",
           "availableLanguage": ["en", "hi"]

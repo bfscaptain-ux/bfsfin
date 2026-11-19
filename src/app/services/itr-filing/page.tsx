@@ -457,7 +457,7 @@ export default function ItrFilingPage() {
         "url": "https://bfsfin.com/services/itr-filing",
         "logo": "https://bfsfin.com/owner.png",
         "image": "https://bfsfin.com/owner.png",
-        "telephone": "+91-9286683232",
+        "telephone": "+91-9258724227",
         "priceRange": "₹499 - ₹2999",
         "currenciesAccepted": "INR",
         "paymentAccepted": "Cash, Credit Card, UPI, Net Banking",
@@ -692,7 +692,7 @@ export default function ItrFilingPage() {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href="tel:9286683232"
+                  href="tel:9258724227"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 font-bold text-[11px] border border-white/15 transition-all active:scale-95"
                 >
                   <PhoneCall className="w-3 h-3 text-emerald-400" />
@@ -1061,7 +1061,7 @@ export default function ItrFilingPage() {
 
                     <div className="grid grid-cols-2 gap-2">
                       <a
-                        href="tel:9286683232"
+                        href="tel:9258724227"
                         className="p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-all"
                       >
                         <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
@@ -2161,7 +2161,7 @@ export default function ItrFilingPage() {
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Direct CA Desk: +91-9286683232</span>
+                <span>Direct CA Desk: +91 9258-724-227</span>
               </p>
             </div>
 

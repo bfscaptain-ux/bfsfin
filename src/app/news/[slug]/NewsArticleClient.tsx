@@ -174,7 +174,7 @@ export default function NewsArticleClient({
               </div>
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <a
-                  href="tel:+919286683232"
+                  href="tel:+919258724227"
                   className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition-colors flex items-center gap-1.5"
                 >
                   <PhoneCall className="w-4 h-4 text-purple-400" /> Call Advisor
@@ -340,7 +340,7 @@ export default function NewsArticleClient({
                   Institutional Financial Advisory &amp; Legal Desk • Sanjay Place, Agra
                 </p>
                 <p className="text-[11px] text-slate-500 m-0">
-                  Helpline: +91 92587-24227 | WhatsApp: +91 79009-79001 | Portal: https://bfsfin.com
+                  Helpline: +91 9258-724-227 | WhatsApp: +91 9286-683-232 | Portal: https://bfsfin.com
                 </p>
               </div>
               <div className="text-right">
@@ -722,10 +722,10 @@ export default function NewsArticleClient({
                     </p>
                     <div className="pt-2 flex items-center gap-4 text-xs font-bold">
                       <a
-                        href="tel:+919286683232"
+                        href="tel:+919258724227"
                         className="text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1"
                       >
-                        <PhoneCall className="w-3.5 h-3.5" /> +91 92587-24227
+                        <PhoneCall className="w-3.5 h-3.5" /> +91 9258-724-227
                       </a>
                       <a
                         href="https://wa.me/919286683232"
@@ -785,7 +785,7 @@ export default function NewsArticleClient({
               {/* PRINT-ONLY FOOTER NOTICE */}
               <div className="hidden print:block print-footer-notice">
                 <p>
-                  &copy; {new Date().getFullYear()} Bhardwaj Financial Services (BFS). Published for informational and client guidance. Direct Call Helpline: +91 92587-24227 | WhatsApp: +91 79009-79001 | Office: Shop No. 4, Friends Center, Sanjay Place, Agra.
+                  &copy; {new Date().getFullYear()} Bhardwaj Financial Services (BFS). Published for informational and client guidance. Direct Call Helpline: +91 9258-724-227 | WhatsApp: +91 9286-683-232 | Office: Shop No. 4, Friends Center, Sanjay Place, Agra.
                 </p>
               </div>
 
@@ -822,10 +822,10 @@ export default function NewsArticleClient({
 
                   <div className="pt-1 flex flex-col gap-2.5">
                     <a
-                      href="tel:+919286683232"
+                      href="tel:+919258724227"
                       className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30"
                     >
-                      <PhoneCall className="w-4 h-4" /> Call: +91 92587-24227
+                      <PhoneCall className="w-4 h-4" /> Call: +91 9258-724-227
                     </a>
                     <a
                       href="https://wa.me/919286683232?text=Hello%20BFS,%20I%20have%20an%20inquiry%20regarding%20the%20recent%20news%20update."

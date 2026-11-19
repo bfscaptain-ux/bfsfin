@@ -516,7 +516,7 @@ export default function ComplaintClient({ heroImage }: { heroImage: string }) {
         </div>
       </main>
       <Footer />
-      <FloatingSupport contactPhone="+91 9286-683-232" whatsappPhone="919286683232" hideWheel={true} />
+      <FloatingSupport contactPhone="+91 9258-724-227" whatsappPhone="919286683232" hideWheel={true} />
     </>
   );
 }

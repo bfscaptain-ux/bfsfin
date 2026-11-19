@@ -5,8 +5,9 @@ async function main() {
   console.log('Synchronizing BFS Compliance & Phone Standards...');
 
   const updates = [
-    { key: 'contactPhone', value: '+91 9286-683-232' },
-    { key: 'salesPhone', value: '+91 9286-683-232' },
+    { key: 'contactPhone', value: '+91 9258-724-227' },
+    { key: 'salesPhone', value: '+91 9258-724-227' },
+    { key: 'supportPhone', value: '+91 9258-724-227' },
     { key: 'whatsappPhone', value: '919286683232' },
     { key: 'heroBullet1', value: 'Lowest Institutional Rates Starting from 7.15%* p.a.' },
     { key: 'tickerText', value: '⚡ Express Home Loan Processing in Agra (3-5 Days TAT*)' },

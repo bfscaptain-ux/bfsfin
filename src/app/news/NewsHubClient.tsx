@@ -131,7 +131,7 @@ export default function NewsHubClient({ initialArticles }: { initialArticles: Ne
             </div>
 
             <div className="hidden lg:flex items-center gap-4 text-slate-400 font-medium">
-              <span className="text-emerald-400">Agra HQ Desk: +91 9286-683-232</span>
+              <span className="text-emerald-400">Agra HQ Desk: +91 9258-724-227</span>
               <span>Shop No. 4, Friends Center, Sanjay Place</span>
             </div>
           </div>
@@ -381,10 +381,10 @@ export default function NewsHubClient({ initialArticles }: { initialArticles: Ne
             </div>
             <div className="flex items-center gap-3 shrink-0 flex-wrap justify-center">
               <a
-                href="tel:+919286683232"
+                href="tel:+919258724227"
                 className="px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm border border-slate-700 transition-colors flex items-center gap-2"
               >
-                <PhoneCall className="w-4 h-4 text-emerald-400" /> +91 9286-683-232
+                <PhoneCall className="w-4 h-4 text-emerald-400" /> +91 9258-724-227
               </a>
               <a
                 href="https://wa.me/919286683232?text=Hello%20BFS,%20I%20want%20to%20consult%20regarding%20home%20loan%20rates."

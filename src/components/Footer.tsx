@@ -26,7 +26,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       .then(res => res.json())
       .then(data => {
         if (data.success && data.settings) {
-          const cp = data.settings.contactPhone || propContactPhone || "+91 9286-683-232";
+          const cp = data.settings.contactPhone || propContactPhone || "+91 9258-724-227";
           const wp = data.settings.whatsappPhone || propWhatsappPhone || "919286683232";
           setPhones({
             callPhone: cp.includes("+91") ? cp : `+91 ${cp}`,
@@ -405,7 +405,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               <p>Block-C11, Shop No.-5, First Floor, near MK Tailor,</p>
               <p>Sanjay Place, Agra, Uttar Pradesh 282002</p>
               <div className="pt-2 flex flex-col gap-1 text-emerald-200 font-semibold">
-                <p>Call Helpline: <a href="tel:9286683232" className="text-emerald-400 hover:underline">+91 9286-683-232</a></p>
+                <p>Call Helpline: <a href="tel:9258724227" className="text-emerald-400 hover:underline">+91 9258-724-227</a></p>
                 <p>WhatsApp Desk: <a href="https://wa.me/919286683232" className="text-emerald-400 hover:underline">+91 9286-683-232</a></p>
                 <p>Corporate Email: <a href="mailto:info@bfsfin.com" className="hover:text-emerald-400">info@bfsfin.com</a></p>
                 <p>Grievance Officer: <a href="mailto:grievance@bfsfin.com" className="text-emerald-400 hover:underline">grievance@bfsfin.com</a></p>

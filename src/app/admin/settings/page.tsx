@@ -68,7 +68,7 @@ export default function AdminSettingsCMS() {
     personalLoanRate: "10.50",
     balanceTransferRate: "6.45",
     goldLoanRate: "1.00",
-    contactPhone: "+91 7900-979-001",
+    contactPhone: "+91 9258-724-227",
     whatsappPhone: "919286683232",
     ownerName: "Vineeta Sharma",
     ownerRole: "Founder & Managing Director, BFS",
@@ -222,7 +222,7 @@ export default function AdminSettingsCMS() {
                 value={settings.contactPhone}
                 onChange={(e) => setSettings({ ...settings, contactPhone: e.target.value })}
                 className="w-full bg-emerald-950 border border-emerald-800 rounded-xl px-3 py-2.5 text-slate-200 focus:outline-none focus:border-emerald-500 font-bold"
-                placeholder="+91 7900-979-001"
+                placeholder="+91 9258-724-227"
               />
             </div>
             <div>

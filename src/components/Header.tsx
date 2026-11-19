@@ -111,9 +111,13 @@ export default function Header() {
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-2 text-emerald-100/80">
                 <span>Talk to a Loan Expert:</span>
-                <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." className="flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors drop-shadow-sm">
+                <a href="tel:+919258724227" className="flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors drop-shadow-sm" title="Call Loan Expert (+91 9258-724-227)">
                   <PhoneCall className="w-3 h-3 text-emerald-400" /> 
-                  <span className="font-bold text-[12px]">9286-683-232</span>
+                  <span className="font-bold text-[12px]">Call: 9258-724-227</span>
+                </a>
+                <span className="text-emerald-800">|</span>
+                <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-emerald-300 hover:text-white transition-colors drop-shadow-sm" title="WhatsApp Desk (+91 9286-683-232)">
+                  <span className="font-bold text-[12px]">WhatsApp: 9286-683-232</span>
                 </a>
               </div>
               <span className="text-emerald-800">|</span>

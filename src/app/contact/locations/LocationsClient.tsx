@@ -25,7 +25,7 @@ export default function LocationsClient() {
   const [searchQuery, setSearchQuery] = useState("");
   const [settings, setSettings] = useState({
     officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor,\nSanjay Place, Agra, Uttar Pradesh 282002",
-    contactPhone: "+91 9286-683-232",
+    contactPhone: "+91 9258-724-227",
     officialEmail: "info@bfsfin.com",
     workingHours: "Mon-Sat: 10AM - 6PM"
   });

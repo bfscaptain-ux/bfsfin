@@ -15,7 +15,7 @@ export default function FloatingSupport({
   const [chatOpen, setChatOpen] = useState(false);
 
   const cleanWhatsapp = (whatsappPhone || "919286683232").replace(/[^0-9]/g, "");
-  const cleanPhone = (contactPhone || "+919286683232").replace(/[^0-9+]/g, "");
+  const cleanPhone = (contactPhone || "+919258724227").replace(/[^0-9+]/g, "");
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function FloatingSupport({
         <a 
           href={`tel:${cleanPhone}`}
           className="group relative flex items-center gap-2.5 pl-3.5 pr-3 py-2 bg-slate-900/90 hover:bg-slate-900 text-white rounded-full shadow-lg shadow-slate-900/30 hover:shadow-xl border border-slate-700/60 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95"
-          title="Call Relationship Desk"
+          title="Call Relationship Desk (+91 9258-724-227)"
         >
           <span className="hidden sm:inline-block text-xs font-bold text-slate-200 tracking-wide">
             Call Advisor

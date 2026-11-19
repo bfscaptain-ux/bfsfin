@@ -56,7 +56,7 @@ export default async function AboutPage() {
           latitude: '27.199777',
           longitude: '78.006699',
         },
-        telephone: '+919286683232',
+        telephone: '+919258724227',
         founder: {
           '@type': 'Person',
           name: ownerConfig.name,

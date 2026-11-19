@@ -356,7 +356,7 @@ export default function MsmeRegistrationPage() {
           "@type": "FinancialService",
           "name": "Bhardwaj Financial Services (BFS Agra)",
           "url": "https://bfsfin.com",
-          "telephone": "+91-9286683232",
+          "telephone": "+91-9258724227",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Sanjay Place, Commercial Hub",
@@ -527,7 +527,7 @@ export default function MsmeRegistrationPage() {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href="tel:9286683232"
+                  href="tel:9258724227"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 font-bold text-[11px] border border-white/15 transition-all active:scale-95"
                   title="Direct Call"
                 >
@@ -930,7 +930,7 @@ export default function MsmeRegistrationPage() {
 
                     <div className="grid grid-cols-2 gap-2">
                       <a
-                        href="tel:9286683232"
+                        href="tel:9258724227"
                         className="p-2 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1 border border-slate-700 transition-all"
                       >
                         <PhoneCall className="w-3 h-3 text-teal-400" />

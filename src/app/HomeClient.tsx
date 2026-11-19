@@ -549,7 +549,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
     bullet1: `Lowest Institutional Rates Starting from ${homeLoanRate || "7.15"}%* p.a.`, 
     bullet2: "100% Cashless Health Bima & Free Claim Assistance",
     bullet3: "Lifetime-Free Credit Cards with Airport Lounge Access",
-    supportText: `Prefer talking to an expert? Call: ${contactPhone || "+91 9286-683-232"}`, 
+    supportText: `Prefer talking to an expert? Call: ${contactPhone || "+91 9258-724-227"}`, 
     googleRating: "4.9",
     googleReviewCount: "555+"
   };
@@ -714,7 +714,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                       Advisory Desk
                     </span>
                     <span className="text-[10px] sm:text-[11px] font-black text-slate-800 dark:text-white leading-none whitespace-nowrap">
-                      {contactPhone || "+91 9286-683-232"}
+                      {contactPhone || "+91 9258-724-227"}
                     </span>
                   </div>
                 </a>
@@ -1566,7 +1566,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                           <div className="pt-1 border-t border-white/10 flex items-center justify-between text-[8px] text-slate-300/80">
                             <div>
                               <div className="font-semibold text-white/90">24x7 Privilege Desk</div>
-                              <div>+91 9286-683-232</div>
+                              <div>+91 9258-724-227</div>
                             </div>
                             <div className="text-right">
                               <div className="font-bold text-amber-400">CHIP & PIN PROTECTED</div>
@@ -1961,7 +1961,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   <div>
                     <h4 className="font-bold text-white text-sm sm:text-base">Direct Customer Hotline</h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                      {contactPhone || "+91 9286-683-232"} / {whatsappPhone || "+91 9286-683-232"}<br />
+                      {contactPhone || "+91 9258-724-227"} / {whatsappPhone || "+91 9286-683-232"}<br />
                       <span className="text-emerald-400 text-xs">Available Mon–Sat: 10:00 AM – 7:00 PM</span>
                     </p>
                   </div>

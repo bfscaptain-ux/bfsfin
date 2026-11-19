@@ -129,7 +129,7 @@ export default async function HomePage() {
           "latitude": "27.199777",
           "longitude": "78.006699"
         },
-        "telephone": "+91-9286683232",
+        "telephone": "+91-9258724227",
         "email": "info@bfsfin.com",
         "sameAs": [
           "https://www.facebook.com/bhardwajfinancialservices",
