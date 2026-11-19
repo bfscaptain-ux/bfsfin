@@ -6,6 +6,7 @@ import { ArrowRight, ArrowLeftRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedToolLogo from "../AnimatedToolLogo";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "../illustrations/CalculatorHuman2D";
+import { CalculatorLeadStrip } from "./CalculatorLeadCapture";
 
 export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defaultRate?: number }) {
   const [outstandingAmount, setOutstandingAmount] = useState(3000000);
@@ -225,6 +226,16 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Lead Capture */}
+      <CalculatorLeadStrip
+        toolName="Home Loan Balance Transfer"
+        loanAmount={outstandingAmount}
+        monthlyEmi={newEmi}
+        interestRate={newRate}
+        tenureYears={remainingTenure}
+        customSummary={`Net Savings: ₹${netSavings.toLocaleString("en-IN")} | Current Rate: ${currentRate}% -> New Rate: ${newRate}%`}
+      />
     </motion.div>
   );
 }

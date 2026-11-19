@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Calculator, PiggyBank, Scale } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedToolLogo from "../AnimatedToolLogo";
+import { CalculatorLeadStrip } from "./CalculatorLeadCapture";
 
 export default function InterestRateCompare() {
   const [loanAmount, setLoanAmount] = useState(3500000);
@@ -204,6 +205,16 @@ export default function InterestRateCompare() {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Lead Capture */}
+      <CalculatorLeadStrip
+        toolName="Interest Rate Compare"
+        loanAmount={loanAmount}
+        monthlyEmi={emi2}
+        interestRate={rate2}
+        tenureYears={tenure}
+        customSummary={`Rate Comparison: ${rate1}% (EMI ₹${emi1.toLocaleString("en-IN")}) vs ${rate2}% (EMI ₹${emi2.toLocaleString("en-IN")}) | Savings: ₹${totalSavings.toLocaleString("en-IN")}`}
+      />
     </motion.div>
   );
 }

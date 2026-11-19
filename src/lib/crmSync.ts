@@ -29,9 +29,7 @@ export interface CRMLeadPayload {
   mapsUrl?: string;
 }
 
-const DEFAULT_CRM_URL = process.env.NODE_ENV === "production"
-  ? "https://crm.bfsfin.cloud/api_website_lead.php"
-  : "http://localhost:8000/api_website_lead.php";
+const DEFAULT_CRM_URL = process.env.CRM_API_URL || "https://crm.bfsfin.cloud/api_website_lead.php";
 const LOCAL_PHP_EXE = "E:\\Downloads\\client mgmt2\\php-portable\\php.exe";
 const LOCAL_SCRIPT = "E:\\Downloads\\client mgmt2\\api_website_lead.php";
 

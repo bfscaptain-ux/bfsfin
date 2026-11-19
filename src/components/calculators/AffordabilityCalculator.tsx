@@ -6,6 +6,7 @@ import { ArrowRight, Wallet, Home } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedToolLogo from "../AnimatedToolLogo";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "../illustrations/CalculatorHuman2D";
+import { CalculatorLeadStrip } from "./CalculatorLeadCapture";
 
 export default function AffordabilityCalculator() {
   const [monthlyIncome, setMonthlyIncome] = useState(150000);
@@ -220,6 +221,16 @@ export default function AffordabilityCalculator() {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Lead Capture */}
+      <CalculatorLeadStrip
+        toolName="Home Loan Affordability Calculator"
+        loanAmount={maxLoanAmount}
+        monthlyEmi={Math.round(maxHomeLoanEmi)}
+        interestRate={interestRate}
+        tenureYears={tenure}
+        customSummary={`Monthly Income: ₹${monthlyIncome.toLocaleString("en-IN")} | Max Budget: ₹${(maxPropertyBudget / 100000).toFixed(2)} Lakhs`}
+      />
     </motion.div>
   );
 }

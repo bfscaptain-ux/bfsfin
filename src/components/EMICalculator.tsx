@@ -7,6 +7,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } 
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedToolLogo from "./AnimatedToolLogo";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "./illustrations/CalculatorHuman2D";
+import { CalculatorLeadStrip, CalculatorLeadModal } from "./calculators/CalculatorLeadCapture";
 
 function formatIndianWords(num: number): string {
   if (num >= 10000000) {
@@ -29,6 +30,7 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
   const [tenure, setTenure] = useState(20); // 20 years default
   const [showAmortization, setShowAmortization] = useState(false);
   const [includeReportInPrint, setIncludeReportInPrint] = useState(true);
+  const [leadModalOpen, setLeadModalOpen] = useState(false);
 
   // EMI Formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
   const monthlyRate = rate / 12 / 100;
@@ -423,15 +425,24 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </div>
       </div>
 
+      {/* WhatsApp Lead Capture: Collect Name & Phone for CRM Dispatch */}
+      <CalculatorLeadStrip
+        toolName="Home Loan EMI Calculator"
+        loanAmount={loanAmount}
+        monthlyEmi={emi}
+        interestRate={rate}
+        tenureYears={tenure}
+      />
+
       {/* Action Buttons & Export Suite (Compact Row) */}
       <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 print:hidden">
         <button
-          onClick={handleWhatsAppShare}
+          onClick={() => setLeadModalOpen(true)}
           className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
-          title="Share calculation estimate on WhatsApp"
+          title="Get verified loan sanction offers on WhatsApp"
         >
           <MessageCircle className="w-3.5 h-3.5 shrink-0" />
-          <span className="truncate">WhatsApp</span>
+          <span className="truncate">WhatsApp Offers</span>
         </button>
         
         <button
@@ -610,6 +621,17 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Offers Modal */}
+      <CalculatorLeadModal
+        isOpen={leadModalOpen}
+        onClose={() => setLeadModalOpen(false)}
+        toolName="Home Loan EMI Calculator"
+        loanAmount={loanAmount}
+        monthlyEmi={emi}
+        interestRate={rate}
+        tenureYears={tenure}
+      />
     </motion.div>
   );
 }

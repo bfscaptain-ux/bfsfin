@@ -30,8 +30,14 @@ export async function POST(req: Request) {
 
     const body = await req.json().catch(() => ({}));
     
-    // Check if email already exists (for formal loan applications, excluding instant callback & appointment requests)
-    if (body.email && !body.source?.includes("Callback") && !body.source?.includes("APPOINTMENT")) {
+    // Check if email already exists (for formal loan applications, excluding instant callback, appointment & calculator leads)
+    if (
+      body.email &&
+      !body.source?.includes("Callback") &&
+      !body.source?.includes("APPOINTMENT") &&
+      !body.source?.includes("Calculator") &&
+      !body.formType?.includes("Calculator")
+    ) {
       const existingLead = await prisma.lead.findFirst({
         where: { email: body.email }
       });

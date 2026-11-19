@@ -6,6 +6,7 @@ import { ArrowRight, FileText, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedToolLogo from "../AnimatedToolLogo";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "../illustrations/CalculatorHuman2D";
+import { CalculatorLeadStrip } from "./CalculatorLeadCapture";
 
 export default function StampDutyCalculator() {
   const [propertyValue, setPropertyValue] = useState(5000000);
@@ -213,6 +214,13 @@ export default function StampDutyCalculator() {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Lead Capture */}
+      <CalculatorLeadStrip
+        toolName="Stamp Duty & Registration Calculator"
+        loanAmount={propertyValue}
+        customSummary={`State: ${state.toUpperCase()} | Property: ₹${propertyValue.toLocaleString("en-IN")} | Total Govt Charges: ₹${totalAmount.toLocaleString("en-IN")}`}
+      />
     </motion.div>
   );
 }

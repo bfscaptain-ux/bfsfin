@@ -6,6 +6,7 @@ import { ArrowRight, FastForward, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedToolLogo from "../AnimatedToolLogo";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "../illustrations/CalculatorHuman2D";
+import { CalculatorLeadStrip } from "./CalculatorLeadCapture";
 
 export default function PrepaymentCalculator() {
   const [outstandingAmount, setOutstandingAmount] = useState(3000000);
@@ -260,6 +261,16 @@ export default function PrepaymentCalculator() {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Lead Capture */}
+      <CalculatorLeadStrip
+        toolName="Home Loan Prepayment Calculator"
+        loanAmount={outstandingAmount}
+        monthlyEmi={currentEmi}
+        interestRate={interestRate}
+        tenureYears={remainingTenure}
+        customSummary={`Prepayment: ₹${prepaymentAmount.toLocaleString("en-IN")} | Total Interest Saved: ₹${results.interestSaved.toLocaleString("en-IN")}`}
+      />
     </motion.div>
   );
 }
