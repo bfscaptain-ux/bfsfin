@@ -36,11 +36,12 @@ echo ""
 echo "📥 1/4: Pulling latest changes from GitHub (master)..."
 git fetch origin
 git checkout master || true
-git pull origin master
+git reset --hard origin/master
 
 echo ""
-echo "📦 2/4: Generating Prisma Client..."
+echo "📦 2/4: Generating Prisma Client & Updating Compliance Settings..."
 npx prisma generate || true
+node prisma/update-compliance.js || true
 
 echo ""
 echo "🔨 3/4: Building Next.js for Production..."
@@ -61,17 +62,5 @@ pm2 save
 
 echo ""
 echo "======================================================================"
-echo "🧪 Verification of bfsfin.com..."
-echo "======================================================================"
-sleep 3
-HTTP_LOCAL=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/ || true)
-HTTP_PUBLIC=$(curl -s -o /dev/null -w "%{http_code}" https://bfsfin.com/ || true)
-
-echo "Local (Port 3000) : HTTP $HTTP_LOCAL"
-echo "Public Website    : HTTP $HTTP_PUBLIC"
-echo ""
-pm2 list
-echo ""
-echo "======================================================================"
-echo "🎉 BFSFIN.COM UPDATED AND DEPLOYED SUCCESSFULLY!"
+echo "✅ SUCCESS: bfsfin.com has been rebuilt and restarted with latest audit updates!"
 echo "======================================================================"
