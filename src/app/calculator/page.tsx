@@ -204,15 +204,15 @@ export default async function CalculatorPage() {
 
       <div className="print:hidden"><Header /></div>
 
-      <main className="flex-1 py-6 sm:py-10 w-full max-w-[1600px] 2xl:max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 space-y-8 print:block print:py-0 print:m-0 print:space-y-0">
+      <main className="flex-1 py-4 sm:py-6 w-full max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 space-y-6 print:block print:py-0 print:m-0 print:space-y-0">
         {/* Sleek Top Switcher Bar */}
         <CalculatorNavSwitcher currentToolId="emi-calculator" />
 
-        <div className="text-center w-full max-w-3xl mx-auto space-y-2 mb-6 print:hidden">
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+        <div className="text-center w-full max-w-2xl mx-auto space-y-1 mb-2 print:hidden">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             Home Loan <span className="text-emerald-600 dark:text-emerald-400">EMI Calculator</span>
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
             Simulate your monthly installment, compare top bank rates, and download your complete year-by-year amortization schedule.
           </p>
         </div>

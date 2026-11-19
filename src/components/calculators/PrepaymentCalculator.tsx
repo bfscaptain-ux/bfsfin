@@ -59,33 +59,33 @@ export default function PrepaymentCalculator() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-2xl p-4 sm:p-6 shadow-md dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
     >
       <AnimatedToolLogo />
-      {/* Subtle 2D Character Ambient Watermark */}
-      <div className="absolute -bottom-8 -right-8 w-80 h-60 pointer-events-none select-none opacity-20 dark:opacity-10 z-0">
+      {/* Subtle Financial Ambient Watermark */}
+      <div className="absolute -bottom-8 -right-8 w-60 h-44 pointer-events-none select-none opacity-15 dark:opacity-10 z-0">
         <CalculatorBgAmbient2D className="w-full h-full object-contain" />
       </div>
       
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-emerald-800 gap-4 relative z-10">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-            <FastForward className="w-7 h-7" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-200 dark:border-emerald-800 gap-2 relative z-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
+            <FastForward className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">
               Prepayment Calculator
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               See how part-payments reduce your tenure and save interest
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 relative z-10">
         {/* Sliders Area (7 cols) */}
-        <div className="lg:col-span-7 space-y-8">
+        <div className="lg:col-span-7 space-y-4">
           {/* Outstanding Amount */}
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm font-semibold">
@@ -211,57 +211,50 @@ export default function PrepaymentCalculator() {
         </div>
 
         {/* Results Card (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm relative overflow-hidden h-full group">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-500 group-hover:bg-emerald-500/20" />
-
-            <div className="space-y-6 relative z-10">
-              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm tracking-wide">
-                <Clock className="w-5 h-5" /> Time & Money Saved
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-xs relative overflow-hidden h-full">
+            <div className="space-y-4 relative z-10">
+              <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-xs tracking-wide">
+                <Clock className="w-4 h-4" /> Time & Money Saved
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white dark:bg-emerald-900 p-4 rounded-xl border border-slate-100 dark:border-emerald-800 shadow-sm">
-                  <div className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider mb-1">Interest Saved</div>
-                  <div className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">
-                    ₹{results.interestSaved > 0 ? (results.interestSaved / 100000).toFixed(2) : 0}<span className="text-sm">L</span>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white dark:bg-emerald-900 p-3 rounded-xl border border-slate-100 dark:border-emerald-800 shadow-xs">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider mb-0.5">Interest Saved</div>
+                  <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                    ₹{results.interestSaved > 0 ? (results.interestSaved / 100000).toFixed(2) : 0}<span className="text-xs">L</span>
                   </div>
                 </div>
                 
-                <div className="bg-white dark:bg-emerald-900 p-4 rounded-xl border border-slate-100 dark:border-emerald-800 shadow-sm">
-                  <div className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider mb-1">Time Saved</div>
-                  <div className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">
-                    {Math.floor(results.monthsSaved / 12)}<span className="text-sm">Y</span> {results.monthsSaved % 12}<span className="text-sm">M</span>
+                <div className="bg-white dark:bg-emerald-900 p-3 rounded-xl border border-slate-100 dark:border-emerald-800 shadow-xs">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider mb-0.5">Time Saved</div>
+                  <div className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                    {Math.floor(results.monthsSaved / 12)}<span className="text-xs">Y</span> {results.monthsSaved % 12}<span className="text-xs">M</span>
                   </div>
                 </div>
               </div>
 
-                            {/* 2D Fintech Character */}
-              <div className="w-full h-24 sm:h-28 my-1 flex items-center justify-center bg-black/5 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/10 p-1 relative overflow-hidden group">
-                <CalculatorHuman2D className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-300" />
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-slate-200 dark:border-emerald-800/60 text-sm">
+              <div className="space-y-2 pt-3 border-t border-slate-200 dark:border-emerald-800/60 text-xs sm:text-sm">
                 <div className="flex justify-between items-center text-slate-600 dark:text-slate-300">
-                  <span>Current EMI (Unchanged):</span>
+                  <span>Current EMI:</span>
                   <span className="font-bold text-slate-900 dark:text-white">₹{currentEmi.toLocaleString("en-IN")}</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-600 dark:text-slate-300">
                   <span>New Tenure:</span>
                   <span className="font-bold text-slate-900 dark:text-white">
-                    {Math.floor(results.newMonths / 12)} Years {results.newMonths % 12} Months
+                    {Math.floor(results.newMonths / 12)} Yrs {results.newMonths % 12} Mos
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 relative z-10">
+            <div className="pt-4 relative z-10">
               <Link
                 href="/apply"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-600 hover:from-emerald-500 hover:to-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl shadow-xs transition-all text-xs"
               >
                 <span>Save on your Loan</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

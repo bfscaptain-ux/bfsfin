@@ -49,33 +49,33 @@ export default function StampDutyCalculator() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-2xl p-4 sm:p-6 shadow-md dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
     >
       <AnimatedToolLogo />
-      {/* Subtle 2D Character Ambient Watermark */}
-      <div className="absolute -bottom-8 -right-8 w-80 h-60 pointer-events-none select-none opacity-20 dark:opacity-10 z-0">
+      {/* Subtle Financial Ambient Watermark */}
+      <div className="absolute -bottom-8 -right-8 w-60 h-44 pointer-events-none select-none opacity-15 dark:opacity-10 z-0">
         <CalculatorBgAmbient2D className="w-full h-full object-contain" />
       </div>
       
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-emerald-800 gap-4 relative z-10">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-            <FileText className="w-7 h-7" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-200 dark:border-emerald-800 gap-2 relative z-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
+            <FileText className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">
               Stamp Duty Calculator
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Estimate Stamp Duty and Registration charges for your property
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 relative z-10">
         {/* Sliders Area (7 cols) */}
-        <div className="lg:col-span-7 space-y-8">
+        <div className="lg:col-span-7 space-y-4">
           {/* Property Value */}
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm font-semibold">
@@ -160,13 +160,11 @@ export default function StampDutyCalculator() {
         </div>
 
         {/* Results Card (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm relative overflow-hidden h-full group">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none transition-all duration-500 group-hover:bg-emerald-500/10" />
-
-            <div className="space-y-6 relative z-10">
-              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm tracking-wide">
-                <CheckCircle2 className="w-5 h-5" /> Estimated Total Cost
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-xs relative overflow-hidden h-full">
+            <div className="space-y-4 relative z-10">
+              <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-xs tracking-wide">
+                <CheckCircle2 className="w-4 h-4" /> Estimated Total Cost
               </div>
 
               <div>
@@ -174,47 +172,42 @@ export default function StampDutyCalculator() {
                   key={totalAmount}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white"
+                  className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white"
                 >
                   ₹{totalAmount.toLocaleString("en-IN")}
                 </motion.div>
-                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm font-medium">
+                <p className="text-slate-500 dark:text-slate-400 mt-1 text-xs font-medium">
                   Additional Govt. charges above property value.
                 </p>
               </div>
 
-                            {/* 2D Fintech Character */}
-              <div className="w-full h-24 sm:h-28 my-1 flex items-center justify-center bg-black/5 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/10 p-1 relative overflow-hidden group">
-                <CalculatorHuman2D className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-300" />
-              </div>
-
-              <div className="space-y-4 pt-6 border-t border-slate-200 dark:border-emerald-800/60 text-sm">
-                <div className="bg-white dark:bg-emerald-900 p-4 rounded-xl border border-slate-100 dark:border-emerald-800 flex justify-between items-center">
+              <div className="space-y-2.5 pt-3 border-t border-slate-200 dark:border-emerald-800/60 text-xs sm:text-sm">
+                <div className="bg-white dark:bg-emerald-900 p-2.5 rounded-lg border border-slate-100 dark:border-emerald-800 flex justify-between items-center">
                   <div>
-                    <div className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">Stamp Duty ({stampDutyRate}%)</div>
-                    <div className="font-bold text-lg text-slate-900 dark:text-white">₹{stampDutyAmount.toLocaleString("en-IN")}</div>
+                    <div className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase mb-0.5">Stamp Duty ({stampDutyRate}%)</div>
+                    <div className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">₹{stampDutyAmount.toLocaleString("en-IN")}</div>
                   </div>
-                  <div className="text-emerald-500 font-bold text-sm bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-full">
+                  <div className="text-emerald-600 dark:text-emerald-400 font-bold text-xs bg-emerald-50 dark:bg-emerald-900/40 px-2 py-0.5 rounded-full border border-emerald-100 dark:border-emerald-800">
                     {gender === 'female' || gender === 'joint' ? 'Rebate Applied' : 'Standard'}
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-emerald-900 p-4 rounded-xl border border-slate-100 dark:border-emerald-800 flex justify-between items-center">
+                <div className="bg-white dark:bg-emerald-900 p-2.5 rounded-lg border border-slate-100 dark:border-emerald-800 flex justify-between items-center">
                   <div>
-                    <div className="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase mb-1">Registration ({regRate}%)</div>
-                    <div className="font-bold text-lg text-slate-900 dark:text-white">₹{registrationAmount.toLocaleString("en-IN")}</div>
+                    <div className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase mb-0.5">Registration ({regRate}%)</div>
+                    <div className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">₹{registrationAmount.toLocaleString("en-IN")}</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 relative z-10">
+            <div className="pt-4 relative z-10">
               <Link
                 href="/apply"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-600 hover:from-emerald-500 hover:to-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl shadow-xs transition-all text-xs"
               >
                 <span>Need a Loan including Registry?</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

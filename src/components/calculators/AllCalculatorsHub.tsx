@@ -63,7 +63,7 @@ export default function AllCalculatorsHub({ currentToolId }: AllCalculatorsHubPr
   });
 
   return (
-    <section className="mt-14 sm:mt-16 pt-10 border-t border-slate-200 dark:border-slate-800 print:hidden font-sans space-y-8">
+    <section className="mt-8 sm:mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden font-sans space-y-5">
       {/* Clean Header & Category Filter in 1 Row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>

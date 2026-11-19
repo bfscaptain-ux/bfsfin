@@ -71,28 +71,28 @@ export function CalculatorFAQ({ faqs: initialFaqs, calculatorId }: { faqs?: { qu
   };
 
   return (
-    <div className="my-12 sm:my-16 w-full print:hidden">
+    <div className="my-6 sm:my-8 w-full print:hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+      <div className="text-center max-w-2xl mx-auto mb-4 sm:mb-5 space-y-1">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
           Frequently Asked Questions
         </h2>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Clear answers to common questions about loans, interest rates, and EMI calculations.
         </p>
       </div>
-      <div className="w-full space-y-3.5">
+      <div className="w-full space-y-2.5">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+          <div key={index} className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs">
             <button 
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full text-left px-6 py-4 flex items-center justify-between font-bold text-slate-800 dark:text-slate-200 focus:outline-none hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors"
+              className="w-full text-left px-4 py-2.5 flex items-center justify-between font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200 focus:outline-none hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors"
             >
               <span className="pr-4">{faq.question}</span>
-              <ChevronDown className={`w-5 h-5 shrink-0 transition-transform ${openIndex === index ? 'rotate-180 text-emerald-500' : 'text-slate-400'}`} />
+              <ChevronDown className={`w-4 h-4 shrink-0 transition-transform ${openIndex === index ? 'rotate-180 text-emerald-500' : 'text-slate-400'}`} />
             </button>
             {openIndex === index && (
-              <div className="px-6 pb-4 text-slate-600 dark:text-slate-400 leading-relaxed text-sm border-t border-slate-100 dark:border-slate-800 pt-4">
+              <div className="px-4 pb-3 text-slate-600 dark:text-slate-400 leading-relaxed text-xs border-t border-slate-100 dark:border-slate-800 pt-2.5">
                 {faq.answer}
               </div>
             )}
@@ -181,29 +181,29 @@ export function CalculatorChart({ data, colors }: { data: { name: string, value:
 /* 5. Formula & Example Component */
 export function FormulaAndExample({ formulaName, formulaText, exampleText }: { formulaName: string, formulaText: string, exampleText: string }) {
   return (
-    <div className="my-12 sm:my-16 grid md:grid-cols-2 gap-6 w-full print:hidden">
-      <div className="bg-slate-900 rounded-2xl p-6 md:p-8 shadow-xl border border-slate-800 relative overflow-hidden group">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 bg-emerald-500/20 rounded-lg">
-            <Calculator className="w-5 h-5 text-emerald-400" />
+    <div className="my-6 sm:my-8 grid md:grid-cols-2 gap-4 w-full print:hidden">
+      <div className="bg-slate-900 rounded-xl p-4 sm:p-5 shadow-md border border-slate-800 relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="p-1.5 bg-emerald-500/20 rounded-lg">
+            <Calculator className="w-4 h-4 text-emerald-400" />
           </div>
-          <h3 className="text-xl font-bold text-white">Mathematical Formula</h3>
+          <h3 className="text-base font-bold text-white">Mathematical Formula</h3>
         </div>
-        <p className="text-slate-400 text-sm mb-4">How is {formulaName} calculated?</p>
-        <div className="bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-emerald-300 text-sm overflow-x-auto whitespace-nowrap">
+        <p className="text-slate-400 text-xs mb-3">How is {formulaName} calculated?</p>
+        <div className="bg-slate-950 rounded-lg p-3 border border-slate-800 font-mono text-emerald-300 text-xs overflow-x-auto whitespace-nowrap">
           {formulaText}
         </div>
       </div>
       
-      <div className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 dark:border-slate-800">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-            <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+      <div className="bg-white dark:bg-slate-900/50 rounded-xl p-4 sm:p-5 shadow-xs border border-slate-200 dark:border-slate-800">
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="p-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+            <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white">Worked Example</h3>
+          <h3 className="text-base font-bold text-slate-900 dark:text-white">Worked Example</h3>
         </div>
-        <div className="prose prose-sm dark:prose-invert text-slate-600 dark:text-slate-400 leading-relaxed">
+        <div className="prose prose-xs dark:prose-invert text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
           {exampleText}
         </div>
       </div>
@@ -215,17 +215,17 @@ export function FormulaAndExample({ formulaName, formulaText, exampleText }: { f
 export function HowToUse({ steps }: { steps: string[] }) {
   const isFourSteps = steps.length === 4;
   return (
-    <div className="my-12 sm:my-16 w-full text-center print:hidden">
-      <div className="max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+    <div className="my-6 sm:my-8 w-full text-center print:hidden">
+      <div className="max-w-2xl mx-auto mb-4 sm:mb-5 space-y-1">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
           How to Use This Calculator
         </h2>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Follow these quick steps to calculate your exact monthly payments and loan schedule in seconds.
         </p>
       </div>
 
-      <div className={`grid gap-4 sm:gap-6 relative w-full ${
+      <div className={`grid gap-3 sm:gap-4 relative w-full ${
         isFourSteps 
           ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" 
           : steps.length === 3 
@@ -235,22 +235,22 @@ export function HowToUse({ steps }: { steps: string[] }) {
         {steps.map((step, idx) => (
           <div 
             key={idx} 
-            className="group relative bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-lg hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center justify-between h-full"
+            className="group relative bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 sm:p-4 shadow-xs hover:border-emerald-500/50 transition-all flex flex-col items-center text-center justify-between h-full"
           >
             <div className="w-full flex flex-col items-center">
               {/* Step Number Badge */}
-              <div className="w-12 h-12 mx-auto bg-gradient-to-tr from-emerald-700 to-emerald-500 text-white rounded-2xl flex items-center justify-center font-black text-lg mb-5 shadow-lg shadow-emerald-600/25 group-hover:scale-110 transition-transform">
+              <div className="w-7 h-7 mx-auto bg-gradient-to-tr from-emerald-700 to-emerald-500 text-white rounded-lg flex items-center justify-center font-bold text-xs mb-2.5 shadow-sm">
                 {idx + 1}
               </div>
               
               {/* Step Content */}
-              <p className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 leading-relaxed">
+              <p className="text-xs font-medium text-slate-700 dark:text-slate-200 leading-snug">
                 {step}
               </p>
             </div>
 
             {/* Subtle Step Counter Pill */}
-            <span className="mt-5 inline-block text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-900">
+            <span className="mt-3 inline-block text-[9px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-100 dark:border-emerald-900">
               Step {idx + 1} of {steps.length}
             </span>
           </div>

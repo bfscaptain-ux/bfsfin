@@ -35,38 +35,38 @@ export default function InterestRateCompare() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-2xl p-4 sm:p-6 shadow-md dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
     >
       <AnimatedToolLogo />
       
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-emerald-800 gap-4 relative z-10">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-            <Scale className="w-7 h-7" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-200 dark:border-emerald-800 gap-2 relative z-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
+            <Scale className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">
               Interest Rate Comparison Tool
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               See how much you save with a lower interest rate
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 relative z-10">
         {/* Sliders Area (7 cols) */}
-        <div className="lg:col-span-7 space-y-8">
+        <div className="lg:col-span-7 space-y-4">
           {/* Loan Amount */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-xs sm:text-sm font-semibold">
               <span className="text-slate-700 dark:text-slate-300">Loan Amount</span>
               <motion.span
                 key={loanAmount}
                 initial={{ scale: 1.1, color: "#10b981" }}
                 animate={{ scale: 1, color: "var(--tw-colors-emerald-500)" }}
-                className="text-emerald-600 dark:text-emerald-400 font-extrabold text-xl bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-lg"
+                className="text-emerald-600 dark:text-emerald-400 font-extrabold text-base bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 rounded-md"
               >
                 ₹{(loanAmount / 100000).toFixed(1)} Lakhs
               </motion.span>
@@ -78,19 +78,19 @@ export default function InterestRateCompare() {
               step={100000}
               value={loanAmount}
               onChange={(e) => setLoanAmount(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 transition-all hover:h-4"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
           </div>
 
           {/* Tenure */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-xs sm:text-sm font-semibold">
               <span className="text-slate-700 dark:text-slate-300">Loan Tenure</span>
               <motion.span
                 key={tenure}
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
-                className="text-emerald-600 dark:text-emerald-400 font-extrabold text-xl bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-lg"
+                className="text-emerald-600 dark:text-emerald-400 font-extrabold text-base bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 rounded-md"
               >
                 {tenure} Years
               </motion.span>
@@ -102,16 +102,16 @@ export default function InterestRateCompare() {
               step={1}
               value={tenure}
               onChange={(e) => setTenure(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 transition-all hover:h-4"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             {/* Rate 1 */}
-            <div className="space-y-3 p-4 bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800 rounded-2xl">
-              <div className="flex justify-between items-center text-sm font-semibold">
+            <div className="space-y-2 p-3 bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800 rounded-xl">
+              <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-slate-500 dark:text-slate-400">Bank 1 Rate</span>
-                <span className="text-slate-900 dark:text-slate-100 font-extrabold text-lg">{rate1.toFixed(2)}%</span>
+                <span className="text-slate-900 dark:text-slate-100 font-extrabold text-sm">{rate1.toFixed(2)}%</span>
               </div>
               <input
                 type="range"
@@ -125,10 +125,10 @@ export default function InterestRateCompare() {
             </div>
 
             {/* Rate 2 */}
-            <div className="space-y-3 p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-2xl">
-              <div className="flex justify-between items-center text-sm font-semibold">
+            <div className="space-y-2 p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-xl">
+              <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-emerald-600 dark:text-emerald-400">Bank 2 Rate</span>
-                <span className="text-emerald-700 dark:text-emerald-300 font-extrabold text-lg">{rate2.toFixed(2)}%</span>
+                <span className="text-emerald-700 dark:text-emerald-300 font-extrabold text-sm">{rate2.toFixed(2)}%</span>
               </div>
               <input
                 type="range"
@@ -144,13 +144,11 @@ export default function InterestRateCompare() {
         </div>
 
         {/* Results Card (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl p-6 sm:p-8 flex flex-col shadow-lg text-white relative overflow-hidden group h-full">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none group-hover:bg-white/20 transition-all duration-500" />
-
-            <div className="space-y-6 relative z-10 flex-1">
-              <div className="flex items-center gap-2 font-bold text-sm tracking-wide text-emerald-100">
-                <PiggyBank className="w-5 h-5" /> Your Total Savings
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-4 sm:p-5 flex flex-col shadow-md text-white relative overflow-hidden h-full">
+            <div className="space-y-4 relative z-10 flex-1">
+              <div className="flex items-center gap-1.5 font-bold text-xs tracking-wide text-emerald-100">
+                <PiggyBank className="w-4 h-4" /> Your Total Savings
               </div>
 
               <div>
@@ -158,23 +156,23 @@ export default function InterestRateCompare() {
                   key={totalSavings}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-5xl font-black tracking-tight"
+                  className="text-3xl sm:text-4xl font-black tracking-tight"
                 >
                   ₹{totalSavings > 0 ? totalSavings.toLocaleString("en-IN") : "0"}
                 </motion.div>
                 {totalSavings > 0 && (
-                  <p className="text-emerald-100 mt-2 text-sm font-medium">
+                  <p className="text-emerald-100 mt-1 text-xs font-medium">
                     You save <span className="font-bold text-white">₹{emiSavings.toLocaleString("en-IN")}</span> every month!
                   </p>
                 )}
                 {totalSavings <= 0 && (
-                  <p className="text-white/80 mt-2 text-sm font-medium">
+                  <p className="text-white/80 mt-1 text-xs font-medium">
                     Bank 1 is offering a better or equal rate.
                   </p>
                 )}
               </div>
 
-              <div className="space-y-3 pt-6 border-t border-white/20 text-sm">
+              <div className="space-y-2 pt-3 border-t border-white/20 text-xs sm:text-sm">
                 <div className="flex justify-between items-center text-white/90">
                   <span>Bank 1 EMI:</span>
                   <span className="font-bold">₹{emi1.toLocaleString("en-IN")}</span>
@@ -183,7 +181,7 @@ export default function InterestRateCompare() {
                   <span>Bank 2 EMI:</span>
                   <span className="font-bold">₹{emi2.toLocaleString("en-IN")}</span>
                 </div>
-                <div className="flex justify-between items-center text-white/90 pt-2 border-t border-white/10">
+                <div className="flex justify-between items-center text-white/90 pt-1.5 border-t border-white/10">
                   <span>Bank 1 Total Interest:</span>
                   <span className="font-bold">₹{totalInterest1.toLocaleString("en-IN")}</span>
                 </div>
@@ -194,13 +192,13 @@ export default function InterestRateCompare() {
               </div>
             </div>
 
-            <div className="pt-6 relative z-10">
+            <div className="pt-4 relative z-10">
               <Link
                 href="/apply"
-                className="w-full flex items-center justify-center gap-2 bg-white text-emerald-700 hover:bg-emerald-50 font-bold py-3.5 rounded-xl shadow-md transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-white text-emerald-700 hover:bg-emerald-50 font-bold py-2.5 rounded-xl shadow-xs transition-colors text-xs"
               >
                 <span>Apply for Lowest Rate</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

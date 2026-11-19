@@ -8,6 +8,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimatedToolLogo from "./AnimatedToolLogo";
 import CalculatorHuman2D, { CalculatorBgAmbient2D } from "./illustrations/CalculatorHuman2D";
 
+function formatIndianWords(num: number): string {
+  if (num >= 10000000) {
+    const cr = (num / 10000000).toFixed(2);
+    return `₹${cr.endsWith(".00") ? cr.slice(0, -3) : cr} Crore`;
+  }
+  if (num >= 100000) {
+    const lk = (num / 100000).toFixed(2);
+    return `₹${lk.endsWith(".00") ? lk.slice(0, -3) : lk} Lakh`;
+  }
+  if (num >= 1000) {
+    return `₹${(num / 1000).toFixed(0)}k`;
+  }
+  return `₹${num}`;
+}
+
 export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: number }) {
   const [loanAmount, setLoanAmount] = useState(3500000); // ₹35 Lakhs default
   const [rate, setRate] = useState(defaultRate);
@@ -150,55 +165,60 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-emerald-950/80 border border-slate-100 dark:border-emerald-800 rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-emerald-900/20 backdrop-blur-3xl transition-colors duration-300 relative overflow-hidden print:p-0 print:border-none print:shadow-none print:bg-transparent"
+      className="bg-white dark:bg-emerald-950/80 border border-slate-100 dark:border-emerald-800 rounded-2xl p-4 sm:p-6 shadow-md dark:shadow-emerald-900/20 backdrop-blur-3xl transition-colors duration-300 relative overflow-hidden print:p-0 print:border-none print:shadow-none print:bg-transparent"
     >
       <div className="print:hidden"><AnimatedToolLogo /></div>
-      {/* Subtle 2D Character & Financial Graph Ambient Backdrop Watermark */}
-      <div className="absolute -bottom-10 -right-10 w-[420px] h-[300px] pointer-events-none select-none opacity-20 dark:opacity-15 z-0 print:hidden">
+      {/* Subtle Financial Graph Ambient Backdrop Watermark */}
+      <div className="absolute -bottom-8 -right-8 w-[280px] h-[180px] pointer-events-none select-none opacity-15 dark:opacity-10 z-0 print:hidden">
         <CalculatorBgAmbient2D className="w-full h-full object-contain" />
       </div>
       
       {/* Header of Calculator inside the card */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 pb-6 border-b border-slate-100 dark:border-emerald-800/50 gap-4 print:mb-4 print:pb-4">
-        <div className="flex items-center gap-4 sm:gap-5">
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-inner print:hidden">
-            <Calculator className="w-7 h-7 sm:w-8 sm:h-8" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-emerald-800/50 gap-2 print:mb-2 print:pb-2">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900 border border-emerald-100 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-inner print:hidden">
+            <Calculator className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight print:text-2xl print:text-black">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight print:text-xl print:text-black">
               Smart EMI Calculator
             </h3>
-            <p className="text-sm text-slate-500 dark:text-emerald-400/80 font-medium mt-1 print:text-black">
-              Loan: {loanAmount >= 10000000 ? `₹${(loanAmount / 10000000).toFixed(2)} Cr` : `₹${(loanAmount / 100000).toFixed(1)}L`} • Rate: {rate}% • Term: {tenure} Yrs
+            <p className="text-xs text-slate-500 dark:text-emerald-400/80 font-medium print:text-black">
+              Loan: {formatIndianWords(loanAmount)} • Rate: {rate}% • Term: {tenure} Yrs
             </p>
           </div>
         </div>
         
         <div className="hidden print:block text-right">
-          <div className="font-bold text-lg text-emerald-800">Bhardwaj Finance</div>
-          <div className="text-sm">www.bfsfin.com</div>
+          <div className="font-bold text-base text-emerald-800">Bhardwaj Finance</div>
+          <div className="text-xs">www.bfsfin.com</div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 print:gap-4 print:flex print:flex-col">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 print:gap-3 print:flex print:flex-col">
         {/* Sliders Area (7 cols) */}
-        <div className="lg:col-span-7 flex flex-col justify-center space-y-12 print:hidden">
+        <div className="lg:col-span-7 flex flex-col justify-center space-y-4 print:hidden">
           
           {/* Loan Amount */}
-          <div className="space-y-5">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
-              <span className="text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide">Loan Amount</span>
-              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-xl px-4 py-2.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
-                <span className="text-emerald-600 dark:text-emerald-400 font-black mr-1 text-lg">₹</span>
+          <div className="space-y-2">
+            <div className="flex justify-between items-center gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide">Loan Amount</span>
+                <span className="text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/50 px-2 py-0.5 rounded-md border border-emerald-100 dark:border-emerald-800/50">
+                  {formatIndianWords(loanAmount)}
+                </span>
+              </div>
+              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-lg px-2.5 py-1.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold mr-1 text-sm">₹</span>
                 <input
                   type="number"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(Number(e.target.value))}
-                  className="bg-transparent text-slate-900 dark:text-white font-black text-2xl w-32 sm:w-40 outline-none text-right placeholder-slate-300"
+                  className="bg-transparent text-slate-900 dark:text-white font-extrabold text-base sm:text-lg w-28 sm:w-32 outline-none text-right placeholder-slate-300"
                 />
               </div>
             </div>
-            <div className="relative pt-2">
+            <div className="relative pt-1">
               <input
                 type="range"
                 min={1000000}
@@ -206,15 +226,15 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                 step={500000}
                 value={loanAmount}
                 onChange={(e) => setLoanAmount(Number(e.target.value))}
-                className="w-full h-2.5 sm:h-3 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600 transition-all hover:h-3.5"
+                className="w-full h-2 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600"
               />
             </div>
-            <div className="flex justify-between text-[11px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
+            <div className="flex justify-between text-[10px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
               <span>₹10 Lakhs (Min)</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">₹50 Cr+ (No Upper Limit)</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold">₹50 Cr+ (No Limit)</span>
             </div>
-            {/* Quick Presets for high ticket loans */}
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
+            {/* Quick Presets */}
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar pt-0.5">
               <span className="text-[10px] font-semibold text-slate-400 shrink-0">Quick:</span>
               {[
                 { label: "₹10L", val: 1000000 },
@@ -230,9 +250,9 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                   key={p.val}
                   type="button"
                   onClick={() => setLoanAmount(p.val)}
-                  className={`shrink-0 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all ${
+                  className={`shrink-0 px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-semibold transition-all ${
                     loanAmount === p.val
-                      ? "bg-emerald-600 text-white shadow-sm"
+                      ? "bg-emerald-600 text-white shadow-xs font-bold"
                       : "bg-slate-100 dark:bg-emerald-900/40 text-slate-600 dark:text-emerald-200 hover:bg-slate-200 dark:hover:bg-emerald-800 border border-slate-200 dark:border-emerald-800"
                   }`}
                 >
@@ -243,23 +263,24 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
           </div>
 
           {/* Interest Rate */}
-          <div className="space-y-5">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
-              <span className="text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide flex items-center gap-1.5">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center gap-2">
+              <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide flex items-center gap-1">
                 Interest Rate 
-                <Info className="w-4 h-4 text-emerald-400" />
+                <Info className="w-3.5 h-3.5 text-emerald-400" />
               </span>
-              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-xl px-4 py-2.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
+              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-lg px-2.5 py-1.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
                 <input
                   type="number"
                   value={rate}
+                  step={0.05}
                   onChange={(e) => setRate(Number(e.target.value))}
-                  className="bg-transparent text-slate-900 dark:text-white font-black text-2xl w-20 sm:w-24 outline-none text-right"
+                  className="bg-transparent text-slate-900 dark:text-white font-extrabold text-base sm:text-lg w-16 sm:w-20 outline-none text-right"
                 />
-                <span className="text-emerald-600 dark:text-emerald-400 font-black ml-1 text-lg">%</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1 text-sm">%</span>
               </div>
             </div>
-            <div className="relative pt-2">
+            <div className="relative pt-1">
               <input
                 type="range"
                 min={1}
@@ -267,30 +288,30 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                 step={0.05}
                 value={rate}
                 onChange={(e) => setRate(Number(e.target.value))}
-                className="w-full h-2.5 sm:h-3 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600 transition-all hover:h-3.5"
+                className="w-full h-2 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600"
               />
             </div>
-            <div className="flex justify-between text-[11px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
+            <div className="flex justify-between text-[10px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
               <span>1%</span>
               <span>20%</span>
             </div>
           </div>
 
           {/* Tenure */}
-          <div className="space-y-5">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
-              <span className="text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide">Loan Tenure</span>
-              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-xl px-4 py-2.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center gap-2">
+              <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-emerald-100 tracking-wide">Loan Tenure</span>
+              <div className="flex items-center bg-emerald-50/50 dark:bg-emerald-900/30 rounded-lg px-2.5 py-1.5 border border-emerald-100 dark:border-emerald-800 transition-all focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20">
                 <input
                   type="number"
                   value={tenure}
                   onChange={(e) => setTenure(Number(e.target.value))}
-                  className="bg-transparent text-slate-900 dark:text-white font-black text-2xl w-20 sm:w-24 outline-none text-right"
+                  className="bg-transparent text-slate-900 dark:text-white font-extrabold text-base sm:text-lg w-14 sm:w-16 outline-none text-right"
                 />
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1.5 text-base">Yrs</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1 text-xs">Yrs</span>
               </div>
             </div>
-            <div className="relative pt-2">
+            <div className="relative pt-1">
               <input
                 type="range"
                 min={1}
@@ -298,10 +319,10 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                 step={1}
                 value={tenure}
                 onChange={(e) => setTenure(Number(e.target.value))}
-                className="w-full h-2.5 sm:h-3 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600 transition-all hover:h-3.5"
+                className="w-full h-2 bg-slate-200 dark:bg-emerald-900/50 rounded-full appearance-none cursor-pointer accent-emerald-600"
               />
             </div>
-            <div className="flex justify-between text-[11px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
+            <div className="flex justify-between text-[10px] font-bold text-slate-400 dark:text-emerald-600/60 uppercase tracking-wider">
               <span>1 Year</span>
               <span>30 Years</span>
             </div>
@@ -310,48 +331,42 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </div>
 
         {/* Results Card (5 cols) */}
-        <div className="lg:col-span-5 print:w-full flex flex-col gap-6 relative print:block">
-          <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 border border-emerald-800 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden h-full print:border-none print:shadow-none print:bg-transparent print:p-0 print:h-auto print:block print:mt-4">
+        <div className="lg:col-span-5 print:w-full flex flex-col gap-4 relative print:block">
+          <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 border border-emerald-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg relative overflow-hidden h-full print:border-none print:shadow-none print:bg-transparent print:p-0 print:h-auto print:block print:mt-2">
             {/* Background Glow inside card */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none print:hidden"></div>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none print:hidden"></div>
 
-            <div className="space-y-8 relative z-10 print:flex print:flex-row print:items-center print:justify-between print:space-y-0 print:border-t print:border-b print:border-slate-200 print:py-6">
+            <div className="space-y-4 relative z-10 print:flex print:flex-row print:items-center print:justify-between print:space-y-0 print:border-t print:border-b print:border-slate-200 print:py-4">
               <div className="text-center sm:text-left">
-                <div className="text-emerald-300/80 text-xs font-bold uppercase tracking-[0.25em] mb-3 print:text-slate-500 print:mb-1">
+                <div className="text-emerald-300/80 text-[10px] font-bold uppercase tracking-[0.2em] mb-1 print:text-slate-500">
                   Your Monthly EMI
                 </div>
                 <motion.div
                   key={emi}
                   initial={{ scale: 0.95, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  className="text-5xl sm:text-6xl font-black text-white flex items-baseline justify-center sm:justify-start gap-1 tracking-tighter print:text-black print:text-5xl"
+                  className="text-3xl sm:text-4xl font-black text-white flex items-baseline justify-center sm:justify-start gap-1 tracking-tight print:text-black"
                 >
-                  <span className="text-3xl sm:text-4xl text-emerald-400/70 print:text-slate-800">₹</span>
+                  <span className="text-2xl sm:text-3xl text-emerald-400/80 print:text-slate-800">₹</span>
                   {emi.toLocaleString("en-IN")}
-                  <span className="text-base text-emerald-400/70 font-medium ml-1 print:text-slate-600">/mo</span>
+                  <span className="text-xs text-emerald-400/70 font-semibold ml-1 print:text-slate-600">/mo</span>
                 </motion.div>
               </div>
 
-              {/* 2D Fintech Character Celebrating Calculation */}
-              <div className="w-full h-32 sm:h-36 my-2 flex items-center justify-center bg-emerald-950/40 rounded-2xl border border-emerald-800/40 p-2 print:hidden relative overflow-hidden group shadow-inner">
-                <div className="absolute -top-6 -right-6 w-20 h-20 bg-emerald-500/15 rounded-full blur-xl pointer-events-none"></div>
-                <CalculatorHuman2D className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-300" />
-              </div>
-
-              {/* Recharts Pie Chart */}
-              <div className="h-56 w-full relative my-6 print:h-32 print:w-32 print:my-0">
+              {/* Recharts Pie Chart (Compact) */}
+              <div className="h-36 sm:h-40 w-full relative my-1 print:h-28 print:w-28 print:my-0">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={chartData}
                       cx="50%"
                       cy="50%"
-                      innerRadius="60%"
-                      outerRadius="90%"
-                      paddingAngle={4}
+                      innerRadius="55%"
+                      outerRadius="85%"
+                      paddingAngle={3}
                       dataKey="value"
                       stroke="none"
-                      cornerRadius={6}
+                      cornerRadius={4}
                     >
                       {chartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
@@ -360,12 +375,14 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                     <RechartsTooltip
                       formatter={(value: number) => `₹${value.toLocaleString("en-IN")}`}
                       contentStyle={{
-                         backgroundColor: "#064e3b", // emerald-900
-                         borderColor: "#047857", // emerald-700
-                         borderRadius: "12px",
+                         backgroundColor: "#064e3b",
+                         borderColor: "#047857",
+                         borderRadius: "8px",
                          color: "white",
                          fontWeight: "bold",
-                         boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)"
+                         fontSize: "12px",
+                         padding: "6px 10px",
+                         boxShadow: "0 6px 16px rgba(0, 0, 0, 0.4)"
                       }}
                       itemStyle={{ color: "#ffffff" }}
                     />
@@ -373,30 +390,30 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
                 </ResponsiveContainer>
               </div>
 
-              <div className="space-y-5 pt-6 border-t border-emerald-800/60 print:border-none print:pt-0 print:w-64">
-                <div className="flex justify-between items-center print:border-b print:border-slate-200 print:pb-2">
-                  <span className="flex items-center gap-3 text-emerald-100 font-medium text-sm print:text-slate-700">
-                    <span className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.6)] print:shadow-none"></span>
+              <div className="space-y-2.5 pt-3 border-t border-emerald-800/60 print:border-none print:pt-0 print:w-64 text-xs sm:text-sm">
+                <div className="flex justify-between items-center print:border-b print:border-slate-200 print:pb-1">
+                  <span className="flex items-center gap-2 text-emerald-100 font-medium print:text-slate-700">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)] print:shadow-none"></span>
                     Principal
                   </span>
-                  <span className="font-bold text-white text-lg tracking-wide print:text-black">
+                  <span className="font-bold text-white text-sm sm:text-base tracking-wide print:text-black">
                     ₹{loanAmount.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="flex justify-between items-center print:border-b print:border-slate-200 print:pb-2">
-                  <span className="flex items-center gap-3 text-emerald-100 font-medium text-sm print:text-slate-700">
-                    <span className="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.6)] print:shadow-none"></span>
+                <div className="flex justify-between items-center print:border-b print:border-slate-200 print:pb-1">
+                  <span className="flex items-center gap-2 text-emerald-100 font-medium print:text-slate-700">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)] print:shadow-none"></span>
                     Interest
                   </span>
-                  <span className="font-bold text-white text-lg tracking-wide print:text-black">
+                  <span className="font-bold text-white text-sm sm:text-base tracking-wide print:text-black">
                     ₹{totalInterest.toLocaleString("en-IN")}
                   </span>
                 </div>
                 <div className="hidden print:flex justify-between items-center print:pt-1">
-                  <span className="flex items-center gap-3 font-bold text-sm text-black">
+                  <span className="flex items-center gap-2 font-bold text-xs text-black">
                     Total Payable
                   </span>
-                  <span className="font-black text-black text-lg tracking-wide">
+                  <span className="font-black text-black text-sm tracking-wide">
                     ₹{totalPayment.toLocaleString("en-IN")}
                   </span>
                 </div>
@@ -406,84 +423,84 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
         </div>
       </div>
 
-      {/* Action Buttons & Export Suite (GEO & Pro Ready) */}
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 print:hidden">
+      {/* Action Buttons & Export Suite (Compact Row) */}
+      <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 print:hidden">
         <button
           onClick={handleWhatsAppShare}
-          className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3.5 px-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 text-xs sm:text-sm"
+          className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
           title="Share calculation estimate on WhatsApp"
         >
-          <MessageCircle className="w-4 h-4 shrink-0" />
+          <MessageCircle className="w-3.5 h-3.5 shrink-0" />
           <span className="truncate">WhatsApp</span>
         </button>
         
         <button
           onClick={() => setShowAmortization(!showAmortization)}
-          className="flex items-center justify-center gap-2 bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-3.5 px-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 text-xs sm:text-sm"
+          className="flex items-center justify-center gap-1.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
         >
-          <Table className="w-4 h-4 shrink-0" />
+          <Table className="w-3.5 h-3.5 shrink-0" />
           <span className="truncate">{showAmortization ? "Hide Schedule" : "View Schedule"}</span>
         </button>
 
         <button
           onClick={handleDownloadCsv}
-          className="flex items-center justify-center gap-2 bg-teal-700 hover:bg-teal-600 text-white font-bold py-3.5 px-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 text-xs sm:text-sm"
+          className="flex items-center justify-center gap-1.5 bg-teal-700 hover:bg-teal-600 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs"
           title="Download complete year-wise schedule in Excel CSV"
         >
-          <FileSpreadsheet className="w-4 h-4 shrink-0" />
+          <FileSpreadsheet className="w-3.5 h-3.5 shrink-0" />
           <span className="truncate">Download Excel</span>
         </button>
 
         <button
           onClick={handleCopyLink}
-          className={`flex items-center justify-center gap-2 border font-bold py-3.5 px-3 rounded-xl transition-all shadow-sm active:scale-95 text-xs sm:text-sm ${
+          className={`flex items-center justify-center gap-1.5 border font-bold py-2 px-2.5 rounded-lg transition-all shadow-xs active:scale-95 text-xs ${
             copiedLink
               ? "bg-emerald-50 dark:bg-emerald-900 border-emerald-500 text-emerald-700 dark:text-emerald-300"
               : "bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
           }`}
           title="Copy exact prefilled link to this calculation"
         >
-          {copiedLink ? <Check className="w-4 h-4 text-emerald-600 shrink-0" /> : <Copy className="w-4 h-4 shrink-0" />}
+          {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> : <Copy className="w-3.5 h-3.5 shrink-0" />}
           <span className="truncate">{copiedLink ? "Link Copied!" : "Copy Link"}</span>
         </button>
 
         <button
           onClick={handleDownloadPdf}
-          className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 text-xs sm:text-sm"
+          className="flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-2.5 rounded-lg transition-all shadow-sm active:scale-95 text-xs col-span-2 sm:col-span-1"
           title="Print official loan amortization report"
         >
-          <Download className="w-4 h-4 shrink-0" />
+          <Download className="w-3.5 h-3.5 shrink-0" />
           <span className="truncate">Print PDF</span>
         </button>
       </div>
 
       {/* GEO & Pan-India Institutional Underwriting Trust Banner */}
-      <div className="mt-6 p-4 bg-emerald-50/80 dark:bg-emerald-950/60 rounded-2xl border border-emerald-200/80 dark:border-emerald-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs print:hidden">
-        <div className="flex items-center gap-2.5 text-emerald-900 dark:text-emerald-200 font-medium">
-          <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
+      <div className="mt-4 p-3 bg-emerald-50/80 dark:bg-emerald-950/60 rounded-xl border border-emerald-200/80 dark:border-emerald-800 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs print:hidden">
+        <div className="flex items-center gap-2 text-emerald-900 dark:text-emerald-200 font-medium">
+          <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
           <span><strong>Serving Agra, Uttar Pradesh, NCR & All India:</strong> Multi-Bank Institutional Underwriting across 50+ Nationalized Banks & NBFCs with No Upper Limit Sanctions.</span>
         </div>
         <Link
           href="/apply"
-          className="shrink-0 font-extrabold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-white bg-white dark:bg-emerald-900 px-3.5 py-1.5 rounded-xl border border-emerald-300 dark:border-emerald-700 shadow-xs flex items-center gap-1"
+          className="shrink-0 font-bold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-white bg-white dark:bg-emerald-900 px-3 py-1 rounded-lg border border-emerald-300 dark:border-emerald-700 shadow-xs flex items-center gap-1 text-xs"
         >
           <span>Apply in 2 Min</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
 
-      {/* Top Banks Live Comparison Table (High-intent Google Ranking Keyword Magnet) */}
-      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-emerald-800/60 print:hidden">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+      {/* Top Banks Live Comparison Table */}
+      <div className="mt-5 pt-4 border-t border-slate-100 dark:border-emerald-800/60 print:hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1.5">
           <div>
-            <h4 className="text-base sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+            <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
               <Building2 className="w-4 h-4 text-emerald-600" /> Compare Leading Bank Interest Rates & EMIs (2026)
             </h4>
-            <p className="text-xs text-slate-500 dark:text-emerald-400/80">
-              Simulate ₹{loanAmount >= 10000000 ? `${(loanAmount / 10000000).toFixed(2)} Cr` : `${(loanAmount / 100000).toFixed(1)}L`} over {tenure} Yrs across India's top lending institutions.
+            <p className="text-[11px] text-slate-500 dark:text-emerald-400/80">
+              Simulate {formatIndianWords(loanAmount)} over {tenure} Yrs across India's top lending institutions.
             </p>
           </div>
-          <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/40 px-2.5 py-1 rounded-lg border border-emerald-200 dark:border-emerald-800 self-start sm:self-auto">
+          <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800 self-start sm:self-auto">
             1-Click Simulate
           </span>
         </div>
@@ -543,14 +560,14 @@ export default function EMICalculator({ defaultRate = 6.5 }: { defaultRate?: num
       </div>
 
       {/* Amortization Table */}
-      <div className={`mt-12 overflow-hidden transition-all duration-300 ${showAmortization ? 'block opacity-100' : 'hidden opacity-0'} ${includeReportInPrint ? 'print:block print:opacity-100' : 'print:hidden'}`}>
-        <div className="pt-8 border-t border-emerald-100 dark:border-emerald-800/50 print:border-t-2 print:border-emerald-800 print:mt-4 print:pt-2">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3 print:mb-2">
-            <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight print:text-black">
+      <div className={`mt-6 overflow-hidden transition-all duration-300 ${showAmortization ? 'block opacity-100' : 'hidden opacity-0'} ${includeReportInPrint ? 'print:block print:opacity-100' : 'print:hidden'}`}>
+        <div className="pt-4 border-t border-emerald-100 dark:border-emerald-800/50 print:border-t-2 print:border-emerald-800 print:mt-4 print:pt-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-2 print:mb-2">
+            <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight print:text-black">
               Year-wise Repayment Schedule
             </h4>
-            <div className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm px-4 py-2.5 rounded-xl font-bold border border-emerald-200 dark:border-emerald-800/50 print:hidden">
-              ₹{(loanAmount / 100000).toFixed(1)}L • {rate}% • {tenure} Yrs
+            <div className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs px-3 py-1.5 rounded-lg font-bold border border-emerald-200 dark:border-emerald-800/50 print:hidden">
+              {formatIndianWords(loanAmount)} • {rate}% • {tenure} Yrs
             </div>
           </div>
 

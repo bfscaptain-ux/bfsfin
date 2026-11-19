@@ -118,14 +118,14 @@ export default function AffordabilityPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="flex-1 py-8 sm:py-12 lg:py-16 w-full max-w-[1600px] 2xl:max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 space-y-10 sm:space-y-14">
+      <main className="flex-1 py-4 sm:py-6 w-full max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 space-y-6">
         {/* Interactive Top Switcher Bar */}
         <CalculatorNavSwitcher currentToolId="affordability" />
-        <div className="text-center w-full max-w-5xl mx-auto space-y-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            Affordability <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-600 dark:from-emerald-400 dark:to-emerald-400">Calculator</span>
+        <div className="text-center w-full max-w-2xl mx-auto space-y-1 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+            Affordability <span className="text-emerald-600 dark:text-emerald-400">Calculator</span>
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xs text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
             Planning to buy a house? Find out exactly how much property you can afford based on your income and existing obligations.
           </p>
         </div>

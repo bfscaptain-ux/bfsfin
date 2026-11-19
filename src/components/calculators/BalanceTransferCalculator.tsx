@@ -39,44 +39,44 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-emerald-900/90 border border-slate-200 dark:border-emerald-500/30 rounded-2xl p-4 sm:p-6 shadow-md dark:shadow-emerald-900/20 backdrop-blur-xl transition-colors duration-300 relative overflow-hidden"
     >
       <AnimatedToolLogo />
-      {/* Subtle 2D Character Ambient Watermark */}
-      <div className="absolute -bottom-8 -right-8 w-80 h-60 pointer-events-none select-none opacity-20 dark:opacity-10 z-0">
+      {/* Subtle Financial Ambient Watermark */}
+      <div className="absolute -bottom-8 -right-8 w-60 h-44 pointer-events-none select-none opacity-15 dark:opacity-10 z-0">
         <CalculatorBgAmbient2D className="w-full h-full object-contain" />
       </div>
       
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-emerald-800 gap-4 relative z-10">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
-            <ArrowLeftRight className="w-7 h-7" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-3 border-b border-slate-200 dark:border-emerald-800 gap-2 relative z-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-inner">
+            <ArrowLeftRight className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">
               Balance Transfer Calculator
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Calculate exact savings when switching to a better bank
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 relative z-10">
         {/* Sliders Area (7 cols) */}
-        <div className="lg:col-span-7 space-y-8">
+        <div className="lg:col-span-7 space-y-4">
           {/* Outstanding Amount */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-xs sm:text-sm font-semibold">
               <span className="text-slate-700 dark:text-slate-300">Outstanding Loan Amount</span>
-              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2 py-1">
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold mr-1">₹</span>
+              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2.5 py-1 border border-emerald-200 dark:border-emerald-800">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold mr-1 text-sm">₹</span>
                 <input
                   type="number"
                   value={outstandingAmount}
                   onChange={(e) => setOutstandingAmount(Number(e.target.value))}
-                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-xl w-32 outline-none text-right"
+                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-base w-28 outline-none text-right"
                 />
               </div>
             </div>
@@ -87,49 +87,49 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
               step={100000}
               value={outstandingAmount}
               onChange={(e) => setOutstandingAmount(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 transition-all hover:h-4"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
           </div>
 
           {/* Remaining Tenure */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center text-sm font-semibold">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-xs sm:text-sm font-semibold">
               <span className="text-slate-700 dark:text-slate-300">Remaining Tenure</span>
-              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2 py-1">
+              <div className="flex items-center bg-emerald-50 dark:bg-emerald-950/50 rounded-lg px-2.5 py-1 border border-emerald-200 dark:border-emerald-800">
                 <input
                   type="number"
                   value={remainingTenure}
                   onChange={(e) => setRemainingTenure(Number(e.target.value))}
-                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-xl w-16 outline-none text-right"
+                  className="bg-transparent text-emerald-600 dark:text-emerald-400 font-extrabold text-base w-12 outline-none text-right"
                 />
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1">Yrs</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold ml-1 text-xs">Yrs</span>
               </div>
             </div>
             <input
               type="range"
               min={1}
-              max={40}
+              max={30}
               step={1}
               value={remainingTenure}
               onChange={(e) => setRemainingTenure(Number(e.target.value))}
-              className="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500 transition-all hover:h-4"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             {/* Current Rate */}
-            <div className="space-y-3 p-4 bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800 rounded-2xl">
-              <div className="flex justify-between items-center text-sm font-semibold">
+            <div className="space-y-2 p-3 bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800 rounded-xl">
+              <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-slate-500 dark:text-slate-400">Current Rate</span>
-                <div className="flex items-center bg-slate-200 dark:bg-slate-800 rounded-lg px-2 py-1">
-                <input
-                  type="number"
-                  value={currentRate}
-                  onChange={(e) => setCurrentRate(Number(e.target.value))}
-                  className="bg-transparent text-slate-900 dark:text-slate-100 font-extrabold text-lg w-20 outline-none text-right"
-                />
-                <span className="text-slate-900 dark:text-slate-100 font-bold ml-1">%</span>
-              </div>
+                <div className="flex items-center bg-slate-200 dark:bg-slate-800 rounded-md px-2 py-0.5">
+                  <input
+                    type="number"
+                    value={currentRate}
+                    onChange={(e) => setCurrentRate(Number(e.target.value))}
+                    className="bg-transparent text-slate-900 dark:text-slate-100 font-extrabold text-sm w-16 outline-none text-right"
+                  />
+                  <span className="text-slate-900 dark:text-slate-100 font-bold ml-1 text-xs">%</span>
+                </div>
               </div>
               <input
                 type="range"
@@ -143,18 +143,18 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
             </div>
 
             {/* New Rate */}
-            <div className="space-y-3 p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-2xl">
-              <div className="flex justify-between items-center text-sm font-semibold">
+            <div className="space-y-2 p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-xl">
+              <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-emerald-600 dark:text-emerald-400">New Rate</span>
-                <div className="flex items-center bg-emerald-100 dark:bg-emerald-900/50 rounded-lg px-2 py-1">
-                <input
-                  type="number"
-                  value={newRate}
-                  onChange={(e) => setNewRate(Number(e.target.value))}
-                  className="bg-transparent text-emerald-700 dark:text-emerald-300 font-extrabold text-lg w-20 outline-none text-right"
-                />
-                <span className="text-emerald-700 dark:text-emerald-300 font-bold ml-1">%</span>
-              </div>
+                <div className="flex items-center bg-emerald-100 dark:bg-emerald-900/50 rounded-md px-2 py-0.5">
+                  <input
+                    type="number"
+                    value={newRate}
+                    onChange={(e) => setNewRate(Number(e.target.value))}
+                    className="bg-transparent text-emerald-700 dark:text-emerald-300 font-extrabold text-sm w-16 outline-none text-right"
+                  />
+                  <span className="text-emerald-700 dark:text-emerald-300 font-bold ml-1 text-xs">%</span>
+                </div>
               </div>
               <input
                 type="range"
@@ -170,13 +170,11 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
         </div>
 
         {/* Results Card (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm relative overflow-hidden h-full group">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-500 group-hover:bg-emerald-500/20" />
-
-            <div className="space-y-6 relative z-10">
-              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm tracking-wide">
-                <CheckCircle2 className="w-5 h-5" /> Your Net Savings
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="bg-slate-50 dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-xs relative overflow-hidden h-full">
+            <div className="space-y-4 relative z-10">
+              <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-xs tracking-wide">
+                <CheckCircle2 className="w-4 h-4" /> Your Net Savings
               </div>
 
               <div>
@@ -184,27 +182,22 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
                   key={netSavings}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-5xl font-black text-slate-900 dark:text-white"
+                  className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white"
                 >
                   ₹{netSavings > 0 ? netSavings.toLocaleString("en-IN") : "0"}
                 </motion.div>
                 {netSavings > 0 ? (
-                  <p className="text-emerald-600 dark:text-emerald-400 mt-2 text-sm font-bold">
-                    Net savings after paying ₹{processingFee.toLocaleString("en-IN")} in fees!
+                  <p className="text-emerald-600 dark:text-emerald-400 mt-1 text-xs font-bold">
+                    Net savings after paying ₹{processingFee.toLocaleString("en-IN")} fees!
                   </p>
                 ) : (
-                  <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm font-medium">
+                  <p className="text-slate-500 dark:text-slate-400 mt-1 text-xs font-medium">
                     Not beneficial to transfer at these rates.
                   </p>
                 )}
               </div>
 
-                            {/* 2D Fintech Character */}
-              <div className="w-full h-24 sm:h-28 my-1 flex items-center justify-center bg-black/5 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/10 p-1 relative overflow-hidden group">
-                <CalculatorHuman2D className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-300" />
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-slate-200 dark:border-emerald-800/60 text-sm">
+              <div className="space-y-2 pt-3 border-t border-slate-200 dark:border-emerald-800/60 text-xs sm:text-sm">
                 <div className="flex justify-between items-center text-slate-600 dark:text-slate-300">
                   <span>Current EMI:</span>
                   <span className="font-medium text-slate-900 dark:text-white">₹{currentEmi.toLocaleString("en-IN")}</span>
@@ -220,13 +213,13 @@ export default function BalanceTransferCalculator({ defaultRate = 6.5 }: { defau
               </div>
             </div>
 
-            <div className="pt-6 relative z-10">
+            <div className="pt-4 relative z-10">
               <Link
                 href="/apply"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-600 hover:from-emerald-500 hover:to-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl shadow-xs transition-all text-xs"
               >
                 <span>Transfer Loan Now</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
