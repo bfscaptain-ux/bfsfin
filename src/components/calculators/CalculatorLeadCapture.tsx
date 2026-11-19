@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { 
   ShieldCheck, ArrowRight, X, Mail, Phone, User, 
-  KeyRound, RefreshCw, CheckCircle2, Loader2, Sparkles, AlertCircle, Lock
+  KeyRound, RefreshCw, CheckCircle2, Loader2, AlertCircle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -103,8 +104,8 @@ export function CalculatorLeadModal({
   interestRate,
   tenureYears,
   customSummary,
-  title = "Unlock Full Bank Calculation & Amortization Schedule",
-  subtitle = "Verify your email to get official bank sanction rates & detailed year-wise breakdown.",
+  title = "Verify Your Details",
+  subtitle = "Apni customized loan calculation aur official bank offers paane ke liye details verify karein.",
   onSuccess
 }: CalculatorLeadProps & {
   isOpen: boolean;
@@ -117,6 +118,7 @@ export function CalculatorLeadModal({
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
+  const [consent, setConsent] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [resendTimer, setResendTimer] = useState(30);
@@ -173,6 +175,10 @@ export function CalculatorLeadModal({
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
       setError("Kripya valid email address enter karein.");
+      return;
+    }
+    if (!consent) {
+      setError("Aage badhne ke liye kripya Declaration & Terms consent ko accept karein.");
       return;
     }
 
@@ -314,27 +320,16 @@ export function CalculatorLeadModal({
 
           {/* Header */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center shadow-md shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-tight leading-snug">
                 {title}
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
                 {subtitle}
               </p>
-            </div>
-          </div>
-
-          {/* Active Simulation Pill */}
-          <div className="bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/80 rounded-xl p-2.5 mb-4 flex items-center justify-between text-xs">
-            <div className="flex items-center gap-1.5 font-bold text-emerald-800 dark:text-emerald-300">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>{toolName}</span>
-            </div>
-            <div className="font-extrabold text-slate-900 dark:text-white">
-              {formatAmount(loanAmount)} {monthlyEmi ? `• EMI ₹${monthlyEmi.toLocaleString("en-IN")}/mo` : ""}
             </div>
           </div>
 
@@ -396,6 +391,37 @@ export function CalculatorLeadModal({
                 </div>
               </div>
 
+              {/* Legal Purpose & DPDP Declaration */}
+              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                <label className="flex items-start gap-2 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-0.5 w-3.5 h-3.5 accent-emerald-600 rounded cursor-pointer shrink-0"
+                  />
+                  <span>
+                    Main declare karta/karti hoon ki meri di gayi details ka use meri loan eligibility aur calculation report generate karne ke liye kiya jaye. I authorize BFS Financial Services to contact me via WhatsApp, Email & Call as per{" "}
+                    <Link
+                      href="/terms"
+                      target="_blank"
+                      className="text-emerald-600 dark:text-emerald-400 font-bold underline hover:text-emerald-700"
+                    >
+                      Terms & Conditions
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="/privacy-policy"
+                      target="_blank"
+                      className="text-emerald-600 dark:text-emerald-400 font-bold underline hover:text-emerald-700"
+                    >
+                      Privacy Policy
+                    </Link>{" "}
+                    (DPDP & TRAI Compliant).
+                  </span>
+                </label>
+              </div>
+
               {error && (
                 <div className="flex items-center gap-1.5 text-xs text-red-600 dark:text-red-400 font-bold bg-red-50 dark:bg-red-950/50 p-2 rounded-lg border border-red-200 dark:border-red-900">
                   <AlertCircle className="w-4 h-4 shrink-0" />
@@ -403,11 +429,11 @@ export function CalculatorLeadModal({
                 </div>
               )}
 
-              <div className="pt-2">
+              <div className="pt-1">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 disabled:opacity-50 text-white font-extrabold py-2.5 px-4 rounded-xl shadow-md active:scale-95 transition-all text-xs sm:text-sm cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-extrabold py-2.5 px-4 rounded-xl shadow-md active:scale-95 transition-all text-xs sm:text-sm cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -423,9 +449,10 @@ export function CalculatorLeadModal({
                 </button>
               </div>
 
-              <p className="text-[10px] text-center text-slate-400 mt-2">
-                🔒 100% Confidential • Instant Direct 50+ Bank Underwriting
-              </p>
+              <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-400 pt-0.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>100% Confidential • Overrides DND/NDNC as per RBI & TRAI</span>
+              </div>
             </form>
           )}
 
