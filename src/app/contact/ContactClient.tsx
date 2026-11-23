@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingSupport from "@/components/FloatingSupport";
 import HeroAdvisorHuman2D from "@/components/illustrations/HeroAdvisorHuman2D";
+import ContactHeroMap from "@/components/ContactHeroMap";
 import EligibilitySuccessHuman2D from "@/components/illustrations/EligibilitySuccessHuman2D";
 import { 
   MapPin, 
@@ -307,8 +308,11 @@ export default function ContactClient() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b132b] font-sans selection:bg-emerald-500/30 flex flex-col">
       <Header />
+
+      {/* Full-Width Google Map Hero Section with Compact Height */}
+      <ContactHeroMap officeName="Bhardwaj Financial Services (Agra HQ)" address={settings.officeAddress} phone={settings.contactPhone} />
       
-      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-24">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         <div className="bg-white dark:bg-emerald-900/20 rounded-3xl lg:rounded-[2.5rem] shadow-2xl border border-slate-200/50 dark:border-emerald-800/50 overflow-hidden flex flex-col lg:flex-row">
           
           {/* Left Panel - Premium Brand Info */}
