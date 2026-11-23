@@ -261,7 +261,6 @@ export default function AdminFaqsCMS() {
                       <option value="hlv">HLV – Human Life Value Calculator</option>
                       <option value="health-premium">Health Insurance Premium Estimator</option>
                       <option value="tax-saver">80C &amp; 80D Tax Saver Calculator</option>
-                      <option value="payoff">Credit Card Payoff Calculator</option>
                       <option value="minimum-due">Minimum Due Trap Calculator</option>
                       <option value="rewards">CC Reward Maximizer Calculator</option>
                     </optgroup>

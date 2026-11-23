@@ -39,7 +39,7 @@ export function parseDocumentQuery(text: string): DocumentChecklistResult {
   }
 
   // 2. Detect Product / Loan Type
-  let product: "home_loan" | "business_loan" | "personal_loan" | "lap" | "balance_transfer" | "health_insurance" | "term_insurance" | "motor_insurance" | "credit_card" | "general" = "general";
+  let product: "home_loan" | "business_loan" | "personal_loan" | "lap" | "balance_transfer" | "health_insurance" | "term_insurance" | "motor_insurance" | "general" = "general";
   let productLabel = "";
 
   if (lower.match(/home loan|ghar ka loan|makan|flat|plot|construction|renovation/)) {
@@ -66,9 +66,6 @@ export function parseDocumentQuery(text: string): DocumentChecklistResult {
   } else if (lower.match(/motor insurance|car insurance|bike insurance|gadi ka bima|vehicle/)) {
     product = "motor_insurance";
     productLabel = "Motor Insurance (कार / बाइक बीमा)";
-  } else if (lower.match(/credit card|card|cc\b|lifetime free card|lounge card/)) {
-    product = "credit_card";
-    productLabel = "Credit Card (क्रेडिट कार्ड)";
   }
 
   if (product === "general") productLabel = "All Finance & Loans (सामान्य सूची)";
@@ -158,9 +155,6 @@ export function parseDocumentQuery(text: string): DocumentChecklistResult {
   } else if (product === "motor_insurance") {
     productDocs.push("✅ **Vehicle RC**: Gadi ka Registration Certificate copy.");
     productDocs.push("✅ **Purani Policy Copy**: No Claim Bonus (NCB) discount transfer ke liye.");
-  } else if (product === "credit_card") {
-    productDocs.push("✅ **Income Proof**: 1 Month Salary Slip (Salaried) ya 1 Year ITR (Self-Employed).");
-    productDocs.push("💡 *Low CIBIL Option*: Fixed Deposit (FD) backed card ke liye **Zero Income Proof** required!");
   }
 
   // Generate HTML Card

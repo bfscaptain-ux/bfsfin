@@ -1,4 +1,4 @@
-export type ProductType = "Home Loan" | "Personal Loan" | "Business Loan" | "LAP" | "Credit Card" | "Insurance";
+export type ProductType = "Home Loan" | "Personal Loan" | "Business Loan" | "LAP" | "Insurance";
 export type EmpType = "Salaried" | "Self-Employed";
 export type SalaryMode = "bank_transfer" | "cash_cheque";
 export type CibilTier = "750+" | "700-749" | "650-699" | "<650" | "new_to_credit";
@@ -14,7 +14,6 @@ export interface UnderwritingInput {
   ageBracket: AgeBracket;
   hasEmiBounce: boolean;
   propertyType?: string;
-  cardPerk?: "free" | "lounge" | "cashback";
   insuranceType?: "health" | "term" | "motor";
 }
 
@@ -38,49 +37,6 @@ export function evaluateUnderwriting(input: UnderwritingInput): UnderwritingResu
 
   // Approximate median age from bracket
   const approxAge = ageBracket === "21-30" ? 27 : ageBracket === "31-45" ? 38 : ageBracket === "46-55" ? 50 : 58;
-
-  // --- 1. SPECIAL CASE: CREDIT CARD ---
-  if (product === "Credit Card") {
-    if (salaryMode === "cash_cheque" || cibilTier === "<650" || hasEmiBounce) {
-      return {
-        status: "SPECIAL_ASSISTANCE",
-        badge: "BFS Credit Builder Approval",
-        badgeColor: "purple",
-        eligibleAmount: 50000,
-        eligibleAmountFormatted: "₹50,000 - ₹2.0 Lakhs (Secured Limit)",
-        maxTenureYears: 0,
-        interestRateBand: "45-50 Days Interest-Free",
-        estimatedMonthlyEmi: 0,
-        lendingPool: "BFS Credit Rebuilding Pool",
-        foirPercent: 0,
-        keyInsights: [
-          "Cash salary ya low CIBIL par unsecured cards issue nahi hote hain.",
-          "BFS Guaranteed FD-Backed Credit Card: 100% Approval bina income proof ke.",
-          "90 din me aapka CIBIL score 750+ ban jayega."
-        ],
-        recommendation: "BFS Guaranteed Credit Builder Card lein taaki aapki profile prime ho sake."
-      };
-    }
-
-    const isPrime = (cibilTier === "750+" || cibilTier === "700-749") && monthlyIncome >= 25000;
-    return {
-      status: isPrime ? "APPROVED_PRIME" : "APPROVED_STANDARD",
-      badge: isPrime ? "BFS Prime Card Pre-Approved" : "BFS Standard Card Approved",
-      badgeColor: isPrime ? "emerald" : "blue",
-      eligibleAmount: Math.round(monthlyIncome * (isPrime ? 3.5 : 2.0)),
-      eligibleAmountFormatted: `₹${(Math.round(monthlyIncome * (isPrime ? 3.5 : 2.0)) / 100000).toFixed(1)} Lakhs Limit`,
-      maxTenureYears: 0,
-      interestRateBand: "50 Days Interest-Free (0% Annual Fee)",
-      estimatedMonthlyEmi: 0,
-      lendingPool: isPrime ? "BFS Executive Card Network" : "BFS Starter Card Network",
-      foirPercent: 0,
-      keyInsights: [
-        isPrime ? "Pre-approved for Lifetime Free Card + Airport Lounge Access." : "Zero annual fee starter card with online cashback.",
-        "Instant digital KYC verification with minimal documentation."
-      ],
-      recommendation: "Aap prime credit card ke liye eligible hain bina kisi hidden charges ke."
-    };
-  }
 
   // --- 2. SPECIAL CASE: INSURANCE ---
   if (product === "Insurance") {

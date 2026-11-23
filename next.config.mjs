@@ -28,7 +28,22 @@ const nextConfig = {
       },
       {
         source: '/credit-cards',
-        destination: '/products/credit-cards',
+        destination: '/products',
+        permanent: true,
+      },
+      {
+        source: '/products/credit-cards',
+        destination: '/products',
+        permanent: true,
+      },
+      {
+        source: '/products/credit-cards/:slug*',
+        destination: '/products',
+        permanent: true,
+      },
+      {
+        source: '/calculator/credit-cards/:slug*',
+        destination: '/calculator',
         permanent: true,
       },
       {

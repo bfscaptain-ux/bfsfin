@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { 
   ShieldCheck, PhoneCall, ChevronDown, ChevronRight, Menu, X, ArrowRight, 
   Home, TrendingUp, Calculator, Building, Building2, Landmark, BadgePercent,
-  FileText, Users, Mail, CreditCard, Activity, Sparkles, CalendarCheck, HeartPulse, Newspaper
+  FileText, Users, Mail, Activity, Sparkles, CalendarCheck, HeartPulse, Newspaper
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -219,19 +219,6 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'insurance' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
-                    <button 
-                      onMouseEnter={() => setActiveProductTab('credit-cards')}
-                      className={`w-full text-left px-5 py-3 rounded-xl font-bold transition-all flex items-center justify-between ${activeProductTab === 'credit-cards' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg ${activeProductTab === 'credit-cards' ? 'bg-emerald-50 dark:bg-emerald-950/50' : 'bg-slate-100 dark:bg-slate-800/50'}`}>
-                          <CreditCard className="w-5 h-5" />
-                        </div>
-                        Credit Cards
-                      </div>
-                      <ChevronRight className={`w-4 h-4 transition-transform ${activeProductTab === 'credit-cards' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
-                    </button>
-                    
                     {/* Bottom Promo Banner in Sidebar */}
                     <div className="mt-auto p-4 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-lg relative overflow-hidden">
                       <div className="absolute top-0 right-0 p-2 opacity-20"><BadgePercent className="w-12 h-12" /></div>
@@ -320,50 +307,6 @@ export default function Header() {
                       </div>
                     </div>
 
-                    {/* Credit Cards Content Tab */}
-                    <div className={`absolute inset-0 p-10 transition-all duration-300 ${activeProductTab === 'credit-cards' ? 'opacity-100 z-10 translate-y-0' : 'opacity-0 z-0 translate-y-4 pointer-events-none'}`}>
-                      <div className="grid grid-cols-3 gap-8 text-left">
-                        {/* Column 1 */}
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 border-b border-slate-100 dark:border-emerald-800/50 pb-3 mb-5">
-                            <CreditCard className="w-5 h-5" />
-                            <h4 className="font-black text-slate-900 dark:text-white text-base">Top Bank Cards</h4>
-                          </div>
-                          <Link href="/products/credit-cards/hdfc-millennia" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">HDFC Millennia</Link>
-                          <Link href="/products/credit-cards/sbi-simplyclick" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">SBI SimplyCLICK</Link>
-                          <Link href="/products/credit-cards/icici-amazon-pay" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">ICICI Amazon Pay</Link>
-                          <Link href="/products/credit-cards/axis-flipkart" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Axis Flipkart</Link>
-                          <Link href="/products/credit-cards" className="block text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:translate-x-1 transition-all mt-4 border-t border-slate-100 dark:border-emerald-800/50 pt-3">View All Cards →</Link>
-                        </div>
-                        {/* Column 2 */}
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 border-b border-slate-100 dark:border-emerald-800/50 pb-3 mb-5">
-                            <TrendingUp className="w-5 h-5" />
-                            <h4 className="font-black text-slate-900 dark:text-white text-base">Browse by Category</h4>
-                          </div>
-                          <Link href="/products/credit-cards?category=cashback" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Cashback Cards</Link>
-                          <Link href="/products/credit-cards?category=travel" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Travel & Lounge Access</Link>
-                          <Link href="/products/credit-cards?category=shopping" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Shopping Cards</Link>
-                          <Link href="/products/credit-cards?category=fuel" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Fuel Cards</Link>
-                          <Link href="/products/credit-cards?category=premium" className="block text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all">Premium & Super Premium</Link>
-                        </div>
-                        {/* Column 3 Promo */}
-                        <div className="bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl p-6 text-white flex flex-col justify-between relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(16,185,129,0.5)]">
-                           <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                             <CreditCard className="w-24 h-24 transform rotate-12 translate-x-4 -translate-y-4" />
-                           </div>
-                           <div className="relative z-10">
-                             <div className="inline-block bg-white/20 backdrop-blur-md text-emerald-50 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-3 border border-white/20 shadow-sm">Instant Approval</div>
-                             <div className="font-black text-xl mb-2 leading-tight">Find Your Perfect Credit Card</div>
-                             <div className="text-emerald-50/90 text-[13px] leading-relaxed font-medium">Compare 50+ cards and get instant approval with zero joining fee options.</div>
-                           </div>
-                           <Link href="/products/credit-cards" className="relative z-10 bg-white text-emerald-700 hover:bg-emerald-50 font-bold py-2.5 px-4 rounded-xl text-center text-sm transition-all mt-6 shadow-md hover:shadow-lg active:scale-95">
-                             Compare Now
-                           </Link>
-                        </div>
-                      </div>
-                    </div>
-
                   </div>
                 </div>
               </div>
@@ -410,18 +353,6 @@ export default function Header() {
                       <ChevronRight className={`w-4 h-4 transition-transform ${activeToolTab === 'insurance' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
                     </button>
                     
-                    <button 
-                      onMouseEnter={() => setActiveToolTab('credit-cards')}
-                      className={`w-full text-left px-5 py-4 rounded-xl font-bold transition-all flex items-center justify-between ${activeToolTab === 'credit-cards' ? 'bg-white dark:bg-[#0f172a] shadow-md text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-emerald-800' : 'text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-emerald-900/30'}`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg ${activeToolTab === 'credit-cards' ? 'bg-emerald-50 dark:bg-emerald-950/50' : 'bg-slate-100 dark:bg-slate-800/50'}`}>
-                          <CreditCard className="w-5 h-5" />
-                        </div>
-                        Credit Card Calc
-                      </div>
-                      <ChevronRight className={`w-4 h-4 transition-transform ${activeToolTab === 'credit-cards' ? 'translate-x-1' : 'opacity-0 -translate-x-2'}`} />
-                    </button>
                                        <div className="mt-auto p-5 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-900 text-white shadow-xl shadow-emerald-900/20 relative overflow-hidden group">
                       <div className="absolute top-0 right-0 p-4 opacity-10 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500"><TrendingUp className="w-16 h-16" /></div>
                       <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
@@ -551,54 +482,6 @@ export default function Header() {
                       </div>
                     </div>
 
-                    {/* Credit Cards Tab */}
-                    <div className={`absolute inset-0 p-8 transition-all duration-300 ${activeToolTab === 'credit-cards' ? 'opacity-100 z-10 translate-y-0' : 'opacity-0 z-0 translate-y-4 pointer-events-none'}`}>
-                      <div className="grid grid-cols-2 gap-x-8 gap-y-0 text-left">
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 border-b border-slate-100 dark:border-emerald-800/50 pb-3 mb-4">
-                            <TrendingUp className="w-5 h-5" />
-                            <h4 className="font-black text-slate-900 dark:text-white text-base">Debt Planners</h4>
-                          </div>
-                          
-                          <Link href="/calculator/credit-cards/payoff" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 group transition-all">
-                            <div className="w-8 h-8 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center mr-3 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-800 transition-colors shrink-0">
-                              <CreditCard className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="text-sm font-bold text-slate-700 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Credit Card Payoff Tool</div>
-                              <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Plan how to clear your dues faster</div>
-                            </div>
-                          </Link>
-
-                          <Link href="/calculator/credit-cards/minimum-due" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 group transition-all">
-                            <div className="w-8 h-8 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center mr-3 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-800 transition-colors shrink-0">
-                              <Activity className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="text-sm font-bold text-slate-700 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Minimum Due Trap</div>
-                              <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">See the real cost of paying minimum</div>
-                            </div>
-                          </Link>
-                        </div>
-                        
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 border-b border-slate-100 dark:border-emerald-800/50 pb-3 mb-4">
-                            <BadgePercent className="w-5 h-5" />
-                            <h4 className="font-black text-slate-900 dark:text-white text-base">Value & Rewards</h4>
-                          </div>
-                          
-                          <Link href="/calculator/credit-cards/rewards" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 group transition-all">
-                            <div className="w-8 h-8 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center mr-3 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-800 transition-colors shrink-0">
-                              <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="text-sm font-bold text-slate-700 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Reward Points Value</div>
-                              <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Calculate real cashback value</div>
-                            </div>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
 
                                     </div>
                 </div>
@@ -863,17 +746,6 @@ export default function Header() {
                       </div>
                     </div>
 
-                    {/* Credit Cards Section */}
-                    <div>
-                      <div className="font-black text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-700 px-3 py-2 rounded-lg mb-2">Credit Cards</div>
-                      <div className="pl-4 space-y-2">
-                        <Link href="/products/credit-cards/hdfc-millennia" onClick={closeMobileMenu} className="block py-1">HDFC Millennia</Link>
-                        <Link href="/products/credit-cards/sbi-simplyclick" onClick={closeMobileMenu} className="block py-1">SBI SimplyCLICK</Link>
-                        <Link href="/products/credit-cards/icici-amazon-pay" onClick={closeMobileMenu} className="block py-1">ICICI Amazon Pay</Link>
-                        <Link href="/products/credit-cards/axis-flipkart" onClick={closeMobileMenu} className="block py-1">Axis Flipkart</Link>
-                        <Link href="/products/credit-cards" onClick={closeMobileMenu} className="block py-1 text-emerald-600 font-bold">View All Cards →</Link>
-                      </div>
-                    </div>
 
                   </div>
                 )}
@@ -910,15 +782,6 @@ export default function Header() {
                       </div>
                     </div>
 
-                    {/* Credit Cards */}
-                    <div>
-                      <div className="font-black text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-700 px-3 py-2 rounded-lg mb-2">Credit Card Tools</div>
-                      <div className="pl-4 space-y-2">
-                        <Link href="/calculator/credit-cards/payoff" onClick={closeMobileMenu} className="block py-1.5">Debt Payoff Tool</Link>
-                        <Link href="/calculator/credit-cards/minimum-due" onClick={closeMobileMenu} className="block py-1.5">Minimum Due Trap</Link>
-                        <Link href="/calculator/credit-cards/rewards" onClick={closeMobileMenu} className="block py-1.5">Reward Points Tracker</Link>
-                      </div>
-                    </div>
 
                   </div>
                 )}

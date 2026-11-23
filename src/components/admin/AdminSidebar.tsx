@@ -21,7 +21,6 @@ import {
   Building,
   Image as ImageIcon,
   HelpCircle,
-  CreditCard,
   Umbrella,
   Calculator
 } from "lucide-react";
@@ -37,7 +36,6 @@ export default function AdminSidebar() {
     { label: "Callback Requests", href: "/admin/callbacks", icon: PhoneCall, badge: "URGENT" },
     { label: "Complaints & Grievances", href: "/admin/complaints", icon: ShieldCheck, highlight: true },
     { label: "Bank Rates CMS", href: "/admin/rates", icon: TrendingDown },
-    { label: "Credit Cards CMS", href: "/admin/credit-cards", icon: CreditCard, highlight: true },
     { label: "Insurance CMS", href: "/admin/insurance", icon: Umbrella, highlight: true },
     { label: "Product & Service FAQs", href: "/admin/calculator-faqs", icon: HelpCircle, highlight: true },
     { label: "Hero Content CMS", href: "/admin/hero-images", icon: ImageIcon, highlight: true },

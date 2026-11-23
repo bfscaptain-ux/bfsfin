@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     }
 
     const isAppointment = body.source?.includes("APPOINTMENT");
-    const productCategory = body.productType || (body.loanType?.includes("Insurance") ? "Insurance" : body.loanType?.includes("Card") ? "Credit Card" : "Finance");
+    const productCategory = body.productType || (body.loanType?.includes("Insurance") ? "Insurance" : "Finance");
     const specificType = body.subType || body.loanType || "Home Loan";
 
     // DPDP & Telecom Regulatory Audit Logging

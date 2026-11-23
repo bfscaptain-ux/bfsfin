@@ -3,7 +3,7 @@ import CertificationsClient from "./CertificationsClient";
 
 export const metadata: Metadata = {
   title: "Official Compliance & Certifications",
-  description: "Bhardwaj Financial Services (BFS) operates under strict RBI lending guidelines, IRDAI insurance compliance, and authorized banking distribution standards. 100% secure processing for Loans, Insurance & Credit Cards in Agra and Pan-India.",
+  description: "Bhardwaj Financial Services (BFS) operates under strict RBI lending guidelines, IRDAI insurance compliance, and authorized banking distribution standards. 100% secure processing for Loans & Insurance in Agra and Pan-India.",
   keywords: [
     "authorized DSA India",
     "RBI compliant loan partner",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Official Registrations & Certifications - Bhardwaj Financial Services",
-    description: "Your trust is our priority. Explore our DSA authorizations and regulatory compliance standards across Loans, Insurance, and Credit Cards.",
+    description: "Your trust is our priority. Explore our DSA authorizations and regulatory compliance standards across Loans and Insurance.",
     url: "https://bfsfin.com/about/certifications",
     siteName: "Bhardwaj Financial Services",
     images: [
@@ -83,14 +83,6 @@ export default function CertificationsPage() {
             "recognizedBy": {
               "@type": "Organization",
               "name": "General & Health Insurance Desks"
-            }
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "Authorized Credit Card Sourcing Channel",
-            "recognizedBy": {
-              "@type": "Organization",
-              "name": "Banking Card Sourcing Bureau"
             }
           }
         ]

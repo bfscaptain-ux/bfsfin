@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import HomeLoanHuman2D from "@/components/illustrations/HomeLoanHuman2D";
 import InsuranceHuman2D from "@/components/illustrations/InsuranceHuman2D";
-import CreditCardHuman2D from "@/components/illustrations/CreditCardHuman2D";
 import HealthHeroHuman2D from "@/components/illustrations/HealthHeroHuman2D";
 import ProcessHuman2D from "@/components/illustrations/ProcessHuman2D";
 import HeroAdvisorHuman2D from "@/components/illustrations/HeroAdvisorHuman2D";
@@ -15,7 +14,6 @@ import ProcessBgAmbient2D from "@/components/illustrations/ProcessBgAmbient2D";
 import { PillarsLeftBg2D, PillarsRightBg2D } from "@/components/illustrations/PillarsBgCharacters2D";
 import { LoanPortfolioLeftBg2D, LoanPortfolioRightBg2D } from "@/components/illustrations/LoanPortfolioBg2D";
 import { CashlessBimaLeftBg2D, CashlessBimaRightBg2D } from "@/components/illustrations/CashlessBimaBg2D";
-import { CreditCardsLeftBg2D, CreditCardsRightBg2D } from "@/components/illustrations/CreditCardsBg2D";
 import LegalAdvisorBg2D from "@/components/illustrations/LegalAdvisorBg2D";
 
 
@@ -59,12 +57,8 @@ import {
   FileText,
   Activity,
   Smile,
-  CreditCard,
   HeartPulse,
   Sparkles,
-  Plane,
-  ShoppingBag,
-  Fuel,
   Check,
   Shield,
   Stethoscope,
@@ -75,7 +69,6 @@ import {
   Gift,
   Layers,
   ChevronRight,
-  RotateCw,
   Lock,
   Mail,
   KeyRound,
@@ -130,25 +123,6 @@ const CALLBACK_SERVICES = {
       "₹50 Lakh Sum Insured",
       "₹1 Crore+ Sum Insured",
       "Policy Audit / Claim Assistance"
-    ]
-  },
-  "Credit Card": {
-    label: "Credit Card Desk",
-    subTypes: [
-      "Lifetime Free Card (₹0 Annual Fee)",
-      "Airport Lounge Access & Travel Card",
-      "5% Flat Cashback & Shopping Card",
-      "Fuel Surcharge Waiver Card",
-      "Business & Corporate Expense Card",
-      "Premium Rewards & Dining Card"
-    ],
-    amountLabel: "Monthly Income / Spend Band",
-    amounts: [
-      "₹25,000 – ₹50,000 / month",
-      "₹50,000 – ₹1,00,000 / month",
-      "₹1,00,000 – ₹2,50,000 / month",
-      "₹2,50,000+ / month",
-      "Business Turnover Based"
     ]
   }
 } as const;
@@ -388,132 +362,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
     setIsOtpVerifying(false);
   };
   const [activeBullet, setActiveBullet] = useState(0);
-  const [heroWidgetTab, setHeroWidgetTab] = useState<"loan" | "insurance" | "card">("loan");
+  const [heroWidgetTab, setHeroWidgetTab] = useState<"loan" | "insurance">("loan");
   const [activeLoanFilter, setActiveLoanFilter] = useState<"all" | "home" | "business" | "lap">("all");
-  const [activeCardIdx, setActiveCardIdx] = useState(0);
-  const [isCardFlipped, setIsCardFlipped] = useState(false);
-  const [cardRotate, setCardRotate] = useState({ x: 0, y: 0 });
-
-  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const rX = -(y / (rect.height / 2)) * 14;
-    const rY = (x / (rect.width / 2)) * 14;
-    setCardRotate({ x: rX, y: rY });
-  };
-
-  const handleCardMouseLeave = () => {
-    setCardRotate({ x: 0, y: 0 });
-  };
-
-  const creditCardCategories = [
-    {
-      id: "lounge",
-      categoryName: "Airport Lounge Elite",
-      shortLabel: "Lounge & Travel",
-      tagline: "Unlimited Airport Comfort & Global Air Miles",
-      cardName: "Premium Lounge & Air Miles Card",
-      tier: "PARTNER BANK CARD",
-      cardNumber: "••••  ••••  ••••  8842",
-      validThru: "12/30",
-      theme: "amber",
-      accentBg: "from-amber-500/15 via-yellow-500/10 to-transparent",
-      accentBorder: "border-amber-400/50",
-      accentText: "text-amber-700 dark:text-amber-400",
-      cardGlow: "from-amber-500/25 via-yellow-500/15 to-amber-600/25",
-      pillActive: "bg-amber-500 text-slate-950 shadow-md shadow-amber-500/25",
-      cardBg: "from-zinc-950 via-neutral-900 to-black",
-      cardBorder: "border-amber-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.35)]",
-      chipColor: "from-amber-200 via-amber-400 to-amber-500 border-amber-300",
-      holoBadge: "PARTNER BANK",
-      annualFee: "Lifetime Free ₹0",
-      joiningBonus: "₹10,000 Vouchers",
-      estSavings: "₹24,000 / yr",
-      bullet1: "4 Free domestic & international lounge passes per quarter with gourmet meals",
-      bullet2: "1:1 Air Miles conversion on premier airlines + $50k overseas medical shield",
-      icon: <Plane className="w-4 h-4" />
-    },
-    {
-      id: "cashback",
-      categoryName: "5% Super Cashback",
-      shortLabel: "5% Cashback",
-      tagline: "Direct Statement Credits on Everyday Spends",
-      cardName: "Super Cashback & Shopping Card",
-      tier: "PARTNER BANK CARD",
-      cardNumber: "••••  ••••  ••••  4129",
-      validThru: "08/30",
-      theme: "emerald",
-      accentBg: "from-emerald-500/15 via-teal-500/10 to-transparent",
-      accentBorder: "border-emerald-400/50",
-      accentText: "text-emerald-700 dark:text-emerald-400",
-      cardGlow: "from-emerald-500/30 via-teal-500/20 to-emerald-600/30",
-      pillActive: "bg-emerald-700 text-white shadow-md shadow-emerald-600/25",
-      cardBg: "from-emerald-950 via-teal-950 to-slate-950",
-      cardBorder: "border-emerald-500/40 shadow-[0_20px_50px_rgba(6,78,59,0.35)]",
-      chipColor: "from-emerald-200 via-teal-300 to-emerald-400 border-emerald-300",
-      holoBadge: "PARTNER BANK",
-      annualFee: "₹0 Annual Fee",
-      joiningBonus: "Flat ₹500 Back",
-      estSavings: "₹18,500 / yr",
-      bullet1: "5% Unlimited cashback on Amazon, Flipkart, Myntra, Swiggy & Zomato",
-      bullet2: "Monthly auto statement credit with ₹0 redemption fee & zero expiry",
-      icon: <ShoppingBag className="w-4 h-4" />
-    },
-    {
-      id: "fuel",
-      categoryName: "Fuel Surcharge & Highway",
-      shortLabel: "Fuel & Highway",
-      tagline: "100% Surcharge Waiver + FASTag Highway Perks",
-      cardName: "Fuel Surcharge Waiver Card",
-      tier: "PARTNER BANK CARD",
-      cardNumber: "••••  ••••  ••••  6301",
-      validThru: "11/29",
-      theme: "orange",
-      accentBg: "from-orange-500/15 via-amber-500/10 to-transparent",
-      accentBorder: "border-orange-400/50",
-      accentText: "text-orange-700 dark:text-orange-400",
-      cardGlow: "from-orange-500/30 via-amber-500/20 to-red-500/30",
-      pillActive: "bg-orange-500 text-white shadow-md shadow-orange-500/25",
-      cardBg: "from-stone-950 via-amber-950 to-orange-950",
-      cardBorder: "border-orange-500/40 shadow-[0_20px_50px_rgba(124,45,18,0.35)]",
-      chipColor: "from-amber-200 via-amber-300 to-orange-400 border-orange-300",
-      holoBadge: "PARTNER BANK",
-      annualFee: "₹0 Joining Fee",
-      joiningBonus: "1,500 Fuel Points",
-      estSavings: "₹14,200 / yr",
-      bullet1: "1% Fuel Surcharge waiver across all IOCL, BPCL & HPCL petrol pumps",
-      bullet2: "Up to 68 Litres free fuel annually + 5X points on highway FASTags",
-      icon: <Fuel className="w-4 h-4" />
-    },
-    {
-      id: "builder",
-      categoryName: "Credit Score Builder",
-      shortLabel: "Credit Builder",
-      tagline: "High Approval Probability (Low CIBIL / First-Time)*",
-      cardName: "Credit Score Step-Up Card",
-      tier: "FD SECURED CARD",
-      cardNumber: "••••  ••••  ••••  9924",
-      validThru: "06/31",
-      theme: "purple",
-      accentBg: "from-purple-500/15 via-indigo-500/10 to-transparent",
-      accentBorder: "border-purple-400/50",
-      accentText: "text-purple-700 dark:text-purple-400",
-      cardGlow: "from-purple-500/30 via-indigo-500/20 to-purple-600/30",
-      pillActive: "bg-purple-600 text-white shadow-md shadow-purple-600/25",
-      cardBg: "from-slate-950 via-purple-950 to-indigo-950",
-      cardBorder: "border-purple-500/40 shadow-[0_20px_50px_rgba(88,28,135,0.35)]",
-      chipColor: "from-purple-200 via-purple-300 to-indigo-400 border-purple-300",
-      holoBadge: "SECURED CARD",
-      annualFee: "100% Free Lifetime",
-      joiningBonus: "Zero Income Proof",
-      estSavings: "750+ CIBIL in 6 Mos",
-      bullet1: "Instant approval via ₹10k fixed deposit earning 7.5% p.a. interest*",
-      bullet2: "Builds CIBIL score to 750+ in 6 months with monthly credit bureau reporting",
-      icon: <Sparkles className="w-4 h-4" />
-    }
-  ];
-
+  
   // Framer motion variants for smooth staggered animations
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -545,10 +396,10 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
     imageUrl: "/hero_image.jpg",
     badgeText: "RBI Registered & Verified Partners",
     titlePart1: "Building Wealth, Securing Lives,",
-    titlePart2: "Loans, Insurance & Cards.",
+    titlePart2: "Loans & Complete Insurance.",
     bullet1: `Lowest Institutional Rates Starting from ${homeLoanRate || "7.15"}%* p.a.`, 
     bullet2: "100% Cashless Health Bima & Free Claim Assistance",
-    bullet3: "Lifetime-Free Credit Cards with Airport Lounge Access",
+    bullet3: "Direct Access to 50+ Top Banks & Transparent Approvals",
     supportText: `Prefer talking to an expert? Call: ${contactPhone || "+91 9258-724-227"}`, 
     googleRating: "4.9",
     googleReviewCount: "555+"
@@ -740,7 +591,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                 </div>
 
                 {/* 3 Interactive Tabs (Mobile Touch Friendly) */}
-                <div className="grid grid-cols-3 bg-slate-100 dark:bg-emerald-950/80 p-1 rounded-2xl mb-4 text-xs font-bold gap-1">
+                <div className="grid grid-cols-2 bg-slate-100 dark:bg-emerald-950/80 p-1 rounded-2xl mb-4 text-xs font-bold gap-1">
                   <button
                     onClick={() => setHeroWidgetTab("loan")}
                     className={`py-2 px-1 rounded-xl flex items-center justify-center gap-1 transition-all ${
@@ -762,17 +613,6 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   >
                     <HeartPulse className="w-3.5 h-3.5 text-rose-500 shrink-0" />
                     <span className="truncate">Insurance</span>
-                  </button>
-                  <button
-                    onClick={() => setHeroWidgetTab("card")}
-                    className={`py-2 px-1 rounded-xl flex items-center justify-center gap-1 transition-all ${
-                      heroWidgetTab === "card"
-                        ? "bg-white dark:bg-emerald-800 text-emerald-700 dark:text-white shadow-sm font-black scale-100"
-                        : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
-                    }`}
-                  >
-                    <CreditCard className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                    <span className="truncate">Cards</span>
                   </button>
                 </div>
 
@@ -902,47 +742,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   </motion.div>
                 )}
 
-                {/* TAB 3: CURATED CREDIT CARDS */}
-                {heroWidgetTab === "card" && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-3.5"
-                  >
-                    <div className="p-3 bg-gradient-to-r from-sky-500/10 to-indigo-500/10 dark:from-sky-900/30 dark:to-indigo-900/30 rounded-2xl border border-sky-200/50 dark:border-sky-800">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Sparkles className="w-4 h-4 text-sky-600 dark:text-sky-400" />
-                        <span className="text-xs font-black text-slate-900 dark:text-white">Smart Credit Cards</span>
-                      </div>
-                      <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-snug">
-                        Handpicked cards with ₹0 joining fees, luxury travel lounge passes, and maximum cashback.
-                      </p>
-                    </div>
-
-                    <div className="space-y-2 text-xs">
-                      <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                        <span><strong>Lifetime-Free Cards</strong> (₹0 Annual & Renewal Fee)</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                        <span><strong>Complimentary Airport Lounge</strong> passes every quarter</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                        <span><strong>Low CIBIL / FD-Backed</strong> cards for fast credit building*</span>
-                      </div>
-                    </div>
-
-                    <Link
-                      href="/apply?product=Credit+Card&source=hero_card"
-                      className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 mt-2"
-                    >
-                      Compare &amp; Apply Cards <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </motion.div>
-                )}
+                
               </div>
             </motion.div>
           </div>
@@ -976,7 +776,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
         )}
       </section>
 
-      {/* 3. THE 3 CORE PILLARS SHOWCASE (FINANCE, INSURANCE, CREDIT CARDS) - INTERACTIVE & MOBILE OPTIMIZED */}
+      {/* 3. CORE PILLARS SHOWCASE (FINANCE & INSURANCE) - INTERACTIVE & MOBILE OPTIMIZED */}
       <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 dark:bg-emerald-950/60 border-b border-slate-200/80 dark:border-emerald-800/60 relative overflow-hidden">
         {/* Ambient 2D Character Background Artworks (Flanking the 3 Pillars) */}
         <div className="absolute -left-10 lg:left-0 bottom-4 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
@@ -990,14 +790,14 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
 
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
               One Trusted Partner. <br className="hidden sm:block" />
-              <span className="text-emerald-600 dark:text-emerald-400">Three Financial Pillars.</span>
+              <span className="text-emerald-600 dark:text-emerald-400">Complete Financial Protection & Capital.</span>
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              Bhardwaj Financial Services integrates institutional lending, healthcare safety nets, and premium lifestyle cards under single legal oversight in Sanjay Place, Agra.
+              Bhardwaj Financial Services integrates institutional lending and comprehensive healthcare protection under direct advisory in Sanjay Place, Agra.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-6 sm:gap-8">
             {/* PILLAR 1: FINANCE & LOANS */}
             <motion.div 
               initial={{ opacity: 0, y: 25 }}
@@ -1102,58 +902,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               </Link>
             </motion.div>
 
-            {/* PILLAR 3: CURATED CREDIT CARDS */}
-            <motion.div 
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "150px" }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              whileHover={{ y: -6 }}
-              className="group bg-white dark:bg-emerald-900/50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/80 dark:border-emerald-800/80 shadow-md hover:shadow-2xl hover:border-sky-500/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl group-hover:bg-sky-500/20 transition-all pointer-events-none"></div>
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-sky-100 dark:bg-sky-800/60 text-sky-700 dark:text-sky-300 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
-                    <CreditCard className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/80 dark:border-sky-800/60">
-                    Lifetime Free ₹0 Fee
-                  </span>
-                </div>
-                {/* Relatable 2D Human Character Graphic */}
-                <div className="w-full h-36 sm:h-40 mb-4 flex items-center justify-center bg-slate-50/70 dark:bg-slate-900/40 rounded-2xl p-2 border border-slate-100 dark:border-slate-800/60 group-hover:scale-[1.02] transition-transform duration-300">
-                  <CreditCardHuman2D className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                  Curated Credit Cards
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5 sm:mb-6">
-                  Lifestyle and reward credit cards matched to your spending habits, travel requirements, and CIBIL score tier.
-                </p>
-                <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-sky-500 shrink-0" />
-                    <span><strong>Airport Lounge Access:</strong> Free visits every quarter</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-sky-500 shrink-0" />
-                    <span><strong>Up to 5% Cashback:</strong> Fuel, dining, and online shopping</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-sky-500 shrink-0" />
-                    <span><strong>Credit Builder Cards:</strong> Instant issuance for low CIBIL</span>
-                  </li>
-                </ul>
-              </div>
-              <Link
-                href="/products/credit-cards"
-                className="w-full py-3 sm:py-3.5 px-4 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
-              >
-                Find Best Card <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
+            </div>
         </div>
       </section>
 
@@ -1334,339 +1083,6 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* 5. CURATED CREDIT CARDS SHOWCASE (ULTRA-INTERACTIVE 3D TILT & FLIP, COMPACT SINGLE-SCREEN) */}
-      <section className="py-10 sm:py-14 bg-gradient-to-b from-slate-100/70 via-slate-50 to-white dark:from-slate-950 dark:via-emerald-950/40 dark:to-slate-950 border-b border-slate-200/80 dark:border-emerald-800/80 text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
-        {/* Ambient Glow Aura */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/10 dark:bg-emerald-400/15 blur-[120px] rounded-full pointer-events-none"></div>
-
-        {/* Ambient 2D Lifestyle Traveler & Credit Privilege Characters */}
-        <div className="absolute -left-10 lg:left-0 bottom-4 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
-          <CreditCardsLeftBg2D className="w-full h-full object-contain" />
-        </div>
-        <div className="absolute -right-10 lg:right-0 top-12 w-56 sm:w-72 lg:w-80 opacity-20 dark:opacity-25 pointer-events-none select-none z-0 hidden md:block">
-          <CreditCardsRightBg2D className="w-full h-full object-contain" />
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Header & Tabs In Single Clean Row */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-            <div>
-
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                Smart Spending Power & Privilege
-              </h2>
-            </div>
-
-            {/* Category Filter Pills with animated layout pill (No Scrollbar bug) */}
-            <div 
-              className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              {creditCardCategories.map((cat, idx) => {
-                const isActive = activeCardIdx === idx;
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => {
-                      setActiveCardIdx(idx);
-                      setIsCardFlipped(false);
-                    }}
-                    className={`relative shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 active:scale-95 ${
-                      isActive
-                        ? "text-white font-black shadow-md"
-                        : "bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/90 dark:border-slate-700 shadow-sm"
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeCreditCategoryPill"
-                        className={`absolute inset-0 rounded-xl ${cat.pillActive}`}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{cat.icon}</span>
-                    <span className="relative z-10">{cat.shortLabel}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* SINGLE-SCREEN SHOWCASE BOX */}
-          {(() => {
-            const curCard = creditCardCategories[activeCardIdx];
-            return (
-              <div className="relative rounded-3xl p-5 sm:p-7 lg:p-8 bg-white/95 dark:bg-slate-900/85 border border-slate-200/90 dark:border-emerald-800/80 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-md">
-                
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-                  
-                  {/* LEFT: 3D INTERACTIVE TILT & FLIP VIRTUAL CARD */}
-                  <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-                    
-                    {/* Ambient Glow Aura behind card */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${curCard.cardGlow} blur-2xl rounded-3xl opacity-75 scale-95 pointer-events-none transition-all duration-500`}></div>
-
-                    {/* 3D Perspective Canvas Container */}
-                    <div 
-                      className="w-full max-w-[360px] relative select-none"
-                      style={{ perspective: 1200 }}
-                    >
-                      {/* Floating Top Fee Pill */}
-                      <div className="absolute -top-3 right-3 z-30 pointer-events-none">
-                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-black bg-slate-900 text-white border border-slate-700 shadow-lg">
-                          <Crown className="w-3 h-3 text-amber-400" />
-                          {curCard.annualFee}
-                        </span>
-                      </div>
-
-                      {/* Interactive Tilting & Flipping Card Object */}
-                      <motion.div
-                        onMouseMove={handleCardMouseMove}
-                        onMouseLeave={handleCardMouseLeave}
-                        onClick={() => setIsCardFlipped(!isCardFlipped)}
-                        animate={{
-                          rotateX: cardRotate.x,
-                          rotateY: cardRotate.y + (isCardFlipped ? 180 : 0),
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 280,
-                          damping: 24,
-                          mass: 0.5
-                        }}
-                        style={{ transformStyle: "preserve-3d" }}
-                        className="w-full aspect-[1.586/1] relative cursor-pointer rounded-2xl sm:rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.45)] transition-shadow hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.55)] group"
-                      >
-                        {/* ================= CARD FRONT FACE ================= */}
-                        <div 
-                          style={{ backfaceVisibility: "hidden" }}
-                          className={`absolute inset-0 rounded-2xl sm:rounded-3xl p-5 sm:p-6 overflow-hidden bg-gradient-to-br ${curCard.cardBg} border ${curCard.cardBorder} flex flex-col justify-between text-white select-none`}
-                        >
-                          {/* Animated Shimmer Light Beam */}
-                          <motion.div
-                            animate={{ x: ["-150%", "250%"] }}
-                            transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
-                            className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-25 pointer-events-none z-20"
-                          />
-
-                          {/* Dynamic Glare Reflection that tracks mouse tilt */}
-                          <div 
-                            className="absolute inset-0 pointer-events-none z-10 transition-opacity duration-300"
-                            style={{
-                              background: `radial-gradient(circle at ${50 + cardRotate.y * 3.5}% ${50 - cardRotate.x * 3.5}%, rgba(255,255,255,0.2) 0%, transparent 60%)`
-                            }}
-                          />
-
-                          {/* Card Top: Monogram + Privilege + NFC + Badge */}
-                          <div className="relative z-10 flex items-center justify-between">
-                            <div className="flex items-center gap-2.5">
-                              <div className="w-8 h-8 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center font-black text-white text-xs tracking-tighter shadow-inner backdrop-blur-md">
-                                BFS
-                              </div>
-                              <div>
-                                <div className="text-[10px] font-black tracking-widest uppercase text-white/95 leading-tight">
-                                  BHARDWAJ
-                                </div>
-                                <div className="text-[8px] font-bold text-amber-300 tracking-wider uppercase leading-none">
-                                  {curCard.tier}
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="flex items-center gap-1.5">
-                              <Wifi className="w-4 h-4 text-white/70 rotate-90" />
-                              <span className="text-[8px] font-black px-2 py-0.5 rounded-md bg-white/15 text-white/95 border border-white/20 tracking-wider uppercase backdrop-blur-sm">
-                                {curCard.holoBadge}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Card Center: Realistic Gold EMV Smart Chip & Monospace Number */}
-                          <div className="relative z-10 space-y-2 my-auto">
-                            <div className="flex items-center justify-between">
-                              {/* Realistic Gold Chip */}
-                              <div className={`w-11 h-8 rounded-md bg-gradient-to-br ${curCard.chipColor} p-1 shadow-inner relative overflow-hidden flex flex-col justify-between border border-black/25`}>
-                                <div className="w-full h-full border border-black/25 rounded-[3px] grid grid-cols-3 gap-0.5 opacity-70">
-                                  <div className="border-r border-black/20"></div>
-                                  <div className="border-r border-black/20"></div>
-                                  <div></div>
-                                </div>
-                              </div>
-                              <span className="text-[9px] font-mono text-white/50 tracking-widest">
-                                CONTACTLESS
-                              </span>
-                            </div>
-
-                            {/* 16-Digit Monospace Number with embossed drop-shadow */}
-                            <div className="text-base sm:text-lg font-mono font-bold tracking-[0.22em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-                              {curCard.cardNumber}
-                            </div>
-                          </div>
-
-                          {/* Card Bottom: Cardholder, Expiry, Dual Hologram Spheres */}
-                          <div className="relative z-10 flex items-end justify-between text-white/80 text-[9px]">
-                            <div>
-                              <div className="text-[7px] font-bold text-slate-400 uppercase tracking-widest">Cardholder</div>
-                              <div className="text-xs font-black tracking-wider uppercase text-white drop-shadow-sm">
-                                PREMIUM MEMBER
-                              </div>
-                            </div>
-
-                            <div className="text-center">
-                              <div className="text-[7px] font-bold text-slate-400 uppercase tracking-widest">Expires</div>
-                              <div className="text-xs font-mono font-bold text-white">
-                                {curCard.validThru}
-                              </div>
-                            </div>
-
-                            {/* Dual Interlocking Frosted Security Circles */}
-                            <div className="flex items-center -space-x-2">
-                              <div className="w-6 h-6 rounded-full bg-emerald-400/80 backdrop-blur-md shadow-md border border-white/20"></div>
-                              <div className="w-6 h-6 rounded-full bg-teal-300/80 backdrop-blur-md shadow-md border border-white/20"></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* ================= CARD BACK FACE (FLIPPED 180 DEG) ================= */}
-                        <div 
-                          style={{ 
-                            backfaceVisibility: "hidden",
-                            transform: "rotateY(180deg)"
-                          }}
-                          className={`absolute inset-0 rounded-2xl sm:rounded-3xl p-5 sm:p-6 overflow-hidden bg-gradient-to-br ${curCard.cardBg} border ${curCard.cardBorder} flex flex-col justify-between text-white select-none`}
-                        >
-                          {/* Top Magnetic Stripe */}
-                          <div className="-mx-5 sm:-mx-6 -mt-1 h-9 sm:h-11 bg-slate-950 border-y border-white/15 shadow-inner flex items-center justify-end px-4">
-                            <span className="text-[7px] font-mono tracking-widest text-slate-400/70">PARTNER BANK ISSUED CARD</span>
-                          </div>
-
-                          {/* Signature Strip & CVV Security Box */}
-                          <div className="space-y-1.5 my-auto">
-                            <div className="flex items-center gap-2">
-                              <div className="flex-1 h-7 bg-slate-100 rounded border border-white/40 flex items-center px-2 bg-[repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0_6px,#f8fafc_6px,#f8fafc_12px)] shadow-inner">
-                                <span className="text-[7px] font-mono font-bold text-slate-500 tracking-wider select-none">
-                                  AUTHORIZED SIGNATURE
-                                </span>
-                              </div>
-                              <div className="bg-white text-slate-950 font-mono font-black text-xs px-2.5 py-1 rounded shadow-md flex items-center gap-1 border border-slate-300">
-                                <Lock className="w-2.5 h-2.5 text-amber-600" />
-                                <span>•••</span>
-                              </div>
-                            </div>
-                            <div className="text-[7px] text-slate-400 tracking-wider">
-                              Never share your CVV or PIN with anyone. Cards are underwritten and issued directly by partner banks.
-                            </div>
-                          </div>
-
-                          {/* Back Footer: Toll-Free Desk & Hologram Compliance */}
-                          <div className="pt-1 border-t border-white/10 flex items-center justify-between text-[8px] text-slate-300/80">
-                            <div>
-                              <div className="font-semibold text-white/90">Customer Helpline</div>
-                              <div>+91 9258-724-227</div>
-                            </div>
-                            <div className="text-right">
-                              <div className="font-bold text-amber-400">CHIP &amp; PIN PROTECTED</div>
-                              <div className="text-[7px] text-slate-400">Partner Bank Network</div>
-                            </div>
-                          </div>
-                        </div>
-
-                      </motion.div>
-
-                      {/* Interactive 3D Flip Action Badge */}
-                      <div className="mt-3 flex items-center justify-between px-1">
-                        <button
-                          type="button"
-                          onClick={() => setIsCardFlipped(!isCardFlipped)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/60 hover:text-emerald-700 dark:hover:text-emerald-300 transition-all shadow-sm active:scale-95 cursor-pointer"
-                        >
-                          <RotateCw className={`w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 transition-transform duration-500 ${isCardFlipped ? "rotate-180" : ""}`} />
-                          <span>{isCardFlipped ? "Click to View Front" : "Click to 3D Flip Card"}</span>
-                        </button>
-                        <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                          <Zap className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> 60-Sec Digital KYC
-                        </span>
-                      </div>
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 px-1 text-center italic">
-                        *Illustrative sample. Cards are issued and underwritten directly by partner banks (HDFC, SBI, ICICI, Axis). BFS is a facilitator.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* RIGHT: CLEAN & CONCISE HIGH-IMPACT DETAILS */}
-                  <div className="lg:col-span-7 space-y-3.5">
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-xs font-black uppercase tracking-wider ${curCard.accentText}`}>
-                          {curCard.categoryName}
-                        </span>
-                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
-                          {curCard.annualFee}
-                        </span>
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                        {curCard.cardName}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-0.5 leading-snug">
-                        {curCard.tagline}
-                      </p>
-                    </div>
-
-                    {/* 3 Clean Highlight Pills in 1 Row */}
-                    <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
-                      <div className="p-2 sm:p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 shadow-sm">
-                        <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Annual Fee</div>
-                        <div className="text-xs sm:text-sm font-black text-slate-900 dark:text-white mt-0.5">{curCard.annualFee}</div>
-                      </div>
-                      <div className="p-2 sm:p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 shadow-sm">
-                        <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Annual Value</div>
-                        <div className={`text-xs sm:text-sm font-black ${curCard.accentText} mt-0.5`}>{curCard.estSavings}</div>
-                      </div>
-                      <div className="p-2 sm:p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 shadow-sm">
-                        <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Welcome Gift</div>
-                        <div className="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-400 mt-0.5 truncate">{curCard.joiningBonus}</div>
-                      </div>
-                    </div>
-
-                    {/* 2 Concise High-Impact Perks */}
-                    <div className="space-y-1.5 py-0.5">
-                      <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                        <span className="leading-snug">{curCard.bullet1}</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                        <span className="leading-snug">{curCard.bullet2}</span>
-                      </div>
-                    </div>
-
-                    {/* Direct CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
-                      <Link
-                        href="/products/credit-cards"
-                        className="w-full sm:w-auto px-5 py-3 sm:py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-700 dark:hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 active:scale-95 text-center"
-                      >
-                        Apply For This Card <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      <Link
-                        href="/products/credit-cards"
-                        className="w-full sm:w-auto px-4 py-3 sm:py-2.5 bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all flex items-center justify-center gap-1.5 active:scale-95 text-center"
-                      >
-                        Browse All 50+ Cards
-                      </Link>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            );
-          })()}
-
         </div>
       </section>
 
@@ -1941,7 +1357,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                 Visit Our Agra Head Office
               </h3>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                While we disburse loans, issue insurance, and deliver credit cards digitally across India, our head office doors are always open for direct in-person legal & financial consultations in Sanjay Place, Agra.
+                While we facilitate loans and issue insurance digitally across India, our head office doors are always open for direct in-person legal & financial consultations in Sanjay Place, Agra.
               </p>
               
               <div className="space-y-4 pt-2">

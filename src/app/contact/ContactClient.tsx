@@ -17,6 +17,7 @@ import {
   Send, 
   CheckCircle2, 
   Building,
+  Calculator,
   ShieldCheck,
   Check,
   Loader2
@@ -159,10 +160,6 @@ export default function ContactClient() {
       "Health Insurance", "Term Life Cover", "Family Floater", 
       "Critical Illness", "Car Insurance", "Two-Wheeler Insurance", 
       "Home Property Insurance", "Business & SME Insurance"
-    ],
-    "Credit Cards": [
-      "Cashback & Shopping Cards", "Travel & Lounge Cards", 
-      "Lifetime Free Cards", "Premium/Super-Premium Cards"
     ],
     "Other / Advisory": [
       "Wealth Management", "Tax Planning", "General Consultation"
@@ -604,12 +601,12 @@ export default function ContactClient() {
               <p className="text-xs text-slate-500 dark:text-emerald-200/60 font-medium">Health, Life, Motor, and General Insurance.</p>
             </Link>
 
-            <Link href="/products/credit-cards" className="group bg-white dark:bg-emerald-900/20 rounded-2xl p-6 border border-slate-200/60 dark:border-emerald-800/50 hover:shadow-xl hover:border-emerald-500/30 transition-all flex flex-col items-center text-center">
+            <Link href="/calculator" className="group bg-white dark:bg-emerald-900/20 rounded-2xl p-6 border border-slate-200/60 dark:border-emerald-800/50 hover:shadow-xl hover:border-emerald-500/30 transition-all flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 mb-4 group-hover:scale-110 transition-transform">
-                <CheckCircle2 className="w-6 h-6" />
+                <Calculator className="w-6 h-6" />
               </div>
-              <h3 className="font-bold text-slate-900 dark:text-white mb-2">Credit Cards</h3>
-              <p className="text-xs text-slate-500 dark:text-emerald-200/60 font-medium">Top Cashback, Travel, and Rewards Cards.</p>
+              <h3 className="font-bold text-slate-900 dark:text-white mb-2">EMI Calculators</h3>
+              <p className="text-xs text-slate-500 dark:text-emerald-200/60 font-medium">Home loan EMI, balance transfer, and loan eligibility tools.</p>
             </Link>
           </div>
         </div>

@@ -135,7 +135,7 @@ export default function HLVCalculator() {
           <RelatedCalculators tools={[
             { name: "Health Premium Estimator", link: "/calculator/insurance/health-premium", desc: "Calculate expected premiums for individual and family health insurance." },
             { name: "80C & 80D Tax Saver", link: "/calculator/insurance/tax-saver", desc: "Calculate how much income tax you can save by buying insurance policies." },
-            { name: "Debt Payoff Tool", link: "/calculator/credit-cards/payoff", desc: "Find out how long it will take to pay off your credit card debt." }
+            { name: "Prepayment Impact Tool", link: "/tools/prepayment", desc: "Calculate interest savings by paying extra towards principal." }
           ]} />
         </div>
       </main>

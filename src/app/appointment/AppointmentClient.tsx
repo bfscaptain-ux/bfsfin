@@ -18,11 +18,8 @@ import {
   User,
   CheckCircle2,
   Shield,
-  CreditCard,
   HeartPulse,
-  ShoppingBag,
   Sparkles,
-  Plane,
   Mail,
   KeyRound,
   ShieldCheck,
@@ -35,7 +32,7 @@ import {
 import Link from "next/link";
 import confetti from "canvas-confetti";
 
-type PrimaryCategory = "Loan" | "Insurance" | "Credit Card";
+type PrimaryCategory = "Loan" | "Insurance";
 
 interface SubOption {
   id: string;
@@ -84,22 +81,6 @@ const APPOINTMENT_CATEGORIES: Record<PrimaryCategory, {
       { id: "Senior Citizen Health Cover", title: "Senior Citizen Specialized Plan", desc: "Pre-existing ailments covered with minimal waiting period", badge: "Age 60+ Ready", icon: HeartPulse },
       { id: "Critical Illness & Cancer Cover", title: "Critical Illness & Cancer Care", desc: "Lump-sum payout upon diagnosis of 36+ major illnesses", badge: "Direct Cash Payout", icon: ShieldCheck },
       { id: "Commercial & Fire Policy", title: "Commercial, Fire & Marine Cover", desc: "Factory, godown, transit inventory and shop risk safeguard", badge: "Business Asset", icon: Building2 }
-    ]
-  },
-  "Credit Card": {
-    label: "Credit Card Desk",
-    tagline: "Lifetime Free Cards, 5% Flat Cashback & Lounge Access",
-    icon: CreditCard,
-    color: "amber",
-    activeBorder: "border-amber-500",
-    badgeBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-    options: [
-      { id: "Lifetime Free Card", title: "Lifetime Free Card (LTF)", desc: "Zero annual charge and zero joining fee forever with basic perks", badge: "₹0 Annual Fee", icon: CreditCard },
-      { id: "Airport Lounge & Travel Card", title: "Airport Lounge & Travel Pass", desc: "Complimentary domestic & international VIP airport lounge visits", badge: "Free Lounge Access", icon: Plane },
-      { id: "5% Flat Cashback Shopping Card", title: "5% Flat Cashback Shopping", desc: "Direct cashback on Amazon, Flipkart, Swiggy, Zomato and Myntra", badge: "5% Auto-Credit", icon: ShoppingBag },
-      { id: "Fuel Surcharge Waiver Card", title: "Fuel Surcharge Waiver & Fastag", desc: "Complete 100% fuel surcharge exemption across IOCL, BPCL & HPCL", badge: "100% Fuel Waiver", icon: Sparkles },
-      { id: "Credit Score Builder (FD Based)", title: "Credit Score Booster (FD Card)", desc: "Guaranteed approval for low or zero CIBIL score applicants", badge: "100% Instant Approval", icon: ShieldCheck },
-      { id: "Business & Corporate Card", title: "Business & Expense Card", desc: "High spend limits with GST invoice input tax benefit credit", badge: "GST Expense Input", icon: Briefcase }
     ]
   }
 };
@@ -394,12 +375,12 @@ export default function AppointmentClient() {
                       1. What service do you need an appointment for?
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-                      Choose among Loan Advisory, Insurance Desk or Credit Cards to view specialized options.
+                      Choose between Loan Advisory or Insurance Desk to view specialized options.
                     </p>
                   </div>
 
-                  {/* Primary 3 Categories Switcher */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                  {/* Primary 2 Categories Switcher */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     {(Object.keys(APPOINTMENT_CATEGORIES) as PrimaryCategory[]).map((catKey) => {
                       const cat = APPOINTMENT_CATEGORIES[catKey];
                       const isSelected = category === catKey;

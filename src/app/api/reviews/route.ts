@@ -55,8 +55,6 @@ export async function GET(req: Request) {
         { text: { contains: 'liability insurance' } },
       ],
       credit: [
-        { text: { contains: 'Credit Card' } },
-        { text: { contains: 'credit card' } },
         { text: { contains: 'CIBIL' } },
         { text: { contains: 'Overdraft' } },
         { text: { contains: 'line of credit' } },

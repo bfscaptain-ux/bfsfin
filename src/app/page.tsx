@@ -111,7 +111,7 @@ export default async function HomePage() {
         "url": "https://bfsfin.com",
         "logo": "https://bfsfin.com/logo.png",
         "image": "https://bfsfin.com/logo.png",
-        "description": "Premier financial institution providing Home Loans from 7.15%* min ROI, Unsecured Business Loans, 100% Cashless Health & Term Insurance with Free Claim Assistance, and Lifetime-Free Credit Cards across Agra and Pan-India.",
+        "description": "Premier financial institution providing Home Loans from 7.15%* min ROI, Unsecured Business Loans, 100% Cashless Health & Term Insurance with Free Claim Assistance across Agra and Pan-India.",
         "founder": {
           "@type": "Person",
           "name": "Adv. Praveen Bhardwaj",
@@ -141,7 +141,7 @@ export default async function HomePage() {
         "areaServed": ["Agra", "Mathura", "Firozabad", "Noida", "Gurgaon", "Delhi NCR", "Mumbai", "Bangalore", "Jaipur", "Pan India"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "3-in-1 Financial Hub Products",
+          "name": "Comprehensive Financial & Insurance Solutions",
           "itemListElement": [
             {
               "@type": "OfferCatalog",
@@ -160,15 +160,6 @@ export default async function HomePage() {
                 { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "100% Cashless Health Insurance (10,000+ Hospitals)" } },
                 { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "Term Life Insurance (₹1 Cr - ₹5 Cr Cover)" } },
                 { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "100% Free Doorstep Claim Settlement Assistance" } }
-              ]
-            },
-            {
-              "@type": "OfferCatalog",
-              "name": "Credit Cards",
-              "itemListElement": [
-                { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "Lifetime Free Credit Cards (₹0 Annual Fee)" } },
-                { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "Airport Lounge Access Cards" } },
-                { "@type": "Offer", "itemOffered": { "@type": "FinancialProduct", "name": "Low CIBIL Credit Builder Cards" } }
               ]
             }
           ]
@@ -212,10 +203,10 @@ export default async function HomePage() {
     imageUrl: homeHeroImage?.imageUrl || "/hero_image.jpg",
     badgeText: settingsRecords.find(s => s.key === "heroBadgeText")?.value || "Agra's #1 Premier Financial Distribution Hub",
     titlePart1: settingsRecords.find(s => s.key === "heroTitlePart1")?.value || "Building Wealth, Securing Lives,",
-    titlePart2: settingsRecords.find(s => s.key === "heroTitlePart2")?.value || "Loans, Insurance & Cards.",
+    titlePart2: settingsRecords.find(s => s.key === "heroTitlePart2")?.value || "Loans & Complete Insurance.",
     bullet1: settingsRecords.find(s => s.key === "heroBullet1")?.value || `Home Loans starting at ${homeLoanRate}%* with 5-Day Fast Sanctions`,
     bullet2: settingsRecords.find(s => s.key === "heroBullet2")?.value || "100% Cashless Health Bima with Free Claim Settlement Support",
-    bullet3: settingsRecords.find(s => s.key === "heroBullet3")?.value || "Lifetime-Free Credit Cards with Complimentary Airport Lounge Access",
+    bullet3: settingsRecords.find(s => s.key === "heroBullet3")?.value || "Direct Access to 50+ Top Banks & Transparent Approvals",
     supportText: settingsRecords.find(s => s.key === "heroSupportText")?.value || "Talk to our Senior Advisory Desk: +91 9258-724-227",
     googleRating: settingsRecords.find(s => s.key === "googleRating")?.value || "4.9",
     googleReviewCount: realReviewCount > 0 ? `${realReviewCount}` : (settingsRecords.find(s => s.key === "googleReviewCount")?.value || "555")
@@ -224,7 +215,7 @@ export default async function HomePage() {
   const ownerConfig = {
     name: settingsRecords.find(s => s.key === "ownerName")?.value || "Adv. Praveen Bhardwaj",
     role: settingsRecords.find(s => s.key === "ownerRole")?.value || "Founder & Managing Director, BFS",
-    quote: settingsRecords.find(s => s.key === "ownerQuote")?.value || "We don't just secure loans; we legally vet your investments, safeguard your health with cashless bima, and curate smart credit cards.",
+    quote: settingsRecords.find(s => s.key === "ownerQuote")?.value || "We don't just secure loans; we legally vet your investments, safeguard your health with cashless bima, and protect your family's future.",
     image: settingsRecords.find(s => s.key === "ownerImage")?.value || "/praveen_bhardwaj.png"
   };
 

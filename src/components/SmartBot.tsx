@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { X, Send, ChevronRight, CheckCircle2, UserCircle2, Calculator, ThumbsUp, ThumbsDown, Mic, Maximize2, Minimize2, ArrowLeft, Volume2, VolumeX, Plus, MessageSquare, Trash2, Search, CreditCard, Shield, Sparkles, AlertCircle, Award, Check, AlertTriangle, ShieldCheck, MessageCircle, PhoneCall, ExternalLink } from "lucide-react";
+import { X, Send, ChevronRight, CheckCircle2, UserCircle2, Calculator, ThumbsUp, ThumbsDown, Mic, Maximize2, Minimize2, ArrowLeft, Volume2, VolumeX, Plus, MessageSquare, Trash2, Search, Shield, Sparkles, AlertCircle, Award, Check, AlertTriangle, ShieldCheck, MessageCircle, PhoneCall, ExternalLink } from "lucide-react";
 import { processUserMessage } from "@/lib/nlp";
 import { useRouter } from "next/navigation";
 import { evaluateUnderwriting, ProductType, EmpType, SalaryMode, CibilTier, AgeBracket } from "@/lib/underwriting";
@@ -310,7 +310,7 @@ const InChatEligibilityCalc = ({ onComplete }: { onComplete: (eligibleAmt: numbe
           1. Select Financial Category
         </label>
         <div className="grid grid-cols-3 gap-1.5">
-          {(["Home Loan", "Personal Loan", "Business Loan", "LAP", "Credit Card", "Insurance"] as ProductType[]).map((p) => (
+          {(["Home Loan", "Personal Loan", "Business Loan", "LAP", "Insurance"] as ProductType[]).map((p) => (
             <button
               key={p}
               onClick={() => setProduct(p)}
@@ -324,7 +324,6 @@ const InChatEligibilityCalc = ({ onComplete }: { onComplete: (eligibleAmt: numbe
               {p === "Personal Loan" && "👤 Personal"}
               {p === "Business Loan" && "💼 Business"}
               {p === "LAP" && "🏢 LAP Loan"}
-              {p === "Credit Card" && "💳 Cards"}
               {p === "Insurance" && "🛡️ Insurance"}
             </button>
           ))}
@@ -536,9 +535,9 @@ const InChatEligibilityCalc = ({ onComplete }: { onComplete: (eligibleAmt: numbe
 
       {/* Action Buttons */}
       <div className="flex gap-2">
-        {product === "Insurance" || product === "Credit Card" ? (
+        {product === "Insurance" ? (
           <button
-            onClick={() => router.push(product === "Credit Card" ? "/apply?product=credit-card" : "/apply?product=insurance")}
+            onClick={() => router.push("/apply?product=insurance")}
             className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 rounded-xl text-xs transition-all shadow-md shadow-emerald-600/20 flex items-center justify-center gap-1.5"
           >
             <span>Apply Online Now 📝</span>
@@ -581,7 +580,7 @@ const InChatWhatsAppConnect = ({
     : "";
   const defaultMsg = queryClean
     ? `Namaste BFS team, mujhe is vishay me guidance chahiye: "${queryClean}"`
-    : "Namaste BFS team, mujhe expert loan/insurance/credit card guidance chahiye.";
+    : "Namaste BFS team, mujhe expert loan/insurance guidance chahiye.";
   const waUrl = `https://wa.me/919286683232?text=${encodeURIComponent(defaultMsg)}`;
 
   return (
@@ -1039,7 +1038,7 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
         nlpResult.reply || (
           "🏛️ **Bhardwaj Financial Services (BFS)**\n\n" +
           "**BFS ka Full Form:** **Bhardwaj Financial Services**\n" +
-          "Hum Bharat ke agrani aur vishwasniya Financial Distribution & Advisory Platform hain. Hum 2,500+ se adhik parivaron aur vyapariyon ko sabse kam byaj daron par loan, bima aur credit cards uplabdh kara chuke hain.\n\n" +
+          "Hum Bharat ke agrani aur vishwasniya Financial Distribution & Advisory Platform hain. Hum 2,500+ se adhik parivaron aur vyapariyon ko sabse kam byaj daron par loan aur bima uplabdh kara chuke hain.\n\n" +
           "⭐ **Humari Mukhya Visheshatayein (Why Choose BFS):**\n" +
           "• 🏠 **Home Loan:** Market me sabse kam byaj dar — **7.15%** se shuru! (Up to 90% funding & 30 years tenure)\n" +
           "• 💼 **Business Loan:** ₹5 Lakh se ₹50 Lakh tak Unsecured Funding bina kisi girvi ke (MSME/GST)\n" +
@@ -1118,18 +1117,13 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
     if (isCreditCardOverview) {
       setCurrentStep("GREETING");
       triggerBotMessage(
-        "Bhardwaj Financial Services (BFS) par sabhi leading partner institutions ke top credit cards available hain:\n\n" +
-        "1️⃣ 🆓 **Lifetime Free Credit Cards (लाइफटाइम फ्री कार्ड्स)**:\n• Forever Zero Joining Fee aur Zero Annual/Renewal Fee!\n• 50 din ka interest-free credit period aur dining/shopping discounts\n• First-time users ke liye sabse best bina kisi maintenance charge ke\n\n" +
-        "2️⃣ ✈️ **Airport Lounge Access Cards (एयरपोर्ट लाउंज कार्ड्स)**:\n• Har quarter 2 se 4 complimentary luxury domestic & international airport lounge visits\n• Free unlimited buffet food, premium relax zone aur Wi-Fi facilities\n\n" +
-        "3️⃣ 🛍️ **Cashback & Shopping Cards (कैशबैक कार्ड्स)**:\n• Amazon, Flipkart, Myntra, Swiggy, Zomato par up to 5% flat cashback\n• Petrol pumps par 1% fuel surcharge waiver\n• Har transaction par direct cash savings\n\n" +
-        "4️⃣ 📋 **Low CIBIL / FD-Backed Cards**:\n• Agar aapka CIBIL score nahi hai ya low hai, toh Fixed Deposit (FD) backed guaranteed card\n• Jisse sirf 3 mahine mein aapka CIBIL 750+ ban jata hai!\n\n" +
-        "Aapko kis category ka credit card chahiye ya apply karna hai?",
+        "Namaste! Bhardwaj Financial Services (BFS) credit cards provide ya issue nahi karta hai. Hum exclusively Home Loans (from 7.15%* ROI), Loan Against Property (LAP), Business Loans, Personal Loans aur Complete Family Insurance (Health, Term & Motor) provide karte hain.\n\nKya aapko kisi loan ya insurance policy ke liye sahayata chahiye?",
         [
-          "🆓 Lifetime Free Card",
-          "✈️ Airport Lounge Card",
-          "🛍️ Cashback Card",
-          "📋 Check Card Eligibility",
-          "Apply for Card 💳"
+          "🏠 Home Loan",
+          "💼 Business Loan",
+          "👤 Personal Loan",
+          "🛡️ Insurance Plans",
+          "WhatsApp Executive 💬"
         ]
       );
       return;
@@ -1220,35 +1214,17 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
       return;
     }
 
-    // 3. Credit Card sub-products
-    if (lower.includes("lifetime free") || text.includes("Lifetime Free")) {
+    // 3. Credit Card sub-products (Explicit refusal)
+    if (
+      lower.includes("lifetime free") ||
+      lower.includes("airport lounge") ||
+      lower.includes("lounge card") ||
+      lower.includes("card eligibility") ||
+      (lower.includes("cashback") && lower.includes("card"))
+    ) {
       triggerBotMessage(
-        "Lifetime Free Credit Cards mein Forever Zero Joining Fee aur Zero Annual Fee hoti hai! 50 days interest-free period aur discounts bina kisi maintenance charge ke. 🆓\n\nKya aapka pehle se koi credit card ya CIBIL score bana hua hai?",
-        ["Haan, CIBIL 750+ Hai 👍", "Pehli Baar Card Lena Hai 🌟", "Salary Account Par Chahiye 💼", "Apply for Card 💳"]
-      );
-      return;
-    }
-
-    if (lower.includes("airport lounge") || text.includes("Airport Lounge") || lower.includes("lounge card")) {
-      triggerBotMessage(
-        "Airport Lounge Cards mein har quarter 2 se 4 complimentary luxury domestic aur international airport lounge visits (free buffet food, relax zone aur Wi-Fi) milti hain! ✈️\n\nAapki monthly income profile kya hai?",
-        ["Salaried (₹25k+ In-Hand) 💼", "Self-Employed / Business 🏪", "Apply for Card 💳"]
-      );
-      return;
-    }
-
-    if (lower.includes("cashback") || text.includes("Cashback") || lower.includes("shopping card") || lower.includes("fuel surcharge") || text.includes("Fuel Surcharge")) {
-      triggerBotMessage(
-        "Cashback Credit Cards se aap Amazon, Flipkart, Myntra, Swiggy, Zomato par up to 5% direct cashback aur petrol pumps par 1% surcharge waiver pa sakte hain! 🛍️\n\nAapka main kharcha kahan hota hai?",
-        ["Online Shopping (Amazon/Flipkart) 🛒", "Food Delivery & Dining 🍔", "Petrol & Fuel ⛽", "Apply for Card 💳"]
-      );
-      return;
-    }
-
-    if (lower.includes("card eligibility") || text.includes("Card Eligibility")) {
-      triggerBotMessage(
-        "Agar aapka CIBIL nahi bana hai ya salary kam hai, toh pareshan mat hoiye! Hum Fixed Deposit (FD) backed secure cards provide karate hain jisse 3 mahine mein aapka CIBIL 750+ ban jata hai. 📋\n\nAapki profile batayein:",
-        ["Salaried Employee 💼", "Self-Employed / Dukaan 🏪", "Student / Housewife 🎓", "Apply for Card 💳"]
+        "Bhardwaj Financial Services (BFS) credit card services provide nahi karta hai. Hum low-interest Home Loans, LAP, Business Loans aur Comprehensive Insurance ke liye direct bank facilitation provide karte hain. 🏦",
+        ["🏠 Home Loan", "💼 Business Loan", "🛡️ Insurance Plans", "WhatsApp Executive 💬"]
       );
       return;
     }
@@ -1263,12 +1239,6 @@ export default function SmartBot({ isOpen, onClose, inline = false }: { isOpen: 
     if (text === "Apply for Term Plan 📝" || text === "Apply for Insurance 🛡️" || text === "Apply Insurance 🛡️") {
       triggerBotMessage("Insurance application page par le jaa raha hoon... Kripya wahan basic details bharein!", ["Continue Chat"]);
       router.push("/apply?product=insurance");
-      return;
-    }
-
-    if (text === "Apply for Card 💳" || text === "Apply Credit Card 💳" || text === "Apply Lifetime Free 📝") {
-      triggerBotMessage("Credit Card application page par le jaa raha hoon... Kripya wahan basic details bharein!", ["Continue Chat"]);
-      router.push("/apply?product=credit-card");
       return;
     }
 

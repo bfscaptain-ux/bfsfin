@@ -110,7 +110,7 @@ export async function POST(req: Request) {
 
             let suggestedOptions: string[] | undefined = undefined;
             if (rasaIntent === "greet") {
-              suggestedOptions = ["Loans & Finance 💰", "Insurance Plans 🛡️", "Credit Cards 💳", "Check Eligibility 🔢"];
+              suggestedOptions = ["Loans & Finance 💰", "Insurance Plans 🛡️", "EMI Calculator 🧮", "Check Eligibility 🔢"];
             } else if (rasaIntent.startsWith("check_")) {
               suggestedOptions = ["Check Eligibility 🔢", "Apply Online 📝", "WhatsApp Executive 💬", "Call Executive 📞"];
             } else if (rasaIntent.startsWith("ask_finance") || rasaIntent.startsWith("ask_home") || rasaIntent.startsWith("ask_business") || rasaIntent.startsWith("ask_personal") || rasaIntent.startsWith("ask_lap") || rasaIntent.startsWith("ask_balance")) {
@@ -120,7 +120,7 @@ export async function POST(req: Request) {
             } else if (rasaIntent.startsWith("ask_credit_card")) {
               suggestedOptions = ["Apply for Card 💳", "Lifetime Free Card 🆓", "Airport Lounge ✈️", "Card Eligibility 📋"];
             } else if (rasaIntent === "ask_apply_product") {
-              suggestedOptions = ["Apply Finance 💰", "Apply Insurance 🛡️", "Apply Credit Card 💳", "WhatsApp Executive 💬"];
+              suggestedOptions = ["Apply Finance 💰", "Apply Insurance 🛡️", "Apply LAP 📝", "WhatsApp Executive 💬"];
             } else if (rasaIntent === "ask_about_bfs") {
               suggestedOptions = ["Home Loan (7.15%*) 🏠", "Check Eligibility 🔢", "WhatsApp Executive 💬", "Finance & Loans 💰"];
             } else if (rasaIntent === "affirm") {

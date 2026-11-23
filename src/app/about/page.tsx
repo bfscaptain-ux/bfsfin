@@ -3,12 +3,12 @@ import { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 
 export const metadata: Metadata = {
-  title: 'About Us | Loans @ 7.15%*, Insurance & Credit Cards in Agra & Pan-India',
-  description: 'Bhardwaj Financial Services (BFS) is Agra\'s premier financial hub offering 3 core products: Home Loans (min ROI 7.15%) & Business/Personal Loans, 100% Cashless Health, Term Life & Motor Insurance with free claim assistance, and Lifetime-Free Credit Cards with lounge access. Sanjay Place, Agra HQ & Pan-India service.',
-  keywords: 'bhardwaj financial services, bfs agra, best finance company in agra, home loans agra 7.15, insurance services agra, cashless health insurance agra, term life cover agra, motor bima, lifetime free credit cards, airport lounge credit card, low cibil loan, dsa approved finance agra sanjay place, loan against property, business loan agra, mathura, noida, gurgaon, delhi ncr, mumbai, bangalore, jaipur',
+  title: 'About Us | Loans @ 7.15%* & Cashless Insurance in Agra & Pan-India',
+  description: 'Bhardwaj Financial Services (BFS) is Agra\'s premier financial hub offering 3 core products: Home Loans (min ROI 7.15%) & Business/Personal Loans, 100% Cashless Health, Term Life & Motor Insurance with free claim assistance. Sanjay Place, Agra HQ & Pan-India service.',
+  keywords: 'bhardwaj financial services, bfs agra, best finance company in agra, home loans agra 7.15, insurance services agra, cashless health insurance agra, term life cover agra, motor bima, low cibil loan, dsa approved finance agra sanjay place, loan against property, business loan agra, mathura, noida, gurgaon, delhi ncr, mumbai, bangalore, jaipur',
   openGraph: {
-    title: 'Bhardwaj Financial Services (BFS) - Loans, Insurance & Credit Cards',
-    description: 'Agra\'s premier financial institution with 15+ years of trust and 10,000+ satisfied clients. Lowest Home Loan ROI starting from 7.15%, 100% Cashless Insurance with Free Claim Support, and Lifetime-Free Credit Cards.',
+    title: 'Bhardwaj Financial Services (BFS) - Loans & Comprehensive Insurance',
+    description: 'Agra\'s premier financial institution with 15+ years of trust and 10,000+ satisfied clients. Lowest Home Loan ROI starting from 7.15%, 100% Cashless Insurance with Free Claim Support.',
     url: 'https://bfsfin.com/about',
     siteName: 'Bhardwaj Financial Services',
     locale: 'en_IN',
@@ -28,7 +28,7 @@ export default async function AboutPage() {
   const ownerConfig = {
     name: settingsRecords.find(s => s.key === "ownerName")?.value || "Adv. Praveen Bhardwaj",
     role: settingsRecords.find(s => s.key === "ownerRole")?.value || "Founder & Managing Director",
-    desc: settingsRecords.find(s => s.key === "ownerAboutDesc")?.value || "With deep expertise in Law and Finance, Adv. Praveen Bhardwaj established BFS in Sanjay Place, Agra to deliver a transparent, single-window destination for Loans, Insurance, and Credit Cards.",
+    desc: settingsRecords.find(s => s.key === "ownerAboutDesc")?.value || "With deep expertise in Law and Finance, Adv. Praveen Bhardwaj established BFS in Sanjay Place, Agra to deliver a transparent, single-window destination for Loans and Comprehensive Insurance.",
     image: settingsRecords.find(s => s.key === "ownerImage")?.value || "/praveen_bhardwaj.png"
   };
 
@@ -42,7 +42,7 @@ export default async function AboutPage() {
         alternateName: 'BFS',
         image: 'https://bfsfin.com/logo.png',
         url: 'https://bfsfin.com',
-        description: 'Bhardwaj Financial Services (BFS) is Agra\'s premier financial institution providing transparent Loans (Home Loan from 7.15% min ROI, Business & Personal Loans), 100% Cashless Insurance (Health, Term Life & Motor with Free Claim Assistance), and Lifetime-Free Credit Cards with Airport Lounge Access.',
+        description: 'Bhardwaj Financial Services (BFS) is Agra\'s premier financial institution providing transparent Loans (Home Loan from 7.15% min ROI, Business & Personal Loans), 100% Cashless Insurance (Health, Term Life & Motor with Free Claim Assistance).',
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place',
@@ -98,16 +98,6 @@ export default async function AboutPage() {
                 { '@type': 'Offer', itemOffered: { '@type': 'FinancialProduct', name: 'Motor & Commercial Vehicle Bima (0-Dep)' } },
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '100% Free Doorstep Claim Settlement Assistance' } }
               ]
-            },
-            {
-              '@type': 'OfferCatalog',
-              name: 'Credit Cards',
-              itemListElement: [
-                { '@type': 'Offer', itemOffered: { '@type': 'FinancialProduct', name: 'Lifetime Free Credit Cards (₹0 Annual Fee)' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'FinancialProduct', name: 'Airport Lounge Access Credit Cards' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'FinancialProduct', name: 'High Cashback & Rewards Cards' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'FinancialProduct', name: 'Secured & Low CIBIL Credit Builder Cards' } }
-              ]
             }
           ]
         },
@@ -118,8 +108,6 @@ export default async function AboutPage() {
           'Term Life Insurance Cover',
           'Motor & Vehicle Bima',
           'Free Claim Settlement Assistance',
-          'Lifetime Free Credit Cards',
-          'Airport Lounge Cards',
           'CIBIL Repair & Credit Guidance',
           'DSA Institutional Lending Pools'
         ]
@@ -132,7 +120,7 @@ export default async function AboutPage() {
             name: 'What products does Bhardwaj Financial Services (BFS) offer?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Bhardwaj Financial Services offers 3 core products: 1. Loans (Home Loans starting at 7.15% min ROI, Business Loans, Personal Loans, LAP), 2. Comprehensive Insurance (Cashless Health Insurance across 10,000+ hospitals, Term Life, Motor Insurance, and Free Claim Settlement Assistance), and 3. Premium Credit Cards (Lifetime-Free cards with zero annual fees, Airport Lounge Access, and Credit-Builder cards).'
+              text: 'Bhardwaj Financial Services offers 2 core financial solutions: 1. Loans (Home Loans starting at 7.15% min ROI, Business Loans, Personal Loans, LAP), 2. Comprehensive Insurance (Cashless Health Insurance across 10,000+ hospitals, Term Life, Motor Insurance, and Free Claim Settlement Assistance).'
             }
           },
           {

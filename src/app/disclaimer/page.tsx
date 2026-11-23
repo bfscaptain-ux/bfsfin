@@ -145,7 +145,7 @@ export default function DisclaimerPage() {
           </p>
         </section>
 
-        {/* Section 4: Insurance & Credit Card Offerings */}
+        {/* Section 4: Insurance Offerings & Credit Card Disclaimer */}
         <section className="bg-white dark:bg-[#071711] border border-slate-200 dark:border-emerald-900/50 rounded-3xl p-6 sm:p-10 shadow-sm space-y-4">
           <div className="flex items-center gap-3 border-b border-slate-100 dark:border-emerald-900/50 pb-4">
             <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 font-bold">
@@ -153,7 +153,7 @@ export default function DisclaimerPage() {
             </div>
             <div>
               <h2 className="text-xl font-black text-slate-900 dark:text-white">
-                Insurance Solicitation & Credit Card Disclosures
+                Insurance Solicitation & Products Scope Disclosures
               </h2>
               <span className="text-xs text-slate-500 dark:text-slate-400">IRDAI & Issuer Guidelines</span>
             </div>
@@ -163,7 +163,7 @@ export default function DisclaimerPage() {
             <strong>Insurance Products:</strong> Insurance is the subject matter of solicitation. BFS acts as a referral/distribution partner for IRDAI-licensed general and life insurance companies. Any policy issued is an agreement solely between the insured policyholder and the underwriting insurance company. All claims, coverage disputes, and settlements are subject to policy terms and conditions.
           </p>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            <strong>Credit Cards:</strong> Credit cards displayed on the website are issued by the respective banking institutions (e.g. HDFC Bank, SBI Card, ICICI Bank, Axis Bank). Joining fees, annual renewal charges, reward structures, interest-free credit cycles, and credit limit sanctioning are governed strictly by the issuing bank&apos;s cardholder agreement.
+            <strong>Credit Cards Notice:</strong> Bhardwaj Financial Services (BFS) does not issue, source, or underwrite credit cards. Our institutional facilitation services are strictly concentrated in retail and commercial loans (Home Loans, Business Loans, LAP, Personal Loans) and IRDAI-compliant insurance solutions.
           </p>
         </section>
 

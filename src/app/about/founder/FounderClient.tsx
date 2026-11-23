@@ -69,7 +69,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
     {
       name: "Cards & Credit Advisory",
       role: "Lead Portfolio & CIBIL Specialist",
-      desc: "Curating lifetime-free credit cards, airport lounge privileges, and personalized credit score rebuilding strategies.",
+      desc: "Specialized underwriting guidance, CIBIL score optimization strategies, and institutional credit file preparation.",
       color: "orange",
       initials: "CS"
     }
@@ -134,7 +134,7 @@ export default function FounderClient({ ownerConfig }: { ownerConfig?: any }) {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-light mb-5 max-w-xl"
                 >
-                  With over 15 years of legal and financial expertise, our leadership team provides transparent, single-window solutions across Loans @ 7.15%* ROI, 100% Cashless Insurance, and Lifetime-Free Credit Cards.
+                  With over 15 years of legal and financial expertise, our leadership team provides transparent, single-window solutions across Loans @ 7.15%* ROI, 100% Cashless Insurance, and Free Claim Assistance.
                 </motion.p>
                 
                 <motion.div 

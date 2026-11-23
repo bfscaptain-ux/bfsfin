@@ -127,7 +127,7 @@ export function PillarsRightBg2D({ className = "w-full h-full" }: { className?: 
         <path d="M 18 35 L 25 42 L 39 26" stroke="#34D399" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
       </g>
 
-      {/* Floating Credit Card Outline */}
+      {/* Floating Security Icon Outline */}
       <g opacity="0.45" transform="translate(40, 110)">
         <rect x="0" y="0" width="70" height="44" rx="6" fill="#0F172A" stroke="#34D399" strokeWidth="1.5" transform="rotate(-8 35 22)" />
         <rect x="8" y="12" width="12" height="9" rx="1.5" fill="#FCD34D" transform="rotate(-8 35 22)" />

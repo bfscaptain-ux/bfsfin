@@ -41,25 +41,10 @@ const PRODUCT_CATALOG = {
       "Two Wheeler Insurance",
       "Home & Property Insurance"
     ]
-  },
-  "Credit Card": {
-    label: "💳 Credit Card",
-    subTypeLabel: "Select Card Category *",
-    amountLabel: "Expected Monthly Spend / Limit (₹) *",
-    amountPlaceholder: "e.g. 200000 (2 Lakhs)",
-    defaultAmount: "200000",
-    subTypes: [
-      "Cashback & Shopping Credit Card",
-      "Travel & Airport Lounge Credit Card",
-      "Lifetime Free Credit Card",
-      "Fuel Surcharge Waiver Card",
-      "Business / Corporate Credit Card",
-      "Premium Rewards Credit Card"
-    ]
   }
 };
 
-type ProductCategory = "Finance" | "Insurance" | "Credit Card";
+type ProductCategory = "Finance" | "Insurance";
 
 interface FormDataState {
   name: string;
@@ -164,10 +149,6 @@ function ApplyFormContent() {
       else if (fullQuery.includes("motor") || fullQuery.includes("car")) matchedSubType = "Car / Motor Insurance";
       else matchedSubType = "Health Insurance (Individual/Family)";
       defaultAmount = "1000000";
-    } else if (fullQuery.includes("card") || fullQuery.includes("credit")) {
-      matchedCategory = "Credit Card";
-      matchedSubType = "Cashback & Shopping Credit Card";
-      defaultAmount = "200000";
     }
 
     if (rawAmount && !isNaN(Number(rawAmount)) && Number(rawAmount) > 0) {

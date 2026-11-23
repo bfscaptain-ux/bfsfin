@@ -70,7 +70,7 @@ export default function WhyUsClient() {
             className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-tight tracking-tight mb-6"
           >
             Stop fighting for finance. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500">Loans, Insurance & Credit Cards.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500">Loans & Complete Insurance.</span>
           </motion.h1>
           
           <motion.p 
@@ -79,7 +79,7 @@ export default function WhyUsClient() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-base md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-light mb-8 max-w-2xl mx-auto"
           >
-            Getting a Home Loan from 7.15%* ROI, 100% cashless health insurance with free claim support, or lifetime-free credit cards shouldn't feel like a battle. We eliminate red tape across 50+ institutional partner pools.
+            Getting a Home Loan from 7.15%* ROI, 100% cashless health insurance with free claim support, shouldn't feel like a battle. We eliminate red tape across 50+ institutional partner pools.
           </motion.p>
           
           <motion.div 

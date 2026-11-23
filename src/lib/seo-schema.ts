@@ -30,7 +30,7 @@ export interface FinancialProductSchemaParams {
   name: string;
   description: string;
   slug: string;
-  category: "Insurance" | "CreditCard" | "Banking" | "Investment";
+  category: "Insurance" | "Banking" | "Investment";
   faqs?: FAQItem[];
   breadcrumbs?: BreadcrumbItem[];
 }

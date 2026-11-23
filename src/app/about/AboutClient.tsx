@@ -19,7 +19,6 @@ import {
   Zap, 
   MapPin, 
   ChevronDown, 
-  CreditCard, 
   HeartPulse, 
   Sparkles, 
   ArrowRight, 
@@ -133,7 +132,7 @@ export default function AboutClient({
     {
       name: "Cards & Credit Advisory",
       role: "Lead Portfolio & CIBIL Specialist",
-      desc: "Curating lifetime-free credit cards, airport lounge privileges, and personalized credit score rebuilding strategies.",
+      desc: "Specialized underwriting guidance, CIBIL score optimization strategies, and institutional credit file preparation.",
       color: "orange",
       initials: "CS"
     }
@@ -197,7 +196,7 @@ export default function AboutClient({
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium"
               >
-                Bhardwaj Financial Services (BFS) is your single-window financial ecosystem in Agra & across India — delivering <strong className="text-emerald-600 dark:text-emerald-400 font-bold">Home Loans from 7.15%* ROI</strong>, <strong className="text-emerald-600 dark:text-emerald-400 font-bold">100% Cashless Insurance</strong> with free claim support, and <strong className="text-emerald-600 dark:text-emerald-400 font-bold">Lifetime-Free Credit Cards</strong>.
+                Bhardwaj Financial Services (BFS) is your single-window financial ecosystem in Agra & across India — delivering <strong className="text-emerald-600 dark:text-emerald-400 font-bold">Home Loans from 7.15%* ROI</strong>, <strong className="text-emerald-600 dark:text-emerald-400 font-bold">100% Cashless Insurance</strong> with free claim support.
               </motion.p>
               
               <motion.div 
@@ -257,9 +256,9 @@ export default function AboutClient({
                     <p className="text-xs font-bold text-slate-900 dark:text-white">10K+ Cashless</p>
                   </div>
                   <div className="bg-slate-50 dark:bg-slate-800/80 p-2.5 rounded-xl text-center border border-slate-100 dark:border-slate-700">
-                    <CreditCard className="w-4 h-4 text-blue-500 mx-auto mb-1" />
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Credit Cards</p>
-                    <p className="text-xs font-bold text-slate-900 dark:text-white">₹0 Lifetime</p>
+                    <Building2 className="w-4 h-4 text-blue-500 mx-auto mb-1" />
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Network</p>
+                    <p className="text-xs font-bold text-slate-900 dark:text-white">50+ Banks</p>
                   </div>
                 </div>
                 
@@ -359,16 +358,16 @@ export default function AboutClient({
               <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
                 One Trusted Partner. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400">
-                  Three Financial Pillars.
+                  Two Core Financial Pillars.
                 </span>
               </h2>
               <p className="mt-4 text-slate-600 dark:text-slate-300 text-base sm:text-lg">
-                Whether you are securing your dream home in Agra, protecting your family with cashless healthcare, or maximizing daily spending with lifetime-free credit cards — BFS offers complete transparency under one roof.
+                Whether you are securing your dream home in Agra, protecting your family with cashless healthcare, — BFS offers complete transparency under one roof.
               </p>
             </div>
 
             {/* 3 Pillar Cards Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8">
               {/* PILLAR 1: FINANCE & LOANS */}
               <motion.div 
                 {...fadeInUp}
@@ -471,59 +470,7 @@ export default function AboutClient({
                   </Link>
                 </div>
               </motion.div>
-
-              {/* PILLAR 3: CREDIT CARDS */}
-              <motion.div 
-                {...fadeInUp}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="group relative bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-700/80 hover:border-cyan-500 transition-all duration-300 hover:shadow-2xl flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-cyan-100 dark:bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
-                      <CreditCard className="w-7 h-7" />
-                    </div>
-                    <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-bold border border-cyan-500/20">
-                      Lifetime Free Cards
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                    Credit Cards
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed">
-                    Curated credit cards with airport lounge access, high cashback, and credit builder options.
-                  </p>
-
-                  <ul className="space-y-3 mb-8">
-                    {[
-                      "Lifetime Free Cards (₹0 Annual & Joining Fees)",
-                      "Airport Lounge Access (2–4 visits/quarter)",
-                      "Up to 5% Cashback & Fuel Surcharge Waivers",
-                      "Secured Cards for Low CIBIL Improvement"
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300 font-medium">
-                        <Check className="w-4 h-4 text-cyan-500 mt-0.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-4">
-                    <span>100% Digital Process</span>
-                    <span className="font-semibold text-cyan-600 dark:text-cyan-400">Pre-Approved Limits</span>
-                  </div>
-                  <Link 
-                    href="/products/credit-cards"
-                    className="w-full py-3 px-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-cyan-500/20 transition-all"
-                  >
-                    Explore Credit Cards <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
+</div>
           </div>
         </section>
 
@@ -593,7 +540,7 @@ export default function AboutClient({
               { year: "2010", title: "The Foundation in Agra", desc: "Established in Sanjay Place, Agra with a clear mission to simplify lending and eliminate tedious banking red tape for homebuyers." },
               { year: "2015", title: "Authorized Institutional Network", desc: "Expanded direct channel partnerships across 50+ institutional lending pools, facilitating lowest market interest rates*." },
               { year: "2020", title: "5,000+ Families Funded", desc: "Achieved the major milestone of funding dream homes and commercial spaces for over 5,000 satisfied families." },
-              { year: "2024 - 2026", title: "Tri-Product Financial Powerhouse", desc: "Successfully expanded into a complete financial hub: offering Lowest ROI Loans, 100% Cashless Health & Life Insurance with Free Claim Assistance, and Lifetime-Free Credit Cards across Agra and Pan-India." }
+              { year: "2024 - 2026", title: "Tri-Product Financial Powerhouse", desc: "Successfully expanded into a complete financial hub: offering Lowest ROI Loans, 100% Cashless Health & Life Insurance with Free Claim Assistance, across Agra and Pan-India." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -741,7 +688,7 @@ export default function AboutClient({
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-16">
               <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
-              <p className="text-slate-600 dark:text-slate-400 text-lg">Everything you need to know about our Loans, Insurance, and Credit Cards.</p>
+              <p className="text-slate-600 dark:text-slate-400 text-lg">Everything you need to know about our Loans and Insurance.</p>
             </motion.div>
             
             <div className="space-y-4">
@@ -775,7 +722,7 @@ export default function AboutClient({
               transition={{ delay: 0.1 }}
               className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed"
             >
-              From Home Loans @ 7.15%* min ROI to 100% Cashless Health Insurance and Lifetime-Free Credit Cards — experience Agra's most transparent financial hub.
+              From Home Loans @ 7.15%* min ROI to 100% Cashless Health Insurance — experience Agra's most transparent financial hub.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 15 }}

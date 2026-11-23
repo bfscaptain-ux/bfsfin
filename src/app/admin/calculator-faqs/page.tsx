@@ -14,9 +14,6 @@ const CALCULATOR_IDS = [
   { id: "hlv", label: "HLV – Human Life Value" },
   { id: "health-premium", label: "Health Premium Estimator" },
   { id: "tax-saver", label: "80C & 80D Tax Saver" },
-  { id: "payoff", label: "Credit Card Payoff" },
-  { id: "minimum-due", label: "Minimum Due Trap" },
-  { id: "rewards", label: "CC Reward Maximizer" },
 ];
 
 interface FAQ {

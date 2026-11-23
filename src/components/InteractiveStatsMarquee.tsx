@@ -48,16 +48,16 @@ const MILESTONES: MilestoneItem[] = [
     href: "/insurance"
   },
   {
-    id: "cards",
-    category: "EXCLUSIVE REWARD CARDS",
-    number: "15,000+",
-    label: "Cards Delivered",
-    subtext: "Curated lifestyle cards with airport lounge access & 5% cashback.",
-    badge: "₹0 Annual Fee",
-    badgeColor: "bg-sky-50 dark:bg-sky-950/70 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800",
-    accentColor: "border-t-sky-500",
-    actionText: "Browse Cards",
-    href: "/products/credit-cards"
+    id: "banks",
+    category: "LENDING PARTNERS",
+    number: "50+",
+    label: "Partner Banks & NBFCs",
+    subtext: "Direct institutional tie-ups with PSU banks, private banks, and top NBFCs.",
+    badge: "Direct Sourcing",
+    badgeColor: "bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    accentColor: "border-t-emerald-500",
+    actionText: "View Partner Banks",
+    href: "/about/certifications"
   },
   {
     id: "ratio",
@@ -311,7 +311,7 @@ export default function InteractiveStatsMarquee() {
           BFS Milestones Driving Real Lives
         </h3>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-1 leading-relaxed">
-          Over a decade of transparent loan disbursals, zero-hassle cashless insurance claims, and curated credit cards across India.
+          Over a decade of transparent loan disbursals and zero-hassle cashless insurance claims across India.
         </p>
       </div>
 

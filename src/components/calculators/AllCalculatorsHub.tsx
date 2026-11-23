@@ -15,7 +15,6 @@ import {
   HeartPulse,
   Shield,
   Sparkles,
-  CreditCard,
   AlertTriangle,
   Award,
   ArrowRight,
@@ -39,7 +38,6 @@ const ICON_MAP: Record<string, React.ElementType> = {
   HeartPulse,
   Shield,
   Sparkles,
-  CreditCard,
   AlertTriangle,
   Award,
 };

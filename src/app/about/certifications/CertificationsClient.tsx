@@ -91,7 +91,7 @@ export default function CertificationsClient() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-slate-500 leading-relaxed font-light mb-12 max-w-3xl mx-auto"
             >
-              Bhardwaj Financial Services operates as an authorized financial distribution institution compliant with Reserve Bank of India (RBI) lending guidelines, IRDAI insurance norms, and authorized credit card sourcing protocols. Your loans, insurance, and cards are in trusted hands.
+              Bhardwaj Financial Services operates as an authorized financial distribution institution compliant with Reserve Bank of India (RBI) lending guidelines, IRDAI insurance norms. Your loans and insurance facilitation are in trusted hands.
             </motion.p>
             
             <motion.div 

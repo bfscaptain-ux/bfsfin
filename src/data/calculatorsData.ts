@@ -3,7 +3,7 @@ export interface CalculatorTool {
   name: string;
   shortName: string;
   path: string;
-  category: 'loans' | 'property-tax' | 'insurance' | 'credit-cards';
+  category: 'loans' | 'property-tax' | 'insurance';
   categoryLabel: string;
   badge?: string;
   badgeVariant?: 'emerald' | 'amber' | 'blue' | 'purple' | 'rose';
@@ -15,11 +15,10 @@ export interface CalculatorTool {
 }
 
 export const CALCULATOR_CATEGORIES = [
-  { id: 'all', label: 'All Tools', icon: 'Sparkles', count: 14 },
+  { id: 'all', label: 'All Tools', icon: 'Sparkles', count: 11 },
   { id: 'loans', label: 'Loan & EMI', icon: 'Calculator', count: 6 },
   { id: 'property-tax', label: 'Property & Tax', icon: 'Building', count: 2 },
   { id: 'insurance', label: 'Insurance', icon: 'ShieldCheck', count: 3 },
-  { id: 'credit-cards', label: 'Credit Cards', icon: 'CreditCard', count: 3 },
 ] as const;
 
 export const ALL_CALCULATORS: CalculatorTool[] = [
@@ -188,50 +187,5 @@ export const ALL_CALCULATORS: CalculatorTool[] = [
     description: 'Discover how buying health insurance for yourself and senior citizen parents can save you up to ₹1,00,000 under Section 80D of the Income Tax Act.',
     keyBenefit: 'Up to ₹1,00,000 tax deduction under 80D',
     iconName: 'Sparkles',
-  },
-
-  // 4. Credit Cards Suite
-  {
-    id: 'cc-payoff',
-    name: 'Credit Card Debt Payoff Calculator',
-    shortName: 'Card Debt Payoff',
-    path: '/calculator/credit-cards/payoff',
-    category: 'credit-cards',
-    categoryLabel: 'Credit Cards',
-    badge: 'Debt-Free Plan',
-    badgeVariant: 'rose',
-    tagline: 'Calculate fastest strategy to become 100% credit card debt free',
-    description: 'Find out exact months and total interest required to completely pay off high-interest credit card balances. Compare fixed monthly payoff vs minimum due.',
-    keyBenefit: 'Stop paying 42% APR compounding interest',
-    iconName: 'CreditCard',
-  },
-  {
-    id: 'cc-minimum-due',
-    name: 'Credit Card Minimum Due Trap Calculator',
-    shortName: 'Minimum Due Trap',
-    path: '/calculator/credit-cards/minimum-due',
-    category: 'credit-cards',
-    categoryLabel: 'Credit Cards',
-    badge: 'Trap Alert',
-    badgeVariant: 'rose',
-    popular: true,
-    tagline: 'Expose how paying only 5% minimum due traps you in 15+ years of debt',
-    description: 'See the shocking reality of paying minimum due on credit cards. High APR rolls over every month, multiplying your original purchase price by 300%+.',
-    keyBenefit: 'Eye-opening visual of interest vs principal',
-    iconName: 'AlertTriangle',
-  },
-  {
-    id: 'cc-rewards',
-    name: 'Credit Card Rewards & Cashback Optimizer',
-    shortName: 'Rewards Optimizer',
-    path: '/calculator/credit-cards/rewards',
-    category: 'credit-cards',
-    categoryLabel: 'Credit Cards',
-    badge: 'Cashback Max',
-    badgeVariant: 'amber',
-    tagline: 'Calculate yearly cashback, reward points & airport lounge savings',
-    description: 'Optimize your annual spends on fuel, groceries, online shopping, and travel. Find out which credit card tier maximizes your reward yield.',
-    keyBenefit: 'Maximize up to 5-10% return on everyday spending',
-    iconName: 'Award',
   },
 ];

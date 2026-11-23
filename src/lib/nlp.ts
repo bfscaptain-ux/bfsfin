@@ -160,7 +160,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
       {},
       "🏛️ **Bhardwaj Financial Services (BFS)**\n\n" +
       "**BFS ka Full Form:** **Bhardwaj Financial Services**\n" +
-      "Hum Bharat ke agrani aur vishwasniya Financial Distribution & Advisory Platform hain. Hum 2,500+ se adhik parivaron aur vyapariyon ko sabse kam byaj daron par loan, bima aur credit cards uplabdh kara chuke hain.\n\n" +
+      "Hum Bharat ke agrani aur vishwasniya Financial Distribution & Advisory Platform hain. Hum 2,500+ se adhik parivaron aur vyapariyon ko sabse kam byaj daron par loan aur bima uplabdh kara chuke hain.\n\n" +
       "⭐ **Humari Mukhya Visheshatayein (Why Choose BFS):**\n" +
       "• 🏠 **Home Loan:** Market me sabse kam byaj dar — **7.15%** se shuru! (Up to 90% funding & 30 years tenure)\n" +
       "• 💼 **Business Loan:** ₹5 Lakh se ₹50 Lakh tak Unsecured Funding bina kisi girvi ke (MSME/GST)\n" +
@@ -284,45 +284,16 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
     );
   }
 
-  // ── Quick Product Intents: Credit Cards ──
+  // ── Quick Product Intents: Credit Cards (BFS does NOT issue credit cards) ──
   const isCreditCardGeneral = Boolean(lower.match(/(konse|kaun se|types of|kya kya|list of|konsa|all).*(credit card|card)|(credit card|card).*(options|services|types|list|dete|krate|karate|milega|hote hain|uplabdh)|tum konse.*card/)) ||
-    lower === "credit card" || lower === "credit cards" || lower === "card" || lower === "creditcard";
+    lower === "credit card" || lower === "credit cards" || lower === "card" || lower === "creditcard" ||
+    Boolean(lower.match(/lifetime free.*card|zero annual.*card|free credit card|bina annual|cashback.*card|shopping.*card|fuel.*card|rewards.*card|amazon.*card|flipkart.*card/));
   if (isCreditCardGeneral) {
     return ok(
       "ask_credit_card_general",
       {},
-      "Bhardwaj Financial Services (BFS) par sabhi leading partner banks (HDFC, SBI, ICICI, Axis, AU Bank) ke top credit cards available hain:\n\n" +
-      "1️⃣ 🆓 **Lifetime Free Credit Cards (लाइफटाइम फ्री कार्ड्स)**:\n• Forever Zero Joining Fee aur Zero Annual/Renewal Fee!\n• 50 din ka interest-free credit period aur dining/shopping discounts\n• First-time users ke liye sabse best bina kisi maintenance charge ke\n\n" +
-      "2️⃣ ✈️ **Airport Lounge Access Cards (एयरपोर्ट लाउंज कार्ड्स)**:\n• Har quarter 2 se 4 complimentary luxury domestic & international airport lounge visits\n• Free unlimited buffet food, premium relax zone aur Wi-Fi facilities\n\n" +
-      "3️⃣ 🛍️ **Cashback & Shopping Cards (कैशबैक कार्ड्स)**:\n• Amazon, Flipkart, Myntra, Swiggy, Zomato par up to 5% flat cashback\n• Petrol pumps par 1% fuel surcharge waiver\n• Har transaction par direct cash savings\n\n" +
-      "4️⃣ 📋 **Low CIBIL / FD-Backed Cards**:\n• Agar aapka CIBIL score nahi hai ya low hai, toh Fixed Deposit (FD) backed guaranteed card\n• Jisse sirf 3 mahine mein aapka CIBIL 750+ ban jata hai!\n\n" +
-      "Aapko kis category ka credit card chahiye ya apply karna hai?",
-      ["Lifetime Free Card 🆓", "Airport Lounge ✈️", "Cashback Card 🛍️", "Card Eligibility 📋", "Apply for Card 💳"]
-    );
-  }
-
-  if (lower.match(/lifetime free.*card|zero annual.*card|free credit card|bina annual/)) {
-    return ok(
-      "faq_query",
-      {},
-      "🆓 **Lifetime Free Credit Cards**:\n• Forever Zero Joining Fee aur Zero Annual Fee!\n• 50 days interest-free period aur merchant shopping discounts\n• First-time users ke liye sabse best option bina kisi maintenance tension ke.",
-      ["Haan, CIBIL 750+ Hai 👍", "Pehli Baar Card Lena Hai 🌟", "Salary Account Par Chahiye 💼", "Apply for Card 💳"]
-    );
-  }
-  if (lower.match(/lounge|airport lounge/)) {
-    return ok(
-      "faq_query",
-      {},
-      "✈️ **Airport Lounge Access Credit Cards**:\n• Har quarter 2 se 4 complimentary domestic aur international lounge access\n• Free buffet meals, luxury seating aur Wi-Fi\n• Flight aur travel bookings par exclusive savings.",
-      ["Salaried (₹25k+ In-Hand) 💼", "Self-Employed / Business 🏪", "Apply for Card 💳"]
-    );
-  }
-  if (lower.match(/cashback.*card|shopping.*card|fuel.*card|rewards.*card|amazon.*card|flipkart.*card/)) {
-    return ok(
-      "faq_query",
-      {},
-      "🛍️ **Cashback & Reward Credit Cards**:\n• Amazon, Flipkart, Myntra, Swiggy par 5% tak direct cashback\n• Petrol pumps par 1% fuel surcharge waiver\n• Utility bill payment aur rewards jo direct cash mein redeem hote hain.",
-      ["Online Shopping 🛒", "Food Delivery & Dining 🍔", "Petrol & Fuel ⛽", "Apply for Card 💳"]
+      "Bhardwaj Financial Services (BFS) credit cards provide ya issue nahi karta hai. Hum exclusively lowest interest Home Loans, Loan Against Property (LAP), Business Loans, Personal Loans aur Complete Family Insurance facilitate karte hain.\n\nKya aap kisi loan ya bima policy ke liye sahayata chahte hain?",
+      ["Home Loan 🏠", "Business Loan 💼", "Personal Loan 👤", "Insurance Plans 🛡️", "WhatsApp Executive 💬"]
     );
   }
 
@@ -432,7 +403,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
       if (ctxLower.includes("10 lakh ya usse zyada") || ctxLower.includes("10 lakh se upar")) {
         return ok("context_followup", { fromContext: "deny_10l" }, "Maafi chahenge! Humari policy ke anusaar hum 10 Lakh se upar ke loans hi process karte hain. Agar future me badi requirement ho toh hume zaroor yaad kijiye!", ["Start Over 🔄", "WhatsApp Executive 💬"]);
       }
-      return ok("context_followup", { fromContext: "deny_general" }, "Koi baat nahi! Agar aapka koi aur prashna ho ya kisi aur product (Loan, Insurance, Credit Card) ke baare me janna ho toh batayein.", ["Finance & Loans 💰", "Insurance Plans 🛡️", "Credit Cards 💳", "WhatsApp Executive 💬"]);
+      return ok("context_followup", { fromContext: "deny_general" }, "Koi baat nahi! Agar aapka koi aur prashna ho ya kisi aur product (Loan, Insurance, Credit Card) ke baare me janna ho toh batayein.", ["Finance & Loans 💰", "Insurance Plans 🛡️", "EMI Calculator 🧮", "WhatsApp Executive 💬"]);
     }
 
     // 9. Follow-up: Explanation / Summary ("Samajh nahi aaya", "Matlab kya hai", "Explain karo")
@@ -457,7 +428,7 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
           "2️⃣ **100% Zero Advance Fee**: Hum client se koi file charge ya upfront commission nahi lete (100% Free Consultation).\n" +
           "3️⃣ **Special Profile Expertise**: Agar aapki Cash Salary hai, ITR nahi hai, ya low CIBIL hai — toh bhi hamare customized lending programs se loan approve hota hai!\n" +
           "4️⃣ **Doorstep & Digital Support**: Dastavez collect karne se lekar bank sanction aur registry tak poora end-to-end support hamare legal experts karte hain.\n" +
-          "5️⃣ **Single Window Solution**: Home Loan, Business Loan, Personal Loan, LAP, Insurance aur Credit Card — sab ek hi platform par.",
+          "5️⃣ **Single Window Solution**: Home Loan, Business Loan, Personal Loan, LAP, aur Complete Insurance — sab ek hi platform par.",
           ["Home Loan (7.15%*) 🏠", "Check Eligibility 🔢", "WhatsApp Executive 💬", "Finance & Loans 💰"]
         );
       }
@@ -669,9 +640,6 @@ export function processUserMessage(text: string, knowledge?: BotKnowledge, conte
       "term insurance": "Term Insurance sabse sasta aur pure life insurance plan hai jisme kam premium par parivar ko ₹1 Crore+ ka death benefit cover milta hai.",
       "zero dep": "Zero Depreciation (0-Dep) car/bike bima mein accident hone par fiber, plastic aur parts ka 100% claim milta hai, koi katauti nahi hoti.",
       "cashless": "Cashless claim ka matlab hai hospital ya car garage mein bina jeb se paise diye direct insurance company se bill settle hona.",
-      "credit card": "Credit Card bank dwara diya gaya ek financial card hai jisme 45-50 din tak bina kisi byaj ke shopping aur emergency kharche kiye ja sakte hain.",
-      "lifetime free": "Lifetime Free credit card par kabhi bhi koi joining fee ya annual renewal charges nahi lagte, ye bilkul muft rehta hai.",
-      "lounge access": "Airport Lounge Access credit card se aap airports par luxury VIP lounge me free buffet khana, wifi aur aaram kar sakte hain."
     };
 
     for (const [word, meaning] of Object.entries(dictionary)) {

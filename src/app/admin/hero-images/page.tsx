@@ -193,15 +193,6 @@ export default function HeroContentCMS() {
                   <option value="products/working-capital">Working Capital</option>
                   <option value="products/loan-against-securities">Loan Against Securities</option>
                 </optgroup>
-                <optgroup label="Credit Cards">
-                  <option value="products/credit-cards">Credit Cards (Main Page)</option>
-                  <option value="products/credit-cards/hdfc-millennia">HDFC Millennia Card</option>
-                  <option value="products/credit-cards/sbi-simplyclick">SBI SimplyCLICK Card</option>
-                  <option value="products/credit-cards/icici-amazon-pay">ICICI Amazon Pay Card</option>
-                  <option value="products/credit-cards/axis-flipkart">Axis Flipkart Card</option>
-                  <option value="products/credit-cards/hdfc-regalia">HDFC Regalia Card</option>
-                  <option value="products/credit-cards/amex-platinum">Amex Platinum Card</option>
-                </optgroup>
                 <optgroup label="Insurance Products">
                   <option value="products/insurance">Insurance (Main Page)</option>
                   <option value="products/insurance/health-insurance">Health Insurance</option>

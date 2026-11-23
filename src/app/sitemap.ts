@@ -77,7 +77,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Products Index
     { path: '/products', priority: 0.95, freq: 'weekly' },
-    { path: '/products/credit-cards', priority: 0.9, freq: 'weekly' },
     { path: '/products/insurance', priority: 0.9, freq: 'weekly' },
 
     // Services
@@ -86,9 +85,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Calculators
     { path: '/calculator', priority: 1.0, freq: 'daily' },
-    { path: '/calculator/credit-cards/minimum-due', priority: 0.8, freq: 'monthly' },
-    { path: '/calculator/credit-cards/payoff', priority: 0.8, freq: 'monthly' },
-    { path: '/calculator/credit-cards/rewards', priority: 0.8, freq: 'monthly' },
     { path: '/calculator/insurance/health-premium', priority: 0.8, freq: 'monthly' },
     { path: '/calculator/insurance/hlv', priority: 0.8, freq: 'monthly' },
     { path: '/calculator/insurance/tax-saver', priority: 0.8, freq: 'monthly' },
@@ -283,17 +279,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
     });
   } catch (e) {}
-
-  // 6. DYNAMIC CREDIT CARDS
-  const creditCardSlugs = ['hdfc-millennia', 'sbi-simplyclick', 'icici-amazon-pay', 'axis-flipkart', 'axis-ace', 'sbi-elite', 'axis-magnus'];
-  creditCardSlugs.forEach(slug => {
-    sitemapEntries.push({
-      url: `${BASE_URL}/products/credit-cards/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    });
-  });
 
   // 7. DYNAMIC INSURANCE PRODUCTS
   const insuranceSlugs = ['term-life', 'health-insurance', 'family-floater', 'critical-illness', 'car-insurance', 'two-wheeler-insurance', 'home-insurance', 'business-insurance'];

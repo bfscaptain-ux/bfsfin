@@ -93,8 +93,6 @@ export default async function AllReviewsPage({ searchParams }: { searchParams: {
       where: {
         status: "APPROVED",
         OR: [
-          { text: { contains: "Credit Card" } },
-          { text: { contains: "credit card" } },
           { text: { contains: "CIBIL" } },
           { text: { contains: "Overdraft" } },
           { text: { contains: "line of credit" } },
