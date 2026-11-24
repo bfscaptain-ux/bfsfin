@@ -323,7 +323,12 @@ export default function ItrFilingPage() {
       const res = await fetch("/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim().toLowerCase() })
+        body: JSON.stringify({
+          phone: phone.replace(/\D/g, "").slice(-10),
+          email: email.trim().toLowerCase(),
+          name,
+          formName: "ITR Filing"
+        })
       });
       const data = await res.json();
 
@@ -332,7 +337,7 @@ export default function ItrFilingPage() {
         setStep("otp");
         setOtpTimer(60);
       } else {
-        setOtpError(data.error || "Unable to send verification OTP. Please check email.");
+        setOtpError(data.error || "Unable to send verification OTP. Please check mobile number.");
       }
     } catch (err) {
       setOtpError("Network error. Please try again.");
@@ -354,7 +359,11 @@ export default function ItrFilingPage() {
       const verifyRes = await fetch("/api/otp", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim().toLowerCase(), otp: otpInput.trim() })
+        body: JSON.stringify({
+          phone: phone.replace(/\D/g, "").slice(-10),
+          email: email.trim().toLowerCase(),
+          otp: otpInput.trim()
+        })
       });
       const verifyData = await verifyRes.json();
 
@@ -408,7 +417,12 @@ export default function ItrFilingPage() {
       const res = await fetch("/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim().toLowerCase() })
+        body: JSON.stringify({
+          phone: phone.replace(/\D/g, "").slice(-10),
+          email: email.trim().toLowerCase(),
+          name,
+          formName: "ITR Filing"
+        })
       });
       const data = await res.json();
       if (data.mockOtp) setMockOtpHint(data.mockOtp);

@@ -180,23 +180,30 @@ function ApplyFormContent() {
   };
 
   const handleSendOtp = async () => {
-    if (!formData.email) return alert("Please enter your email first.");
+    if (!formData.phone || formData.phone.replace(/\D/g, '').length < 10) {
+      return alert("Please enter your 10-digit mobile number first.");
+    }
     
     setSendingOtp(true);
     try {
       const res = await fetch("/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email, name: formData.name, productType: productCategory })
+        body: JSON.stringify({
+          phone: formData.phone,
+          email: formData.email,
+          name: formData.name,
+          productType: productCategory
+        })
       });
       const data = await res.json();
       
       if (data.success) {
         setOtpHash(data.hash);
         setOtpSent(true);
-        alert("OTP sent to your email!");
+        alert(`Verification OTP sent via SMS to +91 ${formData.phone.slice(-10)}!`);
       } else {
-        alert(data.error || "Failed to send OTP. Check admin settings.");
+        alert(data.error || "Failed to send OTP.");
       }
     } catch {
       alert("Network error. Could not send OTP.");
@@ -211,13 +218,13 @@ function ApplyFormContent() {
     if (inputHash === otpHash) {
       setOtpVerified(true);
     } else {
-      alert("Invalid OTP! Please check your email and try again.");
+      alert("Invalid OTP! Please check the code sent to your mobile SMS and try again.");
     }
   };
 
   const nextStep = () => {
     if (step === 1 && !otpVerified) {
-      alert("Please verify your email to continue.");
+      alert("Please verify your mobile number via SMS OTP to continue.");
       return;
     }
     setStep(s => s + 1);
@@ -354,19 +361,35 @@ function ApplyFormContent() {
                     <input type="text" name="name" required value={formData.name} onChange={handleChange} placeholder="As per Aadhaar / PAN card" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-medium placeholder-slate-400 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Mobile Number *</label>
-                    <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} placeholder="10-digit mobile number" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-medium placeholder-slate-400 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all" />
+                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Email Address *</label>
+                    <input type="email" name="email" required value={formData.email} onChange={handleChange} placeholder="For instant sanction confirmation letter" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-medium placeholder-slate-400 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all" />
                   </div>
                 </div>
 
                 <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Email Address *</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
+                      Mobile Number (Instant SMS OTP Verification) *
+                    </label>
                     <div className="flex gap-3">
-                      <input type="email" name="email" required disabled={otpVerified} value={formData.email} onChange={handleChange} placeholder="For instant application confirmation letter" className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-medium placeholder-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none disabled:opacity-60 disabled:bg-slate-100 transition-all" />
+                      <input
+                        type="tel"
+                        name="phone"
+                        required
+                        disabled={otpVerified}
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="10-digit mobile number"
+                        className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold placeholder-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none disabled:opacity-60 disabled:bg-slate-100 transition-all tracking-wider"
+                      />
                       {!otpVerified && (
-                        <button type="button" onClick={handleSendOtp} disabled={sendingOtp} className="bg-emerald-900 hover:bg-slate-800 text-white text-sm font-bold px-6 rounded-xl transition-all shadow-md active:scale-95 shrink-0 disabled:opacity-50">
-                          {sendingOtp ? 'Sending...' : 'Send OTP'}
+                        <button
+                          type="button"
+                          onClick={handleSendOtp}
+                          disabled={sendingOtp || !formData.phone || formData.phone.length < 10}
+                          className="bg-emerald-900 hover:bg-slate-800 text-white text-sm font-bold px-6 rounded-xl transition-all shadow-md active:scale-95 shrink-0 disabled:opacity-50 cursor-pointer"
+                        >
+                          {sendingOtp ? 'Sending SMS...' : 'Send SMS OTP'}
                         </button>
                       )}
                     </div>
@@ -375,16 +398,31 @@ function ApplyFormContent() {
                   {otpSent && !otpVerified && (
                     <div className="flex gap-3 items-end animate-in fade-in slide-in-from-top-2 pt-2 border-t border-slate-200">
                       <div className="flex-1">
-                        <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide text-emerald-600">Enter OTP Sent to Email</label>
-                        <input type="text" value={otpInput} onChange={(e) => setOtpInput(e.target.value)} placeholder="4-digit code" className="w-full bg-white border border-emerald-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-medium placeholder-slate-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all" />
+                        <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide text-emerald-600">
+                          Enter 4-Digit SMS OTP sent to +91 {formData.phone.slice(-10)}
+                        </label>
+                        <input
+                          type="text"
+                          value={otpInput}
+                          maxLength={4}
+                          onChange={(e) => setOtpInput(e.target.value)}
+                          placeholder="4-digit code"
+                          className="w-full bg-white border border-emerald-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold placeholder-slate-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all tracking-widest text-center"
+                        />
                       </div>
-                      <button type="button" onClick={handleVerifyOtp} className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-6 rounded-xl transition-all shadow-md active:scale-95 h-[48px]">Verify</button>
+                      <button
+                        type="button"
+                        onClick={handleVerifyOtp}
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-6 rounded-xl transition-all shadow-md active:scale-95 h-[48px] cursor-pointer"
+                      >
+                        Verify OTP
+                      </button>
                     </div>
                   )}
                   
                   {otpVerified && (
                     <div className="flex items-center gap-2 text-emerald-600 text-sm font-bold bg-emerald-50 p-3 rounded-xl border border-emerald-100">
-                      <CheckCircle2 className="w-5 h-5" /> Email Verified Successfully
+                      <CheckCircle2 className="w-5 h-5" /> Mobile Number Verified (+91 {formData.phone.slice(-10)})
                     </div>
                   )}
                 </div>

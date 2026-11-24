@@ -21,6 +21,7 @@ import {
   HeartPulse,
   Sparkles,
   Mail,
+  Phone,
   KeyRound,
   ShieldCheck,
   Check,
@@ -190,9 +191,9 @@ export default function AppointmentClient() {
   };
 
   const handleSendOtp = async () => {
-    const trimmedEmail = formData.email.trim().toLowerCase();
-    if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-      setOtpError("Please enter a valid email address first.");
+    const cleanPhone = formData.phone.replace(/\D/g, "");
+    if (!cleanPhone || cleanPhone.length < 10) {
+      setOtpError("Please enter your 10-digit mobile number first.");
       return;
     }
     setIsOtpSending(true);
@@ -201,7 +202,12 @@ export default function AppointmentClient() {
       const res = await fetch("/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmedEmail })
+        body: JSON.stringify({
+          phone: cleanPhone.slice(-10),
+          email: formData.email?.trim()?.toLowerCase(),
+          name: formData.name,
+          formName: "Appointment Booking"
+        })
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -211,7 +217,7 @@ export default function AppointmentClient() {
           setMockOtpHint(data.mockOtp);
         }
       } else {
-        setOtpError(data.error || "Failed to send verification code. Please check email address.");
+        setOtpError(data.error || "Failed to send verification SMS.");
       }
     } catch {
       setOtpError("Network connection error. Could not dispatch OTP.");
@@ -220,10 +226,9 @@ export default function AppointmentClient() {
   };
 
   const handleVerifyOtp = async () => {
-    const trimmedEmail = formData.email.trim().toLowerCase();
     const trimmedOtp = otpCode.trim();
     if (trimmedOtp.length !== 6) {
-      setOtpError("Please enter the complete 6-digit OTP received in your email.");
+      setOtpError("Please enter the complete 6-digit OTP received via SMS.");
       return;
     }
     setIsOtpVerifying(true);
@@ -232,7 +237,11 @@ export default function AppointmentClient() {
       const res = await fetch("/api/otp", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmedEmail, otp: trimmedOtp })
+        body: JSON.stringify({
+          phone: formData.phone.replace(/\D/g, "").slice(-10),
+          email: formData.email?.trim()?.toLowerCase(),
+          otp: trimmedOtp
+        })
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -251,7 +260,7 @@ export default function AppointmentClient() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isEmailVerified) {
-      setOtpError("Please verify your email via OTP before confirming the appointment.");
+      setOtpError("Please verify your mobile number via SMS OTP before confirming the appointment.");
       return;
     }
     if (!consentChecked) {
@@ -678,34 +687,34 @@ export default function AppointmentClient() {
                         </div>
                       </div>
 
-                      {/* Email + OTP Verification Block */}
+                      {/* Mobile SMS OTP Verification Block */}
                       <div className="bg-slate-50 dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800/80 rounded-2xl p-4 space-y-3">
                         <div>
                           <div className="flex items-center justify-between mb-1.5">
                             <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                              Email Address (Mandatory for Confirmation) *
+                              Mobile Number (Instant SMS OTP Verification) *
                             </label>
                             {isEmailVerified && (
                               <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                                <CheckCircle2 className="w-3.5 h-3.5" /> Email Verified
+                                <CheckCircle2 className="w-3.5 h-3.5" /> Mobile Verified (+91 {formData.phone.slice(-10)})
                               </span>
                             )}
                           </div>
                           
                           <div className="flex gap-2">
                             <div className="relative flex-1">
-                              <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                              <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                               <input 
-                                type="email" 
+                                type="tel" 
                                 required
                                 disabled={isEmailVerified}
-                                value={formData.email} 
+                                value={formData.phone} 
                                 onChange={(e) => {
-                                  setFormData({...formData, email: e.target.value});
+                                  setFormData({...formData, phone: e.target.value});
                                   if (isEmailVerified) setIsEmailVerified(false);
                                 }}
-                                className="w-full bg-white dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800/80 text-slate-900 dark:text-white rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 disabled:opacity-75"
-                                placeholder="name@example.com"
+                                className="w-full bg-white dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800/80 text-slate-900 dark:text-white rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 disabled:opacity-75 font-semibold tracking-wider"
+                                placeholder="10-digit mobile number"
                               />
                             </div>
                             
@@ -713,7 +722,7 @@ export default function AppointmentClient() {
                               <button
                                 type="button"
                                 onClick={handleSendOtp}
-                                disabled={isOtpSending || otpCooldown > 0 || !formData.email.includes("@")}
+                                disabled={isOtpSending || otpCooldown > 0 || !formData.phone || formData.phone.length < 10}
                                 className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl text-xs whitespace-nowrap transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
                               >
                                 {isOtpSending ? (
@@ -721,12 +730,29 @@ export default function AppointmentClient() {
                                 ) : otpCooldown > 0 ? (
                                   `Resend (${otpCooldown}s)`
                                 ) : isOtpSent ? (
-                                  "Resend OTP"
+                                  "Resend SMS"
                                 ) : (
-                                  "Send OTP"
+                                  "Send SMS OTP"
                                 )}
                               </button>
                             )}
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">
+                            Email Address *
+                          </label>
+                          <div className="relative">
+                            <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                            <input 
+                              type="email" 
+                              required
+                              value={formData.email} 
+                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              className="w-full bg-white dark:bg-emerald-950 border border-slate-200 dark:border-emerald-800/80 text-slate-900 dark:text-white rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
+                              placeholder="name@example.com"
+                            />
                           </div>
                         </div>
 
@@ -738,7 +764,7 @@ export default function AppointmentClient() {
                             className="pt-2 border-t border-slate-200 dark:border-emerald-800/60 space-y-2"
                           >
                             <div className="text-[11px] text-emerald-700 dark:text-emerald-300 font-medium flex items-center justify-between">
-                              <span>Enter the 6-digit code sent to your email:</span>
+                              <span>Enter the 6-digit code sent via SMS to +91 {formData.phone.slice(-10)}:</span>
                               {mockOtpHint && (
                                 <span className="bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">
                                   Dev Code: {mockOtpHint}

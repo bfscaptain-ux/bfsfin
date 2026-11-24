@@ -61,7 +61,7 @@ export default function ComplaintClient({ heroImage }: { heroImage: string }) {
       const otpRes = await fetch("/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name: name || "Valued Client", formType: "Complaint" }),
+        body: JSON.stringify({ phone, email, name: name || "Valued Client", formType: "Complaint" }),
       });
       const otpData = await otpRes.json();
 
@@ -209,9 +209,9 @@ export default function ComplaintClient({ heroImage }: { heroImage: string }) {
                       <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center mb-4">
                         <Lock className="w-6 h-6" />
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">Verify Your Email to Authenticate</h3>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">Verify Your Mobile via SMS OTP</h3>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
-                        We sent a 4-digit verification code to <strong>{email}</strong>. Enter it below to register your grievance.
+                        We sent a 4-digit verification code via SMS to <strong>+91 {phone.slice(-10)}</strong>. Enter it below to register your grievance.
                       </p>
                     </div>
 
@@ -442,7 +442,7 @@ export default function ComplaintClient({ heroImage }: { heroImage: string }) {
                           : "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/30 active:scale-95 cursor-pointer"
                       }`}
                     >
-                      {isSubmitting ? "Validating Details..." : "Verify Email & File Official Complaint"}
+                      {isSubmitting ? "Validating Details..." : "Verify Mobile SMS & File Official Complaint"}
                       {!isSubmitting && <ArrowRight className="w-4 h-4" />}
                     </button>
                   </form>

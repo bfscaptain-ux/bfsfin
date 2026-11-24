@@ -304,9 +304,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
   };
 
   const handleSendOtp = async () => {
-    const trimmedEmail = callbackEmail.trim().toLowerCase();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-      setOtpError("Please enter a valid email address first.");
+    const cleanPhone = callbackPhone.replace(/\D/g, "");
+    if (!cleanPhone || cleanPhone.length < 10) {
+      setOtpError("Please enter a valid 10-digit mobile number first.");
       return;
     }
     setIsOtpSending(true);
@@ -315,7 +315,12 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       const res = await fetch("/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmedEmail })
+        body: JSON.stringify({
+          phone: cleanPhone.slice(-10),
+          email: callbackEmail?.trim()?.toLowerCase(),
+          name: callbackName,
+          formName: "Instant Callback"
+        })
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -325,7 +330,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
           setMockOtpHint(data.mockOtp);
         }
       } else {
-        setOtpError(data.error || "Failed to send verification OTP.");
+        setOtpError(data.error || "Failed to send verification SMS.");
       }
     } catch {
       setOtpError("Network connection error. Could not dispatch OTP.");
@@ -334,10 +339,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
   };
 
   const handleVerifyOtp = async () => {
-    const trimmedEmail = callbackEmail.trim().toLowerCase();
     const trimmedOtp = callbackOtp.trim();
     if (trimmedOtp.length !== 6) {
-      setOtpError("Please enter the 6-digit OTP received in your email.");
+      setOtpError("Please enter the 6-digit OTP received via SMS.");
       return;
     }
     setIsOtpVerifying(true);
@@ -346,7 +350,11 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       const res = await fetch("/api/otp", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmedEmail, otp: trimmedOtp })
+        body: JSON.stringify({
+          phone: callbackPhone.replace(/\D/g, "").slice(-10),
+          email: callbackEmail?.trim()?.toLowerCase(),
+          otp: trimmedOtp
+        })
       });
       const data = await res.json();
       if (res.ok && data.success) {

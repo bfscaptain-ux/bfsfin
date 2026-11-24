@@ -187,7 +187,12 @@ export function CalculatorLeadModal({
       const res = await fetch("/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: cleanEmail })
+        body: JSON.stringify({
+          phone: cleanPhone,
+          email: cleanEmail,
+          name: cleanName,
+          formName: `Calculator (${toolName})`
+        })
       });
       const data = await res.json();
 
@@ -222,6 +227,7 @@ export function CalculatorLeadModal({
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          phone: phone.replace(/[^0-9]/g, "").slice(-10),
           email: email.trim().toLowerCase(),
           otp: cleanOtp
         })
@@ -283,7 +289,12 @@ export function CalculatorLeadModal({
       const res = await fetch("/api/otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim().toLowerCase() })
+        body: JSON.stringify({
+          phone: phone.replace(/[^0-9]/g, "").slice(-10),
+          email: email.trim().toLowerCase(),
+          name: name.trim(),
+          formName: `Calculator (${toolName})`
+        })
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -438,11 +449,11 @@ export function CalculatorLeadModal({
                   {loading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending Email OTP...</span>
+                      <span>Sending Mobile SMS OTP...</span>
                     </>
                   ) : (
                     <>
-                      <span>Send Verification Code (OTP)</span>
+                      <span>Verify via Mobile SMS OTP</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}
@@ -451,7 +462,7 @@ export function CalculatorLeadModal({
 
               <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-400 pt-0.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>100% Confidential • Overrides DND/NDNC as per RBI & TRAI</span>
+                <span>Instant Mobile SMS Delivery • Physical SIM Gateway • 100% Secure</span>
               </div>
             </form>
           )}
@@ -461,20 +472,21 @@ export function CalculatorLeadModal({
             <form onSubmit={handleVerifyOtp} className="space-y-4">
               <div className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl p-3 text-xs">
                 <p className="text-emerald-800 dark:text-emerald-300 font-medium">
-                  Verification code has been sent to: <strong>{email}</strong>
+                  SMS verification code has been sent to: <strong>+91 {phone}</strong>
+                  {email && <span className="block text-[11px] text-slate-500 mt-0.5">Also sent to email: {email}</span>}
                 </p>
                 <button
                   type="button"
                   onClick={() => { setStep("DETAILS"); setError(""); }}
                   className="text-emerald-600 dark:text-emerald-400 font-bold underline mt-1 text-[11px] block"
                 >
-                  Change Email Address
+                  Change Mobile / Details
                 </button>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5 text-center">
-                  Enter 6-Digit Email OTP
+                  Enter 6-Digit Mobile SMS OTP
                 </label>
                 <div className="relative max-w-xs mx-auto">
                   <KeyRound className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -499,7 +511,7 @@ export function CalculatorLeadModal({
               )}
 
               <div className="flex items-center justify-between text-xs text-slate-500">
-                <span>Didn't receive email?</span>
+                <span>Didn't receive SMS?</span>
                 <button
                   type="button"
                   onClick={handleResendOtp}

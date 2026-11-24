@@ -202,8 +202,9 @@ export default function ContactClient() {
   };
 
   const handleSendOTP = async () => {
-    if (!formData.email || !formData.email.includes('@')) {
-      setOtpError("Please enter a valid email address");
+    const cleanPhone = (formData.phone || '').replace(/\D/g, '');
+    if (!cleanPhone || cleanPhone.length < 10) {
+      setOtpError("Please enter your 10-digit mobile number first");
       return;
     }
     setOtpLoading(true);
@@ -212,16 +213,20 @@ export default function ContactClient() {
       const res = await fetch('/api/otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: formData.email })
+        body: JSON.stringify({
+          phone: cleanPhone.slice(-10),
+          email: formData.email,
+          name: formData.name,
+          formName: 'Contact Inquiry'
+        })
       });
       const data = await res.json();
       if (data.success) {
         setOtpSent(true);
         if (data.mockOtp) {
-          console.log("MOCK OTP RECEIVED:", data.mockOtp);
           alert(`[DEV MODE] Your mock OTP is: ${data.mockOtp}`);
         } else {
-          alert("A verification code has been sent to your email!");
+          alert(`A verification code has been sent via SMS to +91 ${cleanPhone.slice(-10)}!`);
         }
       } else {
         setOtpError(data.error || "Failed to send OTP");
@@ -241,7 +246,11 @@ export default function ContactClient() {
       const res = await fetch('/api/otp', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: formData.email, otp: otpCode })
+        body: JSON.stringify({
+          phone: (formData.phone || '').replace(/\D/g, '').slice(-10),
+          email: formData.email,
+          otp: otpCode
+        })
       });
       const data = await res.json();
       if (data.success) {
@@ -418,7 +427,7 @@ export default function ContactClient() {
                   {otpVerified && <div className="absolute inset-0 bg-emerald-500/5 pointer-events-none" />}
                   
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
-                    <span>Email Address *</span>
+                    <span>Mobile & Email Verification *</span>
                     {otpVerified && <span className="text-emerald-500 flex items-center gap-1 text-[10px]"><Check className="w-3 h-3"/> Verified</span>}
                   </label>
                   
@@ -437,7 +446,7 @@ export default function ContactClient() {
                         disabled={otpLoading}
                         className="px-4 py-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-lg hover:bg-emerald-200 dark:hover:bg-emerald-800/50 transition whitespace-nowrap"
                       >
-                        {otpLoading && !otpSent ? <Loader2 className="w-4 h-4 animate-spin" /> : (otpSent ? 'Resend OTP' : 'Send OTP')}
+                        {otpLoading && !otpSent ? <Loader2 className="w-4 h-4 animate-spin" /> : (otpSent ? 'Resend SMS' : 'Send SMS OTP')}
                       </button>
                     )}
                   </div>
@@ -457,7 +466,7 @@ export default function ContactClient() {
                           <input 
                             type="text" 
                             value={otpCode} onChange={(e) => setOtpCode(e.target.value)}
-                            placeholder="Enter 6-digit OTP"
+                            placeholder="Enter 6-digit SMS OTP"
                             maxLength={6}
                             className="w-full bg-white dark:bg-emerald-950/50 border border-slate-200 dark:border-emerald-800 text-slate-900 dark:text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 text-sm font-bold tracking-widest text-center"
                           />
