@@ -605,7 +605,7 @@ export default function AppointmentClient() {
                       3. Verification & Appointment Confirmation
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-                      Enter your details and verify your email OTP. An instant confirmation receipt will be delivered to your inbox.
+                      Enter your details and verify your Mobile SMS OTP. An instant confirmation receipt will be delivered to your phone and email.
                     </p>
                   </div>
                   
@@ -666,23 +666,6 @@ export default function AppointmentClient() {
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
                             className="w-full bg-slate-50 dark:bg-emerald-950/70 border border-slate-200 dark:border-emerald-800/80 text-slate-900 dark:text-white rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
                             placeholder="e.g. Ramesh Chandra"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Phone */}
-                      <div>
-                        <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 block">
-                          Phone Number (For WhatsApp & Call Reminder) *
-                        </label>
-                        <div className="relative">
-                          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">+91</span>
-                          <input 
-                            type="tel" required
-                            value={formData.phone} 
-                            onChange={(e) => setFormData({...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10)})}
-                            className="w-full bg-slate-50 dark:bg-emerald-950/70 border border-slate-200 dark:border-emerald-800/80 text-slate-900 dark:text-white rounded-xl pl-12 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
-                            placeholder="9876543210"
                           />
                         </div>
                       </div>
