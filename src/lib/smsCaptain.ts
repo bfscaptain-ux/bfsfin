@@ -87,9 +87,9 @@ export async function sendSmsViaCaptain(
 export async function sendOtpSms(
   mobile: string,
   otp: string,
-  formName: string = 'Inquiry / Application'
+  formName?: string
 ): Promise<{ success: boolean; messageId?: string; error?: string }> {
   const formattedMobile = formatIndianMobile(mobile);
-  const smsBody = `Your Bhardwaj Financial Services (BFS) verification code is ${otp}. Valid for 10 minutes for your ${formName}. Please do not share this OTP with anyone.`;
+  const smsBody = `BFS Verification Code: ${otp}. Bhardwaj Financial Services.`;
   return await sendSmsViaCaptain(formattedMobile, smsBody);
 }
