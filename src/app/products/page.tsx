@@ -328,6 +328,13 @@ export default function ProductsLanding() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Statutory Regulatory Disclaimer */}
+        <div className="mt-12 bg-slate-50 dark:bg-emerald-950/40 border border-slate-200 dark:border-emerald-800/60 p-4 sm:p-5 rounded-2xl text-xs text-slate-500 dark:text-slate-400 leading-relaxed text-center sm:text-left">
+          <p>
+            <strong className="text-slate-700 dark:text-slate-200 font-bold">*Statutory Notice:</strong> Bhardwaj Financial Services is an authorized loan facilitator and multi-lender distribution partner, not a direct banking institution or NBFC. Listed interest rates are promotional starting indicators. Final sanction amounts, loan tenures, interest rates, and loan disbursals are determined exclusively by partner Banks and NBFCs in accordance with their internal credit underwriting norms and applicant CIBIL appraisal.
+          </p>
+        </div>
       </main>
 
       <Footer />

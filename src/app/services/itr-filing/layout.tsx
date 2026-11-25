@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Online ITR Filing in 24 Hours | CA-Assisted Income Tax Return in Agra & India — BFS",
-  description: "File your Income Tax Return (ITR-1, 2, 3, 4, U) online with certified CAs. Maximum refund guarantee, zero notice protection & bank loan-approved computation. Apply with ₹0 advance.",
+  description: "File your Income Tax Return (ITR-1, 2, 3, 4, U) online with certified CAs. Maximum eligible tax refund, expert notice support & bank loan-approved computation. Apply with ₹0 advance.",
   keywords: [
     "ITR Filing Online",
     "Income Tax Return Agra",

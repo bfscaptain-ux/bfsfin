@@ -421,9 +421,14 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
       {/* 4. STATUTORY DISCLAIMER STRIP (Clean & Positive with Link to Full Legal Page) */}
       <div className="bg-[#010a07] border-t border-emerald-950 py-5 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] leading-relaxed text-emerald-100/60">
-          <p className="text-center md:text-left max-w-4xl">
-            <strong className="text-emerald-300 font-bold">Lender Disclaimer &amp; Regulatory Notice:</strong> Bhardwaj Financial Services is an authorized loan facilitator / DSA partner and not a direct bank or NBFC lender. Loan approval, interest rates (including promotional starting rates from 7.15%* p.a.), sanction TAT (including 5-day express processing*), loan amount, and disbursals are strictly governed by partner Banks/NBFCs based on applicant credit appraisal, income verification, property legal clearance, and underwriting policies. Bank approval cannot be guaranteed. BFS operates strictly under a zero upfront fee policy.
-          </p>
+          <div className="text-center md:text-left max-w-4xl space-y-1.5">
+            <p>
+              <strong className="text-emerald-300 font-bold">Lender Disclaimer &amp; Regulatory Notice:</strong> Bhardwaj Financial Services is an authorized loan facilitator / DSA partner and not a direct bank or NBFC lender. Loan approval, interest rates (including promotional starting rates from 7.15%* p.a.), sanction TAT (including 5-day express processing*), loan amount, and disbursals are strictly governed by partner Banks/NBFCs based on applicant credit appraisal, income verification, property legal clearance, and underwriting policies. Bank approval cannot be guaranteed. BFS operates strictly under a zero upfront fee policy.
+            </p>
+            <p className="text-[10px] text-emerald-100/50">
+              <strong className="text-emerald-400 font-bold">Insurance &amp; Data Notice:</strong> Insurance is a subject matter of solicitation. Insurance products are underwritten by respective IRDAI-registered insurance companies. BFS acts as a facilitator providing claim assistance. Personal data collected on this portal is processed strictly with explicit consent in compliance with the Digital Personal Data Protection (DPDP) Act, 2023.
+            </p>
+          </div>
           <Link 
             href="/disclaimer" 
             className="shrink-0 text-emerald-400 hover:text-white font-bold underline transition-colors"

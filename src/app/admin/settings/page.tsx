@@ -56,7 +56,7 @@ export default function AdminSettingsCMS() {
     officialEmail: "info@bfsfin.com",
     officeAddress: "Block-C11, Shop No.-5, First Floor, near MK Tailor, Sanjay Place, Agra, Uttar Pradesh 282002",
     tickerText: "⚡ Express Home Loan Processing in Agra (3-5 Days TAT*)",
-    rbiComplianceBadge: "RBI Compliant & Certified Mortgage Broker",
+    rbiComplianceBadge: "Authorized Loan Intermediary • Partner to RBI-Regulated Banks",
     maxLoanCap: "₹1 Crore+",
     minInterestRate: "6.50%",
     smtpEmail: "",

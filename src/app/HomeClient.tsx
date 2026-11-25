@@ -402,7 +402,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
   // Fallbacks just in case
   const hConfig = heroConfig || {
     imageUrl: "/hero_image.jpg",
-    badgeText: "RBI Registered & Verified Partners",
+    badgeText: "Authorized Loan Facilitator • 50+ Top Banks & NBFCs",
     titlePart1: "Building Wealth, Securing Lives,",
     titlePart2: "Loans & Complete Insurance.",
     bullet1: `Lowest Institutional Rates Starting from ${homeLoanRate || "7.15"}%* p.a.`, 
@@ -468,12 +468,6 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="lg:col-span-7 max-w-lg lg:max-w-[490px] xl:max-w-xl 2xl:max-w-2xl space-y-3 sm:space-y-4"
             >
-              {/* Trust Badge Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/25 text-emerald-800 dark:text-emerald-300 text-xs sm:text-[13px] font-bold w-max shadow-xs">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <span>{hConfig.badgeText || "Direct Banking Partner • 50+ Top Banks & NBFCs"}</span>
-              </div>
-
               {/* Premium Main Heading with High-Contrast Animated Glow */}
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.35rem] xl:text-[3rem] 2xl:text-[3.35rem] font-black text-slate-900 dark:text-white leading-[1.2] tracking-tight mb-2 sm:mb-3">
                 <span className="block">{hConfig.titlePart1}</span>
@@ -568,6 +562,11 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   </div>
                 </a>
               </div>
+
+              {/* Statutory Micro Disclosure (ASCI & RBI Intermediary Compliance) */}
+              <p className="text-[10px] text-slate-400 dark:text-slate-500 leading-tight pt-1">
+                *Subject to partner bank/NBFC credit appraisal, title vetting, and underwriting criteria. BFS is an authorized loan facilitator, not a direct lender.
+              </p>
             </motion.div>
 
             {/* Right Content - Interactive Multi-Product Widget */}
@@ -719,7 +718,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                        <span><strong>100% Free Claim Settlement</strong> — Dedicated concierge</span>
+                        <span><strong>100% Free Claim Assistance</strong> — Dedicated concierge</span>
                       </div>
                       <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
@@ -884,7 +883,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-teal-500 shrink-0" />
-                    <span><strong>Free Claim Settlement:</strong> Dedicated on-ground support</span>
+                    <span><strong>Free Claim Assistance:</strong> Dedicated on-ground support</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-teal-500 shrink-0" />
@@ -1018,7 +1017,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
 
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight text-slate-900 dark:text-white">
                 100% Cashless Health Bima with <br />
-                <span className="text-teal-600 dark:text-teal-400">Free Claim Settlement Concierge.</span>
+                <span className="text-teal-600 dark:text-teal-400">Free Claim Assistance Concierge.</span>
               </h2>
               <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                 During medical emergencies, dealing with Third-Party Administrators (TPAs), hospital bill itemizations, and document approvals is the last thing you need. BFS provides hands-on claim assistance completely free of charge.

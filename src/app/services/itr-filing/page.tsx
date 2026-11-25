@@ -1951,7 +1951,7 @@ export default function ItrFilingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                    <span>Maximum Refund Guaranteed</span>
+                    <span>Maximum Eligible Tax Refund*</span>
                   </li>
                 </ul>
               </div>

@@ -23,7 +23,7 @@ export default function HeroContentCMS() {
     savings: number;
   } | null>(null);
   const [heroText, setHeroText] = useState({
-    heroBadgeText: "RBI Registered & Verified Partners",
+    heroBadgeText: "Authorized Loan Facilitator • 50+ Top Banks & NBFCs",
     heroTitlePart1: "Your Dream Home,",
     heroTitlePart2: "Funded in 5 Days.",
     heroBullet1: "Lowest Institutional Rates Starting from 7.15%* p.a.",
