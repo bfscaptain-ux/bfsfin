@@ -577,7 +577,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-4 sm:mt-6 lg:mt-0"
             >
               {/* Interactive Multi-Product Widget */}
-              <div className="w-full max-w-md bg-white/95 dark:bg-emerald-900/95 backdrop-blur-2xl p-4 sm:p-6 rounded-3xl shadow-2xl border border-white/60 dark:border-slate-700/50 relative z-20 hover:shadow-emerald-500/10 transition-shadow duration-500 mx-auto">
+              <div className="w-full max-w-md bg-white dark:bg-slate-900/98 backdrop-blur-2xl p-4 sm:p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-200/80 dark:border-emerald-800/60 relative z-20 hover:shadow-emerald-500/10 transition-shadow duration-500 mx-auto">
                 {/* Trust Badge on Top Right of Widget */}
                 <div className="absolute -top-3 -right-2 sm:-top-3 sm:-right-3 bg-gradient-to-br from-amber-400 to-amber-600 px-2.5 py-1.5 rounded-xl shadow-xl border border-amber-300/50 flex items-center gap-1.5 z-30 transform rotate-2 hover:rotate-0 transition-all duration-300 scale-90 sm:scale-100">
                   <HeartHandshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white animate-pulse" />

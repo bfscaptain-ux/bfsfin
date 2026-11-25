@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { 
   ShieldCheck, PhoneCall, ChevronDown, ChevronRight, Menu, X, ArrowRight, 
   Home, TrendingUp, Calculator, Building, Building2, Landmark, BadgePercent,
-  FileText, Users, Mail, Activity, Sparkles, CalendarCheck, HeartPulse, Newspaper
+  FileText, Users, Mail, Activity, Sparkles, CalendarCheck, HeartPulse, Newspaper, MessageCircle
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -145,11 +145,11 @@ export default function Header() {
         <div className="w-full max-w-[1920px] mx-auto px-3 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex items-center justify-between h-20 gap-2">
             {/* Logo & Brand Name */}
-            <Link href="/" className="flex items-center gap-2 group min-w-0 pr-1 sm:pr-8">
+            <Link href="/" className="flex items-center gap-2 group shrink-0 pr-2 sm:pr-4 xl:pr-6">
               <img src="/logo.png" alt="BFS Logo" className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" />
-              <div className="flex flex-col justify-center min-w-0">
-                <span className="text-base sm:text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight truncate">Bhardwaj Financial</span>
-                <span className="text-[9px] sm:text-[10px] font-bold text-emerald-800 dark:text-emerald-400 tracking-widest uppercase mt-0.5 sm:mt-1 truncate">Services</span>
+              <div className="flex flex-col justify-center">
+                <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight whitespace-nowrap">Bhardwaj Financial</span>
+                <span className="text-[9px] sm:text-[10px] font-bold text-emerald-800 dark:text-emerald-400 tracking-widest uppercase mt-0.5 sm:mt-1 whitespace-nowrap">Services</span>
               </div>
             </Link>
 
@@ -671,13 +671,16 @@ export default function Header() {
             {/* Scrollable Content */}
             <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-1 pb-24">
               
-              {/* Mobile Contact & Login (Moved from Top Banner) */}
+              {/* Mobile Contact Quick Actions */}
               <div className="flex gap-2 mb-4">
-                <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." className="flex-1 flex flex-col items-center justify-center gap-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 py-3 rounded-xl border border-emerald-200 dark:border-emerald-800/30 hover:bg-emerald-100 transition-colors">
-                  <PhoneCall className="w-5 h-5" />
+                <a href="tel:+919258724227" className="flex-1 flex items-center justify-center gap-2 bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-xl hover:bg-slate-800 transition-colors shadow-sm">
+                  <PhoneCall className="w-4 h-4 text-emerald-400" />
                   <span className="text-xs font-bold">Call Us</span>
                 </a>
-
+                <a href="https://wa.me/919286683232?text=Hi%20BFS,%20I%20am%20looking%20for%20loan%20assistance." target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl transition-colors shadow-sm">
+                  <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
+                  <span className="text-xs font-bold">WhatsApp</span>
+                </a>
               </div>
               
               {/* Mobile Financial News Link */}

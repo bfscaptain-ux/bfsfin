@@ -86,7 +86,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
               
               {/* Call Card */}
               <a 
-                href={`tel:${phones.rawCall || '9286683232'}`}
+                href={`tel:${phones.rawCall || '9258724227'}`}
                 className="group p-4 sm:p-5 rounded-2xl bg-[#04261c] border border-emerald-800/60 hover:border-emerald-400 hover:bg-[#063326] transition-all duration-300 flex items-center justify-between shadow-lg hover:shadow-emerald-900/30"
               >
                 <div className="flex items-center gap-3.5">
@@ -98,7 +98,7 @@ export default function Footer({ contactPhone: propContactPhone, whatsappPhone: 
                       Call Loan Specialist
                     </span>
                     <span className="text-lg sm:text-xl font-black text-white group-hover:text-emerald-300 transition-colors block">
-                      +91 9286-683-232
+                      {phones.callPhone}
                     </span>
                   </div>
                 </div>

@@ -8,8 +8,8 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show when scrolled down more than 200px
-      if (window.scrollY > 200) {
+      // Show only when scrolled deeply past the hero section (600px+)
+      if (window.scrollY > 600) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
