@@ -78,21 +78,21 @@ export default function Header() {
         isNavVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
       } ${
         isNavScrolled 
-          ? 'bg-white/95 dark:bg-emerald-950/95 backdrop-blur-2xl shadow-xl shadow-slate-900/5 border-b border-slate-200/90 dark:border-emerald-800/80' 
-          : 'bg-white/95 dark:bg-emerald-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-emerald-800/80 shadow-sm'
+          ? 'bg-white/98 dark:bg-[#062b20]/98 backdrop-blur-2xl shadow-xl shadow-slate-900/5 border-b border-slate-200/90 dark:border-emerald-800/80' 
+          : 'bg-white/98 dark:bg-[#062b20]/98 backdrop-blur-xl border-b border-slate-200/80 dark:border-emerald-800/80 shadow-sm'
       }`}>
         
         {/* MOBILE TOP BANNER */}
-        <div className="md:hidden bg-gradient-to-r from-emerald-900 to-teal-900 text-white text-[10px] font-bold py-1.5 px-4 flex justify-center items-center gap-1.5 shadow-[inset_0_-1px_0_rgba(255,255,255,0.1)]">
-          <div className="relative flex h-2 w-2 mr-0.5">
+        <div className="xl:hidden bg-gradient-to-r from-emerald-900 to-teal-900 text-white text-[10px] font-bold py-1.5 px-3 sm:px-4 flex justify-center items-center gap-1.5 shadow-[inset_0_-1px_0_rgba(255,255,255,0.1)] truncate">
+          <div className="relative flex h-2 w-2 mr-0.5 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </div>
-          Authorized Loan Facilitator • Udyam Registered • Serving Agra & UP
+          <span className="truncate">Authorized Loan Facilitator • Udyam Registered • Serving Agra & UP</span>
         </div>
 
         {/* PREMIUM TOP BANNER - Dark Corporate Look */}
-        <div className="hidden md:flex bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 px-4 py-2.5 text-[11px] font-medium tracking-wide text-emerald-100/70 justify-between items-center border-b border-emerald-800/50">
+        <div className="hidden xl:flex bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 px-4 py-2.5 text-[11px] font-medium tracking-wide text-emerald-100/70 justify-between items-center border-b border-emerald-800/50">
           <div className="w-full max-w-[1920px] mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="flex items-center gap-3 lg:gap-4">
               <span className="flex items-center gap-1.5 text-emerald-300 drop-shadow-sm font-bold">
@@ -142,19 +142,19 @@ export default function Header() {
         </div>
 
         {/* MAIN NAVIGATION BAR */}
-        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
-          <div className="flex items-center justify-between h-20">
+        <div className="w-full max-w-[1920px] mx-auto px-3 sm:px-8 lg:px-12 xl:px-16">
+          <div className="flex items-center justify-between h-20 gap-2">
             {/* Logo & Brand Name */}
-            <Link href="/" className="flex items-center gap-2 group shrink-0 pr-8">
-              <img src="/logo.png" alt="BFS Logo" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
-              <div className="flex flex-col justify-center">
-                <span className="text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight">Bhardwaj Financial</span>
-                <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-400 tracking-widest uppercase mt-1">Services</span>
+            <Link href="/" className="flex items-center gap-2 group min-w-0 pr-1 sm:pr-8">
+              <img src="/logo.png" alt="BFS Logo" className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" />
+              <div className="flex flex-col justify-center min-w-0">
+                <span className="text-base sm:text-xl font-black text-slate-900 dark:text-white leading-none tracking-tight truncate">Bhardwaj Financial</span>
+                <span className="text-[9px] sm:text-[10px] font-bold text-emerald-800 dark:text-emerald-400 tracking-widest uppercase mt-0.5 sm:mt-1 truncate">Services</span>
               </div>
             </Link>
 
             {/* Desktop Nav Links */}
-            <nav className="hidden xl:flex items-center gap-1 lg:gap-2 text-[14px] font-bold text-slate-700 dark:text-slate-200">
+            <nav className="hidden xl:flex items-center gap-1 lg:gap-2 text-[14px] font-bold text-slate-700 dark:text-slate-200 whitespace-nowrap">
               <Link 
                 href="/" 
                 className={`px-3.5 py-2 rounded-xl transition-all duration-200 ${
@@ -524,13 +524,13 @@ export default function Header() {
 
               {/* About Us */}
               <div className="relative group py-6">
-                <button className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
+                <button className={`flex items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 whitespace-nowrap ${
                   pathname.startsWith('/about') 
                     ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black shadow-sm" 
                     : "hover:bg-slate-100/70 dark:hover:bg-emerald-900/40 hover:text-emerald-600 dark:hover:text-emerald-400"
                 }`}>
-                  <span>About Us</span>
-                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300 opacity-70" />
+                  <span className="whitespace-nowrap">About Us</span>
+                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300 opacity-70 shrink-0" />
                 </button>
                 <div className="absolute left-0 top-[70px] hidden group-hover:block w-56 bg-white dark:bg-emerald-900 border border-slate-100 dark:border-emerald-800 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-none p-3 z-50 text-left">
                   <Link href="/about" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300 transition font-bold">
@@ -589,8 +589,8 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile Top Header (only shows Theme Toggle now, menu moved to bottom nav) */}
-            <div className="flex items-center gap-2 xl:hidden">
+            {/* Mobile Top Header (Language switcher & Theme Toggle) */}
+            <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden shrink-0">
               <LanguageSwitcher />
               <ThemeToggle />
             </div>

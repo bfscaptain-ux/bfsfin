@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Download, X, Sparkles, CheckCircle2 } from "lucide-react";
+import { Download, X, Sparkles, CheckCircle2, Info } from "lucide-react";
 
 export default function MobileInstallPrompt() {
+  const pathname = usePathname();
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showPrompt, setShowPrompt] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
@@ -66,10 +69,8 @@ export default function MobileInstallPrompt() {
         setShowPrompt(false);
       }
       setDeferredPrompt(null);
-    } else if (isIOS) {
-      alert("iPhone / iPad पर Install करने के लिए:\n\n1. नीचे Safari ब्राउज़र के 'Share' (⬆️) बटन पर टैप करें।\n2. मेनू में 'Add to Home Screen' चुनें।");
     } else {
-      alert("Android पर Install करने के लिए:\n\nऊपर Chrome ब्राउज़र के मेनू (⋮ 3 डॉट्स) पर टैप करें और 'Install App' या 'Add to Home Screen' चुनें।");
+      setShowHelp(true);
     }
   };
 
@@ -80,10 +81,11 @@ export default function MobileInstallPrompt() {
     } catch {}
   };
 
-  if (!showPrompt || isStandalone) return null;
+  // Do not show on application / appointment pages to avoid covering forms
+  if (!showPrompt || isStandalone || pathname === "/apply" || pathname === "/appointment") return null;
 
   return (
-    <div className="fixed bottom-20 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 z-[99990] print:hidden animate-in fade-in slide-in-from-bottom-4 duration-300 pointer-events-auto">
+    <div className="fixed bottom-20 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 z-40 print:hidden animate-in fade-in slide-in-from-bottom-4 duration-300 pointer-events-auto">
       {/* Luxury Glassmorphic Card (White / Emerald Accent) */}
       <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-xl border border-emerald-500/25 shadow-[0_16px_45px_rgba(16,185,129,0.18)] p-3.5 sm:p-4 text-slate-900 transition-all hover:shadow-[0_20px_50px_rgba(16,185,129,0.25)]">
         
@@ -148,6 +150,16 @@ export default function MobileInstallPrompt() {
             Later
           </button>
         </div>
+
+        {showHelp && (
+          <div className="mt-2.5 p-2 bg-emerald-50 border border-emerald-200 rounded-xl text-[11px] text-emerald-900 leading-relaxed animate-in fade-in">
+            {isIOS ? (
+              <span>नीचे Safari में <strong>Share (⬆️)</strong> दबाकर <strong>'Add to Home Screen'</strong> चुनें।</span>
+            ) : (
+              <span>ऊपर Chrome में (⋮ 3 डॉट्स) दबाकर <strong>'Install App'</strong> चुनें।</span>
+            )}
+          </div>
+        )}
 
       </div>
     </div>

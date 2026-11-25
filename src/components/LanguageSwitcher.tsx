@@ -85,14 +85,14 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative z-50" ref={dropdownRef}>
+    <div className="relative z-50 shrink-0" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 transition-all text-xs font-bold shadow-sm"
+        className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 transition-all text-[11px] sm:text-xs font-bold shadow-sm whitespace-nowrap"
       >
-        <Globe className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-        <span>{currentLang.name}</span>
-        <ChevronDown className={`w-3 h-3 opacity-70 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+        <Globe className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+        <span className="max-w-[48px] sm:max-w-none truncate">{currentLang.name}</span>
+        <ChevronDown className={`w-3 h-3 opacity-70 transition-transform shrink-0 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       {isOpen && (

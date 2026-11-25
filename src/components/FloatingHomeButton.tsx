@@ -30,7 +30,7 @@ export default function FloatingHomeButton() {
           exit={{ scale: 0, opacity: 0 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-6 right-6 z-[9999]"
+          className="hidden xl:block fixed bottom-6 left-6 z-40"
         >
           <Link
             href="/"

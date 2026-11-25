@@ -427,20 +427,20 @@ export default function ContactClient() {
                     {otpVerified && <span className="text-emerald-500 flex items-center gap-1 text-[10px]"><Check className="w-3 h-3"/> Verified</span>}
                   </label>
                   
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2.5">
                     <input 
                       type="email" name="email" required
                       value={formData.email} onChange={handleChange}
                       disabled={otpVerified}
-                      className={`w-full bg-white dark:bg-emerald-950/50 border ${otpVerified ? 'border-emerald-500/50 text-emerald-700 dark:text-emerald-400' : 'border-slate-200 dark:border-emerald-800 text-slate-900 dark:text-white'} rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all text-sm font-medium`}
-                      placeholder="john@example.com"
+                      className={`w-full flex-1 bg-white dark:bg-emerald-950/50 border ${otpVerified ? 'border-emerald-500/50 text-emerald-700 dark:text-emerald-400' : 'border-slate-200 dark:border-emerald-800 text-slate-900 dark:text-white'} rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all text-sm font-medium`}
+                      placeholder="e.g. john@example.com"
                     />
                     {!otpVerified && (
                       <button 
                         type="button" 
                         onClick={handleSendOTP}
                         disabled={otpLoading}
-                        className="px-4 py-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-lg hover:bg-emerald-200 dark:hover:bg-emerald-800/50 transition whitespace-nowrap"
+                        className="w-full sm:w-auto px-5 py-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-lg hover:bg-emerald-200 dark:hover:bg-emerald-800/50 transition whitespace-nowrap flex items-center justify-center shrink-0 cursor-pointer"
                       >
                         {otpLoading && !otpSent ? <Loader2 className="w-4 h-4 animate-spin" /> : (otpSent ? 'Resend SMS' : 'Send SMS OTP')}
                       </button>

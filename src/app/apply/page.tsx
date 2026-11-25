@@ -307,7 +307,7 @@ function ApplyFormContent() {
   const currentCatalog = PRODUCT_CATALOG[productCategory];
 
   return (
-    <main className="flex-1 py-8 sm:py-12 max-w-3xl mx-auto px-4 sm:px-6 w-full">
+    <main className="flex-1 pt-6 sm:pt-12 pb-28 sm:pb-12 max-w-3xl mx-auto px-4 sm:px-6 w-full">
       {/* Top Back Navigation Bar */}
       <div className="mb-4 flex items-center justify-between">
         <button

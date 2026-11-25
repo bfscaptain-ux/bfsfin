@@ -308,7 +308,7 @@ export default function AppointmentClient() {
     <div className="min-h-screen bg-slate-50 dark:bg-emerald-950 font-sans selection:bg-emerald-500/30">
       <Header />
       
-      <main className="py-12 sm:py-16 lg:py-24 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+      <main className="py-8 sm:py-16 lg:py-24 pb-28 sm:pb-24 relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
         {/* Ambient Glows */}
         <div className="absolute inset-0 z-0 bg-slate-50 dark:bg-emerald-950 pointer-events-none">
           <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-emerald-500/10 dark:bg-emerald-500/15 blur-[130px] rounded-full transform -translate-y-1/2 translate-x-1/3" />
@@ -464,14 +464,14 @@ export default function AppointmentClient() {
                               <OptIcon className="w-4 h-4" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between gap-1 mb-1">
-                                <span className={`font-bold text-sm truncate ${
+                              <div className="flex flex-wrap items-center justify-between gap-1 mb-1">
+                                <span className={`font-bold text-sm leading-snug ${
                                   isSubSelected ? 'text-emerald-900 dark:text-white' : 'text-slate-800 dark:text-slate-200'
                                 }`}>
                                   {opt.title}
                                 </span>
                                 {opt.badge && (
-                                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/50 dark:border-emerald-700/50 whitespace-nowrap">
+                                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/50 dark:border-emerald-700/50 shrink-0 whitespace-nowrap">
                                     {opt.badge}
                                   </span>
                                 )}
@@ -495,7 +495,7 @@ export default function AppointmentClient() {
                       type="button"
                       onClick={() => setStep(2)}
                       disabled={!subType}
-                      className="ml-auto px-7 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl shadow-md hover:shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer text-sm"
+                      className="ml-auto px-5 sm:px-7 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl shadow-md hover:shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer text-xs sm:text-sm whitespace-nowrap"
                     >
                       Next: Choose Slot <ChevronRight className="w-4 h-4" />
                     </button>
@@ -684,7 +684,7 @@ export default function AppointmentClient() {
                             )}
                           </div>
                           
-                          <div className="flex gap-2">
+                          <div className="flex flex-col sm:flex-row gap-2.5">
                             <div className="relative flex-1">
                               <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                               <input 
@@ -706,7 +706,7 @@ export default function AppointmentClient() {
                                 type="button"
                                 onClick={handleSendOtp}
                                 disabled={isOtpSending || otpCooldown > 0 || !formData.phone || formData.phone.length < 10}
-                                className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl text-xs whitespace-nowrap transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+                                className="w-full sm:w-auto px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl text-xs whitespace-nowrap transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
                               >
                                 {isOtpSending ? (
                                   <RotateCw className="w-3.5 h-3.5 animate-spin" />
@@ -820,7 +820,7 @@ export default function AppointmentClient() {
                         <button 
                           type="submit" 
                           disabled={isSubmitting || !formData.name || formData.phone.length < 10 || !isEmailVerified || !consentChecked}
-                          className="px-7 py-3.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl shadow-lg hover:shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer text-sm"
+                          className="px-5 sm:px-7 py-3 sm:py-3.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 dark:disabled:bg-slate-800 text-white font-bold rounded-xl shadow-lg hover:shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer text-xs sm:text-sm whitespace-nowrap"
                         >
                           {isSubmitting ? (
                             <span className="flex items-center gap-2">

@@ -22,7 +22,7 @@ export default function FloatingSupport({
       {/* Sleek, Minimal, Professional Bottom-Right Floating Support */}
       <aside 
         aria-label="Quick Support Contacts" 
-        className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col gap-3 items-end pointer-events-auto select-none print:hidden"
+        className="fixed bottom-20 right-4 xl:bottom-6 xl:right-6 z-40 flex flex-col gap-3 items-end pointer-events-auto select-none print:hidden"
       >
         {/* WhatsApp Quick Connect & Chatbot Trigger */}
         <button 
