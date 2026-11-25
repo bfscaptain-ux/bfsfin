@@ -28,10 +28,10 @@ export default function FloatingSupport({
         <button 
           type="button"
           onClick={() => setChatOpen(!chatOpen)}
-          className="group relative flex items-center gap-2.5 pl-3.5 pr-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-lg shadow-emerald-700/25 hover:shadow-xl hover:shadow-emerald-600/40 border border-emerald-400/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+          className="group relative flex items-center gap-2.5 p-2 xl:pl-3.5 xl:pr-3 xl:py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-lg shadow-emerald-700/25 hover:shadow-xl hover:shadow-emerald-600/40 border border-emerald-400/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
           title="Direct WhatsApp Chatbot Support (+91 9286-683-232)"
         >
-          <span className="hidden sm:inline-block text-xs font-bold tracking-wide">
+          <span className="hidden xl:inline-block text-xs font-bold tracking-wide">
             {chatOpen ? "Close Bot" : "WhatsApp Bot"}
           </span>
           <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
@@ -52,10 +52,10 @@ export default function FloatingSupport({
         {/* Instant Phone Call */}
         <a 
           href={`tel:${cleanPhone}`}
-          className="group relative flex items-center gap-2.5 pl-3.5 pr-3 py-2 bg-slate-900/90 hover:bg-slate-900 text-white rounded-full shadow-lg shadow-slate-900/30 hover:shadow-xl border border-slate-700/60 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2.5 p-2 xl:pl-3.5 xl:pr-3 xl:py-2 bg-slate-900/90 hover:bg-slate-900 text-white rounded-full shadow-lg shadow-slate-900/30 hover:shadow-xl border border-slate-700/60 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95"
           title="Call Relationship Desk (+91 9258-724-227)"
         >
-          <span className="hidden sm:inline-block text-xs font-bold text-slate-200 tracking-wide">
+          <span className="hidden xl:inline-block text-xs font-bold text-slate-200 tracking-wide">
             Call Advisor
           </span>
           <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">

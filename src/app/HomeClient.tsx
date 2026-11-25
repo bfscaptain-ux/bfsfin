@@ -440,7 +440,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       </div>
 
       {/* 1. EMOTIONAL & TRUST-FOCUSED HERO SECTION (MOBILE OPTIMIZED & ANIMATED) */}
-      <section className="relative pt-4 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-24 xl:pt-14 xl:pb-20 overflow-hidden flex items-center bg-slate-50 dark:bg-emerald-950">
+      <section className="relative pt-4 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-28 xl:pt-14 xl:pb-20 overflow-hidden flex items-center bg-slate-50 dark:bg-emerald-950">
         
         {/* Absolute Background Image (Framed so the couple is visible between text and calculator) */}
         <div className="absolute inset-0 z-0">
@@ -466,7 +466,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:col-span-7 max-w-xl xl:max-w-2xl space-y-3 sm:space-y-4"
+              className="lg:col-span-7 max-w-lg lg:max-w-[490px] xl:max-w-xl 2xl:max-w-2xl space-y-3 sm:space-y-4"
             >
               {/* Trust Badge Pill */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/25 text-emerald-800 dark:text-emerald-300 text-xs sm:text-[13px] font-bold w-max shadow-xs">
@@ -475,7 +475,7 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               </div>
 
               {/* Premium Main Heading with High-Contrast Animated Glow */}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] xl:text-[3.25rem] font-black text-slate-900 dark:text-white leading-[1.2] tracking-tight mb-2 sm:mb-3">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.35rem] xl:text-[3rem] 2xl:text-[3.35rem] font-black text-slate-900 dark:text-white leading-[1.2] tracking-tight mb-2 sm:mb-3">
                 <span className="block">{hConfig.titlePart1}</span>
                 <span className="shine-text-glow font-black tracking-tight inline-block mt-0.5 sm:mt-1">
                   {hConfig.titlePart2}
