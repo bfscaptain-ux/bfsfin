@@ -4,6 +4,7 @@ import path from 'path';
 import { prisma } from '@/lib/prisma';
 import nodemailer from 'nodemailer';
 import { sendOtpSms, formatIndianMobile } from '@/lib/smsCaptain';
+import { checkPhoneOtpRateLimit } from '@/lib/otpRateLimit';
 
 const otpFilePath = path.join(process.cwd(), 'src', 'data', 'otps.json');
 
@@ -18,6 +19,17 @@ export async function POST(request: Request) {
         { error: 'Mobile number or Email address is required' },
         { status: 400 }
       );
+    }
+
+    // Rate Limiting: Max 2 OTP requests per mobile number in 10 minutes
+    if (clientMobile) {
+      const rateCheck = await checkPhoneOtpRateLimit(clientMobile);
+      if (!rateCheck.allowed) {
+        return NextResponse.json(
+          { error: rateCheck.error, remainingAttempts: 0 },
+          { status: 429 }
+        );
+      }
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP

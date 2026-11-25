@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 import { sendOtpSms, formatIndianMobile } from "@/lib/smsCaptain";
+import { checkPhoneOtpRateLimit } from "@/lib/otpRateLimit";
 
 export async function POST(req: Request) {
   try {
@@ -22,6 +23,17 @@ export async function POST(req: Request) {
 
     if (!email && !clientMobile) {
       return NextResponse.json({ success: false, error: "Mobile number or Email is required" }, { status: 400 });
+    }
+
+    // Rate Limiting: Max 2 OTP requests per mobile number in 10 minutes
+    if (clientMobile) {
+      const phoneLimit = await checkPhoneOtpRateLimit(clientMobile);
+      if (!phoneLimit.allowed) {
+        return NextResponse.json(
+          { success: false, error: phoneLimit.error },
+          { status: 429 }
+        );
+      }
     }
 
     // 1. Generate 4-digit OTP

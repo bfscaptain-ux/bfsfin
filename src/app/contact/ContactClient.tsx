@@ -223,11 +223,7 @@ export default function ContactClient() {
       const data = await res.json();
       if (data.success) {
         setOtpSent(true);
-        if (data.mockOtp) {
-          alert(`[DEV MODE] Your mock OTP is: ${data.mockOtp}`);
-        } else {
-          alert(`A verification code has been sent via SMS to +91 ${cleanPhone.slice(-10)}!`);
-        }
+        setOtpError("");
       } else {
         setOtpError(data.error || "Failed to send OTP");
       }
