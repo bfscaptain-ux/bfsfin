@@ -440,9 +440,9 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
       </div>
 
       {/* 1. EMOTIONAL & TRUST-FOCUSED HERO SECTION (MOBILE OPTIMIZED & ANIMATED) */}
-      <section className="relative pt-4 pb-8 sm:pt-8 sm:pb-12 lg:pt-12 lg:pb-16 overflow-hidden flex items-center bg-slate-50 dark:bg-emerald-950">
+      <section className="relative pt-4 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-24 xl:pt-14 xl:pb-20 overflow-hidden flex items-center bg-slate-50 dark:bg-emerald-950">
         
-        {/* Absolute Background Image (Subtle Texture) */}
+        {/* Absolute Background Image (Framed so the couple is visible between text and calculator) */}
         <div className="absolute inset-0 z-0">
           <Image 
             src={hConfig.imageUrl} 
@@ -450,17 +450,13 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
             priority
             fill
             sizes="100vw"
-            quality={75}
-            className="object-cover object-[center_35%] opacity-100"
+            quality={80}
+            className="object-cover object-[70%_35%] lg:object-[66%_35%] xl:object-[63%_35%] opacity-90 dark:opacity-40"
           />
-          {/* Smooth, Professional Gradient Overlay - vertical on mobile, horizontal on desktop */}
-          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white/95 via-white/85 md:via-white/70 to-white/40 md:to-transparent dark:from-slate-950/95 dark:via-slate-950/90 dark:to-slate-950/40"></div>
-          
-          {/* A second soft radial gradient to ensure the text area is highly readable without blowing out the rest of the image */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] md:bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-white/80 via-transparent to-transparent"></div>
+          {/* Smooth, High-Contrast Gradient Overlay: left side solid/semi-translucent white so text is 100% crisp, transitioning smoothly before the family cutout */}
+          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white via-white/95 md:via-white/90 lg:via-white/80 to-white/30 lg:to-transparent dark:from-slate-950 dark:via-slate-950/95 dark:to-slate-950/50"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-white/90 via-transparent to-transparent hidden md:block"></div>
         </div>
-
-
 
         <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
@@ -470,25 +466,19 @@ export default function HomeClient({ heroConfig, ownerConfig, bankLogos = [], ho
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:col-span-7 space-y-3 sm:space-y-4"
+              className="lg:col-span-7 max-w-xl xl:max-w-2xl space-y-3 sm:space-y-4"
             >
-              {/* Premium Main Heading with Animated Glowing Accent */}
-              <h1 className="text-2xl sm:text-4xl lg:text-[3.5rem] font-extrabold text-slate-900 dark:text-white leading-[1.3] sm:leading-[1.25] tracking-tight mb-2 sm:mb-4 overflow-visible">
-                {hConfig.titlePart1} <br className="hidden sm:block" />
-                
-                <span className="inline-flex items-center gap-1.5 sm:gap-2 mt-0.5 sm:mt-1 pb-1 overflow-visible">
-                  <span className="shine-text-glow font-extrabold tracking-tight inline-block">
-                    {hConfig.titlePart2}
-                  </span>
-                  <svg 
-                    width="36" height="36" viewBox="0 0 24 24" fill="none" 
-                    stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
-                    className="text-emerald-500 dark:text-emerald-400 shrink-0 w-7 h-7 sm:w-10 sm:h-10 drop-shadow-[0_0_12px_rgba(16,185,129,0.7)]"
-                  >
-                    <path d="M7 13s2 3 5 3 5-3 5-3" />
-                    <line x1="8" y1="9" x2="8.01" y2="9" />
-                    <line x1="16" y1="9" x2="16.01" y2="9" />
-                  </svg>
+              {/* Trust Badge Pill */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/25 text-emerald-800 dark:text-emerald-300 text-xs sm:text-[13px] font-bold w-max shadow-xs">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <span>{hConfig.badgeText || "Direct Banking Partner • 50+ Top Banks & NBFCs"}</span>
+              </div>
+
+              {/* Premium Main Heading with High-Contrast Animated Glow */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] xl:text-[3.25rem] font-black text-slate-900 dark:text-white leading-[1.2] tracking-tight mb-2 sm:mb-3">
+                <span className="block">{hConfig.titlePart1}</span>
+                <span className="shine-text-glow font-black tracking-tight inline-block mt-0.5 sm:mt-1">
+                  {hConfig.titlePart2}
                 </span>
               </h1>
               
