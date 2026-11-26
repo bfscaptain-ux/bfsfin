@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { buildLoanGraph } from "@/lib/seo-schema";
 
 export const metadata: Metadata = {
-  title: "Personal Loan in Agra, Mathura & NCR | Instant Approval & 50+ Top Banks | BFS",
+  title: "Personal Loan in Agra, Mathura & NCR | Instant Approval & 150+ Top Banks | BFS",
   description: "Bhardwaj Financial Services se payein apni zaroorat anusaar personal loan. Collateral-free funding from ₹50,000 to ₹25 Lakhs, 24-48 hours disbursal across Agra, Mathura & Delhi-NCR. 100% Free Consultation.",
   keywords: [
     "Personal Loan Agra",
@@ -28,7 +28,7 @@ export default async function PersonalLoanPage() {
 
   const structuredData = buildLoanGraph({
     name: "Personal Loan",
-    description: "Fast collateral-free personal loans from ₹50,000 to ₹25 Lakhs with 50+ leading bank and NBFC partners, same-day verification, and 24-48 hours disbursal across Agra, Mathura & NCR.",
+    description: "Fast collateral-free personal loans from ₹50,000 to ₹25 Lakhs with 150+ leading bank and NBFC partners, same-day verification, and 24-48 hours disbursal across Agra, Mathura & NCR.",
     slug: "personal-loan",
     minAmount: 50000,
     maxAmount: 2500000,

@@ -155,7 +155,7 @@ const LOANS = [
     title: "Personal Loan",
     desc: "Instant unsecured loans for marriage, medical emergency, or travel.",
     icon: User,
-    rate: "50+ Lenders",
+    rate: "150+ Lenders",
     feature: "Disbursal in 48 Hrs",
     link: "/products/personal-loan"
   },

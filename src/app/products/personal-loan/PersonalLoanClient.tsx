@@ -18,7 +18,6 @@ import {
   FileCheck2,
   Zap,
   BadgePercent,
-  Sparkles,
   MapPin
 } from "lucide-react";
 
@@ -82,12 +81,6 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
         <div className="absolute bottom-10 right-0 w-[420px] h-[420px] bg-teal-600/15 blur-[140px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
-          {/* Trust Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold mb-6 shadow-inner">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>50+ Top Bank &amp; NBFC Partners • Sanjay Place Agra</span>
-          </div>
-
           {/* Main Headline (H1) - Positive & Dignified */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-white leading-[1.2] tracking-tight mb-5 max-w-4xl">
             Aapki Zaroorat Aur Budget Ke Anusaar{" "}
@@ -138,7 +131,7 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Bank Policy Match</span>
               </div>
               <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
-                50+ Top Lenders
+                150+ Top Banks
               </span>
               <span className="text-[11px] text-slate-400 mt-1 font-medium">Lowest Market EMI &amp; Easy Approval</span>
             </div>
@@ -409,7 +402,7 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-emerald-900/20 border border-slate-200 dark:border-emerald-800/60 text-xs text-slate-500 dark:text-slate-400 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Transparent Guidance:</strong> Aapki monthly income, company category aur CIBIL ke aadhar par hamari team 50+ lenders mein se sabse kam EMI wala bank shortlist karti hai.
+                  <strong>Transparent Guidance:</strong> Aapki monthly income, company category aur CIBIL ke aadhar par hamari team 150+ lenders mein se sabse kam EMI wala bank shortlist karti hai.
                 </span>
               </div>
             </div>
@@ -451,7 +444,7 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
                 <div className="mt-5 pt-1 space-y-2 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>50+ Top Bank &amp; NBFC Policy Matching</span>
+                    <span>150+ Top Bank &amp; NBFC Policy Matching</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -755,7 +748,7 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
               <CheckCircle2 className="w-4 h-4 text-emerald-300" /> Doorstep Document Pickup
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-300" /> 50+ Bank &amp; NBFC Partners
+              <CheckCircle2 className="w-4 h-4 text-emerald-300" /> 150+ Bank &amp; NBFC Partners
             </div>
           </div>
         </div>

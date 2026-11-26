@@ -434,7 +434,7 @@ function ApplyFormContent() {
             </h1>
             <p className="text-sm text-slate-600 mt-2.5 font-medium">
               {isPersonalLoanMode
-                ? "Fast, collateral-free funding from ₹50,000 to ₹25 Lakhs. Direct institutional appraisal through 50+ partner banks with ₹0 upfront fees."
+                ? "Fast, collateral-free funding from ₹50,000 to ₹25 Lakhs. Direct institutional appraisal through 150+ partner banks with ₹0 upfront fees."
                 : "Submit your enquiry in under 2 minutes. Direct sanctioning through top institutional partner banks with ₹0 upfront brokerage."
               }
             </p>
@@ -710,7 +710,7 @@ function ApplyFormContent() {
                     <div>
                       <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">Selected Facility</span>
                       <h4 className="text-base sm:text-lg font-black text-slate-900 mt-0.5">Instant Personal Loan (Unsecured)</h4>
-                      <p className="text-xs text-slate-600 mt-0.5">50+ Top Banks &amp; NBFCs • Fast 24-48 Hours Sanction • ₹0 Upfront Fee</p>
+                      <p className="text-xs text-slate-600 mt-0.5">150+ Top Banks &amp; NBFCs • Fast 24-48 Hours Sanction • ₹0 Upfront Fee</p>
                     </div>
                     <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold shrink-0">Best Bank Match</span>
                   </div>
