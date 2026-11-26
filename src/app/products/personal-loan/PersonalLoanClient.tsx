@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import EMICalculator from "@/components/EMICalculator";
 import FloatingSupport from "@/components/FloatingSupport";
 import {
   CheckCircle2,
@@ -23,14 +22,30 @@ import {
   CreditCard,
   PhoneCall,
   UserCheck,
-  HelpCircle,
   FileCheck2,
-  Award
+  Calculator,
+  Landmark,
+  TrendingUp
 } from "lucide-react";
 
 export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: string }) {
   const [activeTab, setActiveTab] = useState<"salaried" | "self-employed">("salaried");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  // Dedicated Personal Loan EMI Calculator State
+  const [calcAmount, setCalcAmount] = useState<number>(500000); // Default ₹5 Lakhs
+  const [calcRate, setCalcRate] = useState<number>(10.50); // Default 10.50%
+  const [calcTenure, setCalcTenure] = useState<number>(3); // Default 3 Years
+
+  // EMI Math Formula
+  const monthlyRate = calcRate / 12 / 100;
+  const totalMonths = calcTenure * 12;
+  const monthlyEmi = Math.round(
+    (calcAmount * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
+    (Math.pow(1 + monthlyRate, totalMonths) - 1)
+  );
+  const totalPayable = monthlyEmi * totalMonths;
+  const totalInterest = totalPayable - calcAmount;
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -61,17 +76,10 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
 
       {/* 1. HERO SECTION (CURVED DARK HERO) */}
       <section className="relative bg-[#020617] pt-16 pb-28 lg:pt-20 lg:pb-36 overflow-hidden">
-        {/* Dynamic Background Image overlay */}
-        {heroImageUrl && (
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-normal pointer-events-none"
-            style={{ backgroundImage: `url('${heroImageUrl}')` }}
-          ></div>
-        )}
-        {/* Dark overlay to ensure white text readability */}
-        <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
+        {/* Subtle grid pattern overlay */}
+        <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbx2j0g8j/image/upload/v1700000000/grid-pattern_qwe.png')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10 pointer-events-none"></div>
 
-        {/* Ambient background glows */}
+        {/* Deep ambient glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[320px] bg-emerald-600/20 blur-[130px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-10 right-0 w-[420px] h-[420px] bg-teal-600/20 blur-[140px] rounded-full pointer-events-none"></div>
 
@@ -251,21 +259,197 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
         </div>
       </section>
 
-      {/* 3. EMI CALCULATOR */}
+      {/* 3. DEDICATED PERSONAL LOAN EMI CALCULATOR */}
       <section className="py-20 bg-slate-100 dark:bg-emerald-900/40 border-y border-slate-200 dark:border-emerald-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block text-xs uppercase font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
-              EMI Calculator
+            <span className="inline-flex items-center gap-1.5 text-xs uppercase font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
+              <Calculator className="w-3.5 h-3.5" /> Personal Loan Calculator
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3">
-              Calculate Your Personal Loan EMI
+              Calculate Your Monthly EMI &amp; Interest
             </h2>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">
               Apni zaroorat ke anusaar monthly EMI aur kul byaj estimate karein (Starting from 10.50%* p.a.).
             </p>
           </div>
-          <EMICalculator defaultRate={10.50} />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Calculator Sliders (Left 7 Cols) */}
+            <div className="lg:col-span-7 bg-white dark:bg-emerald-950 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-emerald-800 shadow-sm space-y-8">
+              {/* Slider 1: Loan Amount */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                    Loan Amount
+                  </label>
+                  <span className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                    ₹{(calcAmount / 100000).toFixed(calcAmount % 100000 === 0 ? 0 : 2)} Lakhs
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="50000"
+                  max="2500000"
+                  step="25000"
+                  value={calcAmount}
+                  onChange={(e) => setCalcAmount(Number(e.target.value))}
+                  className="w-full h-2.5 bg-slate-200 dark:bg-emerald-900 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {[100000, 300000, 500000, 1000000, 2500000].map((amt) => (
+                    <button
+                      key={amt}
+                      type="button"
+                      onClick={() => setCalcAmount(amt)}
+                      className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
+                        calcAmount === amt
+                          ? "bg-emerald-50 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border-emerald-400"
+                          : "bg-slate-50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-emerald-800/80 hover:border-emerald-300"
+                      }`}
+                    >
+                      ₹{amt >= 100000 ? `${amt / 100000} Lakh` : `${amt / 1000}k`}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Slider 2: Interest Rate */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                    Interest Rate (% p.a.)
+                  </label>
+                  <span className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                    {calcRate.toFixed(2)}%*
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="10.50"
+                  max="24.00"
+                  step="0.25"
+                  value={calcRate}
+                  onChange={(e) => setCalcRate(Number(e.target.value))}
+                  className="w-full h-2.5 bg-slate-200 dark:bg-emerald-900 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
+                <div className="flex justify-between text-xs text-slate-400 mt-2">
+                  <span>10.50% (Lowest)</span>
+                  <span>15.00% (Avg)</span>
+                  <span>24.00% (NBFC Max)</span>
+                </div>
+              </div>
+
+              {/* Slider 3: Loan Tenure */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                    Tenure (Years)
+                  </label>
+                  <span className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                    {calcTenure} {calcTenure === 1 ? "Year" : "Years"} ({calcTenure * 12} Months)
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  step="1"
+                  value={calcTenure}
+                  onChange={(e) => setCalcTenure(Number(e.target.value))}
+                  className="w-full h-2.5 bg-slate-200 dark:bg-emerald-900 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
+                <div className="flex gap-2 mt-3">
+                  {[1, 2, 3, 4, 5].map((yr) => (
+                    <button
+                      key={yr}
+                      type="button"
+                      onClick={() => setCalcTenure(yr)}
+                      className={`flex-1 text-xs font-semibold py-1.5 rounded-lg border text-center transition-all ${
+                        calcTenure === yr
+                          ? "bg-emerald-50 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border-emerald-400"
+                          : "bg-slate-50 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-emerald-800/80 hover:border-emerald-300"
+                      }`}
+                    >
+                      {yr} {yr === 1 ? "Yr" : "Yrs"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Calculation Output Card (Right 5 Cols) */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-emerald-900 via-emerald-950 to-slate-950 text-white p-7 sm:p-8 rounded-3xl border border-emerald-700/40 shadow-xl flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between text-xs text-emerald-300 uppercase tracking-widest font-bold mb-4">
+                  <span>Estimated Repayment</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/30">
+                    Instant Quote
+                  </span>
+                </div>
+
+                <div className="mb-6">
+                  <div className="text-xs text-slate-400">Estimated Monthly EMI</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white mt-1">
+                    ₹{monthlyEmi.toLocaleString("en-IN")}
+                    <span className="text-xs font-normal text-slate-400"> / month</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3 py-4 border-y border-emerald-800/60 text-sm">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-300">Principal Amount</span>
+                    <span className="font-bold text-white">₹{calcAmount.toLocaleString("en-IN")}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-300">Total Interest Outflow</span>
+                    <span className="font-bold text-emerald-300">₹{totalInterest.toLocaleString("en-IN")}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-300">Total Payable ({totalMonths} Mos)</span>
+                    <span className="font-bold text-white">₹{totalPayable.toLocaleString("en-IN")}</span>
+                  </div>
+                </div>
+
+                {/* Partner Bank Benchmark Strip */}
+                <div className="mt-5 pt-1">
+                  <div className="text-[11px] uppercase tracking-wider text-emerald-400 font-bold mb-2">
+                    Live Partner Rates (Agra, Mathura &amp; NCR):
+                  </div>
+                  <div className="space-y-1.5 text-xs text-slate-300">
+                    <div className="flex justify-between">
+                      <span>• HDFC Bank Personal Loan</span>
+                      <span className="font-semibold text-emerald-300">From 10.50%*</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>• ICICI Bank Quick Disbursal</span>
+                      <span className="font-semibold text-emerald-300">From 10.65%*</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>• Axis Bank 24h Personal Loan</span>
+                      <span className="font-semibold text-emerald-300">From 10.75%*</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>• SBI Xpress Credit</span>
+                      <span className="font-semibold text-emerald-300">From 11.00%*</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-4">
+                <Link
+                  href="/apply?loan=personal"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold text-sm shadow-lg hover:shadow-emerald-500/30 transition-all"
+                >
+                  Apply for ₹{(calcAmount / 100000).toFixed(calcAmount % 100000 === 0 ? 0 : 1)} Lakh Loan <ArrowRight className="w-4 h-4" />
+                </Link>
+                <div className="text-[11px] text-center text-slate-400 mt-2">
+                  *Indicative EMI. Final terms depend on lender credit appraisal.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
