@@ -117,6 +117,26 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=5" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=5" />
         <link rel="shortcut icon" href="/favicon.ico?v=5" />
+        {/* Meta Pixel Base Code (Pixel ID: 2110789413657419) */}
+        <Script
+          id="meta-pixel-base"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '2110789413657419');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
+
         <style dangerouslySetInnerHTML={{__html: `
           .goog-te-banner-frame.skiptranslate { display: none !important; }
           .VIpgJd-ZVi9od-aZ2wEe-wOHMyf { display: none !important; }

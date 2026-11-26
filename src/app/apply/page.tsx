@@ -377,6 +377,15 @@ function ApplyFormContent() {
         } catch {}
       }
 
+      // Meta Pixel Lead Conversion Tracking (Pixel ID: 2110789413657419)
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: isPersonalLoanMode ? "Personal Loan Application" : `${productCategory} - ${formData.subType}`,
+          currency: "INR",
+          value: 1,
+        });
+      }
+
       const generatedId = data.lead?.id 
         ? `BFS-PL-${data.lead.id}` 
         : `BFS-${productCategory.substring(0, 3).toUpperCase()}-${Math.floor(10000 + Math.random() * 90000)}`;
