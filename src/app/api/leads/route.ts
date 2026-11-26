@@ -47,7 +47,12 @@ export async function POST(req: Request) {
       !body.formType?.includes("Calculator")
     ) {
       const existingEmailLead = await prisma.lead.findFirst({
-        where: { email: body.email }
+        where: {
+          email: body.email,
+          createdAt: {
+            gte: new Date(Date.now() - 24 * 60 * 60 * 1000) // 24-hr window
+          }
+        }
       });
       
       if (existingEmailLead) {
