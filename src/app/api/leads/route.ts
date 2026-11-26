@@ -29,6 +29,14 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json().catch(() => ({}));
+
+    const cleanPhone = body.phone ? body.phone.replace(/\D/g, '').slice(-10) : "";
+    const isPersonalLoan = (
+      body.subType?.toLowerCase().includes("personal") ||
+      body.loanType?.toLowerCase().includes("personal") ||
+      body.source?.toLowerCase().includes("personal") ||
+      body.message?.toLowerCase().includes("personal loan")
+    );
     
     // Check if email already exists (for formal loan applications, excluding instant callback, appointment & calculator leads)
     if (
@@ -38,15 +46,55 @@ export async function POST(req: Request) {
       !body.source?.includes("Calculator") &&
       !body.formType?.includes("Calculator")
     ) {
-      const existingLead = await prisma.lead.findFirst({
+      const existingEmailLead = await prisma.lead.findFirst({
         where: { email: body.email }
       });
       
-      if (existingLead) {
+      if (existingEmailLead) {
+        if (isPersonalLoan) {
+          return NextResponse.json({
+            success: true,
+            duplicate: true,
+            message: "Aapki Personal Loan enquiry pehle se prapt ho chuki hai. Hamare loan advisor aapse jald hi call/WhatsApp par sampark karenge.",
+            lead: existingEmailLead
+          });
+        }
         return NextResponse.json(
           { success: false, error: "Ek email ID se ek hi application submit ki ja sakti hai. (Application already exists)" }, 
           { status: 400 }
         );
+      }
+    }
+
+    // Phone Duplicate Protection (1 inquiry per mobile number within 24 hours)
+    if (cleanPhone && cleanPhone.length === 10) {
+      const existingPhoneLead = await prisma.lead.findFirst({
+        where: {
+          phone: { contains: cleanPhone },
+          createdAt: {
+            gte: new Date(Date.now() - 24 * 60 * 60 * 1000) // 24-hr anti-spam window
+          }
+        }
+      });
+
+      if (existingPhoneLead) {
+        if (isPersonalLoan) {
+          return NextResponse.json({
+            success: true,
+            duplicate: true,
+            message: "Aapki Personal Loan enquiry pehle se prapt ho chuki hai. Hamare loan advisor aapse jald hi call/WhatsApp par sampark karenge.",
+            lead: existingPhoneLead
+          });
+        } else if (
+          !body.source?.includes("Callback") &&
+          !body.source?.includes("APPOINTMENT") &&
+          !body.source?.includes("Calculator")
+        ) {
+          return NextResponse.json(
+            { success: false, error: "Iss mobile number se pichhle 24 ghante mein pehle hi inquiry darj ho chuki hai. Hamare executive aapse jald sampark karenge." },
+            { status: 400 }
+          );
+        }
       }
     }
 

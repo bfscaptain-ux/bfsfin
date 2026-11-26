@@ -121,8 +121,27 @@ function ApplyFormContent() {
     searchParams.get("loan")?.toLowerCase() === "personal" ||
     searchParams.get("service")?.toLowerCase() === "personal" ||
     searchParams.get("service")?.toLowerCase() === "personal-loan" ||
+    searchParams.get("product")?.toLowerCase() === "personal" ||
+    searchParams.get("type")?.toLowerCase() === "personal" ||
     formData.subType === "Personal Loan"
   );
+
+  // Local duplicate tracking for Personal Loan (1 inquiry per user rule)
+  const [plDuplicateNotice, setPlDuplicateNotice] = useState(false);
+
+  useEffect(() => {
+    if (!isPersonalLoanMode) {
+      setPlDuplicateNotice(false);
+      return;
+    }
+    const cleanPhone = formData.phone ? formData.phone.replace(/\D/g, '').slice(-10) : '';
+    if (cleanPhone.length === 10 && typeof window !== "undefined") {
+      const prev = localStorage.getItem(`bfs_pl_lead_${cleanPhone}`);
+      setPlDuplicateNotice(!!prev);
+    } else {
+      setPlDuplicateNotice(false);
+    }
+  }, [isPersonalLoanMode, formData.phone]);
 
   useEffect(() => {
     const rawService = searchParams.get("service") || searchParams.get("loan") || "";
@@ -257,9 +276,39 @@ function ApplyFormContent() {
 
   const nextStep = () => {
     setOtpError("");
-    if (step === 1 && !otpVerified) {
-      setOtpError("Please verify your mobile number via instant SMS OTP to continue.");
-      return;
+    if (step === 1) {
+      const cleanPhone = formData.phone ? formData.phone.replace(/\D/g, '') : '';
+      if (!formData.name.trim()) {
+        setOtpError("Kripya apna poora naam enter karein (As per PAN/Aadhaar).");
+        return;
+      }
+      if (!cleanPhone || cleanPhone.length !== 10) {
+        setOtpError("Kripya 10-digit valid mobile number enter karein.");
+        return;
+      }
+      if (!formData.email.trim() || !formData.email.includes("@")) {
+        setOtpError("Kripya apna valid email address enter karein.");
+        return;
+      }
+
+      if (isPersonalLoanMode) {
+        // Strict anti-spam: check if this user already submitted an inquiry
+        if (typeof window !== "undefined") {
+          const prev = localStorage.getItem(`bfs_pl_lead_${cleanPhone.slice(-10)}`);
+          if (prev) {
+            setOtpError("Aapki Personal Loan enquiry pehle se darj ho chuki hai. Hamare loan advisor aapse jald hi call/WhatsApp par connect karenge. Nayi inquiry submit karne ki zaroorat nahi hai.");
+            return;
+          }
+        }
+        // Direct jump to Step 2 for Personal Loan - NO OTP required!
+        setStep(2);
+        return;
+      } else {
+        if (!otpVerified) {
+          setOtpError("Please verify your mobile number via instant SMS OTP to continue.");
+          return;
+        }
+      }
     }
     setStep(s => s + 1);
   };
@@ -270,6 +319,20 @@ function ApplyFormContent() {
       setErrorMsg("Please authorize the consent checkbox before submitting enquiry.");
       return;
     }
+
+    const cleanPhone = formData.phone ? formData.phone.replace(/\D/g, '').slice(-10) : '';
+
+    // Frontend duplicate check for Personal Loan
+    if (isPersonalLoanMode && cleanPhone) {
+      if (typeof window !== "undefined") {
+        const prev = localStorage.getItem(`bfs_pl_lead_${cleanPhone}`);
+        if (prev) {
+          setErrorMsg("Aapki Personal Loan enquiry pehle se darj hai. Hamare loan advisor aapse jald hi call/WhatsApp par sampark karenge.");
+          return;
+        }
+      }
+    }
+
     setSubmitting(true);
     setErrorMsg("");
     
@@ -290,6 +353,8 @@ function ApplyFormContent() {
           employmentType: formData.empType,
           consentGiven: true,
           consentTimestamp: new Date().toISOString(),
+          otpVerified: isPersonalLoanMode ? true : otpVerified,
+          otpStatus: isPersonalLoanMode ? "Exempt (Ad Flow)" : (otpVerified ? "Verified" : "Pending"),
           source: isPersonalLoanMode ? "Website (Personal Loan Apply)" : (activeSource || "Website (Apply Form)"),
           message: isPersonalLoanMode
             ? `Application for Personal Loan | Purpose: ${formData.loanPurpose || "Personal Need"} | City: ${formData.city} | [DPDP Consent Authorized (Overrides DND)]`
@@ -305,7 +370,16 @@ function ApplyFormContent() {
         return;
       }
 
-      const generatedId = `BFS-${productCategory.substring(0, 3).toUpperCase()}-${Math.floor(10000 + Math.random() * 90000)}`;
+      // Mark user submitted locally to enforce 1-inquiry rule per user
+      if (isPersonalLoanMode && cleanPhone) {
+        try {
+          localStorage.setItem(`bfs_pl_lead_${cleanPhone}`, Date.now().toString());
+        } catch {}
+      }
+
+      const generatedId = data.lead?.id 
+        ? `BFS-PL-${data.lead.id}` 
+        : `BFS-${productCategory.substring(0, 3).toUpperCase()}-${Math.floor(10000 + Math.random() * 90000)}`;
       setAppId(generatedId);
       setSubmitted(true);
     } catch {
@@ -406,124 +480,188 @@ function ApplyFormContent() {
                   </div>
                 </div>
 
-                <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
-                        Mobile Number (Instant SMS OTP Verification) *
-                      </label>
-                      {otpVerified && (
-                        <span className="text-xs font-bold text-emerald-700 flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Verified
-                        </span>
-                      )}
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <div className="relative flex-1">
+                {isPersonalLoanMode ? (
+                  <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                          Mobile Number *
+                        </label>
+                        {formData.phone && formData.phone.replace(/\D/g, '').length === 10 ? (
+                          <span className="text-xs font-bold text-emerald-700 flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full animate-in fade-in">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> 10-Digit Mobile Valid
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-semibold text-slate-400">
+                            Instant Sanction &amp; WhatsApp Updates
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 font-bold text-sm">
+                          +91
+                        </div>
                         <input
                           type="tel"
                           name="phone"
                           required
-                          disabled={otpVerified}
+                          maxLength={10}
                           value={formData.phone}
                           onChange={(e) => {
-                            handleChange(e);
+                            const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                            setFormData(prev => ({ ...prev, phone: val }));
                             if (otpError) setOtpError("");
                           }}
                           placeholder="10-digit mobile number"
-                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold placeholder-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none disabled:opacity-60 disabled:bg-slate-100 transition-all tracking-wider"
+                          className="w-full bg-white border border-slate-200 rounded-xl pl-14 pr-4 py-3.5 text-base text-slate-900 font-bold placeholder-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all tracking-wider"
                         />
                       </div>
+                    </div>
 
-                      {!otpVerified && (
-                        <button
-                          type="button"
-                          onClick={handleSendOtp}
-                          disabled={sendingOtp || otpCooldown > 0 || !formData.phone || formData.phone.replace(/\D/g, '').length < 10}
-                          className="bg-emerald-900 hover:bg-slate-800 disabled:bg-slate-300 text-white text-sm font-bold px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 shrink-0 flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
-                        >
-                          {sendingOtp ? (
-                            <>
-                              <RotateCw className="w-4 h-4 animate-spin" />
-                              <span>Sending...</span>
-                            </>
-                          ) : otpCooldown > 0 ? (
-                            `Resend OTP in ${otpCooldown}s`
-                          ) : otpSent ? (
-                            'Resend SMS OTP'
-                          ) : (
-                            'Send SMS OTP'
-                          )}
-                        </button>
-                      )}
+                    {/* Anti-Spam Duplicate Warning Banner */}
+                    {plDuplicateNotice && (
+                      <div className="flex items-start gap-2.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold p-3.5 rounded-xl animate-in fade-in duration-200">
+                        <AlertCircle className="w-4 h-4 shrink-0 text-amber-600 mt-0.5" />
+                        <div className="flex-1 leading-relaxed">
+                          Aapki Personal Loan enquiry pehle se darj ho chuki hai. Hamare loan advisor aapse jald hi call/WhatsApp par connect karenge. Nayi inquiry submit karne ki zaroorat nahi hai.
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Inline Error Notice */}
+                    {otpError && !plDuplicateNotice && (
+                      <div className="flex items-start gap-2.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold p-3.5 rounded-xl animate-in fade-in duration-200">
+                        <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 mt-0.5" />
+                        <div className="flex-1 leading-relaxed">{otpError}</div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center gap-2 text-[11px] text-slate-500 font-medium pt-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span>Direct Institutional Review • No SMS delivery delay • 1 application per mobile</span>
                     </div>
                   </div>
-
-                  {/* Inline Error Notice */}
-                  {otpError && (
-                    <div className="flex items-start gap-2.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold p-3.5 rounded-xl animate-in fade-in duration-200">
-                      <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 mt-0.5" />
-                      <div className="flex-1 leading-relaxed">{otpError}</div>
-                    </div>
-                  )}
-
-                  {/* Inline Success Notice */}
-                  {otpSuccessMsg && !otpVerified && (
-                    <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold p-3 rounded-xl animate-in fade-in duration-200">
-                      <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
-                      <span>{otpSuccessMsg}</span>
-                    </div>
-                  )}
-
-                  {/* 4-Digit OTP Input Row */}
-                  {otpSent && !otpVerified && (
-                    <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end animate-in fade-in slide-in-from-top-2 pt-3 border-t border-slate-200">
-                      <div className="flex-1">
-                        <label className="block text-xs font-bold text-emerald-800 mb-1.5 uppercase tracking-wide flex items-center justify-between">
-                          <span>Enter 4-Digit SMS Code</span>
-                          <span className="text-[11px] font-normal text-slate-500 lowercase">
-                            sent to +91 {formData.phone.replace(/\D/g, '').slice(-10)}
-                          </span>
+                ) : (
+                  <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                          Mobile Number (Instant SMS OTP Verification) *
                         </label>
-                        <input
-                          type="text"
-                          value={otpInput}
-                          maxLength={4}
-                          autoFocus
-                          onChange={(e) => {
-                            setOtpInput(e.target.value.replace(/\D/g, ''));
-                            if (otpError) setOtpError("");
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                              e.preventDefault();
-                              handleVerifyOtp();
-                            }
-                          }}
-                          placeholder="• • • •"
-                          className="w-full bg-white border-2 border-emerald-300 rounded-xl px-4 py-3 text-base text-slate-900 font-black placeholder-slate-300 focus:border-emerald-600 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all tracking-[0.5em] text-center"
-                        />
+                        {otpVerified && (
+                          <span className="text-xs font-bold text-emerald-700 flex items-center gap-1">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Verified
+                          </span>
+                        )}
                       </div>
-                      <button
-                        type="button"
-                        onClick={handleVerifyOtp}
-                        disabled={!otpInput || otpInput.trim().length < 4}
-                        className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white text-sm font-bold px-7 py-3 rounded-xl transition-all shadow-md active:scale-95 shrink-0 cursor-pointer flex items-center justify-center gap-2 h-[48px]"
-                      >
-                        <Check className="w-4 h-4" /> Verify OTP
-                      </button>
+                      
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <div className="relative flex-1">
+                          <input
+                            type="tel"
+                            name="phone"
+                            required
+                            disabled={otpVerified}
+                            value={formData.phone}
+                            onChange={(e) => {
+                              handleChange(e);
+                              if (otpError) setOtpError("");
+                            }}
+                            placeholder="10-digit mobile number"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold placeholder-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none disabled:opacity-60 disabled:bg-slate-100 transition-all tracking-wider"
+                          />
+                        </div>
+
+                        {!otpVerified && (
+                          <button
+                            type="button"
+                            onClick={handleSendOtp}
+                            disabled={sendingOtp || otpCooldown > 0 || !formData.phone || formData.phone.replace(/\D/g, '').length < 10}
+                            className="bg-emerald-900 hover:bg-slate-800 disabled:bg-slate-300 text-white text-sm font-bold px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 shrink-0 flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                          >
+                            {sendingOtp ? (
+                              <>
+                                <RotateCw className="w-4 h-4 animate-spin" />
+                                <span>Sending...</span>
+                              </>
+                            ) : otpCooldown > 0 ? (
+                              `Resend OTP in ${otpCooldown}s`
+                            ) : otpSent ? (
+                              'Resend SMS OTP'
+                            ) : (
+                              'Send SMS OTP'
+                            )}
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  
-                  {/* Verified Confirmation */}
-                  {otpVerified && (
-                    <div className="flex items-center gap-2.5 text-emerald-700 text-sm font-bold bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                      <span>Mobile Number Verified (+91 {formData.phone.replace(/\D/g, '').slice(-10)})</span>
-                    </div>
-                  )}
-                </div>
+
+                    {/* Inline Error Notice */}
+                    {otpError && (
+                      <div className="flex items-start gap-2.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold p-3.5 rounded-xl animate-in fade-in duration-200">
+                        <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 mt-0.5" />
+                        <div className="flex-1 leading-relaxed">{otpError}</div>
+                      </div>
+                    )}
+
+                    {/* Inline Success Notice */}
+                    {otpSuccessMsg && !otpVerified && (
+                      <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold p-3 rounded-xl animate-in fade-in duration-200">
+                        <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+                        <span>{otpSuccessMsg}</span>
+                      </div>
+                    )}
+
+                    {/* 4-Digit OTP Input Row */}
+                    {otpSent && !otpVerified && (
+                      <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end animate-in fade-in slide-in-from-top-2 pt-3 border-t border-slate-200">
+                        <div className="flex-1">
+                          <label className="block text-xs font-bold text-emerald-800 mb-1.5 uppercase tracking-wide flex items-center justify-between">
+                            <span>Enter 4-Digit SMS Code</span>
+                            <span className="text-[11px] font-normal text-slate-500 lowercase">
+                              sent to +91 {formData.phone.replace(/\D/g, '').slice(-10)}
+                            </span>
+                          </label>
+                          <input
+                            type="text"
+                            value={otpInput}
+                            maxLength={4}
+                            autoFocus
+                            onChange={(e) => {
+                              setOtpInput(e.target.value.replace(/\D/g, ''));
+                              if (otpError) setOtpError("");
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                handleVerifyOtp();
+                              }
+                            }}
+                            placeholder="• • • •"
+                            className="w-full bg-white border-2 border-emerald-300 rounded-xl px-4 py-3 text-base text-slate-900 font-black placeholder-slate-300 focus:border-emerald-600 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all tracking-[0.5em] text-center"
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={handleVerifyOtp}
+                          disabled={!otpInput || otpInput.trim().length < 4}
+                          className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white text-sm font-bold px-7 py-3 rounded-xl transition-all shadow-md active:scale-95 shrink-0 cursor-pointer flex items-center justify-center gap-2 h-[48px]"
+                        >
+                          <Check className="w-4 h-4" /> Verify OTP
+                        </button>
+                      </div>
+                    )}
+                    
+                    {/* Verified Confirmation */}
+                    {otpVerified && (
+                      <div className="flex items-center gap-2.5 text-emerald-700 text-sm font-bold bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                        <span>Mobile Number Verified (+91 {formData.phone.replace(/\D/g, '').slice(-10)})</span>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 <div className="flex justify-between items-center pt-6 border-t border-slate-100">
                   <button
@@ -788,9 +926,19 @@ function ApplyFormContent() {
           <div className="w-full max-w-[260px] h-36 mx-auto mb-4 flex items-center justify-center">
             <EligibilitySuccessHuman2D className="w-full h-full object-contain" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2 tracking-tight">Application Received!</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2 tracking-tight">
+            {isPersonalLoanMode ? "Personal Loan Enquiry Received!" : "Application Received!"}
+          </h2>
           <p className="text-slate-500 mb-6 max-w-md mx-auto text-sm font-medium">
-            Your request for <strong className="text-emerald-700">{formData.subType}</strong> has been registered. An official confirmation email with complete details has been sent to <strong className="text-slate-800">{formData.email}</strong>.
+            {isPersonalLoanMode ? (
+              <>
+                Aapki <strong className="text-emerald-700">Personal Loan</strong> enquiry successfully darj ho chuki hai. Hamare senior loan advisor aapse 10-15 minute ke andar call / WhatsApp par direct connect karenge.
+              </>
+            ) : (
+              <>
+                Your request for <strong className="text-emerald-700">{formData.subType}</strong> has been registered. An official confirmation email with complete details has been sent to <strong className="text-slate-800">{formData.email}</strong>.
+              </>
+            )}
           </p>
           <div className="bg-slate-50 inline-block px-8 py-4 rounded-2xl border border-slate-200 mb-6">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest block mb-1">Application Reference Number</span>
@@ -799,7 +947,12 @@ function ApplyFormContent() {
 
           <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-100 text-xs text-emerald-800 max-w-lg mx-auto flex items-center gap-2 justify-center font-medium">
             <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>Our dedicated relationship executive will contact you on <strong>{formData.phone}</strong> within 2-4 working hours.</span>
+            <span>
+              {isPersonalLoanMode
+                ? `Hamare dedicated loan specialist aapse mobile +91 ${formData.phone.replace(/\\D/g, '').slice(-10)} par 10-15 minute mein sampark karenge.`
+                : `Our dedicated relationship executive will contact you on ${formData.phone} within 2-4 working hours.`
+              }
+            </span>
           </div>
 
           <div className="mt-8 pt-6 border-t border-slate-100 text-xs text-slate-400 flex items-center justify-center gap-2">
