@@ -712,7 +712,7 @@ function ApplyFormContent() {
                       <h4 className="text-base sm:text-lg font-black text-slate-900 mt-0.5">Instant Personal Loan (Unsecured)</h4>
                       <p className="text-xs text-slate-600 mt-0.5">50+ Top Banks &amp; NBFCs • Fast 24-48 Hours Sanction • ₹0 Upfront Fee</p>
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold shrink-0">10.50%* Min ROI</span>
+                    <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold shrink-0">Best Bank Match</span>
                   </div>
 
                   <div>
