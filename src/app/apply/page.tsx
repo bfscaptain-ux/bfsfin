@@ -55,6 +55,7 @@ interface FormDataState {
   income: string;
   subType: string;
   loanAmount: string;
+  loanPurpose?: string;
 }
 
 function ApplyFormContent() {
@@ -116,6 +117,12 @@ function ApplyFormContent() {
 
   // Auto-fill from URL Query Params (e.g. /apply?service=balance-transfer&amount=4500000)
   const [activeSource, setActiveSource] = useState("");
+  const isPersonalLoanMode = (
+    searchParams.get("loan")?.toLowerCase() === "personal" ||
+    searchParams.get("service")?.toLowerCase() === "personal" ||
+    searchParams.get("service")?.toLowerCase() === "personal-loan" ||
+    formData.subType === "Personal Loan"
+  );
 
   useEffect(() => {
     const rawService = searchParams.get("service") || searchParams.get("loan") || "";
@@ -283,7 +290,10 @@ function ApplyFormContent() {
           employmentType: formData.empType,
           consentGiven: true,
           consentTimestamp: new Date().toISOString(),
-          message: `Application for ${productCategory} - ${formData.subType} | City: ${formData.city} | [DPDP Consent Authorized (Overrides DND)]`,
+          source: isPersonalLoanMode ? "Website (Personal Loan Apply)" : (activeSource || "Website (Apply Form)"),
+          message: isPersonalLoanMode
+            ? `Application for Personal Loan | Purpose: ${formData.loanPurpose || "Personal Need"} | City: ${formData.city} | [DPDP Consent Authorized (Overrides DND)]`
+            : `Application for ${productCategory} - ${formData.subType} | City: ${formData.city} | [DPDP Consent Authorized (Overrides DND)]`,
         })
       });
       
@@ -337,10 +347,13 @@ function ApplyFormContent() {
           </div>
           <div className="text-center max-w-xl mx-auto mb-10">
             <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              One Form. Instant Bank Sanction.
+              {isPersonalLoanMode ? "Personal Loan Application" : "One Form. Instant Bank Sanction."}
             </h1>
             <p className="text-sm text-slate-600 mt-2.5 font-medium">
-              Submit your enquiry in under 2 minutes. Direct sanctioning through top institutional partner banks with ₹0 upfront brokerage.
+              {isPersonalLoanMode
+                ? "Fast, collateral-free funding from ₹50,000 to ₹25 Lakhs. Direct institutional appraisal through 50+ partner banks with ₹0 upfront fees."
+                : "Submit your enquiry in under 2 minutes. Direct sanctioning through top institutional partner banks with ₹0 upfront brokerage."
+              }
             </p>
             <div className="mt-3 flex items-center justify-center">
               <button
@@ -539,83 +552,165 @@ function ApplyFormContent() {
 
             {/* STEP 2: DYNAMIC PRODUCT & SUB-TYPE SELECTION */}
             {step === 2 && (
-              <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
-                <div className="border-b border-slate-100 pb-4 mb-6">
-                  <h3 className="text-xl font-black text-slate-900">2. Desired Product & Requirement</h3>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Select your preferred category and exact plan.</p>
-                </div>
-
-                {/* 1. Main Category Selector */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Main Category *</label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {(Object.keys(PRODUCT_CATALOG) as ProductCategory[]).map((catKey) => {
-                      const item = PRODUCT_CATALOG[catKey];
-                      const isSelected = productCategory === catKey;
-                      return (
-                        <button
-                          key={catKey}
-                          type="button"
-                          onClick={() => handleCategoryChange(catKey)}
-                          className={`p-4 rounded-2xl border-2 text-left transition-all duration-200 flex flex-col justify-between ${
-                            isSelected
-                              ? "border-emerald-600 bg-emerald-50/70 text-emerald-900 shadow-md ring-2 ring-emerald-500/20 font-black"
-                              : "border-slate-200 bg-slate-50 hover:bg-white text-slate-700 font-semibold"
-                          }`}
-                        >
-                          <span className="text-base">{item.label.split(" ")[0]}</span>
-                          <span className="text-sm mt-1">{catKey}</span>
-                        </button>
-                      );
-                    })}
+              isPersonalLoanMode ? (
+                <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
+                  <div className="border-b border-slate-100 pb-4 mb-6">
+                    <h3 className="text-xl font-black text-slate-900">2. Personal Loan Requirement</h3>
+                    <p className="text-xs text-slate-500 mt-1 font-medium">Select your required amount and intended purpose.</p>
                   </div>
-                </div>
 
-                {/* 2. Sub-Type & Requirement Amount */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
-                      {currentCatalog.subTypeLabel}
-                    </label>
-                    <select
-                      name="subType"
-                      value={formData.subType}
-                      onChange={handleChange}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all cursor-pointer"
-                    >
-                      {currentCatalog.subTypes.map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
+                  <div className="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">Selected Facility</span>
+                      <h4 className="text-base sm:text-lg font-black text-slate-900 mt-0.5">Instant Personal Loan (Unsecured)</h4>
+                      <p className="text-xs text-slate-600 mt-0.5">50+ Top Banks &amp; NBFCs • Fast 24-48 Hours Sanction • ₹0 Upfront Fee</p>
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold shrink-0">10.50%* Min ROI</span>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
-                      {currentCatalog.amountLabel}
-                    </label>
+                    <div className="flex justify-between items-center mb-2">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Required Loan Amount (₹) *
+                      </label>
+                      <span className="text-sm font-bold text-emerald-700">
+                        {formData.loanAmount ? `₹${Number(formData.loanAmount).toLocaleString('en-IN')}` : ''}
+                      </span>
+                    </div>
                     <input
                       type="number"
                       name="loanAmount"
                       required
                       value={formData.loanAmount}
                       onChange={handleChange}
-                      placeholder={currentCatalog.amountPlaceholder}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all"
+                      placeholder="e.g. 500000 (5 Lakhs)"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-base text-slate-900 font-bold focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all"
                     />
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {["100000", "300000", "500000", "1000000", "2500000"].map((amt) => (
+                        <button
+                          key={amt}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, loanAmount: amt }))}
+                          className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
+                            formData.loanAmount === amt
+                              ? "bg-emerald-600 text-white border-emerald-600 font-bold shadow-sm"
+                              : "bg-slate-50 text-slate-600 border-slate-200 hover:border-emerald-400"
+                          }`}
+                        >
+                          ₹{Number(amt) >= 100000 ? `${Number(amt) / 100000} Lakh` : `${Number(amt) / 1000}k`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
+                      Loan Purpose (Zaroorat)
+                    </label>
+                    <select
+                      name="loanPurpose"
+                      value={formData.loanPurpose || "Personal Emergency"}
+                      onChange={(e) => setFormData(prev => ({ ...prev, loanPurpose: e.target.value }))}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all cursor-pointer"
+                    >
+                      <option value="Personal Emergency">Emergency / Medical Requirement</option>
+                      <option value="Credit Card & Multiple Debt Consolidation">Credit Card Bill &amp; Multiple Loans Consolidation</option>
+                      <option value="Wedding / Family Function">Marriage / Family Function</option>
+                      <option value="Home Renovation">Home Renovation / Interior</option>
+                      <option value="Business / Working Capital">Small Business / Working Capital</option>
+                      <option value="Other">Other Personal Requirement</option>
+                    </select>
+                  </div>
+
+                  <div className="flex justify-between pt-6 border-t border-slate-100">
+                    <button type="button" onClick={() => setStep(1)} className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3.5 rounded-xl text-sm flex items-center gap-2 transition-all active:scale-95">
+                      <ArrowLeft className="w-4 h-4" /> Back
+                    </button>
+                    <button type="button" onClick={() => setStep(3)} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/20 active:scale-95 transition-all">
+                      Next Step <ArrowRight className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
+              ) : (
+                <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
+                  <div className="border-b border-slate-100 pb-4 mb-6">
+                    <h3 className="text-xl font-black text-slate-900">2. Desired Product & Requirement</h3>
+                    <p className="text-xs text-slate-500 mt-1 font-medium">Select your preferred category and exact plan.</p>
+                  </div>
 
-                <div className="flex justify-between pt-6 border-t border-slate-100">
-                  <button type="button" onClick={() => setStep(1)} className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3.5 rounded-xl text-sm flex items-center gap-2 transition-all active:scale-95">
-                    <ArrowLeft className="w-4 h-4" /> Back
-                  </button>
-                  <button type="button" onClick={() => setStep(3)} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/20 active:scale-95 transition-all">
-                    Next Step <ArrowRight className="w-4 h-4" />
-                  </button>
+                  {/* 1. Main Category Selector */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Main Category *</label>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {(Object.keys(PRODUCT_CATALOG) as ProductCategory[]).map((catKey) => {
+                        const item = PRODUCT_CATALOG[catKey];
+                        const isSelected = productCategory === catKey;
+                        return (
+                          <button
+                            key={catKey}
+                            type="button"
+                            onClick={() => handleCategoryChange(catKey)}
+                            className={`p-4 rounded-2xl border-2 text-left transition-all duration-200 flex flex-col justify-between ${
+                              isSelected
+                                ? "border-emerald-600 bg-emerald-50/70 text-emerald-900 shadow-md ring-2 ring-emerald-500/20 font-black"
+                                : "border-slate-200 bg-slate-50 hover:bg-white text-slate-700 font-semibold"
+                            }`}
+                          >
+                            <span className="text-base">{item.label.split(" ")[0]}</span>
+                            <span className="text-sm mt-1">{catKey}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* 2. Sub-Type & Requirement Amount */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
+                        {currentCatalog.subTypeLabel}
+                      </label>
+                      <select
+                        name="subType"
+                        value={formData.subType}
+                        onChange={handleChange}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all cursor-pointer"
+                      >
+                        {currentCatalog.subTypes.map((type) => (
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
+                        {currentCatalog.amountLabel}
+                      </label>
+                      <input
+                        type="number"
+                        name="loanAmount"
+                        required
+                        value={formData.loanAmount}
+                        onChange={handleChange}
+                        placeholder={currentCatalog.amountPlaceholder}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 font-bold focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between pt-6 border-t border-slate-100">
+                    <button type="button" onClick={() => setStep(1)} className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3.5 rounded-xl text-sm flex items-center gap-2 transition-all active:scale-95">
+                      <ArrowLeft className="w-4 h-4" /> Back
+                    </button>
+                    <button type="button" onClick={() => setStep(3)} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/20 active:scale-95 transition-all">
+                      Next Step <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )
             )}
 
             {/* STEP 3: EMPLOYMENT, CITY & SUBMIT */}

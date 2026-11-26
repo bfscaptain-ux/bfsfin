@@ -9,23 +9,12 @@ import {
   CheckCircle2,
   Clock,
   ArrowRight,
-  FileText,
-  ShieldCheck,
   Percent,
   Wallet,
   Briefcase,
   ChevronDown,
   Building2,
-  Sparkles,
-  MapPin,
-  ShieldAlert,
-  CreditCard,
-  PhoneCall,
-  UserCheck,
-  FileCheck2,
-  Calculator,
-  Landmark,
-  TrendingUp
+  PhoneCall
 } from "lucide-react";
 
 export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: string }) {
@@ -74,8 +63,8 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-emerald-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-emerald-900 selection:text-white transition-colors duration-300">
       <Header />
 
-      {/* 1. HERO SECTION (CURVED DARK HERO) */}
-      <section className="relative bg-[#020617] pt-16 pb-28 lg:pt-20 lg:pb-36 overflow-hidden">
+      {/* 1. HERO SECTION (CURVED DARK HERO - CLEAN & PROFESSIONAL) */}
+      <section className="relative bg-[#020617] pt-20 pb-28 lg:pt-24 lg:pb-36 overflow-hidden">
         {/* Subtle grid pattern overlay */}
         <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbx2j0g8j/image/upload/v1700000000/grid-pattern_qwe.png')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10 pointer-events-none"></div>
 
@@ -84,12 +73,6 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
         <div className="absolute bottom-10 right-0 w-[420px] h-[420px] bg-teal-600/20 blur-[140px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-bold text-emerald-300 uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.2)] mb-5">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.9)]"></span>
-            INSTANT PERSONAL LOAN | AGRA, MATHURA &amp; NCR
-          </div>
-
           {/* Main Headline (H1) */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-white leading-[1.18] tracking-tight mb-5 drop-shadow-sm max-w-4xl">
             Bank Aapko Personal Loan Nahi De Raha Hai?{" "}
@@ -107,14 +90,14 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
           <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
             <Link
               href="/apply?loan=personal"
-              className="group relative inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:shadow-[0_0_45px_rgba(16,185,129,0.55)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-base tracking-wide"
+              className="group relative inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold px-9 py-4 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:shadow-[0_0_45px_rgba(16,185,129,0.55)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-base tracking-wide"
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
               <span className="relative z-10">Apply for Personal Loan</span>
               <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 font-medium px-4">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Zero Upfront Fees • 100% Free Consultation</span>
             </div>
           </div>
@@ -175,30 +158,24 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
         </div>
       </section>
 
-      {/* 2. WHY CHOOSE BHARDWAJ FINANCIAL SERVICES? (TRUST & PROBLEM-SOLVER) */}
+      {/* 2. WHY CHOOSE BHARDWAJ FINANCIAL SERVICES? (CLEAN & MINIMAL 4 CARDS) */}
       <section className="py-20 bg-slate-50 dark:bg-emerald-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5" /> Trust &amp; Problem-Solver
-            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
               Har Bank ke Rules Alag Hote Hain —{" "}
               <span className="text-emerald-700 dark:text-emerald-400">Hum Aapke Liye Sahi Bank Chunte Hain</span>
             </h2>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto">
-              Agar ek bank ne loan mana kiya hai toh nirash na hon. BFS expert team aapki eligibility evaluate karke right bank mein application file karti hai.
+              Agar ek bank ne loan mana kiya hai toh nirash na hon. BFS expert team aapki profile evaluate karke right bank mein application file karti hai.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Card 1: Rejected File Specialist */}
-            <div className="bg-white dark:bg-emerald-900/40 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <ShieldAlert className="w-7 h-7" />
-              </div>
-              <div className="inline-block px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-bold mb-3">
-                High Approval Assistance
+            <div className="bg-white dark:bg-emerald-900/30 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800/80 shadow-sm hover:border-emerald-500 dark:hover:border-emerald-400 transition-all">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                01 • Solution
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                 Rejected File Specialist
@@ -209,12 +186,9 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
             </div>
 
             {/* Card 2: 100% Transparent Process */}
-            <div className="bg-white dark:bg-emerald-900/40 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <FileCheck2 className="w-7 h-7" />
-              </div>
-              <div className="inline-block px-3 py-1 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold mb-3">
-                Zero Hidden Charges
+            <div className="bg-white dark:bg-emerald-900/30 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800/80 shadow-sm hover:border-emerald-500 dark:hover:border-emerald-400 transition-all">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                02 • Transparency
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                 100% Transparent Process
@@ -225,12 +199,9 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
             </div>
 
             {/* Card 3: Credit Card & Multiple EMIs Consolidation */}
-            <div className="bg-white dark:bg-emerald-900/40 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <CreditCard className="w-7 h-7" />
-              </div>
-              <div className="inline-block px-3 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold mb-3">
-                Reduce High Interest Bills
+            <div className="bg-white dark:bg-emerald-900/30 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800/80 shadow-sm hover:border-emerald-500 dark:hover:border-emerald-400 transition-all">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                03 • Cost Saving
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                 Credit Card &amp; Multiple EMIs Consolidation
@@ -241,12 +212,9 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
             </div>
 
             {/* Card 4: Local Office Support */}
-            <div className="bg-white dark:bg-emerald-900/40 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 hover:border-emerald-500 dark:hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-teal-50 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <Building2 className="w-7 h-7" />
-              </div>
-              <div className="inline-block px-3 py-1 rounded-md bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold mb-3">
-                Direct Physical Presence
+            <div className="bg-white dark:bg-emerald-900/30 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800/80 shadow-sm hover:border-emerald-500 dark:hover:border-emerald-400 transition-all">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                04 • Physical Presence
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                 Local Office Support
@@ -263,9 +231,6 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
       <section className="py-20 bg-slate-100 dark:bg-emerald-900/40 border-y border-slate-200 dark:border-emerald-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-1.5 text-xs uppercase font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
-              <Calculator className="w-3.5 h-3.5" /> Personal Loan Calculator
-            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3">
               Calculate Your Monthly EMI &amp; Interest
             </h2>
@@ -274,7 +239,7 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
             {/* Calculator Sliders (Left 7 Cols) */}
             <div className="lg:col-span-7 bg-white dark:bg-emerald-950 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-emerald-800 shadow-sm space-y-8">
               {/* Slider 1: Loan Amount */}
@@ -439,10 +404,10 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
 
               <div className="mt-8 pt-4">
                 <Link
-                  href="/apply?loan=personal"
+                  href={`/apply?loan=personal&amount=${calcAmount}`}
                   className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold text-sm shadow-lg hover:shadow-emerald-500/30 transition-all"
                 >
-                  Apply for ₹{(calcAmount / 100000).toFixed(calcAmount % 100000 === 0 ? 0 : 1)} Lakh Loan <ArrowRight className="w-4 h-4" />
+                  Apply for Personal Loan <ArrowRight className="w-4 h-4" />
                 </Link>
                 <div className="text-[11px] text-center text-slate-400 mt-2">
                   *Indicative EMI. Final terms depend on lender credit appraisal.
@@ -457,9 +422,6 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
       <section className="py-20 bg-white dark:bg-emerald-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block text-xs uppercase font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
-              Clear Criteria
-            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3">
               Personal Loan Eligibility (Salaried &amp; Self-Employed)
             </h2>
@@ -499,89 +461,61 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
             {activeTab === "salaried" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      01
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">Age (Aayu)</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    01 • Age
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    <strong className="text-slate-900 dark:text-white font-semibold">21 se 58 saal</strong> (Loan maturity ke samay tak)
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">21 se 58 saal</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Loan maturity ke samay tak ki aayu</p>
                 </div>
 
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      02
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">Minimum Monthly Salary</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    02 • Monthly Salary
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    <strong className="text-slate-900 dark:text-white font-semibold">₹18,000+</strong> (Bank account mein salary credit honi chahiye)
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">₹18,000+ per month</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Bank account mein salary credit honi chahiye</p>
                 </div>
 
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      03
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">Work Experience</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    03 • Work Experience
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    Kam se kam <strong className="text-slate-900 dark:text-white font-semibold">6 mahine</strong> (Current company) aur total 1 saal ka anubhav
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">Kam se kam 6 mahine</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Current company mein 6M aur total 1 saal ka anubhav</p>
                 </div>
 
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      04
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">CIBIL Score</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    04 • Credit Score
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    <strong className="text-slate-900 dark:text-white font-semibold">700+</strong> (650–699 walon ke liye special NBFC options uplabdh)
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">CIBIL 700+</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">650–699 walon ke liye special NBFC options uplabdh</p>
                 </div>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      01
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">Age (Aayu)</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    01 • Age
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    <strong className="text-slate-900 dark:text-white font-semibold">23 se 65 saal</strong>
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">23 se 65 saal</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Business owner / partner aayu criteria</p>
                 </div>
 
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      02
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">Business Vintage</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    02 • Business Vintage
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    Kam se kam <strong className="text-slate-900 dark:text-white font-semibold">2 saal purana</strong> business / shop / firm
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">Kam se kam 2 saal</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Purana business, shop, ya firm operation</p>
                 </div>
 
                 <div className="p-5 bg-white dark:bg-emerald-950/70 rounded-2xl border border-slate-200/80 dark:border-emerald-800 md:col-span-2">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
-                      03
-                    </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-base">Documents &amp; Tax Compliance</h4>
+                  <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
+                    03 • Tax &amp; Banking Documents
                   </div>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm pl-11">
-                    <strong className="text-slate-900 dark:text-white font-semibold">GST Registration / Udyam Certificate</strong> aur pichhle 1–2 saal ki ITR (Pichhle 12 mahine ka continuous bank statement zaroori)
-                  </p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base">GST / Udyam Certificate &amp; 1–2 Saal ITR</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">Pichhle 12 mahine ka continuous bank statement zaroori</p>
                 </div>
               </div>
             )}
@@ -591,11 +525,8 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
 
       {/* 5. REQUIRED DOCUMENTS */}
       <section className="py-20 bg-slate-50 dark:bg-emerald-900/30 border-t border-slate-200 dark:border-emerald-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block text-xs uppercase font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
-              Hassle-Free Verification
-            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3">
               Required Documents (Kam se Kam Kagazat)
             </h2>
@@ -604,92 +535,77 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {/* 1. KYC Documents */}
-            <div className="bg-white dark:bg-emerald-950/80 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6">
-                  <UserCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
-                  KYC Documents (Sabhi ke Liye)
-                </h3>
-                <ul className="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>PAN Card</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Aadhaar Card (Mobile linked)</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>1 Passport Size Photo</span>
-                  </li>
-                </ul>
+            <div className="bg-white dark:bg-emerald-950/80 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 shadow-sm">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                Part A
               </div>
-              <div className="mt-8 pt-4 border-t border-slate-100 dark:border-emerald-800/60 text-xs text-slate-400 font-medium">
-                100% Secure Digital KYC
-              </div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                KYC Documents (Sabhi ke Liye)
+              </h3>
+              <ul className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>PAN Card</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>Aadhaar Card (Mobile linked)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>1 Passport Size Photo</span>
+                </li>
+              </ul>
             </div>
 
             {/* 2. Income Proof (Salaried) */}
-            <div className="bg-white dark:bg-emerald-950/80 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6">
-                  <Briefcase className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
-                  Income Proof (Salaried)
-                </h3>
-                <ul className="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Pichhle 3 mahine ki Salary Slip</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>6 mahine ka Salary Account Bank Statement (PDF)</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Company ID Card / Appointment Letter</span>
-                  </li>
-                </ul>
+            <div className="bg-white dark:bg-emerald-950/80 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 shadow-sm">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                Part B
               </div>
-              <div className="mt-8 pt-4 border-t border-slate-100 dark:border-emerald-800/60 text-xs text-slate-400 font-medium">
-                Netbanking e-Statement supported
-              </div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                Income Proof (Salaried)
+              </h3>
+              <ul className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>Pichhle 3 mahine ki Salary Slip</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>6 mahine ka Salary Account Statement (PDF)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>Company ID Card / Appointment Letter</span>
+                </li>
+              </ul>
             </div>
 
             {/* 3. Income Proof (Self-Employed) */}
-            <div className="bg-white dark:bg-emerald-950/80 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6">
-                  <Building2 className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
-                  Income Proof (Self-Employed)
-                </h3>
-                <ul className="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Pichhle 1 saal ka Current / Savings Bank Statement</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>ITR (Pichhle 1–2 saal with Computation Sheet)</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span>Business Proof (GST / Udyam / Registration)</span>
-                  </li>
-                </ul>
+            <div className="bg-white dark:bg-emerald-950/80 p-8 rounded-2xl border border-slate-200 dark:border-emerald-800 shadow-sm">
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">
+                Part C
               </div>
-              <div className="mt-8 pt-4 border-t border-slate-100 dark:border-emerald-800/60 text-xs text-slate-400 font-medium">
-                Minimal paperwork required
-              </div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                Income Proof (Self-Employed)
+              </h3>
+              <ul className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>Pichhle 1 saal ka Bank Statement</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>ITR (Pichhle 1–2 saal with Computation Sheet)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-500 font-bold">•</span>
+                  <span>Business Proof (GST / Udyam / Registration)</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -699,9 +615,6 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
       <section className="py-20 bg-white dark:bg-emerald-950 border-t border-slate-200 dark:border-emerald-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-block text-xs uppercase font-extrabold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-500/30 tracking-wider mb-2">
-              Got Questions?
-            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3">
               Frequently Asked Questions (FAQs)
             </h2>
@@ -745,14 +658,7 @@ export default function PersonalLoanClient({ heroImageUrl }: { heroImageUrl?: st
 
       {/* 7. BOTTOM CTA BANNER (PAGE KE SABSE NICHE) */}
       <section className="relative py-20 bg-gradient-to-br from-emerald-800 via-emerald-900 to-[#022c22] text-white overflow-hidden text-center">
-        {/* Glow decoration */}
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/20 blur-[130px] rounded-full pointer-events-none"></div>
-
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 px-4 py-1.5 rounded-full text-xs font-bold text-emerald-200 uppercase tracking-widest mb-6">
-            <CheckCircle2 className="w-4 h-4 text-emerald-300" /> Free Profile Evaluation
-          </div>
-
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-5 leading-tight tracking-tight">
             Apni Free Personal Loan Eligibility Check Karein{" "}
             <span className="text-emerald-300 block sm:inline">(Bina CIBIL Score Kharab Kiye)</span>
